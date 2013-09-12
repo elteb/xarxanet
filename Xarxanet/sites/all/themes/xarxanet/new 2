@@ -1,0 +1,1688 @@
+ ....loading....
+472 x 62
+Se alcanzó el límite para el log de Firebug. No se muestran %S entradas.		Preferencias	 
+Drupal for Firebug General Messages
+
+Array
+(
+    [nid] => 177
+    [type] => noticia_general
+    [language] => ca
+    [uid] => 11
+    [status] => 1
+    [created] => 1254475210
+    [changed] => 1254480527
+    [comment] => 0
+    [promote] => 1
+    [moderate] => 0
+    [sticky] => 0
+    [tnid] => 0
+    [translate] => 0
+    [vid] => 177
+    [revision_uid] => 11
+    [title] => La Marató de TV3 de 2009 anirà dirigida a les malalties minoritàries 
+    [teaser] => 1
+    [log] => 
+    [revision_timestamp] => 1254480527
+    [format] => 2
+    [name] => ptarres
+    [picture] => 
+    [data] => a:2:{s:13:"form_build_id";s:37:"form-3c49b8a7cb25e41622f91b734335c7bb";s:5:"news1";a:10:{i:2;i:0;i:3;i:0;i:4;i:0;i:5;i:0;i:6;i:0;i:7;i:0;i:8;i:0;i:9;i:0;i:10;i:0;i:11;i:0;}}
+    [path] => noticies/la-marat-de-tv3-de-2009-anir-dirigida-les-malalties-minorit-ries
+    [field_resum] => Array
+        (
+            [0] => Array
+                (
+                    [value] => 
+
+L’edició de 2009 de la Marató de TV3 anirà dirigida a les malalties minoritàries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que són molt poc conegudes. Josep Cuní, presentador d’ “Els Matins de TV3”, serà l’encarregat de conduir la jornada.
+
+ 
+
+                    [safe] => <p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p>
+<p>&nbsp;</p>
+                    [view] => <p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p>
+<p>&nbsp;</p>
+                )
+
+        )
+
+    [field_entitat] => Array
+        (
+            [0] => Array
+                (
+                    [value] => Fundació Pere Tarrés
+                    [safe] => Fundació Pere Tarrés
+                    [view] => Fundació Pere Tarrés
+                )
+
+        )
+
+    [field_imatge_petita] => Array
+        (
+            [0] => Array
+                (
+                    [fid] => 202
+                    [list] => 1
+                    [data] => Array
+                        (
+                            [crop] => Array
+                                (
+                                    [x] => 49
+                                    [y] => 0
+                                    [width] => 409
+                                    [height] => 315
+                                    [changed] => 1
+                                )
+
+                            [alt] => Marató de TV3 2008
+                            [title] => Marató de TV3 2008
+                        )
+
+                    [uid] => 11
+                    [filename] => marato-tv3.jpg
+                    [filepath] => sites/default/files/marato-tv3_2.jpg
+                    [filemime] => image/jpeg
+                    [filesize] => 35118
+                    [status] => 1
+                    [timestamp] => 1254480526
+                    [nid] => 177
+                    [view] => 
+image/jpeg icon
+marato-tv3.jpg
+
+                )
+
+        )
+
+    [field_imatges] => Array
+        (
+            [0] => Array
+                (
+                    [fid] => 204
+                    [list] => 1
+                    [data] => Array
+                        (
+                            [alt] => Marató TV3 2008
+                            [title] => 
+                        )
+
+                    [uid] => 11
+                    [filename] => marato-tv3.jpg
+                    [filepath] => sites/default/files/marato-tv3_3.jpg
+                    [filemime] => image/jpeg
+                    [filesize] => 35118
+                    [status] => 1
+                    [timestamp] => 1254480526
+                    [nid] => 177
+                    [view] => 
+                )
+
+            [1] => Array
+                (
+                    [fid] => 194
+                    [list] => 1
+                    [data] => Array
+                        (
+                            [alt] => La marató de TV3 2009
+                            [title] => 
+                        )
+
+                    [uid] => 11
+                    [filename] => marato_tv3.jpg
+                    [filepath] => sites/default/files/marato_tv3_0.jpg
+                    [filemime] => image/jpeg
+                    [filesize] => 40193
+                    [status] => 1
+                    [timestamp] => 1254480526
+                    [nid] => 177
+                    [view] => 
+                )
+
+            [2] => Array
+                (
+                    [fid] => 193
+                    [list] => 1
+                    [data] => Array
+                        (
+                            [alt] => Josep Cuní presentador de la propera Marató de TV3
+                            [title] => 
+                        )
+
+                    [uid] => 11
+                    [filename] => cuni_marato.jpg
+                    [filepath] => sites/default/files/cuni_marato_0.jpg
+                    [filemime] => image/jpeg
+                    [filesize] => 50429
+                    [status] => 1
+                    [timestamp] => 1254480526
+                    [nid] => 177
+                    [view] => 
+                )
+
+        )
+
+    [field_dpp] => Array
+        (
+            [0] => Array
+                (
+                    [value] => Destacat principal a portada
+                    [safe] => Destacat principal a portada
+                    [view] => Destacat principal a portada
+                )
+
+        )
+
+    [field_dsp] => Array
+        (
+            [0] => Array
+                (
+                    [value] => No destacat secundari a portada
+                    [safe] => No destacat secundari a portada
+                    [view] => No destacat secundari a portada
+                )
+
+        )
+
+    [field_dpp_portal] => Array
+        (
+            [0] => Array
+                (
+                    [value] => No destacat principal portal
+                    [safe] => No destacat principal portal
+                    [view] => No destacat principal portal
+                )
+
+        )
+
+    [field_dsp_portal] => Array
+        (
+            [0] => Array
+                (
+                    [value] => No destacat secundari portal
+                    [safe] => No destacat secundari portal
+                    [view] => No destacat secundari portal
+                )
+
+        )
+
+    [print_display] => 1
+    [print_display_comment] => 0
+    [print_display_urllist] => 1
+    [print_mail_display] => 1
+    [print_mail_display_comment] => 0
+    [print_mail_display_urllist] => 1
+    [print_pdf_display] => 1
+    [print_pdf_display_comment] => 0
+    [print_pdf_display_urllist] => 1
+    [tags] => Array
+        (
+            [1] => Array
+                (
+                    [74] => stdClass Object
+                        (
+                            [tid] => 74
+                            [vid] => 1
+                            [name] => malalties minoritaries
+                            [description] => 
+                            [weight] => 0
+                        )
+
+                    [73] => stdClass Object
+                        (
+                            [tid] => 73
+                            [vid] => 1
+                            [name] => marató TV3
+                            [description] => 
+                            [weight] => 0
+                        )
+
+                    [53] => stdClass Object
+                        (
+                            [tid] => 53
+                            [vid] => 1
+                            [name] => voluntariat
+                            [description] => 
+                            [weight] => 0
+                        )
+
+                )
+
+        )
+
+    [last_comment_timestamp] => 1254475210
+    [last_comment_name] => 
+    [comment_count] => 0
+    [taxonomy] => Array
+        (
+            [taxonomy_term_74] => Array
+                (
+                    [title] => malalties minoritaries
+                    [href] => taxonomy/term/74
+                    [attributes] => Array
+                        (
+                            [rel] => tag
+                            [title] => 
+                        )
+
+                )
+
+            [taxonomy_term_73] => Array
+                (
+                    [title] => marató TV3
+                    [href] => taxonomy/term/73
+                    [attributes] => Array
+                        (
+                            [rel] => tag
+                            [title] => 
+                        )
+
+                )
+
+            [taxonomy_term_53] => Array
+                (
+                    [title] => voluntariat
+                    [href] => taxonomy/term/53
+                    [attributes] => Array
+                        (
+                            [rel] => tag
+                            [title] => 
+                        )
+
+                )
+
+        )
+
+    [build_mode] => 0
+    [readmore] => 1
+    [content] => 
+Resum: 
+<p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p> <p>&nbsp;</p>
+
+Entitat: 
+Fundació Pere Tarrés
+
+Es poden considerar com a malalties minoritàries més de 7.000 patologies diferents que en conjunt afecten com a màxim 5 de cada 10.000 persones. Aquestes són un tipus de malalties molt poc conegudes, amb escassos tractaments eficients i amb pocs recursos dirigits a la recerca.
+
+Imatge Petita: 
+image/jpeg icon
+marato-tv3.jpg
+
+Imatges: 
+
+Destacat principal a portada: 
+Destacat principal a portada
+
+Destacat secundari a portada: 
+No destacat secundari a portada
+
+Destacat principal portal: 
+No destacat principal portal
+
+Destacat secundari portal: 
+No destacat secundari portal
+
+
+    [links] => 
+
+    * Llegir més
+
+
+    [template_files] => Array
+        (
+            [0] => node-noticia_general
+            [1] => node-taxonomy
+            [2] => node-taxonomy-noticia_general
+        )
+
+    [node] => stdClass Object
+        (
+            [nid] => 177
+            [type] => noticia_general
+            [language] => ca
+            [uid] => 11
+            [status] => 1
+            [created] => 1254475210
+            [changed] => 1254480527
+            [comment] => 0
+            [promote] => 1
+            [moderate] => 0
+            [sticky] => 0
+            [tnid] => 0
+            [translate] => 0
+            [vid] => 177
+            [revision_uid] => 11
+            [title] => La Marató de TV3 de 2009 anirà dirigida a les malalties minoritàries 
+            [teaser] => 
+Resum: 
+<p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p> <p>&nbsp;</p>
+
+Entitat: 
+Fundació Pere Tarrés
+
+Es poden considerar com a malalties minoritàries més de 7.000 patologies diferents que en conjunt afecten com a màxim 5 de cada 10.000 persones. Aquestes són un tipus de malalties molt poc conegudes, amb escassos tractaments eficients i amb pocs recursos dirigits a la recerca.
+
+Imatge Petita: 
+image/jpeg icon
+marato-tv3.jpg
+
+Imatges: 
+
+Destacat principal a portada: 
+Destacat principal a portada
+
+Destacat secundari a portada: 
+No destacat secundari a portada
+
+Destacat principal portal: 
+No destacat principal portal
+
+Destacat secundari portal: 
+No destacat secundari portal
+
+
+            [log] => 
+            [revision_timestamp] => 1254480527
+            [format] => 2
+            [name] => ptarres
+            [picture] => 
+            [data] => a:2:{s:13:"form_build_id";s:37:"form-3c49b8a7cb25e41622f91b734335c7bb";s:5:"news1";a:10:{i:2;i:0;i:3;i:0;i:4;i:0;i:5;i:0;i:6;i:0;i:7;i:0;i:8;i:0;i:9;i:0;i:10;i:0;i:11;i:0;}}
+            [path] => noticies/la-marat-de-tv3-de-2009-anir-dirigida-les-malalties-minorit-ries
+            [field_resum] => Array
+                (
+                    [0] => Array
+                        (
+                            [value] => 
+
+L’edició de 2009 de la Marató de TV3 anirà dirigida a les malalties minoritàries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que són molt poc conegudes. Josep Cuní, presentador d’ “Els Matins de TV3”, serà l’encarregat de conduir la jornada.
+
+ 
+
+                            [safe] => <p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p>
+<p>&nbsp;</p>
+                            [view] => <p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p>
+<p>&nbsp;</p>
+                        )
+
+                )
+
+            [field_entitat] => Array
+                (
+                    [0] => Array
+                        (
+                            [value] => Fundació Pere Tarrés
+                            [safe] => Fundació Pere Tarrés
+                            [view] => Fundació Pere Tarrés
+                        )
+
+                )
+
+            [field_imatge_petita] => Array
+                (
+                    [0] => Array
+                        (
+                            [fid] => 202
+                            [list] => 1
+                            [data] => Array
+                                (
+                                    [crop] => Array
+                                        (
+                                            [x] => 49
+                                            [y] => 0
+                                            [width] => 409
+                                            [height] => 315
+                                            [changed] => 1
+                                        )
+
+                                    [alt] => Marató de TV3 2008
+                                    [title] => Marató de TV3 2008
+                                )
+
+                            [uid] => 11
+                            [filename] => marato-tv3.jpg
+                            [filepath] => sites/default/files/marato-tv3_2.jpg
+                            [filemime] => image/jpeg
+                            [filesize] => 35118
+                            [status] => 1
+                            [timestamp] => 1254480526
+                            [nid] => 177
+                            [view] => 
+image/jpeg icon
+marato-tv3.jpg
+
+                        )
+
+                )
+
+            [field_imatges] => Array
+                (
+                    [0] => Array
+                        (
+                            [fid] => 204
+                            [list] => 1
+                            [data] => Array
+                                (
+                                    [alt] => Marató TV3 2008
+                                    [title] => 
+                                )
+
+                            [uid] => 11
+                            [filename] => marato-tv3.jpg
+                            [filepath] => sites/default/files/marato-tv3_3.jpg
+                            [filemime] => image/jpeg
+                            [filesize] => 35118
+                            [status] => 1
+                            [timestamp] => 1254480526
+                            [nid] => 177
+                            [view] => 
+                        )
+
+                    [1] => Array
+                        (
+                            [fid] => 194
+                            [list] => 1
+                            [data] => Array
+                                (
+                                    [alt] => La marató de TV3 2009
+                                    [title] => 
+                                )
+
+                            [uid] => 11
+                            [filename] => marato_tv3.jpg
+                            [filepath] => sites/default/files/marato_tv3_0.jpg
+                            [filemime] => image/jpeg
+                            [filesize] => 40193
+                            [status] => 1
+                            [timestamp] => 1254480526
+                            [nid] => 177
+                            [view] => 
+                        )
+
+                    [2] => Array
+                        (
+                            [fid] => 193
+                            [list] => 1
+                            [data] => Array
+                                (
+                                    [alt] => Josep Cuní presentador de la propera Marató de TV3
+                                    [title] => 
+                                )
+
+                            [uid] => 11
+                            [filename] => cuni_marato.jpg
+                            [filepath] => sites/default/files/cuni_marato_0.jpg
+                            [filemime] => image/jpeg
+                            [filesize] => 50429
+                            [status] => 1
+                            [timestamp] => 1254480526
+                            [nid] => 177
+                            [view] => 
+                        )
+
+                )
+
+            [field_dpp] => Array
+                (
+                    [0] => Array
+                        (
+                            [value] => Destacat principal a portada
+                            [safe] => Destacat principal a portada
+                            [view] => Destacat principal a portada
+                        )
+
+                )
+
+            [field_dsp] => Array
+                (
+                    [0] => Array
+                        (
+                            [value] => No destacat secundari a portada
+                            [safe] => No destacat secundari a portada
+                            [view] => No destacat secundari a portada
+                        )
+
+                )
+
+            [field_dpp_portal] => Array
+                (
+                    [0] => Array
+                        (
+                            [value] => No destacat principal portal
+                            [safe] => No destacat principal portal
+                            [view] => No destacat principal portal
+                        )
+
+                )
+
+            [field_dsp_portal] => Array
+                (
+                    [0] => Array
+                        (
+                            [value] => No destacat secundari portal
+                            [safe] => No destacat secundari portal
+                            [view] => No destacat secundari portal
+                        )
+
+                )
+
+            [print_display] => 1
+            [print_display_comment] => 0
+            [print_display_urllist] => 1
+            [print_mail_display] => 1
+            [print_mail_display_comment] => 0
+            [print_mail_display_urllist] => 1
+            [print_pdf_display] => 1
+            [print_pdf_display_comment] => 0
+            [print_pdf_display_urllist] => 1
+            [tags] => Array
+                (
+                    [1] => Array
+                        (
+                            [74] => stdClass Object
+                                (
+                                    [tid] => 74
+                                    [vid] => 1
+                                    [name] => malalties minoritaries
+                                    [description] => 
+                                    [weight] => 0
+                                )
+
+                            [73] => stdClass Object
+                                (
+                                    [tid] => 73
+                                    [vid] => 1
+                                    [name] => marató TV3
+                                    [description] => 
+                                    [weight] => 0
+                                )
+
+                            [53] => stdClass Object
+                                (
+                                    [tid] => 53
+                                    [vid] => 1
+                                    [name] => voluntariat
+                                    [description] => 
+                                    [weight] => 0
+                                )
+
+                        )
+
+                )
+
+            [last_comment_timestamp] => 1254475210
+            [last_comment_name] => 
+            [comment_count] => 0
+            [taxonomy] => Array
+                (
+                    [74] => stdClass Object
+                        (
+                            [tid] => 74
+                            [vid] => 1
+                            [name] => malalties minoritaries
+                            [description] => 
+                            [weight] => 0
+                        )
+
+                    [73] => stdClass Object
+                        (
+                            [tid] => 73
+                            [vid] => 1
+                            [name] => marató TV3
+                            [description] => 
+                            [weight] => 0
+                        )
+
+                    [53] => stdClass Object
+                        (
+                            [tid] => 53
+                            [vid] => 1
+                            [name] => voluntariat
+                            [description] => 
+                            [weight] => 0
+                        )
+
+                )
+
+            [build_mode] => 0
+            [readmore] => 1
+            [content] => Array
+                (
+                    [field_resum] => Array
+                        (
+                            [#type_name] => noticia_general
+                            [#context] => teaser
+                            [#field_name] => field_resum
+                            [#post_render] => Array
+                                (
+                                    [0] => content_field_wrapper_post_render
+                                )
+
+                            [#weight] => -3
+                            [field] => Array
+                                (
+                                    [#description] => 
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [#formatter] => default
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_resum
+                                                    [#weight] => 0
+                                                    [#theme] => text_formatter_default
+                                                    [#item] => Array
+                                                        (
+                                                            [value] => 
+
+L’edició de 2009 de la Marató de TV3 anirà dirigida a les malalties minoritàries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que són molt poc conegudes. Josep Cuní, presentador d’ “Els Matins de TV3”, serà l’encarregat de conduir la jornada.
+
+ 
+
+                                                            [safe] => <p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p>
+<p>&nbsp;</p>
+                                                            [#delta] => 0
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => <p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p>
+<p>&nbsp;</p>
+                                                )
+
+                                            [#title] => 
+                                            [#description] => 
+                                            [#children] => <p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p>
+<p>&nbsp;</p>
+                                            [#printed] => 1
+                                        )
+
+                                    [#single] => 1
+                                    [#attributes] => Array
+                                        (
+                                        )
+
+                                    [#required] => 
+                                    [#parents] => Array
+                                        (
+                                        )
+
+                                    [#tree] => 
+                                    [#context] => teaser
+                                    [#page] => 
+                                    [#field_name] => field_resum
+                                    [#title] => Resum
+                                    [#access] => 1
+                                    [#label_display] => above
+                                    [#teaser] => 1
+                                    [#node] => stdClass Object
+ *RECURSION*
+                                    [#type] => content_field
+                                    [#children] => <p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p>
+<p>&nbsp;</p>
+                                    [#printed] => 1
+                                )
+
+                            [#title] => 
+                            [#description] => 
+                            [#children] => 
+Resum: 
+<p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p> <p>&nbsp;</p>
+
+
+                            [#printed] => 1
+                        )
+
+                    [field_entitat] => Array
+                        (
+                            [#type_name] => noticia_general
+                            [#context] => teaser
+                            [#field_name] => field_entitat
+                            [#post_render] => Array
+                                (
+                                    [0] => content_field_wrapper_post_render
+                                )
+
+                            [#weight] => -2
+                            [field] => Array
+                                (
+                                    [#description] => 
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [#formatter] => default
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_entitat
+                                                    [#weight] => 0
+                                                    [#theme] => text_formatter_default
+                                                    [#item] => Array
+                                                        (
+                                                            [value] => Fundació Pere Tarrés
+                                                            [safe] => Fundació Pere Tarrés
+                                                            [#delta] => 0
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => Fundació Pere Tarrés
+                                                )
+
+                                            [#title] => 
+                                            [#description] => 
+                                            [#children] => Fundació Pere Tarrés
+                                            [#printed] => 1
+                                        )
+
+                                    [#single] => 1
+                                    [#attributes] => Array
+                                        (
+                                        )
+
+                                    [#required] => 
+                                    [#parents] => Array
+                                        (
+                                        )
+
+                                    [#tree] => 
+                                    [#context] => teaser
+                                    [#page] => 
+                                    [#field_name] => field_entitat
+                                    [#title] => Entitat
+                                    [#access] => 1
+                                    [#label_display] => above
+                                    [#teaser] => 1
+                                    [#node] => stdClass Object
+ *RECURSION*
+                                    [#type] => content_field
+                                    [#children] => Fundació Pere Tarrés
+                                    [#printed] => 1
+                                )
+
+                            [#title] => 
+                            [#description] => 
+                            [#children] => 
+Entitat: 
+Fundació Pere Tarrés
+
+
+                            [#printed] => 1
+                        )
+
+                    [body] => Array
+                        (
+                            [#weight] => -1
+                            [#value] => 
+
+Es poden considerar com a malalties minoritàries més de 7.000 patologies diferents que en conjunt afecten com a màxim 5 de cada 10.000 persones. Aquestes són un tipus de malalties molt poc conegudes, amb escassos tractaments eficients i amb pocs recursos dirigits a la recerca.
+
+
+                            [#title] => 
+                            [#description] => 
+                            [#printed] => 1
+                        )
+
+                    [#content_extra_fields] => Array
+                        (
+                            [title] => Array
+                                (
+                                    [label] => Títol
+                                    [description] => Node module form.
+                                    [weight] => -5
+                                )
+
+                            [body_field] => Array
+                                (
+                                    [label] => Cos
+                                    [description] => Node module form.
+                                    [weight] => -1
+                                    [view] => body
+                                )
+
+                            [revision_information] => Array
+                                (
+                                    [label] => Informació de la revisió
+                                    [description] => Node module form.
+                                    [weight] => 11
+                                )
+
+                            [comment_settings] => Array
+                                (
+                                    [label] => Paràmetres dels comentaris
+                                    [description] => Comment module form.
+                                    [weight] => 9
+                                )
+
+                            [menu] => Array
+                                (
+                                    [label] => Paràmetres de menú
+                                    [description] => Menu module form.
+                                    [weight] => 10
+                                )
+
+                            [taxonomy] => Array
+                                (
+                                    [label] => Taxonomia
+                                    [description] => Taxonomy module form.
+                                    [weight] => -3
+                                )
+
+                            [path] => Array
+                                (
+                                    [label] => Path settings
+                                    [description] => Path module form.
+                                    [weight] => 8
+                                )
+
+                            [print] => Array
+                                (
+                                    [label] => Printer, e-mail and PDF versions
+                                    [description] => Print module form.
+                                    [weight] => 7
+                                )
+
+                        )
+
+                    [field_imatge_petita] => Array
+                        (
+                            [#type_name] => noticia_general
+                            [#context] => teaser
+                            [#field_name] => field_imatge_petita
+                            [#post_render] => Array
+                                (
+                                    [0] => content_field_wrapper_post_render
+                                )
+
+                            [#weight] => 0
+                            [field] => Array
+                                (
+                                    [#description] => 
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [#formatter] => default
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_imatge_petita
+                                                    [#weight] => 0
+                                                    [#theme] => filefield_formatter_default
+                                                    [#item] => Array
+                                                        (
+                                                            [fid] => 202
+                                                            [list] => 1
+                                                            [data] => Array
+                                                                (
+                                                                    [crop] => Array
+                                                                        (
+                                                                            [x] => 49
+                                                                            [y] => 0
+                                                                            [width] => 409
+                                                                            [height] => 315
+                                                                            [changed] => 1
+                                                                        )
+
+                                                                    [alt] => Marató de TV3 2008
+                                                                    [title] => Marató de TV3 2008
+                                                                )
+
+                                                            [uid] => 11
+                                                            [filename] => marato-tv3.jpg
+                                                            [filepath] => sites/default/files/marato-tv3_2.jpg
+                                                            [filemime] => image/jpeg
+                                                            [filesize] => 35118
+                                                            [status] => 1
+                                                            [timestamp] => 1254480526
+                                                            [nid] => 177
+                                                            [#delta] => 0
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => 
+image/jpeg icon
+marato-tv3.jpg
+
+                                                )
+
+                                            [#title] => 
+                                            [#description] => 
+                                            [#children] => 
+image/jpeg icon
+marato-tv3.jpg
+
+                                            [#printed] => 1
+                                        )
+
+                                    [#single] => 1
+                                    [#attributes] => Array
+                                        (
+                                        )
+
+                                    [#required] => 
+                                    [#parents] => Array
+                                        (
+                                        )
+
+                                    [#tree] => 
+                                    [#context] => teaser
+                                    [#page] => 
+                                    [#field_name] => field_imatge_petita
+                                    [#title] => Imatge Petita
+                                    [#access] => 1
+                                    [#label_display] => above
+                                    [#teaser] => 1
+                                    [#node] => stdClass Object
+ *RECURSION*
+                                    [#type] => content_field
+                                    [#children] => 
+image/jpeg icon
+marato-tv3.jpg
+
+                                    [#printed] => 1
+                                )
+
+                            [#title] => 
+                            [#description] => 
+                            [#children] => 
+Imatge Petita: 
+image/jpeg icon
+marato-tv3.jpg
+
+
+                            [#printed] => 1
+                        )
+
+                    [#pre_render] => Array
+                        (
+                            [0] => content_alter_extra_weights
+                        )
+
+                    [field_imatges] => Array
+                        (
+                            [#type_name] => noticia_general
+                            [#context] => teaser
+                            [#field_name] => field_imatges
+                            [#post_render] => Array
+                                (
+                                    [0] => content_field_wrapper_post_render
+                                )
+
+                            [#weight] => 1
+                            [field] => Array
+                                (
+                                    [#description] => 
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [#formatter] => image_plain
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_imatges
+                                                    [#weight] => 0
+                                                    [#theme] => imagefield_formatter_image_plain
+                                                    [#item] => Array
+                                                        (
+                                                            [fid] => 204
+                                                            [list] => 1
+                                                            [data] => Array
+                                                                (
+                                                                    [alt] => Marató TV3 2008
+                                                                    [title] => 
+                                                                )
+
+                                                            [uid] => 11
+                                                            [filename] => marato-tv3.jpg
+                                                            [filepath] => sites/default/files/marato-tv3_3.jpg
+                                                            [filemime] => image/jpeg
+                                                            [filesize] => 35118
+                                                            [status] => 1
+                                                            [timestamp] => 1254480526
+                                                            [nid] => 177
+                                                            [#delta] => 0
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => 
+                                                )
+
+                                            [1] => Array
+                                                (
+                                                    [#formatter] => image_plain
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_imatges
+                                                    [#weight] => 1
+                                                    [#theme] => imagefield_formatter_image_plain
+                                                    [#item] => Array
+                                                        (
+                                                            [fid] => 194
+                                                            [list] => 1
+                                                            [data] => Array
+                                                                (
+                                                                    [alt] => La marató de TV3 2009
+                                                                    [title] => 
+                                                                )
+
+                                                            [uid] => 11
+                                                            [filename] => marato_tv3.jpg
+                                                            [filepath] => sites/default/files/marato_tv3_0.jpg
+                                                            [filemime] => image/jpeg
+                                                            [filesize] => 40193
+                                                            [status] => 1
+                                                            [timestamp] => 1254480526
+                                                            [nid] => 177
+                                                            [#delta] => 1
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => 
+                                                )
+
+                                            [2] => Array
+                                                (
+                                                    [#formatter] => image_plain
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_imatges
+                                                    [#weight] => 2
+                                                    [#theme] => imagefield_formatter_image_plain
+                                                    [#item] => Array
+                                                        (
+                                                            [fid] => 193
+                                                            [list] => 1
+                                                            [data] => Array
+                                                                (
+                                                                    [alt] => Josep Cuní presentador de la propera Marató de TV3
+                                                                    [title] => 
+                                                                )
+
+                                                            [uid] => 11
+                                                            [filename] => cuni_marato.jpg
+                                                            [filepath] => sites/default/files/cuni_marato_0.jpg
+                                                            [filemime] => image/jpeg
+                                                            [filesize] => 50429
+                                                            [status] => 1
+                                                            [timestamp] => 1254480526
+                                                            [nid] => 177
+                                                            [#delta] => 2
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => 
+                                                )
+
+                                            [#title] => 
+                                            [#description] => 
+                                            [#children] => 
+                                            [#printed] => 1
+                                        )
+
+                                    [#single] => 1
+                                    [#attributes] => Array
+                                        (
+                                        )
+
+                                    [#required] => 
+                                    [#parents] => Array
+                                        (
+                                        )
+
+                                    [#tree] => 
+                                    [#context] => teaser
+                                    [#page] => 
+                                    [#field_name] => field_imatges
+                                    [#title] => Imatges
+                                    [#access] => 1
+                                    [#label_display] => above
+                                    [#teaser] => 1
+                                    [#node] => stdClass Object
+ *RECURSION*
+                                    [#type] => content_field
+                                    [#children] => 
+                                    [#printed] => 1
+                                )
+
+                            [#title] => 
+                            [#description] => 
+                            [#children] => 
+Imatges: 
+
+
+                            [#printed] => 1
+                        )
+
+                    [field_dpp] => Array
+                        (
+                            [#type_name] => noticia_general
+                            [#context] => teaser
+                            [#field_name] => field_dpp
+                            [#post_render] => Array
+                                (
+                                    [0] => content_field_wrapper_post_render
+                                )
+
+                            [#weight] => 2
+                            [field] => Array
+                                (
+                                    [#description] => 
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [#formatter] => default
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_dpp
+                                                    [#weight] => 0
+                                                    [#theme] => text_formatter_default
+                                                    [#item] => Array
+                                                        (
+                                                            [value] => Destacat principal a portada
+                                                            [safe] => Destacat principal a portada
+                                                            [#delta] => 0
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => Destacat principal a portada
+                                                )
+
+                                            [#title] => 
+                                            [#description] => 
+                                            [#children] => Destacat principal a portada
+                                            [#printed] => 1
+                                        )
+
+                                    [#single] => 1
+                                    [#attributes] => Array
+                                        (
+                                        )
+
+                                    [#required] => 
+                                    [#parents] => Array
+                                        (
+                                        )
+
+                                    [#tree] => 
+                                    [#context] => teaser
+                                    [#page] => 
+                                    [#field_name] => field_dpp
+                                    [#title] => Destacat principal a portada
+                                    [#access] => 1
+                                    [#label_display] => above
+                                    [#teaser] => 1
+                                    [#node] => stdClass Object
+ *RECURSION*
+                                    [#type] => content_field
+                                    [#children] => Destacat principal a portada
+                                    [#printed] => 1
+                                )
+
+                            [#title] => 
+                            [#description] => 
+                            [#children] => 
+Destacat principal a portada: 
+Destacat principal a portada
+
+
+                            [#printed] => 1
+                        )
+
+                    [field_dsp] => Array
+                        (
+                            [#type_name] => noticia_general
+                            [#context] => teaser
+                            [#field_name] => field_dsp
+                            [#post_render] => Array
+                                (
+                                    [0] => content_field_wrapper_post_render
+                                )
+
+                            [#weight] => 3
+                            [field] => Array
+                                (
+                                    [#description] => 
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [#formatter] => default
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_dsp
+                                                    [#weight] => 0
+                                                    [#theme] => text_formatter_default
+                                                    [#item] => Array
+                                                        (
+                                                            [value] => No destacat secundari a portada
+                                                            [safe] => No destacat secundari a portada
+                                                            [#delta] => 0
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => No destacat secundari a portada
+                                                )
+
+                                            [#title] => 
+                                            [#description] => 
+                                            [#children] => No destacat secundari a portada
+                                            [#printed] => 1
+                                        )
+
+                                    [#single] => 1
+                                    [#attributes] => Array
+                                        (
+                                        )
+
+                                    [#required] => 
+                                    [#parents] => Array
+                                        (
+                                        )
+
+                                    [#tree] => 
+                                    [#context] => teaser
+                                    [#page] => 
+                                    [#field_name] => field_dsp
+                                    [#title] => Destacat secundari a portada
+                                    [#access] => 1
+                                    [#label_display] => above
+                                    [#teaser] => 1
+                                    [#node] => stdClass Object
+ *RECURSION*
+                                    [#type] => content_field
+                                    [#children] => No destacat secundari a portada
+                                    [#printed] => 1
+                                )
+
+                            [#title] => 
+                            [#description] => 
+                            [#children] => 
+Destacat secundari a portada: 
+No destacat secundari a portada
+
+
+                            [#printed] => 1
+                        )
+
+                    [field_dpp_portal] => Array
+                        (
+                            [#type_name] => noticia_general
+                            [#context] => teaser
+                            [#field_name] => field_dpp_portal
+                            [#post_render] => Array
+                                (
+                                    [0] => content_field_wrapper_post_render
+                                )
+
+                            [#weight] => 4
+                            [field] => Array
+                                (
+                                    [#description] => 
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [#formatter] => default
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_dpp_portal
+                                                    [#weight] => 0
+                                                    [#theme] => text_formatter_default
+                                                    [#item] => Array
+                                                        (
+                                                            [value] => No destacat principal portal
+                                                            [safe] => No destacat principal portal
+                                                            [#delta] => 0
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => No destacat principal portal
+                                                )
+
+                                            [#title] => 
+                                            [#description] => 
+                                            [#children] => No destacat principal portal
+                                            [#printed] => 1
+                                        )
+
+                                    [#single] => 1
+                                    [#attributes] => Array
+                                        (
+                                        )
+
+                                    [#required] => 
+                                    [#parents] => Array
+                                        (
+                                        )
+
+                                    [#tree] => 
+                                    [#context] => teaser
+                                    [#page] => 
+                                    [#field_name] => field_dpp_portal
+                                    [#title] => Destacat principal portal
+                                    [#access] => 1
+                                    [#label_display] => above
+                                    [#teaser] => 1
+                                    [#node] => stdClass Object
+ *RECURSION*
+                                    [#type] => content_field
+                                    [#children] => No destacat principal portal
+                                    [#printed] => 1
+                                )
+
+                            [#title] => 
+                            [#description] => 
+                            [#children] => 
+Destacat principal portal: 
+No destacat principal portal
+
+
+                            [#printed] => 1
+                        )
+
+                    [field_dsp_portal] => Array
+                        (
+                            [#type_name] => noticia_general
+                            [#context] => teaser
+                            [#field_name] => field_dsp_portal
+                            [#post_render] => Array
+                                (
+                                    [0] => content_field_wrapper_post_render
+                                )
+
+                            [#weight] => 5
+                            [field] => Array
+                                (
+                                    [#description] => 
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [#formatter] => default
+                                                    [#node] => stdClass Object
+ *RECURSION*
+                                                    [#type_name] => noticia_general
+                                                    [#field_name] => field_dsp_portal
+                                                    [#weight] => 0
+                                                    [#theme] => text_formatter_default
+                                                    [#item] => Array
+                                                        (
+                                                            [value] => No destacat secundari portal
+                                                            [safe] => No destacat secundari portal
+                                                            [#delta] => 0
+                                                        )
+
+                                                    [#title] => 
+                                                    [#description] => 
+                                                    [#theme_used] => 1
+                                                    [#printed] => 1
+                                                    [#type] => 
+                                                    [#value] => 
+                                                    [#prefix] => 
+                                                    [#suffix] => 
+                                                    [#children] => No destacat secundari portal
+                                                )
+
+                                            [#title] => 
+                                            [#description] => 
+                                            [#children] => No destacat secundari portal
+                                            [#printed] => 1
+                                        )
+
+                                    [#single] => 1
+                                    [#attributes] => Array
+                                        (
+                                        )
+
+                                    [#required] => 
+                                    [#parents] => Array
+                                        (
+                                        )
+
+                                    [#tree] => 
+                                    [#context] => teaser
+                                    [#page] => 
+                                    [#field_name] => field_dsp_portal
+                                    [#title] => Destacat secundari portal
+                                    [#access] => 1
+                                    [#label_display] => above
+                                    [#teaser] => 1
+                                    [#node] => stdClass Object
+ *RECURSION*
+                                    [#type] => content_field
+                                    [#children] => No destacat secundari portal
+                                    [#printed] => 1
+                                )
+
+                            [#title] => 
+                            [#description] => 
+                            [#children] => 
+Destacat secundari portal: 
+No destacat secundari portal
+
+
+                            [#printed] => 1
+                        )
+
+                    [#title] => 
+                    [#description] => 
+                    [#children] => 
+Resum: 
+<p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p> <p>&nbsp;</p>
+
+Entitat: 
+Fundació Pere Tarrés
+
+Es poden considerar com a malalties minoritàries més de 7.000 patologies diferents que en conjunt afecten com a màxim 5 de cada 10.000 persones. Aquestes són un tipus de malalties molt poc conegudes, amb escassos tractaments eficients i amb pocs recursos dirigits a la recerca.
+
+Imatge Petita: 
+image/jpeg icon
+marato-tv3.jpg
+
+Imatges: 
+
+Destacat principal a portada: 
+Destacat principal a portada
+
+Destacat secundari a portada: 
+No destacat secundari a portada
+
+Destacat principal portal: 
+No destacat principal portal
+
+Destacat secundari portal: 
+No destacat secundari portal
+
+
+                    [#printed] => 1
+                )
+
+            [links] => Array
+                (
+                    [node_read_more] => Array
+                        (
+                            [title] => Llegir més
+                            [href] => node/177
+                            [attributes] => Array
+                                (
+                                    [title] => Llegir la resta de La Marató de TV3 de 2009 anirà dirigida a les malalties minoritàries .
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [page] => 
+    [zebra] => odd
+    [id] => 1
+    [directory] => sites/all/themes/xarxanet
+    [is_admin] => 1
+    [is_front] => 
+    [logged_in] => 1
+    [db_is_active] => 1
+    [user] => stdClass Object
+        (
+            [uid] => 1
+            [name] => Administrador
+            [pass] => c62b1a8c46b5ade1ae9662f83e195f8b
+            [mail] => info@xarxanet.org
+            [mode] => 0
+            [sort] => 0
+            [threshold] => 0
+            [theme] => 
+            [signature] => 
+            [signature_format] => 0
+            [created] => 1249462667
+            [access] => 1254498792
+            [login] => 1254493394
+            [status] => 1
+            [timezone] => 7200
+            [language] => 
+            [picture] => 
+            [init] => info@xarxanet.org
+            [data] => a:0:{}
+            [timezone_name] => Europe/Madrid
+            [sid] => 9c6533cb61684fa13d90cb0db87dd2e4
+            [hostname] => 192.168.1.11
+            [timestamp] => 1254498817
+            [cache] => 0
+            [session] => node_overview_filter|a:0:{}destination|N;
+            [roles] => Array
+                (
+                    [2] => authenticated user
+                )
+
+        )
+
+    [date] => Dv, 02/10/2009 - 11:20
+    [node_url] => /xarxanet/noticies/la-marat-de-tv3-de-2009-anir-dirigida-les-malalties-minorit-ries
+    [terms] => 
+
+    * malalties minoritaries
+    * marató TV3
+    * voluntariat
+
+
+    [submitted] => Enviat per ptarres el Dv, 02/10/2009 - 11:20
+    [field_resum_rendered] => 
+Resum: 
+<p>L&rsquo;edici&oacute; de 2009 de la Marat&oacute; de TV3 anir&agrave; dirigida a les malalties minorit&agrave;ries, un tipus de patologies que afecten a 5 de cada 10.000 persones i que s&oacute;n molt poc conegudes. Josep Cun&iacute;, presentador d&rsquo; &ldquo;Els Matins de TV3&rdquo;, ser&agrave; l&rsquo;encarregat de conduir la jornada.</p> <p>&nbsp;</p>
+
+
+    [field_entitat_rendered] => 
+Entitat: 
+Fundació Pere Tarrés
+
+
+    [field_imatge_petita_rendered] => 
+Imatge Petita: 
+image/jpeg icon
+marato-tv3.jpg
+
+
+    [field_imatges_rendered] => 
+Imatges: 
+
+
+    [field_dpp_rendered] => 
+Destacat principal a portada: 
+Destacat principal a portada
+
+
+    [field_dsp_rendered] => 
+Destacat secundari a portada: 
+No destacat secundari a portada
+
+
+    [field_dpp_portal_rendered] => 
+Destacat principal portal: 
+No destacat principal portal
+
+
+    [field_dsp_portal_rendered] => 
+Destacat secundari portal: 
+No destacat secundari portal
+
+
+)
+
+
+<html class="js" lang="ca" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ca" dir="ltr">
+<head>
+</head>
+<body class="l_ca t_00 h_01 p_01a lightbox-processed">
+</body>
+</html>

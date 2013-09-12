@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Incorpora la possibilitat de passar per paràmetre el criteri d'ordenació
+ * Sobreescriu el hook "hook_views_query_alter"
+ * Paràmetre 'sort' conté el criteri, p.ex. 'node_title'
+ */
+function teb_toolbox_views_query_alter(&$view, &$query) {
+	// node_data_field_doc_data_publi_field_doc_data_publi_value
+	if( isset( $_GET['sort'] )) {
+		$query->orderby[0] = "{$_GET['sort']} {$_GET['sortor']}";
+	}
+}
+
+?>

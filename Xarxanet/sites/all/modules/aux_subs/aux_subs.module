@@ -1,0 +1,99 @@
+<?php
+
+// $Id$
+function aux_subs_perm(){
+  return array('view subscriptors data');
+}
+function aux_subs_menu(){
+  $items = array();
+  
+  $items['subscriptors/dades'] = array(
+    'title' => 'Subscriptors Data',
+    'page callback' => 'aux_subs_data_page',
+    'access arguments' => array('view subscriptors data'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+function aux_subs_data_page(){
+  //Inicialitzem els comptadors, tant el general com el de les parts de tipus subscripció
+  $countusers = 0;
+  $countparts = array();
+  
+  _get_resultats_butlleti($countusers,$countparts,$nomparts);
+  
+  $countabast = _get_resultats_abast();
+  
+  return theme('subscription_info_display',$countusers,$countparts,$countabast);
+}
+
+function _get_resultats_butlleti(&$countusers,&$countparts)
+{
+  $parts = array();
+  $nomparts = array();
+  $result_parts = db_query("SELECT p.nompart,p.idpart FROM {parts} p, {partsconfig} pc WHERE p.idpart = pc.idpart AND pc.tipus = 'subscription'");
+  while($resparts = db_fetch_array($result_parts))
+  {
+    $parts[$resparts['idpart']] = 0;
+    $nomparts[$resparts['idpart']] = $resparts['nompart'];
+  }
+  
+  // Obtenim tots els rols que poden rebre el butlleti
+  $roleset = user_roles('receive newsletter');
+  //Obtenim totes les configuracions d'usuaris ja que existeixen encara que hagin cancel·lat la seva subscripcio
+  $result_butlleti = db_query("SELECT uid,preferences FROM {users_prefs}");
+  //Per cada usuari...
+  while($resbutlleti = db_fetch_array($result_butlleti))
+  {
+    //Mirem si l'usuari realment existeix
+    $exists = db_query("SELECT name FROM {users} WHERE uid = %d",$resbutlleti['uid']);
+    if(db_fetch_array($exists))
+    {
+      //Obtenim els seus rols directament de la BBDD
+      $result_roles = db_query("SELECT rid FROM {users_roles} WHERE uid = %d",$resbutlleti['uid']);
+      $subscribed = FALSE; //Variable auxiliar de comprobació
+      while($resroles = db_fetch_array($result_roles))
+      {
+        //Si qualsevol dels rols es subscriptor (ie. l'usuari està subscrit), posem la variable a false
+        $subscribed = array_key_exists($resroles['rid'],$roleset);
+      }
+      //Si l'usuari està subscrit, el comptem i comptem a quines parts esta subscrit
+      if($subscribed == TRUE)
+      {
+        $countusers++;
+        $prefs = unserialize($resbutlleti['preferences']);
+        if(is_array($prefs))
+        {
+          foreach($prefs as $key => $pref)
+          {
+            if($key == $pref) $parts[$key]++;
+          }
+        }
+      }
+    }
+  }
+  foreach($parts as $key => $part)
+  {
+    $countparts[$nomparts[$key]] = $part;
+  }
+}
+
+function _get_resultats_abast()
+{
+  $link = abast_db_connect();
+  $query="SELECT COUNT(*) as total FROM pommo_subscribers";	
+  $result = mysql_fetch_array(mysql_query($query, $link)); 
+  mysql_close($link);
+  return $result['total'];
+}
+
+function aux_subs_theme($existing, $type, $theme, $path){
+  return array(
+    'subscription_info_display' => array(
+      'arguments' => array('butlleti' => NULL, 'parts' => NULL, 'abast' => NULL),
+      'template' => 'templates/subscription-info'
+    ),
+  );
+}

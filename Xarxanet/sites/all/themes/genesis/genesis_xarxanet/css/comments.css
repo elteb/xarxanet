@@ -1,0 +1,180 @@
+/* $Id: comments.css,v 1.1.2.11 2009/05/21 16:23:51 jmburnz Exp $ */
+
+/**
+ * @file comments.css
+ * Basic styles for comments.
+ */
+
+/**********************************************************
+ *                     Comments
+ **********************************************************/
+/* Comment wrapper */
+#comments {
+    float: right;
+    margin-bottom: 15px;
+    position: relative;
+    width: 477px;
+}
+#comments-title , #comments  h2.box-title {
+    margin-top: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 12pt;
+    color: white;
+    font-weight: normal;
+    line-height: 1.3em;
+    text-align: left;
+    letter-spacing: 0;
+    padding: 5px;
+}
+#comments  h2.box-title {
+    margin-bottom: 5px;
+}
+.comment {
+    margin-top: 10px;
+}
+.comment-inner {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin: 0;
+}
+.comment-content {
+    background-color: #FFF;
+    border-style: solid;
+    border-bottom-style: none;
+    border-width: 10px;
+    padding: 5px;
+}
+.comment-content p {
+    padding: 0;
+}
+.comment-submitted {
+    font-style: italic;
+    padding: 10px;
+    padding-bottom: 5px;
+    padding-top: 15px;
+}
+.comment .comment-links ul li {
+    float: right;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.comment .comment-links ul li a {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 10pt;
+    color: #FFF !important;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 6px 24px 5px;
+    height: 20px;
+}
+.comment .comment-links a:hover {
+    text-decoration: none;
+}
+.comment div.comment-clear-float {
+    clear: both;
+}
+#comments .form-item {
+    margin: 5px 0;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+#comments .form-item textarea{
+    margin-left: 5px;
+}
+#comments .form-item label{
+    display: inline-block;
+    margin-top: 5px;
+    color: #333;
+    font-weight: bold;
+    padding-left: 5px;
+    width: 115px;
+    font-size: 8pt;
+}
+#comments #edit-captcha-response-wrapper label {
+    padding-left: 0;
+    width: auto;
+}
+#comments #edit-captcha-response-wrapper .form-required {
+    padding-left: 5px;
+}
+#comments .form-item input {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #CCC;
+    width: 328px;
+    padding-right: 0px;
+}
+#comments .form-submit{
+    border: none;
+    color: white;
+    margin: 10px 0 10px 10px;
+    padding: 5px;
+    text-transform: uppercase;
+}
+#comments #edit-preview {
+    margin-left: 10px;
+    margin-top: -55px;
+}
+#comments .resizable-textarea {
+    clear: both;
+    margin-top: 5px;
+}
+#comments #edit-captcha-response {
+    position: relative;
+    left: 0;
+    padding: 0 5px;
+    width: 40px;
+}
+#comments span.form-required {
+    width: 5px;
+    height: 5px;
+    position: relative;
+    float: right;
+    margin-top: 0px;
+}
+#comments .description {
+    color: #333333;
+    font-size: 0.9em;
+    margin-left: 130px;
+    margin-top: 15px;
+}
+#comments .captcha .description {
+    position: relative;
+}
+#comments #edit-captcha-response-wrapper  .description{
+    margin-left: 0;
+}
+fieldset.captcha {
+    padding: 20px 10px;
+}
+#comment-form .captcha .description {
+    margin: 0;
+}
+#comments .tips {
+    display: none;
+}
+ul.links li {
+    padding: 0;
+    margin: 0;
+}
+#switch_edit-comment, .textarea-identifier {
+    display: none;
+}
+#edit-comment-wrapper .form-required {
+    display: none;
+}
+/*#comment-form .form-text {
+    left: 130px;
+    position: absolute;
+}*/
+
+.comment-submitted a {color: #71A956;}
+.comment {background-color: #E3EEDF;color: #32701D;}
+.comment-submitted {background-color: #E3EEDF;color: #32701D;}
+#comments-title, #comments  h2.box-title {background-color: #71A956;}
+.comment .comment-links ul li a {background-color: #71A956;}
+#comments input[type=submit]{background-color: #71A956;}
+#comments .box-content {background-color: #E3EEDF;}
+.comment-content {border-color: #E3EEDF;}
+#comments input[type=submit]:hover{background-color: #32701D;}
+.comment .comment-links a:hover {background-color: #32701D;}

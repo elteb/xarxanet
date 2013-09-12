@@ -1,0 +1,6 @@
+; $Id$
+name = Xarxanet Recursos
+description = Bloc de recursos per Xarxanet
+core = 6.x
+
+

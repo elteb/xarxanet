@@ -1,0 +1,128 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="http://www.voluntariat.org/Portals/_default/Skins/voluntariat/skin.css" type="text/css" rel="stylesheet">
+	<link href="http://www.voluntariat.org/Portals/_default/default.css" type="text/css" rel="stylesheet">
+	<link href="http://www.voluntariat.org/Portals/0/portal.css" type="text/css" rel="stylesheet">
+	<link href="styles.css" type="text/css" rel="stylesheet">
+	<link href="jquery.realperson.css" type="text/css" rel="stylesheet">
+	
+	<script type="text/JavaScript" src="jquery-1.8.2.min.js"></script>
+	<script type="text/JavaScript" src="jquery.md5.js"></script>
+	<script type="text/JavaScript" src="jquery.realperson.js"></script>
+</head>
+<body>
+<script type="text/JavaScript">
+	$(function() {
+		$('#defaultReal').realperson({includeNumbers: true});
+	});
+	
+	function submit() {
+		
+		if (/*($("#name").val().length == 0) || */($("#email").val().length == 0)){
+			warning('No s\'han omplert tots els camps obligatoris', 0);
+			return false;
+		}
+		if (!($("#lopd").is(':checked'))){
+			warning('No s\'han acceptat les condicions legals', 0);
+			return false;	
+		}
+		
+		var name = $("#name").val();
+		var email = $("#email").val();
+		var captcha = $("#defaultReal").val();
+		var hash = $(".realperson-hash").val();
+		var request = $.ajax({
+					url: "submit.php",
+					type: "POST",
+					data: { 'name' : name, 
+							'email' : email, 
+							'captcha' : captcha, 
+							'hash' : hash, 
+							'method' : 'simplenews.subscribe'}
+			});
+
+		request.done(function(msg){
+			if(msg == '1'){
+				warning('S\'ha enviat un missatge de verificació a '+email, 1);
+				$("#name").val('');
+				$("#email").val('');
+				$("#defaultReal").val('');
+				$("#lopd").attr('checked', false);
+				return false;
+			}
+			if(msg == '2'){
+				warning('El codi CAPTCHA introduit no és correcte', 0);
+				return false;
+			}
+			if(msg == '3'){
+				warning('S\'ha produït un error desconegut', 0);
+				return false;
+			}			
+		});
+	}
+	
+	function warning(msg, success){
+		$("#warningzone").html(msg);
+		if (success == 1){
+			$("#warningzone").css('color', 'green');
+		}else{
+			$("#warningzone").css('color', 'red');
+		}
+	}
+</script>
+
+<div id="content-main">
+		<div class="c_head c_head_grey">
+			<div class="head_title">			
+				<div class="c_icon">
+					<h1><span class="TitleHead">Formulari d’alta de subscripció al butlletí <i>A l’Abast</i></span></h1>
+				</div>
+			</div>
+			<div class="c_content">
+				<div class="menuPlanaText1 siempreEnlace">
+					<img src="images/thumbnail.jpg" alt="Miniatura del butlletí Abast" />
+					<p>És un <i>butlletí</i> <b>electrònic</b> d'informació i assessorament adreçat a les entitats de voluntariat, associacions i la ciutadania interessada en aquest tema. Té <b>periodicitat quinzenal</b> i és coeditat per la <a href="http://www10.gencat.net/sac/AppJava/organisme_fitxa.jsp?codi=18103" target="_blank">Direcció General d’Acció Cívica i Comunitària</a> i la <a href="http://www.peretarres.org" target="_blank">Fundació Pere Tarrés</a></p>
+					<div class="clear-right"> </div>
+				</div>
+				<div class="planaText1">
+					<h2>Com subscriure-us-hi?</h2>
+					<p>Heu d’introduir la vostra adreça electrònica al formulari següent i rebreu un correu de confirmació a la vostra bústia de correu.</p>
+					
+					<div class="menuPlanaText1">
+						<h3>Dades personals</h3>
+						<table id="newsletterform">
+							<!--<tr>
+								<td class="field">Nom i Cognoms* </td>
+								<td><input type="text" id="name" size="50"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="fieldinfo">Introdueix aquí el teu nom i els teus cognoms</td>
+							</tr>-->
+							<tr>
+								<td class="field">Adreça electrònica de registre* </td>
+								<td><input type="text" id="email" size="50"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="fieldinfo">Introdueix aquí l’adreça electrònica que vols registrar</td>
+							</tr>
+						</table>
+						<div class="fieldinfo">(*) Els camps amb asterisc són obligatoris.</div>
+						<hr/>
+						<div class="lopdtext">D'acord amb la Llei orgànica 15/1999, de protecció de dades de caràcter personal, les vostres dades seran incorporades al fitxer "Entitats de voluntariat", del qual és responsable la Direcció General d'Acció Cívica i Comunitària. La finalitat és integrar les dades a un banc de dades de les entitats sense afany de lucre de voluntariat de Catalunya i gestionar l'enviament de comunicacions als/a les voluntaris/àries. Podeu exercir els drets d'accés, rectificació, cancel·lació i oposició mitjançant un escrit adreçat al Servei de Promoció de l'Associacionisme i el Voluntariat: Passeig del Taulat, 266-270, 08019, Barcelona.</div>
+						<div class="lopdtext"><input type="checkbox" id="lopd"	/>Accepto les condicions legals </div>
+						
+						<hr />
+						<h3>CAPTCHA</h3>
+						<div>Aquesta pregunta és per veure si realment ets una persona i no un generador de spam.</div>
+						<div class="captchatext">Quines lletres i números surten a la imatge? * </div>
+						<input type="text" id="defaultReal" name="defaultReal">
+						<div class="captchatext">Introdueix aquí els caràcters de la imatge</div>
+						<input type="button" id="submit" name="submit" onclick="javascript:submit()" value="Accepta"/>
+						<div id="warningzone"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

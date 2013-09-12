@@ -1,0 +1,21 @@
+#Menu ul.Menu-AS{
+	padding-bottom: 0px!important;
+}
+#Menu .Menu-AS-Sub {
+    margin-top:34px!important;
+}
+.Menu-AS li ul.Menu-AS-Sub li{
+	width: auto!important;
+}
+#content {
+	margin-top: 35px;
+}
+#node-21928 .columna-esquerra {
+    width: 560px!important;
+}
+.panels-flexible-column-1-main {
+    float: left!important;
+}
+.panels-flexible-column-1-1 {
+    float: right!important;
+}

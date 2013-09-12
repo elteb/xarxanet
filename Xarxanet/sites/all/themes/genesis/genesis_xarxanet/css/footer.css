@@ -1,0 +1,67 @@
+#Footer {
+	position:relative;
+	width:100%;
+	height:150px;
+	background-color:#b7cbd1;
+	float:left;
+	margin:0 auto;
+	background-image:url(../images/background-footer.gif);
+	background-repeat:repeat-x;
+	background-position:top;
+	margin-top:15px;
+}
+#Footer-Contenido{
+	position:relative;
+	height:auto;
+	width:965px;
+	margin:0 auto;
+}
+#Footer-Projecte, #Footer-Xarxes{
+	position:relative;
+	height:auto;
+	width:auto;
+	float:right;
+	margin-top:5px;
+}
+
+#footer-eq{
+	color: #FFFFFF;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    margin: 5px 0 0 97px;
+}
+
+#footer-eq a {color: #FFFFFF;}
+#footer-eq a:hover {color: #FFFF00;}
+
+
+#Footer-Projecte h4, #Footer-Xarxes h4{
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10pt;
+	font-weight:bold;
+}
+#Footer-Projecte ul, #Footer-Xarxes ul{
+	list-style-type:none;
+	list-style-position:inside;
+}
+#Footer-Projecte li, #Footer-Xarxes li{
+	float:left;
+	margin:15px 0px 15px 0px;
+}
+#Footer-Xarxes{
+	float:left;
+}
+
+.pane-3 .view-3x2 .views-row{
+#margin:-15px 10px 0px 0px;
+}
+#xarxanet-recursos-parent .xarxanet-recursos-resums,
+#xarxanet-recursos-parent .xarxanet-recursos-titles{
+#width:42% !important;
+}
+.Menu-AS-Sub{
+#margin-top:20px !important;
+}

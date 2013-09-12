@@ -1,0 +1,233 @@
+
+#main-content {
+	CLEAR: both;
+}
+
+#genesis-1c #sidebar-right {
+	border:0px solid yellow;
+	margin-left:0;
+}
+
+
+#content-column {
+	border:0px solid navy;
+	width:780px;
+	float:left;
+}
+
+
+
+.content-inner {
+	margin-right:0;
+	width:100%;
+	border: 0px solid red;
+}
+
+.cultural {
+	border:0px solid green;
+}
+.comunitari {
+	border:0px solid pink;
+}
+
+.general {
+
+	vertical-align:top;
+
+}
+.view-cuadricula {
+border:0px solid red;
+}
+
+.node-content UL{list-style-position:outside;}
+
+.node-column-text { width:473px; float:left !important; }
+
+#comments #edit-preview {
+    margin-top: 0 !important;
+}
+
+#comments { margin-right:14px; }
+
+#Footer-Xarxes LI { margin: 15px 8px 0 0; }
+#Footer-Projecte LI { margin: 15px 8px 0 0; }
+
+
+
+
+#Barras ul li {
+	border-left:2px solid white;
+	margin:0;
+	padding:0 5px;
+}
+#Barras ul li:first-child {
+	border-left:none;
+	padding-left:0px;
+}
+
+
+#container {
+
+overflow: hidden !important;
+min-width:980px;
+}
+
+
+#comments .form-item textarea {
+width:420px;
+}
+
+.item-list ul.pager {
+width: 750px;
+}
+
+ul.linksrelacionats li {
+    float: none;
+    list-style: square outside none;
+    margin-left: 18px;
+line-height: 1 !important;
+    vertical-align: top !important;
+}
+
+.form-item{
+	border:0px solid green;
+clear:both;
+}
+
+div.form-item input{
+	display:inline;
+	*display:inline;
+	zoom:1;
+}
+
+.form-checkboxes, .form-radios{
+	clear:both;
+}
+
+.form-item label {
+	display:block !important;
+	width:160px !important;
+	border:0px solid silver;
+	float:left;
+	}
+.form-item label span {
+	display:none;
+	}
+	
+#edit-submitted-consulta {width:500px;}
+	
+#webform-component-has-utilitzat-altres-vegades-els-serveis-dassessorament {
+	clear:both;
+	width:500px;
+}
+
+.container-inline-date.date-clear-block{
+	display:inline;
+width:200px;
+
+}
+
+.container-inline-date .form-item, .container-inline-date .form-item input{
+
+width:150px;
+
+}
+
+.container-inline-date.date-clear-block label{
+zoom:1;
+width:150px;
+
+}
+
+
+.container-inline-date label {
+	width:80px !important;
+}
+
+#CCK_Mapa {
+	display:none;
+}
+
+.projectes h3 a:hover {
+	color:#E39595 !important;
+}
+.comunitari h3 a:hover {
+	color:#F4BC44 !important;
+}
+.social h3 a:hover {
+	color:#EB9DE3 !important;
+}
+.ambiental h3 a:hover {
+	color:#8FBD7F !important;
+}
+.internacional h3 a:hover {
+	color:#A75387 !important;
+}
+
+.juridic h3 a:hover {
+	color:#62AEC4 !important;
+}
+
+.informatic h3 a:hover {
+	color:#9B8CD2 !important;
+}
+
+
+/* Social icons img and a alignment */
+#Footer .footer-col-5 img{
+	vertical-align:middle;
+}
+
+
+/* IE7 Menu correction */
+
+
+
+div#block-megamenu-0 ul li.megamenu-parent a{
+	display: inline-block;
+	margin-top: -10px;
+	line-height: 16px; 
+	 		
+}
+
+
+
+
+.megamenu-skin-xarxanet ul.megamenu-bin li.megamenu-slot ul.megamenu-items li.megamenu-item{
+	float: left;
+	clear: left;
+	width: 50%;	
+}
+
+
+.megamenu-skin-xarxanet ul.megamenu-bin li h3{
+	padding: 12px 0 12px 0;
+}
+
+
+/* IE7 Footer menu re-declaration */
+
+
+#Footer{
+	position:relative;
+	width:100%;
+	background-color:#D7D7D7;
+	float:left;
+	margin:0 auto;
+	background-image:url(../images/background-footer.gif);
+	background-repeat:repeat-x;
+	background-position:top;
+	margin-top:15px;
+}
+
+
+
+/* IE7 front sidebar correction */
+
+
+#content{
+	overflow: visible;
+}
+
+
+

@@ -1,0 +1,14 @@
+<?php
+// $Id$
+
+
+function ekigmaps_install(){
+  // Create my tables.
+
+}
+
+
+function ekigmaps_uninstall() {
+
+  variable_del('googlemap_api_key');
+}

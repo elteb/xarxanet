@@ -1,0 +1,9 @@
+// $Id: CHANGELOG.txt,v 1.1 2009/06/20 20:48:59 smk Exp $
+
+Sub-path URL Aliasing 6.x-1.x, xxxx-xx-xx
+-----------------------------------------
+
+
+Sub-path URL Aliasing 6.x-1.0, 2009-06-20
+-----------------------------------------
+Initial release.

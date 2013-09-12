@@ -1,0 +1,136 @@
+#biblioteca-panel a {
+	color: #53544F;
+}
+
+
+/********** COLUMNES ***********/
+
+#biblioteca-panel .panel-col-first {
+	float: left;
+	width: 720px;
+	margin-right: 10px;
+}
+
+#biblioteca-panel .panel-col-last {
+	float: right;
+	width: 235px;	
+}
+
+
+/********** BLOCS LATERALS ***********/
+
+#biblioteca-panel .pane-block h2 {
+	font-weight: normal;
+	color: white;
+	background-color: #53544F;
+	font-size: 11pt;
+	padding: 5px 0 5px 10px;
+	border-bottom: 5px solid white;
+}
+
+#biblioteca-panel .pane-block ul {
+	background-color: #CCC;
+	margin-bottom: 15px;
+	padding: 10px 0 10px 25px;
+	list-style-type: square;
+}
+
+#biblioteca-panel .pane-block ul.subterm {
+	margin: 0px;
+	padding: 0px 0px 0px 25px;
+}
+
+#biblioteca-panel .pane-block ul.subterm li {
+	float: none !important;
+}
+
+#biblioteca-panel .pane-block li {
+	margin: 5px 0;
+	color: #53544F;
+}
+
+#biblioteca-panel .pane-block p {
+	background-color: #CCC;
+	margin-bottom: 15px;
+	padding: 10px 0;
+}
+
+
+/********** RESULTATS ***********/
+
+#biblioteca-panel .biblioteca-document { margin: 10px 0; }
+#biblioteca-panel .biblioteca-document tbody { border: none; }
+#biblioteca-panel .biblioteca-document td { border: none; vertical-align: top;}
+#biblioteca-panel .biblioteca-document .image { vertical-align: top; }
+#biblioteca-panel .biblioteca-document .image img {	width: 110px; border: 1px solid #CCCCCC;}
+#biblioteca-panel .biblioteca-document .top { font-style: italic; }
+#biblioteca-panel .biblioteca-document .teaser { text-align: justify; }
+
+/********** FITXA **********/
+.biblioteca-fitxa .biblioteca-document { 
+	margin-right: 15px !important;
+	width: 695px; 
+}
+.biblioteca-fitxa a.homelink {color: #B2290C !important}
+.biblioteca-fitxa .top p {padding-bottom: 5px;}
+.biblioteca-fitxa .top td {padding-bottom: 0px; padding-top: 0px;}
+.biblioteca-fitxa .biblioteca-document .big_image { vertical-align: top; }
+.biblioteca-fitxa .biblioteca-document .big_image img {border: 1px solid #CCCCCC;}
+.biblioteca-fitxa .biblioteca-document .text { vertical-align: top; }
+.biblioteca-fitxa .biblioteca-document .twitter-share-button { width: 82px !important}
+
+#bilioteca-document-peu { 
+	border-top: solid 1px #53544F;
+	width: 96%; 
+}
+#bilioteca-document-peu td { 
+	vertical-align: top;
+	padding-top: 15px;
+}
+
+#bilioteca-document-peu .document { 
+	width: 30%;
+	text-align: center;
+}
+
+#bilioteca-document-peu .link { width: 35%; }
+#bilioteca-document-peu img { margin-top: 5px; }
+#social-table { width: 217px; float: right;}
+#social-table .service-links { text-align: right; }
+#social-table .service-links li { 
+	float: right;
+	margin: 5px; 
+}
+#social-table div { float: right; }
+
+
+/********* PAGINACIÓ ***********/
+#biblioteca-panel ul.pager {
+	background-color: #CCCCCC;
+	border-bottom-color: #53544F;
+}
+
+#biblioteca-panel ul.pager li.pager-current{
+	font-weight: bold;
+	color: #53544F;
+}
+
+/********* QUADRE DE CERCA ***********/
+#biblioteca-panel .search-form label {
+	font-size: 10pt;
+	margin-bottom: 5px;
+}
+
+/********* MENÚ ORDENACIÓ ***********/
+#biblioteca-order { margin: 5px 0; }
+#biblioteca-order a { color: #53544F; text-decoration: none; margin: 0 5px; }
+#biblioteca-order a.currentsort { font-weight: bold;}
+
+/********** ALTRES **********/
+#biblioteca-panel .views-exposed-widgets {display: none;}
+#biblioteca-panel h1 a {color: #333;}
+
+/********** AMPLADA IE7 *************/
+.section-biblioteca #content-column {width: 965px;}
+.section-biblioteca-cerca #content-column {width: 965px;}
+.section-biblioteca-filtre #content-column {width: 965px;}

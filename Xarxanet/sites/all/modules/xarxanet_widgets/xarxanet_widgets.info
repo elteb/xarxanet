@@ -1,0 +1,6 @@
+; $Id$
+name = Widgets per Xarxanet
+description = Widgets per Xarxanet
+core = 6.x
+package = XARXANET
+; You have to add nid to views and do not link any field to its node by drupal way

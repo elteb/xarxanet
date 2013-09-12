@@ -1,0 +1,4 @@
+; $Id$
+name = Feeds per Xarxanet
+description = Feeds per Xarxanet
+core = 6.x

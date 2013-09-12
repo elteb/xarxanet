@@ -1,0 +1,68 @@
+<?php
+
+// $Id$
+function equi_sched_perm(){
+  $perms = array();
+  $perms[] = 'admin scheduler';
+  $types = node_get_types('names');
+
+  foreach($types as $key => $name){
+    $perms[] = 'schedule '.$key;
+  }
+  
+  return $perms;
+}
+
+function equi_sched_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL){
+  switch($op){
+    case 'presave':
+      if(!isset($node->nid)){
+        // Si el node es nou (no existia fins ara) la data de schedule serà o la del moment de publicació o bé una data futura. Per tant l'assignem
+        $node->created = strtotime($node->schedule_date);
+      }else{
+        // Si el node existeix
+        $node_ant = node_load($node->nid);
+        // Si la data d'autoria no canvia, es comproba el camp de publicació
+        if($node_ant->created == $node->created){
+          // Si canvia
+          if(strtotime($node->schedule_date) > strtotime($node_ant->schedule_date)){
+            $node->created = strtotime($node->schedule_date);
+          }
+        }else{// Si la data d'autoria ha canviat, llavors mana la data d'autoria i per tant assignem al camp schedule_date aquesta data
+          /*krumo($node->schedule_date);
+          krumo($node->created);*/
+          $node->schedule_date = date('Y-m-d H:i:s',$node->created);
+        }
+      }
+      break;
+  }
+}
+
+function equi_sched_form_alter(&$form, &$form_state,$form_id){
+  
+  if($form['#id'] == 'node-form')
+  {
+    $node_type = $form['type']['#value'];
+    if(user_access('schedule '.$node_type))
+    {
+      $nid = arg(1);
+      switch($nid){
+        case 'add':
+          $def_date = date('Y-m-d H:i').':00';
+         // drupal_set_message($def_date);
+          break;
+        default:
+          $node = node_load($nid);
+          $def_date = date('Y-m-d H:i',$node->created).':00';
+          break;
+      }
+      $form['schedule_date'] = array(
+        '#type' => 'date_popup',
+        '#title' => t('Data de publicació',array(),'ca'),
+        '#default_value' => $def_date,
+        '#date_timezone' => 'Europe/Madrid',
+        '#description' => t("Si destaqueu aquesta noticia amb qualsevol opció de destacat, la noticia es publicarà automàticament independentment del valor d'aquest camp.",array(),'ca'),
+      );
+    }
+  }
+}

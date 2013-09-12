@@ -1,0 +1,141 @@
+<?php
+// $Id$
+
+// Permisos del mòdul.
+function ekigmaps_perm(){
+  return array('access Eki GMaps content');
+}
+
+//Formulario Admin settings
+//Formulario para definir el Google Maps API Key
+function ekigmaps_form($form_state) {
+	
+  $form['initialization'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Google Map Initialize'),
+  );
+
+  $form['initialization']['#tree'] = TRUE;
+  $form['initialization']['googlemap_api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google Maps API Key'),
+    '#default_value' => variable_get('googlemap_api_key', ''),
+    '#size' => 50,
+    '#maxlength' => 255,
+    '#description' => t('Your personal Googlemaps API key.  You must get this for each separate website at <a href="http://www.google.com/apis/maps/">Google Map API website</a>.'),
+  );
+
+  $form['initialization']['submit'] = array(
+    '#type' => 'submit', 
+    '#value' => t('Submit')
+  );
+
+  return $form;
+}
+
+function ekigmaps_form_submit($form,&$form_state){
+
+  variable_set('googlemap_api_key', $form_state['values']['initialization']['googlemap_api_key']);
+  drupal_set_message(t('Your form has been saved.'));
+}
+
+function ekigmaps_admin() {
+
+  return drupal_get_form('ekigmaps_form');
+}
+
+// Hook Menu
+function ekigmaps_menu() {
+
+  $items = array();
+
+  $items['admin/settings/ekigmaps'] = array(
+    'title' => 'Eki GMaps settings',
+    'description' => 'Eki GMaps settings',
+    'page callback' => 'ekigmaps_admin',
+    'access arguments' => array('access Eki GMaps content'),
+    'type' => MENU_NORMAL_ITEM,
+   );
+
+  return $items;
+}
+
+//////////////////////////////////////
+// FUNCIONES DEL MODULO:
+
+function ekigmaps_add_header()
+{
+	drupal_set_html_head('<script type="text/javascript" src="http://www.google.com/jsapi?key='. variable_get('googlemap_api_key', '') .'"></script>');
+	drupal_add_js(drupal_get_path('module', 'ekigmaps') .'/mapa.js');
+}
+function ekigmaps_create_map($mapa)
+{
+  static $idMap = 0;
+  $idMap++;
+  
+
+  drupal_set_html_head('<script type="text/javascript" src="http://www.google.com/jsapi?key='. variable_get('googlemap_api_key', '') .'"></script>');
+  drupal_add_js(drupal_get_path('module', 'ekigmaps') .'/mapa.js');
+  
+
+  $return_code = "";
+  $return_code .= '<script type="text/javascript">'."\n";
+  $return_code .= "/* <![CDATA[ */\n";
+  $return_code .= 'jQuery.extend(true,settings, { "path": "'. base_path() . drupal_get_path('module', 'ekigmaps') .'/markers/"});'."\n";
+  //$return_code .= 'jQuery.extend(true,eMap,'. drupal_to_js($mapa) .');'."\n";
+  $return_code .= 'jQuery.extend(true,eMap,'. drupal_to_js((array('auto'. $idMap .'map' => $mapa))) .');'."\n";
+  $return_code .= "/* ]]> */\n";
+  $return_code .= "</script>\n";
+
+ 
+  
+  $return_code .= '<div id="'.$mapa['id'].'" style="width: '. $mapa['width'] .'; height: '. $mapa['height'] .'"></div>';
+  
+  return $return_code;  
+}
+
+function ekigmaps_create_cck_map($mapa, $field_name)
+// COPIA LITERAL DE LA FUNCIÓN: ekigmaps_create_map
+{
+  static $idMap = 0;
+  $idMap++;
+  
+
+  drupal_set_html_head('<script type="text/javascript" src="http://www.google.com/jsapi?key='. variable_get('googlemap_api_key', '') .'"></script>');
+  drupal_add_js(drupal_get_path('module', 'ekigmaps') .'/mapa.js');
+  
+
+  $return_code = "";
+  $return_code .= '<script type="text/javascript">'."\n";
+  $return_code .= "/* <![CDATA[ */\n";
+  $return_code .= 'jQuery.extend(true,settings, { "path": "'. base_path() . drupal_get_path('module', 'ekigmaps') .'/markers/" , "cck": "true", "field_name": "'. $field_name .'",});'."\n";
+  //$return_code .= 'jQuery.extend(true,eMap,'. drupal_to_js($mapa) .');'."\n";
+  $return_code .= 'jQuery.extend(true,eMap,'. drupal_to_js((array('auto'. $idMap .'map' => $mapa))) .');'."\n";
+  $return_code .= "/* ]]> */\n";
+  $return_code .= "</script>\n";
+
+ 
+  
+  $return_code .= '<div id="'.$mapa['id'].'" style="width: '. $mapa['width'] .'; height: '. $mapa['height'] .'"></div>';
+  
+  return $return_code;  
+}
+
+
+// Funcion que retarnas las coordenasdas LONG, LAT de la dirección $address
+function ekigmaps_get_LatLong($address)
+{
+  $address = str_replace(' ','+',$address);
+
+  $httpAddress = 'http://maps.google.com/maps/geo?q='.$address.'&output=xml&key='. variable_get('googlemap_api_key', '');
+
+  $xml = simplexml_load_string(utf8_encode(file_get_contents($httpAddress)));
+
+  $coordenadas = split(",",$xml->Response->Placemark->Point->coordinates);
+
+  $aux=$coordenadas[0];
+  $coordenadas[0] = $coordenadas[1];
+  $coordenadas[1] = $aux;
+  
+  return $coordenadas;
+}

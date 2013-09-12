@@ -1,0 +1,139 @@
+
+
+.view-Tags .views-row
+{
+	float:left;
+	width:179px;
+	/*clear:both;*/
+	margin-right:15px;
+	margin-top:-15px;
+}
+
+.view-Tags .views-row img
+{
+	z-index:0;
+	margin-bottom:18px;
+}
+
+.view-Tags .views-row-1
+{
+	width:770px;
+}
+
+.view-Tags .views-row-2,
+.view-Tags .views-row-7
+{
+	width:377px;
+}
+
+
+.view-Tags .views-row-clear--3,
+.view-Tags .views-row-clear-0 
+{
+	clear:both;
+}
+
+
+.view-Tags .views-row-4
+{
+	clear:none !important;
+}
+
+
+.label
+{
+	width:100%;
+	height:14px;
+	display:block;
+	position: relative;
+	top:160px;
+	padding-bottom: 5px;
+    padding-top: 1px;
+}
+
+.label a:link,
+.label a:visited,
+.label a:hover
+{
+	color:#FFFFFF;
+	text-decoration:none;
+}
+
+.label a
+{
+	font-size:8pt;
+	text-transform:uppercase;
+	padding-left:3px;
+}
+
+.views-row-first .label
+{
+	top:230px;
+}
+
+
+
+.view-Tags h3 a:link,
+.view-Tags h3 a:visited,
+.view-Tags p a:link,
+.view-Tags p a:visited
+{
+	color: #333333;
+}
+
+.view-Tags h3{	font-size: 12pt;}
+.view-Tags .views-row-1 h3,
+.view-Tags .views-row-2 h3,
+.view-Tags .views-row-7 h3 {font-size: 18pt;}
+
+
+
+
+
+
+.ambiental .label{	background-color:#8FBD7F;}
+.comunitari .label{	background-color:#F4BC44;}
+.cultural .label{	background-color:#959FD6;}
+.economic .label{	background-color:#D1B91A;}
+.formacio .label{	background-color:#C09158;}
+.general .label{	background-color:#xxx;}
+.informatic .label{	background-color:#9B8CD2;}
+.internacional .label{background-color:#A75387;}
+.juridic .label{	background-color:#62AEC4;}
+.projectes .label{	background-color:#E39595;}
+.social .label{		background-color:#EB9DE3;}
+.esdeveniment .label{		background-color:#ABB22F;}
+
+
+.ambiental h3 a:hover{	color:#8FBD7F;}
+.comunitari h3 a:hover{	color:#F4BC44;}
+.cultural h3 a:hover{	color:#959FD6;}
+.economic h3 a:hover{	color:#D1B91A;}
+.formacio h3 a:hover{	color:#C09158;}
+.general h3 a:hover{	color:#xxx;}
+.informatic h3 a:hover{	color:#9B8CD2;}
+.internacional h3 a:hover{color:#A75387;}
+.juridic h3 a:hover{	color:#62AEC4;}
+.projectes h3 a:hover{	color:#E39595;}
+.social h3 a:hover{		color:#EB9DE3;}
+.esdeveniment h3 a:hover{		color:#ABB22F;}
+
+
+/*
+.ambiental
+.comunitari
+.cultural
+.economic
+.formacio
+.general
+.informatic
+.internacional
+.juridic
+.projectes
+.social
+*/
+
+
+
+
+

@@ -1,0 +1,740 @@
+/* $Id: nodes.css,v 1.1.2.13 2009/06/05 17:49:59 jmburnz Exp $ */
+
+/**
+ * @file nodes.css
+ * Basic styles for nodes.
+ */
+
+/**********************************************************
+ *                      Nodes
+ **********************************************************/
+#genesis-1c {
+    background-image: url("../images/background.gif");
+    background-position: center top;
+    background-repeat: repeat-x;
+    color: #79797B;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 9pt;
+    height: 100%;
+    letter-spacing: 0;
+    line-height: 1.3em;
+    text-align: left;
+}
+
+/**********************************************************
+ *                      Regions
+ **********************************************************/
+
+ /*** MENU BARRA***/
+#menu-barra{
+    background-color: transparent;
+    bottom: 6px;
+    display: inline-block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 8pt;
+    height: auto;
+    position: absolute;
+    right: 0;
+    width: auto;
+    z-index: 50;
+}
+#menu-barra h2.block-title{
+    display:none;
+}
+
+#menu-barra li.leaf{
+    list-style: none;
+    float: left;
+    margin-left: 5px;
+    position: relative;
+    text-transform: uppercase;
+}
+#menu-barra li.leaf a{
+    padding:7px;
+    background-color:#B2290C;
+    color:#FFF;
+}
+
+#menu-barra li a:hover{
+    padding:7px;
+    background-color:#E8BEB6;
+    color:#FFF;
+    text-decoration:none;
+}
+
+/**********************************************************
+ *                      Blocks
+ **********************************************************/
+ #sidebar-right h2.block-title {
+    margin-top:15px;/*margin-top:15px;*/
+    background-color:#B2290C;
+    border-bottom: 5px solid #FFFFFF;
+    color: #FFFFFF;
+    font-size: 11pt;
+    font-weight: normal;
+    padding: 5px 0 5px 10px;
+ }
+ #sidebar-right div.block-content{
+	background-color:#E8BEB6;
+	padding: 5px;
+ }
+ 
+ /*css de eleni*/
+ #block-views-5c23d6449d8a4d5fecd33b8ecec85495 div.block-content{
+	background-color:none;
+	padding: 0px;
+ }
+ 
+div.block-content .label a:link, div.block-content .label a:visited, div.block-content .label a:hover {
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+div.block-content h3 a:link{
+    color: #333333 !important;
+	font-weight:bold;
+}
+
+/*css para cada una de las noticias y recursos*/
+/*
+//TEB ************ AFEGIT - Colors for Noticies General block elements
+//2012.03.26 @jaume
+*/
+
+/*noticia - general*/
+div.block-content .general .label {
+    background-color: #71A956;
+}
+
+div.block-content .general .label:hover {
+    background-color: #32701D;
+}
+
+div.block-content .general h3 a:hover {
+    color: #71A956 !important;
+    font-weight: bold;
+}
+
+/*
+// ************ FI
+*/
+
+/*noticia - projectes*/
+div.block-content .projectes .label {
+    background-color: #E39595;
+}
+
+div.block-content .projectes .label:hover {
+    background-color: #BF4545;
+}
+
+div.block-content .projectes h3 a:hover{
+    color: #E39595 !important;
+	font-weight:bold;
+}
+/*noticia - economic*/
+div.block-content .economic .label {
+    background-color: #D1B91A;
+}
+
+div.block-content .economic .label:hover {
+    background-color: #B79504;
+}
+
+div.block-content .economic h3 a:hover{
+    color: #D1B91A !important;
+	font-weight:bold;
+}
+/*noticia - ambiental*/
+div.block-content .ambiental .label {
+    background-color: #8FBD7F;
+}
+
+div.block-content .ambiental .label:hover {
+    background-color: #3F7A2F;
+}
+
+div.block-content .ambiental h3 a:hover{
+    color: #8FBD7F !important;
+	font-weight:bold;
+}
+
+/*noticia - comunitari*/
+div.block-content .comunitari .label {
+    background-color: #F4BC44;
+}
+
+div.block-content .comunitari .label:hover {
+    background-color: #DF6605;
+}
+
+div.block-content .comunitari h3 a:hover{
+    color: #F4BC44 !important;
+	font-weight:bold;
+}
+
+/*noticia - cultural*/
+div.block-content .cultural .label {
+    background-color: #959FD6;
+}
+
+div.block-content .cultural .label:hover {
+    background-color: #4550A5;
+}
+
+div.block-content .cultural h3 a:hover{
+    color: #959FD6 !important;
+	font-weight:bold;
+}
+
+/*noticia - formacio*/
+div.block-content .formacio .label {
+    background-color: #C09158;
+}
+
+div.block-content .formacio .label:hover {
+    background-color: #7F4014;
+}
+
+div.block-content .formacio h3 a:hover{
+    color: #C09158 !important;
+	font-weight:bold;
+}
+
+/*noticia - informatic*/
+div.block-content .informatic .label {
+    background-color: #9B8CD2;
+}
+
+div.block-content .informatic .label:hover {
+    background-color: #4B3B9D;
+}
+
+div.block-content .informatic h3 a:hover{
+    color: #9B8CD2 !important;
+	font-weight:bold;
+}
+
+/*noticia - juridic*/
+div.block-content .juridic .label {
+    background-color: #62AEC4;
+}
+
+div.block-content .juridic .label:hover {
+    background-color: #1A6485;
+}
+
+div.block-content .juridic h3 a:hover{
+    color: #62AEC4 !important;
+	font-weight:bold;
+}
+
+/*noticia - social */
+div.block-content .social  .label {
+    background-color: #EB9DE3;
+}
+
+div.block-content .social  .label:hover {
+    background-color: #D252C1;
+}
+
+div.block-content .social  h3 a:hover{
+    color: #EB9DE3 !important;
+	font-weight:bold;
+}
+
+/*noticia - internacional */
+div.block-content .internacional  .label {
+    background-color: #A75387;
+}
+
+div.block-content .internacional  .label:hover {
+    background-color: #E9D4E1;
+}
+
+div.block-content .internacional  h3 a:hover{
+    color: #A75387 !important;
+	font-weight:bold;
+}
+
+/*blocks sense color */
+.block-block.sense_color,
+.block-block.sense_color .block-inner,
+.block-block.sense_color .block-content{
+	border:none !important; 
+	background-color:#fff !important; 
+	padding: 0 !important;
+}
+.block-block.sense_color p{ padding-bottom: 0 !important;}
+
+ /**********************************************************
+ *                      Colors
+ **********************************************************/
+
+/*******************************************************************************
+ *                              Ambiental                                      *
+ ******************************************************************************/
+
+.ambiental div#page-title-reg{border-color:#8FBD7F;}
+.ambiental #breadcrumb{background-color: #DDEBD8;}
+.ambiental #main-content a, .ambiental #sidebar-right a {color: #3E7A2F;}
+.ambiental #sidebar-right h2.block-title {background-color: #8FBD7F;}
+.ambiental #sidebar-right div.block-content{background-color: #DDEBD8;}
+.ambiental div.node-terms {background-color: #DDEBD8;}
+.ambiental .node-terms h2, .ambiental .legend{background-color: #8FBD7F;}
+
+.ambiental .item-list ul.pager {
+    background-color:#DDEBD8;
+    border-bottom-color: #8FBD7F;
+}
+.ambiental .item-list ul.pager li.pager-current  {background-color:#8FBD7F;}
+.ambiental .item-list ul.pager li.pager-first:hover,
+.ambiental .item-list ul.pager li.pager-previous:hover,
+.ambiental .item-list ul.pager li.pager-item:hover,
+.ambiental .item-list ul.pager li.pager-next:hover,
+.ambiental .item-list ul.pager li.pager-last:hover {background-color: #3E7A2F;}
+
+.ambiental .comment-submitted a {color: #8FBD7F;}
+.ambiental #comments-title , .ambiental #comments  h2.box-title {background-color: #8FBD7F;}
+.ambiental .comment .comment-links ul li a {background-color: #8FBD7F;}
+.ambiental #comments input[type=submit]{background-color: #8FBD7F;}
+.ambiental #comments .box-content {background-color: #DDEBD8;}
+.ambiental .comment-content {border-color: #DDEBD8;}
+.ambiental .comment {background-color: #DDEBD8;color: #3E7A2F;}
+.ambiental .comment-submitted {background-color: #DDEBD8;color: #3E7A2F;}
+.ambiental #comments input[type=submit]:hover{background-color: #3E7A2F;}
+.ambiental .comment .comment-links a:hover {background-color: #3E7A2F;}
+
+/*******************************************************************************
+ *                              Comunitari                                     *
+ ******************************************************************************/
+
+.comunitari div#page-title-reg{border-color:#F4BC44;}
+.comunitari #breadcrumb{background-color: #FCEBC7;}
+.comunitari #main-content a, .comunitari #sidebar-right a {color: #DF6605;}
+.comunitari #sidebar-right h2.block-title {background-color: #F4BC44;}
+.comunitari #sidebar-right div.block-content{background-color: #FCEBC7;}
+.comunitari div.node-terms {background-color: #FCEBC7;}
+.comunitari .node-terms h2, .comunitari .legend{background-color: #F4BC44;}
+
+.comunitari .item-list ul.pager {
+    background-color:#FCEBC7;
+    border-bottom-color: #F4BC44;
+}
+.comunitari .item-list ul.pager li.pager-current  {background-color:#F4BC44;}
+.comunitari .item-list ul.pager li.pager-first:hover,
+.comunitari .item-list ul.pager li.pager-previous:hover,
+.comunitari .item-list ul.pager li.pager-item:hover,
+.comunitari .item-list ul.pager li.pager-next:hover,
+.comunitari .item-list ul.pager li.pager-last:hover {background-color: #DF6605;}
+
+.comunitari .comment-submitted a {color: #F4BC44;}
+.comunitari #comments-title , .comunitari #comments  h2.box-title {background-color: #F4BC44;}
+.comunitari .comment .comment-links ul li a {background-color: #F4BC44;}
+.comunitari #comments input[type=submit]{background-color: #F4BC44;}
+.comunitari #comments .box-content {background-color: #FCEBC7;}
+.comunitari .comment-content {border-color: #FCEBC7;}
+.comunitari .comment {background-color: #FCEBC7;color: #DF6605;}
+.comunitari .comment-submitted {background-color: #FCEBC7;color: #DF6605;}
+.comunitari #comments input[type=submit]:hover{background-color: #DF6605;}
+.comunitari .comment .comment-links a:hover {background-color: #DF6605;}
+
+/*******************************************************************************
+ *                              Cultural                                       *
+ ******************************************************************************/
+
+.cultural div#page-title-reg{border-color:#959FD6;}
+.cultural #breadcrumb{background-color: #DFE2F3;}
+.cultural #main-content a, .cultural #sidebar-right a {color: #4550A5;}
+.cultural #sidebar-right h2.block-title {background-color: #959FD6;}
+.cultural #sidebar-right div.block-content{background-color: #DFE2F3;}
+.cultural div.node-terms {background-color: #DFE2F3;}
+.cultural .node-terms h2, .cultural .legend{background-color: #959FD6;}
+
+.cultural .item-list ul.pager {
+    background-color:#DFE2F3;
+    border-bottom-color: #959FD6;
+}
+.cultural .item-list ul.pager li.pager-current  {background-color:#959FD6;}
+.cultural .item-list ul.pager li.pager-first:hover,
+.cultural .item-list ul.pager li.pager-previous:hover,
+.cultural .item-list ul.pager li.pager-item:hover,
+.cultural .item-list ul.pager li.pager-next:hover,
+.cultural .item-list ul.pager li.pager-last:hover {background-color: #4550A5;}
+
+.cultural .comment-submitted a {color: #959FD6;}
+.cultural #comments-title, .cultural #comments  h2.box-title {background-color: #959FD6;}
+.cultural .comment .comment-links ul li a {background-color: #959FD6;}
+.cultural #comments input[type=submit]{background-color: #959FD6;}
+.cultural #comments .box-content {background-color: #DFE2F3;}
+.cultural .comment-content {border-color: #DFE2F3;}
+.cultural .comment {background-color: #DFE2F3;color: #4550A5;}
+.cultural .comment {background-color: #DFE2F3;color: #4550A5;}
+.cultural .comment-submitted {background-color: #DFE2F3;color: #4550A5;}
+.cultural #comments input[type=submit]:hover{background-color: #4550A5;}
+.cultural .comment .comment-links a:hover {background-color: #4550A5;}
+
+/*******************************************************************************
+ *                              Social                                         *
+ ******************************************************************************/
+
+.social div#page-title-reg{border-color:#EB9DE3;}
+.social #breadcrumb{background-color: #F5F6FB;}
+.social #main-content a, .social #sidebar-right a {color: #D252C1;}
+.social #sidebar-right h2.block-title {background-color: #EB9DE3;}
+.social #sidebar-right div.block-content{background-color: #F5F6FB;}
+.social div.node-terms {background-color: #F5F6FB;}
+.social .node-terms h2, .social .legend{background-color: #EB9DE3;}
+
+.social .item-list ul.pager {
+    background-color:#F5F6FB;
+    border-bottom-color: #EB9DE3;
+}
+.social .item-list ul.pager li.pager-current  {background-color:#EB9DE3;}
+.social .item-list ul.pager li.pager-first:hover,
+.social .item-list ul.pager li.pager-previous:hover,
+.social .item-list ul.pager li.pager-item:hover,
+.social .item-list ul.pager li.pager-next:hover,
+.social .item-list ul.pager li.pager-last:hover {background-color: #D252C1;}
+
+.social .comment-submitted a {color: #EB9DE3;}
+.social #comments-title, .social #comments  h2.box-title {background-color: #EB9DE3;}
+.social .comment .comment-links ul li a {background-color: #EB9DE3;}
+.social #comments input[type=submit]{background-color: #EB9DE3;}
+.social #comments .box-content {background-color: #F5F6FB;}
+.social .comment-content {border-color: #F5F6FB;}
+.social .comment {background-color: #F5F6FB;color: #D252C1;}
+.social .comment-submitted {background-color: #F5F6FB;color: #D252C1;}
+.social #comments input[type=submit]:hover{background-color: #D252C1;}
+.social .comment .comment-links a:hover {background-color: #D252C1;}
+
+/*******************************************************************************
+ *                           Internacional                                     *
+ ******************************************************************************/
+
+.internacional div#page-title-reg{border-color:#A75387;}
+.internacional #breadcrumb{background-color: #E9D4E1;}
+.internacional #main-content a, .internacional #sidebar-right a {color: #843161;}
+.internacional #sidebar-right h2.block-title {background-color: #A75387;}
+.internacional #sidebar-right div.block-content{background-color: #E9D4E1;}
+.internacional div.node-terms {background-color: #E9D4E1;}
+.internacional .node-terms h2, .internacional .legend{background-color: #A75387;}
+
+.internacional .item-list ul.pager {
+    background-color:#E9D4E1;
+    border-bottom-color: #A75387;
+}
+.internacional .item-list ul.pager li.pager-current  {background-color:#A75387;}
+.internacional .item-list ul.pager li.pager-first:hover,
+.internacional .item-list ul.pager li.pager-previous:hover,
+.internacional .item-list ul.pager li.pager-item:hover,
+.internacional .item-list ul.pager li.pager-next:hover,
+.internacional .item-list ul.pager li.pager-last:hover {background-color: #843161;}
+
+.internacional .comment-submitted a {color: #A75387;}
+.internacional #comments-title, .internacional #comments  h2.box-title {background-color: #A75387;}
+.internacional .comment .comment-links ul li a {background-color: #A75387;}
+.internacional #comments input[type=submit]{background-color: #A75387;}
+.internacional #comments .box-content {background-color: #E9D4E1;}
+.internacional .comment-content {border-color: #E9D4E1;}
+.internacional .comment {background-color: #E9D4E1;color: #843161;}
+.internacional .comment-submitted {background-color: #E9D4E1;color: #843161;}
+.internacional #comments input[type=submit]:hover{background-color: #843161;}
+.internacional .comment .comment-links a:hover {background-color: #843161;}
+
+/*******************************************************************************
+ *                              Projectes                                      *
+ ******************************************************************************/
+
+.projectes div#page-title-reg{border-color:#E39595;}
+.projectes #sidebar-right h2.block-title , .projectes .node-terms h2, .projectes .legend, .projectes a.tornar{background-color: #E39595;}
+.projectes #main-content a , .projectes #sidebar-right a {color: #BF4545;}
+.projectes #breadcrumb, .projectes #sidebar-right div.block-content, .projectes div.node-terms {background-color: #F7DFDF;}
+
+.projectes .item-list ul.pager {
+    background-color:#F7DFDF;
+    border-bottom-color: #E39595;
+}
+.projectes .item-list ul.pager li.pager-current  {background-color:#E39595;}
+.projectes .item-list ul.pager li.pager-first:hover,
+.projectes .item-list ul.pager li.pager-previous:hover,
+.projectes .item-list ul.pager li.pager-item:hover,
+.projectes .item-list ul.pager li.pager-next:hover,
+.projectes .item-list ul.pager li.pager-last:hover {background-color: #BF4545;}
+
+.projectes .comment-submitted a {color: #E39595;}
+.projectes #comments-title, .projectes #comments  h2.box-title {background-color: #E39595;}
+.projectes .comment .comment-links ul li a {background-color: #E39595;}
+.projectes #comments input[type=submit]{background-color: #E39595;}
+.projectes #comments .box-content {background-color: #F7DFDF;}
+.projectes .comment-content {border-color: #F7DFDF;}
+.projectes .comment {background-color: #F7DFDF;color: #BF4545;}
+.projectes .comment-submitted {background-color: #F7DFDF;color: #BF4545;}
+.projectes #comments input[type=submit]:hover{background-color: #BF4545;}
+.projectes .comment .comment-links a:hover {background-color: #BF4545;}
+
+/*******************************************************************************
+ *                              Juridic                                        *
+ ******************************************************************************/
+
+.juridic div#page-title-reg{border-color:#62AEC4;}
+.juridic #sidebar-right h2.block-title , .juridic .node-terms h2, .juridic .legend, .juridic a.tornar{background-color: #62AEC4;}
+.juridic #main-content a , .juridic #sidebar-right a {color: #1A6485;}
+.juridic #breadcrumb, .juridic #sidebar-right div.block-content, .juridic div.node-terms {background-color: #D9ECF1;}
+
+.juridic .item-list ul.pager {
+    background-color:#D9ECF1;
+    border-bottom-color: #62AEC4;
+}
+.juridic .item-list ul.pager li.pager-current  {background-color:#62AEC4;}
+.juridic .item-list ul.pager li.pager-first:hover,
+.juridic .item-list ul.pager li.pager-previous:hover,
+.juridic .item-list ul.pager li.pager-item:hover,
+.juridic .item-list ul.pager li.pager-next:hover,
+.juridic .item-list ul.pager li.pager-last:hover {background-color: #1A6485;}
+
+.juridic .comment-submitted a {color: #62AEC4;}
+.juridic #comments-title, .juridic #comments  h2.box-title {background-color: #62AEC4;}
+.juridic .comment .comment-links ul li a {background-color: #62AEC4;}
+.juridic #comments input[type=submit]{background-color: #62AEC4;}
+.juridic #comments .box-content {background-color: #D9ECF1;}
+.juridic .comment-content {border-color: #D9ECF1;}
+.juridic .comment {background-color: #D9ECF1;color: #1A6485;}
+.juridic .comment-submitted {background-color: #D9ECF1;color: #1A6485;}
+.juridic #comments input[type=submit]:hover{background-color: #1A6485;}
+.juridic .comment .comment-links a:hover {background-color: #1A6485;}
+
+/*******************************************************************************
+ *                              Informatic                                     *
+ ******************************************************************************/
+
+.informatic div#page-title-reg{border-color:#9B8CD2;}
+.informatic #sidebar-right h2.block-title , .informatic .node-terms h2, .informatic .legend, .informatic a.tornar{background-color: #9B8CD2;}
+.informatic #main-content a , .informatic #sidebar-right a {color: #4B3B9D;}
+.informatic #breadcrumb, .informatic #sidebar-right div.block-content, .informatic div.node-terms {background-color: #E7E3F4;}
+
+.informatic .item-list ul.pager {
+    background-color:#E7E3F4;
+    border-bottom-color: #9B8CD2;
+}
+.informatic .item-list ul.pager li.pager-current  {background-color:#9B8CD2;}
+.informatic .item-list ul.pager li.pager-first:hover,
+.informatic .item-list ul.pager li.pager-previous:hover,
+.informatic .item-list ul.pager li.pager-item:hover,
+.informatic .item-list ul.pager li.pager-next:hover,
+.informatic .item-list ul.pager li.pager-last:hover {background-color: #4B3B9D;}
+
+.informatic .comment-submitted a {color: #9B8CD2;}
+.informatic #comments-title, .informatic #comments  h2.box-title {background-color: #9B8CD2;}
+.informatic .comment .comment-links ul li a {background-color: #9B8CD2;}
+.informatic #comments input[type=submit]{background-color: #9B8CD2;}
+.informatic #comments .box-content {background-color: #E7E3F4;}
+.informatic .comment-content {border-color: #E7E3F4;}
+.informatic .comment {background-color: #E7E3F4;color: #4B3B9D;}
+.informatic .comment-submitted {background-color: #E7E3F4;color: #4B3B9D;}
+.informatic #comments input[type=submit]:hover{background-color: #4B3B9D;}
+.informatic .comment .comment-links a:hover {background-color: #4B3B9D;}
+
+/*******************************************************************************
+ *                              Formacio                                       *
+ ******************************************************************************/
+
+.formacio div#page-title-reg{border-color:#C09158;}
+.formacio #sidebar-right h2.block-title , .formacio .node-terms h2, .formacio .legend, .formacio a.tornar{background-color: #C09158;}
+.formacio #main-content a , .formacio #sidebar-right a {color: #7F4014;}
+.formacio #breadcrumb, .formacio #sidebar-right div.block-content, .formacio div.node-terms {background-color: #F0E5D7;}
+
+.formacio .item-list ul.pager {
+    background-color:#F0E5D7;
+    border-bottom-color: #C09158;
+}
+.formacio .item-list ul.pager li.pager-current  {background-color:#C09158;}
+.formacio .item-list ul.pager li.pager-first:hover,
+.formacio .item-list ul.pager li.pager-previous:hover,
+.formacio .item-list ul.pager li.pager-item:hover,
+.formacio .item-list ul.pager li.pager-next:hover,
+.formacio .item-list ul.pager li.pager-last:hover {background-color: #7F4014;}
+
+.formacio .comment-submitted a {color: #C09158;}
+.formacio #comments-title, .formacio #comments  h2.box-title {background-color: #C09158;}
+.formacio .comment .comment-links ul li a {background-color: #C09158;}
+.formacio #comments input[type=submit]{background-color: #C09158;}
+.formacio #comments .box-content {background-color: #F0E5D7;}
+.formacio .comment-content {border-color: #F0E5D7;}
+.formacio .comment {background-color: #F0E5D7;color: #7F4014;}
+.formacio .comment-submitted {background-color: #F0E5D7;color: #7F4014;}
+.formacio #comments input[type=submit]:hover{background-color: #7F4014;}
+.formacio .comment .comment-links a:hover {background-color: #7F4014;}
+
+/*******************************************************************************
+ *                               Economic                                      *
+ ******************************************************************************/
+
+.economic div#page-title-reg{border-color:#D1B91A;}
+.economic #sidebar-right h2.block-title , .economic .node-terms h2, .economic .legend, .economic a.tornar{background-color: #D1B91A;}
+.economic #main-content a , .economic #sidebar-right a {color: #B79504;}
+.economic #breadcrumb, .economic #sidebar-right div.block-content, .economic div.node-terms {background-color: #F9F5D5;}
+
+.economic .item-list ul.pager {
+    background-color:#F9F5D5;
+    border-bottom-color: #D1B91A;
+}
+.economic .item-list ul.pager li.pager-current  {background-color:#D1B91A;}
+.economic .item-list ul.pager li.pager-first:hover,
+.economic .item-list ul.pager li.pager-previous:hover,
+.economic .item-list ul.pager li.pager-item:hover,
+.economic .item-list ul.pager li.pager-next:hover,
+.economic .item-list ul.pager li.pager-last:hover {background-color: #B79504;}
+
+.economic .comment-submitted a {color: #D1B91A;}
+.economic #comments-title, .economic #comments  h2.box-title {background-color: #D1B91A;}
+.economic .comment .comment-links ul li a {background-color: #D1B91A;}
+.economic #comments input[type=submit]{background-color: #D1B91A;}
+.economic #comments .box-content {background-color: #F9F5D5;}
+.economic .comment-content {border-color: #F9F5D5;}
+.economic .comment {background-color: #F9F5D5;color: #B79504;}
+.economic .comment-submitted {background-color: #F9F5D5;color: #B79504;}
+.economic #comments input[type=submit]:hover{background-color: #B79504;}
+.economic .comment .comment-links a:hover {background-color: #B79504;}
+
+/*******************************************************************************
+ *                             Noticies                                        *
+ ******************************************************************************/
+.noticies div#page-title-reg{border-color:#71A956;}
+.noticies #breadcrumb {background-color: #E3EEDF;}
+.noticies #main-content a {color: #32701D;}
+
+.noticies .item-list ul.pager {
+    background-color:#E3EEDF;
+    border-bottom-color: #71A956;
+}
+.noticies .item-list ul.pager li.pager-current  {background-color:#71A956;}
+.noticies .item-list ul.pager li.pager-first:hover,
+.noticies .item-list ul.pager li.pager-previous:hover,
+.noticies .item-list ul.pager li.pager-item:hover,
+.noticies .item-list ul.pager li.pager-next:hover,
+.noticies .item-list ul.pager li.pager-last:hover {background-color: #32701D;}
+
+.noticies .comment-submitted a {color: #71A956;}
+.noticies #comments-title, .noticies #comments  h2.box-title {background-color: #71A956;}
+.noticies .comment .comment-links ul li a {background-color: #71A956;}
+.noticies #comments input[type=submit]{background-color: #71A956;}
+.noticies #comments .box-content {background-color: #E3EEDF;}
+.noticies .comment-content {border-color: #E3EEDF;}
+.noticies .comment {background-color: #E3EEDF;color: #32701D;}
+.noticies .comment-submitted {background-color: #E3EEDF;color: #32701D;}
+.noticies #comments input[type=submit]:hover{background-color: #32701D;}
+.noticies .comment .comment-links a:hover {background-color: #32701D;}
+
+/*******************************************************************************
+ *                                 Agenda                                      *
+ ******************************************************************************/
+.agenda div#page-title-reg{border-color:#ABB22F;}
+.agenda #sidebar-right h2.block-title , .agenda .node-terms h2, .agenda .legend, .agenda a.tornar{background-color: #ABB22F;}
+.agenda #main-content a , .agenda #sidebar-right a {color: #5A6205;}
+.agenda #breadcrumb, .agenda #sidebar-right div.block-content, .agenda div.node-terms {background-color:#EAECCB;}
+
+.agenda .item-list ul.pager {
+    background-color:#EAECCB;
+    border-bottom-color: #ABB22F;
+}
+.agenda .item-list ul.pager li.pager-current  {background-color:#ABB22F;}
+.agenda .item-list ul.pager li.pager-first:hover,
+.agenda .item-list ul.pager li.pager-previous:hover,
+.agenda .item-list ul.pager li.pager-item:hover,
+.agenda .item-list ul.pager li.pager-next:hover,
+.agenda .item-list ul.pager li.pager-last:hover {background-color: #5A6205;}
+
+.agenda .comment-submitted a {color: #ABB22F;}
+.agenda #comments-title, .agenda #comments  h2.box-title {background-color: #ABB22F;}
+.agenda .comment .comment-links ul li a {background-color: #ABB22F;}
+.agenda #comments input[type=submit]{background-color: #ABB22F;}
+.agenda #comments .box-content {background-color: #EAECCB;}
+.agenda .comment-content {border-color: #EAECCB;}
+.agenda .comment {background-color: #EAECCB;color: #5A6205;}
+.agenda .comment-submitted {background-color: #EAECCB;color: #5A6205;}
+.agenda #comments input[type=submit]:hover{background-color: #5A6205;}
+.agenda .comment .comment-links a:hover {background-color: #5A6205;}
+
+/*******************************************************************************
+ *                              Finansament                                    *
+ ******************************************************************************/
+.financament div#page-title-reg{border-color:#F57310;}
+.financament #sidebar-right h2.block-title , .financament .node-terms h2, .financament .legend, .financament a.tornar{background-color: #F57310;}
+.financament #main-content a , .financament #sidebar-right a {color: #C80200;}
+.financament #breadcrumb, .financament #sidebar-right div.block-content, .financament div.node-terms {background-color:#FDE3CF;}
+
+.financament .item-list ul.pager {
+    background-color:#FDE3CF;
+    border-bottom-color: #F57310;
+}
+.financament .item-list ul.pager li.pager-current  {background-color:#F57310;}
+.financament .item-list ul.pager li.pager-first:hover,
+.financament .item-list ul.pager li.pager-previous:hover,
+.financament .item-list ul.pager li.pager-item:hover,
+.financament .item-list ul.pager li.pager-next:hover,
+.financament .item-list ul.pager li.pager-last:hover {background-color: #C80200;}
+
+.financament .comment-submitted a {color: #F57310;}
+.financament #comments-title, .financament #comments  h2.box-title {background-color: #F57310;}
+.financament .comment .comment-links ul li a {background-color: #F57310;}
+.financament #comments input[type=submit]{background-color: #F57310;}
+.financament #comments .box-content {background-color: #FDE3CF;}
+.financament .comment-content {border-color: #FDE3CF;}
+.financament .comment {background-color: #FDE3CF;color: #C80200;}
+.financament .comment-submitted {background-color: #FDE3CF;color: #C80200;}
+.financament #comments input[type=submit]:hover{background-color: #C80200;}
+.financament .comment .comment-links a:hover {background-color: #C80200;}
+
+/*******************************************************************************
+ *                              Recursos                                       *
+ ******************************************************************************/
+
+.recursos div#page-title-reg{border-color:#005EA7;}
+.recursos #sidebar-right h2.block-title , .recursos .node-terms h2, .recursos .legend, .recursos a.tornar{background-color: #005EA7;}
+.recursos #main-content a , .recursos #sidebar-right a {color: #00236D;}
+.recursos #breadcrumb, .recursos #sidebar-right div.block-content, .recursos div.node-terms {background-color:#EDF4F9;}
+
+.recursos .item-list ul.pager {
+    background-color:#EDF4F9;
+    border-bottom-color: #005EA7;
+}
+.recursos .item-list ul.pager li.pager-current  {background-color:#005EA7;}
+.recursos .item-list ul.pager li.pager-first:hover,
+.recursos .item-list ul.pager li.pager-previous:hover,
+.recursos .item-list ul.pager li.pager-item:hover,
+.recursos .item-list ul.pager li.pager-next:hover,
+.recursos .item-list ul.pager li.pager-last:hover {background-color: #00236D;}
+
+.recursos .comment-submitted a {color: #005EA7;}
+.recursos #comments-title, .recursos #comments  h2.box-title {background-color: #005EA7;}
+.recursos .comment .comment-links ul li a {background-color: #005EA7;}
+.recursos #comments input[type=submit]{background-color: #005EA7;}
+.recursos #comments .box-content {background-color: #EDF4F9;}
+.recursos .comment-content {border-color: #EDF4F9;}
+.recursos .comment {background-color: #EDF4F9;color: #00236D;}
+.recursos .comment-submitted {background-color: #EDF4F9;color: #00236D;}
+.recursos #comments input[type=submit]:hover{background-color: #00236D;}
+.recursos .comment .comment-links a:hover {background-color: #00236D;}
+
+/*******************
+* Altres
+*********************/
+.recuros-votacio{
+	overflow:hidden;
+	padding:2px;
+	padding:2px;
+}
+
+.event-data{
+	overflow:hidden;
+	padding:2px;
+	padding:2px;
+	margin-top:-5px;
+}
+
+div#LikePluginPagelet iframe{
+	width:150px;
+}
+
+

@@ -1,0 +1,17 @@
+<div id="search">
+<form action="<?php echo base_path(); ?>cerca/build" method="get" name="searchform">
+  <fieldset>
+    <legend><span class="legend"><?php print t(utf8_encode("Cercador"))?></span></legend>
+    <div class="field">
+    <label for="txtTerms"><?php print t(utf8_encode("Paraula(s) a cercar"))?></label>
+    <input class="i_text" type="text" id="txtTerms" name="searchterm" value="" />
+    </div>
+    <div class="actions">
+    <input class="i_image" type="image" src="<?php echo  base_path() . path_to_theme();?>/img/hdr_search.gif" alt="Cercar" title="Cercar" />
+    </div>
+  </fieldset>
+</form>
+  <div class="extras">
+    <a class="advsearch" href="#" onClick="document.searchform.submit()"><?php print t(utf8_encode("Cerca avançada"))?></a>
+  </div>
+</div> <!-- #search -->

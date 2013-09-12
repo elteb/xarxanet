@@ -1,0 +1,486 @@
+
+#main-content {
+	CLEAR: both;
+}
+
+#genesis-1c #sidebar-right {
+	border:0px solid yellow;
+	margin-left:0;
+}
+
+
+#content-column {
+	border:0px solid navy;
+	width:780px;
+	float:left;
+}
+
+
+.content-inner {
+	margin-right:0;
+	width:100%;
+	border: 0px solid red;
+}
+
+.cultural {
+	border:0px solid green;
+}
+.comunitari {
+	border:0px solid pink;
+}
+
+.general {
+
+	vertical-align:top;
+
+}
+.view-cuadricula {
+border:0px solid red;
+}
+
+.node-content UL{list-style-position:outside;}
+
+.node-column-text { width:473px; float:left !important; }
+
+#comments #edit-preview {
+    margin-top: 0 !important;
+}
+
+#comments { margin-right:14px; }
+
+#Footer-Xarxes LI { margin: 15px 8px 0 0; }
+#Footer-Projecte LI { margin: 15px 8px 0 0; }
+
+
+
+
+#Barras ul li {
+	border-left:2px solid white;
+	margin:0;
+	padding:0 5px;
+}
+#Barras ul li:first-child {
+	border-left:none;
+	padding-left:0px;
+}
+
+.li-right {
+		border-left:2px solid white !important;
+}
+
+.li-registre {
+		border-left:none !important;
+
+}
+
+
+#Footer {
+    background-color: #B7CBD1;
+    background-image: url("http://xarxanet.org/sites/all/themes/genesis/genesis_xarxanet/images/background-footer.gif");
+    background-position: center top;
+    background-repeat: repeat-x;
+    float: left;
+    height: 150px;
+    margin: 15px auto 0;
+    position: relative;
+    width:auto !important;
+}
+
+#container {
+
+overflow: hidden !important;
+min-width:980px;
+}
+
+
+#comments .form-item textarea {
+width:420px;
+}
+
+.item-list ul.pager {
+width: 750px;
+}
+
+ul.linksrelacionats li {
+    float: none;
+    list-style: square outside none;
+    margin-left: 18px;
+line-height: 1 !important;
+    vertical-align: top !important;
+}
+
+/*.form-item{
+	border:0px solid green;
+clear:both;
+}*/
+
+/*div.form-item input{
+	display:inline;
+	*display:inline;
+	zoom:1;
+}*/
+
+.form-checkboxes {
+	clear:both;
+}
+
+.form-radios {
+    width:200px !important;
+}
+
+#edit-submitted-avis-check-1-wrapper label, #edit-submitted-avis-check-2-wrapper label {
+    width:60px !important;
+}
+
+#webform-component-avis-check label {
+    width:180px !important;
+}
+
+.form-submit {clear:both;}
+
+#edit-name-wrapper label, #edit-mail-wrapper label, #edit-homepage-wrapper label {
+    width:120px !important;
+    display:inline !important;
+}
+
+#edit-name-wrapper input, #edit-mail-wrapper input, #edit-homepage-wrapper input {
+    display:inline !important;
+    margin:0 !important;
+    zoom:1;
+    margin-top:-26px !important;
+}
+
+div.form-item, div.webform-component.webform-component-textfield {
+    width:100%;
+    margin:0;
+    margin-top: 1em;
+}
+.form-item label {
+	display:block !important;
+	width:350px !important;
+	border:0px solid silver;
+	float:left;
+	}
+
+html {
+overflow-x: hidden;
+}
+    
+
+input.form-text {
+	clear:left;
+    display:block;
+}
+
+.resizable-textarea {
+    width:780px;
+    clear:both;
+}
+
+.form-textarea{
+    width:770px !important;
+    margin:0;padding:0;
+    margin-left:-20px;
+
+}
+
+textarea#edit-comment {
+    width:400px !important;
+}
+
+.resizable-textarea .grippie {
+    margin-left:-20px;
+}
+
+#webform-component-avis-check {
+display:inline;
+    }
+
+#edit-submitted-consulta {width:500px;}
+	
+#webform-component-has-utilitzat-altres-vegades-els-serveis-dassessorament {
+	clear:both;
+	width:500px;
+}
+
+.container-inline-date.date-clear-block{
+	display:inline;
+width:200px;
+
+}
+
+.container-inline-date .form-item, .container-inline-date .form-item input{
+
+width:150px;
+
+}
+
+.container-inline-date.date-clear-block label{
+zoom:1;
+width:150px;
+
+}
+
+
+.container-inline-date label {
+	width:80px !important;
+}
+
+#CCK_Mapa {
+	display:none;
+}
+
+.projectes a:hover {
+	color:#E39595 !important;
+}
+.comunitari a:hover {
+	color:#F4BC44 !important;
+}
+.social a:hover {
+	color:#EB9DE3 !important;
+}
+.ambiental a:hover {
+	color:#8FBD7F !important;
+}
+.internacional a:hover {
+	color:#A75387 !important;
+}
+
+.juridic a:hover {
+	color:#62AEC4 !important;
+}
+
+.economic a:hover {
+	color: #D1B91A !important;
+}
+
+.economic .label a:hover {
+	color: #00236D !important;
+}
+
+.cultural a:hover {
+	color: #959FD6 !important;
+	}
+.formacio a:hover {
+color: #C09158 !important;
+}
+
+.informatic a:hover {
+	color:#9B8CD2 !important;
+}
+
+.portada {
+overflow: hidden; 
+width:980px;
+}
+
+fieldset {
+    border:1px solid #DADADA;
+    margin:1.5em 0;
+    padding:0.75em;
+}
+
+.block-content a {
+font-size: 16px; 
+}
+
+.node-column-images ul, .node-column-images ul li {
+clear: left !important;
+margin:0;
+width: 200px;
+}
+
+#container {
+overflow: hidden !important;
+}
+
+
+#edit-name-wrapper label {
+margin-bottom: 9px !important;
+padding-bottom: 9px !important;
+clear:both !important; 
+display: block;
+min-height: 30px !important;
+}
+
+#edit-mail-wrapper label {
+min-width: 300px;
+margin-bottom: 9px !important;
+padding-bottom: 9px !important;
+clear:both !important; 
+display: block;
+min-height: 30px !important;
+}
+
+.form-required {
+display: inline;
+vertical-align: top;
+margin-top: -15px !important;
+text-align: right !important;  
+}
+
+#edit-submitted-nom-wrapper .form-required {
+width: 18px !important;
+}
+
+#edit-submitted-cognoms-wrapper .form-required {
+margin-left: -82px !important;
+}
+
+
+#edit-submitted-correu-wrapper .form-required {
+width: 31px !important;
+}
+
+#webform-component-assumpte .form-required {
+width: 49px !important;
+}
+
+#edit-submitted-consulta-wrapper .form-required {
+width: 40px !important;
+}
+
+#edit-submitted-telefon-wrapper .form-required {
+width: 33px !important;
+}
+
+#edit-submitted-municipi-wrapper .form-required {
+width: 38px !important;
+}
+
+#webform-component-tema-de-la-consulta .form-required {
+width: 110px !important;
+}
+
+#edit-submitted-com-ens-has-conegut-wrapper .form-required {
+width: 120px !important;
+}
+
+#edit-submitted-com-ens-has-conegut-wrapper {
+
+margin-bottom: 10px;
+
+}
+
+#webform-component-avis-check .form-required {
+
+width: 164px !important;
+
+
+}
+
+#edit-submitted-telefon-wrapper .form-required {
+width: 33px !important;
+}
+
+#edit-name-wrapper .form-required {
+
+width: 65px !important;
+
+
+}
+
+#edit-legal-accept-wrapper .form-required {
+
+width: 120px !important;
+
+
+}
+
+#comment-form #edit-name-wrapper {
+clear:both;
+}
+
+.box-inner .form-required {
+display: none;
+
+}
+
+#comments .description {
+
+padding: 0;
+margin: 0;
+width: 300px;
+padding-left: 125px;
+
+}
+
+#comments .form-item input {
+margin-top: 5px !important;
+}
+
+#edit-homepage-wrapper {
+position: relative;
+margin: 0;
+padding: 0;
+}
+
+#edit-homepage {
+
+top: 0px;
+
+}
+
+
+#recurs-economic a:hover {
+color: #D1B91A !important; 
+}
+	
+.recurs-informatic a:hover {
+	color: #9B8CD2 !important;
+}
+
+
+.recurs-juridic a:hover {
+	color: #62AEC4 !important;
+}
+
+
+
+.portada-superior-dreta a:hover {
+	color: #71A956 !important;
+}
+
+.recurs-projectes a:hover {
+	color: #E39595 !important;
+}
+
+#node-89 .portada-superior-dreta a:hover {
+	 color: black !important;
+}
+
+#node-213 #recurs-juridic a:hover {
+		color: #62AEC4 !important;
+}
+
+#node-21929 #financament-premis a:hover {
+	color: #CB2390 !important;
+	}
+
+#node-21929 #financament-subvencio a:hover {
+	color: #CB2390 !important;
+	}
+	
+	#node-21929 #financament-beques a:hover {
+	color: #BD523E !important;
+	}
+	
+	#node-21929 #financament-altres a:hover {
+	color: #D62405 !important;
+	}
+	
+.page-node-121 .node-content a:hover {
+	color: #959FD6 !important;
+	}
+	
+#node-122 .node-content a:hover {
+	color: #F4BC44 !important;
+	}
+	
+.social #content a:hover {
+	color: #EB9DE3 !important;
+}
+
+.page-node-123 #content a:hover {
+	color: 	#A75387 !important;
+	}

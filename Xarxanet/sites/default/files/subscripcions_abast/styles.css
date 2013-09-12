@@ -1,0 +1,87 @@
+.siempreEnlace p{ 
+	text-align: justify;
+}
+
+.planaText1 p {
+	margin: 18px 0;
+    text-align: justify;
+}
+
+.planaText1 h3 {
+	padding: 0 !important;
+	margin: 20px 0 10px !important;
+}
+
+img.year_icon {
+    float: right;
+    margin-right: 2px;
+    margin-top: 4px;
+}
+
+#newsletters {
+	margin-top: 10px;
+}
+
+#content-main {
+	margin-left: 10px !important;
+}
+
+#content-main ul {
+	margin: 0 !important;
+}
+
+.year {
+    padding: 5px;
+	margin-bottom: 10px;
+}
+
+.year_title {
+	font-weight: bold;
+	color: #4D4D4D;
+	cursor: pointer;
+}
+
+.year_list {
+	display: none;
+}
+
+.currentYear {
+	display: block;
+}
+
+
+/* FORMULARIS */
+
+#warningzone {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.field {
+	font-size: 12px;
+	font-weight: bold;
+	padding-right: 5px;
+}
+
+.fieldinfo {
+	font-size: 10px;
+	padding-bottom:10px;
+}
+
+.lopdtext {
+	margin: 5px;
+}
+
+.realperson-challenge {
+    width: 200px;
+	margin: 15px 0;
+}
+
+.realperson-regen {
+	font-size: 11px !important;
+	padding-top: 0px !important;
+}
+
+.captchatext {
+	margin: 5px 0;
+}

@@ -1,0 +1,36 @@
+
+
+Leeme.txt
+
+How To: Crear un mapa
+
+
+    $mapa = array(
+    'id' => "Mapa",           // id attribute for the map
+    'width' => "100%",        // map width in pixels or %
+    'height' => "400px",      // map height in pixels
+    'latitude' => 41.386903,  // map center latitude
+    'longitude' => 2.175164,  // map center longitude
+    'zoom' => 13,             // zoom level
+    'maxzoom' =>  13,         // Maximum zoom level for autozoom.
+    'behavior' => array(      // Various map behavior flags.
+      'autozoom' => true
+     ),   
+    
+    'markers' => array(
+      array(
+        'marker' => "blue",
+        'latitude' => 41.386903,
+        'longitude' => 2.175164,
+        'text' => 'First Marker'
+      ),
+      array(
+        'marker' => "gray",
+        'latitude' => 41.386903,
+        'longitude' => 2.185164,
+        'text' => '<b>Second</b> Marker'
+      )
+    )
+  );
+
+ return ekigmaps_create_map($mapa);

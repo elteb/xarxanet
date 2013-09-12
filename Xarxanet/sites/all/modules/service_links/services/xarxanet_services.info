@@ -1,0 +1,7 @@
+; $Id:
+name = "Xarxanet Services"
+description = "Provide the Services: Flinkin, Diigo"
+core = "6.x"
+package = Service Links
+dependencies[] = service_links
+

@@ -1,0 +1,370 @@
+<?php
+// $Id$
+/**
+*/
+
+function aux_functions_nodeapi(&$node, $op, $teaser, $page) {
+
+switch ($op) 
+	{
+		// The 'view' operation means the node is about to be displayed.
+		case 'validate':
+    
+			  if(substr($node->type,0,6)=="recurs")
+			  {
+					
+					$continguts=0;
+					$subtitols=0;
+					foreach($node->field_continguts as $contingut)
+					{
+						if($contingut['value']!="")
+						{
+							$continguts++;
+						}
+					}
+					foreach($node->field_subtitols as $subtitol)
+					{
+						if($subtitol['value']!="")
+						{
+							$subtitols++;
+						}
+					}
+					
+					
+					if($continguts!=$subtitols)
+					{
+						form_set_error("error", t("El n&uacute;mero de subtitols i el n&uacute;mero de continguts ha de ser igual"), FALSE);
+					}
+				
+			 }
+		break;
+		
+		case 'update':
+		case 'submit':
+			
+      if($node->field_dpp[0]['value']=="Destacat principal a portada"){
+        global $user;
+        $usuario = $user->name;
+        $uid = $user->uid;
+        $nid = $node->nid;
+        $printed = print_r($node,TRUE);
+      }
+      
+      
+      $node_ant = node_load($node->nid);
+      if($node_ant->created!=$node->created){
+        global $user;
+        $usuario = $user->name;
+        $uid = $user->uid;
+        $nid = $node->nid;
+        $printed = print_r($node,TRUE);
+      }
+			
+			if((substr($node->type,0,7)=="noticia") || (substr($node->type,0,6)=="recurs"))
+			{
+				
+				if($node->status==0)
+				{
+					$node->field_dpp[0]['value']="No destacat principal a portada";
+					$node->field_dsp[0]['value']="No destacat secundari a portada";
+					$node->field_dpp_portal[0]['value']="No destacat principal portal";
+					$node->field_dsp_portal[0]['value']="No destacat secundari portal";
+				}
+				else
+				{
+				
+					if($node->field_dpp[0]['value']=="Destacat principal a portada")
+					{
+						$query = "Select n.nid from content_field_dpp cfdpp, node n 
+									where cfdpp.nid = n.nid "; 
+						
+						//if((substr($node->type,0,7)=="noticia")){
+						//	$query .= " AND SUBSTR(n.type,1,7)  = 'noticia' " ;
+						//}else{
+						//	$query .= " AND SUBSTR(n.type,1,6)  = 'recurs' " ;
+						//}
+						$query .= " AND (SUBSTR(n.type,1,7)  = 'noticia'  OR SUBSTR(n.type,1,6)  = 'recurs') " ;
+						
+						// RR 17-01-2012
+						$query2 = $query." AND cfdpp.field_dpp_value = 'Destacat principal a portada' AND n.vid = cfdpp.vid ORDER BY n.changed DESC";
+						$result2 = db_query($query2);
+						while($row2 = db_fetch_array($result2))
+						{
+							$ids[] = $row2["nid"];							
+						}						
+						$query .= " AND cfdpp.field_dpp_value = 'Destacat principal a portada' AND n.vid = cfdpp.vid ORDER BY n.changed DESC LIMIT 1,1";
+						$result = db_query($query);
+						//
+						while($row = db_fetch_array($result))
+						{
+							$id = $row["nid"];							
+							if(!in_array($node->nid,$ids)){							
+								$node_temp = node_load($id, null, true);
+								$node_temp->field_dpp[0]['value'] = 'No destacat principal a portada';
+								node_save($node_temp);		
+							}								
+							//db_query($query);
+							//drupal_set_message("Se hubiera modificado el id $id");
+							
+						}
+						
+					}
+					if($node->field_dsp[0]['value']=="Destacat secundari a portada")
+					{							
+						$query = "Select n.nid from content_field_dsp cfdsp, node n 
+									where cfdsp.nid = n.nid ";
+						
+						if((substr($node->type,0,7)=="noticia")){
+							$query .= " AND SUBSTR(n.type,1,7)  = 'noticia' " ;
+						}else{
+							$query .= " AND SUBSTR(n.type,1,6)  = 'recurs' " ;
+						}
+						$query .= " AND cfdsp.field_dsp_value = 'Destacat secundari a portada' AND n.vid = cfdsp.vid ORDER BY n.changed DESC";
+						
+						$result = db_query($query);
+						$i = 1;
+						
+						if (substr($node->type,0,6)=="recurs")
+						{
+							$i=-4;
+						}
+						
+						while($row = db_fetch_array($result))
+						{
+							$id = $row["nid"];
+							if($node->nid != $id)
+							{
+								
+								if($i>1)
+								{	
+									//$query = "UPDATE content_field_dsp SET field_dsp_value = 'No destacat secundari a portada' WHERE nid=$id";
+									//db_query($query);
+									$node_temp = node_load($id, null, true);
+									$node_temp->field_dsp[0]['value'] = 'No destacat secundari a portada';
+									node_save($node_temp);
+								}
+								else
+								{	
+										$i++;
+								}
+							}
+							//drupal_set_message("Se hubiera modificado el id $id");
+						}
+					}
+					if($node->field_dpp_portal[0]['value']=="Destacat principal portal")
+					{
+						
+						$type = $node->type;
+						$query = "Select n.nid from content_field_dpp_portal cfdpp_portal, node n 
+									where cfdpp_portal.nid = n.nid 
+										AND n.type  = '$type' 
+										AND cfdpp_portal.field_dpp_portal_value = 'Destacat principal portal' 
+                    AND n.vid = cfdpp_portal.vid ORDER BY n.changed DESC";
+						$result = db_query($query);
+						
+						while($row = db_fetch_array($result))
+						{
+							
+								$id = $row["nid"];
+								//$query = "UPDATE content_field_dpp_portal SET field_dpp_portal_value = 'No destacat principal portal' WHERE nid=$id";
+							if($id != $node->nid){
+								//db_query($query);
+								$node_temp = node_load($id, null, true);
+								$node_temp->field_dpp_portal[0]['value'] = 'No destacat principal portal';
+								node_save($node_temp);
+							}
+							
+						}
+
+					}
+					if($node->field_dsp_portal[0]['value']=="Destacat secundari portal")
+					{							
+						$type = $node->type;
+						$query = "Select n.nid from content_field_dsp_portal cfdsp_portal, node n 
+										where cfdsp_portal.nid = n.nid 
+											AND n.type  = '$type' 
+											AND cfdsp_portal.field_dsp_portal_value = 'Destacat secundari portal' 
+                      AND n.vid = cfdsp_portal.vid
+											ORDER BY n.changed DESC";
+						
+						$result = db_query($query);
+						$i = 1;
+						
+						while($row = db_fetch_array($result))
+						{
+							$id = $row["nid"];
+							if($node->nid != $id)
+							{
+								if($i>1)
+								{	
+									//$query = "UPDATE content_field_dsp_portal SET field_dsp_portal_value = 'No destacat secundari portal' WHERE nid=$id";
+									//db_query($query);
+									$node_temp = node_load($id, null, true);
+									$node_temp->field_dsp_portal[0]['value'] = 'No destacat secundari portal';
+									node_save($node_temp);
+								}
+								else
+								{	
+										$i++;
+								}
+							}
+						}
+					}
+				}
+			}
+			break;
+    case 'prepare':
+      // echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
+      if($node->type=="event"){
+        drupal_set_message("Aquest formulari no es compatible amb navegadors anteriors a l'Explorer 8. Si feu servir un navegador antic el formulari no s'enviarà correctament.","warning");
+		drupal_set_message("Completa el següent formulari amb la informació imprescindible de l’acte o curs que organitzeu. Un cop guardat, validarem el contingut. En menys de 48 hores el teu acte serà publicat.","warning");
+      }
+      //$browser = get_browser(null);
+      //krumo($browser);
+      break;
+	}		
+}
+
+
+function aux_functions_theme() {
+  return array(
+    'sidebar_noticia' => array(
+      'template' => $base_path.path_to_theme().'sidebar_noticia',
+	  'arguments' => array(
+		'autor' => null,
+		'imatges' => null, 
+		'links' => null,
+		'entitats' => null,
+		'tags_relacionats'=>null,
+		'entitat_redactora'=>null,
+		'nodenid' => null,
+      ),
+    ),
+	'noticia' => array(
+      'template' => $base_path.path_to_theme().'noticia',
+	  'arguments' => array(
+		'terms' => null, 
+		'imatge_petita' => null, 
+		'imatge_petita_alt' => null, 
+		'resum' => null, 
+		'contingut' => null, 
+		'autor' => null, 
+		'imatges' => null, 
+		'unpublished' => null, 
+		'links' => null,
+		'service_links' => null, 
+		'entitats' => null,
+		'data_modificada' => null,
+		'adjunts'=>null,		
+		
+      ),
+    ),
+	'recurs' => array(
+      'template' => $base_path.path_to_theme().'recurs',
+	  'arguments' => array(
+		'terms' => null, 
+		'imatge_petita' => null, 
+		'imatge_petita_alt' => null, 
+		'imatges' => null,		
+		'resum' => null, 
+		'titols' => null, 
+		'continguts' => null, 
+		'autor' => null, 
+		'enllacos' => null, 
+		'unpublished' => null, 
+		'links' => null,
+		'service_links' => null, 
+		'votacio' => null, 
+		
+      ),
+    ),
+	'sidebar_recurs' => array(
+      'template' => $base_path.path_to_theme().'sidebar-recurs',
+	  'arguments' => array(
+		'autor' => null,
+		'enllacos' => null, 
+		'links' => null,
+		'votacio' => null, 
+		'imatges' => null,	
+		'tags_relacionats'=>null,
+    'entitat_redactora'=>null,
+	'nodenid' => null,
+      ),
+    ),
+	'event' => array(
+      'template' => $base_path.path_to_theme().'event',
+	  'arguments' => array(
+		'terms' => null, 
+		'imatge_petita' => null, 
+		'imatge_petita_alt' => null, 
+		'resum' => null, 
+		'contingut' => null, 
+		'unpublished' => null, 
+		'links' => null,
+		'service_links' => null, 
+		'ambits' => null,
+		'data' => null,
+		'organitzador' => null,
+		'adreca_org' => null,
+		'adreca' => null,
+		'ciutat' => null,
+		'telefon' => null,
+		'web' => null,
+		'correu' => null,
+		'tipus'=> null,
+		'mapa' => null,
+    'enllac' => null,
+    'facebook' => null,
+    'twitter' => null,
+      ),
+    ),
+	'sidebar_event' => array(
+      'template' => $base_path.path_to_theme().'sidebar_event',
+	  'arguments' => array(
+		'adreca' => null,	
+		'organitzador' => null,
+		'ambits' => null,
+		'mapa' => null,
+		'links' => null,
+      ),
+    )
+	);
+
+}
+
+function aux_functions_menu(){
+  $items = array();
+  $items['user/%user/content'] = array(
+    'title' => 'Create Content',
+    'page callback' => '_aux_functions_user_content_page',
+    'access callback' => TRUE,
+    'weight' => 23,
+    'type' => MENU_LOCAL_TASK,
+  );  
+  return $items;
+}
+
+function _aux_functions_user_content_page(){
+   $output = '<p>Des d\'aquesta pàgina podeu accedir a la creació de nous contiguts per al portal de xarxanet.org. A continuació se us mostra el llistat dels diferents events o informació que podeu introduïr:</p>';
+   $item = menu_get_item('node/add');
+   $menu_children = system_admin_menu_block($item);
+
+   // Just out put it what ever the way you wanted.
+   foreach ($menu_children as $child) {
+      $output .= '<dl class="node-type-list">';
+      //$output .= "<dt><a href='" . $child['link_path'] . "'>".  t($child['title']) .'</a></dt>';
+      $output .= "<dt>".l(t($child['title']),$child['link_path'])."</dt>";
+	  $output .= '<dd>'. $child['description'] .'</dd>';
+      $output .= '</dl>';
+   }
+
+   return $output;
+    //return "Hello";
+}
+
+function aux_functions_menu_alter(&$items){
+   $items['user/%user/view']['title'] = t('Profile');
+   $items['user/%user_category/edit']['title'] = t('Edit my profile');
+}
+
+

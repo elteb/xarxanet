@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/xarxanet/!svn/ver/33/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node
+END
+node-feed_juridic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_juridic.tpl.php
+END
+node-recurs_juridic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-recurs_juridic.tpl.php
+END
+node-feed_portada.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_portada.tpl.php
+END
+node-feed_cultural.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_cultural.tpl.php
+END
+node-feed_informatic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_informatic.tpl.php
+END
+node-recurs_informatic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-recurs_informatic.tpl.php
+END
+node-recurs_economic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-recurs_economic.tpl.php
+END
+node-feed_ambiental.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_ambiental.tpl.php
+END
+node-feed_economic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_economic.tpl.php
+END
+node-noticia_comunitari.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_comunitari.tpl.php
+END
+node-noticia_internacional_ang.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_internacional_ang.tpl.php
+END
+node-feed_projectes.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_projectes.tpl.php
+END
+node-recurs_projectes.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-recurs_projectes.tpl.php
+END
+node-event.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/xarxanet/!svn/ver/32/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-event.tpl.php
+END
+node-recurs_formacio.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-recurs_formacio.tpl.php
+END
+node-feed_formacio.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_formacio.tpl.php
+END
+node-feed_social.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_social.tpl.php
+END
+node-noticia_informatic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_informatic.tpl.php
+END
+node-noticia_cultural.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_cultural.tpl.php
+END
+node-noticia_economic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_economic.tpl.php
+END
+node.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/xarxanet/!svn/ver/20/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node.tpl.php
+END
+node-noticia_formacio.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_formacio.tpl.php
+END
+node-financament_full.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/xarxanet/!svn/ver/33/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-financament_full.tpl.php
+END
+node-feed_internacional.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_internacional.tpl.php
+END
+node-noticia_social.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_social.tpl.php
+END
+node-noticia_internacional_cat.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_internacional_cat.tpl.php
+END
+node-noticia_general.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_general.tpl.php
+END
+node-noticia.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/xarxanet/!svn/ver/31/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia.tpl.php
+END
+node-feed_comunitari.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed_comunitari.tpl.php
+END
+node-noticia_juridic.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_juridic.tpl.php
+END
+node-recurs_general.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-recurs_general.tpl.php
+END
+node-noticia_ambiental.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_ambiental.tpl.php
+END
+node-recurs.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/xarxanet/!svn/ver/28/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-recurs.tpl.php
+END
+node-noticia_internacional_esp.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_internacional_esp.tpl.php
+END
+node-feed.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-feed.tpl.php
+END
+node-noticia_projectes.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/xarxanet/!svn/ver/27/trunk/sites/all/themes/genesis/genesis_xarxanet/templates/node/node-noticia_projectes.tpl.php
+END

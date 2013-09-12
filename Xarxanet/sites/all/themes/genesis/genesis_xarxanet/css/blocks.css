@@ -1,0 +1,773 @@
+/* $Id: blocks.css,v 1.1.2.21 2009/06/12 15:44:26 jmburnz Exp $ */
+
+/**
+ * @file blocks.css
+ * Basic styles for blocks.
+ */
+
+/**********************************************************
+ *                       Blocks
+ **********************************************************/
+/**
+ * Styles set for .block, .block-inner, block-title and 
+ * .block-content will be inherited by all blocks.
+ */
+.block {
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+.block-inner   {} /* Block inner div */
+.block-title   {} /* h2 block title */
+.block-content {} /* Block content wrapper */
+
+
+/**********************************************************
+ *                   Sidebar blocks
+ **********************************************************/
+/**
+ * You can target blocks in one or more regions and 
+ * style them differently. 
+ */
+/* Low specifity selector to style blocks in both sidebars. */
+.sidebar .block {}
+.sidebar .block h2 {}
+.sidebar .block-inner {}
+.sidebar .block .block-content {}
+
+/* Low specifity selector to style blocks in all regions. */
+.region .block {}
+.region .block h2 {}
+.region .block-inner {}
+.region .block .block-content {}
+
+/* High specifity selectors to style blocks in one sidebar. */
+#sidebar-left .block {}
+#sidebar-left .block h2 {}
+#sidebar-left .block-inner {}
+#sidebar-left .block .block-content {}
+
+#sidebar-right .block {}
+#sidebar-right .block h2 {}
+#sidebar-right .block-inner {}
+#sidebar-right .block .block-content {}
+
+
+/**********************************************************
+ *                  Region blocks
+ **********************************************************/
+/* High specifity selectors to style blocks in one region. */
+#leaderboard       .block {}
+#header-blocks     .block {}
+#secondary-content .block {}
+#tertiary-content  .block {}
+#content-top       .block {}
+#content           .block {}
+#content-bottom    .block {}
+#footer            .block {}
+
+
+/**********************************************************
+ *                   Module blocks
+ **********************************************************/
+/**
+ * Module Block ID's 
+ * For contributed module blocks the pattern is the same,
+ * i.e. #block-[module]-[delta]
+ */
+#block-book-0       {} /* Book navigation block   */
+#block-blog-0       {} /* Recent Blog posts       */
+#block-comment-0    {} /* Recent Comments block   */
+#block-forum-0      {} /* Active Forum topics     */
+#block-forum-1      {} /* New Forum topics        */
+#block-locale-0     {} /* Language Switcher block */
+#block-node-0       {} /* Syndicate block         */
+#block-poll-0       {} /* Most recent poll        */
+#block-profile-0    {} /* Author information      */
+#block-search-0     {} /* Search form block       */
+#block-statistics-0 {} /* Popular content         */
+#block-system-0     {} /* Powered by Drupal       */
+#block-user-0       {} /* Login block             */
+#block-user-1       {} /* Navigation Menu block   */
+#block-user-2       {} /* Who's New block         */
+#block-user-3       {} /* Who's Online block      */
+
+/* Primary and Secondary links blocks */
+#block-menu-primary-links   {}
+#block-menu-secondary-links {}
+
+/* The class selector applies to all blocks of these types. */
+.block-user {} 
+.block-book {} 
+.block-aggregator {}
+
+
+/**********************************************************
+ *                 Search block form
+ **********************************************************/
+#search-block-form {}
+
+/* Wrapper divs. */
+#search-block-form > div {}
+#search-block-form .container-inline{}
+
+#search-block-form label {}
+#search-block-form input {}
+#search-block-form .form-item {}
+#search-block-form .form-submit {}
+#search-block-form #edit-search-block-form-1 {}
+
+/* Override forms.css focus style */
+#edit-search-block-form-1:hover,
+#edit-search-block-form-1:focus {}
+
+
+/**********************************************************
+ *                   Menu blocks
+ **********************************************************/
+/**
+ * Prefix these with the block id to style one menu only.
+ */
+ul.menu,
+ul.menu ul, 
+ul.menu ul ul, 
+ul.menu ul ul ul {
+  margin: 0 0 0 0.75em; /* LTR */
+  padding: 0;
+}
+
+/* Menu li styles */
+ul.menu li {
+  padding: 0.35em 0 0 0; /* LTR */
+}
+
+ul.menu li.collapsed {}
+ul.menu li.expanded  {}
+ul.menu li.leaf      {}
+
+ul.menu li a:link    {}
+ul.menu li a:hover   {}
+ul.menu li a:visited {}
+ul.menu li.active a  {}
+ul.menu li.active-trail {}
+
+ul.menu li.first {}
+ul.menu li.last  {}
+
+
+/**********************************************************
+ *                   Block item-list
+ **********************************************************/
+.block .item-list ul {
+  margin: 0;
+}
+.block .item-list ul li {}
+
+
+/**********************************************************
+ *                  Gpanel blocks
+ **********************************************************/
+/* Examples to get started. Add col specific selectors to style
+   blocks in different Gpanel columns, or element selectors to
+   style specific elements */
+.two-col-50 .block {}
+.two-col-50.with-nested .block {}
+.three-col-33 .block {}
+.four-col-25 .block {}
+
+
+/**********************************************************
+ *                Views Rotator Destacats
+ **********************************************************/
+#views-rotator-destacats-block_1  .views-rotator{
+    position:relative;
+    width:575px;
+    height:160px;
+    margin-bottom:20px;
+}
+#views-rotator-destacats-block_1 a:link,
+#views-rotator-destacats-block_1 a:visited,
+#views-rotator-destacats-block_1 a:active     {color:#FFF;text-decoration:none; font-weight:bold;}
+#views-rotator-destacats-block_1 a:hover      {color:#b2290c; text-decoration:underline; font-weight:bold;}
+#views-rotator-destacats-block_1 .imagefield-field_destacat_imatge {
+    float:left;
+    width: 360px;
+    height: 160px;
+    display: inline;
+}
+#views-rotator-destacats-block_1 .destacat-title-link {
+    padding-left: 370px;
+    padding-top: 10px;
+    width: 200px;
+    font-weight:normal;
+    font-size:12pt;
+}
+.view-rotator-menu .vr-shown {
+    background-color: #F00;
+}
+
+
+/**********************************************************
+ *                      Blocks
+ **********************************************************/
+
+ #sidebar-right h2.block-title {
+	margin-top:15px;/*margin-top:15px;*/
+	background-color:#B2290C;
+	border-bottom: 5px solid #FFFFFF;
+    color: #FFFFFF;
+    font-size: 11pt;
+    font-weight: normal;
+    padding: 5px 0 5px 10px;
+ }
+
+ #sidebar-right div.block-content{
+	background-color:#E8BEB6;
+	padding: 5px;
+ }
+
+ /**********************************************************
+ *                      Colors
+ **********************************************************/
+
+/*******************************************************************************
+ *                              Ambiental                                      *
+ ******************************************************************************/
+
+.ambiental div#page-title-reg{border-color:#8FBD7F;}
+.ambiental #breadcrumb{background-color: #DDEBD8;}
+.ambiental #main-content a, .ambiental #sidebar-right a {color: #3E7A2F;}
+.ambiental #sidebar-right h2.block-title {background-color: #8FBD7F;}
+.ambiental #sidebar-right div.block-content{background-color: #DDEBD8;}
+.ambiental div.node-terms {background-color: #DDEBD8;}
+.ambiental .node-terms h2, .ambiental .legend{background-color: #8FBD7F;}
+
+.ambiental .item-list ul.pager {
+    background-color:#DDEBD8;
+    border-bottom-color: #8FBD7F;
+}
+.ambiental .item-list ul.pager li.pager-current  {background-color:#8FBD7F;}
+.ambiental .item-list ul.pager li.pager-first:hover,
+.ambiental .item-list ul.pager li.pager-previous:hover,
+.ambiental .item-list ul.pager li.pager-item:hover,
+.ambiental .item-list ul.pager li.pager-next:hover,
+.ambiental .item-list ul.pager li.pager-last:hover {background-color: #3E7A2F;}
+
+/*******************************************************************************
+ *                              Comunitari                                     *
+ ******************************************************************************/
+
+.comunitari div#page-title-reg{border-color:#F4BC44;}
+.comunitari #breadcrumb{background-color: #FCEBC7;}
+.comunitari #main-content a, .comunitari #sidebar-right a {color: #DF6605;}
+.comunitari #sidebar-right h2.block-title {background-color: #F4BC44;}
+.comunitari #sidebar-right div.block-content{background-color: #FCEBC7;}
+.comunitari div.node-terms {background-color: #FCEBC7;}
+.comunitari .node-terms h2, .comunitari .legend{background-color: #F4BC44;}
+
+.comunitari .item-list ul.pager {
+    background-color:#FCEBC7;
+    border-bottom-color: #F4BC44;
+}
+.comunitari .item-list ul.pager li.pager-current  {background-color:#F4BC44;}
+.comunitari .item-list ul.pager li.pager-first:hover,
+.comunitari .item-list ul.pager li.pager-previous:hover,
+.comunitari .item-list ul.pager li.pager-item:hover,
+.comunitari .item-list ul.pager li.pager-next:hover,
+.comunitari .item-list ul.pager li.pager-last:hover {background-color: #DF6605;}
+
+/*******************************************************************************
+ *                              Cultural                                       *
+ ******************************************************************************/
+
+.cultural div#page-title-reg{border-color:#959FD6;}
+.cultural #breadcrumb{background-color: #DFE2F3;}
+.cultural #main-content a, .cultural #sidebar-right a {color: #4550A5;}
+.cultural #sidebar-right h2.block-title {background-color: #959FD6;}
+.cultural #sidebar-right div.block-content{background-color: #DFE2F3;}
+.cultural div.node-terms {background-color: #DFE2F3;}
+.cultural .node-terms h2, .cultural .legend{background-color: #959FD6;}
+
+.cultural .item-list ul.pager {
+    background-color:#DFE2F3;
+    border-bottom-color: #959FD6;
+}
+.cultural .item-list ul.pager li.pager-current  {background-color:#959FD6;}
+.cultural .item-list ul.pager li.pager-first:hover,
+.cultural .item-list ul.pager li.pager-previous:hover,
+.cultural .item-list ul.pager li.pager-item:hover,
+.cultural .item-list ul.pager li.pager-next:hover,
+.cultural .item-list ul.pager li.pager-last:hover {background-color: #4550A5;}
+
+/*******************************************************************************
+ *                              Social                                         *
+ ******************************************************************************/
+
+.social div#page-title-reg{border-color:#EB9DE3;}
+.social #breadcrumb{background-color: #F5F6FB;}
+.social #main-content a, .social #sidebar-right a {color: #D252C1;}
+.social #sidebar-right h2.block-title {background-color: #EB9DE3;}
+.social #sidebar-right div.block-content{background-color: #F5F6FB;}
+.social div.node-terms {background-color: #F5F6FB;}
+.social .node-terms h2, .social .legend{background-color: #EB9DE3;}
+
+.social .item-list ul.pager {
+    background-color:#F5F6FB;
+    border-bottom-color: #EB9DE3;
+}
+.social .item-list ul.pager li.pager-current  {background-color:#EB9DE3;}
+.social .item-list ul.pager li.pager-first:hover,
+.social .item-list ul.pager li.pager-previous:hover,
+.social .item-list ul.pager li.pager-item:hover,
+.social .item-list ul.pager li.pager-next:hover,
+.social .item-list ul.pager li.pager-last:hover {background-color: #D252C1;}
+
+/*******************************************************************************
+ *                           Internacional                                     *
+ ******************************************************************************/
+
+.internacional div#page-title-reg{border-color:#A75387;}
+.internacional #breadcrumb{background-color: #E9D4E1;}
+.internacional #main-content a, .internacional #sidebar-right a {color: #843161;}
+.internacional #sidebar-right h2.block-title {background-color: #A75387;}
+.internacional #sidebar-right div.block-content{background-color: #E9D4E1;}
+.internacional div.node-terms {background-color: #E9D4E1;}
+.internacional .node-terms h2, .internacional .legend{background-color: #A75387;}
+
+.internacional .item-list ul.pager {
+    background-color:#E9D4E1;
+    border-bottom-color: #A75387;
+}
+.internacional .item-list ul.pager li.pager-current  {background-color:#A75387;}
+.internacional .item-list ul.pager li.pager-first:hover,
+.internacional .item-list ul.pager li.pager-previous:hover,
+.internacional .item-list ul.pager li.pager-item:hover,
+.internacional .item-list ul.pager li.pager-next:hover,
+.internacional .item-list ul.pager li.pager-last:hover {background-color: #843161;}
+
+/*******************************************************************************
+ *                              Projectes                                      *
+ ******************************************************************************/
+
+.projectes div#page-title-reg{border-color:#E39595;}
+.projectes #sidebar-right h2.block-title , .projectes .node-terms h2, .projectes .legend, .projectes a.tornar{background-color: #E39595;}
+.projectes #main-content a , .projectes #sidebar-right a {color: #BF4545;}
+.projectes #breadcrumb, .projectes #sidebar-right div.block-content, .projectes div.node-terms {background-color: #F7DFDF;}
+
+.projectes .item-list ul.pager {
+    background-color:#F7DFDF;
+    border-bottom-color: #E39595;
+}
+.projectes .item-list ul.pager li.pager-current  {background-color:#E39595;}
+.projectes .item-list ul.pager li.pager-first:hover,
+.projectes .item-list ul.pager li.pager-previous:hover,
+.projectes .item-list ul.pager li.pager-item:hover,
+.projectes .item-list ul.pager li.pager-next:hover,
+.projectes .item-list ul.pager li.pager-last:hover {background-color: #BF4545;}
+
+/*******************************************************************************
+ *                              Juridic                                        *
+ ******************************************************************************/
+
+.juridic div#page-title-reg{border-color:#62AEC4;}
+.juridic #sidebar-right h2.block-title , .juridic .node-terms h2, .juridic .legend, .juridic a.tornar{background-color: #62AEC4;}
+.juridic #main-content a , .juridic #sidebar-right a {color: #1A6485;}
+.juridic #breadcrumb, .juridic #sidebar-right div.block-content, .juridic div.node-terms {background-color: #D9ECF1;}
+
+.juridic .item-list ul.pager {
+    background-color:#D9ECF1;
+    border-bottom-color: #62AEC4;
+}
+.juridic .item-list ul.pager li.pager-current  {background-color:#62AEC4;}
+.juridic .item-list ul.pager li.pager-first:hover,
+.juridic .item-list ul.pager li.pager-previous:hover,
+.juridic .item-list ul.pager li.pager-item:hover,
+.juridic .item-list ul.pager li.pager-next:hover,
+.juridic .item-list ul.pager li.pager-last:hover {background-color: #1A6485;}
+
+/*******************************************************************************
+ *                              Informatic                                     *
+ ******************************************************************************/
+
+.informatic div#page-title-reg{border-color:#9B8CD2;}
+.informatic #sidebar-right h2.block-title , .informatic .node-terms h2, .informatic .legend, .informatic a.tornar{background-color: #9B8CD2;}
+.informatic #main-content a , .informatic #sidebar-right a {color: #4B3B9D;}
+.informatic #breadcrumb, .informatic #sidebar-right div.block-content, .informatic div.node-terms {background-color: #E7E3F4;}
+
+.informatic .item-list ul.pager {
+    background-color:#E7E3F4;
+    border-bottom-color: #9B8CD2;
+}
+.informatic .item-list ul.pager li.pager-current  {background-color:#9B8CD2;}
+.informatic .item-list ul.pager li.pager-first:hover,
+.informatic .item-list ul.pager li.pager-previous:hover,
+.informatic .item-list ul.pager li.pager-item:hover,
+.informatic .item-list ul.pager li.pager-next:hover,
+.informatic .item-list ul.pager li.pager-last:hover {background-color: #4B3B9D;}
+
+/*******************************************************************************
+ *                              Formacio                                       *
+ ******************************************************************************/
+
+.formacio div#page-title-reg{border-color:#C09158;}
+.formacio #sidebar-right h2.block-title , .formacio .node-terms h2, .formacio .legend, .formacio a.tornar{background-color: #C09158;}
+.formacio #main-content a , .formacio #sidebar-right a {color: #7F4014;}
+.formacio #breadcrumb, .formacio #sidebar-right div.block-content, .formacio div.node-terms {background-color: #F0E5D7;}
+
+.formacio .item-list ul.pager {
+    background-color:#F0E5D7;
+    border-bottom-color: #C09158;
+}
+.formacio .item-list ul.pager li.pager-current  {background-color:#C09158;}
+.formacio .item-list ul.pager li.pager-first:hover,
+.formacio .item-list ul.pager li.pager-previous:hover,
+.formacio .item-list ul.pager li.pager-item:hover,
+.formacio .item-list ul.pager li.pager-next:hover,
+.formacio .item-list ul.pager li.pager-last:hover {background-color: #7F4014;}
+
+/*******************************************************************************
+ *                               Economic                                      *
+ ******************************************************************************/
+
+.economic div#page-title-reg{border-color:#D1B91A;}
+.economic #sidebar-right h2.block-title , .economic .node-terms h2, .economic .legend, .economic a.tornar{background-color: #D1B91A;}
+.economic #main-content a , .economic #sidebar-right a {color: #B79504;}
+.economic #breadcrumb, .economic #sidebar-right div.block-content, .economic div.node-terms {background-color: #F9F5D5;}
+
+.economic .item-list ul.pager {
+    background-color:#F9F5D5;
+    border-bottom-color: #D1B91A;
+}
+.economic .item-list ul.pager li.pager-current  {background-color:#D1B91A;}
+.economic .item-list ul.pager li.pager-first:hover,
+.economic .item-list ul.pager li.pager-previous:hover,
+.economic .item-list ul.pager li.pager-item:hover,
+.economic .item-list ul.pager li.pager-next:hover,
+.economic .item-list ul.pager li.pager-last:hover {background-color: #B79504;}
+
+/*******************************************************************************
+ *                             Noticies                                        *
+ ******************************************************************************/
+.noticies div#page-title-reg{border-color:#71A956;}
+.noticies #breadcrumb {background-color: #E3EEDF;}
+.noticies #main-content a {color: #32701D;}
+
+.noticies .item-list ul.pager {
+    background-color:#E3EEDF;
+    border-bottom-color: #71A956;
+}
+.noticies .item-list ul.pager li.pager-current  {background-color:#71A956;}
+.noticies .item-list ul.pager li.pager-first:hover,
+.noticies .item-list ul.pager li.pager-previous:hover,
+.noticies .item-list ul.pager li.pager-item:hover,
+.noticies .item-list ul.pager li.pager-next:hover,
+.noticies .item-list ul.pager li.pager-last:hover {background-color: #32701D;}
+
+/*******************************************************************************
+ *                                 Agenda                                      *
+ ******************************************************************************/
+.agenda div#page-title-reg{border-color:#ABB22F;}
+.agenda #sidebar-right h2.block-title , .agenda .node-terms h2, .agenda .legend, .agenda a.tornar{background-color: #ABB22F;}
+.agenda #main-content a , .agenda #sidebar-right a {color: #5A6205;}
+.agenda #breadcrumb, .agenda #sidebar-right div.block-content, .agenda div.node-terms {background-color:#EAECCB;}
+
+.agenda .item-list ul.pager {
+    background-color:#EAECCB;
+    border-bottom-color: #ABB22F;
+}
+.agenda .item-list ul.pager li.pager-current  {background-color:#ABB22F;}
+.agenda .item-list ul.pager li.pager-first:hover,
+.agenda .item-list ul.pager li.pager-previous:hover,
+.agenda .item-list ul.pager li.pager-item:hover,
+.agenda .item-list ul.pager li.pager-next:hover,
+.agenda .item-list ul.pager li.pager-last:hover {background-color: #5A6205;}
+
+/*******************************************************************************
+ *                              Finansament                                    *
+ ******************************************************************************/
+.financament div#page-title-reg{border-color:#F57310;}
+.financament #sidebar-right h2.block-title , .financament .node-terms h2, .financament .legend, .financament a.tornar{background-color: #F57310;}
+.financament #main-content a , .financament #sidebar-right a {color: #C80200;}
+.financament #breadcrumb, .financament #sidebar-right div.block-content, .financament div.node-terms {background-color:#FDE3CF;}
+
+.financament .item-list ul.pager {
+    background-color:#FDE3CF;
+    border-bottom-color: #F57310;
+}
+.financament .item-list ul.pager li.pager-current  {background-color:#F57310;}
+.financament .item-list ul.pager li.pager-first:hover,
+.financament .item-list ul.pager li.pager-previous:hover,
+.financament .item-list ul.pager li.pager-item:hover,
+.financament .item-list ul.pager li.pager-next:hover,
+.financament .item-list ul.pager li.pager-last:hover {background-color: #C80200;}
+
+/*******************************************************************************
+ *                              Recursos                                       *
+ ******************************************************************************/
+
+.recursos div#page-title-reg{border-color:#005EA7;}
+.recursos #sidebar-right h2.block-title , .recursos .node-terms h2, .recursos .legend, .recursos a.tornar{background-color: #005EA7;}
+.recursos #main-content a , .recursos #sidebar-right a {color: #00236D;}
+.recursos #breadcrumb, .recursos #sidebar-right div.block-content, .recursos div.node-terms {background-color:#EDF4F9;}
+
+.recursos .item-list ul.pager {
+    background-color:#EDF4F9;
+    border-bottom-color: #005EA7;
+}
+.recursos .item-list ul.pager li.pager-current  {background-color:#005EA7;}
+.recursos .item-list ul.pager li.pager-first:hover,
+.recursos .item-list ul.pager li.pager-previous:hover,
+.recursos .item-list ul.pager li.pager-item:hover,
+.recursos .item-list ul.pager li.pager-next:hover,
+.recursos .item-list ul.pager li.pager-last:hover {background-color: #00236D;}
+
+
+/*******************************************************************************
+ *                              Panels Portada                                 *
+ ******************************************************************************/
+ 
+.pane-block-37 h2.pane-title  {background-color:#B2290C;}
+.pane-block-37 div.pane-content {background-color:#f3d6d0;}
+.pane-block-37 ul {  color: #C13113;}
+
+.pane-block-3 h2.pane-title  {background-color:#ABB22F;}
+.pane-block-3 div.pane-content {background-color:#EAECCB;}
+.pane-block-3 ul {  color: #ABB22F;}
+.pane-block-3  .more  {background-color:#ABB22F;}
+
+#block-block-3 h2.block-title  {background-color:#ABB22F !important;}
+#block-block-3  .items {background-color:#EAECCB;}
+#block-block-3 ul {  color: #ABB22F;}
+#block-block-3  .more  {background-color:#ABB22F;}
+
+.pane-block-2 h2.title  {background-color:#F57310;}
+.pane-block-2 div.pane-content {background-color:#FDE3CF;}
+.pane-block-2 ul {  color: #F57310;}
+.pane-block-2  .more  {background-color:#F57310;}
+
+#block-block-2 h2.title  {background-color:#F57310;}
+#block-block-2 .items {background-color:#FDE3CF;}
+#block-block-2 ul {  color: #F57310;}
+#block-block-2  .more  {background-color:#F57310;}
+
+
+.pane-agregadors-rss h2.title  {background-color:#F9A043;}
+.pane-agregadors-rss div.pane-content {background-color:#FEECD9;}
+.pane-agregadors-rss .views-row {  color: #F9A043;}
+.pane-agregadors-rss  .more  {background-color:#F9A043;}
+
+ 
+.pane-agregadors-rss h2.title,
+.pane-block-3 h2.pane-title,
+#block-block-3 h2.block-title,
+.pane-block-2 h2.title,
+#block-block-2 h2.title,
+.pane-block-37 h2.pane-title
+{
+	border-bottom: 5px solid #FFFFFF;
+    color: #FFFFFF;
+    font-size: 11pt;
+    font-weight: normal;
+    padding: 5px 0 5px 10px;
+}
+ 
+
+.pane-block-37 
+{
+  margin-top:15px;
+  float:left;
+  width:100%;
+}
+ 
+.pane-block-3,
+#block-block-2,
+.pane-block-2,
+.pane-agregadors-rss
+{
+  margin-top:15px;
+}
+ 
+
+.pane-block-3 .view-content a:link, 
+.pane-block-3 .view-content a:visited, 
+.pane-block-3 .view-content a:active,
+
+#block-block-3 .view-content a:link, 
+#block-block-3 .view-content a:visited, 
+#block-block-3 .view-content a:active,
+
+.pane-block-2 .view-content a:link, 
+.pane-block-2 .view-content a:visited,
+.pane-block-2 .view-content a:active,
+
+#block-block-2 .view-content a:link, 
+#block-block-2 .view-content a:visited,
+#block-block-2 .view-content a:active,
+
+.pane-agregadors-rss .view-content a:active,
+.pane-agregadors-rss .view-content a:link, 
+.pane-agregadors-rss .view-content a:visited, 
+
+
+.pane-block-37 ul li a:link, 
+.pane-block-37 ul li a:visited, 
+.pane-block-37 ul li a:active 
+{
+  color: #333333;
+  font-weight: normal;
+}
+    
+.pane-block-3,
+
+.pane-block-2,
+
+.pane-agregadors-rss,
+.pane-block-37 li
+{
+  line-height: 1.4em;
+  padding: 3px;
+}
+
+.pane-block-37  ul 
+{
+  list-style-position: outside;
+  list-style-type: square;
+  padding: 10px 0 10px 10px;
+}
+
+.pane-block-3  .views-row,
+#block-block-3  .views-row,
+.pane-block-2  .views-row,
+#block-block-2  .views-row,
+.pane-agregadors-rss  .views-row
+{
+  display:list-item;
+  list-style-position: outside;
+  list-style-type: square;
+  margin: 0 8px 10px 22px;
+  padding-top:10px;
+}
+
+.pane-block-3 p,
+#block-block-3 p,
+.pane-block-2 p,
+#block-block-2 p
+{
+  padding-bottom:0px;
+}
+.pane-block-3  .more,
+#block-block-3  .more,
+.pane-block-2  .more,
+#block-block-2  .more
+{
+  display:block;
+  padding: 5px 0 5px 10px;
+  text-transform:uppercase;
+  font-weight: bold;
+}
+
+.pane-block-3  a.more:link,
+.pane-block-3  a.more:visited,
+#block-block-3  a.more:link,
+#block-block-3  a.more:visited,
+.pane-block-2  a.more:link,
+.pane-block-2  a.more:visited,
+#block-block-2  a.more:link,
+#block-block-2  a.more:visited
+{
+  color:#ffffff;
+}
+
+.pane-poll-0 h2{
+	background-color: #00236D;
+	color: #FFFFFF;
+	font-size: 11pt !important;
+}
+
+
+.pane-agregadors-rss .views-field-field-imatge-feed-fid
+{
+  width:25px;
+  float:left;
+}
+
+.pane-agregadors-rss .views-field-title
+{
+  margin-top:0px;
+}
+
+.pane-agregadors-rss  .view-content
+{
+ padding-bottom:10px;
+}
+
+
+/*******************************************************************************
+ *                              Bloques contex                                 *
+ ******************************************************************************/
+#block-block-44 .block-content,
+#block-block-17 .block-content,
+#block-block-51 .block-content,
+#block-block-6 .block-content,
+#block-block-2 .block-content,
+#block-block-3 .block-content
+{
+  background-color:#ffffff !important;
+}
+
+#block-block-2 .block-content,
+#block-block-3 .block-content
+{
+  padding:0 !important;
+  padding:0;
+}
+  
+div#block-menu-menu-menu-usuari
+{
+margin-top: 19px;  
+margin-right: 15px;
+}
+
+div#block-menu-menu-menu-usuari ul li
+{
+ display:inline;
+}  
+
+div#block-menu-menu-menu-usuari ul{
+    border-bottom: 1px solid #BBBBBB;
+    margin: 1.5em 0 0;
+    padding: 0 0 0.2em 0.3em;
+}
+
+div#block-menu-menu-menu-usuari ul  li.active a {
+	background-color: #FFFFFF;
+    border-color: #BBBBBB #BBBBBB #FFFFFF;
+	border-style: solid;
+    border-width: 1px;
+	
+}
+
+div#block-menu-menu-menu-usuari ul  li a {
+    background-color: #F5F5F5;
+    border-color: #CCCCCC;
+    margin-right: 0.08em;
+    padding: 0.1em 0.75em 0.2em;
+	border-style: solid solid none;
+    border-width: 1px;
+    height: auto;
+}
+
+div#block-menu-menu-menu-usuari ul  li a :link
+{
+color: #666666;
+}
+
+div#block-menu-menu-menu-usuari ul  li a :visited
+{
+color: #666666;
+}
+
+div#block-menu-menu-menu-usuari h2 {
+    display: none;
+}
+

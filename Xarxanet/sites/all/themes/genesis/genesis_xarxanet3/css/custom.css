@@ -1,0 +1,352 @@
+
+
+/*Template Vista Tags*/
+
+.view-cuadricula .views-row
+{
+	float:left;
+	width:179px;
+	/*clear:both;*/
+	margin-right:6px;
+	margin-top:-15px;
+}
+
+/**
+.view-cuadricula .views-row img
+{
+	z-index:0;
+	margin-bottom:18px;
+}
+**/
+
+.view-cuadricula .views-row h3{
+	margin-top: 20px;
+}
+
+/**
+ * Excepció per a l'agenda
+ */
+#columns.agenda .view-cuadricula.view-2x1 .views-row h3,
+#columns.agenda .view-cuadricula.view-2x2 .views-row h3,
+#columns.agenda .view-cuadricula.view-4x4 .views-row h3{
+	margin-top: 5px;
+}
+
+.view-cuadricula .views-row p{
+	padding-bottom: 10px;
+}
+
+/*Cuadruple*/
+.view-4x133 .views-row-1
+{
+	width:770px;
+}
+
+/*doble*/
+
+.view-4x133 .views-row-2,
+.view-4x133 .views-row-7,
+.view-4x33 .views-row-1,
+.view-4x33 .views-row-6,
+.view-3x2 .views-row-1,
+.view-3x2b .views-row-2,
+.view-2x1 .views-row-1
+{
+	width:377px;
+}
+
+
+
+
+
+.view-4x133 .views-row-clear--3,
+.view-4x33 .views-row-4,
+.view-cuadricula .views-row-clear-0
+
+{
+	clear:both;
+}
+
+
+.view-4x133 .views-row-4,
+.view-4x33 .views-row-3
+{
+	clear:none !important;
+}
+
+
+
+
+.view-cuadricula h3{	font-size: 14pt;}
+
+#main-content .view-4x133 .views-row-1 h3,
+#main-content .view-4x133 .views-row-2 h3,
+#main-content .view-4x133 .views-row-7 h3 ,
+#main-content .view-2x1 .views-row-1 h3,
+#main-content .view-4x33 .views-row-1 h3,
+#main-content .view-4x33 .views-row-6 h3,
+#main-content .view-3x2 .views-row-1 h3,
+#main-content .view-3x2b .views-row-2 h3
+{font-size: 18pt;}
+
+
+.view-4x133 .views-row-first .label
+{
+	top:226px;
+}
+
+
+/*Template  .la*/
+
+.label
+{
+	width:100%;
+	min-height:14px;
+	display:block;
+	position: relative;
+	top:156px;
+	height:16px;
+	left: -3px;
+
+}
+/********** RR he afegit el #main content */
+#main-content .label a:link,
+#main-content .label a:visited,
+#main-content .label a:hover
+{
+	color:#000;
+	text-decoration:none;
+}
+
+.label a
+{
+	font-size:8pt;
+	text-transform:uppercase;
+	padding-left:3px;
+	display:block;
+}
+
+
+
+#main-content .label a{color: #000;}
+
+
+/*
+.ambiental
+.comunitari
+.cultural
+.economic
+.formacio
+.general
+.informatic
+.internacional
+.juridic
+.projectes
+.social
+*/
+
+
+
+
+/*ULTIMS RECURSOS*/
+.e_resources
+{
+	width:385px;
+	float:left;
+}
+
+.e_restheme5,
+.e_restheme1
+{
+	clear:both;
+}
+
+.node-page_insert_view .collapsible
+{
+clear:both;
+}
+
+
+
+/*Taxonomy Page*/
+.page-taxonomy h1#page-title,
+.page-recursos-tag h1#page-title
+{
+	text-transform:capitalize;
+}
+
+
+/*Botones Cercadors*/
+
+.views-exposed-widgets .form-submit
+{
+	border:none;
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-size: 9pt;
+	font-weight: bold;
+	height: auto;
+	padding: 5px;
+	width:166px;
+}
+
+
+.sidebar-inner .block .form-submit{	
+	background: url('../images/pictos/ok.png') #7B7B79 12px no-repeat;
+}
+
+
+
+
+.views-exposed-form .views-exposed-widget .form-submit
+{
+	margin-top:0;
+}
+
+.form-checkboxes, .form-radios 
+{
+    margin: 0.5em 0;
+}
+
+#views-exposed-form-2011-financament-full-default .form-checkboxes,
+#views-exposed-form-2011-cercador-agenda-default .form-checkboxes 
+{
+	-moz-column-count: 2;
+    -moz-column-gap: 5px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 5px;
+	width: 169px;
+}
+
+
+#views-exposed-form-2011-financament-full-default .views-operator .form-checkboxes
+{
+	-moz-column-count: 1;
+	-webkit-column-count: 1;
+}
+
+input.form-text
+{
+    width: 159px;
+}
+
+
+.abast
+{
+	display: block;
+	height: 55px;
+	width: 180px;
+	background-image:url(http://xarxanet.org/sites/default/files/abast.jpg);
+   margin-left: -5px;
+    margin-top: -5px;
+	
+}
+
+#block-block-7 .block-content
+{
+height: 45px;
+}
+
+/*****************************************************************/
+/* Entitats promotores */
+.support{
+	position:relative;
+	width:auto;
+	height:auto;
+	min-width:600px;
+	max-width:965px;
+	clear:both;
+	margin:0 auto;
+}
+.support ul{
+	list-style-position:inside;
+	list-style-type:none;
+	margin-top:10px;
+	float:left;
+	width:auto;
+}
+.support ul li{
+	display:inline-block;
+	float:left;
+	margin-right:10px;
+	width:180px;
+	height:100px;
+	margin-bottom:10px;
+}
+.support h2, #Txt-Full .support h2{
+	background-color:#FFF;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	border-bottom-color:#333;
+	border-bottom-style:dotted;
+	border-bottom-width:1px;
+	padding-bottom:10px;
+}
+.support ul li a{
+	padding:10px;
+	padding-top:60px;
+	width:160px;
+	height:auto;
+	float:left;
+	font-size:9pt;
+	color:#333;
+	background-position:top center;
+	background-repeat:no-repeat;
+	font-weight:bold;
+	text-align:center;
+}
+#Txt-Full .support ul{
+	margin-left:0px;
+	width:800px;
+}
+#Txt-Full .support ul li{
+	margin-right:10px;
+}
+#Txt-Full .support ul li a{
+	text-decoration:none;
+}
+.support ul li a:link		{color:#333;}
+.support ul li a:visited	{color:#333;}
+.support ul li a:active		{color:#333;}
+.support ul li a:hover		{color:#C13113;}
+.support ul li a.Logo1{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-1-ep.jpg)}
+.support ul li a.Logo2{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-2-ep.jpg)}
+.support ul li a.Logo3{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-3-ep.jpg)}
+.support ul li a.Logo4{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-4-ep.jpg)}
+.support ul li a.Logo5{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-5-ep.jpg)}
+.support ul li a.Logo6{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-6-ep.jpg)}
+.support ul li a.Logo7{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-7-ep.jpg)}
+.support ul li a.Logo8{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-8-ep.jpg)}
+.support ul li a.Logo9{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-9-ep.jpg)}
+.support ul li a.Logo10{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-10-ep.jpg)}
+.support ul li a.Logo11{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-11-ep.jpg)}
+.support ul li a.Logo12{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-12-ep.jpg)}
+.support ul li a:link		{color:#333;}
+.support ul li a:visited	{color:#333;}
+.support ul li a:active		{color:#333;}
+.support ul li a:hover		{color:#C13113;}
+
+.support ul li a.Logo1:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-1-ep-over.jpg)}
+.support ul li a.Logo2:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-2-ep-over.jpg)}
+.support ul li a.Logo3:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-3-ep-over.jpg)}
+.support ul li a.Logo4:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-4-ep-over.jpg)}
+.support ul li a.Logo5:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-5-ep-over.jpg)}
+.support ul li a.Logo6:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-6-ep-over.jpg)}
+.support ul li a.Logo7:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-7-ep-over.jpg)}
+.support ul li a.Logo8:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-8-ep-over.jpg)}
+.support ul li a.Logo9:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-9-ep-over.jpg)}
+.support ul li a.Logo10:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-10-ep-over.jpg)}
+.support ul li a.Logo11:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-11-ep-over.jpg)}
+.support ul li a.Logo12:hover{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-12-ep-over.jpg)}
+
+#Txt-Full .support ul li a.Logo1{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-1-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo2{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-2-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo3{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-3-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo4{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-4-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo5{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-5-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo6{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-6-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo7{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-7-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo8{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-8-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo9{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-9-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo10{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-10-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo11{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-11-ep-over.jpg)}
+#Txt-Full .support ul li a.Logo12{ background-image:url(http://xarxanet.org/sites/default/files/promotores/logo-12-ep-over.jpg)}

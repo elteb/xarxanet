@@ -1,0 +1,6 @@
+;$Id$
+name = Cercador recursos
+description = Aquest modul cerca en els recursos del portal.
+core = 6.x
+package = XARXANET
+

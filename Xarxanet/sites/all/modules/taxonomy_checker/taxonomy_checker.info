@@ -1,0 +1,4 @@
+; $Id$
+name = Taxonomy Checker
+description = Cheks which terms have been recently added to a taxonomy to edit them if necessary
+core = 6.x

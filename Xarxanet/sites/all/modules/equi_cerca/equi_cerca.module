@@ -1,0 +1,64 @@
+<?php
+
+function equi_cerca_apachesolr_prepare_query(&$query, &$params, $caller){
+  $keys = $query->get_keys();
+  $array_keys = explode(" ",$keys);
+  $array_keys[] = $keys;
+  $terms = array();
+  
+  // Obtenir vids permessos
+  foreach($array_keys as $key) {
+    // Cercar sinònims i posar-los en la cerca.
+    $results = db_query("SELECT td.name FROM {term_data} td, {term_synonym} ts WHERE ts.name = '%s' AND td.tid = ts.tid",$key);
+    while($synonims = db_fetch_array($results)){
+      if(!in_array($synonims['name'],$terms))
+        $terms[]= $synonims['name'];
+    }
+    
+    // Cercar relacions i posar-los a la cerca.
+    $results = db_query("SELECT td2.name FROM {term_data} td, {term_data} td2, {term_relation} tr WHERE td.name = '%s' AND ((td.tid = tr.tid1 AND tr.tid2 = td2.tid) OR (td.tid = tr.tid2 AND tr.tid1 = td2.tid))",$key);
+    while($relations = db_fetch_array($results)){
+      if(!in_array($relations['name'],$terms))
+      {
+        $terms[] = $relations['name'];
+      }
+    }
+
+    // Cercar fills i posar-los a la cerca
+    get_hierarchy_terms($key,$terms);
+    $childs = implode(" ",$terms);
+    $keys .= " ".$childs;
+    $keys = substr($keys,0,100000);
+  }
+  //drupal_set_message($keys);
+  $keys = equi_cerca_filter_search($keys);
+  $query->set_keys($keys);
+}
+
+  /**
+   * Get all the terms of the hierarchy for wich $term is the root term
+   *
+   * @param $term
+   *   The key we are searching for
+   *
+   * @param $terms
+   *   The list of terms found which will be appended to the query   
+   *
+   */
+function get_hierarchy_terms($term,&$terms){
+  //drupal_set_message($term);
+  $results = db_query("SELECT td2.name FROM {term_data} td, {term_data} td2, {term_hierarchy} th WHERE td.name = '%s' AND td.tid = th.parent AND th.tid = td2.tid",$term);
+  while($fills = db_fetch_array($results)){
+    if(!in_array($fills['name'],$terms))
+    {
+      $terms[] = $fills['name'];
+    }
+    get_hierarchy_terms($fills['name'],$terms);
+  }
+}
+
+function equi_cerca_filter_search($keys){
+  $prohibited_words = array(' de ',' la ',' el ',' a ',' un ');
+  $keys = trim(str_replace($prohibited_words," "," ".$keys." "));
+  return $keys;
+}
