@@ -81,14 +81,13 @@ function taxonomy_feeds_set_target(&$node, $key, $terms) {
   // Load target vocabulary to check, if it has the "tags" flag.
   $vocabulary = taxonomy_get_vocabulary(str_replace('taxonomy:', '', $key));
   
-  /************************************
-   * @fcasanellas PATCH
-   * Split a comma separated list of tags
-   */
+  /************************************************
+   * TEBPATCH (ADD) @fcasanellas xx/xx/13
+   * #XN-FE001 Split a comma separated list of tags
+   * NEWCODE **************************************/
   $terms = drupal_explode_tags($terms);
-  /*************************************
-   * @fcasanellas ENDPATCH
-   */
+  /***********************************************
+   * END TEBPATCH ********************************/
 
   // Cast a given single string to an array so we can use it.
   if (!is_array($terms)) {

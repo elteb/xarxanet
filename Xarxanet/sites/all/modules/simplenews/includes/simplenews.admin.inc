@@ -186,7 +186,7 @@ function simplenews_admin_types_form(&$form_state, $tid = NULL) {
   $form['subscription'] = array(
     '#type' => 'fieldset',
     '#title' => t('Subscription settings'),
-    '#collapsible' => FALSE,
+    '#collapsible' => TRUE,
   );
   $options = array('none' => t('None'), 'on' => t('Default on'), 'off' => t('Default off'), 'silent' => t('Silent'));
   $form['subscription']['simplenews_new_account_'. $term->tid] = array(
@@ -205,11 +205,10 @@ function simplenews_admin_types_form(&$form_state, $tid = NULL) {
     '#default_value' => variable_get('simplenews_opt_inout_'. $term->tid, 'double'),
     '#description' => t('Hidden: This newsletter does not appear on subscription forms. No unsubscribe footer in newsletter.<br /> Single: Users are (un)subscribed immediately, no confirmation email is sent.<br />Double: When (un)subscribing at a subscription form, anonymous users receive an (un)subscription confirmation email. Authenticated users are (un)subscribed immediately.'),
   );
-
   $form['simplenews_sender_information'] = array(
     '#type' => 'fieldset',
     '#title' => t('Sender information'),
-    '#collapsible' => FALSE,
+    '#collapsible' => TRUE,
   );
   $form['simplenews_sender_information']['simplenews_from_name_'. $term->tid] = array(
     '#type' => 'textfield',
@@ -221,7 +220,7 @@ function simplenews_admin_types_form(&$form_state, $tid = NULL) {
   $form['simplenews_subject'] = array(
     '#type' => 'fieldset',
     '#title' => t('Newsletter subject'),
-    '#collapsible' => FALSE,
+    '#collapsible' => TRUE,
   );
   $form['simplenews_subject']['token_help'] = array(
     '#title' => t('Replacement patterns'),
@@ -251,7 +250,7 @@ function simplenews_admin_types_form(&$form_state, $tid = NULL) {
   );
   $form['simplenews_hyperlinks'] = array('#type' => 'fieldset',
     '#title' => t('HTML to text conversion'),
-    '#collapsible' => FALSE,
+    '#collapsible' => TRUE,
     '#description' => t('When your newsletter is sent as plain text, these options will determine how the conversion to text is performed.'),
   );
   $form['simplenews_hyperlinks']['simplenews_hyperlinks_'. $term->tid] = array(
@@ -264,13 +263,14 @@ function simplenews_admin_types_form(&$form_state, $tid = NULL) {
     '#default_value' => variable_get('simplenews_hyperlinks_'. $term->tid, 1),
   );
   
-  /*********************************************************
-   * @fcasanellas PATCH
-   */
+/***************************************
+ * TEBPATCH (ADD) @fcasanellas 02/04/2013
+ * #XN-SN001 Personalització dels missatges de confirmació
+ * NEWCODE ****************************/
   $form['subscription_mail'] = array(
   		'#type' => 'fieldset',
   		'#title' => t('Confirmation emails'),
-  		'#collapsible' => FALSE,
+  		'#collapsible' => TRUE,
   );
   
   $form['subscription_mail']['token_help'] = array(
@@ -318,7 +318,7 @@ function simplenews_admin_types_form(&$form_state, $tid = NULL) {
   		'#type' => 'fieldset',
   		'#title' => t('Confirmation pages'),
   		'#description' => t('If defined, these pages show after subscription / removal instead of the regular message box.'),
-  		'#collapsible' => FALSE,
+  		'#collapsible' => TRUE,
   );
   $form['confirm_pages']['simplenews_confirm_subscribe_page_'. $term->tid] = array(
   		'#type' => 'textfield',
@@ -332,9 +332,8 @@ function simplenews_admin_types_form(&$form_state, $tid = NULL) {
   		'#description' => t('Drupal path or URL of the destination page when the subscription removal is confirmed (e.g. node/123). Leave empty to go to the front page.'),
   		'#default_value' => variable_get('simplenews_confirm_unsubscribe_page_'. $term->tid, ''),
   );
-  /************************************************
-   * @fcasanellas ENDPATCH
-   */
+/***************************************
+ * END TEBPATCH ***********************/
 
   $form['submit'] = array(
   		'#type' => 'submit',
@@ -433,20 +432,19 @@ function simplenews_admin_types_form_submit($form, &$form_state) {
   variable_set('simplenews_hyperlinks_'. $tid, $form_state['values']['simplenews_hyperlinks_'. $suffix]);
   variable_set('simplenews_new_account_'. $tid, $form_state['values']['simplenews_new_account_'. $suffix]);
   variable_set('simplenews_opt_inout_'. $tid, $form_state['values']['simplenews_opt_inout_'. $suffix]);
-  /**********************************************
-   * @fcasanellas PATCH
-   */
+/***************************************
+ * TEBPATCH (ADD) @fcasanellas 02/04/2013
+ * #XN-SN001 Personalització dels missatges de confirmació
+ * NEWCODE ****************************/
   variable_set('simplenews_confirm_subscribe_subject_'. $tid, $form_state['values']['simplenews_confirm_subscribe_subject_'. $suffix]);
   variable_set('simplenews_confirm_subscribe_unsubscribed_'. $tid, $form_state['values']['simplenews_confirm_subscribe_unsubscribed_'. $suffix]);
   variable_set('simplenews_confirm_subscribe_subscribed_'. $tid, $form_state['values']['simplenews_confirm_subscribe_subscribed_'. $suffix]);
   variable_set('simplenews_confirm_unsubscribe_subscribed_'. $tid, $form_state['values']['simplenews_confirm_unsubscribe_subscribed_'. $suffix]);
   variable_set('simplenews_confirm_unsubscribe_unsubscribed_'. $tid, $form_state['values']['simplenews_confirm_unsubscribe_unsubscribed_'. $suffix]);
   variable_set('simplenews_confirm_subscribe_page_'. $tid, $form_state['values']['simplenews_confirm_subscribe_page_'. $suffix]);
-  variable_set('simplenews_confirm_unsubscribe_page_'. $tid, $form_state['values']['simplenews_confirm_unsubscribe_page_'. $suffix]);
-  /***********************************************
-   * @fcasanellas ENDPATCH
-   */
-  
+  variable_set('simplenews_confirm_unsubscribe_page_'. $tid, $form_state['values']['simplenews_confirm_unsubscribe_page_'. $suffix]);  
+/***************************************
+ * END TEBPATCH ***********************/  
 }
 
 /**
@@ -1158,9 +1156,11 @@ function simplenews_admin_settings_subscription(&$form_state) {
   // These email tokens are shared for all settings, so just define
   // the list once to help ensure they stay in sync.
   
-/*
- * @fcasanellas PATCH
- *
+/***************************************
+ * TEBPATCH (DEL) @fcasanellas 02/04/2013
+ * #XN-SN001 Personalització dels missatges de confirmació
+ * OLDCODE ****************************
+ 
   $form['simplenews_subscription']['subscription_mail'] = array(
     '#type' => 'fieldset',
     '#title' => t('Confirmation emails'),
@@ -1226,7 +1226,9 @@ function simplenews_admin_settings_subscription(&$form_state) {
     '#description' => t('Drupal path or URL of the destination page when the subscription removal is confirmed (e.g. node/123). Leave empty to go to the front page.'),
     '#default_value' => variable_get('simplenews_confirm_unsubscribe_page', ''),
   );
-  */
+  
+/***************************************
+ * END TEBPATCH ***********************/
 
   return system_settings_form($form);
 }

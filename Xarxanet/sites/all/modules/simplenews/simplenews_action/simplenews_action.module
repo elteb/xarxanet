@@ -257,11 +257,10 @@ function simplenews_subscribe_user_action_submit($form, $form_state) {
   return $params;
 }
 
-/**
- * @fcasanellas PATCH
- * PATCH START ****************************************************
- */
- 
+/***************************************
+ * TEBPATCH (ADD) @fcasanellas 02/04/2013
+ * #XN-SN004 Afegeix action de subscripció a butlletins
+ * NEWCODE ****************************/ 
  /**
  * A configurable Drupal action. Subscribe the user to a newsletter
  *   hook = user: Subscribe this user to selected newsletter
@@ -381,10 +380,8 @@ function simplenews_save_newsletter_action_submit($form, $form_state) {
   return $params;
 }
 
-/**
- * @fcasanellas PATCH
- * PATCH END ****************************************************
- */
+/***************************************
+ * END TEBPATCH ***********************/
  
 /**
  * A configurable Drupal action. Unsubscribe the user from a newsletter

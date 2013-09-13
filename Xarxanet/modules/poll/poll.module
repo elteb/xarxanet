@@ -512,11 +512,13 @@ function poll_view($node, $teaser = FALSE, $page = FALSE, $block = FALSE) {
   $output = '';
 
   // Special display for side-block
-  /*******************************
-  * @fcasanellas PATCH
-  * CODI ORIGINAL
+  /*************************************************
+  * TEBPATCH (DEL) @fcasanellas xx/xx/13
+  * #XN-PL001 Mostra sempre la llista d'enquestes
+  * OLDCODE ****************************************
   * if ($block) {
-  * *****************************/
+  * ************************************************
+  * END TEBPATCH **********************************/
     // No 'read more' link
     $node->readmore = FALSE;
 
@@ -528,11 +530,13 @@ function poll_view($node, $teaser = FALSE, $page = FALSE, $block = FALSE) {
     }
 
     $node->links = $links;
-    /*******************************
-     * @fcasanellas PATCH
-    * CODI ORIGINAL
-    * }
-    * *****************************/
+  /*************************************************
+  * TEBPATCH (DEL) @fcasanellas xx/xx/13
+  * #XN-PL001 Mostra sempre la llista d'enquestes
+  * OLDCODE ****************************************
+  * }
+  * ************************************************
+  * END TEBPATCH **********************************/
 
   if (!empty($node->allowvotes) && ($block || empty($node->show_results))) {
     $node->content['body'] = array(

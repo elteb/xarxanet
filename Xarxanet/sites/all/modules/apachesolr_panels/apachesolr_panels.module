@@ -106,14 +106,11 @@ function apachesolr_panels_search_execute($search) {
     }
     else {
       /**********************************************************
-       * @fcasanellas PATCH START
-       * El PATCH permet crear plantilles exclusives per a filtres concrets
-       * p.ex. search-result-apachesolr-search-type-document.tpl.php
-       * 
-       * ORIGINAL CODE
+       * TEBPATCH (MDF) @fcasanellas xx/xx/13
+       * #XN-AP001 Permet crear plantilles exclusives per a filtres concrets, p.ex. search-result-apachesolr-search-type-document.tpl.php
+       * OLDCODE ************************************************
        * return theme('search_results', $results, 'apachesolr-search');
-       * CODE ADDED
-       */
+       * NEWCODE ************************************************/
       $filter = '';
       if (!is_null($search['filters'])) {
       	$filter = '-'.str_replace(':', '-', $search['filters']);
@@ -121,8 +118,7 @@ function apachesolr_panels_search_execute($search) {
       module_load_include('inc','search','search.pages');
       return theme('search_results', $results, 'apachesolr-search'.$filter);
       /**********************************************************
-       * @fcasanellas PATCH END
-       */
+       * END TEBPATCH *******************************************/
     }
   }
 }

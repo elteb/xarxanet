@@ -427,11 +427,11 @@ function simplenews_node_tab_send_form($form_state, $node) {
   }
   else {
 
-  	/******************************************************
-  	* @fcasanellas START PATCH
-  	* 
-  	* ORIGINAL CODE
-  	* 
+/***************************************
+ * TEBPATCH (MDF) @fcasanellas 02/04/2013
+ * #XN-SN005 Permet reenviar un butlletí de prova
+ * OLDCODE ****************************
+  	
     $form['simplenews']['none'] = array(
       '#type' => 'checkbox',
       '#return_value' => 0,
@@ -442,7 +442,8 @@ function simplenews_node_tab_send_form($form_state, $node) {
     // We return now, because there's no point in having a submit button
     return $form;
     
-    * MODIFIED CODE */
+/***************************************
+ * NEWCODE ****************************/
   	  	
   	$form['simplenews']['none'] = array(
   	 '#type' => 'checkbox',
@@ -465,10 +466,9 @@ function simplenews_node_tab_send_form($form_state, $node) {
   				'#maxlength' => 128,
   		);
   	}
+/***************************************
+ * END TEBPATCH ***********************/
   	
-  	/*************************************************
-  	 * END PATCH
-  	 */
   }
   $form['simplenews']['s_status'] = array(
     '#type' => 'hidden',
@@ -514,14 +514,16 @@ function simplenews_node_tab_send_form_submit($form, &$form_state) {
   $values = $form_state['values'];
   $node = node_load($values['nid']);
 	
-  /*******************************************
-   * @fcasanellas START PATCH
-   */ 
-  //$s_status = SIMPLENEWS_STATUS_SEND_NOT;
+/***************************************
+ * TEBPATCH (MDF) @fcasanellas 02/04/2013
+ * #XN-SN005 Permet reenviar un butlletí de prova
+ * OLDCODE ****************************
+  $s_status = SIMPLENEWS_STATUS_SEND_NOT;
+/***************************************
+ * NEWCODE ****************************/  
   $s_status = (!empty($values['simplenews']['s_status'])) ? $values['simplenews']['s_status'] : SIMPLENEWS_STATUS_SEND_NOT;
-  /*******************************************
-   * END PATCH
-   */
+/***************************************
+ * END TEBPATCH ***********************/
   if ($values['simplenews']['send'] == SIMPLENEWS_COMMAND_SEND_NOW) {
     $s_status = SIMPLENEWS_STATUS_SEND_PENDING;
   }
@@ -1452,7 +1454,9 @@ function simplenews_subscriber_update($subscription, $data) {
  *
  * @return $subscription
  */
-function simplenews_subscribe_user($mail, $tid, $confirm = TRUE, $source = 'unknown', $preferred_language = NULL) {
+ 
+function simplenews_subscribe_user($mail, $tid, $confirm = TRUE, $source = 'unknown', $preferred_language = NULL ) {
+
   global $language;
 
   // Get current subscriptions if any.
@@ -1501,18 +1505,21 @@ function simplenews_subscribe_user($mail, $tid, $confirm = TRUE, $source = 'unkn
     // Send confirmation email to user to complete subscription or to tell
     // them that he or she is already subscribed.
     // Confirmation mail is in the user preferred language which is by default the language_default().	
-	/**
-	* @fcasanellas PATCH
-	* PATCH START ****************************************************
-	* 
-	* ORIGINAL CODE
-	* $params['from'] = _simplenews_set_from();
-    * $params['context']['newsletter'] = taxonomy_get_term($tid);
-    * $params['context']['account'] = $subscription;
-	* 
-	* drupal_mail('simplenews', 'subscribe', $mail, $subscription->language, $params, $params['from']['address']);
-	*
-	* MODIFIED CODE */
+
+/***************************************
+ * TEBPATCH (MDF) @fcasanellas 02/04/2013
+ * #XN-SN006 Envia els correus de confirmació per MIMEMail
+ * OLDCODE ****************************
+	 
+	 $params['from'] = _simplenews_set_from();
+     $params['context']['newsletter'] = taxonomy_get_term($tid);
+     $params['context']['account'] = $subscription;
+	 
+	 drupal_mail('simplenews', 'subscribe', $mail, $subscription->language, $params, $params['from']['address']);
+	
+/***************************************
+ * NEWCODE ****************************/
+    
     $node = new stdClass();
     $node->simplenews['tid'] = $tid;
     
@@ -1540,7 +1547,9 @@ function simplenews_subscribe_user($mail, $tid, $confirm = TRUE, $source = 'unkn
 	} else {
 		drupal_mail('simplenews', 'subscribe', $mail, $subscription->language, $params, $params['from']['address']);
 	}
-	// END PATCH ****************************************************
+	
+/***************************************
+ * END TEBPATCH ***********************/
   }
   elseif (!isset($subscription->tids[$tid])) {
     // Add user to newsletter relationship if not already subscribed.
@@ -1572,7 +1581,6 @@ function simplenews_subscribe_user($mail, $tid, $confirm = TRUE, $source = 'unkn
         time(),
         $source);
     }
-
     // Execute simplenews subscribe trigger.
     simplenews_call_actions('subscribe', $subscription);
   }
@@ -1615,18 +1623,20 @@ function simplenews_unsubscribe_user($mail, $tid, $confirm = TRUE, $source = 'un
     // or to tell them that he or she is not subscribed
     // Confirmation mail is in the user preferred language.
 	
-	/**
-	* @fcasanellas PATCH
-	* PATCH START ****************************************************
-	* 
-	* ORIGINAL CODE
-	* $params['from'] = _simplenews_set_from();
-    * $params['context']['newsletter'] = $newsletter;
-    * $params['context']['account'] = $subscription;
-    * 
-	* drupal_mail('simplenews', 'unsubscribe', $mail, $subscription->language, $params, $params['from']['address']);
-	*
-	* MODIFIED CODE */
+/***************************************
+ * TEBPATCH (MDF) @fcasanellas 02/04/2013
+ * #XN-SN006 Envia els correus de confirmació per MIMEMail
+ * OLDCODE ****************************
+
+	 $params['from'] = _simplenews_set_from();
+     $params['context']['newsletter'] = $newsletter;
+     $params['context']['account'] = $subscription;
+     
+	 drupal_mail('simplenews', 'unsubscribe', $mail, $subscription->language, $params, $params['from']['address']);
+	
+/***************************************
+ * NEWCODE ****************************/
+    
     $node = new stdClass();
     $node->simplenews['tid'] = $tid;
     
@@ -1654,7 +1664,9 @@ function simplenews_unsubscribe_user($mail, $tid, $confirm = TRUE, $source = 'un
 	} else {
 		drupal_mail('simplenews', 'unsubscribe', $mail, $subscription->language, $params, $params['from']['address']);
 	}
-	// END PATCH ****************************************************
+/***************************************
+ * END TEBPATCH ***********************/
+	
   }
   elseif (isset($subscription->tids[$tid])) {
     // Unsubscribe the user from the newsletter.
@@ -2018,10 +2030,11 @@ function simplenews_mail($key, &$message, $params, $reset = FALSE) {
       $message ['headers']['List-Unsubscribe'] = '<' . token_replace('[simplenews-unsubscribe-url]', 'simplenews', $context) . '>';
 
       break;
-    /*********************************************
-     * @fcasanellas PATCH
-     * ORIGINAL
-     * 
+/***************************************
+ * TEBPATCH (MDF) @fcasanellas 02/04/2013
+ * #XN-SN001 Personalització dels missatges de confirmació
+ * OLDCODE ****************************
+ 
     case 'subscribe':
       // Use formatted from address "name" <mail_address>
       $message['headers']['From'] = $params['from']['formatted'];
@@ -2054,7 +2067,9 @@ function simplenews_mail($key, &$message, $params, $reset = FALSE) {
         $message['body'] = token_replace($message['body'], 'simplenews_subscription', $context);
       }
       break;
-      */
+
+/***************************************
+ * NEWCODE ****************************/
       case 'subscribe':
       	$tid = isset($params['context']['newsletter']->tid) ? $params['context']['newsletter']->tid : NULL;
       	
@@ -2091,9 +2106,8 @@ function simplenews_mail($key, &$message, $params, $reset = FALSE) {
       		$message['body'] = token_replace($message['body'], 'simplenews_subscription', $context);
       	}
       	break;
-      	/*********************************************
-      	 * @fcasanellas ENDPATCH
-      	 */
+/***************************************
+ * END TEBPATCH ***********************/
   }
 
   // Debug message to check for outgoing emails messages.
@@ -2431,18 +2445,19 @@ function simplenews_locale_refresh() {
  *
  * @see simplenews_locale()
  */
-/**************************************************
- * @fcasanellas PATCH
- * 
+/***************************************
+ * TEBPATCH (MDF) @fcasanellas 02/04/2013
+ * #XN-SN001 Personalització dels missatges de confirmació
+ * OLDCODE ****************************
 function _simplenews_subscription_confirmation_text($key, $langcode = NULL, $translate = TRUE) {
   $text = variable_get('simplenews_confirm_'. $key, FALSE);
-  */
+/***************************************
+ * NEWCODE ****************************/
 function _simplenews_subscription_confirmation_text($key, $langcode = NULL, $translate = TRUE, $tid = NULL) {
   if (isset($tid)) $tid = '_'.$tid;
   $text = variable_get('simplenews_confirm_'. $key . $tid, FALSE);
-/**************************************************
- * @fcasanellas ENDPATCH
- */
+/***************************************
+ * END TEBPATCH ***********************/
   // If administrator did not change the text, the variable is empty.
   // We get the default here.
   if (!$text) {

@@ -493,38 +493,38 @@ function simplenews_confirm_subscription() {
     // (un)subscribe confirmation page. The additional arguments will be passed on
     // to the confirmation page.
     if (empty($arguments)) {
-	/**
-	* @fcasanellas PATCH
-	* PATCH START ****************************************************
-	* ORIGINAL CODE
-    *  if ($op1 == 'remove') {
-    *    return drupal_get_form('simplenews_confirm_removal_form', $subs->mail, $newsletter);
-    *  }
-    *  elseif ($op1 == 'add') {
-    *    return drupal_get_form('simplenews_confirm_add_form', $subs->mail, $newsletter);
-    *  }
-    *  else {
-    *  if ($op1 == 'remove') {
-    *    simplenews_unsubscribe_user($subs->mail, $tid, FALSE, 'website');
-    *    if ($path = variable_get('simplenews_confirm_unsubscribe_page', '')) {
-    *      $path = $path .'/'. implode('/', $arguments);
-    *      drupal_goto($path);
-    *    }
-    *    drupal_set_message(t('%user was unsubscribed from the %newsletter mailing list.', array('%user' => $subs->mail, '%newsletter' => $newsletter->name)));
-    *    drupal_goto(variable_get('site_frontpage', 'node'));
-    *  }
-    *  elseif ($op1 == 'add') {
-    *    simplenews_subscribe_user($subs->mail, $tid, FALSE, 'website');
-    *    if ($path = variable_get('simplenews_confirm_subscribe_page', '')) {
-    *      $path = $path .'/'. implode('/', $arguments);
-    *      drupal_goto($path);
-    *    }
-    *    drupal_set_message(t('%user was added to the %newsletter mailing list.', array('%user' => $subs->mail, '%newsletter' => $newsletter->name)));
-    *    drupal_goto(variable_get('site_frontpage', 'node'));
-    *  }
-    *  }
-	* MODIFIED CODE
-	*/
+/***************************************
+ * TEBPATCH (MDF) @fcasanellas 02/04/2013
+ * #XN-SN003 Elimina el pas previ a la pagina de confirmació 
+ * OLDCODE ****************************
+      if ($op1 == 'remove') {
+        return drupal_get_form('simplenews_confirm_removal_form', $subs->mail, $newsletter);
+      }
+      elseif ($op1 == 'add') {
+        return drupal_get_form('simplenews_confirm_add_form', $subs->mail, $newsletter);
+      }
+      else {
+      if ($op1 == 'remove') {
+        simplenews_unsubscribe_user($subs->mail, $tid, FALSE, 'website');
+        if ($path = variable_get('simplenews_confirm_unsubscribe_page', '')) {
+          $path = $path .'/'. implode('/', $arguments);
+          drupal_goto($path);
+        }
+        drupal_set_message(t('%user was unsubscribed from the %newsletter mailing list.', array('%user' => $subs->mail, '%newsletter' => $newsletter->name)));
+        drupal_goto(variable_get('site_frontpage', 'node'));
+      }
+      elseif ($op1 == 'add') {
+        simplenews_subscribe_user($subs->mail, $tid, FALSE, 'website');
+        if ($path = variable_get('simplenews_confirm_subscribe_page', '')) {
+          $path = $path .'/'. implode('/', $arguments);
+          drupal_goto($path);
+        }
+        drupal_set_message(t('%user was added to the %newsletter mailing list.', array('%user' => $subs->mail, '%newsletter' => $newsletter->name)));
+        drupal_goto(variable_get('site_frontpage', 'node'));
+      }
+      }
+/***************************************
+ * NEWCODE ****************************/
 	  $redirect = '';
 	  if ($op1 == 'remove') {
 	    $redirect = variable_get('simplenews_confirm_unsubscribe_page_'.$newsletter->tid, '');
@@ -556,7 +556,8 @@ function simplenews_confirm_subscription() {
         drupal_goto(variable_get('site_frontpage', 'node'));
       }
     }
-    // PATCH END ****************************************************
+/***************************************
+ * END TEBPATCH ***********************/
   }
 
   // If md5 didn't match, do a not found.

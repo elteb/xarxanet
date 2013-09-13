@@ -99,14 +99,13 @@ function simplenews_send_node($node, $accounts = array()) {
     else {
       drupal_set_message(t('Newsletter pending.'));
     }
-      /**
-       * @fcasanellas PATCH
-       * PATCH START ****************************************************
-       *
-       * ADDED CODE
-       * Invoke the Newsletter sent trigger */
+/***************************************
+ * TEBPATCH (ADD) @fcasanellas 02/04/2013
+ * #XN-SN002 Modifica la posició del trigger d'enviament
+ * NEWCODE ****************************/
        simplenews_call_actions('sent', $node->nid);
-       // PATCH END ****************************************************
+/***************************************
+ * END TEBPATCH ***********************/      
   }
 }
 
@@ -628,14 +627,13 @@ function simplenews_send_status_update() {
         SIMPLENEWS_STATUS_SEND_READY,
         $nid,
         $vid);
-      /**
-       * @fcasanellas PATCH
-       * PATCH START ****************************************************
-       *
-       * DELETED CODE
-       * // Invoke the Newsletter sent trigger
-       * simplenews_call_actions('sent', $nid);
-       * PATCH END ****************************************************/
+/***************************************
+ * TEBPATCH (DEL) @fcasanellas 02/04/2013
+ * #XN-SN002 Modifica la posició del trigger d'enviament
+ * OLDCODE ****************************
+        simplenews_call_actions('sent', $nid);
+/***************************************
+ * END TEBPATCH ***********************/
     }
   }
 }
