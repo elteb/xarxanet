@@ -155,12 +155,18 @@ function text_field($op, &$node, $field, &$items, $teaser, $page) {
             if (count($allowed_values) && !array_key_exists($item['value'], $allowed_values)) {
               form_set_error($error_element, t('%name: illegal value.', array('%name' => t($field['widget']['label']))));
             }
+            /*********************************************************
+             * TEBPATCH (MDF) @fcasanellas 13/09/13
+             * #XN-CCK001 Comptabilitza la llargada dels camps de text sense etiquetes HTML
+             * OLDCODE ***********************************************
+             * if (!empty($field['max_length']) && drupal_strlen($item['value']) > $field['max_length']) {
+             * *******************************************************
+             * NEWCODE ***********************************************/
             if (!empty($field['max_length']) && drupal_strlen(strip_tags($item['value'])) > $field['max_length']) {
+            /*********************************************************
+             * END TEBPATCH ******************************************/
               form_set_error($error_element, t('%name: the value may not be longer than %max characters.', array('%name' => $field['widget']['label'], '%max' => $field['max_length'])));
             }
-            print_r($item['value']);
-            print_r(strip_tags($item['value']));
-            echo drupal_strlen(strip_tags($item['value'])); die();
           }
         }
       }
