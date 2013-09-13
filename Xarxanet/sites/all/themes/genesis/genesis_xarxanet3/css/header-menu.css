@@ -1147,7 +1147,7 @@ ul.Menu-AS-Sub {
     color: #FFFFFF;
 }
 .Menu li.Social ul, li.Social ul li, li.Social ul:hover, ul.li.Social:hover, .Menu li.Social:hover, .Menu li.Social.sfHover, .Social a.BotoMas:link, .Social a.BotoMas:visited, .Social a.BotoMas:active, .Social a.BotoMas:hover, .Social input.Boto, .e_comments.Social h2, .Social ul.links li a:link, .Social ul.links li a:visited, .Social ul.links li a:active, .Social .indented, .Social .form-submit:active, .Social .form-submit:visited, .Social .form-submit:link, .Social .captcha legend, .Social .form-submit, .Social .close, #Tornar.Social, #Mapas.Social h2, .Menu a.Social:focus, .Menu a.Social:hover, .Menu a.Social:active {
-    background-color: #EB9DE3;
+    background-color: #005577;
 }
 .Menu-AS li ul li a.Social:link, .Menu-AS li ul li a.Social:hover {
     background-color: transparent;
@@ -1155,7 +1155,7 @@ ul.Menu-AS-Sub {
     padding: 9px 13px 7px;
 }
 .Menu-AS li ul li a.Social:hover {
-    background-color: #EB9DE3;
+    background-color: #005577;
     color: #FFFFFF;
 }
 .Menu-AS li ul.Menu-AS-Sub li a.Social:link, .Menu-AS li ul.Menu-AS-Sub li a.Social:hover {
@@ -1164,14 +1164,14 @@ ul.Menu-AS-Sub {
     padding: 12px 12px 9px;
 }
 .Menu-AS li ul.Menu-AS-Sub li a.Social:hover {
-    background-color: #EB9DE3;
+    background-color: #005577;
     color: #FFFFFF;
 }
 .Menu-AS li ul.Menu-AS-Sub li ul.Social li a:hover, .PaginacioAbaix.Social, .QueEs.Social h2 {
-    border-bottom-color: #EB9DE3;
+    border-bottom-color: #005577;
 }
 .Menu-AS-Sub li.Social:hover {
-    background-color: #EB9DE3;
+    background-color: #005577;
     padding-bottom: 13px;
 }
 .Menu-AS-Sub li.Social:hover a.Social {
@@ -1393,7 +1393,7 @@ ul li a.Social:link, ul li a.Social:visited, ul li a.Social:active {
     background-color: transparent;
 }
 ul li a.Social:hover {
-    background-color: #EB9DE3;
+    background-color: #005577;
 }
 ul li a.Projectes:link, ul li a.Projectes:visited, ul li a.Projectes:active {
     background-color: transparent;
