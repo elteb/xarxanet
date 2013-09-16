@@ -58,37 +58,50 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 
 //Noticia principal esquerra
 $noticia_prin_esq = array();
-$node_ =  node_load($node->field_financ_prin_xarxanet_esq[0]['safe']['nid']);
-if (isset($node->field_financ_prin_foto_esq[0]['filepath'])){
+if ($node_ =  node_load($node->field_financ_prin_xarxanet_esq[0]['safe']['nid'])) {
+	//Noticia Xarxanet
+	if (isset($node_->field_agenda_imatge[0]['filepath'])){
+		$noticia_prin_esq['imatge'] = imagecache_create_path('financ-gran', $node_->field_agenda_imatge[0]['filepath']);
+		$noticia_prin_esq['alt'] = $node_->field_agenda_imatge[0]['data']['alt'];
+	}else{
+		$noticia_prin_esq['imatge'] = imagecache_create_path('financ-gran', $node_->field_imatges[0]['filepath']);
+		$noticia_prin_esq['alt'] = $node_->field_imatges[0]['data']['alt'];
+	}
+	$noticia_prin_esq['title'] = $node_->title;
+	$noticia_prin_esq['teaser'] = strip_tags($node_->field_resum[0]['value']);
+	$noticia_prin_esq['link'] = $pathroot.'/'.$node_->path;
+} else {
+	//Noticia externa
+	$noticia_prin_esq['title'] = $node->field_financ_prin_ext_esq[0]['title'];
+	$noticia_prin_esq['link'] = $node->field_financ_prin_ext_esq[0]['url'];
+	$noticia_prin_esq['teaser'] = strip_tags($node->field_financ_prin_resum_esq[0]['value']);
 	$noticia_prin_esq['imatge'] = $node->field_financ_prin_foto_esq[0]['filepath'];
 	$noticia_prin_esq['alt'] = $node->field_financ_prin_foto_esq[0]['data']['alt'];
-}elseif (isset($node_->field_agenda_imatge[0]['filepath'])){
-	$noticia_prin_esq['imatge'] = imagecache_create_path('financ-gran', $node_->field_agenda_imatge[0]['filepath']);
-	$noticia_prin_esq['alt'] = $node_->field_agenda_imatge[0]['data']['alt'];
-}else{
-	$noticia_prin_esq['imatge'] = imagecache_create_path('financ-gran', $node_->field_imatges[0]['filepath']);
-	$noticia_prin_esq['alt'] = $node_->field_imatges[0]['data']['alt'];
 }
-$noticia_prin_esq['title'] = $node_->title;
-$noticia_prin_esq['teaser'] = strip_tags($node_->field_resum[0]['value']);
-$noticia_prin_esq['link'] = $pathroot.'/'.$node_->path;
+
 
 //Noticia principal dreta
 $noticia_prin_dreta = array();
-$node_ =  node_load($node->field_financ_prin_xarxanet_dreta[0]['safe']['nid']);
-if (isset($node->field_financ_prin_foto_dreta[0]['filepath'])){
+if ($node_ =  node_load($node->field_financ_prin_xarxanet_dreta[0]['safe']['nid'])) {
+	//Noticia Xarxanet
+	if (isset($node_->field_agenda_imatge[0]['filepath'])){
+		$noticia_prin_dreta['imatge'] = imagecache_create_path('financ-gran', $node_->field_agenda_imatge[0]['filepath']);
+		$noticia_prin_dreta['alt'] = $node_->field_agenda_imatge[0]['data']['alt'];
+	}else{
+		$noticia_prin_dreta['imatge'] = imagecache_create_path('financ-gran', $node_->field_imatges[0]['filepath']);
+		$noticia_prin_dreta['alt'] = $node_->field_imatges[0]['data']['alt'];
+	}
+	$noticia_prin_dreta['title'] = $node_->title;
+	$noticia_prin_dreta['teaser'] = strip_tags($node_->field_resum[0]['value']);
+	$noticia_prin_dreta['link'] = $pathroot.'/'.$node_->path;
+} else {
+	//Noticia Externa
+	$noticia_prin_dreta['title'] = $node->field_financ_prin_ext_dreta[0]['title'];
+	$noticia_prin_dreta['link'] = $node->field_financ_prin_ext_dreta[0]['url'];
+	$noticia_prin_dreta['teaser'] = strip_tags($node->field_financ_prin_resum_dreta[0]['value']);
 	$noticia_prin_dreta['imatge'] = $node->field_financ_prin_foto_dreta[0]['filepath'];
 	$noticia_prin_dreta['alt'] = $node->field_financ_prin_foto_dreta[0]['data']['alt'];
-}elseif (isset($node_->field_agenda_imatge[0]['filepath'])){
-	$noticia_prin_dreta['imatge'] = imagecache_create_path('financ-gran', $node_->field_agenda_imatge[0]['filepath']);
-	$noticia_prin_dreta['alt'] = $node_->field_agenda_imatge[0]['data']['alt'];
-}else{
-	$noticia_prin_dreta['imatge'] = imagecache_create_path('financ-gran', $node_->field_imatges[0]['filepath']);
-	$noticia_prin_dreta['alt'] = $node_->field_imatges[0]['data']['alt'];
 }
-$noticia_prin_dreta['title'] = $node_->title;
-$noticia_prin_dreta['teaser'] = strip_tags($node_->field_resum[0]['value']);
-$noticia_prin_dreta['link'] = $pathroot.'/'.$node_->path;
 
 
 //Noticia secundaria
@@ -96,14 +109,9 @@ $noticia_secundaria = array();
 for ($i = 1; $i <= 4; $i++){
 	$noticia = 'field_financ_secund_xarxanet_'.$i;
 	$noticia = $node->$noticia;
-	$foto = 'field_financ_secund_foto_'.$i;
-	$foto = $node->$foto;
-	if (isset($noticia[0]['safe']['nid'])) {
-		$node_ =  node_load($noticia[0]['safe']['nid']);
-		if (isset($foto[0]['filepath'])){
-			$noticia_secundaria[$i]['imatge'] = $foto[0]['filepath'];
-			$noticia_secundaria[$i]['alt'] = $foto[0]['data']['alt'];
-		}elseif (isset($node_->field_agenda_imatge[0]['filepath'])){
+	if ($node_ =  node_load($noticia[0]['safe']['nid'])) {
+		//Noticia Xarxanet
+		if (isset($node_->field_agenda_imatge[0]['filepath'])){
 			$noticia_secundaria[$i]['imatge'] = imagecache_create_path('financ-petit', $node_->field_agenda_imatge[0]['filepath']);
 			$noticia_secundaria[$i]['alt'] = $node_->field_agenda_imatge[0]['data']['alt'];
 		}else{
@@ -113,6 +121,19 @@ for ($i = 1; $i <= 4; $i++){
 		$noticia_secundaria[$i]['title'] = $node_->title;
 		$noticia_secundaria[$i]['teaser'] = strip_tags($node_->field_resum[0]['value']);
 		$noticia_secundaria[$i]['link'] = $pathroot.'/'.$node_->path;
+	} else {
+		//Noticia externa
+		$foto = 'field_financ_secund_foto_'.$i;
+		$foto = $node->$foto;
+		$titular = 'field_financ_secund_ext_'.$i;
+		$titular = $node->$titular;
+		$resum = 'field_financ_secund_resum_'.$i;
+		$resum = $node->$resum;
+		$noticia_secundaria[$i]['title'] = $titular[0]['title'];
+		$noticia_secundaria[$i]['link'] = $titular[0]['url'];
+		$noticia_secundaria[$i]['teaser'] = strip_tags($resum[0]['value']);
+		$noticia_secundaria[$i]['imatge'] = $foto[0]['filepath'];
+		$noticia_secundaria[$i]['alt'] = $foto[0]['data']['alt'];
 	}
 }
 
