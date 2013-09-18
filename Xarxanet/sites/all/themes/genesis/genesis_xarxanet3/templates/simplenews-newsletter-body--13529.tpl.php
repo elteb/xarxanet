@@ -141,7 +141,15 @@ ksort($noticies);
 			<tr><td width="57" style="background-color: black; color: white; font-weight: bold; vertical-align: top; padding: 5px; font-size: 16px">#<?php echo $title;?></td>
 			<td style="background-color: #7b1b1c" width="100%">
 				<table style="width:100%">
-					<tr><td style="font-family:Arial; font-weight:bold; color:white; vertical-align:top;"><p style="font-size:30px; margin:5px">Butlletí</p><p style="font-size:16px; margin:5px">El butlletí del voluntariat català</p></td>
+					<tr><td style="font-family:Arial; font-weight:bold; color:white; vertical-align:top;">
+						<?php if (empty($node->field_abast_titol_monografic[0]['value'])) {
+							echo '<p style="font-size:30px; margin:5px">Butlletí</p>';	
+						} else {
+							echo '<p style="font-size:30px; margin:5px">'.$node->field_abast_titol_monografic[0]['value'].'</p>';
+							echo '<p style="font-size:18px; margin:5px">Monogràfic del Butlletí A l’Abast</p>';
+						}?>
+						<p style="font-size:16px; margin:5px">El butlletí del voluntariat català</p>
+					</td>
 					<td style="text-align:right"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/capçalera_blanc_sol.png" alt="Capçalera butlleti Abast" style="margin:10px"/></td></tr>				
 				</table>
 			</td></tr>
@@ -166,17 +174,23 @@ ksort($noticies);
 	<tr><td colspan="2" height="3px" style="background-color: #800000;"></td></tr>
 	<tr><td colspan="2" height="3px" style="background-color: #CCCCCC; padding: 4px; font-weight: bold">
 	<?php
-		if (!empty($destacades)){ echo '<a style="color:#000001; text-decoration:none" href="#destacats">Destacats</a> | ';}
-		if (!empty($noticies)){ echo '<a style="color:#000001; text-decoration:none" href="#noticies">Notícies</a> | ';} 
-		if (!empty($node->field_abast_voluntariat_xarxanet[0]['safe']['nid']) || !empty($node->field_abast_voluntariat_titol[0]['title'])){ echo '<a style="color:#000001; text-decoration:none" href="#voluntariat">Crides de voluntariat</a> | ';}
-		if (!empty($node->field_abast_pfvc_titol[0]['title'])){ echo '<a style="color:#000001; text-decoration:none" href="#pfvc">Cursos PFVC</a> | ';}
-		if (!empty($node->field_abast_formacions_xarxanet[0]['safe']['nid'])){echo '<a style="color:#000001; text-decoration:none" href="#formacio">Altres formacions</a> | ';}
-		if (!empty($node->field_abast_activitats_xarxanet[0]['safe']['nid'])){echo '<a style="color:#000001; text-decoration:none" href="#activitats">Agenda</a> | ';}
-		if (!empty($node->field_abast_financament_xarxanet[0]['safe']['nid'])){echo '<a style="color:#000001; text-decoration:none" href="#financaments">Finançaments</a> | ';}
-		if (!empty($node->field_abast_flexible_titol[0]['value'])){	echo '<a style="color:#000001; text-decoration:none" href="#flexible">'.$node->field_abast_flexible_titol[0]['value'].'</a> | ';}
-		if (!empty($node->field_abast_entrevista[0]['safe']['nid'])){echo '<a style="color:#000001; text-decoration:none" href="#entrevista">Entrevista</a> | ';}
+		$entrevista_tit = (!empty($node->field_abast_entrevista[1]['safe']['nid'])) ? 'Entrevistes' : 'L\'Entrevista';
+		if (!empty($destacades)){ echo '<a style="color:#000001; text-decoration:none" href="#destacats">Destacats</a>';}
+		if (!empty($noticies)){ echo ' | <a style="color:#000001; text-decoration:none" href="#noticies">Notícies</a>';} 
+		if (!empty($node->field_abast_voluntariat_xarxanet[0]['safe']['nid']) || !empty($node->field_abast_voluntariat_titol[0]['title'])){ echo ' | <a style="color:#000001; text-decoration:none" href="#voluntariat">Crides de voluntariat</a>';}
+		if (!empty($node->field_abast_pfvc_titol[0]['title'])){ echo ' | <a style="color:#000001; text-decoration:none" href="#pfvc">Cursos PFVC</a>';}
+		if (!empty($node->field_abast_formacions_xarxanet[0]['safe']['nid'])){echo ' | <a style="color:#000001; text-decoration:none" href="#formacio">Altres formacions</a>';}
+		if (!empty($node->field_abast_activitats_xarxanet[0]['safe']['nid'])){echo ' | <a style="color:#000001; text-decoration:none" href="#activitats">Agenda</a>';}
+		if (!empty($node->field_abast_financament_xarxanet[0]['safe']['nid'])){echo ' | <a style="color:#000001; text-decoration:none" href="#financaments">Finançaments</a>';}
+		if (!empty($node->field_abast_flexible_titol[0]['value'])){	echo ' | <a style="color:#000001; text-decoration:none" href="#flexible">'.$node->field_abast_flexible_titol[0]['value'].'</a>';}
+		for ($i=1; $i<=4; $i++) {
+			$titol = 'field_monografic_titol_'.$i;
+			$titol = $node->$titol;
+			if(isset($titol[0]['value'])) echo ' | <a style="color:#000001; text-decoration:none" href="#bloc_lliure_'.$i.'">'.$titol[0]['value'].'</a>';
+		}
+		if (!empty($node->field_abast_entrevista[0]['safe']['nid'])){echo ' | <a style="color:#000001; text-decoration:none" href="#entrevista">'.$entrevista_tit.'</a>';}
+		if ($node->field_abast_activat[0]["value"] !== '0'){ echo ' | <a style="color:#000001; text-decoration:none" href="#activat">Activa\'t</a>';}
 	?>
-	<a style="color:#000001; text-decoration:none" href="#activat">Activa't</a>
 	</td></tr>
 
 
@@ -466,12 +480,26 @@ ksort($noticies);
 			echo '<a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
 		}
 		?>
-	
+		
+	<!-- BLOC LLIURE -->
+		<?php
+		for ($i=1; $i<=4; $i++) {
+			$titol = 'field_monografic_titol_'.$i;
+			$titol = $node->$titol;
+			$cos = 'field_monografic_cos_'.$i;
+			$cos = $node->$cos;
+			if(isset($titol[0]['value'])) echo '<a name="bloc_lliure_'.$i.'"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$titol[0]['value'].'</h1>';
+			if(isset($cos[0]['value'])) echo $cos[0]['value'];
+			if(isset($titol[0]['value'])) echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
+		}
+		?>
 	
 	<!-- ENTREVISTA -->
 		<?php
-		if (!empty($node->field_abast_entrevista[0]['safe']['nid'])){
-			$node_ =  node_load($node->field_abast_entrevista[0]['safe']['nid']);
+		$i = 0;
+		if (!empty($node->field_abast_entrevista[0]['safe']['nid'])) {echo '<a name="entrevista"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$entrevista_tit.'</h1>';}
+		while (!empty($node->field_abast_entrevista[$i]['safe']['nid'])){
+			$node_ =  node_load($node->field_abast_entrevista[$i]['safe']['nid']);
 			if (isset($node_->field_agenda_imatge[0]['filepath'])){
 				$imatge = imagecache_create_path('abast-petit', $node_->field_agenda_imatge[0]['filepath']);
 				$alt = $node_->field_agenda_imatge[0]['data']['alt'];
@@ -480,27 +508,22 @@ ksort($noticies);
 				$alt = $node_->field_imatges[0]['data']['alt'];
 				
 			}
-			$titol = (!empty($node->field_abast_entrevista_titol[0]['value'])) ? $node->field_abast_entrevista_titol[0]['value'] : $node_->title;
-			echo '<a name="entrevista"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: L\'entrevista</h1>';
+			$titol = (!empty($node->field_abast_entrevista_titol[$i]['value'])) ? $node->field_abast_entrevista_titol[$i]['value'] : $node_->title;
 			echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
 			echo '<a href="'.$pathroot.'/'.$node_->path.'" style="text-decoration: none"><img src="'.$pathroot.'/'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
 			echo '<a href="'.$pathroot.'/'.$node_->path.'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$titol.'</a>';
 			echo '	<table style="margin-left:85px; margin-top:5px; width:auto"><tr><td style="vertical-align:top"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes1.gif" alt="cometes" width="15px"/></td>
-					<td style="font-size: 12px; text-align:center; padding:5px 0; width:180px">'.strip_tags($node->field_abast_entrevista_cita[0]['value']).'</td>
+					<td style="font-size: 12px; text-align:center; padding:5px 0; width:180px">'.strip_tags($node->field_abast_entrevista_cita[$i]['value']).'</td>
 					<td style="vertical-align:bottom"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes2.gif" alt="cometes" width="15px"/></td></tr></table>';	
-			echo '</td></tr></table>';
-			echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
-		} 
+			echo '</td></tr></table>';			
+			$i++;
+		}
+		echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
 		?>
 		
 		
-	<!-- COS -->
-		<?php
-			if(isset($node->field_cos[0]['value'])) echo $node->field_cos[0]['value'];
-		?>
-	
-	
 	<!-- ACTIVA'T -->
+	<?php if ($node->field_abast_activat[0]["value"] !== '0') { ?>
 		<a name="activat"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 15px 0 5px;">:: Activa't</h1>
 		<a style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none" href="<?php echo $pathroot;?>/noticies/he-danar-informar-me-i-fer-voluntariat">
 			On he d'anar per informar-me i fer voluntariat?
@@ -519,6 +542,7 @@ ksort($noticies);
 				</p>
 			</td></tr>
 		</table>
+	<?php } ?>
 	</td>
 </tr><tr>	
 	<!-- PEU -->	
