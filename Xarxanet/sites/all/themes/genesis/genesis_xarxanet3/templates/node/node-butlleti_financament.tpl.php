@@ -275,10 +275,12 @@ ksort($financ_nodes);
 			<?php } 
 			}?>
 			<!-- BANNER FIXE -->
+			<a style="text-decoration:none" href="http://www.xarxanet.org/formulari-dassessorament">
+				<img src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/banner_assessorament.jpg" alt="Banner Assessorament" width="265px" style="margin:2px 0;"/>
+			</a>
 			<a style="text-decoration:none" href="http://www.twitter.com/ajuts_entitats">
 				<img src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/banner_twitter.jpg" alt="Banner Twitter" width="265px" style="margin:2px 0;"/>
-			</a>
-					
+			</a>					
 			
 			<!-- NOTICIA SECUNDARIA -->
 			<?php foreach ($noticia_secundaria as $secundaria) {?>
