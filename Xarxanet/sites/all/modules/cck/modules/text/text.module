@@ -165,7 +165,19 @@ function text_field($op, &$node, $field, &$items, $teaser, $page) {
             if (!empty($field['max_length']) && drupal_strlen(strip_tags($item['value'])) > $field['max_length']) {
             /*********************************************************
              * END TEBPATCH ******************************************/
-              form_set_error($error_element, t('%name: the value may not be longer than %max characters.', array('%name' => $field['widget']['label'], '%max' => $field['max_length'])));
+            	
+            	/*********************************************************
+            	 * TEBPATCH (MDF) @fcasanellas 23/09/13
+            	 * #XN-CCKTMP1 TEMPORAL! Només per al període de transeció als 200 caràcters
+            	 * OLDCODE *********************************************** 
+              	form_set_error($error_element, t('%name: the value may not be longer than %max characters.', array('%name' => $field['widget']['label'], '%max' => $field['max_length'])));
+              	 * NEWCODE **********************************************/
+            	global $user;
+            	if (!in_array('Entitat administradora', $user->roles)) {
+            		form_set_error($error_element, t('%name: the value may not be longer than %max characters.', array('%name' => $field['widget']['label'], '%max' => $field['max_length'])));
+            	}
+            	/*********************************************************
+            	 * END TEBPATCH ******************************************/
             }
           }
         }
