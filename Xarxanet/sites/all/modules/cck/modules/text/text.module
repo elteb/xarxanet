@@ -162,7 +162,9 @@ function text_field($op, &$node, $field, &$items, $teaser, $page) {
              * if (!empty($field['max_length']) && drupal_strlen($item['value']) > $field['max_length']) {
              * *******************************************************
              * NEWCODE ***********************************************/
-            if (!empty($field['max_length']) && drupal_strlen(strip_tags($item['value'])) > $field['max_length']) {
+            $text = html_entity_decode(strip_tags($item['value']));
+            $text = str_replace(array('&#39;'), array("'"), $text);
+            if (!empty($field['max_length']) && mb_strlen($text) > $field['max_length']) {
             /*********************************************************
              * END TEBPATCH ******************************************/
             	
