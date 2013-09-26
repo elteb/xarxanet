@@ -204,7 +204,6 @@ ksort($noticies);
 	<tr><td colspan="2" height="3px" style="background-color: #800000;"></td></tr>
 	<tr><td colspan="2" height="3px" style="background-color: #CCCCCC; padding: 4px; font-weight: bold">
 	<?php
-		$entrevista_tit = (!empty($node->field_abast_entrevista[1]['safe']['nid'])) ? 'Entrevistes' : 'L\'Entrevista';
 		$array_flex = array('', '_2', '_3');
 		if (!empty($destacades)){ echo '<a style="color:#000001; text-decoration:none" href="#destacats">Destacats</a>';}
 		if (!empty($noticies)){ echo ' | <a style="color:#000001; text-decoration:none" href="#noticies">Notícies</a>';} 
@@ -223,7 +222,7 @@ ksort($noticies);
 			$titol = $node->$titol;
 			if(isset($titol[0]['value'])) echo ' | <a style="color:#000001; text-decoration:none" href="#bloc_lliure_'.$i.'">'.$titol[0]['value'].'</a>';
 		}
-		if (!empty($node->field_abast_entrevista[0]['safe']['nid'])){echo ' | <a style="color:#000001; text-decoration:none" href="#entrevista">'.$entrevista_tit.'</a>';}
+		if (!empty($node->field_abast_entrevista_titol[0]['value']) || !empty($node->field_abast_entrevista_externa[0]['title'])){echo ' | <a style="color:#000001; text-decoration:none" href="#entrevista">'.$node->field_abast_entrevista_titol_sec[0]['value'].'</a>';}
 		if ($node->field_abast_activat[0]["value"] !== '0'){ echo ' | <a style="color:#000001; text-decoration:none" href="#activat">Activa\'t</a>';}
 	?>
 	</td></tr>
@@ -280,8 +279,8 @@ ksort($noticies);
 		if (!$curta) echo '<td width="67%" style="vertical-align: top"></td></tr>';	
 		?>
 		<tr><td colspan="2" style="text-align: right;">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="<?php echo $pathroot;?>/noticies">
-				Més notícies
+			<a style="font-weight: bold; color: #000001; text-decoration: none" href="<?php echo $node->field_abast_noticies_enllac[0]['url']; ?>">
+				<?php echo $node->field_abast_noticies_enllac[0]['title']; ?>
 			</a>
 			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
 		</td></tr>
@@ -554,7 +553,7 @@ ksort($noticies);
 	<!-- ENTREVISTA -->
 		<?php
 		$i = 0;
-		if (!empty($node->field_abast_entrevista[0]['safe']['nid'])) {echo '<a name="entrevista"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$entrevista_tit.'</h1>';}
+		if (!empty($node->field_abast_entrevista_titol[0]['value']) || !empty($node->field_abast_entrevista_externa[0]['title'])) {echo '<a name="entrevista"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$node->field_abast_entrevista_titol_sec[0]['value'].'</h1>';}
 		while (!empty($node->field_abast_entrevista_cita[$i]['value'])){
 			if ($node_ =  node_load($node->field_abast_entrevista[$i]['safe']['nid'])) {
 				if (isset($node_->field_agenda_imatge[0]['filepath'])){
