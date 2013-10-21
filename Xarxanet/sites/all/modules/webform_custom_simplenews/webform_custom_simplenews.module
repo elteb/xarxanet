@@ -108,7 +108,7 @@ function webform_custom_simplenews_token_values($type, $object = NULL, $options 
 			$created = time() - $lapse*86400;
 			foreach ($contents as $content) {
 				$section_nodes = array();
-				$result = db_query("SELECT nid FROM node WHERE type = '%s' AND created >= %d AND status = 1 ", $content, $created);
+				$result = db_query("SELECT nid FROM node WHERE type = '%s' AND created >= %d AND status = 1 ORDER BY created DESC", $content, $created);
 				$nids = array();
 				while ($obj = db_fetch_object ($result)) {
 					$section_nodes[$obj->nid] = node_load($obj->nid);			  
