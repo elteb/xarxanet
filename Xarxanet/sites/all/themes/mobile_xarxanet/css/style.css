@@ -183,6 +183,23 @@ body a {
 
 .view-noticies-destacades-mobil .view-header p { margin: 0px; }
 
+.views-field-field-recull-secundari-relaciona-url,
+.views-field-field-recull-principal-rel-url {
+	margin-top: 15px
+}
+
+.views-field-field-recull-secundari-relaciona-url label,
+.views-field-field-recull-principal-rel-url label {
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.views-field-field-recull-secundari-relaciona-url .field-item,
+.views-field-field-recull-principal-rel-url .field-item {
+	margin: 5px;
+	padding-left: 15px;
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style.png") no-repeat scroll 0 5 rgba(0, 0, 0, 0);
+}
 
 /************ BLOCS *************/
 
@@ -435,6 +452,15 @@ ul.pager {
 	padding-bottom: 10px;
 }
 
+#footer #third-line {
+	font-weight: bold;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	background-color: #d7d7d7;
+}
+
+#footer #third-line .logo-gene { margin: 5px 0; }
+
 
 /****** NOTICIA/RECURS/EVENT *******/
 
@@ -455,7 +481,8 @@ ul.pager {
 
 .page-node.noticia #picto,
 .page-node.recurs #picto,
-.page-node.financament #picto { 
+.page-node.financament #picto,
+.page-node.agenda #picto { 
 	width: 17px;
 	float: left;	
 }
@@ -477,13 +504,16 @@ ul.pager {
 
 .page-node.noticia #category,
 .page-node.recurs #category,
-.page-node.agenda #date { float: left; }
+.page-node.agenda #category,
+.page-node.financament #category { float: left; }
 
 .page-node.agenda #date,
 .page-node.agenda .image { margin-top: 5px; }
 
 .page-node.noticia #category-title,
-.page-node.recurs #category-title { padding: 2px 0 2px 20px; }
+.page-node.recurs #category-title,
+.page-node.financament #category-title,
+.page-node.agenda #category-title { padding: 2px 0 2px 20px; }
 
 .page-node.noticia #text,
 .page-node.recurs #text { 
@@ -511,13 +541,7 @@ ul.pager {
 .page-node.financament .node-body-text {
 	border-top: dotted 1.5px #cccccc;
 	margin-top: 5px;
-}
-
-.page-node.noticia .node-body-text,
-.page-node.financament .node-body-text {
-	border-bottom: dotted 1.5px #cccccc;
-	margin-bottom: 5px;
-}
+} 
 
 .page-node.financament .node-body-text { padding-top: 10px; }
 
@@ -537,13 +561,17 @@ ul.pager {
 
 /*********** COMENTARIS ************/
 
-#comments .box h2 {
+#comments h2 {
 	font-family: Georgia,Times New Roman,Times,serif;
 	font-size: 1.4rem;
-	color: #333333;
+	color: #ffffff;
 	margin: 10px 0;
 	font-weight: normal;
+	padding: 4px 0 4px 60px;
 }
+
+#comments-title{ background: url('/sites/all/themes/mobile_xarxanet/images/pictos/globus.png') #7B7B79 10px no-repeat; }
+#comments .box h2 {	background: url('/sites/all/themes/mobile_xarxanet/images/pictos/comentaris.png') #7B7B79 10px no-repeat; }
 
 #comments #edit-comment,
 #comments #recaptcha_table,
@@ -563,11 +591,7 @@ ul.pager {
 	font-style: italic; 
 }
 
-#comments .indented,
-#comments .box {
-	border-top: dotted 1.5px #cccccc;
-}
-
+#comments .indented { border-top: dotted 1.5px #cccccc; }
 #comments .links { margin-bottom: 15px; }
 
 
@@ -582,3 +606,25 @@ ul.pager {
 /********** PUBLICA **************/
 
 .node-type-noticia-general iframe { display: none; }
+
+
+/********* BANNER APP ***********/
+
+#app-banner {
+	background-color: #005577;
+	margin-bottom: 10px;
+	height: 35px;
+	display: none;
+}
+
+#app-banner #app-images { padding: 5px; }
+#app-banner #app-text { 
+	font-family: Arial,Helvetica,sans-serif;
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding-top: 12px;
+	color: #FFFFFF;
+}
+
+#app-banner #app-text, 
+#app-banner #app-images { float: left; } 

@@ -56,19 +56,35 @@
 
 <div id="credits">
 		<div id="date"><?php print format_date($node->changed, 'small'); ?></div>
-		<div id="author"><b>Entitat redactora: </b><?php print $node->name; ?></div>
+		<div id="author">
+			<?php if(isset($node->field_autor[0]['value'])): ?>
+            	<b>Autor: </b><?php print $node->field_autor[0]['value']; ?><br />
+            <?php endif; ?>
+			<b>Entitat redactora: </b><?php print $node->name; ?></div>
 		<div id="nothing"></div>
 </div>
 
 <?php
 	$fileurl = imagecache_create_url('tag-gran', $field_agenda_imatge[0]['filepath']);
 	$alt = $field_agenda_imatge[0]['data']['alt'];
+	$category_array = array (
+		'premi' => array('premi.gif', 'Premis'),
+		'subvencio' => array('subvenció.gif', 'Subvenció'),
+		'beques' => array('beques.gif', 'Beques'),
+		'altres' => array('altres.gif', 'Altres')
+	);
 ?>
  
 <div class='image'>
 	<img src='<?php print $fileurl ?>' alt='<?php print $alt ?>'/>
 </div>
 <div id="sub-image-1">
+	<div id="category">
+		<div id="picto">
+			<img src="/<?php print path_to_theme()?>/images/pictos/news-icons/<?php print $category_array[$node->field_finfull_tipus[0]['safe']][0]?>" alt="<?php print $category_array[$node->field_finfull_tipus[0]['safe']][1]?>" />
+		</div>
+		<div id="category-title"> Finançament > <?php print $category_array[$node->field_finfull_tipus[0]['safe']][1]?></div>
+	</div>
 	<div id="social-icons">
 		<a href="http://www.twitter.com/share?url=<?php print $GLOBALS['base_url'].$node_url ?>">
 			<img src="/<?php print path_to_theme()?>/images/pictos/social/twitter.png" alt="compartir a twitter" />

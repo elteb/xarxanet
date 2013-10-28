@@ -63,19 +63,27 @@
 	
 	$offset = get_time_offset($field_date_event[0]['timezone'], $field_date_event[0]['value2']);
 	$data_fi =  date("d/m/Y \a \l\e\s H:i",strtotime($field_date_event[0]['value2'])+$offset);
+	
 ?>
+
+<div id="date">
+	<strong>Inici: </strong> 
+	<?php 
+		print $data_inici;
+		if ($data_inici != $data_fi) print '<br/><strong>Fi: </strong>'.$data_fi;  
+	?>
+</div>
+	
 <div class='image'>
 	<img src='<?php print $fileurl ?>' alt='<?php print $alt ?>'/>
 </div>
 <div id="sub-image-1">
-	<div id="date">
-		<strong>Inici: </strong> 
-		<?php 
-			print $data_inici;
-			if ($data_inici != $data_fi) print '<br/><strong>Fi: </strong>'.$data_fi;  
-		?>
+	<div id="category">
+		<div id="picto">
+			<img src="/<?php print path_to_theme()?>/images/pictos/news-icons/<?php print $node->field_event_type[0]['safe'] ?>" alt="<?php print $node->field_event_type[0]['safe'] ?>" />
+		</div>
+		<div id="category-title"> Esdeveniments > <?php print $node->field_event_type[0]['safe'] ?></div>
 	</div>
-
 	<div id="social-icons">
 		<a href="http://www.twitter.com/share?url=<?php print $GLOBALS['base_url'].$node_url ?>">
 			<img src="/<?php print path_to_theme()?>/images/pictos/social/twitter.png" alt="compartir a twitter" />

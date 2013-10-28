@@ -130,6 +130,15 @@
 			?>
 			<div id="nothing"></div>
 		</div>
+		<div id="app-banner">
+			<a href="http://m.xarxanet.org">
+				<div id="app-images">
+					<img src="/<?php print path_to_theme()?>/images/pictos/android.png" alt="Android logo"/>
+					<img src="/<?php print path_to_theme()?>/images/pictos/ios.png" alt="Apple logo" />
+				</div>
+				<div id="app-text">Descarrega't l'App de Xarxanet.org</div>
+			</a>
+		</div>
 		<div id="content">
 			<div class="page-title"><?php print $title; ?></div> 
 			<?php print $content; ?>
@@ -152,11 +161,25 @@
 				<div class="item"><a href="avis-legal">Avís legal</a></div>
 				<div id="nothing"></div>
 			</div>
+			<div id="third-line">
+				<span>Xarxanet.org és un projecte de:</span>
+				<div class="logo-gene">
+					<a href="http://www.gencat.cat/benestar">
+						<img src="/<?php print path_to_theme()?>/images/logo-generalitat.png" alt="Logo Benestar Social i Família" />
+					</a>
+				</div>
+			</div>
 		</div>
 		
 		<script>
 			$( "#menu-tab" ).click(function() {
 				$("#menu").slideToggle("300");
+			});
+			
+			$( document ).ready(function() {
+				if ($('body').hasClass('page-mobile-frontpage')) {
+					$( "#app-banner" ).fadeIn( 300 ).delay( 5000 ).fadeOut( 300 );
+			    }
 			});
 		</script>
 	</div>

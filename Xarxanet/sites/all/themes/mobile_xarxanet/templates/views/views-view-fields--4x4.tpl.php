@@ -26,7 +26,7 @@
 	if ($fid == "") $fid = $fields['field_agenda_imatge_fid_2']->raw;
 	$file = field_file_load($fid);
 	$fileurl = imagecache_create_url('mobile', $file['filepath']);
-	$teaser = strip_tags($fields['field_resum_value']->raw);
+	$teaser = strip_html_tags($fields['field_resum_value']->raw);
 	
 	$date_event_fecha = substr($fields['field_date_event_value']->content,0, -8);
 	$date_event_hora = substr($fields['field_date_event_value']->content, -5);

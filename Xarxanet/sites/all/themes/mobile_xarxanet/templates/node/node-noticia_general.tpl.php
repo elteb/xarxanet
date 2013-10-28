@@ -57,7 +57,11 @@
 <!-- 
 <div id="credits">
 		<div id="date"><?php print format_date($node->changed, 'small'); ?></div>
-		<div id="author"><b>Entitat redactora: </b><?php print $node->name; ?></div>
+		<div id="author">
+			<?php if(isset($node->field_autor_noticies[0]['value'])): ?>
+            	<b>Autor: </b><?php print $node->field_autor_noticies[0]['value']; ?><br />
+            <?php endif; ?>
+			<b>Entitat redactora: </b><?php print $node->name; ?></div>
 		<div id="nothing"></div>
 
 	<div id="social-icons">
