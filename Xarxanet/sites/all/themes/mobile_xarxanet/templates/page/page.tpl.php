@@ -90,11 +90,9 @@
 		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
 		<title><?php print $head_title; ?></title>
 		<?php print $styles; ?>
-		<?php //print $scripts; ?>
+		<link rel="apple-touch-icon-precomposed" href="/<?php print path_to_theme()?>/images/icon-xarxanet.png" />
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-		
-		<script>
-		</script>
+		<script src="/<?php print path_to_theme()?>/includes/bookmark_bubble.js"></script>		
 	</head>
 	
 	<body class="<?php print $body_classes; ?>">
@@ -130,15 +128,15 @@
 			?>
 			<div id="nothing"></div>
 		</div>
+		<!-- 
 		<div id="app-banner">
-			<a href="http://m.xarxanet.org">
-				<div id="app-images">
-					<img src="/<?php print path_to_theme()?>/images/pictos/android.png" alt="Android logo"/>
-					<img src="/<?php print path_to_theme()?>/images/pictos/ios.png" alt="Apple logo" />
-				</div>
-				<div id="app-text">Descarrega't l'App de Xarxanet.org</div>
-			</a>
+			<div id="app-images">
+				<img src="/<?php print path_to_theme()?>/images/pictos/android.png" alt="Android logo"/>
+				<img src="/<?php print path_to_theme()?>/images/pictos/ios.png" alt="Apple logo" />
+			</div>
+			<div id="app-text">Descarrega't l'App de Xarxanet.org</div>
 		</div>
+		-->
 		<div id="content">
 			<div class="page-title"><?php print $title; ?></div> 
 			<?php print $content; ?>
@@ -178,8 +176,26 @@
 			
 			$( document ).ready(function() {
 				if ($('body').hasClass('page-mobile-frontpage')) {
-					$( "#app-banner" ).fadeIn( 300 ).delay( 5000 ).fadeOut( 300 );
+					//$( "#app-banner" ).fadeIn( 300 ).delay( 15000 ).fadeOut( 300 );
+					
+					var bubble = new google.bookmarkbubble.Bubble();
+				    var parameter = 'bmb=1';
+
+				    bubble.hasHashParameter = function() {
+				      return window.location.hash.indexOf(parameter) != -1;
+				    };
+
+				    bubble.setHashParameter = function() {
+				      if (!this.hasHashParameter()) {
+				        window.location.hash += parameter;
+				      }
+				    };
+				    bubble.showIfAllowed();
 			    }
+			});
+
+			$( "#app-banner" ).click(function() {
+				alert('hola');
 			});
 		</script>
 	</div>

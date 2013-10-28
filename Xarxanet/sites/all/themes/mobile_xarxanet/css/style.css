@@ -615,6 +615,7 @@ ul.pager {
 	margin-bottom: 10px;
 	height: 35px;
 	display: none;
+	cursor: pointer;
 }
 
 #app-banner #app-images { padding: 5px; }
