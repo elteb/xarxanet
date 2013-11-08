@@ -13,6 +13,11 @@
 <div id="header-right">	
    <div class="user-links">
 	   <ul>
+		   <?php
+		   		if (($_COOKIE['mt_device'] == 'desktop') || ($_GET['device'] == 'desktop')) {
+					echo '<li class="upper-buttons mobile"><a href="/index.php?device=mobile">Mòbil</a></li>';
+				} 
+		   ?>
 		   <li class="upper-buttons first"><a href="/user">Accedeix</a></li>
 		   <li class="upper-buttons last"><a href="/butlletins">Butlletins</a></li>
 	   </ul>

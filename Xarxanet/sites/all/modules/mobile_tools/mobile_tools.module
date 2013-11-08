@@ -182,7 +182,7 @@ function mobile_tools_boot() {
 
   // Get the device object
   $mobile_tools_device =  mobile_tools_get_device();
-
+  
   // First call the redirect function. This will redirect the user if needed
   if (variable_get('mobile_tools_redirect', FALSE)) {
     $redirected = mobile_tools_device_redirect($mobile_tools_device);
@@ -201,7 +201,15 @@ function mobile_tools_boot() {
  */
 function mobile_tools_init() {
   global $mobile_tools_device, $conf;
-
+  
+  /**********************************************
+   * TEBPATCH (ADD) @fcasanellas 05/11/2013
+   * #XN-MT001 Fixa l'aparença mòbil en cas que sigui necessària
+   * NEWCODE ***********************************/
+  if (arg(0) != 'admin') $theme_switched = mobile_tools_switch_theme($mobile_tools_device);
+  /*********************************************
+   * END TEBPATCH ******************************/
+  
   // Skip everything in case Drush is used
   if (php_sapi_name() == 'cli') {
     return;

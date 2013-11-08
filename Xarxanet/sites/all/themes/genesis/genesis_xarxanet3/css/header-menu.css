@@ -85,7 +85,7 @@
 
 #header-right{
 	float: right;
-	width: 480px;
+	/*width: 480px;*/
 	clear: none;
 	padding-top: 24px;
 }
@@ -127,6 +127,14 @@
 #header-right .user-links ul li.last:hover,
 body.section-butlletins #header-right .user-links ul li.last { background: url('../images/pictos/newsletters.png') #C13113 right no-repeat; }
 
+#header-right .user-links ul li.mobile { 	
+	background: url('../images/pictos/mobile.png') #7B7B79  right no-repeat;
+	background-position-x: 90px; 
+	padding-right: 70px; }
+	
+#header-right .user-links ul li.mobile:hover { 
+	background: url('../images/pictos/mobile.png') #C13113 right no-repeat; 
+	background-position-x: 90px; }
 
 
 #Logos {

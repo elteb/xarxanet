@@ -102,6 +102,8 @@
 	<div id="nothing"></div>
 </div>
 <div class="node-body-text">
+	<div class="teaser"><?php print $node->field_resum[0]['value']; ?></div>
+	
 	 <?php if($field_convocant[0]['value']):?>
      <span><b>Convocant:</b></span>
      <?php print $field_convocant[0]['value']; ?>

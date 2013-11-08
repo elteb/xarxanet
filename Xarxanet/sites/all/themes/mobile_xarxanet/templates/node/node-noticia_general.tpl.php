@@ -83,5 +83,6 @@
 -->
 
 <div class="node-body-text">
+	<div class="teaser"><?php print $node->field_resum[0]['value']; ?></div>
 	<?php print $node->content['body']['#value']; ?>
 </div>

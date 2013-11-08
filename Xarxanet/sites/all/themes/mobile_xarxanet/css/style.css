@@ -18,6 +18,7 @@ body a {
 	text-decoration: none;
 }
 
+iframe { max-width: 100% !important; }
 
 /************ HEADER ***************/
 
@@ -541,7 +542,26 @@ ul.pager {
 .page-node.financament .node-body-text {
 	border-top: dotted 1.5px #cccccc;
 	margin-top: 5px;
-} 
+}
+
+.page-node.noticia .node-body-text .teaser,
+.page-node.recurs .node-body-text .teaser,
+.page-node.agenda .node-body-text .teaser,
+.page-node.financament .node-body-text .teaser {
+	font-style: italic;
+	border-bottom: dotted 1.5px #cccccc;
+}
+
+.page-node.financament .node-body-text .teaser {
+	margin-bottom: 10px;
+}
+
+.page-node.noticia .node-body-text .teaser a,
+.page-node.recurs .node-body-text .teaser a,
+.page-node.agenda .node-body-text .teaser a,
+.page-node.financament .node-body-text .teaser a {
+	font-style: normal;
+}
 
 .page-node.financament .node-body-text { padding-top: 10px; }
 
