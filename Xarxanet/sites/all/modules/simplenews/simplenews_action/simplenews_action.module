@@ -46,6 +46,10 @@ function simplenews_action_info() {
         'user' => array('update', 'delete'),
       ),
     ),
+  	/***************************************
+  	* TEBPATCH (ADD) @fcasanellas 02/04/2013
+  	* #XN-SN004 Afegeix action de subscripció a butlletins
+  	* NEWCODE ****************************/
 	'simplenews_save_newsletter_action' => array(
       'type' => 'simplenews',
       'description' => t('Save newsletter to external storage'),
@@ -54,6 +58,8 @@ function simplenews_action_info() {
         'simplenews' => array('sent'),
       ),
     ),
+	/***************************************
+	* END TEBPATCH ***********************/
   );
 }
 
