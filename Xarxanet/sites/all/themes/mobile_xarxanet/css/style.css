@@ -88,6 +88,7 @@ iframe { max-width: 100% !important; }
 .menu-item#actes { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/actes.png") no-repeat scroll 2px; }
 .menu-item#assessorament { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/assessorament.png") no-repeat scroll 5px; }
 .menu-item#publica-continguts { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/publica.png") no-repeat scroll 5px; }
+.menu-item#butlletins { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/newsletters.png") no-repeat scroll 5px; }
 
 #menu-right .menu-item { padding: 7.5px 0 7.5px 15px; }
 .menu-item#ambiental { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/ambiental.png") no-repeat scroll 0px; }
@@ -195,8 +196,10 @@ iframe { max-width: 100% !important; }
 	margin-left: 5px;
 }
 
-.views-field-field-recull-secundari-relaciona-url .field-item,
-.views-field-field-recull-principal-rel-url .field-item {
+/*.views-field-field-recull-secundari-relaciona-url .field-item,
+.views-field-field-recull-principal-rel-url .field-item,*/
+.views-field-field-recull-secundari-relaciona-url .field-content div,
+.views-field-field-recull-principal-rel-url .field-content div {
 	margin: 5px;
 	padding-left: 15px;
 	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style.png") no-repeat scroll 0 5 rgba(0, 0, 0, 0);
@@ -469,7 +472,9 @@ ul.pager {
 .page-node.recurs .page-title,
 .node-type-event .page-title,
 .node-type-webform .page-title,
-.node-type-financament-full .page-title { 
+.node-type-financament-full .page-title,
+.butlletins .page-title,
+.hemeroteca .page-title { 
 	font-family: Georgia,Times New Roman,Times,serif;
 	font-size: 1.6rem;
 	color: #333333;	
@@ -626,6 +631,17 @@ ul.pager {
 /********** PUBLICA **************/
 
 .node-type-noticia-general iframe { display: none; }
+
+/****** PÀGINA BUTLLETINS *******/
+.butlletins .page-title { padding: 0px 0px 10px; }
+.butlletins .node { clear: both; }
+.butlletins .node ul { margin-left: 0px; }
+.butlletins .node p a { font-size: 1.1rem; }
+
+.hemeroteca table,
+.hemeroteca table a { font-size: 1.1rem; }
+.hemeroteca table td { padding: 2.5px 5px; }
+.hemeroteca table { width: 100%; }
 
 
 /********* BANNER APP ***********/

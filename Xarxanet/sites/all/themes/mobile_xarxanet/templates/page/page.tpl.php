@@ -90,7 +90,7 @@
 		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
 		<title><?php print $head_title; ?></title>
 		<?php print $styles; ?>
-		<link rel="apple-touch-icon-precomposed" href="/<?php print path_to_theme()?>/images/icon-xarxanet.png" />
+		<link rel="apple-touch-icon-precomposed" href="/<?php print path_to_theme()?>/images/icon-xarxanet.jpg" />
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="/<?php print path_to_theme()?>/includes/bookmark_bubble.js"></script>		
 	</head>
