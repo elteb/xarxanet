@@ -60,6 +60,21 @@ function simplenews_action_info() {
     ),
 	/***************************************
 	* END TEBPATCH ***********************/
+  		
+  	/***************************************
+  	* TEBPATCH (ADD) @fcasanellas 08/11/2013
+  	* #XN-SN007 Subscriu periodicament els usuaris de l'OTRS
+  	* NEWCODE ****************************/
+  	'simplenews_subscribe_otrs_users_action' => array(
+  		'type' => 'simplenews',
+  		'description' => t('Subscribe OTRS users periodically'),
+  		'configurable' => TRUE,
+  		'hooks' => array(
+  			'cron' => array('run'),
+  		),
+  	),
+  	/***************************************
+  	* END TEBPATCH ***********************/
   );
 }
 
@@ -267,17 +282,7 @@ function simplenews_subscribe_user_action_submit($form, $form_state) {
  * TEBPATCH (ADD) @fcasanellas 02/04/2013
  * #XN-SN004 Afegeix action de subscripció a butlletins
  * NEWCODE ****************************/ 
- /**
- * A configurable Drupal action. Subscribe the user to a newsletter
- *   hook = user: Subscribe this user to selected newsletter
- *
- *   Available context:
- *    $context['tid']     newsletter tid
- *    $context['name']   newsletter name
- *
- *   @see simplenews_subscribe_user_action_form()
- *   @see simplenews_subscribe_user_action_submit()
- */
+
 function simplenews_save_newsletter_action(&$object, $context = array()) {
 	$months = array('de gener', 'de febrer', 'de març', 'd\'abril', 'de maig', 'de juny', 'de juliol', 'd\'agost', 'de setembre', 'd\'octubre', 'de novembre', 'de desembre');
 
@@ -388,7 +393,60 @@ function simplenews_save_newsletter_action_submit($form, $form_state) {
 
 /***************************************
  * END TEBPATCH ***********************/
- 
+
+
+/***************************************
+ * TEBPATCH (ADD) @fcasanellas 08/11/2013
+* #XN-SN007 Subscriu periodicament els usuaris de l'OTRS
+* NEWCODE ****************************/
+
+function simplenews_subscribe_otrs_users_action(&$object, $context = array()) {
+	$result = db_result(db_query("SELECT MAX(change_time) FROM otrs.customer_user"));
+	$timestamp = strtotime($result);
+	$var = 'last_otrs_users_revision_'.$context['tid'];
+	
+	if (variable_get($var, 0) < $timestamp) {
+		// Subscribe all users since last revision
+		$result = db_query("SELECT email FROM otrs.customer_user");
+		
+		while ($email = db_fetch_object($result)) {
+			$email = $email->email;
+			$subscription = simplenews_subscribe_user($email, $context['tid'], FALSE, 'action_otrs');
+		}
+		watchdog('action', 'Users subscribed to newsletter %newsletter.', array('%newsletter' => $context['name'])); 
+				
+		variable_set($var, $timestamp);
+	}
+}
+
+function simplenews_subscribe_otrs_users_action_form($context) {
+	$tree = taxonomy_get_tree(variable_get('simplenews_vid', ''));
+	$terms = array();
+	foreach ($tree as $newsletter) {
+		$terms[$newsletter->tid] = $newsletter->name;
+	}
+	$form['tid'] = array(
+			'#title' => t('Newsletter'),
+			'#type' => 'select',
+			'#options' => $terms,
+			'#default_value' => isset($context['tid']) ? $context['tid'] : key($terms),
+			'#description' => t('OTRS users will be subscribed to.'),
+	);
+	return $form;	
+}
+
+function simplenews_subscribe_otrs_users_action_submit($form, $form_state) {
+	$form_values = $form_state['values'];
+	
+	$params = array(
+			'tid' => $form_values['tid'],
+			'name' => $form['tid']['#options'][$form_values['tid']],
+	);
+	return $params;
+}
+
+/***************************************
+ * END TEBPATCH ***********************/
 /**
  * A configurable Drupal action. Unsubscribe the user from a newsletter
  *   hook = user: Unsubscribe this user from selected newsletter
