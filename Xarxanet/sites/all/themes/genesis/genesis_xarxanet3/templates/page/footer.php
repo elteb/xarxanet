@@ -90,8 +90,8 @@
 				        <li> <a title="RSS" target="_blank" href="http://www.xarxanet.org/mapa-del-web"><img align="middle" src="<?php print base_path().path_to_theme();?>/images/icons/rss-icon.png" alt="Logo RSS">RSS</a> 
 					  </li>
 
-					  <!-- app xarxanet -->
-				        <li> <a title="App" target="_blank" href="http://m.xarxanet.org"><img align="middle" src="<?php print base_path().path_to_theme();?>/images/icons/app-icon.png" alt="Logo RSS">Aplicaci&oacute; m&ograve;vil</a> 
+					  <!-- xarxanet mòbil -->
+				        <li> <a title="App" target="_blank" href="http://www.xarxanet.org?device=mobile"><img align="middle" src="<?php print base_path().path_to_theme();?>/images/icons/app-icon.png" alt="Logo Mòbil">Versió mòbil</a> 
 					  </li>
 
 					  <!-- butlletins xarxanet -->
