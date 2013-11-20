@@ -85,7 +85,9 @@ $banners_fixes = array(	'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/fil
 						'Banner dixit' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_dixit.gif', 
 													'http://www20.gencat.cat/portal/site/dixit'),
 						'Banner butlletins' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_butlletins.gif', 
-													'http://www20.gencat.cat/portal/site/bsf/menuitem.6e02226e86d88424e42a63a7b0c0e1a0/?vgnextoid=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextchannel=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextfmt=default&newLang=ca_ES'),);
+													'http://www20.gencat.cat/portal/site/bsf/menuitem.6e02226e86d88424e42a63a7b0c0e1a0/?vgnextoid=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextchannel=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextfmt=default&newLang=ca_ES'),
+						'Banner INTERREG IVC' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_interreg.gif', 
+													'http://verso.au.dk'));
 
 // Notícies destacades
 $num_destacades = 3;
