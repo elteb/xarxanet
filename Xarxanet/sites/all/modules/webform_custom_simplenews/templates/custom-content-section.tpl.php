@@ -47,17 +47,17 @@
 	<td style="border-top: solid 2px <?php echo '#'.$colors[$section_name]?>; padding: 10px 5px;" colspan="2">
 		<table style="font-family: Arial, Helvetica; font-size: 13px;">
 		<?php
-		$length = 0;
+		//$length = 0;
 		foreach ($section_nodes as $node) {
-			if ($length < 3) {
+			//if ($length < 3) {
 				$news_node = node_load($node->nid);
 				$teaser = strip_tags($news_node->field_resum[0]['value']);
 				echo "	<tr>
 					<td style='padding: 0 5px; vertical-align: top; width: 10px'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_{$colors[$section_name]}.jpg' /></td>
 					<td style='padding: 2px;'><a href='{$pathroot}/{$news_node->path}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$news_node->title}</a></td>
 					</tr><tr><td colspan='2' style='padding: 0 5px 5px 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
-				$length++;
-			}				
+				//$length++;
+			//}				
 		} 
 		?>
 		</table>
