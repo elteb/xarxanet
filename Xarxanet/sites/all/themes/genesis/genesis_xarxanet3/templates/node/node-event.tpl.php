@@ -79,12 +79,26 @@
             
           </div>
           <div class="agendamapa ">
-            <?php print $field_map[0]['view'];?>
+            <?php
+            	$latitude = $node->locations[0]['latitude'];
+            	$longitude = $node->locations[0]['longitude'];
+            	$location = '' ;
+            	
+            	if ($node->locations[0]['street'] && $node->locations[0]['city']) {
+					if ($node->locations[0]['name'] != '') $location .= '<b>'.$node->locations[0]['name'].'</b> <br/>';
+					$location .= $node->locations[0]['street'].'<br/>'.$node->locations[0]['city'];
+				} else {
+					$location = $field_adreca[0]['view'];
+				}            	
+	            if ($latitude != 0 || $longitude != 0) {
+	            	print gmap_simple_map($latitude, $longitude, '', $location, 'default');
+	            }
+            ?>
           </div>
 
           <div class="agendainformacio mb">
             <strong>Adreça</strong><br/>
-            <?php print $field_adreca[0]['view']?>
+            <?php print strip_tags($location, '<br/>'); ?>
           </div>
 
             <?php if($terms): ?>

@@ -1,6 +1,0 @@
-; $Id: $
-name = ekigmapscck - CCK
-description = "The ekigmapscck module allows administrators to define a field type for zip or postal codes. Note: Requires content.module"
-package = CCK
-dependencies[] = content
-core = 6.x
