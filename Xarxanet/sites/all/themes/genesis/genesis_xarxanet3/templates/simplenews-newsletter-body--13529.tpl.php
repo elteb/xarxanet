@@ -399,7 +399,9 @@ ksort($noticies);
 					$data = strtotime($node_->field_date_event[0]['value']);
 					$data = $dies[date('N', $data)-1].', '.date('j', $data).' '.$mesos[date('n', $data)-1].' de '.date('Y', $data);
 				}
-				$lloc = (isset($node->field_abast_formacions_lloc[$key]['value'])) ? $node->field_abast_formacions_lloc[$key]['value'] : $node_->field_ciutat[0]['value'];
+				$location = $node_->location['city'];
+				if ($node_->location['name']) $location = $node_->location['name'].', '.$location; 							
+				$lloc = (isset($node->field_abast_formacions_lloc[$key]['value'])) ? $node->field_abast_formacions_lloc[$key]['value'] : $location;
 				$entitat = (isset($node->field_abast_formacions_entitat[$key]['value'])) ? $node->field_abast_formacions_entitat[$key]['value'] : $node_->field_organizer[0]['value'];				
 				echo '<a href="'.$pathroot.'/'.$node_->path.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$node_->title.'</a>';
 				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
@@ -440,7 +442,9 @@ ksort($noticies);
 					$data = strtotime($node_->field_date_event[0]['value']);
 					$data = $dies[date('N', $data)-1].', '.date('j', $data).' '.$mesos[date('n', $data)-1].' de '.date('Y', $data);
 				}
-				$lloc = (isset($node->field_abast_activitats_lloc[$key]['value'])) ? $node->field_abast_activitats_lloc[$key]['value'] : $node_->field_ciutat[0]['value'];
+				$location = $node_->location['city'];
+				if ($node_->location['name']) $location = $node_->location['name'].', '.$location;
+				$lloc = (isset($node->field_abast_activitats_lloc[$key]['value'])) ? $node->field_abast_activitats_lloc[$key]['value'] : $location;
 				$entitat = (isset($node->field_abast_activitats_entitat[$key]['value'])) ? $node->field_abast_activitats_entitat[$key]['value'] : $node_->field_organizer[0]['value'];				
 				echo '<a href="'.$pathroot.'/'.$node_->path.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$node_->title.'</a>';
 				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
