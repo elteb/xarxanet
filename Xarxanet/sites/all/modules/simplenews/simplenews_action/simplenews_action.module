@@ -404,10 +404,12 @@ function simplenews_subscribe_otrs_users_action(&$object, $context = array()) {
 	$result = db_result(db_query("SELECT MAX(change_time) FROM otrs.customer_user"));
 	$timestamp = strtotime($result);
 	$var = 'last_otrs_users_revision_'.$context['tid'];
+	$time = variable_get($var, 0);
+	$date = date('Y-m-d H:i:s', $time);
 	
-	if (variable_get($var, 0) < $timestamp) {
+	if ($time < $timestamp) {
 		// Subscribe all users since last revision
-		$result = db_query("SELECT email FROM otrs.customer_user");
+		$result = db_query("SELECT email FROM otrs.customer_user WHERE change_time>'{$date}'");
 		
 		while ($email = db_fetch_object($result)) {
 			$email = $email->email;
