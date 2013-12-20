@@ -86,19 +86,30 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	<!-- DESTACAT PRINCIPAL -->
 	 <table class="butlleti" style='background-color: #ECEFF0; width: 580px;'>
 		<?php 
-		if ($node->field_actualitat_dest_prin_noti[0]['nid'] != '') {
+		if (($node->field_actualitat_dest_prin_noti[0]['nid'] != '') || ($node->field_actualitat_dest_prin_ext[0]['title'] != '')) {
 			if ($node->field_actualitat_dest_prin_epigr[0]['safe'] !=  '') {?> 
 				<tr><td style="background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; text-align: center; padding: 0px; height: 28px;"><?php echo $node->field_actualitat_dest_prin_epigr[0]['safe']; ?></td></tr>
-			<?php } 
-			$news_node = node_load($node->field_actualitat_dest_prin_noti[0]['nid']);
-			$teaser = strip_tags($news_node->field_resum[0]['value']);
+			<?php }
+			$title = '';
+			$url = '';
+			$teaser = '';
+			if ($node->field_actualitat_dest_prin_noti[0]['nid'] != '') {
+				$news_node = node_load($node->field_actualitat_dest_prin_noti[0]['nid']);
+				$title = $news_node->title;
+				$url = $pathroot.'/'.$news_node->path;
+				$teaser = strip_tags($news_node->field_resum[0]['value']);
+			} else {
+				$title = $node->field_actualitat_dest_prin_ext[0]['title'];
+				$url = $node->field_actualitat_dest_prin_ext[0]['url'];
+				$teaser = strip_tags($node->field_actualitat_dest_ext_teaser[0]['value']);				
+			}
 			echo "	<tr><td style='padding: 0px !important;'>
-						<a href='{$pathroot}/{$news_node->path}' style='text-decoration:none'>
+						<a href='{$url}' style='text-decoration:none'>
 							<img src='{$pathroot}/{$node->field_actualitat_dest_prin_foto[0]['filepath']}' alt='imatge destacat principal'/>
 						</a>
 					</td></tr><tr><td style='padding-bottom: 10px'>
-						<a href='{$pathroot}/{$news_node->path}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 18pt; font-weight: lighter; line-height: 24px; text-decoration: none;'>
-							{$news_node->title}
+						<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 18pt; font-weight: lighter; line-height: 24px; text-decoration: none;'>
+							{$title}
 						</a>
 						<p style='padding-top: 5px; margin: 2px 0;'>{$teaser}</p>";
 			if ($node->field_actualitat_dest_prin_rel[0]['nid'] != '') {
