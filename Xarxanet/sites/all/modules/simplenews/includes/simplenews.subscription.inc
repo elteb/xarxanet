@@ -672,6 +672,17 @@ function simplenews_subscriptions_admin_form(&$form_state, $snid) {
   // Newsletters with opt-in/out method 'hidden' will not be listed.
   foreach (simplenews_get_newsletters(variable_get('simplenews_vid', '')) as $newsletter) {
     $options[$newsletter->tid] = check_plain($newsletter->name);
+    
+    /**************************************************************
+     * TEBPATCH (ADD) @fcasanellas 13/01/2014
+     * #XN-SN008 Mostra informació extra de la subscripció
+     * NEWCODE ***************************************************/
+    if ($subs = $subscription->newsletter_subscription[$newsletter->tid]) {
+    	$options[$newsletter->tid] .= '<span class="description"> - '.date('d/m/Y', $subs->timestamp).' - '.t($subs->source).'</span>';
+    }
+    /*************************************************************
+     * END TEBPATCH **********************************************/
+    
     $default_value[$newsletter->tid] = FALSE;
   }
 
