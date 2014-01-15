@@ -123,7 +123,11 @@
 				<b>Referència bibliogràfica</b><br/>
 				<?php echo $node->field_doc_autoria[0]['value'].'. ('.$node->field_doc_data_publi[0]['view'].'). <i>'.$title.'</i>. '.$collect.$node->field_doc_lloc_publi[0]['value'].': '.$node->field_doc_editorial[0]['view'];?>
 			</p>
-			<p><b>Visites</b>: <?php $stats = (!is_null(statistics_get($node->nid))) ? statistics_get($node->nid) : 0 ; echo $stats['totalcount']; ?></p>	
+			<p><b>Visites</b>: 
+				<?php
+					echo google_analytics_counter_display();
+				?>
+			</p>	
 		</td></tr></table>
 		
 		<!-- PEU -->
