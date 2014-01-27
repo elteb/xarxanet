@@ -1,6 +1,0 @@
-; $Id$
-name = Simplenews Service
-description = Allows remote subscribe / unsubscribe to Simplenews
-dependencies[] = simplenews
-package = Mail
-core = 6.x

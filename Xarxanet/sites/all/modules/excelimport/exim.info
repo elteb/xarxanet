@@ -1,4 +1,0 @@
-; $Id$
-name = Excel Import for EquiNewsletter
-description = Imports users and their Newsletter preferences from two excel files
-core = 6.x

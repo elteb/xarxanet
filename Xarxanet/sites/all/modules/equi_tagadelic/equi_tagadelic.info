@@ -1,8 +1,0 @@
-; $Id: 
-name = Equi Tagadelic
-description = Changes output of tags in tagadelic Views
-dependencies[] = views
-dependencies[] = tagadelic
-dependencies[] = tagadelic_views
-package = Views
-core = 6.x

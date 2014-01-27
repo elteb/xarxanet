@@ -1,6 +1,0 @@
-name = Teb Toolbox
-description = Caixa d'eines amb diferents funcionalitats que milloren el funcinament de Drupal.
-core = 6.x
-
-package = "Teb Toolbox"
-version = "6.x-0.1-dev"

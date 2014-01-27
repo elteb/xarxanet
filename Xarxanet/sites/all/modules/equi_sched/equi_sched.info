@@ -1,6 +1,0 @@
-; $Id$
-name = Equilibri Scheduler
-description = Inserts the possibility of scheduling node posting by changing it's created date
-core = 6.x
-
-dependencies[] = date_popup

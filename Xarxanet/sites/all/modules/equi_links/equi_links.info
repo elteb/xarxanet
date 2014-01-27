@@ -1,5 +1,0 @@
-; $Id$
-name = Equilibri Links
-description = Substitute words for links inside the website
-package = Equilibri - SEO
-core = 6.x
