@@ -50,49 +50,51 @@
  * Fetch data from an indirect cache.
  *
  * @param string $mechanism
- *        	A string containing the plugin name, and an optional data element to
- *        	send to the plugin separated by two colons.
- *        	
+ *   A string containing the plugin name, and an optional data element to
+ *   send to the plugin separated by two colons.
+ *
  * @param string $key
- *        	The key used to identify the cache.
- *        	
- * @return mixed The cached data. This can be any format as the plugin does not necessarily
- *         have knowledge of what is being cached.
+ *   The key used to identify the cache.
+ *
+ * @return mixed
+ *   The cached data. This can be any format as the plugin does not necessarily
+ *   have knowledge of what is being cached.
  */
 function ctools_cache_get($mechanism, $key) {
-	return ctools_cache_operation ( $mechanism, $key, 'get' );
+  return ctools_cache_operation($mechanism, $key, 'get');
 }
 
 /**
  * Store data in an indirect cache.
  *
  * @param string $mechanism
- *        	A string containing the plugin name, and an optional data element to
- *        	send to the plugin separated by two colons.
- *        	
+ *   A string containing the plugin name, and an optional data element to
+ *   send to the plugin separated by two colons.
+ *
  * @param string $key
- *        	The key used to identify the cache.
- *        	
+ *   The key used to identify the cache.
+ *
  * @param mixed $object
- *        	The data to cache. This can be any format as the plugin does not
- *        	necessarily have knowledge of what is being cached.
+ *   The data to cache. This can be any format as the plugin does not
+ *   necessarily have knowledge of what is being cached.
  */
 function ctools_cache_set($mechanism, $key, $object) {
-	return ctools_cache_operation ( $mechanism, $key, 'set', $object );
+  return ctools_cache_operation($mechanism, $key, 'set', $object);
 }
 
 /**
  * Clear data from an indirect cache.
  *
  * @param string $mechanism
- *        	A string containing the plugin name, and an optional data element to
- *        	send to the plugin separated by two colons.
- *        	
+ *   A string containing the plugin name, and an optional data element to
+ *   send to the plugin separated by two colons.
+ *
  * @param string $key
- *        	The key used to identify the cache.
+ *   The key used to identify the cache.
  */
 function ctools_cache_clear($mechanism, $key) {
-	return ctools_cache_operation ( $mechanism, $key, 'clear' );
+  return ctools_cache_operation($mechanism, $key, 'clear');
+
 }
 
 /**
@@ -104,67 +106,64 @@ function ctools_cache_clear($mechanism, $key) {
  * caching functions as needed.
  *
  * @param string $mechanism
- *        	A string containing the plugin name, and an optional data element to
- *        	send to the plugin separated by two colons.
- *        	
+ *   A string containing the plugin name, and an optional data element to
+ *   send to the plugin separated by two colons.
+ *
  * @param string $key
- *        	The key used to identify the cache.
- *        	
+ *   The key used to identify the cache.
+ *
  * @param string $op
- *        	The operation to call, such as 'break' or 'finalize'.
- *        	
+ *   The operation to call, such as 'break' or 'finalize'.
+ *
  * @param mixed $object
- *        	The cache data being operated on, in case it is necessary. This is
- *        	optional so no references should be used.
- *        	
- * @return mixed The operation may or may not return a value.
+ *   The cache data being operated on, in case it is necessary. This is
+ *   optional so no references should be used.
+ *
+ * @return mixed
+ *   The operation may or may not return a value.
  */
 function ctools_cache_operation($mechanism, $key, $op, $object = NULL) {
-	list ( $plugin, $data ) = ctools_cache_find_plugin ( $mechanism );
-	if (empty ( $plugin )) {
-		return;
-	}
-	
-	$function = ctools_plugin_get_function ( $plugin, "cache $op" );
-	if (empty ( $function )) {
-		return;
-	}
-	
-	return $function ( $data, $key, $object, $op );
+  list($plugin, $data) = ctools_cache_find_plugin($mechanism);
+  if (empty($plugin)) {
+    return;
+  }
+
+  $function = ctools_plugin_get_function($plugin, "cache $op");
+  if (empty($function)) {
+    return;
+  }
+
+  return $function($data, $key, $object, $op);
 }
 
 /**
  * Take a mechanism and return a plugin and data.
  *
  * @param string $mechanism
- *        	A string containing the plugin name, and an optional data element to
- *        	send to the plugin separated by two colons.
- *        	
- * @return array An array, the first element will be the plugin and the second element
- *         will be the data. If the plugin could not be found, the $plugin will
- *         be NULL.
+ *   A string containing the plugin name, and an optional data element to
+ *   send to the plugin separated by two colons.
+ *
+ * @return array
+ *   An array, the first element will be the plugin and the second element
+ *   will be the data. If the plugin could not be found, the $plugin will
+ *   be NULL.
  */
 function ctools_cache_find_plugin($mechanism) {
-	if (strpos ( $mechanism, '::' ) !== FALSE) {
-		// use explode(2) to ensure that the data can contain double
-		// colons, just in case.
-		list ( $name, $data ) = explode ( '::', $mechanism, 2 );
-	} else {
-		$name = $mechanism;
-		$data = '';
-	}
-	
-	if (empty ( $name )) {
-		return array (
-				NULL,
-				$data 
-		);
-	}
-	
-	ctools_include ( 'plugins' );
-	$plugin = ctools_get_plugins ( 'ctools', 'cache', $name );
-	return array (
-			$plugin,
-			$data 
-	);
+  if (strpos($mechanism, '::') !== FALSE) {
+    // use explode(2) to ensure that the data can contain double
+    // colons, just in case.
+    list($name, $data) = explode('::', $mechanism, 2);
+  }
+  else {
+    $name = $mechanism;
+    $data = '';
+  }
+
+  if (empty($name)) {
+    return array(NULL, $data);
+  }
+
+  ctools_include('plugins');
+  $plugin = ctools_get_plugins('ctools', 'cache', $name);
+  return array($plugin, $data);
 }

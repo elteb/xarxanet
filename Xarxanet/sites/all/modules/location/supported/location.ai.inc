@@ -1,18 +1,25 @@
 <?php
 
-// Anguilla
+/**
+ * @file
+ * Anguilla.
+ */
+
+/**
+ * Returns an associative array of states/territories.
+ */
 function location_province_list_ai() {
-	return array ();
+  return array();
 }
 
 /**
  * Returns minimum and maximum latitude and longitude needed to create a bounding box.
  */
 function location_bounds_ai() {
-	return array (
-			'minlng' => - 63.1879,
-			'minlat' => 18.137033,
-			'maxlng' => - 62.9537,
-			'maxlat' => 18.248633 
-	);
+  return array(
+    'minlng' => -63.1879,
+    'minlat' => 18.137033,
+    'maxlng' => -62.9537,
+    'maxlat' => 18.248633,
+  );
 }

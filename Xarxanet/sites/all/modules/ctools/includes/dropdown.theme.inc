@@ -35,64 +35,56 @@
  * Delegated implementation of hook_theme()
  */
 function ctools_dropdown_theme(&$items) {
-	$items ['ctools_dropdown'] = array (
-			'variables' => array (
-					'title' => NULL,
-					'links' => NULL,
-					'image' => FALSE,
-					'class' => '' 
-			),
-			'file' => 'includes/dropdown.theme.inc' 
-	);
+  $items['ctools_dropdown'] = array(
+    'variables' => array('title' => NULL, 'links' => NULL, 'image' => FALSE, 'class' => ''),
+    'file' => 'includes/dropdown.theme.inc',
+  );
 }
 
 /**
  * Create a dropdown menu.
  *
- * @param $title The
- *        	text to place in the clickable area to activate the dropdown.
- * @param $links A
- *        	list of links to provide within the dropdown, suitable for use
- *        	in via Drupal's theme('links').
- * @param $image If
- *        	true, the dropdown link is an image and will not get extra decorations
- *        	that a text dropdown link will.
- * @param $class An
- *        	optional class to add to the dropdown's container div to allow you
- *        	to style a single dropdown however you like without interfering with
- *        	other dropdowns.
+ * @param $title
+ *   The text to place in the clickable area to activate the dropdown.
+ * @param $links
+ *   A list of links to provide within the dropdown, suitable for use
+ *   in via Drupal's theme('links').
+ * @param $image
+ *   If true, the dropdown link is an image and will not get extra decorations
+ *   that a text dropdown link will.
+ * @param $class
+ *   An optional class to add to the dropdown's container div to allow you
+ *   to style a single dropdown however you like without interfering with
+ *   other dropdowns.
  */
-function theme_ctools_dropdown($vars) {
-	// Provide a unique identifier for every dropdown on the page.
-	static $id = 0;
-	$id ++;
-	
-	$class = 'ctools-dropdown-no-js ctools-dropdown' . ($vars ['class'] ? (' ' . $vars ['class']) : '');
-	
-	ctools_add_js ( 'dropdown' );
-	ctools_add_css ( 'dropdown' );
-	
-	$output = '';
-	
-	$output .= '<div class="' . $class . '" id="ctools-dropdown-' . $id . '">';
-	$output .= '<div class="ctools-dropdown-link-wrapper">';
-	if ($vars ['image']) {
-		$output .= '<a href="#" class="ctools-dropdown-link ctools-dropdown-image-link">' . $vars ['title'] . '</a>';
-	} else {
-		$output .= '<a href="#" class="ctools-dropdown-link ctools-dropdown-text-link">' . check_plain ( $vars ['title'] ) . '</a>';
-	}
-	
-	$output .= '</div>'; // wrapper
-	$output .= '<div class="ctools-dropdown-container-wrapper">';
-	$output .= '<div class="ctools-dropdown-container">';
-	$output .= theme_links ( array (
-			'links' => $vars ['links'],
-			'attributes' => array (),
-			'heading' => '' 
-	) );
-	$output .= '</div>'; // container
-	$output .= '</div>'; // container wrapper
-	$output .= '</div>'; // dropdown
-	return $output;
+function theme_ctools_dropdown($vars) { 
+  // Provide a unique identifier for every dropdown on the page.
+  static $id = 0;
+  $id++;
+
+  $class = 'ctools-dropdown-no-js ctools-dropdown' . ($vars['class'] ? (' ' . $vars['class']) : '');
+
+  ctools_add_js('dropdown');
+  ctools_add_css('dropdown');
+
+  $output = '';
+
+  $output .= '<div class="' . $class . '" id="ctools-dropdown-' . $id . '">';
+  $output .= '<div class="ctools-dropdown-link-wrapper">';
+  if ($vars['image']) {
+    $output .= '<a href="#" class="ctools-dropdown-link ctools-dropdown-image-link">' . $vars['title'] . '</a>';
+  }
+  else {
+    $output .= '<a href="#" class="ctools-dropdown-link ctools-dropdown-text-link">' . check_plain($vars['title']) . '</a>';
+  }
+
+  $output .= '</div>'; // wrapper
+  $output .= '<div class="ctools-dropdown-container-wrapper">';
+  $output .= '<div class="ctools-dropdown-container">';
+  $output .= theme_links(array('links' => $vars['links'], 'attributes' => array(), 'heading' => ''));
+  $output .= '</div>'; // container
+  $output .= '</div>'; // container wrapper
+  $output .= '</div>'; // dropdown
+  return $output;
 }
 

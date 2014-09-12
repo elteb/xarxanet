@@ -1,14 +1,6 @@
-<p>The CTools Object Cache is a specialized cache for storing data
-	that is non-volatile. This differs from the standard Drupal cache
-	mechanism, which is volatile, meaning that the data can be cleared at
-	any time and it is expected that any cached data can easily be
-	reconstructed. In contrast, data stored in this cache is not expected
-	to be reconstructable. It is primarily used for storing user input
-	which is retrieved in stages, allowing for more complex user interface
-	interactions.</p>
+<p>The CTools Object Cache is a specialized cache for storing data that is non-volatile. This differs from the standard Drupal cache mechanism, which is volatile, meaning that the data can be cleared at any time and it is expected that any cached data can easily be reconstructed. In contrast, data stored in this cache is not expected to be reconstructable. It is primarily used for storing user input which is retrieved in stages, allowing for more complex user interface interactions.</p>
 
-<p>The object cache consists of 3 normal functions for cache
-	maintenance, and 2 additional functions to facilitate locking.</p>
+<p>The object cache consists of 3 normal functions for cache maintenance, and 2 additional functions to facilitate locking.</p>
 
 <p>To use any of these functions, you must first use ctools_include:</p>
 
@@ -65,9 +57,7 @@ function ctools_object_cache_set($obj, $name, $cache) {
 function ctools_object_cache_clear($obj, $name) {
 </pre>
 
-<p>To facilitate locking, which is the ability to prohibit updates
-	by other users while one user has an object cached, this system
-	provides two functions:</p>
+<p>To facilitate locking, which is the ability to prohibit updates by other users while one user has an object cached, this system provides two functions:</p>
 
 <pre>
 /**
@@ -88,12 +78,9 @@ function ctools_object_cache_clear($obj, $name) {
 function ctools_object_cache_test($obj, $name) {
 </pre>
 
-<p>The object returned by ctools_object_cache_test can be directly
-	used to determine whether a user should be allowed to cache their own
-	version of an object.</p>
+<p>The object returned by ctools_object_cache_test can be directly used to determine whether a user should be allowed to cache their own version of an object.</p>
 
-<p>To allow the concept of breaking a lock, that is, clearing
-	another users changes:</p>
+<p>To allow the concept of breaking a lock, that is, clearing another users changes:</p>
 
 <pre>
 /**

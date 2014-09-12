@@ -4,6 +4,8 @@
  * Implementation of hook_schema().
  */
 function webform_custom_simplenews_schema() {
+    
+    $schema = array();
 	$schema['webform_custom_simplenews'] = array(
 		'description' => 'Newsletter series subscription data with custom content.',
 		'fields' => array(

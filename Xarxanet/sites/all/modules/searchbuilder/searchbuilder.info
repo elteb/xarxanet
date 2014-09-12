@@ -1,4 +1,0 @@
-; $Id$
-name = Search Builder
-description = Construeix les cerques i fa tractament sobre els valors a cercar
-core = 6.x

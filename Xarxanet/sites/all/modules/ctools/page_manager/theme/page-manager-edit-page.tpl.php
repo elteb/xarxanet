@@ -18,15 +18,15 @@
       </div>
     <?php endif; ?>
     <div class="page-manager-tabs clearfix">
-			<div class="page-manager-edit-operations">
-				<div class="inside">
+      <div class="page-manager-edit-operations">
+        <div class="inside">
           <?php print $operations['nav']; ?>
         </div>
-			</div>
-			<div class="page-manager-ajax-pad">
-				<div class="inside">
-					<div class="content-header">
-						<div class="content-title">
+      </div>
+      <div class="page-manager-ajax-pad">
+        <div class="inside">
+          <div class="content-header">
+            <div class="content-title">
               <?php print $changed; ?>
               <?php print $content['title']; ?>
             </div>
@@ -37,7 +37,7 @@
             <?php endif; ?>
           </div>
 
-					<div class="content-content">
+          <div class="content-content">
             <?php if (!empty($content['description'])): ?>
               <div class="description">
                 <?php print $content['description']; ?>
@@ -45,9 +45,9 @@
               <?php endif; ?>
             <?php print $content['content']; ?>
           </div>
-				</div>
-			</div>
-		</div>
-	</div>
+        </div>
+      </div>
+    </div>
+  </div>
   <?php print $save; ?>
 </div>

@@ -10,13 +10,13 @@
  * Plugins are described by creating a $plugin array which will be used
  * by the system that includes this file.
  */
-$plugin = array (
-		'title' => t ( 'Actions' ),
-		'single' => TRUE,
-		'icon' => 'icon_page.png',
-		'description' => t ( 'Add the action links (local tasks) as content.' ),
-		'category' => t ( 'Page elements' ),
-		'render last' => TRUE 
+$plugin = array(
+  'title' => t('Actions'),
+  'single' => TRUE,
+  'icon' => 'icon_page.png',
+  'description' => t('Add the action links (local tasks) as content.'),
+  'category' => t('Page elements'),
+  'render last' => TRUE,
 );
 
 /**
@@ -25,10 +25,8 @@ $plugin = array (
  * Outputs the actions (local tasks) of the current page.
  */
 function ctools_page_actions_content_type_render($subtype, $conf, $panel_args) {
-	$block = new stdClass ();
-	$block->content = theme ( 'ctools_menu_local_actions_wrapper', array (
-			'links' => menu_local_actions () 
-	) );
-	
-	return $block;
+  $block = new stdClass();
+  $block->content = theme('ctools_menu_local_actions_wrapper', array('links' => menu_local_actions()));
+
+  return $block;
 }

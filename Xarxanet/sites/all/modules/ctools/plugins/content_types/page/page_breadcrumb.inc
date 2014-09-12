@@ -10,13 +10,13 @@
  * Plugins are described by creating a $plugin array which will be used
  * by the system that includes this file.
  */
-$plugin = array (
-		'title' => t ( 'Breadcrumb' ),
-		'single' => TRUE,
-		'icon' => 'icon_page.png',
-		'description' => t ( 'Add the breadcrumb trail as content.' ),
-		'category' => t ( 'Page elements' ),
-		'render last' => TRUE 
+$plugin = array(
+  'title' => t('Breadcrumb'),
+  'single' => TRUE,
+  'icon' => 'icon_page.png',
+  'description' => t('Add the breadcrumb trail as content.'),
+  'category' => t('Page elements'),
+  'render last' => TRUE,
 );
 
 /**
@@ -25,10 +25,8 @@ $plugin = array (
  * Outputs the breadcrumb for the current page.
  */
 function ctools_page_breadcrumb_content_type_render($subtype, $conf, $panel_args) {
-	$block = new stdClass ();
-	$block->content = theme ( 'breadcrumb', array (
-			'breadcrumb' => drupal_get_breadcrumb () 
-	) );
-	
-	return $block;
+  $block = new stdClass();
+  $block->content = theme('breadcrumb', array('breadcrumb' => drupal_get_breadcrumb()));
+
+  return $block;
 }

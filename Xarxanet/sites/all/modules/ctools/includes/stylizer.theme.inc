@@ -10,22 +10,19 @@
  * necessary.
  */
 function ctools_stylizer_theme(&$theme) {
-	$theme ['ctools_stylizer_color_scheme_form'] = array (
-			'render element' => 'form',
-			'file' => 'includes/stylizer.inc' 
-	);
-	
-	$theme ['ctools_stylizer_preview_form'] = array (
-			'render element' => 'form',
-			'file' => 'includes/stylizer.inc' 
-	);
-	
-	$theme ['ctools_style_icon'] = array (
-			'variables' => array (
-					'image' => NULL,
-					'title' => NULL 
-			),
-			'file' => 'includes/stylizer.inc' 
-	);
+  $theme['ctools_stylizer_color_scheme_form'] = array(
+    'render element' => 'form',
+    'file' => 'includes/stylizer.inc',
+  );
+
+  $theme['ctools_stylizer_preview_form'] = array(
+    'render element' => 'form',
+    'file' => 'includes/stylizer.inc',
+  );
+
+  $theme['ctools_style_icon'] = array(
+    'variables' => array('image' => NULL, 'title' => NULL),
+    'file' => 'includes/stylizer.inc',
+  );
 }
 

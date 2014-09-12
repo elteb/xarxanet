@@ -15,10 +15,10 @@
  * Using the above notation will ensure that this plugin's is loaded before
  * the child plugin's class and avoid whitescreens.
  */
-$plugin = array (
-		// As this is the base class plugin, it shouldn't declare any menu items.
-		'has menu' => FALSE,
-		'handler' => array (
-				'class' => 'ctools_export_ui' 
-		) 
+$plugin = array(
+  // As this is the base class plugin, it shouldn't declare any menu items.
+  'has menu' => FALSE,
+  'handler' => array(
+    'class' => 'ctools_export_ui',
+  ),
 );

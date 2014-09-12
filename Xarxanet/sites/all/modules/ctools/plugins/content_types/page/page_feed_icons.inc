@@ -10,13 +10,13 @@
  * Plugins are described by creating a $plugin array which will be used
  * by the system that includes this file.
  */
-$plugin = array (
-		'title' => t ( 'Feed icons' ),
-		'single' => TRUE,
-		'icon' => 'icon_page.png',
-		'description' => t ( 'Add the site feed_icons statement as content.' ),
-		'category' => t ( 'Page elements' ),
-		'render last' => TRUE 
+$plugin = array(
+  'title' => t('Feed icons'),
+  'single' => TRUE,
+  'icon' => 'icon_page.png',
+  'description' => t('Add the site feed_icons statement as content.'),
+  'category' => t('Page elements'),
+  'render last' => TRUE,
 );
 
 /**
@@ -25,8 +25,8 @@ $plugin = array (
  * Outputs the feed_icons statement for the site.
  */
 function ctools_page_feed_icons_content_type_render($subtype, $conf, $panel_args) {
-	$block = new stdClass ();
-	$block->content = drupal_get_feeds ();
-	
-	return $block;
+  $block = new stdClass();
+  $block->content = drupal_get_feeds();
+
+  return $block;
 }

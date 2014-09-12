@@ -1,5 +1,12 @@
+<?php
+
+/**
+ * @file
+ * Template for displaying single location.
+ */
+?>
 <div class="location vcard">
-	<div class="adr">
+  <div class="adr">
     <?php if (!empty($name)): ?>
       <span class="fn"><?php print $name; ?></span>
     <?php endif; ?>
@@ -17,12 +24,9 @@
       <span class="postal-code"><?php print $postal_code; ?></span>
     <?php endif; ?>
     <?php if (!empty($city)): ?>
-      <span class="locality"><?php print $city; ?></span><?php
-					
-if (! empty ( $province )) {
-						print ', ';
-					}
-					?>
+      <span class="locality"><?php print $city; ?></span><?php if (!empty($province)) {
+        print ', ';
+      } ?>
     <?php endif; ?>
     <?php if (!empty($province)): ?>
       <span class="region"><?php print $province_print; ?></span>
@@ -32,28 +36,32 @@ if (! empty ( $province )) {
     <?php endif; ?>
     <?php if (!empty($email)): ?>
       <div class="email">
-			<abbr class="type" title="email"><?php print t("Email address"); ?>:</abbr>
-			<span><a href="mailto:<?php print $email; ?>"><?php print $email; ?></a></span>
-		</div>
+        <abbr class="type" title="email"><?php print t("Email address"); ?>:</abbr>
+        <span><a href="mailto:<?php print $email; ?>"><?php print $email; ?></a></span>
+      </div>
     <?php endif; ?>
     <?php if (!empty($phone)): ?>
       <div class="tel">
-			<abbr class="type" title="voice"><?php print t("Phone"); ?>:</abbr> <span
-				class="value"><?php print $phone; ?></span>
-		</div>
+        <abbr class="type" title="voice"><?php print t("Phone"); ?>:</abbr>
+        <span class="value"><?php print $phone; ?></span>
+      </div>
     <?php endif; ?>
     <?php if (!empty($fax)): ?>
       <div class="tel">
-			<abbr class="type" title="fax"><?php print t("Fax"); ?>:</abbr> <span><?php print $fax; ?></span>
-		</div>
+        <abbr class="type" title="fax"><?php print t("Fax"); ?>:</abbr>
+        <span><?php print $fax; ?></span>
+      </div>
     <?php endif; ?>
-    <?php // "Geo" microformat, see http://microformats.org/wiki/geo ?>
+    <?php
+    // "Geo" microformat, see http://microformats.org/wiki/geo.
+    ?>
     <?php if (isset($latitude) && isset($longitude)): ?>
-      <?php // Assume that 0, 0 is invalid. ?>
+      <?php
+      // Assume that 0, 0 is invalid.
+      ?>
       <?php if ($latitude != 0 || $longitude != 0): ?>
-        <span class="geo"><abbr class="latitude"
-			title="<?php print $latitude; ?>"><?php print $latitude_dms; ?></abbr>,
-			<abbr class="longitude" title="<?php print $longitude; ?>"><?php print $longitude_dms; ?></abbr></span>
+        <span class="geo"><abbr class="latitude" title="<?php print $latitude; ?>"><?php print $latitude_dms; ?></abbr>, <abbr
+            class="longitude" title="<?php print $longitude; ?>"><?php print $longitude_dms; ?></abbr></span>
       <?php endif; ?>
     <?php endif; ?>
   </div>

@@ -4,13 +4,12 @@
  * @file
  * Themable for the wizard tool.
  */
+
 function ctools_wizard_theme(&$theme) {
-	$theme ['ctools_wizard_trail'] = array (
-			'variables' => array (
-					'trail' => NULL 
-			),
-			'file' => 'includes/wizard.theme.inc' 
-	);
+  $theme['ctools_wizard_trail'] = array(
+    'variables' => array('trail' => NULL),
+    'file' => 'includes/wizard.theme.inc',
+  );
 }
 
 /**
@@ -18,9 +17,9 @@ function ctools_wizard_theme(&$theme) {
  * forms.
  */
 function theme_ctools_wizard_trail($vars) {
-	$trail = $vars ['trail'];
-	if (! empty ( $trail )) {
-		return '<div class="wizard-trail">' . implode ( ' » ', $trail ) . '</div>';
-	}
+  $trail = $vars['trail'];
+  if (!empty($trail)) {
+    return '<div class="wizard-trail">' . implode(' » ', $trail) . '</div>';
+  }
 }
 

@@ -5,31 +5,31 @@
  * more information.
  */
 function page_manager_poll_page_manager_tasks() {
-	if (! module_exists ( 'poll' )) {
-		return;
-	}
-	
-	return array (
-			// This is a 'page' task and will fall under the page admin UI
-			'task type' => 'page',
-			
-			'title' => t ( 'All polls' ),
-			'admin title' => t ( 'All polls' ),
-			'admin description' => t ( 'When enabled, this overrides the default Drupal behavior for the polls at <em>/poll</em>. If no variant is selected, the default Drupal most recent polls will be shown.' ),
-			'admin path' => 'poll',
-			
-			// Menu hooks so that we can alter the node/%node menu entry to point to us.
-			'hook menu alter' => 'page_manager_poll_menu_alter',
-			
-			// This is task uses 'context' handlers and must implement these to give the
-			// handler data it needs.
-			'handler type' => 'context',
-			
-			// Allow this to be enabled or disabled:
-			'disabled' => variable_get ( 'page_manager_poll_disabled', TRUE ),
-			'enable callback' => 'page_manager_poll_enable',
-			'access callback' => 'page_manager_poll_access_check' 
-	);
+  if (!module_exists('poll')) {
+    return;
+  }
+
+  return array(
+    // This is a 'page' task and will fall under the page admin UI
+    'task type' => 'page',
+
+    'title' => t('All polls'),
+    'admin title' => t('All polls'),
+    'admin description' => t('When enabled, this overrides the default Drupal behavior for the polls at <em>/poll</em>. If no variant is selected, the default Drupal most recent polls will be shown.'),
+    'admin path' => 'poll',
+
+    // Menu hooks so that we can alter the node/%node menu entry to point to us.
+    'hook menu alter' => 'page_manager_poll_menu_alter',
+
+    // This is task uses 'context' handlers and must implement these to give the
+    // handler data it needs.
+    'handler type' => 'context',
+
+    // Allow this to be enabled or disabled:
+    'disabled' => variable_get('page_manager_poll_disabled', TRUE),
+    'enable callback' => 'page_manager_poll_enable',
+    'access callback' => 'page_manager_poll_access_check',
+  );
 }
 
 /**
@@ -39,25 +39,25 @@ function page_manager_poll_page_manager_tasks() {
  * normal node edit process.
  */
 function page_manager_poll_menu_alter(&$items, $task) {
-	if (variable_get ( 'page_manager_poll_disabled', TRUE )) {
-		return;
-	}
-	
-	$callback = $items ['poll'] ['page callback'];
-	// Override the node edit handler for our purpose.
-	if ($callback == 'poll_page' || variable_get ( 'page_manager_override_anyway', FALSE )) {
-		$items ['poll'] ['page callback'] = 'page_manager_poll';
-		$items ['poll'] ['file path'] = $task ['path'];
-		$items ['poll'] ['file'] = $task ['file'];
-	} else {
-		variable_set ( 'page_manager_poll_disabled', TRUE );
-		if (! empty ( $GLOBALS ['page_manager_enabling_poll'] )) {
-			drupal_set_message ( t ( 'Page manager module is unable to enable poll because some other module already has overridden with %callback.', array (
-					'%callback' => $callback 
-			) ), 'warning' );
-		}
-		return;
-	}
+  if (variable_get('page_manager_poll_disabled', TRUE)) {
+    return;
+  }
+
+  $callback = $items['poll']['page callback'];
+  // Override the node edit handler for our purpose.
+  if ($callback == 'poll_page' || variable_get('page_manager_override_anyway', FALSE)) {
+    $items['poll']['page callback'] = 'page_manager_poll';
+    $items['poll']['file path'] = $task['path'];
+    $items['poll']['file'] = $task['file'];
+  }
+  else {
+    variable_set('page_manager_poll_disabled', TRUE);
+    if (!empty($GLOBALS['page_manager_enabling_poll'])) {
+      drupal_set_message(t('Page manager module is unable to enable poll because some other module already has overridden with %callback.', array('%callback' => $callback)), 'warning');
+    }
+    return;
+  }
+
 }
 
 /**
@@ -68,53 +68,54 @@ function page_manager_poll_menu_alter(&$items, $task) {
  * node edit, which is node_page_edit().
  */
 function page_manager_poll() {
-	// Load my task plugin
-	$task = page_manager_get_task ( 'poll' );
-	
-	ctools_include ( 'context' );
-	ctools_include ( 'context-task-handler' );
-	$output = ctools_context_handler_render ( $task, '', array (), array () );
-	if ($output !== FALSE) {
-		return $output;
-	}
-	
-	module_load_include ( 'inc', 'poll', 'poll.pages' );
-	$function = 'poll_page';
-	foreach ( module_implements ( 'page_manager_override' ) as $module ) {
-		$call = $module . '_page_manager_override';
-		if (($rc = $call ( 'poll' )) && function_exists ( $rc )) {
-			$function = $rc;
-			break;
-		}
-	}
-	
-	// Otherwise, fall back.
-	return $function ();
+  // Load my task plugin
+  $task = page_manager_get_task('poll');
+
+  ctools_include('context');
+  ctools_include('context-task-handler');
+  $output = ctools_context_handler_render($task, '', array(), array());
+  if ($output !== FALSE) {
+    return $output;
+  }
+
+  module_load_include('inc', 'poll', 'poll.pages');
+  $function = 'poll_page';
+  foreach (module_implements('page_manager_override') as $module) {
+    $call = $module . '_page_manager_override';
+    if (($rc = $call('poll')) && function_exists($rc)) {
+      $function = $rc;
+      break;
+    }
+  }
+
+  // Otherwise, fall back.
+  return $function();
 }
 
 /**
  * Callback to enable/disable the page from the UI.
  */
 function page_manager_poll_enable($cache, $status) {
-	variable_set ( 'page_manager_poll_disabled', $status );
-	// Set a global flag so that the menu routine knows it needs
-	// to set a message if enabling cannot be done.
-	if (! $status) {
-		$GLOBALS ['page_manager_enabling_poll'] = TRUE;
-	}
+  variable_set('page_manager_poll_disabled', $status);
+  // Set a global flag so that the menu routine knows it needs
+  // to set a message if enabling cannot be done.
+  if (!$status) {
+    $GLOBALS['page_manager_enabling_poll'] = TRUE;
+  }
 }
 
 /**
  * Callback to determine if a page is accessible.
  *
- * @param $task The
- *        	task plugin.
- * @param $subtask_id The
- *        	subtask id
- * @param $contexts The
- *        	contexts loaded for the task.
- * @return TRUE if the current user can access the page.
+ * @param $task
+ *   The task plugin.
+ * @param $subtask_id
+ *   The subtask id
+ * @param $contexts
+ *   The contexts loaded for the task.
+ * @return
+ *   TRUE if the current user can access the page.
  */
 function page_manager_poll_access_check($task, $subtask_id, $contexts) {
-	return user_access ( 'access content' );
+  return user_access('access content');
 }

@@ -7,9 +7,9 @@
 /**
  * Plugin array plugin definition.
  */
-$plugin = array (
-		'function' => 'ctools_plugin_test_plugin_array_dne_cached_test',
-		'handler' => array (
-				'class' => 'ctoolsCachedPluginArrayDNE' 
-		) 
+$plugin = array(
+  'function' => 'ctools_plugin_test_plugin_array_dne_cached_test',
+  'handler' => array(
+    'class' => 'ctoolsCachedPluginArrayDNE',
+  ),
 );

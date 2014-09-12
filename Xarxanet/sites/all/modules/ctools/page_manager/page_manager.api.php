@@ -11,29 +11,27 @@
  */
 
 /**
+ * @todo.
  *
- * @todo .
- *      
- * @param array $result        	
- * @todo .
- * @param object $page        	
- * @todo .
+ * @param array $result
+ *   @todo.
+ * @param object $page
+ *   @todo.
  */
 function hook_page_manager_operations_alter(&$result, &$page) {
-	// @todo.
+  // @todo.
 }
 
 /**
+ * @todo.
  *
- * @todo .
- *      
- * @param array $operations        	
- * @todo .
- * @param object $handler        	
- * @todo .
+ * @param array $operations
+ *   @todo.
+ * @param object $handler
+ *   @todo.
  */
 function hook_page_manager_variant_operations_alter(&$operations, &$handler) {
-	// @todo.
+  // @todo.
 }
 
 /**
