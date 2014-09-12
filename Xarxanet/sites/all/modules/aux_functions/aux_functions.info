@@ -1,0 +1,4 @@
+; $Id$
+name = Funcions auxiliars
+description = Operacions auxiliars per Xarxanet
+core = 6.x

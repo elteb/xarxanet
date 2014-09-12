@@ -1,0 +1,5 @@
+;$Id$
+name = Xarxanet gestor continguts
+description = Gestio de continguts de xarxanet
+core = 6.x
+package = XARXANET

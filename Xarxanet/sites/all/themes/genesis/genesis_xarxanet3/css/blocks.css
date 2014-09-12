@@ -1,0 +1,785 @@
+/* $Id: blocks.css,v 1.1.2.21 2009/06/12 15:44:26 jmburnz Exp $ */
+
+/**
+ * @file blocks.css
+ * Basic styles for blocks.
+ */
+
+/**********************************************************
+ *                       Blocks
+ **********************************************************/
+/**
+ * Styles set for .block, .block-inner, block-title and 
+ * .block-content will be inherited by all blocks.
+ */
+.block {
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+.block {
+ font-size: 10pt;
+}
+
+
+
+.block-inner   {} /* Block inner div */
+.block-title   {} /* h2 block title */
+.block-content {} /* Block content wrapper */
+
+
+.block ul{
+	padding: 0;
+	list-style-position: outside;
+	margin-left: 24px;
+	list-style-type: square;
+	
+}
+
+
+.node-links.block ul{
+	margin-left: 6px;
+}
+
+
+.block h2, .columna-dreta h2, .node-column-images h2{
+	font-size: 12pt;
+}
+
+
+/**********************************************************
+ *                   Sidebar blocks
+ **********************************************************/
+/**
+ * You can target blocks in one or more regions and 
+ * style them differently. 
+ */
+/* Low specifity selector to style blocks in both sidebars. */
+.sidebar .block {}
+.sidebar .block h2 {}
+.sidebar .block-inner {}
+.sidebar .block .block-content {}
+
+/* Low specifity selector to style blocks in all regions. */
+.region .block {}
+.region .block h2 {}
+.region .block-inner {}
+.region .block .block-content {}
+
+/* High specifity selectors to style blocks in one sidebar. */
+#sidebar-left .block {}
+#sidebar-left .block h2 {}
+#sidebar-left .block-inner {}
+#sidebar-left .block .block-content {}
+
+#sidebar-right .block {}
+#sidebar-right .block h2 {}
+#sidebar-right .block-inner {}
+#sidebar-right .block .block-content {}
+
+
+/**********************************************************
+ *                  Region blocks
+ **********************************************************/
+/* High specifity selectors to style blocks in one region. */
+#leaderboard       .block {}
+#header-blocks     .block {}
+#secondary-content .block {}
+#tertiary-content  .block {}
+#content-top       .block {}
+#content           .block {}
+#content-bottom    .block {}
+#footer            .block {}
+
+
+/**********************************************************
+ *                   Module blocks
+ **********************************************************/
+/**
+ * Module Block ID's 
+ * For contributed module blocks the pattern is the same,
+ * i.e. #block-[module]-[delta]
+ */
+#block-book-0       {} /* Book navigation block   */
+#block-blog-0       {} /* Recent Blog posts       */
+#block-comment-0    {} /* Recent Comments block   */
+#block-forum-0      {} /* Active Forum topics     */
+#block-forum-1      {} /* New Forum topics        */
+#block-locale-0     {} /* Language Switcher block */
+#block-node-0       {} /* Syndicate block         */
+#block-poll-0       {} /* Most recent poll        */
+#block-profile-0    {} /* Author information      */
+#block-search-0     {} /* Search form block       */
+#block-statistics-0 {} /* Popular content         */
+#block-system-0     {} /* Powered by Drupal       */
+#block-user-0       {} /* Login block             */
+#block-user-1       {} /* Navigation Menu block   */
+#block-user-2       {} /* Who's New block         */
+#block-user-3       {} /* Who's Online block      */
+
+/* Primary and Secondary links blocks */
+#block-menu-primary-links   {}
+#block-menu-secondary-links {}
+
+/* The class selector applies to all blocks of these types. */
+.block-user {} 
+.block-book {} 
+.block-aggregator {}
+
+
+/**********************************************************
+ *                 Search block form
+ **********************************************************/
+#search-block-form {}
+
+/* Wrapper divs. */
+#search-block-form > div {}
+#search-block-form .container-inline{}
+
+#search-block-form label {}
+#search-block-form input {}
+#search-block-form .form-item {}
+#search-block-form .form-submit {}
+#search-block-form #edit-search-block-form-1 {}
+
+/* Override forms.css focus style */
+#edit-search-block-form-1:hover,
+#edit-search-block-form-1:focus {}
+
+
+
+/**********************************************************
+ *                 Exposed forms
+ **********************************************************/
+
+
+.agenda #sidebar-right .block.block-views .block-content,
+.agenda #sidebar-right .block .views-exposed-form,
+.section-agenda #sidebar-right .block .views-exposed-form .block-content{
+	background-color:#EAECCB !important;
+}
+
+
+.section-ambiental #sidebar-right .block-views .block-content{
+	background-color:#DDEBD8;;
+}
+
+
+.section-comunitari #sidebar-right .block-views .block-content{
+	background-color:#FCEBC7;
+}
+
+
+.section-cultural #sidebar-right .block-views .block-content{
+	background-color:#DFE2F3;
+}
+
+
+
+.section-economic #sidebar-right .block-views .block-content{
+	background-color:#F9F5D5;
+}
+
+
+
+.section-formacio #sidebar-right .block-views .block-content{
+	background-color:#F0E5D7;
+}
+
+
+.section-financaments #sidebar-right .block-views .block-content{
+	background-color:#FDE3CF;
+}	
+
+
+.section-internacional #sidebar-right .block-views .block-content{
+	background-color:#E9D4E1;
+}
+
+
+.section-informatic #sidebar-right .block-views .block-content{
+	background-color:#E7E3F4;
+}
+
+
+.section-juridic #sidebar-right .block-views .block-content{
+	background-color:#D9ECF1;
+}
+
+.section-noticies #sidebar-right .block-views .block-content{
+	background-color:#E3EEDF;
+}	
+
+.section-social #sidebar-right .block-views .block-content{
+	background-color:#F5F6FB;
+}
+
+
+.section-projectes #sidebar-right .block-views .block-content{
+	background-color:#F7DFDF;
+}
+
+.section-recursos #sidebar-right .block-views .block-content{
+	background-color:#EDF4F9;
+}
+
+/**********************************************************
+ *                   Menu blocks
+ **********************************************************/
+/**
+ * Prefix these with the block id to style one menu only.
+ */
+ul.menu,
+ul.menu ul, 
+ul.menu ul ul, 
+ul.menu ul ul ul {
+  margin: 0 0 0 0.75em; /* LTR */
+  padding: 0;
+}
+
+/* Menu li styles */
+ul.menu li {
+  padding: 0.35em 0 0 0; /* LTR */
+}
+
+ul.menu li.collapsed {}
+ul.menu li.expanded  {}
+ul.menu li.leaf      {}
+
+ul.menu li a:link    {}
+ul.menu li a:hover   {}
+ul.menu li a:visited {}
+ul.menu li.active a  {}
+ul.menu li.active-trail {}
+
+ul.menu li.first {}
+ul.menu li.last  {}
+
+
+/**********************************************************
+ *                   Block item-list
+ **********************************************************/
+.block .item-list ul {
+  margin: 0;
+}
+.block .item-list ul li {}
+
+
+/**********************************************************
+ *                  Gpanel blocks
+ **********************************************************/
+/* Examples to get started. Add col specific selectors to style
+   blocks in different Gpanel columns, or element selectors to
+   style specific elements */
+.two-col-50 .block {}
+.two-col-50.with-nested .block {}
+.three-col-33 .block {}
+.four-col-25 .block {}
+
+
+/**********************************************************
+ *                Views Rotator Destacats
+ **********************************************************/
+#views-rotator-destacats-block_1  .views-rotator{
+    position:relative;
+    width:575px;
+    height:160px;
+    margin-bottom:20px;
+}
+#views-rotator-destacats-block_1 a:link,
+#views-rotator-destacats-block_1 a:visited,
+#views-rotator-destacats-block_1 a:active     {color:#FFF;text-decoration:none; font-weight:bold;}
+#views-rotator-destacats-block_1 a:hover      {color:#b2290c; text-decoration:underline; font-weight:bold;}
+#views-rotator-destacats-block_1 .imagefield-field_destacat_imatge {
+    float:left;
+    width: 360px;
+    height: 160px;
+    display: inline;
+}
+#views-rotator-destacats-block_1 .destacat-title-link {
+    padding-left: 370px;
+    padding-top: 10px;
+    width: 200px;
+    font-weight:normal;
+    font-size:12pt;
+}
+.view-rotator-menu .vr-shown {
+    background-color: #F00;
+}
+
+
+/*******************************************************************************
+ *                              Ambiental                                      *
+ ******************************************************************************/
+
+.ambiental div#page-title-reg, .page-etiquetes-ambiental #page-title-reg {border-color:#8FBD7F;}
+
+/*******************************************************************************
+ *                              Comunitari                                     *
+ ******************************************************************************/
+
+.comunitari div#page-title-reg, .page-etiquetes-comunitari #page-title-reg {border-color:#F4BC44;}
+
+
+/*******************************************************************************
+ *                              Cultural                                       *
+ ******************************************************************************/
+
+.cultural div#page-title-reg, .page-etiquetes-cultural #page-title-reg {border-color:#959FD6;}
+
+/*******************************************************************************
+ *                              Social                                         *
+ ******************************************************************************/
+
+.social div#page-title-reg, .page-etiquetes-social #page-title-reg {border-color:#005577;}
+
+/*******************************************************************************
+ *                           Internacional                                     *
+ ******************************************************************************/
+
+.internacional div#page-title-reg, .page-etiquetes-internacional #page-title-reg {border-color:#A75387;}
+
+/*******************************************************************************
+ *                              Projectes                                      *
+ ******************************************************************************/
+
+.projectes .portada-superior-esquerra .header p, .projectes .portada-superior-dreta .header p { padding-bottom: 0px; }
+.projectes .portada-superior-esquerra .header h2, .projectes .portada-superior-dreta .header h2 { width: 160px; }
+.projectes .portada-superior-esquerra .header, .projectes .portada-superior-dreta .header { width: 377px; border-bottom: solid 1px #E39595;}
+
+.projectes div#page-title-reg, .page-etiquetes-projectes #page-title-reg {border-color:#E39595;}
+.projectes div.portada-superior-esquerra h2.portada-titol,
+#recurs-projectes h2.portada-titol{background-color:#E39595;}
+.projectes div.portada-superior-dreta h2.portada-titol,
+#recurs-projectes h2.portada-titol{background-color: #E39595;}
+
+
+
+/*******************************************************************************
+ *                              General                                      *
+ ******************************************************************************/
+
+.general div#page-title-reg, .node-type-noticia-general div#page-title-reg{border-color:#71A956;}
+.general div.portada-superior-esquerra h2.portada-titol,
+#recurs-general h2.portada-titol{background-color:#71A956;}
+.general div.portada-superior-dreta h2.portada-titol,
+#recurs-general h2.portada-titol,
+.node-type-noticia-general #sidebar-right h2.block-title{background-color:#71A956;}
+
+
+
+
+/*******************************************************************************
+ *                              Juridic                                        *
+ ******************************************************************************/
+ 
+.juridic .portada-superior-esquerra .header p, .juridic .portada-superior-dreta .header p { padding-bottom: 0px; }
+.juridic .portada-superior-esquerra .header h2, .juridic .portada-superior-dreta .header h2 { width: 160px; }
+.juridic .portada-superior-esquerra .header, .juridic .portada-superior-dreta .header { width: 377px; border-bottom: solid 1px #62AEC4;}
+
+.juridic div#page-title-reg, .page-etiquetes-juridic #page-title-reg {border-color:#62AEC4;}
+.juridic div.portada-superior-esquerra h2.portada-titol,
+#recurs-juridic h2.portada-titol{background-color:#62AEC4;}
+.juridic div.portada-superior-dreta h2.portada-titol,
+#recurs-juridic h2.portada-titol{background-color: #62AEC4;}
+
+
+/*******************************************************************************
+ *                              Informatic                                     *
+ ******************************************************************************/
+
+.informatic .portada-superior-esquerra .header p, .informatic .portada-superior-dreta .header p { padding-bottom: 0px; }
+.informatic .portada-superior-esquerra .header h2, .informatic .portada-superior-dreta .header h2 { width: 160px; }
+.informatic .portada-superior-esquerra .header, .informatic .portada-superior-dreta .header { width: 377px; border-bottom: solid 1px #9B8CD2;}
+
+.informatic div#page-title-reg, .page-etiquetes-informatic #page-title-reg {border-color:#9B8CD2;}
+.informatic div.portada-superior-esquerra h2.portada-titol,
+#recurs-informatic h2.portada-titol{background-color:#9B8CD2;}
+.informatic div.portada-superior-dreta h2.portada-titol,
+#recurs-informatic h2.portada-titol{background-color: #9B8CD2;}
+
+
+/*******************************************************************************
+ *                              Formacio                                       *
+ ******************************************************************************/
+
+.formacio .portada-superior-esquerra .header p, .formacio .portada-superior-dreta .header p { padding-bottom: 0px; }
+.formacio .portada-superior-esquerra .header h2, .formacio .portada-superior-dreta .header h2 { width: 160px; }
+.formacio .portada-superior-esquerra .header, .formacio .portada-superior-dreta .header { width: 377px; border-bottom: solid 1px #C09158;}
+
+.formacio div#page-title-reg, .page-etiquetes-formacio #page-title-reg {border-color:#C09158;}
+.formacio div.portada-superior-esquerra h2.portada-titol,
+#recurs-formacio h2.portada-titol{background-color: #C09158;}
+.formacio div.portada-superior-dreta h2.portada-titol,
+#recurs-formacio h2.portada-titol{background-color: #C09158;}
+
+
+/*******************************************************************************
+ *                               Economic                                      *
+ ******************************************************************************/
+ 
+.economic .portada-superior-esquerra .header p, .economic .portada-superior-dreta .header p { padding-bottom: 0px; }
+.economic .portada-superior-esquerra .header h2, .economic .portada-superior-dreta .header h2 { width: 160px; }
+.economic .portada-superior-esquerra .header, .economic .portada-superior-dreta .header { width: 377px; border-bottom: solid 1px #D1B91A;}
+
+.economic div#page-title-reg, .page-etiquetes-economic #page-title-reg {border-color:#D1B91A;}
+.economic div.portada-superior-esquerra h2.portada-titol,
+#recurs-economic h2.portada-titol{background-color: #D1B91A;}
+.economic div.portada-superior-dreta h2.portada-titol,
+#recurs-economic h2.portada-titol{background-color: #D1B91A;}
+
+/*******************************************************************************
+ *                             Noticies                                        *
+ ******************************************************************************/
+.noticies div#page-title-reg{border-color:#C13113;}
+
+
+/*******************************************************************************
+ *                                 Agenda                                      *
+ ******************************************************************************/
+.agenda div#page-title-reg{border-color:#ABB22F;}
+.agenda #block-views-fda2de40e1c6d3b68002bf94248a57f4 div.block-inner {background-color:#EAECCB;}
+
+
+
+
+
+/*******************************************************************************
+ *                              Finançament                                    *
+ ******************************************************************************/
+
+.section-financaments div#page-title-reg{border-color:#F57310;}
+.section-financaments div.portada-superior-esquerra h2.portada-titol{background-color: #F57310;}
+.section-financaments div.portada-superior-dreta h2.portada-titol{background-color:#F57310;}
+
+
+.financament div#page-title-reg{border-color:#F57310;}
+.financament #sidebar-right h2.block-title , .financament .node-terms h2, .financament .legend, .financament a.tornar{background-color: #F57310;}
+
+
+
+
+/*******************************************************************************
+ *                              Recursos                                       *
+ ******************************************************************************/
+
+.recursos div#page-title-reg{border-color:#C13113;}
+.recursos #sidebar-right h2.block-title , .recursos .node-terms h2, .recursos .legend, .recursos a.tornar{background-color: #005EA7;}
+
+
+/*******************************************************************************
+ *                              Panels Portada                                 *
+ ******************************************************************************/
+ 
+.pane-block-37 h2.pane-title  {background-color:#B2290C;}
+.pane-block-37 div.pane-content {background-color:#f3d6d0;}
+.pane-block-37 ul {  color: #C13113;}
+
+.pane-block-3 h2.pane-title  {background-color:#ABB22F;}
+.pane-block-3 ul {  color: #ABB22F;}
+.pane-block-3  .more  {background-color:#FFF;}
+
+#block-block-3 h2.block-title  {background-color:#ABB22F !important;}
+#block-block-3  .items {background-color:#EAECCB;}
+#block-block-3 ul {  color: #ABB22F;}
+
+
+.pane-block-2 h2.title  {background-color:#F57310;}
+.pane-block-2 div.view-content {background-color:#FDE3CF; clear:left;}
+
+.pane-block-2  .more  {background-color:#FFF;}
+
+#block-block-2 h2.title  {background-color:#F57310;}
+#block-block-2 .items {background-color:#FDE3CF;}
+#block-block-2 ul {  color: #F57310;}
+
+
+.pane-agregadors-rss h2.title  {background-color:#F9A043;}
+.pane-agregadors-rss div.pane-content {background-color:#FEECD9;}
+.pane-agregadors-rss .views-row {  color: #F9A043;}
+.pane-agregadors-rss .view-content{padding-top: 12px;}
+.pane-agregadors-rss  .more  {background-color:#F9A043;}
+
+ 
+.pane-agregadors-rss h2.title,
+.pane-block-3 h2.pane-title,
+#block-block-3 h2.block-title,
+.pane-block-2 h2.title,
+.pane-block-37 h2.pane-title
+{
+    color: #FFFFFF;
+    font-size: 11pt;
+    font-weight: normal;
+    padding: 5px 0 5px 10px;
+}
+ 
+
+
+.pane-block-37 
+{
+  margin-top:15px;
+  float:left;
+  width:100%;
+}
+ 
+.pane-block-3,
+#block-block-2,
+.pane-block-2,
+.pane-agregadors-rss
+{
+  margin-top:15px;
+}
+ 
+
+
+    
+.pane-block-3,
+
+.pane-block-2,
+
+.pane-agregadors-rss,
+.pane-block-37 li
+{
+  line-height: 1.8em;
+  padding: 3px;
+}
+
+.pane-block-37  ul 
+{
+  list-style-position: outside;
+  list-style-type: square;
+  padding: 10px 0 10px 10px;
+}
+
+
+.pane-agregadors-rss .views-row{
+   padding: 0 6px 0 12px;;
+}
+
+
+#block-block-2  .views-row,
+.pane-block-2  .views-row{
+  display:list-item;
+  list-style-image: url('../images/news-list-style-orange.png');
+  margin: 0 8px 0 22px;
+  line-height: 1.8em;
+}
+
+
+
+#block-block-8 .block-content ul,
+#block-block-9 .block-content ul,
+#block-block-11 .block-content ul,
+#block-block-12 .block-content ul,
+#block-block-13 .block-content ul{
+	margin-left: 0;
+}
+
+
+
+
+.pane-block-72 .pane-content  .views-row,
+#block-block-9 .block-content ul li,
+#block-block-8 .block-content ul li,
+#block-block-11 .block-content ul li,
+#block-block-12 .block-content ul li,
+#block-block-13 .block-content ul li
+
+{
+  display:list-item;
+  list-style-image: url('../images/news-list-style.png');
+  margin: 0 6px 0 22px;
+  line-height: 1.8em;
+ }
+
+
+.pane-block-71 .views-row,
+.pane-block-3  .views-row,
+#block-block-3  .views-row,
+.pane-block-71 .pane-content  .views-row
+{
+  display:list-item;
+  list-style-image: url('../images/news-list-style-green.png');
+  margin: 0 8px 0 22px;
+  line-height: 1.8em;
+  border-bottom: 1px dotted #AEB22A ;
+}
+
+
+.pane-block-71 .views-row-last,
+.pane-block-3  .views-row-last,
+#block-block-3  .views-row-last,
+.pane-block-71 .pane-content  .views-row-last
+{
+	border-bottom: none;
+}
+
+.grans-temes .pane-content  ul li{
+  list-style-image: url('../images/news-list-style.png');
+  margin: 0 8px 0 22px;
+  line-height: 1.8em;
+}
+
+
+.pane-agregadors-rss .views-field-field-imatge-feed-fid
+{
+  width:25px;
+  float:left;
+}
+
+.pane-agregadors-rss .views-field-title
+{
+  margin-top:0px;
+}
+
+.pane-agregadors-rss  .view-content
+{
+ padding-bottom:10px;
+}
+
+
+/*******************************************************************************
+ *                              Bloques contex                                 *
+ ******************************************************************************/
+#block-block-44 .block-content,
+#block-block-17 .block-content,
+#block-block-51 .block-content,
+#block-block-6 .block-content,
+#block-block-2 .block-content,
+#block-block-3 .block-content
+{
+  background-color:#ffffff !important;
+}
+
+#block-block-2 .block-content,
+#block-block-3 .block-content
+{
+  padding:0 !important;
+  padding:0;
+}
+  
+div#block-menu-menu-menu-usuari
+{
+margin-top: 19px;  
+margin-right: 15px;
+}
+
+div#block-menu-menu-menu-usuari ul li
+{
+ display:inline;
+}  
+
+div#block-menu-menu-menu-usuari ul{
+    border-bottom: 1px solid #BBBBBB;
+    margin: 1.5em 0 0;
+    padding: 0 0 0.2em 0.3em;
+}
+
+div#block-menu-menu-menu-usuari ul  li.active a {
+	background-color: #FFFFFF;
+    border-color: #BBBBBB #BBBBBB #FFFFFF;
+	border-style: solid;
+    border-width: 1px;
+	
+}
+
+div#block-menu-menu-menu-usuari ul  li a {
+    background-color: #F5F5F5;
+    border-color: #CCCCCC;
+    margin-right: 0.08em;
+    padding: 0.1em 0.75em 0.2em;
+	border-style: solid solid none;
+    border-width: 1px;
+    height: auto;
+}
+
+div#block-menu-menu-menu-usuari ul  li a :link
+{
+color: #666666;
+}
+
+div#block-menu-menu-menu-usuari ul  li a :visited
+{
+color: #666666;
+}
+
+div#block-menu-menu-menu-usuari h2 {
+    display: none;
+}
+
+
+#sidebar-right div.block-content {background-color: #EBEFF0; padding: 3px;}
+
+
+div#block-block-9 h2.block-title, div#block-block-8 h2.block-title,
+div#block-block-13 h2.block-title,div#block-block-11 h2.block-title,
+div#block-block-12 h2.block-title{
+	font-size: 16px;
+	font-weight: normal;
+	color: #FFF;
+	background: url('../images/pictos/info.png') #7B7B79 10px no-repeat;
+
+}
+
+div#block-tagadelic-1 h2.block-title,
+div#block-tagadelic-1 h2.block-title,
+div.node-terms h2{
+	font-size: 16px;
+	font-weight: normal;
+	color: #FFF;
+	padding: 8px 0 8px 60px;
+	background: url('../images/pictos/etiquetes.png') #7B7B79 10px no-repeat;
+}
+
+
+div#block-tagadelic-1 .block-content{
+	background-color: #EBEFF0;
+	padding: 6px;
+}
+
+
+.pane-content a{
+	font-family: Georgia, Times New Roman, Times, serif;	
+}
+
+.node-links{
+	margin-top: 24px;
+}
+
+
+.node-links h2.block-title{
+	font-size: 16px;
+	font-weight: normal;
+	color: #FFF;
+	padding: 8px 0 8px 60px;
+	background-color: #7B7B79;
+}
+
+.node-links{
+	height: auto;
+	background-color: #EBEFF0;
+}
+
+
+.node-links .block-content ul li {
+	float: left;
+	display: list-item;
+	width: 100%;
+}
+
+.node-terms a{
+	padding-left: 12px;
+	font-family: Georgia, Times New Roman, Times, serif;
+	line-height: 1.8em;
+	font-size: 15px;
+	display: block;	
+}
+
+
+
+.node-links .block-content ul.links li  a{
+	display: block;
+	padding-left: 6px;
+	font-weight: bold;
+	
+}

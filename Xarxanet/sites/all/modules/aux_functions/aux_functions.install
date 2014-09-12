@@ -1,0 +1,17 @@
+<?php
+// $Id$
+/**
+* Implementation of hook_install().
+*/
+function aux_functions_install() {
+// Use schema API to create database table.
+
+}
+/**
+* Implementation of hook_uninstall().
+*/
+function aux_functions_uninstall() {
+// Use schema API to delete database table.
+
+// Delete our module's variable from the variables table.
+}

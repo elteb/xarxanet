@@ -1,0 +1,667 @@
+@CHARSET "UTF-8";
+
+/************ GENERAL *************/
+html {
+	font-size:75%;
+}
+
+body {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1.1rem;
+	color: #333333;
+}
+
+body a {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #005577;
+	text-decoration: none;
+}
+
+iframe { max-width: 100% !important; }
+
+/************ HEADER ***************/
+
+#header {
+	margin-bottom: 10px;
+	border-bottom: 3px solid #666666;
+}
+
+#logo img { margin: 10px 0 5px;}
+#logo { float: left; }
+
+#menu-tab {
+	float: right;
+	font-weight: bold;
+	color: #53544F;
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/menu_hover.png") no-repeat scroll 55px #ECEFF0;
+	padding: 10px 50px 10px 10px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+#nothing { clear: both; }
+
+
+/************** MENU ***************/
+
+#menu {
+	background-color: #ECEFF0;
+	margin-top: -10px;
+	font-family: Arial,Helvetica,sans-serif;
+	color: #53544F;
+	margin-bottom: 10px;
+	display:none;
+}
+
+#menu a {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1.1rem;
+	color: #53544F;
+}
+
+#menu-left, #menu-right {
+	float: left;
+	width: 45%;
+	margin: 10px 5px 10px 10px;
+}
+
+#menu-right { padding-top: 7px; }
+
+#menu-box-1, #menu-box-3 {
+	border-top: dotted 1.5px #cccccc;
+	margin: 7.5px 0;
+	padding-top: 10px;
+}
+
+.menu-item-title { 
+	font-style: italic;
+	margin-bottom: 7px; 
+}
+
+#menu-left .menu-item { padding: 7.5px 0 7.5px 35px; }
+.menu-item#portada { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/portada.png") no-repeat scroll 5px; }
+.menu-item#noticies { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/noticies.png") no-repeat scroll 8px; }
+.menu-item#recursos { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/recursos.png") no-repeat scroll 5px; }
+.menu-item#financaments { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/financaments.png") no-repeat scroll 5px; }
+.menu-item#cursos { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/cursos.png") no-repeat scroll 2px; }
+.menu-item#actes { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/actes.png") no-repeat scroll 2px; }
+.menu-item#assessorament { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/assessorament.png") no-repeat scroll 5px; }
+.menu-item#publica-continguts { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/publica.png") no-repeat scroll 5px; }
+.menu-item#butlletins { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/newsletters.png") no-repeat scroll 5px; }
+
+#menu-right .menu-item { padding: 7.5px 0 7.5px 15px; }
+.menu-item#ambiental { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/ambiental.png") no-repeat scroll 0px; }
+.menu-item#comunitari { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/comunitari.png") no-repeat scroll 0px; }
+.menu-item#cultural { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/cultural.png") no-repeat scroll 0px; }
+.menu-item#social { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/social.png") no-repeat scroll 0px; }
+.menu-item#internacional { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/internacional.png") no-repeat scroll 0px; }
+.menu-item#economic { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/economic.png") no-repeat scroll 0px; }
+.menu-item#formacio { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/formacio.png") no-repeat scroll 0px; }
+.menu-item#informatic { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/informatic.png") no-repeat scroll 0px; }
+.menu-item#juridic { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/juridic.png") no-repeat scroll 0px; }
+.menu-item#projectes { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/projectes.png") no-repeat scroll 0px; }
+
+/******** NOTICIES IMATGE **********/
+
+.imagecache-mobile,
+.node-type-page-insert-view .item-content .image,
+.node-type-page .item-content .image { 
+	float: left;
+	margin-right: 5px;	
+}
+
+.view-recull-noticies-principal-mobil .views-field-field-recull-principal-principal-nid,
+.view-recull-noticies-secundari-mobil .views-field-title,
+.view-recull-noticies-secundari-mobil .views-field-title-1,
+.view-recull-noticies-secundari-mobil .views-field-title-2,
+.view-noticies-destacades-mobil .view-header,
+.view-noticies-destacades-mobil .views-field-title,
+.view-noticies-destacades-ii-mobil .views-field-title {
+	margin: 15px 0 3px;
+}
+
+.node-type-page-insert-view .item-content .title,
+.node-type-page .item-content .title {
+	padding: 15px 0 3px;
+}
+
+.view-noticies-no-destacades-mobil .views-field-title {
+	margin: 7.5px 0 3px;
+}
+
+.view-noticies-no-destacades-mobil .views-row {
+	border-top: dotted 1.5px #cccccc;
+	margin: 7.5px 0;
+}
+
+.views-field-nothing,
+.views-field-nothing-1,
+.node-type-page-insert-view .item-content,
+.node-type-page .item-content  { 
+	clear: both; 
+}
+
+.pane-recull-noticies-principal-mobil .views-field-field-resum-value,
+.pane-recull-noticies-secundari-mobil .views-field-field-resum-value,
+.pane-recull-noticies-secundari-mobil .views-field-field-resum-value-1 {
+	margin-left: 110px;
+}
+
+.pane-noticies-destacades-mobil .views-field-field-resum-value,
+.pane-noticies-destacades-ii-mobil .views-field-field-resum-value,
+.node-type-page-insert-view .item-content .teaser,
+.node-type-page .item-content .teaser {
+	margin-left: 105px;
+}
+
+
+/************ PORTADA *************/
+
+.view-recull-noticies-principal-mobil .views-field-title,
+.view-recull-noticies-secundari-mobil .views-field-title,
+.view-noticies-destacades-mobil .view-header {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #ffffff;
+	text-align: center;
+	background-color: #B1290B;
+	padding: 4px 5px;
+}
+
+.view-recull-noticies-principal-mobil,
+.view-recull-noticies-secundari-mobil {
+	background-color: #ECEFF0;
+	padding-bottom: 10px;
+}
+
+.view-recull-noticies-principal-mobil .imagecache-mobile,
+.view-recull-noticies-secundari-mobil .imagecache-mobile,
+.view-recull-noticies-principal-mobil .views-field-field-recull-principal-principal-nid,
+.view-recull-noticies-secundari-mobil .views-field-title-1,
+.view-recull-noticies-secundari-mobil .views-field-title-2{
+	margin-left:5px;
+}
+
+.view-noticies-destacades-mobil .view-header p { margin: 0px; }
+
+.views-field-field-recull-secundari-relaciona-url,
+.views-field-field-recull-principal-rel-url {
+	margin-top: 15px
+}
+
+.views-field-field-recull-secundari-relaciona-url label,
+.views-field-field-recull-principal-rel-url label {
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+/*.views-field-field-recull-secundari-relaciona-url .field-item,
+.views-field-field-recull-principal-rel-url .field-item,*/
+.views-field-field-recull-secundari-relaciona-url .field-content div,
+.views-field-field-recull-principal-rel-url .field-content div {
+	margin: 5px;
+	padding-left: 15px;
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style.png") no-repeat scroll 0 5 rgba(0, 0, 0, 0);
+}
+
+/************ BLOCS *************/
+
+.pane-block h2 {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #ffffff;
+	float: left;
+	margin: 0px;
+	font-weight: normal;
+    padding: 4px 0px 4px 50px;
+}
+
+.pane-block .more { 
+	float: right;
+	padding: 4px; 
+}
+
+.pane-block .view { clear: both; }
+.pane-block .views-row { padding: 5px; }
+
+#bloc-financaments { margin-top: 20px; }
+#bloc-financaments .view-content { background-color: #FDE3CF; }
+#bloc-financaments .views-field-field-date-value2 {
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/timer-orange.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	padding-left: 18px;
+}
+#bloc-financaments h2 {
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/financaments.png") no-repeat scroll 10px center #F57310;
+    min-width: 100px;
+    padding-left: 40px;
+    padding-right: 3px;
+}
+
+#bloc-cursos .view-content { background-color: #F2F2E4; }
+#bloc-cursos .views-field-field-date-event-value {
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/timer.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	padding-left: 18px;
+}
+#bloc-cursos h2 {
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/cursos.png") no-repeat scroll 10px center #AEB22A;
+    width: 100px;
+}
+
+#bloc-actes .view-content { background-color: #EAECCB; }
+#bloc-actes .views-field-field-date-event-value {
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/timer.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	padding-left: 18px;
+}
+#bloc-actes h2 {
+	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/actes.png") no-repeat scroll 10px center #A7A74D;
+    width: 100px;
+}
+
+
+/*********** SECCIONS *************/
+
+.node-type-page-insert-view .page-title,
+.node-type-page .page-title {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #ffffff;
+	padding: 4px 5px;
+	float: left;
+}
+
+.node-type-page-insert-view .veure-mes-p { 
+	float: right; 
+	margin: 0px;
+	padding-top: 8px;
+}
+
+.node-type-page-insert-view .subtitle {
+	float: left;
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #666666;
+	padding-top: 8px;
+	clear: both;
+}
+
+.node-type-page-insert-view .data {
+	margin: 0 0 5px;
+	font-size: 1rem;
+}
+
+.node-type-page-insert-view #clock {
+	float: left;
+	margin-right: 5px;
+}
+
+.node-type-page-insert-view .top-line { margin-bottom: 5px; }
+.node-type-page-insert-view .view-2011-noticia-destacada { clear: both; }
+
+.node-type-page-insert-view.noticies .page-title { background-color: #C13113; }
+.node-type-page-insert-view.noticies .view-2011-noticia-destacada, 
+.node-type-page-insert-view.noticies .view-2011-totes-noticies-portada .views-row-1 .item-content { border-top: solid 1px #C13113; }
+.node-type-page-insert-view.noticies ul.pager { border-bottom-color: #C13113; }
+
+.node-type-page-insert-view.ambiental .page-title { background-color: #8FBD7F; }
+.node-type-page-insert-view.ambiental .view-2011-noticia-destacada, 
+.node-type-page-insert-view.ambiental .view-2011-totes-noticies .views-row-1 .item-content { border-top: solid 1px #8FBD7F; }
+.node-type-page-insert-view.ambiental ul.pager { border-bottom-color: #8FBD7F; } 
+
+.node-type-page-insert-view.comunitari .page-title { background-color: #F4BC44; }
+.node-type-page-insert-view.comunitari .view-2011-noticia-destacada, 
+.node-type-page-insert-view.comunitari .view-2011-totes-noticies .views-row-1 .item-content { border-top: solid 1px #F4BC44; }
+.node-type-page-insert-view.comunitari ul.pager { border-bottom-color: #F4BC44; }
+
+.node-type-page-insert-view.cultural .page-title { background-color: #959FD6; }
+.node-type-page-insert-view.cultural .view-2011-noticia-destacada, 
+.node-type-page-insert-view.cultural .view-2011-totes-noticies .views-row-1 .item-content { border-top: solid 1px #959FD6; }
+.node-type-page-insert-view.cultural ul.pager { border-bottom-color: #959FD6; }
+
+.node-type-page-insert-view.social .page-title { background-color: #005577; }
+.node-type-page-insert-view.social .view-2011-noticia-destacada, 
+.node-type-page-insert-view.social .view-2011-totes-noticies .views-row-1 .item-content { border-top: solid 1px #005577; }
+.node-type-page-insert-view.social ul.pager { border-bottom-color: #005577; }
+
+.node-type-page-insert-view.internacional .page-title { background-color: #A75387; }
+.node-type-page-insert-view.internacional .view-2011-noticia-destacada, 
+.node-type-page-insert-view.internacional .view-2011-totes-noticies .views-row-1 .item-content { border-top: solid 1px #A75387; }
+.node-type-page-insert-view.internacional ul.pager { border-bottom-color: #A75387; }
+
+.node-type-page-insert-view.agenda .page-title { background-color: #5A6205; }
+.node-type-page-insert-view.agenda .view-2011-agenda-acte .views-row-1 .item-content, 
+.node-type-page-insert-view.agenda .view-2011-agenda .views-row-1 .item-content { border-top: solid 1px #5A6205; }
+.node-type-page-insert-view.agenda ul.pager { border-bottom-color: #5A6205; }
+
+.node-type-page-insert-view.projectes-mobil .page-title,
+.node-type-page-insert-view.projectes .page-title { background-color: #E39595; }
+.node-type-page-insert-view.projectes-mobil .top-line,
+.node-type-page-insert-view.projectes .view-2011-totes-noticies .views-row-1 .item-content,
+.node-type-page-insert-view.projectes .view-2011-tots-recursos .views-row-1 .item-content { border-top: solid 1px #E39595; }
+.node-type-page-insert-view.projectes-mobil ul.pager,
+.node-type-page-insert-view.projectes ul.pager { border-bottom-color: #E39595; }
+
+.node-type-page-insert-view.juridic-mobil .page-title,
+.node-type-page-insert-view.juridic .page-title { background-color: #62AEC4; }
+.node-type-page-insert-view.juridic-mobil .top-line,
+.node-type-page-insert-view.juridic .view-2011-totes-noticies .views-row-1 .item-content,
+.node-type-page-insert-view.juridic .view-2011-tots-recursos .views-row-1 .item-content  { border-top: solid 1px #62AEC4; }
+.node-type-page-insert-view.juridic-mobil ul.pager,
+.node-type-page-insert-view.juridic ul.pager { border-bottom-color: #62AEC4; }
+
+.node-type-page-insert-view.informatic-mobil .page-title,
+.node-type-page-insert-view.informatic .page-title { background-color: #9B8CD2; }
+.node-type-page-insert-view.informatic-mobil .top-line,
+.node-type-page-insert-view.informatic .view-2011-totes-noticies .views-row-1 .item-content,
+.node-type-page-insert-view.informatic .view-2011-tots-recursos .views-row-1 .item-content  { border-top: solid 1px #9B8CD2; }
+.node-type-page-insert-view.informatic-mobil ul.pager,
+.node-type-page-insert-view.informatic ul.pager { border-bottom-color: #9B8CD2; }
+
+.node-type-page-insert-view.formacio-mobil .page-title,
+.node-type-page-insert-view.formacio .page-title { background-color: #C09158; }
+.node-type-page-insert-view.formacio-mobil .top-line,
+.node-type-page-insert-view.formacio .view-2011-totes-noticies .views-row-1 .item-content,
+.node-type-page-insert-view.formacio .view-2011-tots-recursos .views-row-1 .item-content { border-top: solid 1px #C09158; }
+.node-type-page-insert-view.formacio-mobil ul.pager,
+.node-type-page-insert-view.formacio ul.pager { border-bottom-color: #C09158; }
+
+.node-type-page-insert-view.economic-mobil .page-title,
+.node-type-page-insert-view.economic .page-title { background-color: #D1B91A; }
+.node-type-page-insert-view.economic-mobil .top-line,
+.node-type-page-insert-view.economic .view-2011-totes-noticies .views-row-1 .item-content,
+.node-type-page-insert-view.economic .view-2011-tots-recursos .views-row-1 .item-content  { border-top: solid 1px #D1B91A; }
+.node-type-page-insert-view.economic-mobil ul.pager,
+.node-type-page-insert-view.economic ul.pager { border-bottom-color: #D1B91A; }
+
+.node-type-page-insert-view.recursos-mobil .page-title,
+.node-type-page-insert-view.recursos .page-title { background-color: #C13113; }
+.node-type-page-insert-view.recursos-mobil .top-line,
+.node-type-page-insert-view.recursos .view-2011-totes-noticies .views-row-1 .item-content,
+.node-type-page-insert-view.recursos .view-2011-tots-recursos .views-row-1 .item-content  { border-top: solid 1px #C13113; }
+.node-type-page-insert-view.recursos-mobil ul.pager,
+.node-type-page-insert-view.recursos ul.pager { border-bottom-color: #C13113; }
+
+.node-type-page-insert-view.financaments-mobil .page-title,
+.node-type-page.financament .page-title { background-color: #F57310; }
+.node-type-page-insert-view.financaments-mobil .top-line,
+.node-type-page.financament .view-2011-tots-financament .views-row-1 .item-content  { border-top: solid 1px #F57310; }
+.node-type-page-insert-view.financaments-mobil ul.pager,
+.node-type-page.financament ul.pager { border-bottom-color: #F57310; }
+
+.node-type-page-insert-view.servei .view-2011-recurs-destacat .item-content, 
+.node-type-page-insert-view.servei .view-2011-noticia-destacada .views-row-1 .item-content,
+.node-type-page-insert-view.servei .view-2011-ultims-recursos .views-row-1 .item-content,
+.node-type-page-insert-view.servei .view-2011-financament .views-row-1 .item-content { border-top: dotted 1px #666666; }
+
+
+/************ PAGER ***************/
+
+ul.pager { 
+	margin-top: 15px;
+	background-color: #EBEFF0;
+	padding: 2.5px 0;
+	border-bottom: solid 2px; 
+}
+
+.pager a {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1.1rem;
+}
+
+.pager li { 
+	padding: 0px !important;
+	margin: 0 2px !important; 
+}
+
+
+/************ FOOTER ***************/
+
+#footer { margin-top: 10px; }
+
+#footer #first-line { background-color: #727270; }
+#footer #first-line a { 
+	color: #FFFFFF;
+	font-size: 11pt; 
+}
+
+#footer #first-line #classica { 
+	float: left;
+	padding: 3px 0 3px 5px;
+}
+
+#footer #first-line #top { 
+	float: right;
+	padding: 3px 5px 3px 0;
+}
+
+#footer #second-line {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.1rem;
+	color: #53544F;
+	background-color: #d7d7d7;
+}
+
+#footer #second-line a {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.1rem;
+	color: #53544F;
+}
+
+#footer #second-line div.item {
+	max-width: 90px;
+	width: 25%;
+	float: left;
+	text-align: center;
+	margin-top: 5px;
+	padding-bottom: 10px;
+}
+
+#footer #third-line {
+	font-weight: bold;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	background-color: #d7d7d7;
+}
+
+#footer #third-line .logo-gene { margin: 5px 0; }
+
+
+/****** NOTICIA/RECURS/EVENT *******/
+
+.page-node.noticia .page-title,
+.page-node.recurs .page-title,
+.node-type-event .page-title,
+.node-type-webform .page-title,
+.node-type-financament-full .page-title,
+.butlletins .page-title,
+.hemeroteca .page-title { 
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.6rem;
+	color: #333333;	
+}
+
+.page-node.noticia .image img,
+.page-node.recurs .image img,
+.page-node.agenda .image img,
+.page-node.financament .image img { width: 100%; }
+
+.page-node.noticia #picto,
+.page-node.recurs #picto,
+.page-node.financament #picto,
+.page-node.agenda #picto { 
+	width: 17px;
+	float: left;	
+}
+
+.page-node.noticia #category,
+.page-node.noticia #credits,
+.page-node.recurs #category,
+.page-node.recurs #credits,
+.page-node.financament #credits,
+.page-node.agenda #date,
+.page-node.agenda #credits,
+.page-node.agenda #credits a { 
+	font-size: 1rem;
+}
+
+.page-node.noticia #credits,
+.page-node.recurs #credits,
+.page-node.financament #credits { margin: 10px 0 5px; }
+
+.page-node.noticia #category,
+.page-node.recurs #category,
+.page-node.agenda #category,
+.page-node.financament #category { float: left; }
+
+.page-node.agenda #date,
+.page-node.agenda .image { margin-top: 5px; }
+
+.page-node.noticia #category-title,
+.page-node.recurs #category-title,
+.page-node.financament #category-title,
+.page-node.agenda #category-title { padding: 2px 0 2px 20px; }
+
+.page-node.noticia #text,
+.page-node.recurs #text { 
+	float: left;
+	width: 60%; 
+}
+
+.page-node.noticia #social-icons,
+.page-node.recurs #social-icons,
+.page-node.agenda #social-icons,
+.page-node.financament #social-icons
+ { 
+	margin-top: 5px;
+	float: right; 
+}
+
+.page-node.noticia .node-body-text a,
+.page-node.recurs .node-body-text a,  
+.page-node.agenda .node-body-text a,
+.page-node.financament .node-body-text a { font-size: 1.1rem; }
+
+.page-node.noticia .node-body-text,
+.page-node.recurs .node-body-text,
+.page-node.agenda .node-body-text,
+.page-node.financament .node-body-text {
+	border-top: dotted 1.5px #cccccc;
+	margin-top: 5px;
+}
+
+.page-node.noticia .node-body-text .teaser,
+.page-node.recurs .node-body-text .teaser,
+.page-node.agenda .node-body-text .teaser,
+.page-node.financament .node-body-text .teaser {
+	font-style: italic;
+	border-bottom: dotted 1.5px #cccccc;
+}
+
+.page-node.financament .node-body-text .teaser {
+	margin-bottom: 10px;
+}
+
+.page-node.noticia .node-body-text .teaser a,
+.page-node.recurs .node-body-text .teaser a,
+.page-node.agenda .node-body-text .teaser a,
+.page-node.financament .node-body-text .teaser a {
+	font-style: normal;
+}
+
+.page-node.financament .node-body-text { padding-top: 10px; }
+
+.page-node.financament .node-body-text p,
+.page-node.financament .node-body-text ul { margin: 0 0 10px; }
+
+.page-node.agenda #credits {
+	background-color: #ECEFF0;
+	padding: 5px;
+}
+
+.page-node.agenda #credits,
+.page-node.agenda #credits p {
+	margin: 5px 0;
+}	
+
+
+/*********** COMENTARIS ************/
+
+#comments h2 {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #ffffff;
+	margin: 10px 0;
+	font-weight: normal;
+	padding: 4px 0 4px 60px;
+}
+
+#comments-title{ background: url('/sites/all/themes/mobile_xarxanet/images/pictos/globus.png') #7B7B79 10px no-repeat; }
+#comments .box h2 {	background: url('/sites/all/themes/mobile_xarxanet/images/pictos/comentaris.png') #7B7B79 10px no-repeat; }
+
+#comments #edit-comment,
+#comments #recaptcha_table,
+#comments #edit-subject { width: 100%; }
+
+#comments .form-item {
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+#comments .comment a { font-size: 1.1rem; }
+#comments .comment h3 { margin: 10px 0; }
+#comments .comment ul.links { text-align: right; }
+
+#comments .comment .submited { 
+	font-size: 1rem;
+	font-style: italic; 
+}
+
+#comments .indented { border-top: dotted 1.5px #cccccc; }
+#comments .links { margin-bottom: 15px; }
+
+
+/*********** FOMULARI ************/
+
+.formulari-dassessorament .form-text,
+.formulari-dassessorament .form-textarea {
+	width: 100%;
+}
+
+
+/********** PUBLICA **************/
+
+.node-type-noticia-general iframe { display: none; }
+
+/****** PÀGINA BUTLLETINS *******/
+.butlletins .page-title { padding: 0px 0px 10px; }
+.butlletins .node { clear: both; }
+.butlletins .node ul { margin-left: 0px; }
+.butlletins .node p a { font-size: 1.1rem; }
+
+.hemeroteca table,
+.hemeroteca table a { font-size: 1.1rem; }
+.hemeroteca table td { padding: 2.5px 5px; }
+.hemeroteca table { width: 100%; }
+
+
+/********* BANNER APP ***********/
+
+#app-banner {
+	background-color: #005577;
+	margin-bottom: 10px;
+	height: 35px;
+	display: none;
+	cursor: pointer;
+}
+
+#app-banner #app-images { padding: 5px; }
+#app-banner #app-text { 
+	font-family: Arial,Helvetica,sans-serif;
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding-top: 12px;
+	color: #FFFFFF;
+}
+
+#app-banner #app-text, 
+#app-banner #app-images { float: left; } 

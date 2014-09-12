@@ -1,0 +1,2 @@
+<?php
+include_once ('rss_portals_xarxanet.features.inc');
