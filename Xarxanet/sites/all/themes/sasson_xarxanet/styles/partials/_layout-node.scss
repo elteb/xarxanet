@@ -1,0 +1,30 @@
+/**
+ *   Node Layout
+ */
+ 
+ /* ------- Notícies i Recursos ------- */
+ .node-column-images {
+ 	@include grid-width(3);
+ 	float: left;
+ 	margin-right: $space;
+ 	img {
+ 		@include grid-width(3);
+ 	}
+ }
+ 
+ .node-content {
+ 	@include grid-width(5);
+ 	img {
+ 		@include grid-width(5);
+ 	}
+ 	#player {
+ 		@include grid-width(5);
+ 	}
+ 	float: left;
+ 	margin-left: $space;
+ }
+ 
+  section#comments {
+    @include grid-width(5);
+    float: right;
+  }

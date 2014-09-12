@@ -1,0 +1,148 @@
+/**
+ *   Frontpage Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+
+/* -------- Link Veure Més ------- */
+.veure-mes-p {
+  float: right;
+}
+
+.veure-mes-p, .veure-recursos {
+  font-size: 13pt;
+  padding: $ninesixty-gutter-width $ninesixty-gutter-width 0 0;
+}
+
+/* ------- Panels ------- */
+.portada-superior-esquerra, .portada-superior-dreta {
+    margin-top: $ninesixty-gutter-width;
+}
+
+.section-recursos,
+.section-agenda,
+.section-financaments,
+.section-projectes,
+.section-juridic,
+.section-informatic,
+.section-formacio,
+.section-economic, {
+  .portada-superior-esquerra, .portada-superior-dreta {
+    @include grid-width(4);
+    float: left;
+    .views-row-odd {
+      margin-left: 0;
+    }
+    .views-row-even {
+      margin-right: 0;
+    }
+    
+    /* ------- Headers ------ */
+    .header { 
+      display: flex;
+      h2.portada-titol {
+        @include grid-width(2, $ninesixty-columns, $ninesixty-gutter-width+$space);
+        @include title3;
+        color: white;
+        padding: $space 0 $space $space;
+        margin-bottom: 0;
+      }
+      p { 
+        display: flex;
+        @include grid-width(2, $ninesixty-columns, $ninesixty-gutter-width);
+        margin-left: $ninesixty-gutter-width;
+      }
+      a { 
+        width: 100%;
+        text-align: right; 
+      } 
+    }
+  }
+  .portada-superior-esquerra {
+    margin-right: $space;
+    clear: both;
+  }
+  .portada-superior-dreta {
+    margin-left: $space;
+  }
+}
+
+/* ------- Biblioteca ------- */
+.section-biblioteca,
+.section-biblioteca-filtre {
+  form {
+    margin-bottom: $ninesixty-gutter-width;
+    .form-item, .form-actions {
+     display: inline;
+    } 
+  }
+  .region { margin-top: $ninesixty-gutter-width; }
+  .views-exposed-form { display: none; }
+  #biblioteca-panel {
+    .views-row {
+      border-bottom: 1px dotted $main-2;
+      table { margin: $space 0; }
+      tbody { border: none; } 
+    }
+    .biblioteca-document {
+      .text { padding: 0 $space; }
+      .image img {
+        @include grid-width(1.5);
+        border: 1px solid $main-2;
+      }
+      h2 a {
+        @include title3;
+        color: $link-color;
+      }
+      .top {
+        color: $main-1;
+        font-style: italic;
+      }
+    }
+  #biblioteca-order {
+    margin-bottom: $ninesixty-gutter-width;
+    a { margin: 0 $space; }
+    a.currentsort { font-weight: bold; }
+  }
+    
+    /* ------- Blocks ------- */
+    .pane-block-67, .pane-block-69, .pane-block-73 {
+      h2 {
+        @include block-lat-title(3, $space, 0px);
+        background: $biblioteca; 
+      } 
+      .pane-content {
+        clear: both;
+        background-color: $main-3;
+        ul {
+          margin-bottom: $ninesixty-gutter-width;
+          padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+          list-style-type: square;
+        } 
+        ul.subterm {
+          padding: 0 $ninesixty-gutter-width*2;
+          margin: 0;
+        }
+        li { margin-bottom: $space;}
+        p { padding: $space; }
+      }
+    }
+  }
+}
+
+/* ------- Colors ------ */
+#recurs-economic { @include subportal-header($economic); }
+#recurs-formacio { @include subportal-header($formacio); }
+#recurs-informatic { @include subportal-header($informatic); }
+#recurs-juridic { @include subportal-header($juridic); }
+#recurs-projectes { @include subportal-header($projectes); }
+#recurs-general { @include subportal-header($general); }
+#financament-premis { @include subportal-header($premis); }
+#financament-subvencio { @include subportal-header($subvencio); }
+#financament-beques { @include subportal-header($beques); }
+#financament-altres { @include subportal-header($altres); }
+#portada-actes { @include subportal-header($actes); }
+#portada-cursos { @include subportal-header($cursos); }
+.section-projectes #portada-recurs, .section-projectes #portada-noticia { @include subportal-header($projectes); }
+.section-juridic #portada-recurs, .section-juridic #portada-noticia { @include subportal-header($juridic); }
+.section-informatic #portada-recurs, .section-informatic #portada-noticia { @include subportal-header($informatic); }
+.section-formacio #portada-recurs, .section-formacio #portada-noticia { @include subportal-header($formacio); }
+.section-economic #portada-recurs, .section-economic #portada-noticia { @include subportal-header($economic); } 

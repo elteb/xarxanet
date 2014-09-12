@@ -1,0 +1,184 @@
+/**
+ *   Frontpage Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+/* ------- Panels -------*/
+/* ------- Notícia destacada principal ------- */
+.view-recull-noticies-principal {
+  background: $main-3;
+  .views-field-title {
+    @include title3;
+    @include block-title;
+    background: $general;
+    text-align: center;
+    width: 100%;
+    padding: 8px 0px;
+  }
+  .views-field-field-recull-principal-principal {
+    @include title1;
+    padding: 0 8px;
+  }
+  .views-field-field-resum {
+    padding: 0 8px;
+  }
+  .views-field-field-recull-principal-rel {
+    padding: 8px;
+    .views-label {
+      font-weight: bold;
+    }
+    li {
+      list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+      line-height: 1.5em;
+    }
+  }
+}
+
+/* ------- Notícia destacada secundària ------- */
+.view-recull-noticies-secundari {
+  .views-field-title {
+    @include title3;
+    @include block-title;
+    background: $general;
+    text-align: center;
+    padding: 8px 0px;
+  }
+  #left-column 
+  {
+    background: $main-3;
+  }
+  .views-field-field-recull-secundari-principal,
+  .views-field-field-resum,
+  .views-field-field-recull-secundari-secundari,
+  .views-field-field-resum-2,
+  {
+    padding: 0px 8px;
+  }
+  .views-field-field-recull-secundari-relaciona,
+  {
+    padding: 8px;
+  }
+  .views-field-field-recull-secundari-principal,
+  .views-field-field-recull-secundari-secundari,
+  .views-field-field-recull-secundari-lat-sup,
+  .views-field-field-recull-secundari-lat-inf,
+  {
+    @include title3;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+  .views-field-field-resum,
+  .views-field-field-resum-1,{
+    padding-bottom: 20px;   
+  }  
+  .views-field-field-recull-secundari-relaciona {
+    .views-label {
+      font-weight: bold;
+    }
+    li {
+      list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+      line-height: 1.5em;
+    }
+  }
+}
+
+
+/* ------- Blocks -------*/
+/* ------- Notícia destacada lateral ------- */
+.pane-noticia-destacada-lateral {
+  background: $general-sec;
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/destaquem.png") $general 10px no-repeat;
+    width: $column * 4 + $space * 2 - 50px;
+  }
+  .views-field-field-destacada-lat-ellac-1 {
+    @include title3;
+    padding: 0px 12px;
+  }
+  .views-field-field-destacada-lat-entr {
+    padding: 0px 12px 12px;
+  }
+}
+
+/* -------- Grans temes ------- */
+.panel-pane.grans-temes {
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/grans-temes.png") $link-color 10px no-repeat;
+  }
+  .more {
+    @include more-title;
+  }
+  ul {
+    padding-left: 30px;
+  }
+  li {
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+    line-height: 1.8em;
+  }
+}
+
+/* -------- Entitats promotores -------- */
+#block-block-52 {
+  margin-bottom: $ninesixty-gutter-width;
+  h2 { 
+    @include title3;
+    padding-bottom: $space;
+    border-bottom: dotted 1px $main-color;
+  }
+  ul {
+    margin-left: -$space;
+    margin-right: -9px;
+    padding: 0;
+  }
+  li {
+    @include grid-width(2);
+    height: 100px;
+    margin: $space;
+    display: block;
+    float: left;
+  }
+  
+  a {
+    padding-top: 60px;
+    width: 100%;
+    float: left;  
+    color: $main-color;
+    background-position: top center;
+    background-repeat: no-repeat;
+    text-align: center;
+  }
+  
+  a.Logo1{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-1-ep.jpg')}
+  a.Logo2{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-2-ep.jpg')}
+  a.Logo3{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-3-ep.jpg')}
+  a.Logo4{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-4-ep.jpg')}
+  a.Logo5{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-5-ep.jpg')}
+  a.Logo6{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-6-ep.jpg')}
+  a.Logo7{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-7-ep.jpg')}
+  a.Logo8{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-8-ep.jpg')}
+  a.Logo9{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-9-ep.jpg')}
+  a.Logo10{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-10-ep.jpg')}
+  a.Logo11{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-11-ep.jpg')}
+  a.Logo12{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-12-ep.jpg')}
+  a:link   {color:#333;}
+  a:visited  {color:#333;}
+  a:active   {color:#333;}
+  a:hover    {color:#C13113;}
+
+  a.Logo1:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-1-ep-over.jpg')}
+  a.Logo2:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-2-ep-over.jpg')}
+  a.Logo3:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-3-ep-over.jpg')}
+  a.Logo4:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-4-ep-over.jpg')}
+  a.Logo5:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-5-ep-over.jpg')}
+  a.Logo6:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-6-ep-over.jpg')}
+  a.Logo7:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-7-ep-over.jpg')}
+  a.Logo8:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-8-ep-over.jpg')}
+  a.Logo9:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-9-ep-over.jpg')}
+  a.Logo10:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-10-ep-over.jpg')}
+  a.Logo11:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-11-ep-over.jpg')}
+  a.Logo12:hover{ background-image:url('/sites/all/themes/sasson_xarxanet/images/logos/logo-12-ep-over.jpg')}
+}
+
+

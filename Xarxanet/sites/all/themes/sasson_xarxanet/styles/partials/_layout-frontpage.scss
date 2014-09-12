@@ -1,0 +1,89 @@
+/**
+ *   Frontpage Layout
+ */
+/* ------- General ------- */
+.front .title {
+  display: none;
+}
+
+/* ------- Panels -------*/
+.panels-flexible-column-portada-main,
+.panels-flexible-region-portada-center {
+  width: $ninesixty-grid-width / $ninesixty-columns * 6 - $space;
+}
+
+.panels-flexible-column-portada-main {
+  padding-left: $space; 
+}
+
+.panels-flexible-column-inside {
+  padding: 0px;
+}
+
+.panels-flexible-column-portada-1 {
+  width: $ninesixty-grid-width / $ninesixty-columns * 4;
+} 
+
+.panels-flexible-region-portada-right_blocks_1-inside {
+  @include grid-width(4);
+  a img {
+   @include grid-width(4);
+ }
+ @include grid-unit-base
+}
+
+.panel-separator {
+  clear: both;
+}
+
+/* ------- Notícia destacada principal ------- */
+.pane-recull-noticies-principal,
+.views-field-field-recull-principal-foto img {
+  width: $column * 6 + $space * 4;
+}
+
+/* ------- Notícia destacada secundària ------- */
+.view-recull-noticies-secundari {
+  #left-column,
+  .views-field-title,
+  .views-field-field-agenda-imatge,
+  .views-field-type,
+  .views-field-field-agenda-imatge-2,
+  .views-field-type-1,
+  {
+    width: $column * 4 + $space * 2;
+    float: left;
+  }
+  .views-field-field-agenda-imatge img,
+  .views-field-field-agenda-imatge-2 img,
+  {
+    width: $column * 4 + $space * 2;
+  }  
+  .views-field-field-recull-secundari-principal,
+  .views-field-field-resum,
+  .views-field-field-recull-secundari-secundari,
+  .views-field-field-resum-2,
+  .views-field-field-recull-secundari-relaciona, 
+  {
+    width: $column * 4 + $space * 2 - 16;
+    float: left;
+  }  
+  .views-field-field-agenda-imatge-1,
+  .views-field-type-2,
+  .views-field-field-recull-secundari-lat-sup,
+  .views-field-field-resum-1,
+  .views-field-field-agenda-imatge-3,
+  .views-field-type-3,
+  .views-field-field-recull-secundari-lat-inf,
+  .views-field-field-resum-3
+  {
+    margin-left: $column * 4 + $space * 4;
+    width: $column * 2;
+    clear: right;
+  }
+  .views-field-field-agenda-imatge-1 img,
+  .views-field-field-agenda-imatge-3 img,
+  {
+    width: $column * 2;
+  }
+}

@@ -1,0 +1,403 @@
+/**
+ *   General Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+
+body {
+  color: $main-color;
+  font-size: 10pt;
+}
+
+a {
+  font-family: Georgia;
+  color: $link-color;
+  text-decoration: none solid $link-color;
+}
+
+h1 {
+  @include title1;
+  a {
+    @include title1;
+  }
+}
+
+h2 {
+  @include title2;
+  a {
+    @include title2;
+  }
+}
+
+h3 {
+  @include title3;
+  a {
+    @include title3;
+  }
+}
+
+p {
+  -webkit-margin-before: 0.4em;
+  -webkit-margin-after: 0.4em;
+}
+
+blockquote {
+  font-family: Georgia;
+  font-style: italic;
+  border-top: solid 1px $main-2;
+  border-bottom: solid 1px $main-2;
+}
+
+#main {
+  margin-bottom: $ninesixty-gutter-width !important;
+}
+
+/* -------- Header --------*/
+#header {
+  margin: $ninesixty-gutter-width 0;
+  
+  #logo { margin: $space; }
+  
+  #block-apachesolr-panels-search-form { margin: 0 $space; }
+  
+  #block-menu-menu-men-de-cap-alera {
+    @include menu-link;
+    li {
+     @include menu-element(right);
+     a { 
+      color: white;     
+     } 
+    }
+    .first { @include menu-link-bg($main-1, $general, 'newsletters', 'newsletters'); }
+    .last { @include menu-link-bg($main-1, $general, 'login', 'login'); }
+  }
+}
+
+/* -------- Menú --------*/
+#block-megamenu-main-menu {  
+  @include menu-link;
+  li.megamenu-parent-0, li.megamenu-parent-1, li.megamenu-parent-2, li.megamenu-parent-3, li.megamenu-parent-4, {
+    @include menu-element(left); 
+  }
+  li.megamenu-parent-5, li.megamenu-parent-6, li.megamenu-parent-7, {
+    @include menu-element(right); 
+  }
+  li.megamenu-parent-0, li.megamenu-parent-1 { @include menu-link-bg( false, $general); }
+  li.megamenu-parent-2 { 
+    @include menu-link-bg( false, $financament); 
+    @include menu-submenu-1($financament);
+  }
+  li.megamenu-parent-3 { 
+    @include menu-link-bg( false, $agenda);
+    @include menu-submenu-1($agenda);
+  }
+  li.megamenu-parent-4 { @include menu-link-bg( false, $biblioteca); }
+  
+  li.megamenu-parent-5 { @include menu-link-bg( false, $general, 'fes-voluntariat', 'fes-voluntariat-hover'); }
+  li.megamenu-parent-6 { @include menu-link-bg( false, $general, 'publica', 'publica-hover'); }
+  li.megamenu-parent-7 { @include menu-link-bg( false, $general, 'assessorat', 'assessorat-hover'); }
+  
+  border-top: solid 2px $main-1;
+  border-bottom: solid 1px $main-1;
+}
+
+#block-block-83 {
+  @include menu-link;
+  li {
+    padding: 0.75em 1em;
+  }
+  li#ambits { 
+    @include menu-element(left); 
+  }
+  li#millora {
+    @include menu-element(right);
+  }
+  color: $main-1;
+  font-style: italic;
+  padding: 0px;
+}
+
+#block-megamenu-menu-menu-ambits-entitats {
+  @include menu-link;
+  li.half-1 { 
+    @include menu-element(left); 
+  }
+  li.half-2 {
+    @include menu-element(right);
+  }
+  li.megamenu-parent-0 { @include menu-submenu-2($ambiental, $ambiental-sec); }
+  li.megamenu-parent-1 { @include menu-submenu-2($comunitari, $comunitari-sec); }
+  li.megamenu-parent-2 { @include menu-submenu-2($cultural, $cultural-sec); }
+  li.megamenu-parent-3 { @include menu-submenu-2($social, $social-sec); }
+  li.megamenu-parent-4 { @include menu-submenu-2($internacional, $internacional-sec); }
+  li.megamenu-parent-5 { @include menu-submenu-2($economic, $economic-sec); }
+  li.megamenu-parent-6 { @include menu-submenu-2($formacio, $formacio-sec); }
+  li.megamenu-parent-7 { @include menu-submenu-2($informatic, $informatic-sec); }
+  li.megamenu-parent-8 { @include menu-submenu-2($juridic, $juridic-sec); }
+  li.megamenu-parent-9 { @include menu-submenu-2($projectes, $projectes-sec); }
+  
+  border-top: solid 2px $main-1;
+  background-color: $main-2;
+}
+
+/* -------- Title ------- */
+h1.title { float: left; }
+
+/* -------- Breadcrumb -------- */
+.breadcrumb { 
+  font-size: 9pt;
+  padding: 5px 0 5px 10px;
+  background-color: $main-3;
+  margin-right: 8px;
+  border-top: solid 10px $general;
+  clear: both;  
+}
+
+.section-financaments .breadcrumb,
+.section-financament .breadcrumb { border-top-color: $financament; }
+.section-agenda .breadcrumb { border-top-color: $agenda; }
+.section-biblioteca .breadcrumb,
+.section-biblioteca-filtre .breadcrumb,
+.section-biblioteca-cerca .breadcrumb { border-top-color: $biblioteca; }
+.section-ambiental .breadcrumb, .page-etiquetes-ambiental .breadcrumb { border-top-color: $ambiental; }
+.section-comunitari .breadcrumb, .page-etiquetes-comunitari .breadcrumb { border-top-color: $comunitari; }
+.section-cultural .breadcrumb, .page-etiquetes-cultural .breadcrumb { border-top-color: $cultural; }
+.section-social .breadcrumb, .page-etiquetes-social .breadcrumb { border-top-color: $social; }
+.section-internacional .breadcrumb, .page-etiquetes-internacional .breadcrumb { border-top-color: $internacional; }
+.section-projectes .breadcrumb, .page-etiquetes-projectes .breadcrumb { border-top-color: $projectes; }
+.section-juridic .breadcrumb, .page-etiquetes-juridic .breadcrumb { border-top-color: $juridic; }
+.section-informatic .breadcrumb, .page-etiquetes-informatic .breadcrumb { border-top-color: $informatic; }
+.section-formacio .breadcrumb, .page-etiquetes-formacio .breadcrumb { border-top-color: $formacio; }
+.section-economic .breadcrumb, .page-etiquetes-economic .breadcrumb { border-top-color: $economic; }
+
+/* -------- Blocks -------- */
+.region-sidebar-second .block {
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/info.png") $general 15px no-repeat; 
+    float: none;
+  }
+  .content {
+    background-color: $main-3;
+    p.block-content {
+      margin: 0px;
+      padding: $space;
+    }
+  }
+  margin-bottom: $ninesixty-gutter-width;
+}
+/* -------- Últims finançaments ------- */
+.pane-block-2, #block-block-2 {
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/financaments.png") $financament 10px no-repeat; 
+  }
+  .more {
+     @include more-title; 
+  }
+  .view {
+    @include block-body;
+    background-color: $financament-sec;
+  }
+  .views-row {
+    @include list-display($financament);
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style-orange.png");
+  }
+  .views-field-field-date {
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/timer-orange.png") 0px 5px no-repeat;
+    padding-left: 18px;
+  }
+}
+
+.pane-block-2 { #more-others { display: none; }}
+#block-block-2 {
+  p { 
+    margin: 0px;
+    padding-bottom: $space;
+    background-color: $financament-sec;
+    text-align: right;
+    a.more { float: none; }
+  } 
+  #more-frontpage { display: none; }
+}
+
+/* -------- Propers actes ------- */
+.pane-block-3, #block-block-3 {
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/actes.png") $actes 10px no-repeat; 
+  }
+  .more {
+     @include more-title; 
+  }
+  .view {
+    @include block-body;
+    background-color: $actes-sec;
+  }
+  .views-row {
+    @include list-display($actes);
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style-green.png");
+  }
+  .views-field-field-date-event {
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/timer.png") 0px 5px no-repeat;
+    padding-left: 18px;
+  }
+  .views-row-last { border-bottom: none; }
+}
+
+.pane-block-3 { #more-others { display: none; }}
+#block-block-3 {
+  p { 
+    margin: 0px;
+    padding-bottom: $space;
+    background-color: $actes-sec;
+    text-align: right;
+    a.more { float: none; }
+  } 
+  #more-frontpage { display: none; }
+}
+
+/* -------- Propers cursos ------- */
+.pane-block-71 {
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/cursos.png") $cursos 10px no-repeat; 
+  }
+  .more {
+     @include more-title; 
+  }
+  .view {
+    @include block-body;
+    background-color: $cursos-sec;
+  }
+  .views-row {
+    @include list-display($cursos);
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style-green.png");
+  }
+  .views-field-field-date-event {
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/timer.png") 0px 5px no-repeat;
+    padding-left: 18px;
+  }
+}
+
+/* -------- Darrers recursos ------- */
+.pane-block-72 {
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/recursos.png") $recursos 10px no-repeat; 
+  }
+  .more {
+     @include more-title; 
+  }
+  .view {
+    @include block-body;
+    background-color: $recursos-sec;
+  }
+  .views-row {
+    @include list-display(none);
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+  }
+}
+
+/* ------- Etiquetes ------- */
+#block-tagclouds-1 {
+  background-color: $main-3;
+  padding: $space;
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/etiquetes.png") $main-1 10px no-repeat;
+    margin-left: -$space;
+    margin-top: -$space;
+    margin-bottom: $space;
+  }
+}
+
+/* ------- Continguts relacionats ------- */
+#block-views-5c23d6449d8a4d5fecd33b8ecec85495 {
+  h2 { background: url("/sites/all/themes/sasson_xarxanet/images/pictos/relacionats.png") $general 10px no-repeat; }
+  .content { background-color: white; }  
+  .field-content{
+    img { @include grid-width(2); }
+    p { margin-bottom: $ninesixty-gutter-width; }
+  }
+}
+
+/* ------- Cerca a l'agenda ------- */
+#block-views-7814e0cc2676dbab08b80107114e81ed {
+  @include search-block($agenda, $actes-sec);
+}
+
+/* ------- Cerca recursos ------- */
+#block-views-02b34125514db2236f052369dd53eca0 {
+  @include search-block($general, $main-3);
+}
+
+/* ------- Cerca finançaments ------- */
+#block-views-4658fea6643a7926dd1dfdcd87e58d85 {
+  @include search-block($financament, $financament-sec);
+}
+
+
+/* ------- Footer ------- */
+#block-block-84 {
+  clear: both;
+  margin-left: -$space;
+  margin-right: -9px;
+  background-color: $main-3;
+  
+  .footer-row-1 {
+    .footer-col {
+      float: left;
+      h2 {
+        @include grid-width(2);
+        margin-top: 0;
+        padding: $space;
+        background-color: $main-1;
+        color: white;
+      }
+      ul {
+        @include grid-width(2);
+        padding: 0;
+        margin-left: $space;
+        list-style: none;
+      }
+      li { 
+        padding-bottom: $space;
+        img {
+          margin-right: $space;
+        } 
+      }
+    }
+    .footer-col-1 {
+      h2 { 
+        padding-left: $ninesixty-gutter-width;
+        padding-right: 0; 
+      }      
+      ul { margin-left: $ninesixty-gutter-width;}
+    }  
+  }
+  .footer-row-2 {
+    clear: both;
+    padding: $ninesixty-gutter-width;
+  }
+  .outer-footer {
+    background-color: black;
+    color: white;
+    height: 40px;
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul.left-menu { 
+      float: left;
+      padding-left: $space; 
+    }
+    ul.right-menu { 
+      float: right;
+      padding-right: $space; 
+    }
+    li { 
+      display: inline-block;
+      margin: 0 $space; 
+    }
+    a { color: white; }
+  } 
+}
