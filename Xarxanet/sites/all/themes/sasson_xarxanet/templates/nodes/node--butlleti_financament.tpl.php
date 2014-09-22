@@ -169,7 +169,8 @@ for ($i = 1; $i <= 4; $i++){
 //Finançaments
 $lastweek = $node->created - 604800;
 $now = $node->created;
-$nodes = db_query('SELECT nid FROM {node} WHERE type=:type AND status=1 ORDER BY created DESC', array(':type' => 'financament_full'));
+$query = "SELECT nid FROM `node` WHERE type='financament_full' AND status=1 ORDER BY created DESC";
+$nodes = db_query($query);
 $financ_nodes = array();
 
 foreach ($nodes as $row) {

@@ -27,12 +27,15 @@
 <div class="<?php print $fields['type']->raw; ?>">
 
 <?php
-	if (($id == 4) || ($id == 9)) {
+	print_r($fields['title']->content);
+	die();
+	$row = $view->row_index;
+	if (($row == 0) || ($row == 5)) {
 		$rawImatge = $fields['field_agenda_imatge']->content;
 		if ($rawImatge == "") $rawImatge = "<a href='" . $fields ['path']->content . "'>" . theme ( 'imagecache', 'tag-mig', 'no-image.jpg', 'just a test image', 'test image' ) . "</a>";
 	} else {
 		$rawImatge = $fields['field_agenda_imatge_1']->content;
-		if ($rawImatge == "") $rawImatge = "<a href='" . $fields ['path']->content . "'>" . theme ( 'imagecache', 'tag-mig', 'no-image.jpg', 'just a test image', 'test image' ) . "</a>";
+		if ($rawImatge == "") $rawImatge = "<a href='" . $fields ['path']->content . "'>" . theme ( 'imagecache', 'tag-petit', 'no-image.jpg', 'just a test image', 'test image' ) . "</a>";
 	}
 	print $rawImatge;
 	print sasson_xarxanet_get_label($fields['type']->raw, $fields['path']->raw);
@@ -41,3 +44,4 @@
 ?>
 
 </div>
+

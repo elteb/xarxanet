@@ -10,7 +10,7 @@ body {
 a {
   font-family: Georgia;
   color: $link-color;
-  text-decoration: none solid $link-color;
+  text-decoration: none;
 }
 
 h1 {
@@ -46,6 +46,11 @@ blockquote {
   border-bottom: solid 1px $main-2;
 }
 
+#page {
+  background-color: white;
+  padding: 0 $space;
+}
+
 #main {
   margin-bottom: $ninesixty-gutter-width !important;
 }
@@ -58,7 +63,7 @@ blockquote {
   
   #block-apachesolr-panels-search-form { margin: 0 $space; }
   
-  #block-menu-menu-men-de-cap-alera {
+  .menu-name-menu-men-de-cap-alera {
     @include menu-link;
     li {
      @include menu-element(right);
@@ -335,6 +340,9 @@ h1.title { float: left; }
   @include search-block($financament, $financament-sec);
 }
 
+/* ------- Content ------- */
+.region-content,
+.messages { clear: both; } 
 
 /* ------- Footer ------- */
 #block-block-84 {

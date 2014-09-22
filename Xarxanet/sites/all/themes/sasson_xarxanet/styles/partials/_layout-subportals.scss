@@ -28,3 +28,15 @@
     width: 100%;
   }
 }
+
+/* ------- Seccions especials ------- */
+.section-especial {
+  .panel-col-first {
+    width: $ninesixty-grid-width / $ninesixty-columns * 6;
+    .inside { margin-right: $space } 
+  }
+  .panel-col-last { 
+    width: $ninesixty-grid-width / $ninesixty-columns * 4;
+    .inside { margin-left: $space }  
+  }
+}

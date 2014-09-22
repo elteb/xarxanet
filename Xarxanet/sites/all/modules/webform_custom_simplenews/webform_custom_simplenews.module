@@ -70,16 +70,6 @@ function webform_custom_simplenews_webform_component_info() {
 }
 
 /**
- * Implementation of hook_token_list().
- */
-function webform_custom_simplenews_token_list($type = 'all') {
-	$tokens = array ();
-	if ($type == 'simplenews')
-		$tokens ['simplenews'] ['newsletter-custom-content'] = t ( 'Custom contents for the newsletter' );
-	return $tokens;
-}
-
-/**
  * Implementation of hook_theme()
  */
 function webform_custom_simplenews_theme() {
@@ -87,7 +77,7 @@ function webform_custom_simplenews_theme() {
 	
 	return array (
 			'custom_content_section' => array (
-					'arguments' => array (
+					'variables' => array (
 							'section_nodes' => Null,
 							'section_name' => Null 
 					),
@@ -95,35 +85,6 @@ function webform_custom_simplenews_theme() {
 					'path' => $path . '/templates' 
 			) 
 	);
-}
-
-/**
- * Implementation of hook_token_value().
- */
-function webform_custom_simplenews_token_values($type, $object = NULL, $options = array()) {
-	$values = array (
-			'newsletter-custom-content' => '' 
-	);
-	if ($type == 'simplenews') {
-		if ($snid = $object ['account']->snid) {
-			$tid = $object ['newsletter']->tid;
-			$contents = db_result ( db_query ( "SELECT custom_content FROM {webform_custom_simplenews} WHERE snid=%d AND tid=%d", $snid, $tid ) );
-			$contents = unserialize ( $contents );
-			$lapse = variable_get ( 'webform_custom_simplenews_lapse', '7' );
-			$created = time () - $lapse * 86400;
-			foreach ( $contents as $content ) {
-				$section_nodes = array ();
-				$result = db_query ( "SELECT nid FROM node WHERE type = '%s' AND created >= %d AND status = 1 ORDER BY created DESC", $content, $created );
-				$nids = array ();
-				while ( $obj = db_fetch_object ( $result ) ) {
-					$section_nodes [$obj->nid] = node_load ( $obj->nid );
-				}
-				$values ['newsletter-custom-content'] .= theme ( 'custom_content_section', $section_nodes, $content );
-			}
-		}
-	}
-	
-	return $values;
 }
 
 /**
@@ -144,3 +105,56 @@ function register_custom_content($snid, $tid, $custom_content) {
         VALUES (%d, %d, '%s')", $snid, $tid, $serial_content );
 }
 
+/**
+ * Implements hook_token_info().
+ */
+function webform_custom_simplenews_token_info() {	
+	$types ['simplenews-custom-webform'] = array (
+			'name' => t ( 'Simplenews Custom Webform' ),
+			'description' => t ( 'Tokens related to the newsletter custom content' ),
+			'needs-data' => ''
+	);
+	
+	$custom['newsletter-custom-content'] = array(
+			'name' => t("Custom content"),
+			'description' => t("Custom contents for the newsletter."),
+	);
+	
+	return array (
+			'types' => $types,
+			'tokens' => array (
+					'simplenews-custom-webform' => $custom,
+			) 
+	);
+}
+
+/**
+ * Implementation of hook_tokens().
+ */
+function webform_custom_simplenews_tokens($type, $tokens, array $data = array(), array $options = array()) {
+	$values = array (
+			'newsletter-custom-content' => ''
+	);
+	if ($type == 'simplenews-custom-webform') {
+		if ($snid = $data['simplenews_subscriber']->snid) {
+			$tid = $data['category']->tid;
+			$contents = db_query("SELECT custom_content FROM {webform_custom_simplenews} WHERE snid = :snid AND tid= :tid", array(':snid' => $snid, ':tid' =>$tid))->fetchObject();
+			$contents = unserialize($contents->custom_content);
+			$lapse = variable_get ('webform_custom_simplenews_lapse', '7');
+			$created = time() - $lapse * 86400;
+			foreach ( $contents as $content ) {
+				$section_nodes = array();
+				$query = "SELECT nid FROM node WHERE type = '{$content}' AND created >= {$created} AND status = 1 ORDER BY created DESC";
+				$result = db_query($query);
+				while($obj = $result->fetchObject()) {
+					$section_nodes[] = $obj->nid;
+				}
+				if (!empty($section_nodes)) {
+					$html = theme('custom_content_section', array('section_nodes' => $section_nodes, 'section_name' => $content));
+					$values['newsletter-custom-content'] .= $html;
+				}
+			}
+		}
+	}
+	return $values;
+}

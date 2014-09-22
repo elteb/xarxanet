@@ -36,6 +36,12 @@
   clear: both;
 }
 
+.panels-flexible-region-portada-right_blocks_2,
+.panels-flexible-region-portada-right_blocks_3 {
+	@include grid-width(2);
+	padding-left: $space;
+}
+
 /* ------- Notícia destacada principal ------- */
 .pane-recull-noticies-principal,
 .views-field-field-recull-principal-foto img {

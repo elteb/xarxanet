@@ -59,6 +59,7 @@ function sasson_xarxanet_get_label($tipus) {
 	if($tipus == "Curs") $text = "Esdeveniment > Curs";
 	if($tipus == "Acte") $text = "Esdeveniment > Acte";
 	if($tipus == "Esdeveniment") $text = "Agenda";
+	if($tipus == "event") $text = "Agenda";
 
 	if($tipus == "Finançament (NOU)") $text = "Finançament";
 	if($tipus == "Premi") $text = "Finançament > Premi";
@@ -108,6 +109,7 @@ function sasson_xarxanet_preprocess_node(&$variables) {
 						'noticia_internacional_ang',
 						'noticia_internacional_cat',
 						'noticia_internacional_esp',
+						'noticia_en_angles',
 						);
 	$recursos = array(	'recurs_economic',
 						'recurs_formacio',

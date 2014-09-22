@@ -65,6 +65,80 @@
   }
 }
 
+/* ------- Seccions especials ------- */
+.section-especial {
+  .pane-content { margin-bottom: 15px; }
+  #clear { clear: both; }
+  #third-row { 
+    padding-bottom: 10px;
+    .item { 
+      display: block;
+      background: url('/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png') 5px 6px no-repeat;
+      padding-left: 18px;
+      line-height: 1.6em;
+    } 
+  }
+  .pane-custom .pane-content { padding: 10px; }
+  .pane-custom.no-padding .pane-content { padding: 0px; }
+  .breadcrumb { 
+     border-top: none;
+     margin-right: 0px; 
+  }
+  h1#page-title { line-height: 1.5em; }
+  .region-content {
+    margin-top: $ninesixty-gutter-width;
+    h2 {
+      font-size: 14pt;
+      font-weight: lighter !important;
+      text-align: center;
+      padding: $space/2;
+      margin-bottom: 0px;
+    }
+    h3 {
+      font-size: 14pt;
+      line-height: 1.4em;
+      font-weight: normal;
+    } 
+  }
+  .pane-tags-especial .pane-content { padding: 10px; }
+  .pane-tags-especial-repositori {
+    .views-row { margin-right: 12px; }
+    .views-row-clear-0 { margin-left: 10px; }
+    .views-row-clear-4 { margin-right: 10px; }
+  }
+  #especial-documents-pane {
+    .row { padding-top: 10px; }
+    .doc_title { 
+      float: left;
+      width: 140px; 
+      padding: 0px 15px 0px 10px;
+    }
+    .doc_image { float: left;  }
+    .doc_image img { 
+      width: 110px;
+      border: 1px solid #CCCCCC;
+      margin-left: 5px 
+    }
+    #third-row { padding: 10px 5px; }
+  }
+  #especial-4-continguts-pane {
+    .content { 
+      float:left;
+      margin: 10px 4.5px; 
+    }
+    .content-large { width: 377px; }
+    .content-small { width: 179px; }
+    #third-row { padding: 0 5px 10px; } 
+  }
+  #especial-1-contingut-pane {
+    padding-bottom: $ninesixty-gutter-width;
+   .content_title, 
+   .content_teaser, 
+   #third-row { padding: 0 5px; } 
+   .content-columna-esquerra img { width: 568px; }
+  }
+}
+
 /* ------- Biblioteca ------- */
 .section-biblioteca,
 .section-biblioteca-filtre {

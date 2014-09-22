@@ -27,7 +27,8 @@
 <div class="<?php print $fields['type']->raw; ?>">
 
 <?php
-	if ($id % 2 == 1) {
+	$row = $view->row_index;
+	if ($row == 0) {
 		$rawImatge = $fields['field_agenda_imatge']->content;
 		if ($rawImatge == "") $rawImatge = "<a href='" . $fields['path']->content . "'>" . theme ( 'imagecache', 'tag-mig', 'no-image.jpg', 'just a test image', 'test image' ) . "</a>";
 	} else {

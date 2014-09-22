@@ -140,21 +140,22 @@ for ($i = 1; $i <= 4; $i++){
 //Finançaments
 $lastweek = $node->created - 604800;
 $now = $node->created;
-$nodes = db_query('SELECT nid FROM {node} WHERE type="%s" AND status=1 ORDER BY created DESC', 'financament_full');
+$query = "SELECT nid FROM `node` WHERE type='financament_full' AND status=1 ORDER BY created DESC";
+$nodes = db_query($query);
 $financ_nodes = array();
 
-while ($row = db_fetch_array($nodes)){
-	$financ_node = node_load($row['nid']);
-	$financ_end = strtotime($financ_node->field_date[0][value2]);
+foreach ($nodes as $row) {
+	$financ_node = node_load($row->nid);
+	$financ_end = strtotime($financ_node->field_date['und'][0][value2]);
 	if (($financ_end > $now) && ($financ_node->created < $now)){	
 		if (($financ_node->created > $lastweek) || (count($financ_nodes) < 15)){
-			$financ_start = strtotime($financ_node->field_date[0][value]);
+			$financ_start = strtotime($financ_node->field_date['und'][0][value]);
 			$key = $financ_end;
 			while (!empty($financ_nodes[$key])) $key++;
 			$financ_nodes[$key] = array( 'title' => $financ_node->title,
-										'link' => $pathroot.'/'.$financ_node->path,
-										'teaser' => strip_tags($financ_node->field_resum[0]['value']),
-										'convocant' => strip_tags($financ_node->field_convocant[0]['value']),
+										'link' => url('node/' . $financ_node->nid, array('absolute' => TRUE)),
+										'teaser' => strip_tags($financ_node->field_resum['und'][0]['value']),
+										'convocant' => strip_tags($financ_node->field_convocant['und'][0]['value']),
 										'termini' => date('d/m/Y', $financ_start).' - '.date('d/m/Y', $financ_end));
 		} else {
 			break;

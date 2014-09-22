@@ -30,12 +30,12 @@ $pathroot = 'http://www.xarxanet.org';
 // Data
 $mesos = array('de gener', 'de febrer', 'de març', 'd\'abril', 'de maig', 'de juny', 'de juliol', 'd\'agost', 'de setembre', 'd\'octubre', 'de novembre', 'de desembre');
 $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte', 'Diumenge');
-
+$node = $build['#node'];
 ?>
 <table style="font-family: Arial, Helvetica; font-size: 13px; border-collapse: separate;" width="910px" style="margin:auto" cellspacing="0px">
 	<!-- CAPÇALERA -->
 	<tr><td colspan="2" style="border: 1px solid; border-bottom: none; padding-right: 10px">
-		<p style="padding: 2px; font-size: 11px; text-align:right"> Si no visualitzes correctament el butlletí clica aquest <a href="<?php echo $pathroot.'/node/'.$node->nid?>" style="text-decoration:none; color: #B2290C; font-weight: bold;">enllaç</a></p>
+		<p style="padding: 2px; font-size: 11px; text-align:right"> Si no visualitzes correctament el butlletí clica aquest <a href="<?php echo $pathroot.'/node/'.$node->nid?>" style="text-decoration:none; color: #B2290C; font-weight: bold;">enllaç	</p>
 	</td></tr>
 	<tr><td style="border-left: 1px solid; padding-left: 10px">
 		<a href="http://www.xarxanet.org" style="text-decoration:none">
@@ -46,7 +46,6 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	</td></tr>
 	<tr style="background-color:#CCCCCC; color:#53544F; font-weight:bold;"><td style="padding: 5px 10px; border-top:3px solid #53544F; border-bottom: 15px solid white;">
 		<?php
-			$node = $build['#node'];
 			$created = $node->created; 
 			echo $dies[date('N', $created)-1].', '.date('j', $created).' '.$mesos[date('n', $created)-1].' de '.date('Y', $created).' - Num. '.$title;
 		?>
@@ -60,7 +59,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 		<?php
 		if (($node->field_actualitat_dest_prin_noti['und'][0]['nid'] != '') || ($node->field_actualitat_dest_prin_ext['und'][0]['title'] != '')) {
 			if ($node->field_actualitat_dest_prin_epigr['und'][0]['value'] !=  '') {?> 
-				<tr><td style="background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; text-align: center; padding: 0px; height: 28px;"><?php echo $node->field_actualitat_dest_prin_epigr['und'][0]['value']; ?></td></tr>
+				<tr><td style="background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; text-align: center; padding: 4px 0px; height: 28px;"><?php echo $node->field_actualitat_dest_prin_epigr['und'][0]['value']; ?></td></tr>
 			<?php }
 			$title = '';
 			$url = '';
@@ -77,13 +76,9 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 			}
 			$image = file_create_url($node->field_actualitat_dest_prin_foto['und'][0]['uri']);
 			echo "	<tr><td style='padding: 0px !important;'>
-						<a href='{$url}' style='text-decoration:none'>
-							<img src='{$image}' alt='imatge destacat principal' style='border: 0 none;'/>
-						</a>
+						<a href='{$url}' style='text-decoration:none'><img src='{$image}' alt='imatge destacat principal' style='border: 0 none;'/></a>
 					</td></tr><tr><td style='padding: 10px 5px;'>
-						<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 18pt; font-weight: lighter; line-height: 24px; text-decoration: none;'>
-							{$title}
-						</a>
+						<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 18pt; font-weight: lighter; line-height: 24px; text-decoration: none;'>{$title}</a>
 						<p style='padding-top: 5px; margin: 2px 0; padding-bottom: 10px;'>{$teaser}</p>";
 			if ($node->field_actualitat_dest_prin_rel['und'][0]['nid'] != '') {
 				echo '<b>Altres informacions relacionades</b>
@@ -124,12 +119,8 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 			$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
 			$paddingright = ($i < 3) ? 20 : 0;
 			echo "<td style='vertical-align: top; padding: 0px; padding-right: {$paddingright}px'>
-				<a href='{$url}' style='text-decoration:none'>
-					<img src='{$img}' alt='{$alt}' style='border: 0 none;'/>
-				</a>
-				<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>
-					{$news_node->title}
-				</a>
+				<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
+				<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$news_node->title}</a>
 				<p style='padding-top: 5px; margin: 2px 0;'>{$teaser}</p>
 			</td>";
 			$i++;
@@ -243,7 +234,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	<?php }?>
 	
 	<!-- NOTÍCIES PERSONALITZADES -->
-	<?php echo '[newsletter-custom-content]'; ?>
+	<?php echo '[simplenews-custom-webform:newsletter-custom-content]'; ?>
 	
 	</td><td style="vertical-align: top">
 	
@@ -286,13 +277,9 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 			echo "<td style='background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_sup_epigraf['und'][0]['value']}</td>";
 		} 
 		echo "</tr><tr><td style='padding: 0;'>
-			<a href='{$url}' style='text-decoration:none'>
-				<img src='{$img}' alt='{$alt}' style='border: 0 none;'/>
-			</a>
+			<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
 			</td></tr><tr><td style='padding: 10px 5px;'>
-			<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>
-				{$news_node->title}
-			</a>
+			<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$news_node->title}</a>
 			<p style='padding-top: 5px; margin: 2px 0; padding-bottom: 10px;'>{$teaser}</p>";
 		if ($node->field_actualitat_lat_sup_rel['und'][0]['nid'] != '') {
 			echo '<b>Altres informacions relacionades</b>
@@ -347,16 +334,12 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 		<img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_voluntariat.jpg" alt="banner voluntariat" style='border: 0 none;'/>
 	</a></td></tr><tr>
 	<td style='padding: 10px 0 0 0'>
-	<a href="http://www.xarxanet.org/formulari-dassessorament" style='text-decoration:none'>
-		<img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_assessorament.jpg" alt="banner voluntariat" style='border: 0 none;'/>
-	</a></td></tr>
+	<a href="http://www.xarxanet.org/formulari-dassessorament" style='text-decoration:none'><img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_assessorament.jpg" alt="banner voluntariat" style='border: 0 none;'/></a></td></tr>
 	<?php
 	foreach ($node->field_actualitat_banner['und'] as $banner) {
 		$image = file_create_url($banner['uri']);
 		echo "<tr>
-			<td style='padding: 10px 0 0 0'><a href='{$banner['url']}' style='text-decoration:none'>
-			<img src='{$image}' alt='{$banner['data']['alt']}' style='border: 0 none;'/>
-			</a></td></tr>";
+			<td style='padding: 10px 0 0 0'><a href='{$banner['url']}' style='text-decoration:none'><img src='{$image}' alt='{$banner['data']['alt']}' style='border: 0 none;'/></a></td></tr>";
 	} 
 	?>
 	</table>
@@ -374,13 +357,9 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 			echo "<td style='background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_inf_epigraf['und'][0]['value']}</td>";
 		} 
 		echo "</tr><tr><td style='padding: 0;'>
-			<a href='{$url}' style='text-decoration:none'>
-				<img src='{$img}' alt='{$alt}' style='border: 0 none;'/>
-			</a>
+			<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
 			</td></tr><tr><td style='padding: 10px 5px;'>
-			<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>
-				{$news_node->title}
-			</a>
+			<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$news_node->title}</a>
 			<p style='padding-top: 5px; margin: 2px 0;'>{$teaser}</p>";
 		echo "</td></tr></table>";
 	 }?>
@@ -397,13 +376,9 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 			</td></tr>
 			<tr><td style="vertical-align:top; padding-left:10px; padding-top:15px">
 				<table style="border-collapse: collapse;"><tr><td>
-					<a href="http://www.gencat.cat/benestar" style="text-decoration:none">
-						<img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png" style="border: 0 none">
-					</a>
+					<a href="http://www.gencat.cat/benestar" style="text-decoration:none"><img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png" style="border: 0 none"></a>
 				</td></tr><tr><td style="padding-top: 45px;">
-					<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca" rel="license">
-						<img style="border:0 none;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/80x15.png" alt="Licencia de Creative Commons">
-					</a>
+					<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca" rel="license"><img style="border:0 none;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/80x15.png" alt="Licencia de Creative Commons"></a>
 				</td></tr></table>
 			</td><td style="vertical-align:top; padding-top:15px">
 				<!-- <a href="http://www.voluntariat.org" style="text-decoration:none">
