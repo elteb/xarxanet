@@ -27,8 +27,6 @@
 <div class="<?php print $fields['type']->raw; ?>">
 
 <?php
-	print_r($fields['title']->content);
-	die();
 	$row = $view->row_index;
 	if (($row == 0) || ($row == 5)) {
 		$rawImatge = $fields['field_agenda_imatge']->content;

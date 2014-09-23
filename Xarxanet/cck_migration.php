@@ -6,11 +6,30 @@ require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 // content_field_dpp_portal --> field_data_field_dpp_portal
-/*$count = 0;
-$results = db_query("SELECT * FROM {content_field_dpp_portal} WHERE `field_dpp_portal_value` = 'Destacat principal portal'");
+$count = 0;
+$results = db_query("SELECT * FROM {content_field_dpp} WHERE `field_dpp_value` = 'Destacat principal a portada'");
 foreach ($results as $result) {
-	$res = db_query("UPDATE {field_data_field_dpp_portal} SET `field_dpp_portal_value` = 1 WHERE `entity_id` = {$result->nid}");
+	$res = db_query("UPDATE {field_data_field_dpp} SET `field_dpp_value` = 1 WHERE `entity_id` = {$result->nid}");
 	$count ++;
+}
+print 'content_field_dpp --> field_data_field_dpp: '.$count.'<br/>';
+
+
+// content_field_dsp --> field_data_field_dsp
+$count = 0;
+$results = db_query("SELECT * FROM {content_field_dsp} WHERE `field_dsp_value` = 'Destacat secundari a portada'");
+foreach ($results as $result) {
+	$res = db_query("UPDATE {field_data_field_dsp} SET `field_dsp_value` = 1 WHERE `entity_id` = {$result->nid}");
+	$count ++;
+}
+print 'content_field_dsp --> field_data_field_dsp: '.$count.'<br/>';
+
+// content_field_dpp_portal --> field_data_field_dpp_portal
+/*$count = 0;
+ $results = db_query("SELECT * FROM {content_field_dpp_portal} WHERE `field_dpp_portal_value` = 'Destacat principal portal'");
+foreach ($results as $result) {
+$res = db_query("UPDATE {field_data_field_dpp_portal} SET `field_dpp_portal_value` = 1 WHERE `entity_id` = {$result->nid}");
+$count ++;
 }
 print 'content_field_dpp_portal --> field_data_field_dpp_portal: '.$count.'<br/>';*/
 

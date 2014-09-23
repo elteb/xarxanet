@@ -5,12 +5,12 @@
  *
  */
 function apachesolr_test_page_alter(&$page) {
-	$included_files = get_included_files ();
-	$filename = dirname ( dirname ( dirname ( realpath ( __FILE__ ) ) ) ) . '/apachesolr.index.inc';
-	if (in_array ( $filename, $included_files )) {
-		$page ['page_bottom'] ['solr'] = array (
-				'#type' => 'markup',
-				'#markup' => 'apachesolr.index.inc was included' 
-		);
-	}
+  $included_files = get_included_files();
+  $filename = dirname(dirname(dirname(realpath(__FILE__)))) . '/apachesolr.index.inc';
+  if (in_array($filename, $included_files)) {
+    $page['page_bottom']['solr']= array(
+      '#type' => 'markup',
+      '#markup' => 'apachesolr.index.inc was included',
+    );
+  }
 }

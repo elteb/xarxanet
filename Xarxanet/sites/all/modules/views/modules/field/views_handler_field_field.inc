@@ -826,12 +826,10 @@ class views_handler_field_field extends views_handler_field {
 				if (isset ( $all_values [$new_delta] )) {
 					// If first-last option was selected, only use the first and last values
 					if (! $delta_first_last
-            // Use the first value.
-            || $new_delta || 
- == $offset
-            // Use the last value.
-            || $new_delta || 
- == ($delta_limit + $offset - 1)) {
+            			// Use the first value.
+            			|| $new_delta == $offset
+						// Use the last value.
+					    || $new_delta == ($delta_limit + $offset - 1)) {
 						$new_values [] = $all_values [$new_delta];
 					}
 				}
