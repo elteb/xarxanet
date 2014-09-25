@@ -56,6 +56,7 @@
 $mesos = array('de gener', 'de febrer', 'de març', 'd\'abril', 'de maig', 'de juny', 'de juliol', 'd\'agost', 'de setembre', 'd\'octubre', 'de novembre', 'de desembre');
 $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte', 'Diumenge');
 $pathroot = 'http://www.xarxanet.org';
+$node = $build['#node'];
 
 // Banners fixes
 $banners_fixes = array(	'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
@@ -94,72 +95,73 @@ $banners_fixes = array(	'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/fil
 // Notícies destacades
 $num_destacades = 3;
 $destacades = array();
-foreach ($node->field_abast_destacades_xarxanet as $key => $destacada_xarxanet){
-	if ($num_destacades != 0 && !empty($destacada_xarxanet['safe']['nid'])){
-		$node_ = node_load($destacada_xarxanet['safe']['nid']);
-		if (isset($node->field_abast_crop[$key]['filepath'])){
-			$imatge = $node->field_abast_crop[$key]['filepath'];
-			$alt = $node->field_abast_crop[$key]['data']['alt'];
-		}elseif (isset($node_->field_agenda_imatge[0]['filepath'])){
-			$imatge = imagecache_create_path('abast-gran', $node_->field_agenda_imatge[0]['filepath']);
-			$alt = $node_->field_agenda_imatge[0]['data']['alt'];
+$wrapper = entity_metadata_wrapper('node', $node);
+foreach ($wrapper->field_abast_destacades as $destacada){
+	$noticia = $destacada->field_abast_destacades_xarxanet->value();
+	$titular = $destacada->field_abast_destacades_titular->value();
+	$img = $destacada->field_abast_crop->value();
+	
+	if ($num_destacades != 0 && (($noticia) || ($titular))){
+		if ($img){
+			$imatge = file_create_url($img[0]['uri']);
+			$alt = $img[0]['alt'];
+		}elseif (!empty($noticia->field_agenda_imatge['und'])){
+			$imatge = image_style_url('abast-gran',$noticia->field_agenda_imatge['und'][0]['uri']);
+			$alt = $noticia->field_agenda_imatge['und'][0]['alt'];
 		}else{
-			$imatge = imagecache_create_path('abast-gran', $node_->field_imatges[0]['filepath']);
-			$alt = $node_->field_imatges[0]['data']['alt'];
+			$imatge = image_style_url('abast-gran',$noticia->field_imatges['und'][0]['uri']);
+			$alt = $noticia->field_imatges['und'][0]['alt'];
 		}
-		$destacades[$key] = array(	'titular' => $node_->title,
-								'link' => $pathroot.'/'.$node_->path, 
-								'imatge' => $imatge,
-								'alt' => $alt);
+		if ($titular) {
+			$title = $titular['title'];
+			$link = $titular['display_url'];
+		} elseif ($noticia) {
+			$title = $noticia->title;
+			$link = url('node/' . $noticia->nid, array('absolute' => TRUE));
+		}
+		$destacades[] = array(	
+				'titular' => $title,
+				'link' => $link,
+				'imatge' => $imatge,
+				'alt' => $alt);
 		$num_destacades--;
 	}
 }
-
-foreach ($node->field_abast_destacades_titular as $key => $destacada){
-	if ($num_destacades != 0 && !empty($destacada['title'])){
-		$destacades[$key] = array(	'titular' => $destacada['title'],
-								'link' => $destacada['url'], 
-								'imatge' => $node->field_abast_crop[$key]['filepath'], 
-								'alt' => $node->field_abast_crop[$key]['data']['alt']);
-		$num_destacades--;
-	}
-}
-ksort($destacades);
 
 // Notícies
 $noticia_curta = 130; //Caràcters
 $noticia_llarga = 900; //Caràcters
 $noticies = array();
-foreach ($node->field_abast_noticies_xarxanet as $key => $noticia_xarxanet){
-	if (!empty($noticia_xarxanet['safe']['nid'])){
-		$node_ =  node_load($noticia_xarxanet['safe']['nid']);
-		if (isset($node->field_abast_crop1[$key]['filepath'])){
-			$imatge = $node->field_abast_crop1[$key]['filepath'];
-			$alt = $node->field_abast_crop1[$key]['data']['alt'];
-		}elseif (isset($node_->field_agenda_imatge[0]['filepath'])){
-			$imatge = imagecache_create_path('abast-gran', $node_->field_agenda_imatge[0]['filepath']);
-			$alt = $node_->field_agenda_imatge[0]['data']['alt'];
+foreach ($wrapper->field_abast_noticies as $noticia){
+	$noti_xn = $noticia->field_abast_noticies_xarxanet->value();
+	
+	if($noti_xn->nid) {
+		$title = $noti_xn->title;
+		$link = url('node/' . $noti_xn->nid, array('absolute' => TRUE));
+		$resum = $noti_xn->field_resum['und'][0]['value'];
+		if (!empty($noti_xn->field_agenda_imatge['und'])){
+			$imatge = image_style_url('abast-gran',$noti_xn->field_agenda_imatge['und'][0]['uri']);
+			$alt = $noti_xn->field_agenda_imatge['und'][0]['alt'];
 		}else{
-			$imatge = imagecache_create_path('abast-gran', $node_->field_imatges[0]['filepath']);
-			$alt = $node_->field_imatges[0]['data']['alt'];
+			$imatge = image_style_url('abast-gran',$noti_xn->field_imatges['und'][0]['uri']);
+			$alt = $noti_xn->field_imatges['und'][0]['alt'];
 		}
-		$noticies[$key] = array( 	'titular' => $node_->title,
-								'link' => $pathroot.'/'.$node_->path,
-								'imatge' => $imatge,
-								'alt' => $alt,
-								'teaser' => strip_tags($node_->field_resum[0]['value']));
+	} else {
+		$titular = $noticia->field_abast_noticies_titular->value();
+		$title = $titular['title'];
+		$link = $titular['display_url'];
+		$resum = $noticia->field_abast_noticies_resum->value();
+		$img = $noticia->field_abast_crop1->value();
+		$imatge = file_create_url($img['uri']);
+		$alt = $img['alt'];
 	}
+	
+	$noticies[] = array('titular' => $title,
+						'link' => $link,
+						'imatge' => $imatge,
+						'alt' => $alt,
+						'teaser' => strip_tags($resum));
 }
-foreach ($node->field_abast_noticies_titular as $key => $noticia){
-	if (!empty($noticia['title'])){
-		$noticies[$key] = array(	'titular' => $noticia['title'],
-								'link' => $noticia['url'],
-								'imatge' => $node->field_abast_crop1[$key]['filepath'],
-								'alt' => $node->field_abast_crop1[$key]['data']['alt'],
-								'teaser' => strip_tags($node->field_abast_noticies_resum[$key]['value']));
-	}
-}
-ksort($noticies);
 ?>
 
 <table style="font-family: Verdana; font-size: 11px;" width="970px" style="margin:auto" cellspacing="8px">
@@ -215,20 +217,18 @@ ksort($noticies);
 		$array_flex = array('', '_2', '_3');
 		if (!empty($destacades)){ echo '<a style="color:#000001; text-decoration:none" href="#destacats">Destacats</a>';}
 		if (!empty($noticies)){ echo ' | <a style="color:#000001; text-decoration:none" href="#noticies">Notícies</a>';} 
-		if (!empty($node->field_abast_voluntariat_xarxanet[0]['safe']['nid']) || !empty($node->field_abast_voluntariat_titol[0]['title'])){ echo ' | <a style="color:#000001; text-decoration:none" href="#voluntariat">Crides de voluntariat</a>';}
-		if (!empty($node->field_abast_pfvc_titol[0]['title'])){ echo ' | <a style="color:#000001; text-decoration:none" href="#pfvc">Cursos PFVC</a>';}
-		if (!empty($node->field_abast_formacions_xarxanet[0]['safe']['nid'])){echo ' | <a style="color:#000001; text-decoration:none" href="#formacio">Altres formacions</a>';}
-		if (!empty($node->field_abast_activitats_xarxanet[0]['safe']['nid'])){echo ' | <a style="color:#000001; text-decoration:none" href="#activitats">Agenda</a>';}
-		if (!empty($node->field_abast_financament_xarxanet[0]['safe']['nid'])){echo ' | <a style="color:#000001; text-decoration:none" href="#financaments">Finançaments</a>';}
-		foreach ($array_flex as $i) {
-			$titol = 'field_abast_flexible_titol'.$i; 
-			$titol = $node->$titol;
-			if (!empty($titol[0]['value']))	echo ' | <a style="color:#000001; text-decoration:none" href="#flexible">'.$titol[0]['value'].'</a>';
+		if ($wrapper->field_voluntariat){ echo ' | <a style="color:#000001; text-decoration:none" href="#voluntariat">Crides de voluntariat</a>';}
+		if ($wrapper->field_abast_pfvc){ echo ' | <a style="color:#000001; text-decoration:none" href="#pfvc">Cursos PFVC</a>';}
+		if ($wrapper->field_abast_formacions_xn){echo ' | <a style="color:#000001; text-decoration:none" href="#formacio">Altres formacions</a>';}
+		if ($wrapper->field_abast_activitats){echo ' | <a style="color:#000001; text-decoration:none" href="#activitats">Agenda</a>';}
+		if ($wrapper->field_abast_financament){echo ' | <a style="color:#000001; text-decoration:none" href="#financaments">Finançaments</a>';}
+		foreach ($wrapper->field_abast_flexible as $flex) {
+			$titol = $flex->field_abast_flexible_titol->value();
+			if ($titol)	echo ' | <a style="color:#000001; text-decoration:none" href="#flexible">'.$titol.'</a>';
 		}
-		for ($i=1; $i<=4; $i++) {
-			$titol = 'field_monografic_titol_'.$i;
-			$titol = $node->$titol;
-			if(isset($titol[0]['value'])) echo ' | <a style="color:#000001; text-decoration:none" href="#bloc_lliure_'.$i.'">'.$titol[0]['value'].'</a>';
+		foreach ($wrapper->field_abast_lliure as $lliure) {
+			$titol = $lliure->field_monografic_titol_1->value();
+			if($titol) echo ' | <a style="color:#000001; text-decoration:none" href="#bloc_lliure_'.$i.'">'.$titol.'</a>';
 		}
 		if (!empty($node->field_abast_entrevista_titol[0]['value']) || !empty($node->field_abast_entrevista_externa[0]['title'])){echo ' | <a style="color:#000001; text-decoration:none" href="#entrevista">'.$node->field_abast_entrevista_titol_sec[0]['value'].'</a>';}
 		if ($node->field_abast_activat[0]["value"] !== '0'){ echo ' | <a style="color:#000001; text-decoration:none" href="#activat">Activa\'t</a>';}
@@ -248,7 +248,7 @@ ksort($noticies);
 					$alt = empty($destacada['alt']) ? 'Imatge de la notícia '.$destacada['titular'] : $destacada['alt'];
 					$titulars .= '<td width="33%" style="vertical-align: top;">';
 					$titulars .= '<a href="'.$destacada['link'].'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$destacada['titular'].'</a></td>';
-					$imatges .= '<td><a href="'.$destacada['link'].'" style="text-decoration: none"><img src="'.$pathroot.'/'.$destacada['imatge'].'" alt="'.$alt.'" height="194px" width="300px" style="border:0 none;"/></a></td>';
+					$imatges .= '<td><a href="'.$destacada['link'].'" style="text-decoration: none"><img src="'.$destacada['imatge'].'" alt="'.$alt.'" height="194px" width="300px" style="border:0 none;"/></a></td>';
 				}
 				$titulars .= '</tr>';
 				$imatges .= '</tr>';
@@ -269,7 +269,7 @@ ksort($noticies);
 		foreach ($noticies as $noticia){
 			$alt = empty($destacada['alt']) ? 'Imatge de la notícia '.$noticia['titular'] : $noticia['alt'];
 			$cont = '<table cellspacing="5" width="100%"><tr><td colspan="2" height="40px" style="vertical-align: top"><a href="'.$noticia['link'].'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$noticia['titular'].'</a></td></tr>';
-			$cont .= '<tr><td style="vertical-align: top; width: 130px"><a href="'.$noticia['link'].'" style="text-decoration: none"><img src="'.$pathroot.'/'.$noticia['imatge'].'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a>';
+			$cont .= '<tr><td style="vertical-align: top; width: 130px"><a href="'.$noticia['link'].'" style="text-decoration: none"><img src="'.$noticia['imatge'].'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a>';
 			$cont .= '</td><td style="vertical-align: top"><p style="font-size: 12px; text-align: justify; margin: 0">';
 			if ($curta){			
 				$cont .= substr($noticia['teaser'], 0, strrpos(substr($noticia['teaser'], 0, $noticia_curta)," ")).' ...</p></td></tr></table></td>';
@@ -287,8 +287,8 @@ ksort($noticies);
 		if (!$curta) echo '<td width="67%" style="vertical-align: top"></td></tr>';	
 		?>
 		<tr><td colspan="2" style="text-align: right;">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="<?php echo $node->field_abast_noticies_enllac[0]['url']; ?>">
-				<?php echo $node->field_abast_noticies_enllac[0]['title']; ?>
+			<a style="font-weight: bold; color: #000001; text-decoration: none" href="<?php echo $node->field_abast_noticies_enllac['und'][0]['url']; ?>">
+				<?php echo $node->field_abast_noticies_enllac['und'][0]['title']; ?>
 			</a>
 			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
 		</td></tr>
@@ -298,12 +298,13 @@ ksort($noticies);
 	<tr><td style="vertical-align: top">	
 	<!-- VÍDEO -->
 		<?php
-			if (isset($node->field_abast_video[0]['data']['url']) && isset($node->field_abast_video[0]['filepath'])){
-				$video_title = (isset($node->field_abast_video_titol[0]['value'])) ? $node->field_abast_video_titol[0]['value'] : "El vídeo de la quinzena";
+			if ($node->field_abast_video['und'][0]['fid']){
+				$video_title = (isset($node->field_abast_video_titol['und'][0]['value'])) ? $node->field_abast_video_titol['und'][0]['value'] : "El vídeo de la quinzena";
 				echo '<div style="border: 1px dashed #818181; margin-right: 8px; padding: 0 15px;">';
 				echo '<p style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-align:center">'.$video_title.'</p>';
-				echo '<a href="'.$node->field_abast_video[0]['data']['url'].'" style="text-decoration: none">';
-				echo '<img src="'.$pathroot.'/'.$node->field_abast_video[0]['filepath'].'" alt="'.$node->field_abast_video[0]['data']['alt'].'" width="268" style="margin-bottom: 15px; border:0 none;"/></a>';
+				echo '<a href="'.$node->field_abast_video['und'][0]['url'].'" style="text-decoration: none">';
+				$img = file_create_url($node->field_abast_video['und'][0]['uri']);
+				echo '<img src="'.$img.'" alt="'.$node->field_abast_video['und'][0]['alt'].'" width="268" style="margin-bottom: 15px; border:0 none;"/></a>';
 				echo '</div>';
 			}
 		?>
@@ -312,7 +313,7 @@ ksort($noticies);
 	<!-- BANNERS -->
 		<!-- BANNERS FIXES -->
 		<?php
-			foreach ($node->field_abast_banner_fixe as $banner){
+			foreach ($node->field_abast_banner_fixe['und'] as $banner){
 				echo '<br/><a href="'.$banners_fixes[$banner['value']][1].'" style="text-decoration:none">';
 				echo '<img src="'.$banners_fixes[$banner['value']][0].'" alt="'.$banner['value'].'" style="margin: 10px 0; border:0 none;"/></a>';
 			}
@@ -320,10 +321,11 @@ ksort($noticies);
 		
 		<!-- BANNERS NOUS -->
 		<?php
-			foreach ($node->field_abast_banner_nou as $banner){
-				if(isset($banner['filepath'])){
-					echo '<br/><a href="'.$banner['data']['url'].'" style="text-decoration:none">';
-					echo '<img src="'.$pathroot.'/'.$banner['filepath'].'" alt="'.$banner['data']['alt'].'" style="margin: 10px 0; border:0 none;"/></a>';
+			foreach ($node->field_abast_banner_nou['und'] as $banner){
+				if(isset($banner['uri'])){
+					$img = file_create_url($banner['uri']);
+					echo '<br/><a href="'.$banner['url'].'" style="text-decoration:none">';
+					echo '<img src="'.$img.'" alt="'.$banner['alt'].'" style="margin: 10px 0; border:0 none;"/></a>';
 				}
 			} 
 		?>
@@ -332,31 +334,27 @@ ksort($noticies);
 
 
 	<!-- VOLUNTARIAT -->
-	<?php if(!empty($node->field_abast_voluntariat_xarxanet[0]['safe']['nid']) || !empty($node->field_abast_voluntariat_titol[0]['title'])){?>
+	<?php 
+		if($wrapper->field_voluntariat){?>
 		<a name="voluntariat"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Crides de voluntariat</h1>
 		<?php 
-		foreach ($node->field_abast_voluntariat_xarxanet as $key => $voluntariat){
-			if(!empty($voluntariat['safe']['nid'])){
-				$node_ =  node_load($voluntariat['safe']['nid']);
-				echo '<a href="'.$pathroot.'/'.$node_->path.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$node_->title.'</a>';
-				echo '<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
-						<b>Entitat: </b>'.$node->field_abast_voluntariat_entitat[$key]['value'].'<br/>
-						<b>Lloc: </b>'.$node->field_abast_voluntariat_lloc[$key]['value'].'<br/>
-						<b>Dedicació: </b>'.$node->field_abast_voluntariat_dedicaci[$key]['value'].'<br/>
-						<b>Perfil: </b>'.str_replace(array('<p>', '</p>'), '', $node->field_abast_voluntariat_perfil[$key]['value']).'
-					</p>';
+		foreach ($wrapper->field_voluntariat as $voluntariat) {
+			$vol_xn = $voluntariat->field_abast_voluntariat_xarxanet->value();
+			if ($vol_xn->nid) {
+				$title = $vol_xn->title;
+				$url = url('node/' . $vol_xn->nid, array('absolute' => TRUE));
+			} else {
+				$ext = $voluntariat->field_abast_voluntariat_titol->value();
+				$title = $ext['title'];
+				$url = $ext['url'];
 			}
-		}
-		foreach ($node->field_abast_voluntariat_titol as $key => $voluntariat){
-			if(!empty($voluntariat['title'])){
-				echo '<a href="'.$voluntariat['url'].'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$voluntariat['title'].'</a>';
-				echo '<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
-						<b>Entitat: </b>'.$node->field_abast_voluntariat_entitat[$key]['value'].'<br/>
-						<b>Lloc: </b>'.$node->field_abast_voluntariat_lloc[$key]['value'].'<br/>
-						<b>Dedicació: </b>'.$node->field_abast_voluntariat_dedicaci[$key]['value'].'<br/>
-						<b>Perfil: </b>'.str_replace(array('<p>', '</p>'), '', $node->field_abast_voluntariat_perfil[$key]['value']).'
-					</p>';
-			}
+			echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
+			echo '<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
+			<b>Entitat: </b>'.$voluntariat->field_abast_voluntariat_entitat->value().'<br/>
+			<b>Lloc: </b>'.$voluntariat->field_abast_voluntariat_lloc->value().'<br/>
+			<b>Dedicació: </b>'.$voluntariat->field_abast_voluntariat_dedicaci->value().'<br/>
+			<b>Perfil: </b>'.str_replace(array('<p>', '</p>'), '', $voluntariat->field_abast_voluntariat_perfil->value()).'
+			</p>';
 		}
 		?>	
 		<p style="text-align: right">
@@ -369,21 +367,21 @@ ksort($noticies);
 
 
 	<!-- FORMACIÓ PFVC -->
-	<?php if(!empty($node->field_abast_pfvc_titol[0]['title'])){?>
+	<?php if($wrapper->field_abast_pfvc){?>
 		<a name="pfvc"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Cursos del Pla de Formació del voluntariat de Catalunya (PFVC)</h1>
 		<?php
-		foreach ($node->field_abast_pfvc_titol as $key => $pfvc){
-			if (!empty($pfvc['title'])){
-				echo '<a href="'.$pfvc['url'].'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$pfvc['title'].'</a>';
+		foreach ($wrapper->field_abast_pfvc as $pfvc){
+			if ($title = $pfvc->field_abast_pfvc_titol->value()){
+				echo '<a href="'.$title['url'].'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title['title'].'</a>';
 				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
-						<b>Data d\'inici: </b>'.$node->field_abast_pfvc_dates[$key]['value'].'<br/>
-						<b>Lloc: </b>'.$node->field_abast_pfvc_lloc[$key]['value'].'<br/>
-						<b>Entitat: </b>'.$node->field_abast_pfvc_entitat[$key]['value'].'</p>';
+						<b>Data d\'inici: </b>'.$pfvc->field_abast_pfvc_dates->value().'<br/>
+						<b>Lloc: </b>'.$pfvc->field_abast_pfvc_lloc->value().'<br/>
+						<b>Entitat: </b>'.$pfvc->field_abast_pfvc_entitat->value().'</p>';
 			}
 		}
 		?>
 		<p style="text-align: right">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="http://www.voluntariat.org/Formaci%C3%B3/www.voluntariat.org/tabid/110/mode/E/Default.aspx">
+			<a style="font-weight: bold; color: #000001; text-decoration: none" href="http://www.voluntariat.org/Formaci%C3%B3">
 				Més formacions
 			</a>
 			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
@@ -392,24 +390,24 @@ ksort($noticies);
 	
 	
 	<!-- ALTRES FORMACIONS -->
-	<?php if(!empty($node->field_abast_formacions_xarxanet[0]['safe']['nid'])){?>
+	<?php if($wrapper->field_abast_formacions_xn){?>
 		<a name="formacio"><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Altres formacions</h1>
 		<?php
-		foreach ($node->field_abast_formacions_xarxanet as $key => $formacio){
-			if (!empty($formacio['safe']['nid'])){
-				$node_ = node_load($formacio['safe']['nid']);
-				
-				if(isset($node->field_abast_formacions_dates[$key]['value'])){
-					$data = $node->field_abast_formacions_dates[$key]['value'];
+		foreach ($wrapper->field_abast_formacions_xn as $form){
+			$form_xn = $form->field_abast_formacions_xarxanet->value();
+			if ($form_xn->nid){
+				$title = $form_xn->title;
+				$url = url('node/' . $form_xn->nid, array('absolute' => TRUE));
+				if($form->field_abast_formacions_dates->value()){
+					$data = $form->field_abast_formacions_dates->value();
 				}else{
-					$data = strtotime($node_->field_date_event[0]['value']);
+					$data = strtotime($form_xn->field_date_event['und'][0]['value']);
 					$data = $dies[date('N', $data)-1].', '.date('j', $data).' '.$mesos[date('n', $data)-1].' de '.date('Y', $data);
 				}
-				$location = $node_->location['city'];
-				if ($node_->location['name']) $location = $node_->location['name'].', '.$location; 							
-				$lloc = (isset($node->field_abast_formacions_lloc[$key]['value'])) ? $node->field_abast_formacions_lloc[$key]['value'] : $location;
-				$entitat = (isset($node->field_abast_formacions_entitat[$key]['value'])) ? $node->field_abast_formacions_entitat[$key]['value'] : $node_->field_organizer[0]['value'];				
-				echo '<a href="'.$pathroot.'/'.$node_->path.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$node_->title.'</a>';
+				if ($form_xn->location['name']) $location = $form_xn->location['name'].', '.$location; 							
+				$lloc = ($form->field_abast_formacions_lloc->value()) ? $form->field_abast_formacions_lloc->value() : $location;
+				$entitat = ($form->field_abast_formacions_entitat->value()) ? $form->field_abast_formacions_entitat->value() : $form_xn->field_organizer['und'][0]['value'];				
+				echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
 				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
 						<b>Data d\'inici: </b>'.$data.'<br/>
 						<b>Lloc: </b>'.$lloc.'<br/>
@@ -427,7 +425,7 @@ ksort($noticies);
 
 
 	<!-- ACTIVITATS -->
-	<?php if(!empty($node->field_abast_activitats_xarxanet[0]['safe']['nid'])){?>
+	<?php if($wrapper->field_abast_activitats){?>
 		<a name="activitats"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Agenda d'activitats</h1>
 		<?php
 		/*foreach ($node->field_abast_activitats_xarxanet as $key => $activitat){
@@ -438,21 +436,22 @@ ksort($noticies);
 				echo ' - '.$data.'</p>';
 			}
 		}*/		
-		foreach ($node->field_abast_activitats_xarxanet as $key => $activitat){
-			if (!empty($activitat['safe']['nid'])){
-				$node_ = node_load($activitat['safe']['nid']);
-				
-				if(isset($node->field_abast_activitats_dates[$key]['value'])){
-					$data = $node->field_abast_activitats_dates[$key]['value'];
+		foreach ($wrapper->field_abast_activitats as $activitat){
+			$act_xn = $activitat->field_abast_activitats_xarxanet->value();
+			if ($act_xn->nid){
+				$title = $act_xn->title;
+				$url = url('node/' . $act_xn->nid, array('absolute' => TRUE));
+				if($activitat->field_abast_activitats_dates->value()){
+					$data = $activitat->field_abast_activitats_dates->value();
 				}else{
-					$data = strtotime($node_->field_date_event[0]['value']);
+					$data = strtotime($act_xn->field_date_event['und'][0]['value']);
 					$data = $dies[date('N', $data)-1].', '.date('j', $data).' '.$mesos[date('n', $data)-1].' de '.date('Y', $data);
 				}
-				$location = $node_->location['city'];
-				if ($node_->location['name']) $location = $node_->location['name'].', '.$location;
-				$lloc = (isset($node->field_abast_activitats_lloc[$key]['value'])) ? $node->field_abast_activitats_lloc[$key]['value'] : $location;
-				$entitat = (isset($node->field_abast_activitats_entitat[$key]['value'])) ? $node->field_abast_activitats_entitat[$key]['value'] : $node_->field_organizer[0]['value'];				
-				echo '<a href="'.$pathroot.'/'.$node_->path.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$node_->title.'</a>';
+				$location = $act_xn->location['city'];
+				if ($act_xn->location['name']) $location = $act_xn->location['name'].', '.$location;
+				$lloc = ($activitat->field_abast_activitats_lloc->value()) ? $activitat->field_abast_activitats_lloc->value() : $location;
+				$entitat = ($activitat->field_abast_activitats_entitat->value()) ? $activitat->field_abast_activitats_entitat->value() : $act_xn->field_organizer['und'][0]['value'];				
+				echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
 				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
 						<b>Data d\'inici: </b>'.$data.'<br/>
 						<b>Lloc: </b>'.$lloc.'<br/>
@@ -470,21 +469,24 @@ ksort($noticies);
 	
 	
 	<!-- FINANÇAMENTS -->
-	<?php if(!empty($node->field_abast_financament_xarxanet[0]['safe']['nid'])){?>
+	<?php if($wrapper->field_abast_financament){?>
 		<a name="financaments"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Finançaments</h1>
 		<?php
-		foreach ($node->field_abast_financament_xarxanet as $key => $financament){
-			if (!empty($financament['safe']['nid'])){
-				$node_ = node_load($financament['safe']['nid']);
-				echo '<a href="'.$pathroot.'/'.$node_->path.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$node_->title.'</a>';
-				if (!empty($node->field_abast_financament_termini[$key]['value'])){
-					$termini = $node->field_abast_financament_termini[$key]['value'];
+		foreach ($wrapper->field_abast_financament as $financament){
+			$fin_xn = $financament->field_abast_financament_xarxanet->value();
+			if ($fin_xn->nid) {
+				$title = $fin_xn->title;
+				$url = url('node/' . $fin_xn->nid, array('absolute' => TRUE));
+				
+				if ($financament->field_abast_financament_termini->value()){
+					$termini = $financament->field_abast_financament_termini->value();
 				}else{
-					$time1 = strtotime($node_->field_date[0]['value']);
-					$time2 = strtotime($node_->field_date[0]['value2']);
+					$time1 = strtotime($fin_xn->field_date['und'][0]['value']);
+					$time2 = strtotime($fin_xn->field_date['und'][0]['value2']);
 					$termini =	'Del '.date('j', $time1).' '.$mesos[date('n', $time1)-1].' de '.date('Y', $time1).' al '.date('j', $time2).' '.$mesos[date('n', $time2)-1].' de '.date('Y', $time2);
-				}  
-				$convocant = ($node->field_abast_financament_convocan[$key]['value']) ? $node->field_abast_financament_convocan[$key]['value'] : strip_tags($node_->field_convocant[0]['value']);
+				}
+				$convocant = ($financament->field_abast_financament_convocan->value()) ? $financament->field_abast_financament_convocan->value() : strip_tags($fin_xn->field_convocant['und'][0]['value']);
+				echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
 				echo '<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;"><b>Termini: </b>'.$termini.'<br/><b>Convocant: </b>'.$convocant.'</p>';
 			}
 		}
@@ -500,49 +502,48 @@ ksort($noticies);
 	
 	<!-- BLOC FLEXIBLE -->
 		<?php
-		foreach ($array_flex as $i) {
-			$titol = 'field_abast_flexible_titol'.$i; $titol = $node->$titol;
-			$contingut = 'field_abast_flexible_contingut'.$i; $contingut = $node->$contingut;
-			$extern = 'field_abast_flexible_extern'.$i; $extern = $node->$extern;
-			$resum = 'field_abast_flexible_resum'.$i; $resum = $node->$resum;
-			$imatge_alt = 'field_abast_flexible_imatge'.$i; $imatge_alt = $node->$imatge_alt;
-			$enllac = 'field_abast_flexible_enllac'.$i; $enllac = $node->$enllac;
-						
-			if (!empty($titol[0]['value'])){
-				echo '<a name="flexible"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$titol[0]['value'].'</h1>';
+		foreach ($wrapper->field_abast_flexible as $flex) {
+			$titol = $flex->field_abast_flexible_titol->value();
+			$cont_xn = $flex->field_abast_flexible_contingut->value();
+			$cont_ex = $flex->field_abast_extern->value();
+			
+			if ($titol){
+				echo '<a name="flexible"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$titol.'</h1>';
 				//Continguts Xarxanet
-				foreach ($contingut as $key => $flexible){
-					if (!empty($flexible['safe']['nid'])){
-						$node_ = node_load($flexible['safe']['nid']);
-						if (isset($node_->field_agenda_imatge[0]['filepath'])){
-							$imatge = imagecache_create_path('abast-petit', $node_->field_agenda_imatge[0]['filepath']);
-							$alt = $node_->field_agenda_imatge[0]['data']['alt'];
+				foreach ($cont_xn as $xn){
+					if ($xn->nid){
+						$title = $xn->title;
+						$url = url('node/' . $xn->nid, array('absolute' => TRUE));
+						if (isset($xn->field_agenda_imatge['und'][0]['uri'])){
+							$imatge = image_style_url('abast-petit',$xn->field_agenda_imatge['und'][0]['uri']);
+							$alt = $xn->field_agenda_imatge['und'][0]['alt'];
 						}else{
-							$imatge = imagecache_create_path('abast-petit', $node_->field_imatges[0]['filepath']);
-							$alt = $node_->field_imatges[0]['data']['alt'];
-							
+							$imatge = image_style_url('abast-petit',$xn->field_imatges['und'][0]['uri']);
+							$alt = $xn->field_imatges['und'][0]['alt'];
 						}
-						echo '<a href="'.$pathroot.'/'.$node_->path.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$node_->title.'</a>';
+						echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
 						echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
-						echo '<a href="'.$pathroot.'/'.$node_->path.'" style="text-decoration: none"><img src="'.$pathroot.'/'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
-						echo '<p style="font-size: 12px; text-align: justify; margin: 0; vertical-align: top">'.strip_tags($node_->field_resum[0]['value']).'</p></td></tr></table>';
+						echo '<a href="'.$url.'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
+						echo '<p style="font-size: 12px; text-align: justify; margin: 0; vertical-align: top">'.strip_tags($xn->field_resum['und'][0]['value']).'</p></td></tr></table>';
 					}
 				}
+				
 				//Continguts externs
-				$i = 0;
-				while (!empty($extern[$i]['title'])) {
-					$imatge = $imatge_alt[$i]['filepath'];
-					$alt = $imatge_alt[$i]['alt'];
-					echo '<a href="'.$extern[$i]['url'].'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$extern[$i]['title'].'</a>';
+				$externs = $flex->field_abast_extern->value();
+				foreach ($externs as $extern) {
+					$title = $extern->field_abast_flexible_extern;
+					$imatge = file_create_url($extern->field_abast_flexible_imatge['und'][0]['uri']);
+					$alt = $extern->field_abast_flexible_imatge['und'][0]['alt'];
+					echo '<a href="'.$title['und'][0]['url'].'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title['und'][0]['title'].'</a>';
 					echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
-					echo '<a href="'.$extern[$i]['url'].'" style="text-decoration: none"><img src="'.$pathroot.'/'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
-					echo '<p style="font-size: 12px; text-align: justify; margin: 0; vertical-align: top">'.strip_tags($resum[$i]['value'],'<a>').'</p></td></tr></table>';
-					$i++;
+					echo '<a href="'.$title['und'][0]['url'].'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
+					echo '<p style="font-size: 12px; text-align: justify; margin: 0; vertical-align: top">'.strip_tags($extern->field_abast_flexible_resum['und'][0]['value'],'<a>').'</p></td></tr></table>';
 				}				
 				
 				echo '<p style="text-align: right">';
-				if (!empty($enllac[0]['title'])){
-					echo '<a href="'.$enllac[0]['url'].'" style="font-weight: bold; color: #000001; text-decoration: none">'.$enllac[0]['title'].'</a>';
+				$enllac = $flex->field_abast_flexible_enllac->value();
+				if (!empty($enllac['title'])){
+					echo '<a href="'.$enllac['url'].'" style="font-weight: bold; color: #000001; text-decoration: none">'.$enllac['title'].'</a>';
 				}	
 				echo '<a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
 			}
@@ -551,44 +552,49 @@ ksort($noticies);
 	
 	<!-- BLOC LLIURE -->
 		<?php
-		for ($i=1; $i<=4; $i++) {
-			$titol = 'field_monografic_titol_'.$i;
-			$titol = $node->$titol;
-			$cos = 'field_monografic_cos_'.$i;
-			$cos = $node->$cos;
-			if(isset($titol[0]['value'])) echo '<a name="bloc_lliure_'.$i.'"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$titol[0]['value'].'</h1>';
-			if(isset($cos[0]['value'])) echo $cos[0]['value'];
-			if(isset($titol[0]['value'])) echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
+		$i = 0;
+		foreach ($wrapper->field_abast_lliure as $lliure) {
+			$titol = $lliure->field_monografic_titol_1->value();
+			$cos = $lliure->field_monografic_cos_1->value();
+			if($titol) echo '<a name="bloc_lliure_'.$i.'"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$titol.'</h1>';
+			if($cos) echo $cos;
+			if($cos) echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
+			$i++;
 		}
 		?>
 	
 	<!-- ENTREVISTA -->
 		<?php
 		$i = 0;
-		if (!empty($node->field_abast_entrevista_titol[0]['value']) || !empty($node->field_abast_entrevista_externa[0]['title'])) {echo '<a name="entrevista"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$node->field_abast_entrevista_titol_sec[0]['value'].'</h1>';}
-		while (!empty($node->field_abast_entrevista_cita[$i]['value'])){
-			if ($node_ =  node_load($node->field_abast_entrevista[$i]['safe']['nid'])) {
-				if (isset($node_->field_agenda_imatge[0]['filepath'])){
-					$imatge = imagecache_create_path('abast-petit', $node_->field_agenda_imatge[0]['filepath']);
-					$alt = $node_->field_agenda_imatge[0]['data']['alt'];
+		if ($wrapper->field_abast_entrevista_coll) {
+			echo '<a name="entrevista"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$node->field_abast_entrevista_titol_sec['und'][0]['value'].'</h1>';
+		}
+		
+		foreach ($wrapper->field_abast_entrevista_coll as $entr) {
+			$entr_xn = $entr->field_abast_entrevista->value();
+			if ($entr_xn->nid) {
+				if (isset($entr_xn->field_agenda_imatge['und'][0]['uri'])){
+					$imatge = image_style_url('abast-petit',$entr_xn->field_agenda_imatge['und'][0]['uri']);
+					$alt = $entr_xn->field_agenda_imatge['und'][0]['alt'];
 				}else{
-					$imatge = imagecache_create_path('abast-petit', $node_->field_imatges[0]['filepath']);
-					$alt = $node_->field_imatges[0]['data']['alt'];
-				
+					$imatge = image_style_url('abast-petit',$entr_xn->field_imatges['und'][0]['uri']);
+					$alt = $entr_xn->field_imatges['und'][0]['alt'];
 				}
-				$titol = (!empty($node->field_abast_entrevista_titol[$i]['value'])) ? $node->field_abast_entrevista_titol[$i]['value'] : $node_->title;
-				$link = $pathroot.'/'.$node_->path;
+				$titol = ($entr->field_abast_entrevista_titol->value()) ? $entr->field_abast_entrevista_titol->value() : $entr_xn->title;
+				$link = url('node/' . $entr_xn->nid, array('absolute' => TRUE));
 			} else {
-				$titol = $node->field_abast_entrevista_externa[$i]['title'];
-				$link = $node->field_abast_entrevista_externa[$i]['url'];
-				$alt = $node->field_abast_entrevista_imatge[$i]['data']['alt'];
-				$imatge = $node->field_abast_entrevista_imatge[$i]['filepath'];
+				$url = $entr->field_abast_entrevista_externa->value();
+				$titol = $url['title'];
+				$link = $url['url'];
+				$img = $entr->field_abast_entrevista_imatge->value();
+				$alt = $img['alt'];
+				$imatge = file_create_url($img['uri']);;
 			}			
 			echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
-			echo '<a href="'.$link.'" style="text-decoration: none"><img src="'.$pathroot.'/'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
+			echo '<a href="'.$link.'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
 			echo '<a href="'.$link.'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$titol.'</a>';
 			echo '	<table style="margin-left:85px; margin-top:5px; width:auto"><tr><td style="vertical-align:top"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes1.gif" alt="cometes" width="15px"/></td>
-					<td style="font-size: 12px; text-align:center; padding:5px 0; width:180px">'.strip_tags($node->field_abast_entrevista_cita[$i]['value']).'</td>
+					<td style="font-size: 12px; text-align:center; padding:5px 0; width:180px">'.strip_tags($entr->field_abast_entrevista_cita->value()).'</td>
 					<td style="vertical-align:bottom"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes2.gif" alt="cometes" width="15px"/></td></tr></table>';	
 			echo '</td></tr></table>';			
 			$i++;
@@ -598,7 +604,7 @@ ksort($noticies);
 	
 		
 	<!-- ACTIVA'T -->
-	<?php if ($node->field_abast_activat[0]["value"] !== '0') { ?>
+	<?php if ($node->field_abast_activat['und'][0]["value"] !== '0') { ?>
 		<a name="activat"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 15px 0 5px;">:: Activa't</h1>
 		<a style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none" href="<?php echo $pathroot;?>/noticies/he-danar-informar-me-i-fer-voluntariat">
 			On he d'anar per informar-me i fer voluntariat?

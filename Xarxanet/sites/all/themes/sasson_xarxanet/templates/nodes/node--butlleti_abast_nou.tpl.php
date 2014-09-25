@@ -225,10 +225,9 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			$titol = $flex->field_abast_flexible_titol->value();
 			if ($titol)	echo ' | <a style="color:#000001; text-decoration:none" href="#flexible">'.$titol.'</a>';
 		}
-		for ($i=1; $i<=4; $i++) {
-			$titol = 'field_monografic_titol_'.$i;
-			$titol = $node->$titol;
-			if(isset($titol[0]['value'])) echo ' | <a style="color:#000001; text-decoration:none" href="#bloc_lliure_'.$i.'">'.$titol[0]['value'].'</a>';
+		foreach ($wrapper->field_abast_lliure as $lliure) {
+			$titol = $lliure->field_monografic_titol_1->value();
+			if($titol) echo ' | <a style="color:#000001; text-decoration:none" href="#bloc_lliure_'.$i.'">'.$titol.'</a>';
 		}
 		if (!empty($node->field_abast_entrevista_titol[0]['value']) || !empty($node->field_abast_entrevista_externa[0]['title'])){echo ' | <a style="color:#000001; text-decoration:none" href="#entrevista">'.$node->field_abast_entrevista_titol_sec[0]['value'].'</a>';}
 		if ($node->field_abast_activat[0]["value"] !== '0'){ echo ' | <a style="color:#000001; text-decoration:none" href="#activat">Activa\'t</a>';}
