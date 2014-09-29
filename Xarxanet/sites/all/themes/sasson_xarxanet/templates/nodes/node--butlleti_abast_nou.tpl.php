@@ -58,7 +58,11 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 $pathroot = 'http://www.xarxanet.org';
 
 // Banners fixes
-$banners_fixes = array(	'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
+$banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 
+													'http://www.xarxanet.org/especial/barcelona-ecv/subscribe'),						
+						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
+													'http://www.xarxanet.org/especial/barcelona-ecv'),
+						'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
 													'http://www.voluntariat.org/AgendadecursosdelPFVC.aspx'),
 						'Banner opinió' => 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_opinio.png', 
 													'http://bloc.xarxanet.org/'),
@@ -88,8 +92,8 @@ $banners_fixes = array(	'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/fil
 													'http://www20.gencat.cat/portal/site/bsf/menuitem.6e02226e86d88424e42a63a7b0c0e1a0/?vgnextoid=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextchannel=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextfmt=default&newLang=ca_ES'),
 						'Banner INTERREG IVC' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_interreg.gif', 
 													'http://verso.au.dk'),
-						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
-													'http://www.xarxanet.org/especial/barcelona-cev'));
+						'Banner CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_evc2014.jpg', 
+											'http://www.cev.be'));
 
 // Notícies destacades
 $num_destacades = 3;
@@ -112,14 +116,14 @@ foreach ($wrapper->field_abast_destacades as $destacada){
 			$alt = $noticia->field_imatges['und'][0]['alt'];
 		}
 		if ($titular) {
-			$title = $titular['title'];
+			$tit = $titular['title'];
 			$link = $titular['display_url'];
 		} elseif ($noticia) {
-			$title = $noticia->title;
+			$tit = $noticia->title;
 			$link = url('node/' . $noticia->nid, array('absolute' => TRUE));
 		}
 		$destacades[] = array(	
-				'titular' => $title,
+				'titular' => $tit,
 				'link' => $link,
 				'imatge' => $imatge,
 				'alt' => $alt);
@@ -135,7 +139,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	$noti_xn = $noticia->field_abast_noticies_xarxanet->value();
 	
 	if($noti_xn->nid) {
-		$title = $noti_xn->title;
+		$tit = $noti_xn->title;
 		$link = url('node/' . $noti_xn->nid, array('absolute' => TRUE));
 		$resum = $noti_xn->field_resum['und'][0]['value'];
 		if (!empty($noti_xn->field_agenda_imatge['und'])){
@@ -147,7 +151,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		}
 	} else {
 		$titular = $noticia->field_abast_noticies_titular->value();
-		$title = $titular['title'];
+		$tit = $titular['title'];
 		$link = $titular['display_url'];
 		$resum = $noticia->field_abast_noticies_resum->value();
 		$img = $noticia->field_abast_crop1->value();
@@ -155,7 +159,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		$alt = $img['alt'];
 	}
 	
-	$noticies[] = array('titular' => $title,
+	$noticies[] = array('titular' => $tit,
 						'link' => $link,
 						'imatge' => $imatge,
 						'alt' => $alt,
@@ -163,7 +167,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 }
 ?>
 
-<table style="font-family: Verdana; font-size: 11px;" width="970px" style="margin:auto" cellspacing="8px">
+<table class="butlleti" style="font-family: Verdana; font-size: 11px;" width="970px" style="margin:auto" cellspacing="8px">
 
 	<!-- CAPÇALERA -->	
 	<tr><td colspan="2">		
@@ -172,19 +176,19 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		</a>
 		<p style="text-align:right; vertical-align:bottom; margin-bottom:0px; margin-top:-10px">
 		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="http://www.voluntariat.org/Portals/0/Abast/documents/ultim_butlleti.html">aquí</a></p>	
-		<table cellspacing="0" cellpadding="0" style="border-top: solid 3px #800000; width:100%">
-			<tr><?php 
+		<table class="butlleti" cellspacing="0" cellpadding="0" style="border-top: solid 3px #800000; width:100%">
+			<tr><?php
 				if (is_numeric($title))	{
 					echo '<td width="57" style="background-color: black; color: white; font-weight: bold; vertical-align: top; padding: 5px; font-size: 16px">#'.$title.'</td>';
 				}	
 				?>
 			<td style="background-color: #7b1b1c" width="100%">
-				<table style="width:100%">
+				<table class="butlleti" style="width:100%">
 					<tr><td style="font-family:Arial; font-weight:bold; color:white; vertical-align:top;">
-						<?php if (empty($node->field_abast_titol_monografic[0]['value'])) {
+						<?php if (empty($node->field_abast_titol_monografic['und'][0]['value'])) {
 							echo '<p style="font-size:30px; margin:5px">Butlletí</p>';	
 						} else {
-							echo '<p style="font-size:30px; margin:5px">'.$node->field_abast_titol_monografic[0]['value'].'</p>';
+							echo '<p style="font-size:30px; margin:5px">'.$node->field_abast_titol_monografic['und'][0]['value'].'</p>';
 							echo '<p style="font-size:18px; margin:5px">Monogràfic del Butlletí A l’Abast</p>';
 						}?>
 						<p style="font-size:16px; margin:5px">El butlletí del voluntariat català</p>
@@ -197,7 +201,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	<tr>	
 		<td colspan="2">
 			<a name="inici"></a>
-			<table style="width:100%; font-size:11px;">
+			<table class="butlleti" style="width:100%; font-size:11px;">
 				<tr><td style="font-weight:bold">
 					<?php
 					$created = time(); 
@@ -239,7 +243,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	<?php if (!empty($destacades)){?>
 		<tr><td colspan="2"><a name="destacats"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Destacats</h1></td></tr>
 		<tr><td colspan="2" style="border: 1px dashed #4C0000;">
-			<table cellspacing="8">
+			<table class="butlleti" cellspacing="8">
 				<?php
 				$titulars = '<tr>';
 				$imatges = '<tr>';
@@ -267,7 +271,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		$curta = true;
 		foreach ($noticies as $noticia){
 			$alt = empty($destacada['alt']) ? 'Imatge de la notícia '.$noticia['titular'] : $noticia['alt'];
-			$cont = '<table cellspacing="5" width="100%"><tr><td colspan="2" height="40px" style="vertical-align: top"><a href="'.$noticia['link'].'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$noticia['titular'].'</a></td></tr>';
+			$cont = '<table class="butlleti" cellspacing="5" width="100%"><tr><td colspan="2" height="40px" style="vertical-align: top"><a href="'.$noticia['link'].'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$noticia['titular'].'</a></td></tr>';
 			$cont .= '<tr><td style="vertical-align: top; width: 130px"><a href="'.$noticia['link'].'" style="text-decoration: none"><img src="'.$noticia['imatge'].'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a>';
 			$cont .= '</td><td style="vertical-align: top"><p style="font-size: 12px; text-align: justify; margin: 0">';
 			if ($curta){			
@@ -521,7 +525,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 							$alt = $xn->field_imatges['und'][0]['alt'];
 						}
 						echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
-						echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
+						echo '<table class="butlleti" cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
 						echo '<a href="'.$url.'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
 						echo '<p style="font-size: 12px; text-align: justify; margin: 0; vertical-align: top">'.strip_tags($xn->field_resum['und'][0]['value']).'</p></td></tr></table>';
 					}
@@ -534,7 +538,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 					$imatge = file_create_url($extern->field_abast_flexible_imatge['und'][0]['uri']);
 					$alt = $extern->field_abast_flexible_imatge['und'][0]['alt'];
 					echo '<a href="'.$title['und'][0]['url'].'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title['und'][0]['title'].'</a>';
-					echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
+					echo '<table class="butlleti" cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
 					echo '<a href="'.$title['und'][0]['url'].'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
 					echo '<p style="font-size: 12px; text-align: justify; margin: 0; vertical-align: top">'.strip_tags($extern->field_abast_flexible_resum['und'][0]['value'],'<a>').'</p></td></tr></table>';
 				}				
@@ -589,10 +593,10 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 				$alt = $img['alt'];
 				$imatge = file_create_url($img['uri']);;
 			}			
-			echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
+			echo '<table class="butlleti" cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
 			echo '<a href="'.$link.'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
 			echo '<a href="'.$link.'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$titol.'</a>';
-			echo '	<table style="margin-left:85px; margin-top:5px; width:auto"><tr><td style="vertical-align:top"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes1.gif" alt="cometes" width="15px"/></td>
+			echo '	<table class="butlleti" style="margin-left:85px; margin-top:5px; width:auto"><tr><td style="vertical-align:top"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes1.gif" alt="cometes" width="15px"/></td>
 					<td style="font-size: 12px; text-align:center; padding:5px 0; width:180px">'.strip_tags($entr->field_abast_entrevista_cita->value()).'</td>
 					<td style="vertical-align:bottom"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes2.gif" alt="cometes" width="15px"/></td></tr></table>';	
 			echo '</td></tr></table>';			
@@ -608,7 +612,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		<a style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none" href="<?php echo $pathroot;?>/noticies/he-danar-informar-me-i-fer-voluntariat">
 			On he d'anar per informar-me i fer voluntariat?
 		</a>
-		<table cellspacing="5">
+		<table class="butlleti" cellspacing="5">
 			<tr><td>
 				<a href="<?php echo $pathroot;?>/noticies/he-danar-informar-me-i-fer-voluntariat" style="text-decoration:none">
 					<img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/mapa_activat_2.jpg" alt="mapa dels centres de voluntariat a Catalunya" style="border:0 none;"/>
@@ -629,7 +633,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	<td colspan="2" style="border-top: dotted 2px #800000; border-bottom: dotted 2px #800000; font-size:1px">&nbsp;</td>
 </tr><tr>
 	<td td colspan="2">
-		<table cellspacing="10">
+		<table class="butlleti" cellspacing="10">
 			<tr><td>	
 				<a href="http://www20.gencat.cat/portal/site/bsf" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_benestarSocial.jpg" alt="logo benestar i familia" height="32" style="display: inline; border:0 none;"/></a>
 			</td><td>

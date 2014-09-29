@@ -53,8 +53,6 @@
  */
 
 $pathroot = 'http://www.xarxanet.org';
-$node = $build['#node'];
-
 
 // Banners fixes
 $banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 

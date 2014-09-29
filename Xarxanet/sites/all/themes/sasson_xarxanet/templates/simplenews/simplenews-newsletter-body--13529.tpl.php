@@ -59,7 +59,11 @@ $pathroot = 'http://www.xarxanet.org';
 $node = $build['#node'];
 
 // Banners fixes
-$banners_fixes = array(	'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
+$banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 
+													'http://www.xarxanet.org/especial/barcelona-ecv/subscribe'),						
+						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
+													'http://www.xarxanet.org/especial/barcelona-ecv'),
+						'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
 													'http://www.voluntariat.org/AgendadecursosdelPFVC.aspx'),
 						'Banner opinió' => 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_opinio.png', 
 													'http://bloc.xarxanet.org/'),
@@ -89,8 +93,8 @@ $banners_fixes = array(	'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/fil
 													'http://www20.gencat.cat/portal/site/bsf/menuitem.6e02226e86d88424e42a63a7b0c0e1a0/?vgnextoid=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextchannel=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextfmt=default&newLang=ca_ES'),
 						'Banner INTERREG IVC' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_interreg.gif', 
 													'http://verso.au.dk'),
-						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
-													'http://www.xarxanet.org/especial/barcelona-cev'));
+						'Banner CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_evc2014.jpg', 
+											'http://www.cev.be'));
 
 // Notícies destacades
 $num_destacades = 3;
@@ -113,14 +117,14 @@ foreach ($wrapper->field_abast_destacades as $destacada){
 			$alt = $noticia->field_imatges['und'][0]['alt'];
 		}
 		if ($titular) {
-			$title = $titular['title'];
+			$tit = $titular['title'];
 			$link = $titular['display_url'];
 		} elseif ($noticia) {
-			$title = $noticia->title;
+			$tit = $noticia->title;
 			$link = url('node/' . $noticia->nid, array('absolute' => TRUE));
 		}
 		$destacades[] = array(	
-				'titular' => $title,
+				'titular' => $tit,
 				'link' => $link,
 				'imatge' => $imatge,
 				'alt' => $alt);
@@ -136,7 +140,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	$noti_xn = $noticia->field_abast_noticies_xarxanet->value();
 	
 	if($noti_xn->nid) {
-		$title = $noti_xn->title;
+		$tit = $noti_xn->title;
 		$link = url('node/' . $noti_xn->nid, array('absolute' => TRUE));
 		$resum = $noti_xn->field_resum['und'][0]['value'];
 		if (!empty($noti_xn->field_agenda_imatge['und'])){
@@ -148,7 +152,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		}
 	} else {
 		$titular = $noticia->field_abast_noticies_titular->value();
-		$title = $titular['title'];
+		$tit = $titular['title'];
 		$link = $titular['display_url'];
 		$resum = $noticia->field_abast_noticies_resum->value();
 		$img = $noticia->field_abast_crop1->value();
@@ -156,7 +160,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		$alt = $img['alt'];
 	}
 	
-	$noticies[] = array('titular' => $title,
+	$noticies[] = array('titular' => $tit,
 						'link' => $link,
 						'imatge' => $imatge,
 						'alt' => $alt,
@@ -182,10 +186,10 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			<td style="background-color: #7b1b1c" width="100%">
 				<table style="width:100%">
 					<tr><td style="font-family:Arial; font-weight:bold; color:white; vertical-align:top;">
-						<?php if (empty($node->field_abast_titol_monografic[0]['value'])) {
+						<?php if (empty($node->field_abast_titol_monografic['und'][0]['value'])) {
 							echo '<p style="font-size:30px; margin:5px">Butlletí</p>';	
 						} else {
-							echo '<p style="font-size:30px; margin:5px">'.$node->field_abast_titol_monografic[0]['value'].'</p>';
+							echo '<p style="font-size:30px; margin:5px">'.$node->field_abast_titol_monografic['und'][0]['value'].'</p>';
 							echo '<p style="font-size:18px; margin:5px">Monogràfic del Butlletí A l’Abast</p>';
 						}?>
 						<p style="font-size:16px; margin:5px">El butlletí del voluntariat català</p>

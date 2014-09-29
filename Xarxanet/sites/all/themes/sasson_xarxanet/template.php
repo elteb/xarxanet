@@ -93,9 +93,7 @@ function sasson_xarxanet_get_label($tipus) {
  * Preprocess node
  */
 function sasson_xarxanet_preprocess_node(&$variables) {
-
 	$node = $variables['node'];	
-	
 	$noticies = array( 'noticia_ambiental',
 						'noticia_juridic',
 						'noticia_comunitari',
@@ -124,5 +122,17 @@ function sasson_xarxanet_preprocess_node(&$variables) {
 	}
 	if (in_array($node->type, $recursos)) {
 		$variables['theme_hook_suggestion'] = 'node__recurs';
+	}
+	if ($node->type == 'butlleti_abast_nou') {
+		switch ($node->simplenews->tid) {
+			case 13529:
+				//Butlletí A l'Abast convencional
+				$variables['theme_hook_suggestion'] = 'node__butlleti_abast_nou';
+				break;
+			case 20400:
+				//Butlletí A l'Abast-CEV
+				$variables['theme_hook_suggestion'] = 'node__butlleti_abast_nou_cev';
+				break;
+		}
 	}
 }
