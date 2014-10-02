@@ -27,17 +27,17 @@ function simplenews_sending_time_perm() {
 function simplenews_sending_time_form_simplenews_node_tab_send_form_alter(&$form, &$form_state) {
 	global $user;
 	
-	if (user_access ( 'define issue sending time' )) {
-		
-		// Add js
-		drupal_add_js ( drupal_get_path ( 'module', 'simplenews_sending_time' ) . '/simplenews_sending_time.js', 'module', 'header', FALSE, FALSE, TRUE );
+	$nid = arg(1);
+	$newsletter = simplenews_newsletter_load($nid);
+	
+	if (user_access ( 'define issue sending time' ) && ($newsletter->status == SIMPLENEWS_STATUS_SEND_NOT)) {
 		
 		// Set the default values.
 		$form ['#submit'] [] = "simplenews_sending_time_submit";
-		$result = db_query ( "SELECT * FROM {simplenews_sending_time} WHERE nid = %d", arg ( 1 ) );
-		$row = db_fetch_array ( $result );
-		$time = ($row) ? $row ['time'] : $_SERVER ['REQUEST_TIME'];
-		$time = date_make_date ( $time, date_default_timezone_name (), DATE_UNIX );
+		$result = db_query ( "SELECT * FROM {simplenews_sending_time} WHERE nid = {$nid}");
+		$row = $result->fetchObject();
+		$time = ($row) ? $row->time : $_SERVER ['REQUEST_TIME'];
+		//$time = new DateTime(date('c', $time));
 		
 		// Add further commands to the 'Send action' radio buttons.
 		$form ['simplenews'] ['send'] ['#options'] [SIMPLENEWS_COMMAND_SENDING_TIME] = t ( 'Send newsletter on defined time' );
@@ -48,7 +48,7 @@ function simplenews_sending_time_form_simplenews_node_tab_send_form_alter(&$form
 				'#type' => 'fieldset',
 				'#title' => t ( 'Sending time' ),
 				'#attributes' => array (
-						'class' => 'sending_time' 
+						'class' => array('sending_time')
 				),
 				'#collapsible' => FALSE,
 				'#collapsed' => FALSE,
@@ -56,14 +56,14 @@ function simplenews_sending_time_form_simplenews_node_tab_send_form_alter(&$form
 		);
 		
 		// Translate formatted date results.
-		$time_str = date_format_date ( $time, 'custom', 'Y-m-d H:i' );
+		$format = 'Y-m-d H:i:s';
+		$data = date($format, $time);
 		$form ['simplenews'] ['sending_time'] ['time'] = array (
 				'#type' => 'date_select',
 				'#title' => t ( 'Date' ),
-				'#default_value' => $time_str,
-				'#date_type' => DATE_DATETIME,
-				'#date_format' => 'm-d-Y - H:i',
-				'#date_timezone' => date_default_timezone_name (),
+				'#default_value' => $data,
+				'#date_format' => $format,
+				'#date_timezone' => date_default_timezone(),
 				'#date_label_position' => 'none',
 				'#date_increment' => 1,
 				'#date_year_range' => '0:+3',
@@ -71,15 +71,15 @@ function simplenews_sending_time_form_simplenews_node_tab_send_form_alter(&$form
 		);
 	}
 }
+
 function simplenews_sending_time_submit($form, &$form_state) {
-	
 	// Get form values from Simplenews.
 	$send = $form_state ['values'] ['simplenews'] ['send'];
 	$nid = $form_state ['values'] ['nid'];
 	$time = $form_state ['values'] ['simplenews'] ['sending_time'] ['time'];
-	$time = date_convert ( $time, DATE_DATETIME, DATE_UNIX, date_default_timezone_name () );
+	$time = strtotime($time);
 	
-	db_query ( "DELETE FROM {simplenews_sending_time} WHERE nid = %d", $nid );
+	db_query("DELETE FROM {simplenews_sending_time} WHERE nid = {$nid}");
 	
 	if ($send == SIMPLENEWS_COMMAND_SENDING_TIME) {
 		// Set sending time
@@ -87,7 +87,8 @@ function simplenews_sending_time_submit($form, &$form_state) {
 				'nid' => $nid,
 				'time' => $time 
 		);
-		$result = drupal_write_record ( 'simplenews_sending_time', $record );
+		$result = drupal_write_record ('simplenews_sending_time', $record);		
+		
 		if ($result)
 			drupal_set_message ( t ( 'Newsletter sending time saved' ) );
 	}
@@ -104,12 +105,14 @@ function simplenews_sending_time_cron() {
 	
 	// Get the newsletters pending to send.
 	$now_time = $_SERVER ['REQUEST_TIME'];
-	$result = db_query ( "SELECT nid FROM {simplenews_sending_time} WHERE sent = 0 AND time <= %d", $now_time );
+	$result = db_query("SELECT nid FROM {simplenews_sending_time} WHERE sent = 0 AND time <= {$now_time}");
 	
-	while ( $newsletter = db_fetch_object ( $result ) ) {
+	while ($newsletter = $result->fetchObject()) {
 		// Set newsletter sent status to pending if send by cron.
-		db_query ( "UPDATE {simplenews_newsletters} SET s_status = %d WHERE nid = %d", SIMPLENEWS_STATUS_SEND_PENDING, $newsletter->nid );
-		simplenews_send_node ( $newsletter->nid );
+		$pending = SIMPLENEWS_STATUS_SEND_PENDING;
+		$node = node_load($newsletter->nid);
+		db_query ( "UPDATE {simplenews_newsletters} SET status = {$pending} WHERE nid = {$newsletter->nid}");
+		simplenews_add_node_to_spool ( $node );
 		db_query ( "UPDATE {simplenews_sending_time} SET sent = 1 WHERE nid = {$newsletter->nid}" );
 	}
 }
