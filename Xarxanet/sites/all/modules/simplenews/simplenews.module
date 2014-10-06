@@ -1381,7 +1381,16 @@ function simplenews_load_user_by_mail($mail) {
  *        	
  *        	@ingroup subscription
  */
+/***************************************
+ * TEBPATCH (MDF) @fcasanellas 06/10/2014
+ * #XN-SN009 Permet que simplenews_subscribe_user retorni $subscription
+ * OLDCODE ****************************
 function simplenews_subscribe_user($mail, $tid, $confirm = TRUE, $source = 'unknown', $preferred_language = NULL) {
+/***************************************
+ * NEWCODE ****************************/
+function simplenews_subscribe_user($mail, $tid, $confirm = TRUE, $source = 'unknown', $preferred_language = NULL, $return = FALSE) {
+/***************************************
+ * END TEBPATCH ***********************/
 	global $language;
 	
 	// Get current subscriptions if any.
@@ -1450,7 +1459,20 @@ function simplenews_subscribe_user($mail, $tid, $confirm = TRUE, $source = 'unkn
 		
 		module_invoke_all ( 'simplenews_subscribe_user', $subscriber, $subscription );
 	}
+	/***************************************
+	 * TEBPATCH (MDF) @fcasanellas 06/10/2014
+	 * #XN-SN009 Permet que simplenews_subscribe_user retorni $subscription
+	 * OLDCODE ****************************
 	return TRUE;
+	/***************************************
+	 * NEWCODE ****************************/
+	if ($return) {
+		return $subscription;
+	} else {
+		return TRUE;
+	}
+	/***************************************
+	 * END TEBPATCH ***********************/
 }
 
 /**
