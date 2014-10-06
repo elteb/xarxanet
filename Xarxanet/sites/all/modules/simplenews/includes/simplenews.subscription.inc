@@ -550,14 +550,20 @@ function simplenews_confirm_subscription() {
 				/***************************************
 				 * TEBPATCH (ADD) @fcasanellas 10/09/2014
 				 * #XN-SN001 Personalització dels missatges de confirmació
+				 * #XN-SN003 Elimina el pas previ a la pagina de confirmació
 				 * OLDCODE *****************************
 				if ($path = variable_get ( 'simplenews_confirm_unsubscribe_page', '' )) {
+					$path = $path . '/' . implode ( '/', $arguments );
 				/**************************************
 				 * NEWCODE ****************************/
 				if ($path = variable_get ( 'simplenews_confirm_unsubscribe_page_'.$tid, '' )) {
+					$first = array_shift ( $arguments );
+					if ( $first != 'confirm') {
+						$path = $path . '/' . $confirm;
+						if (!empty($arguments)) $path .= '/' . implode ( '/', $arguments );
+					}
 				/**************************************
 				 * END TEBPATCH ***********************/
-					$path = $path . '/' . implode ( '/', $arguments );
 					drupal_goto ( $path );
 				}
 				drupal_set_message ( t ( '%user was unsubscribed from the %newsletter mailing list.', array (
@@ -570,14 +576,20 @@ function simplenews_confirm_subscription() {
 				/***************************************
 				* TEBPATCH (ADD) @fcasanellas 10/09/2014
 				* #XN-SN001 Personalització dels missatges de confirmació
+				* #XN-SN003 Elimina el pas previ a la pagina de confirmació
 				* OLDCODE *****************************
 				if ($path = variable_get ( 'simplenews_confirm_subscribe_page', '' )) {
+					$path = $path . '/' . implode ( '/', $arguments );
 				/**************************************
 				* NEWCODE ****************************/
 				if ($path = variable_get ( 'simplenews_confirm_subscribe_page_'.$tid, '' )) {
+					$first = array_shift ( $arguments );
+					if ( $first != 'confirm') {
+						$path = $path . '/' . $confirm;
+						if (!empty($arguments)) $path .= '/' . implode ( '/', $arguments );
+					}
 				/**************************************
 				 * END TEBPATCH ***********************/
-					$path = $path . '/' . implode ( '/', $arguments );
 					drupal_goto ( $path );
 				}
 				drupal_set_message ( t ( '%user was added to the %newsletter mailing list.', array (
