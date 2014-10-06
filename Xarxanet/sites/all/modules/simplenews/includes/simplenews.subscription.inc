@@ -547,7 +547,16 @@ function simplenews_confirm_subscription() {
 		} else {
 			if ($op == 'remove') {
 				simplenews_unsubscribe_user ( $subscriber->mail, $tid, FALSE, 'website' );
+				/***************************************
+				 * TEBPATCH (ADD) @fcasanellas 10/09/2014
+				 * #XN-SN001 Personalització dels missatges de confirmació
+				 * OLDCODE *****************************
 				if ($path = variable_get ( 'simplenews_confirm_unsubscribe_page', '' )) {
+				/**************************************
+				 * NEWCODE ****************************/
+				if ($path = variable_get ( 'simplenews_confirm_unsubscribe_page_'.$tid, '' )) {
+				/**************************************
+				 * END TEBPATCH ***********************/
 					$path = $path . '/' . implode ( '/', $arguments );
 					drupal_goto ( $path );
 				}
@@ -559,7 +568,7 @@ function simplenews_confirm_subscription() {
 			} elseif ($op == 'add') {
 				simplenews_subscribe_user ( $subscriber->mail, $tid, FALSE, 'website' );
 				/***************************************
-				 * TEBPATCH (ADD) @fcasanellas 10/09/2014
+				* TEBPATCH (ADD) @fcasanellas 10/09/2014
 				* #XN-SN001 Personalització dels missatges de confirmació
 				* OLDCODE *****************************
 				if ($path = variable_get ( 'simplenews_confirm_subscribe_page', '' )) {
@@ -745,8 +754,16 @@ function simplenews_confirm_removal_form($form, &$form_state, $mail, $newsletter
 }
 function simplenews_confirm_removal_form_submit($form, &$form_state) {
 	simplenews_unsubscribe_user ( $form_state ['values'] ['mail'], $form_state ['values'] ['newsletter']->tid, FALSE, 'website' );
-	
+	/***************************************
+	 * TEBPATCH (ADD) @fcasanellas 10/09/2014
+	 * #XN-SN001 Personalització dels missatges de confirmació
+	 * OLDCODE *****************************
 	if (! $path = variable_get ( 'simplenews_confirm_unsubscribe_page', '' )) {
+	/**************************************
+	 * NEWCODE ****************************/
+	if (! $path = variable_get ( 'simplenews_confirm_unsubscribe_page_'.$form_state ['values'] ['newsletter']->tid, '' )) {
+	/**************************************
+	 * END TEBPATCH ***********************/
 		$path = variable_get ( 'site_frontpage', 'node' );
 		drupal_set_message ( t ( '%user was unsubscribed from the %newsletter mailing list.', array (
 				'%user' => $form_state ['values'] ['mail'],
