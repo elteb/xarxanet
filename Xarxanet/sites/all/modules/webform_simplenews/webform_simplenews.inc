@@ -192,6 +192,11 @@ function _webform_submit_newsletter_email($component, $value) {
 	$return_val = array (
 			0 => $value ['newsletter_email_address'] 
 	);
+	
+	/***************************************
+	* TEBPATCH (MDF) @fcasanellas 10/09/2014
+	* #XN-WSN009 Actualitza el mòdul a les funcionalitats de D7
+	* OLDCODE ***************************** 
 	$selected_subscriptions = array ();
 	if (! empty ( $value ['newsletter_selection'] )) {
 		foreach ( $value ['newsletter_selection'] as $k => $v ) {
@@ -215,6 +220,12 @@ function _webform_submit_newsletter_email($component, $value) {
 	if ($account->uid && $account->uid == $user->uid) {
 		$confirm = FALSE;
 	} else {
+		$category = simplenews_category_load($news_vid);
+		global $user;
+		if ($user->name == "Administrador") {
+			print_r($component); 
+			print_r($val)die();
+		}
 		$confirm = variable_get ( 'simplenews_opt_inout_' . $news_vid, 'double' ) == 'double';
 	}
 	
@@ -233,6 +244,40 @@ function _webform_submit_newsletter_email($component, $value) {
 			}
 		}
 	}
+	/**************************************
+	* NEWCODE ****************************/
+	$action = $component ['extra'] ['action'];
+	$account = simplenews_load_user_by_mail ( $mail );
+	$news_vid = array();
+	if ($component['extra']['individual_newsletter_selection']) {
+		if (!empty ( $value ['newsletter_selection'] )) {
+			foreach ( $value ['newsletter_selection'] as $k => $v ) {
+				if ($v > 0) {
+					$news_vid [( int ) $k] = ( int ) $k;
+				}
+			}
+		}
+	} else {
+		$news_vid = $component ['extra'] ['news_vid'];
+	}
+	
+	if ($mail && (count($news_vid) > 0)) {
+		foreach ( $news_vid as $k => $v ) {
+			if ($account->uid && $account->uid == $user->uid) {
+				$confirm = FALSE;
+			} else {
+				$category = simplenews_category_load($v);
+				$confirm = ($category->opt_inout == 'double');
+			}
+			if ($action == 'subscribe') {
+				simplenews_subscribe_user ( $mail, $v, $confirm );
+			}else{
+				simplenews_unsubscribe_user ( $mail, $v, $confirm );
+			}
+		}
+	}
+	/**************************************
+	 * END TEBPATCH ***********************/
 	return $return_val;
 }
 
