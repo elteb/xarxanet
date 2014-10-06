@@ -832,6 +832,9 @@ function simplenews_build_subscribe_mail(&$message, $params) {
 	}
 	/**************************************
 	* NEWCODE ****************************/
+	$message['headers']['MIME-Version'] = '1.0';
+	$message['headers']['Content-Type'] = 'multipart/mixed;';
+	$message['headers']['Content-Type'] = 'text/html;';
 	$message ['subject'] = simplenews_subscription_confirmation_text ( 'subscribe_subject', $context ['category']->tid );
 	$message ['subject'] = token_replace ( $message ['subject'], $context, array (
 			'sanitize' => FALSE
@@ -912,6 +915,7 @@ function simplenews_build_unsubscribe_mail(&$message, $params) {
 	 * TEBPATCH (ADD) @fcasanellas 10/09/2014
 	* #XN-SN001 Personalització dels missatges de confirmació
 	* OLDCODE *****************************
+	* 
 	$message ['subject'] = simplenews_subscription_confirmation_text ( 'subscribe_subject', $langcode );
 	$message ['subject'] = token_replace ( $message ['subject'], $context, array (
 			'sanitize' => FALSE 
@@ -930,6 +934,9 @@ function simplenews_build_unsubscribe_mail(&$message, $params) {
 	}
 	/**************************************
 	* NEWCODE ****************************/
+	$message['headers']['MIME-Version'] = '1.0';
+	$message['headers']['Content-Type'] = 'multipart/mixed;';
+	$message['headers']['Content-Type'] = 'text/html;';
 	$message ['subject'] = simplenews_subscription_confirmation_text ( 'subscribe_subject', $context ['category']->tid );
 	$message ['subject'] = token_replace ( $message ['subject'], $context, array (
 			'sanitize' => FALSE
