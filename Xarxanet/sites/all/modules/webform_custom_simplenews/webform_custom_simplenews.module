@@ -98,11 +98,9 @@ function webform_custom_simplenews_theme() {
  *        	of types of the custom content
  */
 function register_custom_content($snid, $tid, $custom_content) {
-	$serial_content = serialize ( $custom_content );
-	db_query ( "
-        INSERT INTO {webform_custom_simplenews}
-        (snid, tid, custom_content)
-        VALUES (%d, %d, '%s')", $snid, $tid, $serial_content );
+	$serial_content = serialize($custom_content);
+	$query = "INSERT IGNORE INTO webform_custom_simplenews (snid, tid, custom_content) VALUES ({$snid}, {$tid}, '{$serial_content}')";
+	db_query ($query);
 }
 
 /**
@@ -140,6 +138,7 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			$tid = $data['category']->tid;
 			$contents = db_query("SELECT custom_content FROM {webform_custom_simplenews} WHERE snid = :snid AND tid= :tid", array(':snid' => $snid, ':tid' =>$tid))->fetchObject();
 			$contents = unserialize($contents->custom_content);
+						
 			$lapse = variable_get ('webform_custom_simplenews_lapse', '7');
 			$created = time() - $lapse * 86400;
 			foreach ( $contents as $content ) {

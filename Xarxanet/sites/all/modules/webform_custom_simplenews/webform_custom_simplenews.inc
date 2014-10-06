@@ -1,5 +1,4 @@
 <?php
-// $Id: webform_simplenews.inc,v 1.1.2.2 2010/10/04 11:44:31 pcambra Exp $
 
 /**
  * @file: Webform component that allows to suscribe to a simplenews newsletter.
@@ -9,7 +8,7 @@
 /**
  * Create a default newsletter_param component.
  */
-// TODO
+//TODO
 function _webform_defaults_newsletter_param() {
 	return array (
 			'name' => '',
@@ -18,13 +17,16 @@ function _webform_defaults_newsletter_param() {
 			'weight' => 0,
 			'value' => '',
 			'user_email' => 1,
+			'title_display' => 0,
 			'mandatory' => 0,
 			'email' => 1,
 			'extra' => array (
 					'width' => '',
+					'description' => '',
 					'attributes' => array (),
 					'news_vid' => 0,
-					'action' => '' 
+					'action' => '',
+					'private' => 0 
 			) 
 	);
 }
@@ -32,20 +34,10 @@ function _webform_defaults_newsletter_param() {
 /**
  * Implementation of _webform_theme_component().
  */
-// TODO
 function _webform_theme_newsletter_param() {
 	return array (
-			'webform_newsletter_param' => array (
-					'arguments' => array (
-							'element' => NULL 
-					) 
-			),
 			'webform_display_newsletter_param' => array (
-					'arguments' => array (
-							'component' => NULL,
-							'value' => NULL,
-							'format' => 'plain' 
-					) 
+					'render element' => 'element' 
 			) 
 	);
 }
@@ -54,34 +46,21 @@ function _webform_theme_newsletter_param() {
  * Implementation of _webform_edit_component().
  */
 function _webform_edit_newsletter_param($component) {
-	if (! module_exists ( 'simplenews' )) {
-		$text = 'This form uses the "newsletter_param" component which requires the !link to be installed and enabled!';
-		$link = l ( '"Simplenews" module', 'http://drupal.org/project/simplenews', array (
-				'attributes' => array (
-						'target' => '_blank' 
-				) 
-		) );
-		$replace = array (
-				'!link' => $link 
-		);
-		form_set_error ( '', t ( $text, $replace ) );
+	$options = array ();
+	foreach ( taxonomy_get_tree ( variable_get ( 'simplenews_vid', '' ) ) as $newsletter ) {
+		$options [$newsletter->tid] = $newsletter->name;
 	}
 	
 	$form ['user_email'] = array (
 			'#type' => 'checkbox',
 			'#title' => t ( 'User email as default' ),
-			'#default_value' => $currfield ['value'] == '%useremail' ? 1 : 0,
+			'#default_value' => $component ['user_email'],
 			'#description' => t ( 'Set the default value of this field to the user email, if he/she is logged in.' ),
 			'#weight' => 0,
 			'#element_validate' => array (
 					'_webform_edit_newsletter_param_validate' 
 			) 
 	);
-	
-	$options = array ();
-	foreach ( taxonomy_get_tree ( variable_get ( 'simplenews_vid', '' ) ) as $newsletter ) {
-		$options [$newsletter->tid] = $newsletter->name;
-	}
 	$form ['extra'] ['news_vid'] = array (
 			'#type' => 'select',
 			'#title' => t ( "Newsletter" ),
@@ -95,13 +74,13 @@ function _webform_edit_newsletter_param($component) {
 	$form ['extra'] ['individual_newsletter_selection'] = array (
 			'#type' => 'checkbox',
 			'#title' => t ( 'Allow individual selection of newsletters' ),
-			'#default_value' => $component ['extra'] ['individual_newsletter_selection'],
+			'#default_value' => isset ( $component ['extra'] ['individual_newsletter_selection'] ) ? $component ['extra'] ['individual_newsletter_selection'] : '',
 			'#description' => t ( 'If this box is checked and multiple newsletters are selected above, the user will be presented with a list of invdividual newsletters that they can subscribe to.' ) 
 	);
 	$form ['extra'] ['action'] = array (
 			'#type' => 'radios',
 			'#title' => t ( 'Action' ),
-			'#default_value' => $component ['extra'] ['action'],
+			'#default_value' => $component ['extra'] ['action'] ? $component ['extra'] ['action'] : 'subscribe',
 			'#description' => t ( 'Choose the action to be taken on submit.' ),
 			'#required' => TRUE,
 			'#options' => array (
@@ -117,19 +96,20 @@ function _webform_edit_newsletter_param($component) {
 			'#size' => 5,
 			'#maxlength' => 10 
 	);
-	$types = node_get_types ();
-	foreach ( $types as $type ) {
-		$options [$type->type] = $type->name;
-	}
-	$form ['extra'] ['custom_content'] = array (
-			'#type' => 'select',
-			'#title' => t ( 'Custom content' ),
-			'#options' => $options,
-			'#multiple' => TRUE,
-			'#default_value' => $component ['extra'] ['custom_content'],
-			'#description' => t ( 'Content types allowed to include in each newsletter' ) 
-	);
 	
+	$types = node_type_get_types();
+	$options = array();
+	foreach ($types as $type) {
+		$options[$type->type] = $type->name;
+	}
+	$form['extra']['custom_content'] = array(
+			'#type' => 'select',
+			'#title' => t('Custom content'),
+			'#options' => $options,
+			'#multiple'      => TRUE,
+			'#default_value' => $component['extra']['custom_content'],
+			'#description' => t('Content types allowed to include in each newsletter'),
+	);
 	return $form;
 }
 
@@ -145,71 +125,69 @@ function _webform_edit_newsletter_param_validate($element, &$form_state) {
 /**
  * Implementation of _webform_render_component().
  */
-function _webform_render_newsletter_param($component, $value = NULL) {
-	if ($component ['extra'] ['width'] > 0) {
-		$size = $component ['extra'] ['width'];
-	} else {
-		$size = 60;
-	}
-	
-	if ($value [0]) {
-		$default_value = $value [0];
-	} else {
-		$default_value = _webform_filter_values ( $component ['value'] );
-	}
-	
+function _webform_render_newsletter_param($component, $value = NULL, $filter = TRUE) {
 	$element = array (
-			'#title' => htmlspecialchars ( $component ['name'], ENT_QUOTES ),
+			'#title' => $filter ? _webform_filter_xss ( $component ['name'] ) : $component ['name'],
+			'#title_display' => $component ['extra'] ['title_display'] ? $component ['extra'] ['title_display'] : 'before',
 			'#required' => $component ['mandatory'],
 			'#weight' => $component ['weight'],
-			'#prefix' => '<div class="webform-component-' . $component ['type'] . '" id="webform-component-' . $component ['form_key'] . '">',
-			'#suffix' => '</div>',
-			'#webform_component' => $component,
-			'#theme' => 'webform_newsletter_param',
+			'#attributes' => $component ['extra'] ['attributes'],
 			'#element_validate' => array (
 					'_webform_validate_newsletter_param' 
-			) 
+			),
+			'#theme_wrappers' => array (
+					'webform_element' 
+			),
+			'#webform_component' => $component,
+			'#description' => $filter ? _webform_filter_descriptions ( $component ['extra'] ['description'] ) : $component ['extra'] ['description'] 
 	);
-	$element ['newsletter_email_address'] = array (
+	$element ['newsletter_param_address'] = array (
 			'#type' => 'textfield',
-			'#default_value' => $default_value,
-			'#attributes' => $component ['extra'] ['attributes'],
-			'#field_prefix' => empty ( $component ['extra'] ['field_prefix'] ) ? NULL : check_plain ( $component ['extra'] ['field_prefix'] ),
-			'#field_suffix' => empty ( $component ['extra'] ['field_suffix'] ) ? NULL : check_plain ( $component ['extra'] ['field_suffix'] ),
-			'#size' => $size 
+			'#default_value' => _webform_filter_values ( $component ['value'] ) 
 	);
+	
+	if (isset ( $value )) {
+		$element ['email'] ['#default_value'] = $value [0];
+	}
+	
+	// Change the 'width' option to the correct 'size' option.
+	if ($component ['extra'] ['width'] > 0) {
+		$element ['newsletter_param_address'] ['#size'] = $component ['extra'] ['width'];
+	}
+	
 	$news_vid = $component ['extra'] ['news_vid'];
 	
 	if (count ( $news_vid ) > 1 && $component ['extra'] ['individual_newsletter_selection']) {
 		$options = array ();
 		foreach ( taxonomy_get_tree ( variable_get ( 'simplenews_vid', '' ) ) as $newsletter ) {
-			if ($news_vid [$newsletter->tid] != 0)
+			if ($news_vid [$newsletter->tid] != 0) {
 				$options [$newsletter->tid] = $newsletter->name;
+			}
 		}
 		
 		$element ['newsletter_selection'] = array (
-				'#prefix' => '',
 				'#type' => 'checkboxes',
 				'#default_value' => array (),
 				'#options' => $options 
 		);
 	}
 	
-	$allowed_types = $component ['extra'] ['custom_content'];
-	$types = node_get_types ();
-	$options = array ();
-	foreach ( $allowed_types as $key => $type ) {
-		$options [$type] = $types [$type]->name;
+	$allowed_types = $component['extra']['custom_content'];
+	$types = node_type_get_types();
+	$options = array();
+	foreach ($allowed_types as $key => $type) {
+		$options[$type] = $types[$type]->name;
 	}
-	if (count ( $allowed_types ) > 1) {
-		$element ['newsletter_content_selection'] = array (
+	if (count($allowed_types) > 1) {
+		$element['newsletter_content_selection'] = array(
 				'#prefix' => '',
 				'#type' => 'checkboxes',
-				'#default_value' => array (),
+				'#default_value' => array(),
 				'#options' => $options,
-				'#title' => t ( 'Custom content types' ) 
+				'#title' => t('Custom content types')
 		);
 	}
+	
 	return $element;
 }
 
@@ -224,27 +202,14 @@ function _webform_render_newsletter_param($component, $value = NULL) {
  *        	full form state for the webform.
  * @return None. Calls a form_set_error if the e-mail is not valid.
  */
-// TODO
+//TODO
 function _webform_validate_newsletter_param($form_element, $form_state) {
-	if (! module_exists ( 'simplenews' )) {
-		$text = 'This form uses the "newsletter_param" component which requires the !link to be installed and enabled!';
-		$link = l ( '"Simplenews" module', 'http://drupal.org/project/simplenews', array (
-				'attributes' => array (
-						'target' => '_blank' 
-				) 
-		) );
-		$replace = array (
-				'!link' => $link 
-		);
-		form_set_error ( '', t ( $text, $replace ) );
-	}
-	
 	$component = $form_element ['#webform_component'];
-	if (! empty ( $form_element ['newsletter_email_address'] ['#value'] ) && ! valid_email_address ( $form_element ['newsletter_email_address'] ['#value'] )) {
+	if (! empty ( $form_element ['newsletter_param_address'] ['#value'] ) && ! valid_email_address ( $form_element ['newsletter_param_address'] ['#value'] )) {
 		form_error ( $form_element, t ( '%value is not a valid email address.', array (
-				'%value' => $form_element ['newsletter_email_address'] ['#value'] 
+				'%value' => $form_element ['newsletter_param_address'] ['#value'] 
 		) ) );
-	} elseif (empty ( $form_element ['newsletter_email_address'] ['#value'] ) && $form_element ['#required']) {
+	} elseif (empty ( $form_element ['newsletter_param_address'] ['#value'] ) && $form_element ['#required']) {
 		form_error ( $form_element, t ( 'E-mail address for newsletter "%name" is required.', array (
 				'%name' => $component ['name'] 
 		) ) );
@@ -256,55 +221,45 @@ function _webform_validate_newsletter_param($form_element, $form_state) {
  */
 function _webform_submit_newsletter_param($component, $value) {
 	global $user;
-	$mail = $value ['newsletter_email_address'];
+	$mail = $value ['newsletter_param_address'];
 	$return_val = array (
-			0 => $value ['newsletter_email_address'] 
+			0 => $value ['newsletter_param_address'] 
 	);
-	$selected_subscriptions = array ();
-	if (is_array ( $value ['newsletter_selection'] )) {
-		foreach ( $value ['newsletter_selection'] as $k => $v ) {
-			if ($v > 0)
-				$selected_subscriptions [( int ) $k] = ( int ) $k;
-		}
-	}
-	$news_vid = $component ['extra'] ['news_vid'];
-	
-	$custom_content = array ();
-	foreach ( $value [newsletter_content_selection] as $type => $val ) {
-		if ($val)
-			$custom_content [] = $type;
-	}
-	
-	if (count ( $selected_subscriptions ) > 0)
-		$news_vid = $selected_subscriptions;
-	
 	$action = $component ['extra'] ['action'];
-	$account = _simplenews_user_load ( $mail );
-	// If email belongs to the current registered user, don't send confirmation.
-	// Other addresses receive a confirmation if double opt-in is selected.
-	if ($account->uid && $account->uid == $user->uid) {
-		$confirm = FALSE;
-	} else {
-		$confirm = variable_get ( 'simplenews_opt_inout_' . $news_vid, 'double' ) == 'double';
+	$account = simplenews_load_user_by_mail ( $mail );
+	$news_vid = array();
+	$custom_content = array();
+	foreach ($value[newsletter_content_selection] as $type => $val) {
+		if ($val) $custom_content[] = $type;
 	}
-	
-	if ($mail && isset ( $news_vid )) {
-		if ($action == 'subscribe') {
-			if (count ( $news_vid ) > 0) {
-				foreach ( $news_vid as $k => $v ) {
-					$subscription = simplenews_subscribe_user ( $mail, $v, $confirm );
-					register_custom_content ( $subscription->snid, $v, $custom_content );
-				}
-			}
-		} else {
-			if (count ( $news_vid ) > 0) {
-				foreach ( $news_vid as $k => $v ) {
-					simplenews_unsubscribe_user ( $mail, $v, $confirm );
+	if ($component['extra']['individual_newsletter_selection']) {
+		if (!empty ( $value ['newsletter_selection'] )) {
+			foreach ( $value ['newsletter_selection'] as $k => $v ) {
+				if ($v > 0) {
+					$news_vid [( int ) $k] = ( int ) $k;
 				}
 			}
 		}
+	} else {
+		$news_vid = $component ['extra'] ['news_vid'];
 	}
-	$snid = $subscription->snid;
+	
+	if ($mail && (count($news_vid) > 0)) {
+		foreach ( $news_vid as $k => $v ) {
+			if ($account->uid && $account->uid == $user->uid) {
+				$confirm = FALSE;
+			} else {
+				$category = simplenews_category_load($v);
+				$confirm = ($category->opt_inout == 'double');
+			}
+			if ($action == 'subscribe') {
+				$subscription = simplenews_subscribe_user($mail, $v, $confirm, 'unknown', NULL, TRUE);
+				if($subscription) register_custom_content($subscription->snid, $v, $custom_content);
+			}else{
+				simplenews_unsubscribe_user ( $mail, $v, $confirm );
+			}
+		}
+	}
 	return $return_val;
 }
 
@@ -324,28 +279,17 @@ function _webform_display_newsletter_param($component, $value, $format = 'html')
 			'#post_render' => array (
 					'webform_element_wrapper' 
 			),
-			'#component' => $component,
+			'#webform_component' => $component,
 			'#format' => $format,
 			'#value' => isset ( $value [0] ) ? $value [0] : '' 
 	);
 }
 
 /**
- * Theme a webform time element.
- */
-function theme_webform_newsletter_param($element) {
-	if (form_get_error ( $element )) {
-		$element ['newsletter_email_address'] ['#attributes'] ['class'] = 'error';
-	}
-	$output = '<div class="form-item">' . drupal_render ( $element ) . '</div>';
-	$element ['#type'] = 'element';
-	return theme ( 'form_element', $element, $output );
-}
-
-/**
  * Format the text output for this component.
  */
-function theme_webform_display_newsletter_param($element) {
+function theme_webform_display_newsletter_param($variables) {
+	$element = $variables ['element'];
 	$element ['#value'] = empty ( $element ['#value'] ) ? ' ' : $element ['#value'];
 	return $element ['#format'] == 'html' ? check_plain ( $element ['#value'] ) : $element ['#value'];
 }
@@ -357,7 +301,7 @@ function _webform_form_builder_save_newsletter_param($component, $form_element) 
 	$component ['extra'] ['width'] = isset ( $form_element ['#size'] ) ? $form_element ['#size'] : NULL;
 	$component ['extra'] ['news_vid'] = isset ( $form_element ['#news_vid'] ) ? $form_element ['#news_vid'] : NULL;
 	$component ['extra'] ['action'] = isset ( $form_element ['#action'] ) ? $form_element ['#action'] : NULL;
-	$component ['extra'] ['custom_content'] = isset ( $form_element ['#custom_content'] ) ? $form_element ['#custom_content'] : NULL;
+	$component ['extra']['custom_content'] = isset($form_element['#custom_content']) ? $form_element['#custom_content'] : NULL;
 	return $component;
 }
 
@@ -393,19 +337,23 @@ function _webform_form_builder_types_newsletter_param() {
  * Implementation of _webform_analysis_component().
  */
 function _webform_analysis_newsletter_param($component) {
-	$query = 'SELECT data ' . ' FROM {webform_submitted_data} ' . ' WHERE nid = %d ' . ' AND cid = %d';
+	$rows = array ();
 	$nonblanks = 0;
 	$submissions = 0;
 	$wordcount = 0;
 	
-	$result = db_query ( $query, $component ['nid'], $component ['cid'] );
-	while ( $data = db_fetch_array ( $result ) ) {
-		if (strlen ( trim ( $data ['data'] ) ) > 0) {
+	$result = db_query ( "SELECT data FROM {webform_submitted_data} WHERE nid = :nid AND cid = :cid", array (
+			':nid' => $component ['nid'],
+			':cid' => $component ['cid'] 
+	) )->fetchAll ();
+	foreach ( $result as $data ) {
+		if (drupal_strlen ( trim ( $data->data ) ) > 0) {
 			$nonblanks ++;
-			$wordcount += str_word_count ( trim ( $data ['data'] ) );
+			$wordcount += str_word_count ( trim ( $data->data ) );
 		}
 		$submissions ++;
 	}
+	
 	$rows [0] = array (
 			t ( 'Submissions' ),
 			$submissions 
