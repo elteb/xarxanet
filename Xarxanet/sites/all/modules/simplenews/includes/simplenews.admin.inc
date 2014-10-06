@@ -684,7 +684,7 @@ function simplenews_admin_category_form($form, &$form_state, $edit = array()) {
 	* TEBPATCH (ADD) @fcasanellas 02/04/2013
 	* #XN-SN001 Personalització dels missatges de confirmació
 	* NEWCODE ****************************/
-	
+	$tid = $edit ['tid'];
 	$form ['subscription_mail'] = array (
 			'#type' => 'fieldset',
 			'#title' => t ( 'Confirmation emails' ),
@@ -700,7 +700,7 @@ function simplenews_admin_category_form($form, &$form_state, $edit = array()) {
 					'never' => t ( 'Never' )
 			),
 			'#description' => t ( 'Combined confirmation mails allow subscribers to confirm multiple newsletter changes with single mail.' ),
-			'#default_value' => variable_get ( 'simplenews_use_combined', 'multiple' )
+			'#default_value' => variable_get ( 'simplenews_use_combined_'.$tid, 'multiple' )
 	);
 	
 	if (module_exists ( 'token' )) {
@@ -734,34 +734,34 @@ function simplenews_admin_category_form($form, &$form_state, $edit = array()) {
 			)
 	);
 	
-	$form ['subscription_mail'] ['single'] ['simplenews_confirm_subscribe_subject_'.$edit ['tid']] = array (
+	$form ['subscription_mail'] ['single'] ['simplenews_confirm_subscribe_subject'] = array (
 			'#type' => 'textfield',
 			'#title' => t ( 'Subject' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'subscribe_subject', $edit ['tid'] ),
+			'#default_value' => simplenews_subscription_confirmation_text ( 'subscribe_subject', $tid ),
 			'#maxlength' => 180
 	);
 	$form ['subscription_mail'] ['single'] ['simplenews_confirm_subscribe_unsubscribed'] = array (
 			'#type' => 'textarea',
 			'#title' => t ( 'Body text of subscribe email' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'subscribe_unsubscribed' ),
+			'#default_value' => simplenews_subscription_confirmation_text ( 'subscribe_unsubscribed', $tid ),
 			'#rows' => 5
 	);
 	$form ['subscription_mail'] ['single'] ['simplenews_confirm_subscribe_subscribed'] = array (
 			'#type' => 'textarea',
 			'#title' => t ( 'Body text for already subscribed visitor' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'subscribe_subscribed' ),
+			'#default_value' => simplenews_subscription_confirmation_text ( 'subscribe_subscribed', $tid ),
 			'#rows' => 5
 	);
 	$form ['subscription_mail'] ['single'] ['simplenews_confirm_unsubscribe_subscribed'] = array (
 			'#type' => 'textarea',
 			'#title' => t ( 'Body text of unsubscribe email' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'unsubscribe_subscribed' ),
+			'#default_value' => simplenews_subscription_confirmation_text ( 'unsubscribe_subscribed', $tid ),
 			'#rows' => 5
 	);
 	$form ['subscription_mail'] ['single'] ['simplenews_confirm_unsubscribe_unsubscribed'] = array (
 			'#type' => 'textarea',
 			'#title' => t ( 'Body text for not yet subscribed visitor' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'unsubscribe_unsubscribed' ),
+			'#default_value' => simplenews_subscription_confirmation_text ( 'unsubscribe_unsubscribed', $tid ),
 			'#rows' => 5
 	);
 	
@@ -782,20 +782,20 @@ function simplenews_admin_category_form($form, &$form_state, $edit = array()) {
 	$form ['subscription_mail'] ['combined'] ['simplenews_confirm_combined_subject'] = array (
 			'#type' => 'textfield',
 			'#title' => t ( 'Subject text for combined confirmation mail' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_subject' )
+			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_subject', $tid )
 	);
 	
 	$form ['subscription_mail'] ['combined'] ['simplenews_confirm_combined_body'] = array (
 			'#type' => 'textarea',
 			'#title' => t ( 'Body text for combined confirmation mail' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_body' ),
+			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_body', $tid ),
 			'#rows' => 5
 	);
 	
 	$form ['subscription_mail'] ['combined'] ['simplenews_confirm_combined_body_unchanged'] = array (
 			'#type' => 'textarea',
 			'#title' => t ( 'Body text for unchanged combined confirmation mail' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_body_unchanged' ),
+			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_body_unchanged', $tid ),
 			'#rows' => 5,
 			'#description' => t ( 'This body is used when there are no change requests which have no effect, e.g trying to subscribe when already being subscribed to a category.' )
 	);
@@ -803,25 +803,25 @@ function simplenews_admin_category_form($form, &$form_state, $edit = array()) {
 	$form ['subscription_mail'] ['combined'] ['simplenews_confirm_combined_line_subscribe_unsubscribed'] = array (
 			'#type' => 'textfield',
 			'#title' => t ( 'Change text for a new subscription' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_line_subscribe_unsubscribed' )
+			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_line_subscribe_unsubscribed', $tid )
 	);
 	
 	$form ['subscription_mail'] ['combined'] ['simplenews_confirm_combined_line_subscribe_subscribed'] = array (
 			'#type' => 'textfield',
 			'#title' => t ( 'Change text when already subscribed' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_line_subscribe_subscribed' )
+			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_line_subscribe_subscribed', $tid )
 	);
 	
 	$form ['subscription_mail'] ['combined'] ['simplenews_confirm_combined_line_unsubscribe_subscribed'] = array (
 			'#type' => 'textfield',
 			'#title' => t ( 'Change text for an unsubscription' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_line_unsubscribe_subscribed' )
+			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_line_unsubscribe_subscribed', $tid )
 	);
 	
 	$form ['subscription_mail'] ['combined'] ['simplenews_confirm_combined_line_unsubscribe_unsubscribed'] = array (
 			'#type' => 'textfield',
 			'#title' => t ( 'Change text when already unsubscribed' ),
-			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_line_unsubscribe_unsubscribed' )
+			'#default_value' => simplenews_subscription_confirmation_text ( 'combined_line_unsubscribe_unsubscribed', $tid )
 	);
 	
 	$form ['confirm_pages'] = array (
@@ -833,13 +833,13 @@ function simplenews_admin_category_form($form, &$form_state, $edit = array()) {
 			'#type' => 'textfield',
 			'#title' => t ( 'Subscribe confirmation' ),
 			'#description' => t ( 'Drupal path or URL of the destination page where after the subscription is confirmed (e.g. node/123). Leave empty to go to the front page.' ),
-			'#default_value' => variable_get ( 'simplenews_confirm_subscribe_page', '' )
+			'#default_value' => variable_get ( 'simplenews_confirm_subscribe_page_'.$tid, '' )
 	);
 	$form ['confirm_pages'] ['simplenews_confirm_unsubscribe_page'] = array (
 			'#type' => 'textfield',
 			'#title' => t ( 'Unsubscribe confirmation' ),
 			'#description' => t ( 'Drupal path or URL of the destination page when the subscription removal is confirmed (e.g. node/123). Leave empty to go to the front page.' ),
-			'#default_value' => variable_get ( 'simplenews_confirm_unsubscribe_page', '' )
+			'#default_value' => variable_get ( 'simplenews_confirm_unsubscribe_page_'.$tid, '' )
 	);
 	/***************************************
 	* END TEBPATCH ***********************/
@@ -1768,10 +1768,6 @@ function simplenews_admin_settings_subscription($form, &$form_state) {
 			'#description' => t ( 'When checked subscriptions will be synchronized with site accounts. When accounts are deleted, subscriptions with the same email address will be removed. When site accounts are blocked/unblocked, subscriptions will be deactivated/activated. When not checked subscriptions will be unchanged when associated accounts are deleted or blocked.' ) 
 	);
 
-	/***************************************
-	* TEBPATCH (DEL) @fcasanellas 02/04/2013
-	* #XN-SN001 Personalització dels missatges de confirmació
-	* OLDCODE ****************************
 	
 	$form ['subscription_mail'] = array (
 			'#type' => 'fieldset',
@@ -1790,6 +1786,11 @@ function simplenews_admin_settings_subscription($form, &$form_state) {
 			'#description' => t ( 'Combined confirmation mails allow subscribers to confirm multiple newsletter changes with single mail.' ),
 			'#default_value' => variable_get ( 'simplenews_use_combined', 'multiple' ) 
 	);
+	
+	/***************************************
+	 * TEBPATCH (DEL) @fcasanellas 02/04/2013
+	* #XN-SN001 Personalització dels missatges de confirmació
+	* OLDCODE ****************************
 	
 	if (module_exists ( 'token' )) {
 		$form ['subscription_mail'] ['token_help'] = array (

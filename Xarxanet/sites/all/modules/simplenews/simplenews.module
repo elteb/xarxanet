@@ -1990,6 +1990,18 @@ function simplenews_category_save($category) {
 			'opt_inout' => $category->opt_inout,
 			'block' => $category->block 
 	) )->execute ();
+	/***************************************
+	* TEBPATCH (ADD) @fcasanellas 10/09/2014
+	* #XN-SN001 Personalització dels missatges de confirmació
+	* OLDCODE *****************************/
+	$tid = $category->tid;
+	foreach ($category as $field => $value) {
+		if (strpos($field,'simplenews') !== false) {
+			variable_set($field.'_'.$tid, $value);
+		}
+	}
+	/**************************************
+	* END TEBPATCH ***********************/
 	module_invoke_all ( 'simplenews_category_update', $category );
 }
 
@@ -2348,16 +2360,15 @@ function simplenews_variable_info($options) {
 * #XN-SN001 Personalització dels missatges de confirmació
 * OLDCODE *****************************
 function simplenews_subscription_confirmation_text($key) {
-	$text = variable_get ( 'simplenews_confirm_' . $key, FALSE );
 /**************************************
 * NEWCODE ****************************/
 function simplenews_subscription_confirmation_text($key, $tid=null) {
 	if ($tid) $key = $key.'_'.$tid;
-	$text = variable_get ( 'simplenews_confirm_' . $key, FALSE );
 /**************************************
 * END TEBPATCH ***********************/
 	// If administrator did not change the text, the variable is empty.
 	// We get the default here.
+	$text = variable_get ( 'simplenews_confirm_' . $key, FALSE );
 	if (! $text) {
 		switch ($key) {
 			case 'subscribe_unsubscribed' :

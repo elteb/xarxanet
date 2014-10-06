@@ -816,7 +816,10 @@ function simplenews_build_subscribe_mail(&$message, $params) {
 	
 	// Use formatted from address "name" <mail_address>
 	$message ['headers'] ['From'] = $params ['from'] ['formatted'];
-	
+	/***************************************
+	* TEBPATCH (ADD) @fcasanellas 10/09/2014
+	* #XN-SN001 Personalització dels missatges de confirmació
+	* OLDCODE *****************************
 	$message ['subject'] = simplenews_subscription_confirmation_text ( 'subscribe_subject', $langcode );
 	$message ['subject'] = token_replace ( $message ['subject'], $context, array (
 			'sanitize' => FALSE 
@@ -827,6 +830,20 @@ function simplenews_build_subscribe_mail(&$message, $params) {
 	} else {
 		$body = simplenews_subscription_confirmation_text ( 'subscribe_unsubscribed', $langcode );
 	}
+	/**************************************
+	* NEWCODE ****************************/
+	$message ['subject'] = simplenews_subscription_confirmation_text ( 'subscribe_subject', $context ['category']->tid );
+	$message ['subject'] = token_replace ( $message ['subject'], $context, array (
+			'sanitize' => FALSE
+	) );
+	
+	if (simplenews_user_is_subscribed ( $context ['simplenews_subscriber']->mail, $context ['category']->tid )) {
+		$body = simplenews_subscription_confirmation_text ( 'subscribe_subscribed', $context ['category']->tid );
+	} else {
+		$body = simplenews_subscription_confirmation_text ( 'subscribe_unsubscribed', $context ['category']->tid );
+	}
+	/**************************************
+	 * END TEBPATCH ***********************/
 	$message ['body'] [] = token_replace ( $body, $context, array (
 			'sanitize' => FALSE 
 	) );
@@ -891,7 +908,10 @@ function simplenews_build_unsubscribe_mail(&$message, $params) {
 	
 	// Use formatted from address "name" <mail_address>
 	$message ['headers'] ['From'] = $params ['from'] ['formatted'];
-	
+	/***************************************
+	 * TEBPATCH (ADD) @fcasanellas 10/09/2014
+	* #XN-SN001 Personalització dels missatges de confirmació
+	* OLDCODE *****************************
 	$message ['subject'] = simplenews_subscription_confirmation_text ( 'subscribe_subject', $langcode );
 	$message ['subject'] = token_replace ( $message ['subject'], $context, array (
 			'sanitize' => FALSE 
@@ -908,6 +928,26 @@ function simplenews_build_unsubscribe_mail(&$message, $params) {
 				'sanitize' => FALSE 
 		) );
 	}
+	/**************************************
+	* NEWCODE ****************************/
+	$message ['subject'] = simplenews_subscription_confirmation_text ( 'subscribe_subject', $context ['category']->tid );
+	$message ['subject'] = token_replace ( $message ['subject'], $context, array (
+			'sanitize' => FALSE
+	) );
+	
+	if (simplenews_user_is_subscribed ( $context ['simplenews_subscriber']->mail, $context ['category']->tid )) {
+		$body = simplenews_subscription_confirmation_text ( 'unsubscribe_subscribed', $context ['category']->tid );
+		$message ['body'] [] = token_replace ( $body, $context, array (
+				'sanitize' => FALSE
+		) );
+	} else {
+		$body = simplenews_subscription_confirmation_text ( 'unsubscribe_unsubscribed', $context ['category']->tid );
+		$message ['body'] [] = token_replace ( $body, $context, array (
+				'sanitize' => FALSE
+		) );
+	}
+	/**************************************
+	 * END TEBPATCH ***********************/
 }
 
 /**

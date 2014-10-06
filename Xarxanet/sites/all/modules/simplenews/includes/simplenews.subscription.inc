@@ -558,7 +558,16 @@ function simplenews_confirm_subscription() {
 				drupal_goto ( variable_get ( 'site_frontpage', 'node' ) );
 			} elseif ($op == 'add') {
 				simplenews_subscribe_user ( $subscriber->mail, $tid, FALSE, 'website' );
+				/***************************************
+				 * TEBPATCH (ADD) @fcasanellas 10/09/2014
+				* #XN-SN001 Personalització dels missatges de confirmació
+				* OLDCODE *****************************
 				if ($path = variable_get ( 'simplenews_confirm_subscribe_page', '' )) {
+				/**************************************
+				* NEWCODE ****************************/
+				if ($path = variable_get ( 'simplenews_confirm_subscribe_page_'.$tid, '' )) {
+				/**************************************
+				 * END TEBPATCH ***********************/
 					$path = $path . '/' . implode ( '/', $arguments );
 					drupal_goto ( $path );
 				}
@@ -626,7 +635,16 @@ function simplenews_confirm_add_form($form, &$form_state, $mail, $newsletter) {
 function simplenews_confirm_add_form_submit($form, &$form_state) {
 	simplenews_subscribe_user ( $form_state ['values'] ['mail'], $form_state ['values'] ['newsletter']->tid, FALSE, 'website' );
 	
+	/***************************************
+	 * TEBPATCH (ADD) @fcasanellas 10/09/2014
+	* #XN-SN001 Personalització dels missatges de confirmació
+	* OLDCODE *****************************
 	if (! $path = variable_get ( 'simplenews_confirm_subscribe_page', '' )) {
+	/**************************************
+	* NEWCODE ****************************/
+	if (! $path = variable_get ( 'simplenews_confirm_subscribe_page_'.$form_state ['values'] ['newsletter']->tid, '' )) {
+	/**************************************
+	 * END TEBPATCH ***********************/
 		$path = variable_get ( 'site_frontpage', 'node' );
 		drupal_set_message ( t ( '%user was added to the %newsletter mailing list.', array (
 				'%user' => $form_state ['values'] ['mail'],
