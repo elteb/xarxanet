@@ -186,7 +186,6 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 						<?php if (!empty($node->field_abast_titol_monografic['und'][0]['value'])) {
 							echo '<p style="font-size:18px; margin:5px; color:white;">'.$node->field_abast_titol_monografic['und'][0]['value'].'</p>';
 						}?>
-						<p style="font-size:16px; margin:5px">El butlletí del voluntariat català</p>
 					</td>
 					<td style="text-align:right"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/capçalera_blanc_sol.png" alt="Capçalera butlleti Abast" style="margin:10px"/></td></tr>				
 				</table>
@@ -211,15 +210,15 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	</tr>
 	<tr><td colspan="2" height="3px" style="background-color: #800000;"></td></tr>
 	<tr><td colspan="2" height="3px" style="background-color: #CCCCCC; padding: 4px; font-weight: bold">
-	<?php
+	<?php	
 		$array_flex = array('', '_2', '_3');
 		if (!empty($destacades)){ echo '<a style="color:#000001; text-decoration:none" href="#destacats">Top News</a>';}
 		if (!empty($noticies)){ echo ' | <a style="color:#000001; text-decoration:none" href="#noticies">Opinion</a>';} 
-		if ($wrapper->field_voluntariat){ echo ' | <a style="color:#000001; text-decoration:none" href="#voluntariat">Crides de voluntariat</a>';}
-		if ($wrapper->field_abast_pfvc){ echo ' | <a style="color:#000001; text-decoration:none" href="#pfvc">Cursos PFVC</a>';}
-		if ($wrapper->field_abast_formacions_xn){echo ' | <a style="color:#000001; text-decoration:none" href="#formacio">Altres formacions</a>';}
-		if ($wrapper->field_abast_activitats){echo ' | <a style="color:#000001; text-decoration:none" href="#activitats">Agenda</a>';}
-		if ($wrapper->field_abast_financament){echo ' | <a style="color:#000001; text-decoration:none" href="#financaments">Finançaments</a>';}
+		if ($wrapper->field_voluntariat->count()){ echo ' | <a style="color:#000001; text-decoration:none" href="#voluntariat">Crides de voluntariat</a>';}
+		if ($wrapper->field_abast_pfvc->count()){ echo ' | <a style="color:#000001; text-decoration:none" href="#pfvc">Cursos PFVC</a>';}
+		if ($wrapper->field_abast_formacions_xn->count()){echo ' | <a style="color:#000001; text-decoration:none" href="#formacio">Altres formacions</a>';}
+		if ($wrapper->field_abast_activitats->count()){echo ' | <a style="color:#000001; text-decoration:none" href="#activitats">Agenda</a>';}
+		if ($wrapper->field_abast_financament->count()){echo ' | <a style="color:#000001; text-decoration:none" href="#financaments">Finançaments</a>';}
 		foreach ($wrapper->field_abast_flexible as $flex) {
 			$titol = $flex->field_abast_flexible_titol->value();
 			if ($titol)	echo ' | <a style="color:#000001; text-decoration:none" href="#flexible">'.$titol.'</a>';
@@ -236,7 +235,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 
 	<!-- NOTÍCIES DESTACADES -->
 	<?php if (!empty($destacades)){?>
-		<tr><td colspan="2"><a name="destacats"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Destacats</h1></td></tr>
+		<tr><td colspan="2"><a name="destacats"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Top News</h1></td></tr>
 		<tr><td colspan="2" style="border: 1px dashed #4C0000;">
 			<table class="butlleti" cellspacing="8">
 				<?php
@@ -333,7 +332,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 
 	<!-- VOLUNTARIAT -->
 	<?php 
-		if($wrapper->field_voluntariat){?>
+		if($wrapper->field_voluntariat->count()){?>
 		<a name="voluntariat"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Crides de voluntariat</h1>
 		<?php 
 		foreach ($wrapper->field_voluntariat as $voluntariat) {
@@ -365,7 +364,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 
 
 	<!-- FORMACIÓ PFVC -->
-	<?php if($wrapper->field_abast_pfvc){?>
+	<?php if($wrapper->field_abast_pfvc->count()){?>
 		<a name="pfvc"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Cursos del Pla de Formació del voluntariat de Catalunya (PFVC)</h1>
 		<?php
 		foreach ($wrapper->field_abast_pfvc as $pfvc){
@@ -388,7 +387,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	
 	
 	<!-- ALTRES FORMACIONS -->
-	<?php if($wrapper->field_abast_formacions_xn){?>
+	<?php if($wrapper->field_abast_formacions_xn->count()){?>
 		<a name="formacio"><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Altres formacions</h1>
 		<?php
 		foreach ($wrapper->field_abast_formacions_xn as $form){
@@ -423,7 +422,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 
 
 	<!-- ACTIVITATS -->
-	<?php if($wrapper->field_abast_activitats){?>
+	<?php if($wrapper->field_abast_activitats->count()){?>
 		<a name="activitats"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Agenda d'activitats</h1>
 		<?php
 		/*foreach ($node->field_abast_activitats_xarxanet as $key => $activitat){
@@ -467,7 +466,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	
 	
 	<!-- FINANÇAMENTS -->
-	<?php if($wrapper->field_abast_financament){?>
+	<?php if($wrapper->field_abast_financament->count()){?>
 		<a name="financaments"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Finançaments</h1>
 		<?php
 		foreach ($wrapper->field_abast_financament as $financament){
@@ -564,7 +563,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	<!-- ENTREVISTA -->
 		<?php
 		$i = 0;
-		if ($wrapper->field_abast_entrevista_coll) {
+		if ($wrapper->field_abast_entrevista_coll->count()) {
 			echo '<a name="entrevista"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$node->field_abast_entrevista_titol_sec['und'][0]['value'].'</h1>';
 		}
 		
