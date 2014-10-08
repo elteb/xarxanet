@@ -188,7 +188,6 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 						<?php if (!empty($node->field_abast_titol_monografic['und'][0]['value'])) {
 							echo '<p style="font-size:18px; margin:5px; color:white;">'.$node->field_abast_titol_monografic['und'][0]['value'].'</p>';
 						}?>
-						<p style="font-size:16px; margin:5px">El butlletí del voluntariat català</p>
 					</td>
 					<td style="text-align:right"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/capçalera_blanc_sol.png" alt="Capçalera butlleti Abast" style="margin:10px"/></td></tr>				
 				</table>
