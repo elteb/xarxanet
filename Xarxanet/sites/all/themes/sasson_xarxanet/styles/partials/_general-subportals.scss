@@ -68,6 +68,7 @@
 /* ------- Seccions especials ------- */
 .section-especial {
   .pane-content { margin-bottom: 15px; }
+  #page-title-reg h1 { margin: $space 0; }
   #clear { clear: both; }
   #third-row { 
     padding-bottom: 10px;
@@ -84,7 +85,6 @@
      border-top: none;
      margin-right: 0px; 
   }
-  h1#page-title { line-height: 1.5em; }
   .region-content {
     margin-top: $ninesixty-gutter-width;
     h2 {
@@ -100,7 +100,6 @@
       font-weight: normal;
     } 
   }
-  .pane-tags-especial .pane-content { padding: 10px; }
   .pane-tags-especial-repositori {
     .views-row { margin-right: 12px; }
     .views-row-clear-0 { margin-left: 10px; }
@@ -124,7 +123,7 @@
   #especial-4-continguts-pane {
     .content { 
       float:left;
-      margin: 10px 4.5px; 
+      margin: 10px 3px; 
     }
     .content-large { width: 377px; }
     .content-small { width: 179px; }

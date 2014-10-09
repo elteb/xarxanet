@@ -105,7 +105,7 @@ if ($node_ =  node_load($node->field_financ_prin_xarxanet_esq['und'][0]['nid']))
 	$noticia_prin_esq['title'] = $node->field_financ_prin_ext_esq['und'][0]['title'];
 	$noticia_prin_esq['link'] = $node->field_financ_prin_ext_esq['und'][0]['url'];
 	$noticia_prin_esq['teaser'] = strip_tags($node->field_financ_prin_resum_esq['und'][0]['value']);
-	$noticia_prin_esq['imatge'] = $node->field_financ_prin_foto_esq[0]['und']['filepath'];
+	$noticia_prin_esq['imatge'] = file_create_url($node->field_financ_prin_foto_esq['und'][0]['uri']);
 	$noticia_prin_esq['alt'] = $node->field_financ_prin_foto_esq['und'][0]['data']['alt'];
 }
 
@@ -128,7 +128,7 @@ if ($node_ =  node_load($node->field_financ_prin_xarxanet_dreta['und'][0]['nid']
 	$noticia_prin_dreta['title'] = $node->field_financ_prin_ext_dreta['und'][0]['title'];
 	$noticia_prin_dreta['link'] = $node->field_financ_prin_ext_dreta['und'][0]['url'];
 	$noticia_prin_dreta['teaser'] = strip_tags($node->field_financ_prin_resum_dreta['und'][0]['value']);
-	$noticia_prin_dreta['imatge'] = $node->field_financ_prin_foto_dreta['und'][0]['filepath'];
+	$noticia_prin_dreta['imatge'] = file_create_url($node->field_financ_prin_foto_dreta['und'][0]['uri']);
 	$noticia_prin_dreta['alt'] = $node->field_financ_prin_foto_dreta['und'][0]['data']['alt'];
 }
 
@@ -161,7 +161,7 @@ for ($i = 1; $i <= 4; $i++){
 		$noticia_secundaria[$i]['title'] = $titular['und'][0]['title'];
 		$noticia_secundaria[$i]['link'] = $titular['und'][0]['url'];
 		$noticia_secundaria[$i]['teaser'] = strip_tags($resum['und'][0]['value']);
-		$noticia_secundaria[$i]['imatge'] = $foto['und'][0]['filepath'];
+		$noticia_secundaria[$i]['imatge'] = file_create_url($foto['und'][0]['uri']);
 		$noticia_secundaria[$i]['alt'] = $foto['und'][0]['data']['alt'];
 	}
 }

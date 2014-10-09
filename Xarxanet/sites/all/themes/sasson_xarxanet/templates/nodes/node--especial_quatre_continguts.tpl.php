@@ -1,79 +1,108 @@
 <?php 
-// $Id: node.tpl.php,v 1.1.2.8 2009/05/19 00:05:00 jmburnz Exp $
-
 /**
- * @file node.tpl.php
- * Theme implementation to display a node.
- *
- * Available variables:
- * - $title: the (sanitized) title of the node.
- * - $content: Node body or teaser depending on $teaser flag.
- * - $picture: The authors picture of the node output from
- *   theme_user_picture().
- * - $date: Formatted creation date (use $created to reformat with
- *   format_date()).
- * - $links: Themed links like "Read more", "Add new comment", etc. output
- *   from theme_links().
- * - $name: Themed username of node author output from theme_user().
- * - $node_url: Direct url of the current node.
- * - $terms: the themed list of taxonomy term links output from theme_links().
- * - $submitted: themed submission information output from
- *   theme_node_submitted().
- *
- * Other variables:
- * - $node: Full node object. Contains data that may not be safe.
- * - $type: Node type, i.e. story, page, blog, etc.
- * - $comment_count: Number of comments attached to the node.
- * - $uid: User ID of the node author.
- * - $created: Time the node was published formatted in Unix timestamp.
- * - $zebra: Outputs either "even" or "odd". Useful for zebra striping in
- *   teaser listings.
- * - $id: Position of the node. Increments each time it's output.
- *
- * Helper variables:
- * - $node_id: Outputs a unique id for each node.
- * - $classes: Outputs dynamic classes for advanced themeing.
- *
- * Node status variables:
- * - $teaser: Flag for the teaser state.
- * - $page: Flag for the full page state.
- * - $promote: Flag for front page promotion state.
- * - $sticky: Flags for sticky post setting.
- * - $status: Flag for published status.
- * - $comment: State of comment settings for the node.
- * - $readmore: Flags true if the teaser content of the node cannot hold the
- *   main body content.
- * - $is_front: Flags true when presented in the front page.
- * - $logged_in: Flags true when the current user is a logged-in member.
- * - $is_admin: Flags true when the current user is an administrator.
- *
- * @see template_preprocess()
- * @see template_preprocess_node()
- * @see genesis_preprocess_node()
- */
+* @file
+* Default theme implementation to display a node.
+*
+* Available variables:
+* - $title: the (sanitized) title of the node.
+* - $content: An array of node items. Use render($content) to print them all,
+* or print a subset such as render($content['field_example']). Use
+* hide($content['field_example']) to temporarily suppress the printing of a
+* given element.
+* - $user_picture: The node author's picture from user-picture.tpl.php.
+* - $date: Formatted creation date. Preprocess functions can reformat it by
+* calling format_date() with the desired parameters on the $created variable.
+* - $name: Themed username of node author output from theme_username().
+* - $node_url: Direct URL of the current node.
+* - $display_submitted: Whether submission information should be displayed.
+* - $submitted: Submission information created from $name and $date during
+* template_preprocess_node().
+* - $classes: String of classes that can be used to style contextually through
+* CSS. It can be manipulated through the variable $classes_array from
+* preprocess functions. The default values can be one or more of the
+* following:
+* - node: The current template type; for example, "theming hook".
+* - node-[type]: The current node type. For example, if the node is a
+* "Blog entry" it would result in "node-blog". Note that the machine
+* name will often be in a short form of the human readable label.
+* - node-teaser: Nodes in teaser form.
+* - node-preview: Nodes in preview mode.
+* The following are controlled through the node publishing options.
+* - node-promoted: Nodes promoted to the front page.
+* - node-sticky: Nodes ordered above other non-sticky nodes in teaser
+* listings.
+* - node-unpublished: Unpublished nodes visible only to administrators.
+* - $title_prefix (array): An array containing additional output populated by
+* modules, intended to be displayed in front of the main title tag that
+* appears in the template.
+* - $title_suffix (array): An array containing additional output populated by
+* modules, intended to be displayed after the main title tag that appears in
+* the template.
+*
+* Other variables:
+* - $node: Full node object. Contains data that may not be safe.
+* - $type: Node type; for example, story, page, blog, etc.
+* - $comment_count: Number of comments attached to the node.
+* - $uid: User ID of the node author.
+* - $created: Time the node was published formatted in Unix timestamp.
+* - $classes_array: Array of html class attribute values. It is flattened
+* into a string within the variable $classes.
+* - $zebra: Outputs either "even" or "odd". Useful for zebra striping in
+* teaser listings.
+* - $id: Position of the node. Increments each time it's output.
+*
+* Node status variables:
+* - $view_mode: View mode; for example, "full", "teaser".
+* - $teaser: Flag for the teaser state (shortcut for $view_mode == 'teaser').
+* - $page: Flag for the full page state.
+* - $promote: Flag for front page promotion state.
+* - $sticky: Flags for sticky post setting.
+* - $status: Flag for published status.
+* - $comment: State of comment settings for the node.
+* - $readmore: Flags true if the teaser content of the node cannot hold the
+* main body content.
+* - $is_front: Flags true when presented in the front page.
+* - $logged_in: Flags true when the current user is a logged-in member.
+* - $is_admin: Flags true when the current user is an administrator.
+*
+* Field variables: for each field instance attached to the node a corresponding
+* variable is defined; for example, $node->body becomes $body. When needing to
+* access a field's raw values, developers/themers are strongly encouraged to
+* use these variables. Otherwise they will have to explicitly specify the
+* desired field language; for example, $node->body['en'], thus overriding any
+* language negotiation rule that was previously applied.
+*
+* @see template_preprocess()
+* @see template_preprocess_node()
+* @see template_process()
+*
+* @ingroup themeable
+*/
 ?>
 <div id="especial-4-continguts-pane">
 	<div class="row" id="first-row">
 	<?php
-		for($i=0; $i<4; $i++) {
-			$link = $node->field_especial_contingut_4_xn[$i]['view'];
-			$content_node = node_load($node->field_especial_contingut_4_xn[$i]['nid']);
+		for($i=0; $i<4; $i++) {			
+			
+			$content_node = node_load($node->field_especial_contingut_4_xn['und'][$i]['nid']);
+			$link = url('node/' . $content_node->nid, array('absolute' => TRUE));
+			$title = $content_node->title;
+					
 			if ($i==0 || $i==3) {
-				$image = base_path().imagecache_create_path('tag-mig', $content_node->field_agenda_imatge[0]['filepath']);
+				$image = image_style_url('tag-mig', $content_node->field_agenda_imatge['und'][0]['uri']);
 				$size = 'large';
 			} else {
-				$image = base_path().imagecache_create_path('tag-petit', $content_node->field_agenda_imatge[0]['filepath']);
+				$image = image_style_url('tag-petit', $content_node->field_agenda_imatge['und'][0]['uri']);
 				$size = 'small';
 			}
-			$alt = $content_node->field_agenda_imatge[0]['data']['alt'];
-			$resum = $content_node->field_resum[0]['value'];
-			$path = base_path().$content_node->path;
+			$alt = $content_node->field_agenda_imatge['und'][0]['alt'];
+			$resum = $content_node->field_resum['und'][0]['value'];
 			
 			echo "	<div class='content content-{$size}'>
- 						<a href='{$path}'>
+ 						<a href='{$link}'>
 							<img src='{$image}' alt='{$alt}'/>
 						</a>
-						<div class='content_title'><h3>{$link}</h3></div>
+						<div class='content_title'><h3><a href=\"{$link}\">{$title}</a></h3></div>
 						<div class='content_teaser'>{$resum}</div>
  					</div>";
 			
@@ -81,26 +110,29 @@
 			if ($i==1) echo "</div><div id='clear'></div><div class='row' id='second-row'>";
 		} 
 	?>
-	</div><div id='clear'></div><div class="row" id="third-row">
+	</div><div id='clear'></div><div class="row" id="third-row">	
 		<?php
 			$i = 0;
-			if ((!empty($node->field_especial_contingut_4_a_xn[$i]['view'])) || (!empty($node->field_especial_contingut_4_a_ex[$i]['view']))) {
-				if ($node->field_especial_idioma[0]['value'] == 'en') {
+			if ((!empty($node->field_especial_contingut_4_a_xn['und'][$i])) || (!empty($node->field_especial_contingut_4_a_ex['und'][$i]))) {
+				if ($node->field_especial_idioma['und'][0]['value'] == 'en') {
 					echo '<label>Related news:</label>';
 				} else {
 					echo '<label>Altres continguts relacionats:</label>';
 				}
 			}
-			while(isset($node->field_especial_contingut_4_a_xn[$i])) {
-				echo '<div class="item">'.$node->field_especial_contingut_4_a_xn[$i]['view'].'</div>';
+			while(isset($node->field_especial_contingut_4_a_xn['und'][$i])) {
+				$link = url('node/' . $node->field_especial_contingut_4_a_xn['und'][$i]['nid'], array('absolute' => TRUE));
+				$title = $node->field_especial_contingut_4_a_xn['und'][$i]['node']->title;
+				echo '<div class="item"><a href="'.$link.'">'.$title.'</a></div>';
 				$i++;
 			}
 			$i = 0;
-			while(isset($node->field_especial_contingut_4_a_ex[$i])) {
-				echo '<div class="item">'.$node->field_especial_contingut_4_a_ex[$i]['view'].'</div>';
+			while(isset($node->field_especial_contingut_4_a_ex['und'][$i])) {
+				$link = $node->field_especial_contingut_4_a_ex['und'][$i]['url'];
+				$title = $node->field_especial_contingut_4_a_ex['und'][$i]['title'];
+				echo '<div class="item"><a href="'.$link.'">'.$title.'</a></div>';
 				$i++;
 			}
 		?>
-		</ul>
 	</div>
 </div>
