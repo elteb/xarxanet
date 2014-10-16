@@ -639,7 +639,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			</td></tr>
 		</table>	
 		<p style="font-size: 10px; text-align: justify; margin: 0">Accordingly to the article 5.2 of the Data protection Organic law 15/1999, we inform you that the personal data has been collected, incorporated and processed in an automatic computer file named “Entitats de voluntariat”, which function consists in sending your requested communications. The body responsible for the file is the General Directorate of Civic and community engagement of the Catalan government, and the address where the person or entity concerned can exercise his rights of access, rectification, cancellation or opposition is the Servei de Promoció de l’Associacionisme i el Voluntariat (Passeig del Taulat, 266-270, 08019, Barcelona). 
-		<br/>This newsletter is an initiative of the Department of Welfare and Family of the Government of Catalonia, co-edited by the Pere Tarrés Foundation. ISSN: 1138-4352</p>  
+		<br/>This newsletter is an initiative of the Department of Welfare and Family of the Government of Catalonia, co-edited by the Pere Tarrés Foundation. ISSN: 2385-4146</p>  
 	</td>
 </tr><tr>
 	<td colspan="2" style="border-top: dotted 2px #800000; border-bottom: dotted 2px #800000; font-size:1px">&nbsp;</td>
