@@ -1,7 +1,6 @@
 <?php
-// $Id: views-view-fields.tpl.php,v 1.6 2008/09/24 22:48:21 merlinofchaos Exp $
 /**
- * @file views-view-fields.tpl.php
+ * @file
  * Default simple view template to all the fields as a row.
  *
  * - $view: The view in use.
@@ -13,7 +12,12 @@
  *     var_export to dump this object, as it can't handle the recursion.
  *   - $field->inline: Whether or not the field should be inline.
  *   - $field->inline_html: either div or span based on the above flag.
+ *   - $field->wrapper_prefix: A complete wrapper containing the inline_html to use.
+ *   - $field->wrapper_suffix: The closing tag for the wrapper.
  *   - $field->separator: an optional separator that may appear before a field.
+ *   - $field->label: The wrap label text to use.
+ *   - $field->label_html: The full HTML of the label to use including
+ *     configured element type.
  * - $row: The raw result object from the query, with all data it fetched.
  *
  * @ingroup views_templates
@@ -21,9 +25,8 @@
 ?>
 
 <?php
-	$fid = $fields['field_agenda_imatge_fid']->raw;
-	$file = field_file_load($fid);
-	$fileurl = imagecache_create_url('mobile', $file['filepath']);
+	$uri = $row->field_field_agenda_imatge[0]['raw']['uri'];
+	$fileurl = image_style_url('mobile', $uri);
 	$teaser = strip_html_tags($fields['field_resum_value']->raw);
 	print "
 		<div class='item-content'>
