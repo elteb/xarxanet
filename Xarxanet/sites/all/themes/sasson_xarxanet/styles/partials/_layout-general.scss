@@ -89,7 +89,15 @@ aside#sidebar-second {
 
 #block-apachesolr-panels-search-form {
   float: right;
-  #edit-submit { display: none; }
+  .form-type-textfield { margin-top: 0.5em; }
+  .form-text { 
+    height: $ninesixty-gutter-width+$space; 
+    width: 140px;
+    background-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/boton-search.png");
+    background-position: 95% center;
+    background-repeat: no-repeat;  
+  }
+  .form-submit { display: none; }
 }
 
 /* -------- Menú --------*/

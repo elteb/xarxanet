@@ -82,6 +82,27 @@
   }
 }
 
+/* ------- Recull Documents ------- */
+.pane-recull-documents {
+  .field-item {
+    float: left;
+    font-size: 14pt;
+    padding-bottom: 0;
+    padding-left: 10px;
+    padding-right: 15px;
+    padding-top: 0;
+    width: 120px;
+  }
+  .views-field-field-recull-docs-altres a,
+  .views-field-field-recull-docs-extern a {
+    background-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+    background-position: 5px 6px;
+    background-repeat: no-repeat;
+    line-height: 1.6em;
+    padding-left: 18px;
+  }
+}
+
 
 /* ------- Blocks -------*/
 /* ------- Notícia destacada lateral ------- */

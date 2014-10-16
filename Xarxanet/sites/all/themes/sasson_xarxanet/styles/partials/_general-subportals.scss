@@ -13,10 +13,6 @@
 }
 
 /* ------- Panels ------- */
-.portada-superior-esquerra, .portada-superior-dreta {
-    margin-top: $ninesixty-gutter-width;
-}
-
 .section-recursos,
 .section-agenda,
 .section-financaments,
@@ -147,7 +143,6 @@
      display: inline;
     } 
   }
-  .region { margin-top: $ninesixty-gutter-width; }
   .views-exposed-form { display: none; }
   #biblioteca-panel {
     .views-row {
