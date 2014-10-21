@@ -104,20 +104,20 @@ iframe { max-width: 100% !important; }
 
 /******** NOTICIES IMATGE **********/
 
-.imagecache-mobile,
+.field-content img,
 .node-type-page-insert-view .item-content .image,
 .node-type-page .item-content .image { 
 	float: left;
 	margin-right: 5px;	
 }
 
-.view-recull-noticies-principal-mobil .views-field-field-recull-principal-principal-nid,
+.view-recull-noticies-principal-mobil .views-field-title-1,
 .view-recull-noticies-secundari-mobil .views-field-title,
 .view-recull-noticies-secundari-mobil .views-field-title-1,
 .view-recull-noticies-secundari-mobil .views-field-title-2,
 .view-noticies-destacades-mobil .view-header,
 .view-noticies-destacades-mobil .views-field-title,
-.view-noticies-destacades-ii-mobil .views-field-title {
+.view-noticies-destacades-II-mobil .views-field-title {
 	margin: 15px 0 3px;
 }
 
@@ -142,7 +142,7 @@ iframe { max-width: 100% !important; }
 	clear: both; 
 }
 
-.pane-recull-noticies-principal-mobil .views-field-field-resum-value,
+.pane-recull-noticies-principal-mobil .views-field-field-resum,
 .pane-recull-noticies-secundari-mobil .views-field-field-resum-value,
 .pane-recull-noticies-secundari-mobil .views-field-field-resum-value-1 {
 	margin-left: 110px;
@@ -175,9 +175,9 @@ iframe { max-width: 100% !important; }
 	padding-bottom: 10px;
 }
 
-.view-recull-noticies-principal-mobil .imagecache-mobile,
-.view-recull-noticies-secundari-mobil .imagecache-mobile,
-.view-recull-noticies-principal-mobil .views-field-field-recull-principal-principal-nid,
+.view-recull-noticies-principal-mobil img,
+.view-recull-noticies-secundari-mobil img,
+.view-recull-noticies-principal-mobil .views-field-title-1,
 .view-recull-noticies-secundari-mobil .views-field-title-1,
 .view-recull-noticies-secundari-mobil .views-field-title-2{
 	margin-left:5px;
@@ -185,24 +185,24 @@ iframe { max-width: 100% !important; }
 
 .view-noticies-destacades-mobil .view-header p { margin: 0px; }
 
-.views-field-field-recull-secundari-relaciona-url,
-.views-field-field-recull-principal-rel-url {
+.views-field-field-recull-secundari-relaciona,
+.views-field-field-recull-principal-rel {
 	margin-top: 15px
 }
 
-.views-field-field-recull-secundari-relaciona-url label,
-.views-field-field-recull-principal-rel-url label {
+.views-field-field-recull-secundari-relaciona .views-label,
+.views-field-field-recull-principal-rel .views-label     {
 	font-weight: bold;
 	margin-left: 5px;
 }
 
 /*.views-field-field-recull-secundari-relaciona-url .field-item,
 .views-field-field-recull-principal-rel-url .field-item,*/
-.views-field-field-recull-secundari-relaciona-url .field-content div,
-.views-field-field-recull-principal-rel-url .field-content div {
+.views-field-field-recull-secundari-relaciona .field-content div,
+.views-field-field-recull-principal-rel .field-content div {
 	margin: 5px;
-	padding-left: 15px;
-	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style.png") no-repeat scroll 0 5 rgba(0, 0, 0, 0);
+	padding-left: 8px;
+	list-style-image: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style.png");
 }
 
 /************ BLOCS *************/
@@ -225,9 +225,12 @@ iframe { max-width: 100% !important; }
 .pane-block .view { clear: both; }
 .pane-block .views-row { padding: 5px; }
 
-#bloc-financaments { margin-top: 20px; }
+#bloc-financaments,
+#bloc-cursos,
+#bloc-actes { margin-top: 20px; }
+
 #bloc-financaments .view-content { background-color: #FDE3CF; }
-#bloc-financaments .views-field-field-date-value2 {
+#bloc-financaments .views-field-field-date {
 	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/timer-orange.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 	padding-left: 18px;
 }
@@ -239,7 +242,7 @@ iframe { max-width: 100% !important; }
 }
 
 #bloc-cursos .view-content { background-color: #F2F2E4; }
-#bloc-cursos .views-field-field-date-event-value {
+#bloc-cursos .views-field-field-date-event{
 	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/timer.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 	padding-left: 18px;
 }
@@ -249,7 +252,7 @@ iframe { max-width: 100% !important; }
 }
 
 #bloc-actes .view-content { background-color: #EAECCB; }
-#bloc-actes .views-field-field-date-event-value {
+#bloc-actes .views-field-field-date-event {
 	background: url("/sites/all/themes/mobile_xarxanet/images/pictos/timer.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 	padding-left: 18px;
 }

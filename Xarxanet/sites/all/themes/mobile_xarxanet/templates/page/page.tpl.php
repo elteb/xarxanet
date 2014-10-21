@@ -88,7 +88,7 @@
 	<head>
 		<meta name="HandheldFriendly" content="true" />
 		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
-		<title><?php print $head_title; ?></title>
+		<title><?php print $title; ?></title>
 		<?php print $styles; ?>
 		<link rel="apple-touch-icon-precomposed" href="/<?php print path_to_theme()?>/images/icon-xarxanet.jpg" />
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -139,7 +139,11 @@
 		-->
 		<div id="content">
 			<div class="page-title"><?php print $title; ?></div> 
-			<?php print $content; ?>
+			<?php
+				/*print_r($page['content']['system_main']['nodes'][163]); die();
+				print $page['content']['system_main']['main']['#markup'];*/
+				print render($page['content']);
+			?>
 		</div>
 		<div id="footer">
 			<div id="first-line">

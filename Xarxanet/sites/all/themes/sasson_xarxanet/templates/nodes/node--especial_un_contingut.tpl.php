@@ -136,6 +136,22 @@
 				echo "<div class='item'><a href='{$url}'>{$title}</a></div>";
 				$i++;
 			}
+			$wrapper = entity_metadata_wrapper('node', $node);
+			foreach ($wrapper->field_especial_bloc_links as $linkblock){
+				echo '<label>'.$linkblock->field_links_titol->value().'</label>';
+				foreach ($linkblock->field_links_xarxanet as $link_xn) {
+					$link = $link_xn->value();
+					$title = $link->title;
+					$url = url('node/' . $link->nid, array('absolute' => TRUE));
+					echo "<div class='item'><a href='{$url}'>{$title}</a></div>";
+				}
+				foreach ($linkblock->field_links_externs as $link_ex) {
+					$link = $link_ex->value();
+					$title = $link['title'];
+					$url = $link['url'];
+					echo "<div class='item'><a href='{$url}'>{$title}</a></div>";
+				}
+			}
 		?>
 		</ul>
 	</div>

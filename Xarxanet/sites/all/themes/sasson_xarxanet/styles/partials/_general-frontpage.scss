@@ -93,6 +93,10 @@
     padding-top: 0;
     width: 120px;
   }
+  .field-content img { 
+    height: auto !important;
+    width: 110px !important;
+  }
   .views-field-field-recull-docs-altres a,
   .views-field-field-recull-docs-extern a {
     background-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");

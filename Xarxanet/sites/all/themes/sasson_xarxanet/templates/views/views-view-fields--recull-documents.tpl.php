@@ -28,7 +28,7 @@ $keys = array('','_1','_2','_3');
 foreach ($keys as $key) {
 	$fieldkey = 'field_doc_imatge'.$key;
 	$img = $fields[$fieldkey]->content;
-	$img = str_replace('src', 'width="110px" src', $img);
+	//$img = str_replace('src', 'width="110px" src', $img);
 	$imgs[] = $img;
 } 
 
