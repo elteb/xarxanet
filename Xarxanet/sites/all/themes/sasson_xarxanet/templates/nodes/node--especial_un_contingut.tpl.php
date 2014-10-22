@@ -136,6 +136,9 @@
 				echo "<div class='item'><a href='{$url}'>{$title}</a></div>";
 				$i++;
 			}
+			if ($node->field_especial_subtitol['und'][0]['value'] != '') {
+				echo '<h3 class="subtitle">'.$node->field_especial_subtitol['und'][0]['value'].'</h3>';
+			}
 			$wrapper = entity_metadata_wrapper('node', $node);
 			foreach ($wrapper->field_especial_bloc_links as $linkblock){
 				echo '<label>'.$linkblock->field_links_titol->value().'</label>';
