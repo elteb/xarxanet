@@ -24,38 +24,45 @@
  */
 ?>
 
-<?php
-	$fid = $fields['field_agenda_imatge_fid']->raw;
-	if ($fid == "") $fid = $fields['field_agenda_imatge_fid_1']->raw;
-	if ($fid == "") $fid = $fields['field_agenda_imatge_fid_2']->raw;
-	$file = field_file_load($fid);
-	$fileurl = imagecache_create_url('mobile', $file['filepath']);
-	$teaser = strip_html_tags($fields['field_resum_value']->raw);
+<?php	
+	$uri = $row->field_field_agenda_imatge[0]['raw']['uri'];
+	$fileurl = image_style_url('mobile', $uri);
+	$teaser = strip_html_tags($fields['field_resum']->content);
 	
-	$date_event_fecha = substr($fields['field_date_event_value']->content,0, -8);
-	$date_event_hora = substr($fields['field_date_event_value']->content, -5);
-	$data_inici = ($date_event_fecha != "" && $date_event_hora !="") ? ($date_event_fecha.", ".$date_event_hora) : "";
-
-	$date_event_fecha = substr($fields['field_date_event_value2']->content,0, -8);
-	$date_event_hora = substr($fields['field_date_event_value2']->content, -5);
-	$data_fi = ($date_event_fecha != "" && $date_event_hora !="") ? ($date_event_fecha.", ".$date_event_hora) : "";
+	$startdate = strip_tags($fields['field_date_event']->content);
+	$enddate = strip_tags($fields['field_date_event_1']->content);
 	
 	$clock = path_to_theme().'/images/pictos/timer.png';
-		
+			
 	print "
 		<div class='item-content'>
 			<div class='title'>{$fields['title']->content}</div> ";
 	
-	if ($data_inici != '' && $data_fi != '') {
-		print " <div class='data'>
+	if ($startdate) {
+		$date_event_fecha = substr($startdate,0, -7);
+		$date_event_hora = substr($startdate, -5);
+		$data_inici = ($date_event_fecha != "" && $date_event_hora !="") ? ($date_event_fecha.", ".$date_event_hora) : "";
+		
+		$date_event_fecha = substr($enddate,0, -7);
+		$date_event_hora = substr($enddate, -5);
+		$data_fi = ($date_event_fecha != "" && $date_event_hora !="") ? ($date_event_fecha.", ".$date_event_hora) : "";
+		
+		if ($data_inici != '' && $data_fi != '') {
+			print " <div class='data'>
 				<div id='clock'><img src='/{$clock}' alt='timer' /></div>
 				<div id='text'><b>Inici: </b>{$data_inici} - <b>Fi: </b>{$data_fi}</div>
 				</div>";
+		} else {
+			print " <div class='data'>
+				<div id='clock'><img src='/{$clock}' alt='timer' /></div>
+				<div id='text'><b>Inici: </b>{$data_inici}</div>
+				</div>";
+		}
 	}
 			
 	print "	<div class='image'>
 				<a href='{$fields['path']->content}'>
-					<img src='$fileurl' alt='imatge de {$fields['title']->raw}'/>
+					<img src='$fileurl' alt='imatge de {$fields['title']->value}'/>
 				</a>
 			</div>
 			<div class='teaser'>{$teaser}</div>

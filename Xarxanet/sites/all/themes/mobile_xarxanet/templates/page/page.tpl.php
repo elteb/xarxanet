@@ -140,8 +140,6 @@
 		<div id="content">
 			<div class="page-title"><?php print $title; ?></div> 
 			<?php
-				/*print_r($page['content']['system_main']['nodes'][163]); die();
-				print $page['content']['system_main']['main']['#markup'];*/
 				print render($page['content']);
 			?>
 		</div>

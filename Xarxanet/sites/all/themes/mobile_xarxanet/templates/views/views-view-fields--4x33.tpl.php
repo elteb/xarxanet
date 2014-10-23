@@ -27,13 +27,13 @@
 <?php
 	$uri = $row->field_field_agenda_imatge[0]['raw']['uri'];
 	$fileurl = image_style_url('mobile', $uri);
-	$teaser = strip_html_tags($fields['field_resum_value']->raw);
+	$teaser = strip_html_tags($fields['field_resum']->content);
 	print "
 		<div class='item-content'>
 			<div class='title'>{$fields['title']->content}</div>
 			<div class='image'>
 				<a href='{$fields['path']->content}'>
-					<img src='$fileurl' alt='imatge de {$fields['title']->raw}'/>
+					<img src='$fileurl' alt='imatge de {$fields['title']->content}'/>
 				</a>
 			</div>
 			<div class='teaser'>{$teaser}</div>

@@ -108,6 +108,7 @@ function sasson_xarxanet_preprocess_node(&$variables) {
 						'noticia_internacional_cat',
 						'noticia_internacional_esp',
 						'noticia_en_angles',
+						'noticia_oculta'
 						);
 	$recursos = array(	'recurs_economic',
 						'recurs_formacio',
