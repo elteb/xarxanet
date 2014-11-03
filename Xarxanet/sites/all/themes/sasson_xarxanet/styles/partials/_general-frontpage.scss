@@ -107,6 +107,18 @@
   }
 }
 
+/* ------- Slideshow Destacats ------- */
+.pane-destacats {
+  background: $main-3;
+  .views-field-field-destacat-text {
+    padding: 0 $space;
+    @include title2;
+  }
+  .ui-slider-range {
+    background: $main-2;
+  }
+}
+
 
 /* ------- Blocks -------*/
 /* ------- Notícia destacada lateral ------- */

@@ -93,3 +93,24 @@
     width: $column * 2;
   }
 }
+
+/* ------- Slideshow Destacats ------- */
+.pane-destacats {
+  float: left;
+  .views-slideshow-cycle-main-frame, .views-slideshow-cycle-main-frame-row {
+    @include grid-width(6);
+    z-index: 0;
+  }
+  .views-field-field-destacat-imatge {
+    float: left;
+    img {
+      @include grid-width(4); 
+    }
+  }
+  .views-field-field-destacat-text {
+    float: left;
+    a p {
+      @include grid-width(2); 
+    }
+  }
+}

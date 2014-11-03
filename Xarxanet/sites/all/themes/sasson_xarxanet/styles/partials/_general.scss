@@ -189,6 +189,11 @@ h1.title { float: left; }
       padding: $space;
     }
   }
+  &.banners {
+    .content {
+      background-color: white;
+    }
+  }
   margin-bottom: $ninesixty-gutter-width;
 }
 /* -------- Últims finançaments ------- */

@@ -20,6 +20,9 @@
  	#player {
  		@include grid-width(5);
  	}
+ 	iframe {
+    width: 464px !important;
+  }
  	float: left;
  	margin-left: $space;
  }
