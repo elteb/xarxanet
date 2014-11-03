@@ -143,7 +143,7 @@
                     <ul class="links tags" role="navigation">
                     <?php
 						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {;
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						} 
+						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						} 
                     ?>
                     </ul>
                 </div>
