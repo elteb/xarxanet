@@ -20,5 +20,13 @@
 			}
 		}
 	};
+	
+	Drupal.behaviors.mobileTheme = {
+		attach: function (context, settings) {
+			if ($.cookie('device-theme') == 'desktop' ){
+				$(".mbil").show();
+			}
+		}
+	};
 
 })(jQuery);

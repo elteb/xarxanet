@@ -33,6 +33,12 @@
     li.print_mail { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/mail.png"); }
     li.print_pdf { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/pdf-version.png"); }
   }
+  .node-files {
+    @include node-box;
+    h2 { @include node-title('fitxers'); } 
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+    line-height: 1.8em;
+  }
  }
  
  .node-content {

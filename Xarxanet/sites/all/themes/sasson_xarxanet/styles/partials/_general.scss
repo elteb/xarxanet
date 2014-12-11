@@ -73,8 +73,12 @@ blockquote {
       color: white;     
      } 
     }
-    .first { @include menu-link-bg($main-1, $general, 'newsletters', 'newsletters'); }
-    .last { @include menu-link-bg($main-1, $general, 'login', 'login'); }
+    .butlletins { @include menu-link-bg($main-1, $general, 'newsletters', 'newsletters'); }
+    .accedeix { @include menu-link-bg($main-1, $general, 'login', 'login'); }
+    .mbil {
+      display: none;
+      @include menu-link-bg($main-1, $general, 'mobile', 'mobile');
+    }
   }
 }
 
@@ -189,6 +193,9 @@ h1.title { float: left; }
       padding: $space;
     }
   }
+  #more-others {
+    float: none;
+  }
   &.banners {
     .content {
       background-color: white;
@@ -204,6 +211,9 @@ h1.title { float: left; }
   }
   .more {
      @include more-title; 
+  }
+  .content {
+    background-color: $financament-sec;
   }
   .view {
     @include block-body;
@@ -239,6 +249,9 @@ h1.title { float: left; }
   }
   .more {
      @include more-title; 
+  }
+  .content {
+    background-color: $actes-sec;
   }
   .view {
     @include block-body;
@@ -276,6 +289,9 @@ h1.title { float: left; }
   .more {
      @include more-title; 
   }
+  .content {
+    background-color: $cursos-sec;
+  }
   .view {
     @include block-body;
     background-color: $cursos-sec;
@@ -298,6 +314,9 @@ h1.title { float: left; }
   }
   .more {
      @include more-title; 
+  }
+  .content {
+    background-color: $recursos-sec;
   }
   .view {
     @include block-body;

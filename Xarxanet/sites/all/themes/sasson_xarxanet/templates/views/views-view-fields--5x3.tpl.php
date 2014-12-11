@@ -35,7 +35,7 @@
 
 <?php
 	$rawImatge = $fields['field_agenda_imatge']->content;
-	if ($rawImatge == "") $rawImatge = "<a href='" . $fields ['path']->content . "'>" . theme ( 'imagecache', 'tag-petit', 'no-image.jpg', 'just a test image', 'test image' ) . "</a>";
+	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . $fields ['path']->content . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	
 	print $rawImatge;
 	print sasson_xarxanet_get_label($fields['type']->raw, $fields['path']->raw);

@@ -88,7 +88,9 @@
 			$imatge = $node->field_agenda_imatge['und'][0];
 			if(!empty($imatge)) {
 				echo '	<div class="node-image">
-					<img src="'.file_create_url($imatge['uri']).'" alt="'.$imatge['alt'].'"/>
+						<a href="'.file_create_url($imatge['uri']).'" rel="lightbox" title="'.$imatge['alt'].'">'.
+							theme_image_style (array('style_name' => 'imatge-article', 'path' => $imatge['uri'], 'title' => $imatge['alt'], 'alt' => $imatge['alt'])).
+						'</a>
                 	</div>';
 			}
             

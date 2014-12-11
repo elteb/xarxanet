@@ -39,7 +39,10 @@
 .panels-flexible-region-portada-right_blocks_2,
 .panels-flexible-region-portada-right_blocks_3 {
 	@include grid-width(2);
-	padding-left: $space;
+	padding: 0 $space;
+	.panels-flexible-region-inside {
+	  padding: 0;
+	}
 }
 
 /* ------- Notícia destacada principal ------- */

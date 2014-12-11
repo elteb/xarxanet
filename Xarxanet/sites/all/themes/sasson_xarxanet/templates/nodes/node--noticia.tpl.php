@@ -90,7 +90,9 @@
 						<?php foreach($node->field_imatges['und'] as $imatge): ?>
                             <li>
 							  <?php 
-							  echo '<img src="'.file_create_url($imatge['uri']).'" alt="'.$imatge['alt'].'"/>';
+							  echo '<a href="'.file_create_url($imatge['uri']).'" rel="lightbox" title="'.$imatge['alt'].'">'.
+								theme_image_style (array('style_name' => 'imatge-article', 'path' => $imatge['uri'], 'title' => $imatge['alt'], 'alt' => $imatge['alt'])).
+								'</a>';
 							  if ($imatge['alt']) {
                                 echo '<div class="legend"><p>'.$imatge['alt'].'</p></div>';
                               } ?>
@@ -106,14 +108,30 @@
                     <h2>Tags</h2>
                     <ul class="links tags" role="navigation">
                     <?php
-						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {;
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						} 
+						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {
+						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						
+						} 
                     ?>
                     </ul>
                 </div>
             <?php endif; ?>
-		
-
+            
+            <?php 
+				if (!empty($node->field_file['und'])): ?>
+					<div class="node-files">
+                    	<h2>Fitxers relacionats</h2>
+                    	<ul class="links tags" role="navigation">
+                    	<?php
+						foreach($node->field_file['und'] as $file) {
+						    echo '<li>'.l( $file['filename'], file_create_url($file['uri'])).'</li>';						
+						} 
+                    	?>
+                    	</ul>
+                    </div>
+				<?php 
+				endif;
+           ?>
+            
 		<?php 		
 			if($node->print_display || $node->print_mail_display || $node->print_pdf_display) {
 				echo '

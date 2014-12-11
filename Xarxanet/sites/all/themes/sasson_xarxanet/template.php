@@ -137,3 +137,10 @@ function sasson_xarxanet_preprocess_node(&$variables) {
 		}
 	}
 }
+
+/**
+ * Implements template_preprocess_page().
+ */
+function sasson_xarxanet_preprocess_page(&$vars) {
+	drupal_add_library('system', 'jquery.cookie');
+}

@@ -407,7 +407,12 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 					$data = strtotime($form_xn->field_date_event['und'][0]['value']);
 					$data = $dies[date('N', $data)-1].', '.date('j', $data).' '.$mesos[date('n', $data)-1].' de '.date('Y', $data);
 				}
-				if ($form_xn->location['name']) $location = $form_xn->location['name'].', '.$location; 							
+				if ($form_xn->location['name']) {
+					$location = $form_xn->location['name'];
+					if ($location != 'Curs en línia') {
+						$location .= ', '.$form_xn->location['city'];
+					}
+				} 							
 				$lloc = ($form->field_abast_formacions_lloc->value()) ? $form->field_abast_formacions_lloc->value() : $location;
 				$entitat = ($form->field_abast_formacions_entitat->value()) ? $form->field_abast_formacions_entitat->value() : $form_xn->field_organizer['und'][0]['value'];				
 				echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';

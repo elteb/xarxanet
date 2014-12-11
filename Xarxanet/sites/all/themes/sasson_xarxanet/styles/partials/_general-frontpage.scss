@@ -156,6 +156,28 @@
   }
 }
 
+/* -------- Òrbita Xarxanet ------- */
+.pane-aggregator-category-1 {
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/orbita.png") $financament 10px no-repeat;
+  }
+  .pane-content {
+    background-color: $financament-sec;
+    clear: both;
+    padding-bottom: $space;
+  }
+  ul {
+    padding-left: $space;
+  }
+  li {
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style-orange.png");
+    line-height: 1.8em;
+    padding-top: $space !important;
+  }
+  .more-link { display: none; }
+}
+
 /* -------- Entitats promotores -------- */
 #block-block-52 {
   margin-bottom: $ninesixty-gutter-width;

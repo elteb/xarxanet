@@ -136,7 +136,8 @@
 
 /* ------- Biblioteca ------- */
 .section-biblioteca,
-.section-biblioteca-filtre {
+.section-biblioteca-filtre,
+.section-biblioteca-cerca {
   form {
     margin-bottom: $ninesixty-gutter-width;
     .form-item, .form-actions {
@@ -151,6 +152,7 @@
       tbody { border: none; } 
     }
     .biblioteca-document {
+      border-collapse: separate;
       .text { padding: 0 $space; }
       .image img {
         @include grid-width(1.5);

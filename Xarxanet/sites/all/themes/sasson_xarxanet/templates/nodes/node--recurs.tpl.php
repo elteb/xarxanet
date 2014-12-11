@@ -90,7 +90,9 @@
 						<?php foreach($node->field_imatges['und'] as $imatge): ?>
                             <li>
 							  <?php 
-							  echo '<img src="'.file_create_url($imatge['uri']).'" alt="'.$imatge['alt'].'"/>';
+							  echo '<a href="'.file_create_url($imatge['uri']).'" rel="lightbox" title="'.$imatge['alt'].'">'.
+								theme_image_style (array('style_name' => 'imatge-article', 'path' => $imatge['uri'], 'title' => $imatge['alt'], 'alt' => $imatge['alt'])).
+								'</a>';
 							  if ($imatge['alt']) {
                                 echo '<div class="legend"><p>'.$imatge['alt'].'</p></div>';
                               } ?>
