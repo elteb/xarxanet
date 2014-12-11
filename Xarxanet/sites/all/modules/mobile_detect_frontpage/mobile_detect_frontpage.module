@@ -8,7 +8,13 @@ function mobile_detect_frontpage_init() {
 		$is_mobile = $detect->isMobile();
 		$is_tablet = $detect->isTablet();
 		if ($is_mobile || $is_tablet) {
-      		drupal_goto('mobile-frontpage');
+			if (!isset($_COOKIE['device-theme'])) {
+				drupal_goto('mobile-frontpage');
+			} else {
+				if ($_COOKIE['device-theme'] == 'mobile') {
+					drupal_goto('mobile-frontpage');
+				}	
+			}
 		}
     }
 }
