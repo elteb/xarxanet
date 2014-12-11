@@ -38,6 +38,17 @@ function simplenews_add_node_to_spool($node) {
 	
 	// Notify other modules that a newsletter was just spooled.
 	module_invoke_all ( 'simplenews_spooled', $node );
+	
+	/*****************************************
+	* TEBPATCH (ADD) @fcasanellas 03/12/2014
+	* #XN-SN002 Trigger d'enviament
+	* NEWCODE ******************************/
+	$actions = trigger_get_assigned_actions('simplenews_send');
+	$actions = array_keys($actions);
+	$context = array('node' => $node, 'group' => 'simplenews', 'hook' => 'simplenews');
+	actions_do($actions, $node, $context);
+	/*****************************************
+	 * END TEBPATCH *************************/
 }
 
 /**

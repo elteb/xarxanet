@@ -3101,3 +3101,25 @@ function simplenews_confirmation_get_changes_list($subscriber, &$changes = NULL,
 	}
 	return $changes_list;
 }
+
+
+/*****************************************
+ * TEBPATCH (ADD) @fcasanellas 03/12/2014
+ * #XN-SN002 Trigger d'enviament
+ * NEWCODE ******************************/
+/**
+ * Implements hook_trigger_info()
+ */
+function simplenews_trigger_info() {
+	return array (
+		'simplenews' => array (
+			'simplenews_send' => array (
+				'label' => t('When a newsletter issue is send')
+			)
+		)
+	);
+}
+/*****************************************
+ * END TEBPATCH *************************/
+
+

@@ -145,7 +145,7 @@
 		</div>
 		<div id="footer">
 			<div id="first-line">
-				<a id="classica" href="http://www.xarxanet.org?device=desktop">Mostra la pàgina clàssica</a>
+				<a id="classica" href="/mobile-switcher/desktop">Mostra la pàgina clàssica</a>
 				<a id="top" href="#header">Torna a dalt</a>
 				<div id="nothing"></div>
 			</div>
