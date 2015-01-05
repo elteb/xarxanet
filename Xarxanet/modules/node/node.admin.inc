@@ -73,6 +73,9 @@ function node_node_operations() {
 /**
  * List node administration filters that can be applied.
  *
+ * Modules can add or modify filters by implementing hook_node_admin_filters()
+ * or hook_node_admin_filters_alter().
+ *
  * @return
  *   An associative array of filters.
  */
@@ -115,11 +118,19 @@ function node_filters() {
       ) + $languages,
     );
   }
+
+  $filters += module_invoke_all('node_admin_filters');
+  drupal_alter('node_admin_filters', $filters);
+
   return $filters;
 }
 
 /**
  * Applies filters for node administration filters based on session.
+ *
+ * Modules may further modify the query (for instance, when adding custom
+ * filters via hook_node_admin_filters()) by implementing
+ * hook_node_admin_filter_query_alter().
  *
  * @param $query
  *   A SelectQuery to which the filters should be applied.
@@ -139,10 +150,15 @@ function node_build_filter_query(SelectQueryInterface $query) {
         break;
     }
   }
+  drupal_alter('node_admin_filter_query', $query, $filter_data);
 }
 
 /**
  * Returns the node administration filters form array to node_admin_content().
+ *
+ * Modules that implement hook_node_admin_filters() should specify a
+ * "single_value" flag on any filter that allows only one value.  Otherwise,
+ * the filter will not be hidden after a user selects a value.
  *
  * @see node_admin_nodes()
  * @see node_admin_nodes_submit()
@@ -183,7 +199,8 @@ function node_filter_form() {
     else {
       $form['filters']['current'][] = array('#markup' => t('where %property is %value', $t_args));
     }
-    if (in_array($type, array('type', 'language'))) {
+
+    if (in_array($type, array('type', 'language')) || !empty($filters[$type]['single_value'])) {
       // Remove the option if it is already being filtered on.
       unset($filters[$type]);
     }
