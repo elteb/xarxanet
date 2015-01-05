@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * Implementation of hook_node_admin_filters().
+ * Returns extra filter option at admin/content/node to filter on every page.
+ */
+function improved_content_overview_node_admin_filters() {
+	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();
+	$filters = array();
+	
+	//Role Filter
+	$all_roles = array('[any]' => t('any')) + user_roles();
+	$filters['role'] = array('title' => t('role'), 'options' => $all_roles	);
+	
+	//User Filter of selected roles
+	$roles = array();
+	foreach ($filter_data as $filter) {
+		if ($filter[0] == 'role') {
+			$roles[] = $filter[1];
+		}
+	}
+	if (!empty($roles)) {
+		$users = array();
+		$query = 'SELECT DISTINCT(ur.uid) FROM {users_roles} AS ur WHERE ur.rid IN (:rids)';
+		$result = db_query($query, array(':rids' => $roles));
+		foreach ($result as $row) {
+			$user = user_load($row->uid);
+			$users[$user->uid] = $user->name;
+		}
+		asort($users);
+		$users = array('[any]' => t('any')) + $users;
+		$filters['user'] = array('title' => t('user'), 'options' => $users	);
+	}
+	
+	return $filters;
+}
+
+/**
+ * Implementation of hook_node_admin_filter_query_alter().
+ */
+function improved_content_overview_node_admin_filter_query_alter(SelectQueryInterface $query) {
+	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();
+	foreach ($filter_data as $index => $filter) {
+		list($key, $value) = $filter;
+		switch ($key) {
+			case 'role':
+				break;
+			case 'user':
+				$query->condition('n.' . 'uid', $value);
+				break;
+		}
+	}
+}
