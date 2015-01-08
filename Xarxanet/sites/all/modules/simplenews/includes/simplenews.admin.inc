@@ -186,9 +186,16 @@ function simplenews_admin_issues() {
 			'nid',
 			'title',
 			'created',
-			'status' 
+			'status'
 	) )->fields ( 'sn', array (
-			'tid' 
+			'tid',
+			/****************************************
+			 * TEBPATCH (ADD) @fcasanellas 08/01/15
+			* XN-SN010 Mostra el valor de sent_subscriber_count a admin/content/simplenews
+			* NEWCODE *****************************/
+			'sent_subscriber_count',
+			/****************************************
+			 * END TEBPATCH	************************/
 	) )->fields ( 't', array (
 			'name' 
 	) )->limit ( 30 )->orderByHeader ( $header );
@@ -200,7 +207,16 @@ function simplenews_admin_issues() {
 	module_load_include ( 'inc', 'simplenews', 'includes/simplenews.mail' );
 	foreach ( $query->execute () as $issue ) {
 		$categories = simplenews_category_list ();
+		/****************************************
+		 * TEBPATCH (MDF) @fcasanellas 08/01/15
+		 * XN-SN010 Mostra el valor de sent_subscriber_count a admin/content/simplenews
+		 * OLDCODE ******************************
 		$subscriber_count = simplenews_count_subscriptions ( $issue->tid );
+		/****************************************
+		 * NEWCODE *****************************/
+		$subscriber_count = $issue->sent_subscriber_count;
+		/****************************************
+		 * END TEBPATCH ************************/
 		$pending_count = simplenews_count_spool ( array (
 				'nid' => $issue->nid 
 		) );
