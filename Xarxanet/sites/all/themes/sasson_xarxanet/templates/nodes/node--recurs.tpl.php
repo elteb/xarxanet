@@ -116,16 +116,16 @@
             <?php endif; ?>
 			
 			<?php if($field_links):?>
-				<div class="node-terms">
-				<h2>Enllaços relacionats</h2>
-				<ul class="linksrelacionats">
-				<?php
-					/* --------- TODO: per algun motiu no carrega els links --------------*/
-					foreach($node->field_links['und'] as $enllac): ?>
-					<li><?php print ($enllac['view']);?></li>
-				<?php endforeach;?>
-				</ul>
-				</div>
+				<?php if($field_links[0]['url'] != ''): ?>
+					<div class="node-terms">
+					<h2>Enllaços relacionats</h2>
+					<ul class="linksrelacionats">
+					<?php foreach($field_links as $enllac): ?>
+						<li><?php print '<a href="'.$enllac['url'].'">'.$enllac['title'].'</a>' ?></li>
+					<?php endforeach; ?>
+					</ul>
+					</div>
+				<?php endif; ?>
 			<?php endif; ?>
 		
 
