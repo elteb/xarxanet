@@ -451,7 +451,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 			</td></tr>
 			<tr><td style="vertical-align:top; padding-left:10px; padding-top:15px">
 				<table class="butlleti"><tr><td>
-					<a href="http://www.gencat.cat/benestar" style="text-decoration:none">
+					<a href="http://benestar.gencat.cat" style="text-decoration:none">
 						<img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png">
 					</a>
 				</td></tr><tr><td style="height: 55px; vertical-align: bottom;">

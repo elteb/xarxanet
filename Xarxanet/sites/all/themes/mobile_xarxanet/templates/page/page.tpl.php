@@ -164,7 +164,7 @@
 			<div id="third-line">
 				<span>Xarxanet.org és un projecte de:</span>
 				<div class="logo-gene">
-					<a href="http://www.gencat.cat/benestar">
+					<a href="http://benestar.gencat.cat">
 						<img src="/<?php print path_to_theme()?>/images/logo-generalitat.png" alt="Logo Benestar Social i Família" />
 					</a>
 				</div>
