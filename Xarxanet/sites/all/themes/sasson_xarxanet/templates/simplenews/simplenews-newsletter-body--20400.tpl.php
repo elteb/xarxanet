@@ -631,7 +631,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	<td td colspan="2">
 		<table class="butlleti" cellspacing="10">
 			<tr><td>	
-				<a href="http://www20.gencat.cat/portal/site/bsf" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_benestarSocial.jpg" alt="logo benestar i familia" height="32" style="display: inline; border:0 none;"/></a>
+				<a href="http://benestar.gencat.cat" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_benestarSocial.jpg" alt="logo benestar i familia" height="32" style="display: inline; border:0 none;"/></a>
 			</td><td>
 				<a href="http://www.peretarres.org" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_FPT.jpg" alt="logo fundacio pere tarres" height="32" style="display: inline; border:0 none;"/></a>
 			</td><td>

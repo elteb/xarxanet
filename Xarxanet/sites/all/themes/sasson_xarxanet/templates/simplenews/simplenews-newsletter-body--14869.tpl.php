@@ -318,7 +318,7 @@ ksort($financ_nodes);
 			</td></tr>
 			<tr><td style="vertical-align:top; padding-left:10px; padding-top:15px">
 				<table><tr><td>
-					<a href="http://www.gencat.cat/benestar" style="text-decoration:none"><img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png" style="border: 0 none"></a>
+					<a href="http://benestar.gencat.cat" style="text-decoration:none"><img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png" style="border: 0 none"></a>
 				</td></tr><tr><td style="padding-top: 45px;">
 					<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca" rel="license"><img style="border:0 none;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/80x15.png" alt="Licencia de Creative Commons"></a>
 				</td></tr></table>

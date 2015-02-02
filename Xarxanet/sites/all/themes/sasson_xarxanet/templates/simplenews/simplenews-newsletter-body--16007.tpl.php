@@ -265,36 +265,47 @@ $node = $build['#node'];
 	<?php }?>
 	
 	<!-- DESTACAT LATERAL SUPERIOR -->
-	<?php if ($node->field_actualitat_lat_sup_noti['und'][0]['nid'] != '') {
-		$news_node = node_load($node->field_actualitat_lat_sup_noti['und'][0]['nid']);
-		$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
-		$img = image_style_url('financ-petit', $news_node->field_agenda_imatge['und'][0]['uri']);
-		$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
-		$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-		echo "<table cellspacing='0px' style='width: 265px; margin-top: 20px; background-color: #ECEFF0; font-family: Arial, Helvetica; font-size: 13px; border-collapse: collapse;'><tr>";
-		
-		if ($node->field_actualitat_lat_sup_epigraf['und'][0]['value'] != '') {
-			echo "<td style='background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_sup_epigraf['und'][0]['value']}</td>";
-		} 
-		echo "</tr><tr><td style='padding: 0;'>
-			<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
-			</td></tr><tr><td style='padding: 10px 5px;'>
-			<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$news_node->title}</a>
-			<p style='padding-top: 5px; margin: 2px 0; padding-bottom: 10px;'>{$teaser}</p>";
-		if ($node->field_actualitat_lat_sup_rel['und'][0]['nid'] != '') {
-			echo '<b>Altres informacions relacionades</b>
-			<table style="font-family: Arial, Helvetica; font-size: 13px; border-collapse: collapse;">';
-			foreach ($node->field_actualitat_lat_sup_rel['und'] as $rel) {
-				$news_node = node_load($rel['nid']);
+	<?php 
+	if (($node->field_actualitat_lat_sup_noti['und'][0]['nid'] != '') || ($node->field_actualitat_lat_sup_noti_e['und'][0]['url'] != '')) {
+			if ($node->field_actualitat_lat_sup_noti['und'][0]['nid'] != '') {
+				$news_node = node_load($node->field_actualitat_lat_sup_noti['und'][0]['nid']);
+				$title = $news_node->title;
+				$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
+				$img = image_style_url('financ-petit', $news_node->field_agenda_imatge['und'][0]['uri']);
+				$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
 				$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-				echo "<tr><td style='padding: 0 5px; vertical-align: top;'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
-				<td style='padding: 2px;'><a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
-				</tr>";
+			} else {
+				$title = $node->field_actualitat_lat_sup_noti_e['und'][0]['title'];
+				$url = $node->field_actualitat_lat_sup_noti_e['und'][0]['url'];
+				$teaser = $node->field_actualitat_lat_sup_teas_e['und'][0]['value'];
+				$img = file_create_url($node->field_actualitat_lat_sup_img_e['und'][0]['uri']);
+				$alt = $node->field_actualitat_lat_sup_img_e['und'][0]['alt'];
 			}
-			echo '</table>';
-		}
-		echo "</td></tr></table>";
-	 }?>
+			echo "<table cellspacing='0px' style='width: 265px; margin-top: 20px; background-color: #ECEFF0; font-family: Arial, Helvetica; font-size: 13px; border-collapse: collapse;'><tr>";
+			
+			if ($node->field_actualitat_lat_sup_epigraf['und'][0]['value'] != '') {
+				echo "<td style='background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_sup_epigraf['und'][0]['value']}</td>";
+			} 
+			echo "</tr><tr><td style='padding: 0;'>
+				<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
+				</td></tr><tr><td style='padding: 10px 5px;'>
+				<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$title}</a>
+				<p style='padding-top: 5px; margin: 2px 0; padding-bottom: 10px;'>{$teaser}</p>";
+			if ($node->field_actualitat_lat_sup_rel['und'][0]['nid'] != '') {
+				echo '<b>Altres informacions relacionades</b>
+				<table style="font-family: Arial, Helvetica; font-size: 13px; border-collapse: collapse;">';
+				foreach ($node->field_actualitat_lat_sup_rel['und'] as $rel) {
+					$news_node = node_load($rel['nid']);
+					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
+					echo "<tr><td style='padding: 0 5px; vertical-align: top;'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+					<td style='padding: 2px;'><a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
+					</tr>";
+				}
+				echo '</table>';
+			}
+			echo "</td></tr></table>";
+	 	}
+	 ?>
 	
 	
 	<!-- FINANÇAMENTS -->
@@ -345,24 +356,35 @@ $node = $build['#node'];
 	</table>
 	
 	<!-- DESTACAT LATERAL INFERIOR -->
-	<?php if ($node->field_actualitat_lat_inf_noticia['und'][0]['nid'] != '') {
-		$news_node = node_load($node->field_actualitat_lat_inf_noticia['und'][0]['nid']);
-		$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
-		$img = image_style_url('financ-petit', $news_node->field_agenda_imatge['und'][0]['uri']);
-		$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
-		$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-		echo "<table cellspacing='0px' style='width: 265px; margin-top: 20px; font-family: Arial, Helvetica; font-size: 13px; border-collapse: collapse;'><tr>";
-		
-		if ($node->field_actualitat_lat_inf_epigraf['und'][0]['value'] != '') {
-			echo "<td style='background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_inf_epigraf['und'][0]['value']}</td>";
-		} 
-		echo "</tr><tr><td style='padding: 0;'>
-			<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
-			</td></tr><tr><td style='padding: 10px 5px;'>
-			<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$news_node->title}</a>
-			<p style='padding-top: 5px; margin: 2px 0;'>{$teaser}</p>";
-		echo "</td></tr></table>";
-	 }?>
+	<?php 
+	if (($node->field_actualitat_lat_inf_noticia['und'][0]['nid'] != '') || ($node->field_actualitat_lat_inf_noti_e['und'][0]['url'] != '')) {
+			if ($node->field_actualitat_lat_inf_noticia['und'][0]['nid'] != '') {
+				$news_node = node_load($node->field_actualitat_lat_inf_noticia['und'][0]['nid']);
+				$title = $news_node->title;
+				$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
+				$img = image_style_url('financ-petit', $news_node->field_agenda_imatge['und'][0]['uri']);
+				$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
+				$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
+			} else {
+				$title = $node->field_actualitat_lat_inf_noti_e['und'][0]['title'];
+				$url = $node->field_actualitat_lat_inf_noti_e['und'][0]['url'];
+				$teaser = $node->field_actualitat_lat_inf_teas_e['und'][0]['value'];
+				$img = file_create_url($node->field_actualitat_lat_inf_img_e['und'][0]['uri']);
+				$alt = $node->field_actualitat_lat_inf_img_e['und'][0]['alt'];
+			}
+			echo "<table cellspacing='0px' style='width: 265px; margin-top: 20px; font-family: Arial, Helvetica; font-size: 13px; border-collapse: collapse;'><tr>";
+			
+			if ($node->field_actualitat_lat_inf_epigraf['und'][0]['value'] != '') {
+				echo "<td style='background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_inf_epigraf['und'][0]['value']}</td>";
+			} 
+			echo "</tr><tr><td style='padding: 0;'>
+				<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
+				</td></tr><tr><td style='padding: 10px 5px;'>
+				<a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$title}</a>
+				<p style='padding-top: 5px; margin: 2px 0;'>{$teaser}</p>";
+			echo "</td></tr></table>";
+	 	}
+	 ?>
 	
 	</td></tr>	
 	<!-- PEU -->
@@ -376,7 +398,7 @@ $node = $build['#node'];
 			</td></tr>
 			<tr><td style="vertical-align:top; padding-left:10px; padding-top:15px">
 				<table style="border-collapse: collapse;"><tr><td>
-					<a href="http://www.gencat.cat/benestar" style="text-decoration:none"><img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png" style="border: 0 none"></a>
+					<a href="http://benestar.gencat.cat" style="text-decoration:none"><img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png" style="border: 0 none"></a>
 				</td></tr><tr><td style="padding-top: 45px;">
 					<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca" rel="license"><img style="border:0 none;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/80x15.png" alt="Licencia de Creative Commons"></a>
 				</td></tr></table>

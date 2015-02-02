@@ -80,17 +80,17 @@ $banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/def
 						'Banner xarxanet' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_xarxanet.gif', 
 														'http://www.xarxanet.org/'),
 						'Banner verso' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_verso.gif', 
-													'http://www20.gencat.cat/portal/site/bsf/menuitem.ce32baba3744d8fa172a63a7b0c0e1a0/?vgnextoid=cbc7b0b331fc6310VgnVCM2000009b0c1e0aRCRD&vgnextchannel=cbc7b0b331fc6310VgnVCM2000009b0c1e0aRCRD&vgnextfmt=default'),
+													'http://benestar.gencat.cat/ca/ambits_tematics/accio_comunitaria_i_voluntariat/voluntariat/verso'),
 						'Banner masclisme' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_masclisme.gif', 
-														'http://www20.gencat.cat/portal/site/icdones/menuitem.351404635dde900639a72641b0c0e1a0/?vgnextoid=704754f598c9b110VgnVCM1000000b0c1e0aRCRD&vgnextchannel=704754f598c9b110VgnVCM1000000b0c1e0aRCRD&vgnextfmt=default&newLang=ca_ES'),
+														'http://dones.gencat.cat/ca/temes/violencia_masclista/recursos_atencio/telefon_900'),
 						'Banner blocs xarxanet' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_blocs.gif', 
 															'http://blocs.xarxanet.org/'),
 						'Banner omnia' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_omnia.gif', 
 													'http://xarxa-omnia.org/'),
 						'Banner dixit' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_dixit.gif', 
-													'http://www20.gencat.cat/portal/site/dixit'),
+													'http://dixit.gencat.cat/ca/'),
 						'Banner butlletins' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_butlletins.gif', 
-													'http://www20.gencat.cat/portal/site/bsf/menuitem.6e02226e86d88424e42a63a7b0c0e1a0/?vgnextoid=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextchannel=ca359a00346a4210VgnVCM1000008d0c1e0aRCRD&vgnextfmt=default&newLang=ca_ES'),
+													'http://benestar.gencat.cat/ca/actualitat/butlletins_electronics'),
 						'Banner INTERREG IVC' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_interreg.gif', 
 													'http://verso.au.dk'),
 						'Banner CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_evc2014.jpg', 
@@ -641,7 +641,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 	<td td colspan="2">
 		<table cellspacing="10">
 			<tr><td>	
-				<a href="http://www20.gencat.cat/portal/site/bsf" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_benestarSocial.jpg" alt="logo benestar i familia" height="32" style="display: inline; border:0 none;"/></a>
+				<a href="http://benestar.gencat.cat" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_benestarSocial.jpg" alt="logo benestar i familia" height="32" style="display: inline; border:0 none;"/></a>
 			</td><td>
 				<a href="http://www.peretarres.org" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_FPT.jpg" alt="logo fundacio pere tarres" height="32" style="display: inline; border:0 none;"/></a>
 			</td><td>
