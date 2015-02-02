@@ -13,11 +13,13 @@
     width: 100%;
     padding: 8px 0px;
   }
-  .views-field-field-recull-principal-principal {
+  .views-field-field-recull-principal-principal,
+  .views-field-views-conditional {
     @include title1;
     padding: 0 8px;
   }
-  .views-field-field-resum {
+  .views-field-field-resum,
+  .views-field-views-conditional-1 {
     padding: 0 8px;
   }
   .views-field-field-recull-principal-rel {
@@ -47,6 +49,7 @@
   }
   .views-field-field-recull-secundari-principal,
   .views-field-field-resum,
+  .views-field-views-conditional-1,
   .views-field-field-recull-secundari-secundari,
   .views-field-field-resum-2,
   {
@@ -68,6 +71,7 @@
     padding-bottom: 0.4em;
   }
   .views-field-field-resum,
+  .views-field-views-conditional-1,
   .views-field-field-resum-1,{
     padding-bottom: 20px;   
   }  
@@ -135,6 +139,49 @@
   }
   .views-field-field-destacada-lat-entr {
     padding: 0px 12px 12px;
+  }
+}
+
+/* -------- Ranking de notícies --------- */
+.pane-ranking-noticies {
+  .ui-tabs-nav {
+    li {
+      padding-bottom: 0px !important;
+    }
+    li a {
+       padding: 8px 0px 8px 40px;
+       width: 90px;
+       color: white;
+       background-color: #aaa;
+       background-position: 10px;
+       background-repeat: no-repeat;
+    }
+    li.first a {
+       background-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/mes-llegit.png");
+    }
+    li.last a {
+       background-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/mes-comentat.png");
+    }
+    li.ui-tabs-selected a {
+       background-color: $main-1;
+    }
+  }
+  #tabs-ranking_noticies-middle-1,
+  #tabs-ranking_noticies-middle-2 {
+    background-color: $main-3;
+    padding: 0px 20px 10px 0;
+    ol {
+      font-family: Georgia;
+      font-size: 12pt;
+      color: $main-color;
+      li {
+        margin: 8px 0;
+      }
+      li a {
+        font-size: 10pt;
+        color: $link-color;
+      }
+    }
   }
 }
 
