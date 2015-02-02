@@ -146,10 +146,10 @@
 			</p>
 			<p><b>Visites</b>: 
 				<?php
-				/* if (strpos(google_analytics_counter_display(), '></span>')  === FALSE)
+				 if (strpos(google_analytics_counter_display(), '></span>')  === FALSE)
 					echo google_analytics_counter_display();
 				else
-					echo 0; */
+					echo 0;
 				?>
 			</p>	
 		</td></tr></table>
