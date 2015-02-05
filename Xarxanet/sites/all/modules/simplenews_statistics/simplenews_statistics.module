@@ -238,6 +238,10 @@ function _simplenews_statistics_parse_links(&$body, $nid, $snid) {
   }
   else {
     // @todo: Try and write some cleaner code here.
+    /**********************************************
+     * TEBPATCH (MDF) @fcasanellas 05/02/2014
+     * XN-SNS001 Diverses correccions
+     * OLDCODE ************************************
     $body = preg_replace_callback(
       '/(<a[^>]+href=")([^"]*)/mi',
       function($matches) use ($nid, $snid) {
@@ -246,6 +250,18 @@ function _simplenews_statistics_parse_links(&$body, $nid, $snid) {
       },
       $body
     );
+    /**********************************************
+     * NEWCODE ***********************************/
+  	$body = preg_replace_callback(array(
+  			'/(<a[^>]+href=")([^"]*)/mi', "/(<a[^>]+href=')([^']*)/mi"),
+  			function($matches) use ($nid, $snid) {
+  				$value = _simplenews_statistics_replace_url($matches[2], $nid, $snid);
+  				return $matches[1] . $value;
+  			},
+  			$body
+  	);
+  	/**********************************************
+  	 * END TEBPATCH*******************************/
   }
 }
 
