@@ -9,6 +9,23 @@ function mobile_xarxanet_preprocess_page(&$vars) {
 }
 
 /**
+ * Implementation of preprocess_html().
+ */
+function mobile_xarxanet_preprocess_html(&$vars) {
+	// Add unique classes for each page and website section
+    $path = drupal_get_path_alias($_GET['q']);
+    $temp = explode('/', $path, 2);
+    $section = array_shift($temp);
+    $page_name = array_shift($temp);
+
+    if (isset($page_name)) {
+      $vars['classes_array'][] = drupal_html_id('page-' . $page_name);
+    }
+
+    $vars['classes_array'][] = drupal_html_id('section-' . $section);
+}
+
+/**
  * Add a "Comments" heading above comments except on forum pages.
  */
 function mobile_xarxanet_preprocess_comment_wrapper(&$vars) {

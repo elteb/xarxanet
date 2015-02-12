@@ -106,7 +106,8 @@ iframe { max-width: 100% !important; }
 
 .field-content img,
 .node-type-page-insert-view .item-content .image,
-.node-type-page .item-content .image { 
+.node-type-page .item-content .image,
+.section-especial .item-content .image { 
 	float: left;
 	margin-right: 5px;	
 }
@@ -122,7 +123,8 @@ iframe { max-width: 100% !important; }
 }
 
 .node-type-page-insert-view .item-content .title,
-.node-type-page .item-content .title {
+.node-type-page .item-content .title,
+.section-especial .item-content .title {
 	padding: 15px 0 3px;
 }
 
@@ -138,7 +140,8 @@ iframe { max-width: 100% !important; }
 .views-field-nothing,
 .views-field-nothing-1,
 .node-type-page-insert-view .item-content,
-.node-type-page .item-content  { 
+.node-type-page .item-content,
+.section-especial .item-content { 
 	clear: both; 
 }
 
@@ -151,7 +154,8 @@ iframe { max-width: 100% !important; }
 .pane-noticies-destacades-mobil .views-field-field-resum-value,
 .pane-noticies-destacades-ii-mobil .views-field-field-resum-value,
 .node-type-page-insert-view .item-content .teaser,
-.node-type-page .item-content .teaser {
+.node-type-page .item-content .teaser,
+.section-especial .item-content .teaser {
 	margin-left: 105px;
 }
 
@@ -207,7 +211,8 @@ iframe { max-width: 100% !important; }
 
 /************ BLOCS *************/
 
-.pane-block h2 {
+.pane-block h2,
+.pane-custom h2 {
 	font-family: Georgia,Times New Roman,Times,serif;
 	font-size: 1.4rem;
 	color: #ffffff;
@@ -217,7 +222,8 @@ iframe { max-width: 100% !important; }
     padding: 4px 0px 4px 50px;
 }
 
-.pane-block .more { 
+.pane-block .more,
+.pane-custom .more { 
 	float: right;
 	padding: 4px; 
 }
@@ -227,7 +233,24 @@ iframe { max-width: 100% !important; }
 
 #bloc-financaments,
 #bloc-cursos,
-#bloc-actes { margin-top: 20px; }
+#bloc-actes,
+#bloc-especials { margin-top: 20px; }
+
+#bloc-especials h2 {
+    background: url("/sites/all/themes/mobile_xarxanet/images/pictos/seccions-especials.png") no-repeat scroll 10px center #3F1E48;
+    width: 100px;
+}
+#bloc-especials .more { margin-top: -15px; }
+#bloc-especials div { padding-top: 1px; }
+#bloc-especials ul { 
+    background-color: #E8DBEC;
+    list-style-type: none;
+    padding: 10px 0px 10px 25px; 
+}
+#bloc-especials li { 
+    padding-bottom: 5px;
+    list-style-image: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style-purple.png"); 
+}
 
 #bloc-financaments .view-content { background-color: #FDE3CF; }
 #bloc-financaments .views-field-field-date {
@@ -397,6 +420,46 @@ iframe { max-width: 100% !important; }
 .node-type-page-insert-view.servei .view-2011-financament .views-row-1 .item-content { border-top: dotted 1px #666666; }
 
 
+/************ SECCIONS ESPECIALS **************/
+.section-especial .page-title { margin-bottom: 15px; }
+ 
+.section-especial .panel-col-first,
+.section-especial .panel-col-last{
+    width: 100%;
+}
+
+.section-especial h2.pane-title {
+    text-align: center;
+    font-size: 1.4rem;
+    margin: 0px;
+    font-family: Georgia;
+    font-weight: normal;
+    padding: 5px 10px;
+}
+
+.section-especial #especial-1-contingut-pane img { width: 100%; }
+.section-especial #especial-1-contingut-pane h3 a { font-weight: normal;}
+.section-especial #especial-1-contingut-pane .content_title,
+.section-especial #especial-1-contingut-pane .content_teaser,
+.section-especial #especial-1-contingut-pane #third-row { padding: 0 5px; }
+.section-especial #especial-1-contingut-pane #third-row { padding-bottom: 10px; }
+.section-especial #especial-1-contingut-pane #third-row .item {
+    margin: 5px 10px;
+    padding-left: 15px;
+    background: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style.png") no-repeat 0px center;
+}
+
+.section-especial #especial-documents-pane img { width: 100px; }
+.section-especial #especial-documents-pane .doc_title h3 a {
+    font-size: 1.4rem;
+    font-family: Georgia;
+    font-weight: normal; 
+}
+.section-especial #especial-documents-pane .document { clear: both; }
+.section-especial #especial-documents-pane .doc_title { float: left; }
+.section-especial #especial-documents-pane .doc_image { float: left; margin-right: 10px;}
+.section-especial #especial-documents-pane #clear { clear: both; }
+
 /************ PAGER ***************/
 
 ul.pager { 
@@ -477,7 +540,8 @@ ul.pager {
 .node-type-webform .page-title,
 .node-type-financament-full .page-title,
 .butlletins .page-title,
-.hemeroteca .page-title { 
+.hemeroteca .page-title,
+.section-especial .page-title { 
 	font-family: Georgia,Times New Roman,Times,serif;
 	font-size: 1.6rem;
 	color: #333333;	
