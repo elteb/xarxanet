@@ -373,22 +373,18 @@ h1.title { float: left; }
 /* ------- Footer ------- */
 #block-block-84 {
   clear: both;
-  margin-left: -$space;
-  margin-right: -9px;
   background-color: $main-3;
   
   .footer-row-1 {
     .footer-col {
-      float: left;
+      float: left;width: $ninesixty-grid-width/5;
       h2 {
-        @include grid-width(2);
         margin-top: 0;
         padding: $space;
         background-color: $main-1;
         color: white;
       }
       ul {
-        @include grid-width(2);
         padding: 0;
         margin-left: $space;
         list-style: none;

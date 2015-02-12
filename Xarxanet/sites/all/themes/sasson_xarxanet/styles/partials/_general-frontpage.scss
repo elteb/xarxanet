@@ -186,6 +186,7 @@
 }
 
 /* -------- Grans temes ------- */
+/* -------- Bloc desactivat --------
 .panel-pane.grans-temes {
   h2 {
     @include block-lat-title;
@@ -199,6 +200,31 @@
   }
   li {
     list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+    line-height: 1.8em;
+  }
+}
+   ------------------------------- */
+  
+/* -------- Seccions especials ------- */
+.panel-pane.seccions-especials {
+  h2 {
+    @include block-lat-title;
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/seccions-especials.png") $especials 10px no-repeat;
+  }
+  .more {
+    @include more-title;
+  }
+  .pane-content div {
+    padding-top: 25px;
+  }
+  ul {
+    background-color: $especials-sec;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  li {
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style-purple.png");
     line-height: 1.8em;
   }
 }

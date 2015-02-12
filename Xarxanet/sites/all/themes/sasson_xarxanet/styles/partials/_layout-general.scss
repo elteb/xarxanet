@@ -80,7 +80,7 @@ aside#sidebar-second {
 
 /* -------- Header --------*/
 #header {
-  width: 100%;
+  width: $ninesixty-grid-width;
 }
 
 .block-menu-capcalera {
@@ -122,3 +122,6 @@ aside#sidebar-second {
     right: 0px !important; 
   } 
 }
+
+/* -------- Footer -------- */
+footer#footer { width: $ninesixty-grid-width;; }
