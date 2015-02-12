@@ -391,6 +391,30 @@ function simplenews_statistics_views_data() {
       'handler' => 'views_handler_argument_numeric',
     ),
   );
+  
+  /*****************************************
+   * TEBPATCH (ADD) @fcasanellas 12/02/2015
+   * XN-SNS002 Afegeix "Total clicks" a les vistes
+   * NEWCODE ******************************/
+  $data['simplenews_statistics']['click_count'] = array(
+  		'title' => t('Total clicks'),
+  		'help' => t('Total clicks'),
+  		'field' => array(
+  				'handler' => 'simplenews_statistics_handler_clicks',
+  				'click sortable' => TRUE,
+  		),
+  		'filter' => array(
+  				'handler' => 'views_handler_filter_numeric',
+  		),
+  		'sort' => array(
+  				'handler' => 'views_handler_sort',
+  		),
+  		'argument' => array(
+  				'handler' => 'views_handler_argument_numeric',
+  		),
+  );
+  /*****************************************
+   * END TEBPATCH *************************/
 
   /**
    * Views integration for calculations with custom handlers.
