@@ -140,7 +140,7 @@ for ($i = 1; $i <= 4; $i++){
 	$noticia = $node->$noticia;
 	if ($node_ =  node_load($noticia['und'][0]['nid'])) {
 		//Noticia Xarxanet
-		if (isset($node_->field_agenda_imatge['und'][0]['filepath'])){
+		if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
 			$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_agenda_imatge['und'][0]['uri']);
 			$noticia_secundaria[$i]['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
 		}else{
