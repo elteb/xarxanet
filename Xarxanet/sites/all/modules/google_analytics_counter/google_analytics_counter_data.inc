@@ -40,6 +40,10 @@ function google_analytics_counter_update_path_counts() {
   //dpm('START step '.$step);
   //dpm('START pointer '.$pointer);
 
+  /*********************************************
+   * TEBPATCH (MDF) @fcasanellas 26/02/2015
+   * XN-GAC001 Afegeix un recompte de visites "recents"
+   * OLDCODE **********************************
   // The earliest valid start-date for Google Analytics is 2005-01-01.
   $request = array(
     'dimensions' => array('ga:pagePath'), // date would not be necessary for totals, but we also calculate stats of views per day, so we need it
@@ -89,36 +93,112 @@ function google_analytics_counter_update_path_counts() {
 
   }
 
+  /**************************************
+  * NEWCODE ****************************/
+  // The earliest valid start-date for Google Analytics is 2005-01-01.
+  $request = array(
+  		'dimensions' => array('ga:pagePath'), // date would not be necessary for totals, but we also calculate stats of views per day, so we need it
+  		'metrics' => array('ga:pageviews'),
+  		'start_date' => strtotime('2005-01-01'),
+  		'end_date' => strtotime('tomorrow'), // Using 'tomorrow' to offset any timezone shift between the hosting and Google servers.
+  		'start_index' => $pointer,
+  		'max_results' => $chunk,
+  		//'filters' => 'ga:pagePath==/node/3',
+  		//'#start_date' => strtotime('2005-01-01'), // We want to retrieve all page views for this path. The earliest valid start-date for Google Analytics is 2005-01-01.
+  		//'sort_metric' => array('ga:date'),
+  );
+  
+  $recent_time = time()-86400;
+  $recent_request = array(
+  		'dimensions' => array('ga:pagePath'), // date would not be necessary for totals, but we also calculate stats of views per day, so we need it
+  		'metrics' => array('ga:pageviews'),
+  		'start_date' => $recent_time,
+  		'end_date' => strtotime('tomorrow'), // Using 'tomorrow' to offset any timezone shift between the hosting and Google servers.
+  		'start_index' => $pointer,
+  		'max_results' => $chunk,
+  );
+  
+  $resultcount = FALSE;
+  $recent_resultcount = FALSE;
+  $cachehere = array(
+  		'cid' => 'google_analytics_counter_' . md5(serialize($request)),
+  		'expire' => google_analytics_counter_cache_time(),
+  		'refresh' => FALSE,
+  );
+  $recent_cachehere = array(
+  		'cid' => 'google_analytics_counter_' . md5(serialize($recent_request)),
+  		'expire' => google_analytics_counter_cache_time(),
+  		'refresh' => FALSE,
+  );
+  $new_data = @google_analytics_counter_report_data($request, $cachehere);
+  $recent_new_data = @google_analytics_counter_report_data($recent_request, $recent_cachehere);
+  
+  if (!$new_data->fromCache) { // Don't write anything to google_analytics_counter if this GA data comes from cache (would be writing the same again).
+  
+  	// This was a live request. Increase the GA request limit tracker.
+  	variable_set('google_analytics_counter_dayquota', array($dayquota[0], ($dayquota[1]+2)));
+  
+  	if (!empty($new_data->error)) { // If NULL then there is no error.
+  		watchdog(t('Google Analytics Counter'), t('Problem fetching data from Google Analytics: %new_dataerror. Did you authenticate any Google Analytics profile? See <a href="/admin/config/system/google_analytics_counter/authentication">here</a>.', array('%new_dataerror' => $new_data->error)), NULL, WATCHDOG_ERROR);
+  		// Nothing to do; return.
+  		//return;
+  	}
+  	else {
+  		$resultsretrieved = $new_data->results->rows;
+  		$recent_resultsretrieved = $recent_new_data->results->rows;
+  		
+  		foreach ($resultsretrieved as $val) {
+  			// http://drupal.org/node/310085
+  			db_merge('google_analytics_counter')
+  			->key(array('pagepath_hash' => md5($val['pagePath'])))
+  			->fields(array(
+  			'pagepath' => $val['pagePath'],
+  			'pageviews' => $val['pageviews'],
+  			))
+  			->execute();
+  		}
+  		foreach ($recent_resultsretrieved as $val) {
+  			db_merge('google_analytics_counter')
+  			->key(array('pagepath_hash' => md5($val['pagePath'])))
+  			->fields(array(
+  			'recent_pageviews' => $val['pageviews'],
+  			))
+  			->execute();
+  		}
+  	}
+  }
+  /**************************************
+   * END TEBPATCH **********************/
+  
   // The total number of records for this profile.
   $resultcount = @$new_data->results->totalResults;
   // Store it in a variable.
   variable_set('google_analytics_counter_totalpaths', $resultcount);
-
+  
   // The total number of hits for all records for this profile.
   $totalhits = @$new_data->results->totalsForAllResults['pageviews'];
   variable_set('google_analytics_counter_totalhits', $totalhits);
   //dpm('totalhits: '.$totalhits);
-
+  
   // Set the pointer.
   $pointer += $chunk;
-
+  
   //dpm('step: '.$step.' | '.$pointer . ' out of total ' .$resultcount);
   watchdog(t('Google Analytics Counter'), t('Retrieved %sizeof items from Google Analytics data for paths %first-%second.', array('%sizeof' => sizeof(@$new_data->results->rows), '%first' => ($pointer-$chunk), '%second' => ($pointer-$chunk-1+sizeof(@$new_data->results->rows)))), NULL, WATCHDOG_INFO);
-
+  
   // OK now increase or zero $step
   if ($pointer <= $resultcount) {
-    // If there are more results than what we've reached with this chunk, increase step to look further during the next run.
-    $newstep = $step+1;
+  	// If there are more results than what we've reached with this chunk, increase step to look further during the next run.
+  	$newstep = $step+1;
   }
   else {
-    $newstep = 0;
+  	$newstep = 0;
   }
   //dpm('newstep: '.$newstep);
   variable_set('google_analytics_counter_data_step', $newstep);
-
+  
   // Record how long did this chunk take to process.
   variable_set('google_analytics_counter_chunk_process_time', time()-$chunkprocessbegin);
-
 }
 
 /**
@@ -236,7 +316,18 @@ function google_analytics_counter_get_sum_per_path($path, $cacheon = TRUE) {
   // All right, finally we can calculate the sum of pageviews. This process is cached.
   $cacheid = md5($lang_prefix.$path);
   if ($cache = cache_get('google_analytics_counter_page_' . $cacheid) AND $cacheon) {
+  	/*********************************************
+  	 * TEBPATCH (MDF) @fcasanellas 26/02/2015
+  	 * XN-GAC001 Afegeix un recompte de visites "recents"
+  	 * OLDCODE **********************************
     $sum_of_pageviews = $cache->data;
+    /*********************************************
+   	 * NEWCODE **********************************/
+  	$data = unserialize($cache->data);
+  	$sum_of_pageviews = $data[0];
+  	$sum_of_recent_pageviews = $data[1];
+  	/*********************************************
+  	 * END TEBPATCH **********************************/
     //dpm('CACHED');
   }
   else {
@@ -264,7 +355,11 @@ function google_analytics_counter_get_sum_per_path($path, $cacheon = TRUE) {
         $allpaths[] = md5('/'.$redirectobject->language.'/'.$redirectobject->source);
       }
     }
-
+    
+    /*********************************************
+     * TEBPATCH (MDF) @fcasanellas 26/02/2015
+     * XN-GAC001 Afegeix un recompte de visites "recents"
+     * OLDCODE **********************************
     // Get path counts for each of the path aliases.
     // Search hash values of path -- faster (primary key). E.g. SELECT pageviews FROM `google_analytics_counter` where pagepath_hash IN ('ee1c787bc14bec9945de3240101e919c', 'd884e66c2316317ef6294dc12aca9cef')
     $pathcounts = db_select('google_analytics_counter', 'gac')
@@ -285,9 +380,35 @@ function google_analytics_counter_get_sum_per_path($path, $cacheon = TRUE) {
     cache_set('google_analytics_counter_page_' . $cacheid, $sum_of_pageviews, 'cache', CACHE_TEMPORARY);
     //dpm('UNCACHED');
   }
-
   //dpm('total sum: '.$sum_of_pageviews);
   return $sum_of_pageviews;
+  /*********************************************
+   * NEWCODE **********************************/
+    // Get path counts for each of the path aliases.
+    // Search hash values of path -- faster (primary key). E.g. SELECT pageviews FROM `google_analytics_counter` where pagepath_hash IN ('ee1c787bc14bec9945de3240101e919c', 'd884e66c2316317ef6294dc12aca9cef')
+    $pathcounts = db_select('google_analytics_counter', 'gac')
+    //->fields('gac', array('pagepath', 'pageviews'))
+    ->fields('gac', array('pageviews','recent_pageviews'))
+    //->condition('pagepath', array('/bg', '/node/3'), 'IN')
+    ->condition('pagepath_hash', $allpaths, 'IN')
+    ->execute();
+    //dpm($pathcounts);
+    $sum_of_pageviews = 0;
+    foreach ($pathcounts as $pathcount) {
+    	//dpm($pathcount);
+    	//dpm('partial: '.$pathcount->pageviews);
+    	$sum_of_pageviews += $pathcount->pageviews;
+    	$sum_of_recent_pageviews += $pathcount->recent_pageviews;
+    }
+    //dpm('sum: '.$sum_of_pageviews);
+    
+    cache_set('google_analytics_counter_page_' . $cacheid, serialize(array($sum_of_pageviews,$sum_of_recent_pageviews)), 'cache', CACHE_TEMPORARY);
+    //dpm('UNCACHED');
+    } 
+  //dpm('total sum: '.$sum_of_pageviews);
+  return array($sum_of_pageviews,$sum_of_recent_pageviews);
+  /*********************************************
+   * END TEBPATCH *****************************/
 }
 
 /**
@@ -419,12 +540,27 @@ function google_analytics_counter_update_storage() {
         ->execute();
     }
     else {
+    /*********************************************
+     * TEBPATCH (MDF) @fcasanellas 26/02/2015
+     * XN-GAC001 Afegeix un recompte de visites "recents"
+     * OLDCODE **********************************
       db_merge('google_analytics_counter_storage')
         ->key(array('nid' => $dbresult->nid))
         ->fields(array(
           'pageview_total' => $sum_of_pageviews,
         ))
         ->execute();
+    /*********************************************
+     * NEWCODE **********************************/
+     db_merge('google_analytics_counter_storage')
+    	->key(array('nid' => $dbresult->nid))
+    	->fields(array(
+    	'pageview_total' => $sum_of_pageviews[0],
+    	'recent_pageview_total' => $sum_of_pageviews[1],
+    	))
+    	->execute();
+    /*********************************************
+     * END TEBPATCH *****************************/
     }
 
   }

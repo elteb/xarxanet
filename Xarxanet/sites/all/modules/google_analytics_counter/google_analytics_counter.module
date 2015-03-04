@@ -247,6 +247,14 @@ function google_analytics_counter_display($path = '') {
   //$block_content .= '<span id="google-analytics-counter-' . md5($path) . '">';
   $block_content .= '<span class="google-analytics-counter">';
   $count = google_analytics_counter_get_sum_per_path($path);
+  /*********************************************
+   * TEBPATCH (ADD) @fcasanellas 26/02/2015
+   * XN-GAC001 Afegeix un recompte de visites "recents"
+   * NEWCODE **********************************/
+  $count = $count[0];
+  /*********************************************
+   * END TEBPATCH *****************************/
+  
   if ($count == '') {
     // If unknown, for some reason.
     $block_content .= 0; // Better than t('N/A').
