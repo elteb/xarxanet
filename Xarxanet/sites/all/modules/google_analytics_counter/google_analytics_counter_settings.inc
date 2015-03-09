@@ -9,16 +9,74 @@
  * Config form shown at admin/config/system/google_analytics_counter
  */
 function google_analytics_counter_admin($form, &$form_state) {
+	$defaultcroninterval = 30;
+	$chunk = 1000; // Could be up to 10000 but keeping the default low so that it works even for people without external cron.
+	$dayquota = 10000;
+	
+	$times = array();
+	$intervals = array(1, 3, 5, 10, 20, 30, 60, 180, 360, 720, 1440);
+	foreach ($intervals as $interval) {
+		$times[] = $interval;
+	}
+	
+	/******************************************
+	 * TEBPATCH (ADD) @fcasanellas 09/03/2015
+	 * XN-GAC001 Afegeix un recompte de visites "recents"
+	 * NEWCODE ********************************/
+	$defaulttopcontentchunk = 50;
+	$defaulttopcontent = 10;
+	$defaulttopcontentperiod = 24;
+	$defaulttopcontentinterval = 30;
 
-  $defaultcroninterval = 30;
-  $chunk = 1000; // Could be up to 10000 but keeping the default low so that it works even for people without external cron.
-  $dayquota = 10000;
-
-  $times = array();
-  $intervals = array(1, 3, 5, 10, 20, 30, 60, 180, 360, 720, 1440);
-  foreach ($intervals as $interval) {
-    $times[] = $interval;
-  }
+	$form['google_analytics_counter_top_content_chunk'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Number of top paths to fetch from Google Analytics'),
+		'#default_value' => variable_get('google_analytics_counter_top_content_chunk', $defaulttopcontentchunk),
+		'#size' => 4,
+		'#maxlength' => 4,
+		'#description' => t(''),
+		'#required' => TRUE,
+	);
+	
+	$form['google_analytics_counter_top_content'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Number of top paths to store'),
+		'#default_value' => variable_get('google_analytics_counter_top_content', $defaulttopcontent),
+		'#size' => 4,
+		'#maxlength' => 4,
+		'#description' => t('Number of top paths from Google Analytics stored withoud "Exluded paths"'),
+		'#required' => TRUE,
+	);
+	
+	$form['google_analytics_counter_top_content_excluded'] = array(
+		'#type' => 'textarea',
+		'#title' => t('Excluded top paths'),
+		'#description' => t('Enter one path per line. The \'*\' character is a wildcard.'),
+		'#default_value' => variable_get('google_analytics_counter_top_content_excluded', ''),
+	);
+	
+	$form['google_analytics_counter_top_content_period'] = array(
+			'#type' => 'textfield',
+			'#title' => t('Top content views period'),
+			'#default_value' => variable_get('google_analytics_counter_top_content_period', $defaulttopcontentperiod),
+			'#size' => 4,
+			'#maxlength' => 4,
+			'#description' => t(''),
+			'#required' => TRUE,
+	);
+	
+	$form['google_analytics_counter_top_content_cron_interval'] = array(
+			'#type' => 'select',
+			'#title' => t('Minimum time between Google Analytics top content data fetching'),
+			'#default_value' => variable_get('google_analytics_counter_top_content_cron_interval', $defaulttopcontentinterval),
+			'#description' => t('Google Analytics top content statistical data is fetched and processed via a cron job. If your cron runs too frequently, you may waste your GA daily quota too fast. Set here the minimum time that needs to elapse before the Google Analytics Counter cron runs (even if your cron job runs more frequently). Specify the time in <em>minutes</em>. Default: %defaultcroninterval minutes.', array('%defaultcroninterval' => check_plain($defaultcroninterval))),
+			'#options' => drupal_map_assoc($times),
+			'#required' => TRUE,
+	);
+	
+	/*************************************
+	 * END TEBPATCH **********************/
+	
   $form['google_analytics_counter_cron_interval'] = array(
     '#type' => 'select',
     '#title' => t('Minimum time between Google Analytics data fetching'),
