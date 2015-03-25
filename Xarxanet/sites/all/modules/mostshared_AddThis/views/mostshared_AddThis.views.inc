@@ -57,7 +57,7 @@ function mostshared_AddThis_views_data() {
   $data['mostshared_AddThis_item']['table']['join'] = array(
     'node' => array(
       'left_field' => 'entity_id',
-      'field' => 'entity_id',
+      'field' => 'nid',
     ),
   );
   
