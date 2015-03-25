@@ -42,6 +42,18 @@ function google_analytics_counter_uninstall() {
   variable_del('google_analytics_counter_totalnodes');
   variable_del('google_analytics_counter_totalpaths');
   variable_del('google_analytics_counter_storage');
+  /******************************************
+   * TEBPATCH (ADD) @fcasanellas 09/03/2015
+   * XN-GAC001 Afegeix un recompte de visites "recents"
+   * NEWCODE ********************************/
+  variable_del('google_analytics_counter_top_content_chunk');
+  variable_del('google_analytics_counter_top_content');
+  variable_del('google_analytics_counter_top_content_excluded');
+  variable_del('google_analytics_counter_top_content_period');
+  variable_del('google_analytics_counter_top_content_cron_interval');
+  variable_del('google_analytics_counter_top_content_last_update');
+  /*****************************************
+   * END TEBPATCH **************************/   
 }
 
 
@@ -73,20 +85,6 @@ function google_analytics_counter_schema() {
         'default' => 0,
         'not null' => TRUE,
         ),
-       /*********************************************
-        * TEBPATCH (MDF) @fcasanellas 26/02/2015
-        * XN-GAC001 Afegeix un recompte de visites "recents"
-        * NEWCODE **********************************/
-        'recent_pageviews' => array(
-            'type' => 'int',
-            'size' => 'big', // big int unsigned: 8 B (18446744073709551615)
-            'description' => 'Recent pageview count.',
-            'unsigned' => TRUE,
-            'default' => 0,
-            'not null' => TRUE,
-            ),
-        /********************************************
-         * END TEBPATCH ****************************/
       ),
     'primary key' => array('pagepath_hash'),
     'indexes' => array(
@@ -110,24 +108,40 @@ function google_analytics_counter_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
-      /*********************************************
-        * TEBPATCH (MDF) @fcasanellas 26/02/2015
-        * XN-GAC001 Afegeix un recompte de visites "recents"
-        * NEWCODE **********************************/
-        'recent_pageview_total' => array(
-            'type' => 'int',
-            'description' => 'Recent pageview count.',
-            'unsigned' => TRUE,
-            'not null' => TRUE,
-            ),
-        /********************************************
-         * END TEBPATCH ****************************/
     ),
     'primary key' => array('nid'),
     'indexes' => array(
       'pageview_total' => array('pageview_total'),
     ),
   );
+  
+  /****************************************************
+   * TEBPATCH (ADD) @fcasanellas 09/03/2015
+   * XN-GAC001 Afegeix un recompte de visites "recents"
+   * NEWCODE ******************************************/
+   $schema['google_analytics_counter_top_content'] = array(
+    'description' => 'Google Analytics Counter top contents.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'Node IDs',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'pageview_total' => array(
+        'description' => 'Recent pageview counts',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('nid'),
+    'indexes' => array(
+      'pageview_total' => array('pageview_total'),
+    ),
+  );
+   /************************************
+    * END TEBPATCH *********************/
 
 return $schema;
 }
@@ -156,19 +170,19 @@ function google_analytics_counter_update_7301() {
   }
 }
 
-/*********************************************
- * TEBPATCH (MDF) @fcasanellas 26/02/2015
+/****************************************************
+ * TEBPATCH (ADD) @fcasanellas 09/03/2015
  * XN-GAC001 Afegeix un recompte de visites "recents"
- * NEWCODE **********************************/
- /**
- * Recent pageviews field
- */
+ * NEWCODE ******************************************/
 function google_analytics_counter_update_7302() {
-    db_add_field('google_analytics_counter', 'recent_pageviews', array('type' => 'int', 'size' => 'big', 'description' => 'Recent pageview count.'));
-    db_add_field('google_analytics_counter_storage', 'recent_pageview_total', array('type' => 'int', 'description' => 'Recent pageview count.'));
+  if (!db_table_exists('google_analytics_counter_top_content')) {
+    $schema = google_analytics_counter_schema();
+    db_create_table('google_analytics_counter_top_content', $schema['google_analytics_counter_top_content']);
+    return st('Add the google_analytics_counter_top_content table for the Google Analytics Counter module.');
+  }
 }
-/********************************************
- * END TEBPATCH ****************************/
+/****************************************
+ * END TEBPATCH *************************/
 
 
 /**

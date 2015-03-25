@@ -247,14 +247,6 @@ function google_analytics_counter_display($path = '') {
   //$block_content .= '<span id="google-analytics-counter-' . md5($path) . '">';
   $block_content .= '<span class="google-analytics-counter">';
   $count = google_analytics_counter_get_sum_per_path($path);
-  /*********************************************
-   * TEBPATCH (ADD) @fcasanellas 26/02/2015
-   * XN-GAC001 Afegeix un recompte de visites "recents"
-   * NEWCODE **********************************/
-  $count = $count[0];
-  /*********************************************
-   * END TEBPATCH *****************************/
-  
   if ($count == '') {
     // If unknown, for some reason.
     $block_content .= 0; // Better than t('N/A').
@@ -294,6 +286,16 @@ function google_analytics_counter_cron() {
     // Now also update the storage table from the local table with the GA data.
     google_analytics_counter_update_storage();
   }
+  /****************************************************
+   * TEBPATCH (ADD) @fcasanellas 09/03/2015
+   * XN-GAC001 Afegeix un recompte de visites "recents"
+   * NEWCODE ******************************************/
+  $interval = 60*variable_get('google_analytics_counter_top_content_cron_interval', 30); // $interval must contain value in seconds.
+  if ((variable_get('google_analytics_counter_top_content_last_update', REQUEST_TIME)+$interval) < REQUEST_TIME) {
+  	google_analytics_counter_update_top_content();
+  }
+  /*****************************************
+   * ENDTEBPATCH ***************************/
 
 }
 
@@ -378,6 +380,16 @@ function google_analytics_counter_details() {
   }
   $result .= t('The next one will take place in %google_analytics_counter_sec2hms.', array('%google_analytics_counter_sec2hms' => check_plain(google_analytics_counter_sec2hms($temp))));
 
+  /****************************************************
+   * TEBPATCH (ADD) @fcasanellas 09/03/2015
+   * XN-GAC001 Afegeix un recompte de visites "recents"
+   * NEWCODE ******************************************/
+  $lastupdate = variable_get('google_analytics_counter_top_content_last_update', 0);
+  $nextupdate = $lastupdate + (60*variable_get('google_analytics_counter_top_content_cron_interval', 30));
+  $result .= t('<p>Last top content update took place in %topcontentlastupdate. The next one will take place after %topcontentnextupdate.</p>', array('%topcontentlastupdate' => date("H:i:s d-m-Y", $lastupdate), '%topcontentnextupdate' => date("H:i:s d-m-Y", $nextupdate)));
+  /******************************************
+   * END TEBPATCH ***************************/
+  
   $result .= t('<p>'. l(t('Run cron immediately'), 'admin/reports/status/run-cron', array('query' => array('destination' => 'admin/config/system/google_analytics_counter/dashboard'))) .'.');
 
   return $result;
