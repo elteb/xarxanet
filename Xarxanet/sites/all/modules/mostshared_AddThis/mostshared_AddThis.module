@@ -14,9 +14,6 @@ define('MOSTSHARED_DEFAULT_EXCLUDES', "admin/*\nuser/*\nnode/*/*\n*?*\n");
 define('MOSTSHARED_SERVICE_ADDTHIS_ID', 2);
 define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL', "month");
 define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL_ID', "1");
-define('MOSTSHARED_SERVICE_ADDTHIS_PUID', "ra-53c67bc259a068b5");
-define('MOSTSHARED_SERVICE_ADDTHIS_USER', "dospuntzero@xarxanet.org");
-define('MOSTSHARED_SERVICE_ADDTHIS_PWD', "G85yCeaE");
 define('MOSTSHARED_ADDTHIS_ENTITY_TYPE', "node");
 
 /**
@@ -246,12 +243,18 @@ function mostshared_AddThis_menu() {
 function mostshared_AddThis_settings_form() {
   $form = array();
   // Add a fieldset for configuring MOSTSHARED_SERVICE_ADDTHIS_INTERVAL Drupal paths
-    $form['paths'] = array(
+  $form['paths'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
     '#title' => t('Drupal Paths'),
   );
-  
+
+  $form['credentials'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Credentials AddThis'),
+  );
+    
   // Get the configured base paths
   $site_base = url('', array('absolute' => TRUE));
   $path_base = url('');
@@ -290,6 +293,33 @@ EOT
     ),
   );
   
+  // Get the configured AddThis USER
+  $addthisuser = variable_get('mostshared_AddThis_username',null);
+  $form['credentials']['mostshared_AddThis_username'] = array(
+    '#type' => 'textfield',
+    '#title' => t('User Name'),
+    '#required' => TRUE,
+    '#default_value' => $addthisuser,
+  );
+
+  // Get the configured AddThis PSWD
+  $addthispswd = variable_get('mostshared_AddThis_pass',null);
+  $form['credentials']['mostshared_AddThis_pass'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Password'),
+    '#required' => TRUE,
+    '#default_value' => $addthispswd,
+  );
+
+  // Get the configured AddThis PUID
+  $addthispuid = variable_get('mostshared_AddThis_puid',null);
+  $form['credentials']['mostshared_AddThis_puid'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PUID Name'),
+    '#required' => TRUE,
+    '#default_value' => $addthispuid,
+  );    
+    
   $form['mostshared_AddThis_debug'] = array(
     '#type' => 'checkbox',
     '#title' => t('Log debug messages from the services?'),
@@ -360,12 +390,15 @@ function mostshared_AddThis_refresh($cron = FALSE) {
   	$last_run = 0;
     $next_run = $now;
   }
-        
+  
+  $addthisuser = variable_get('mostshared_AddThis_username',null);
+  $addthispswd = variable_get('mostshared_AddThis_pass',null);
+  $addthispuid = variable_get('mostshared_AddThis_puid',null);    
   // When running as a cron job, ask the service how often it should refresh.
   // When running as a page request, refresh the service immediately.
   if (!$cron || $next_run <= $now) {
   	// Create a class
-    $addthis = new MostSharedAddThis(MOSTSHARED_SERVICE_ADDTHIS_USER, MOSTSHARED_SERVICE_ADDTHIS_PWD, MOSTSHARED_SERVICE_ADDTHIS_PUID);;
+    $addthis = new MostSharedAddThis($addthisuser, $addthispswd, $addthispuid);
 
 	if ($span <= 60 * 60 * 24) {
       $params['period'] = 'day';
