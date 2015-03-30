@@ -396,7 +396,7 @@ function mostshared_AddThis_refresh($cron = FALSE) {
   $addthispuid = variable_get('mostshared_AddThis_puid',null);    
   // When running as a cron job, ask the service how often it should refresh.
   // When running as a page request, refresh the service immediately.
-  if (!$cron || $last_run <= $now) {
+  if (!$cron || $next_run <= $now) {
   	// Create a class
     $addthis = new MostSharedAddThis($addthisuser, $addthispswd, $addthispuid);
 
