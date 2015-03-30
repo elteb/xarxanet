@@ -90,7 +90,7 @@ $node = $build['#node'];
 							<td style='padding: 2px;'><a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 							</tr>";	
 				}
-				foreach ($node->field_actualitat_dest_prin_rel_e as $rel) {
+				foreach ($node->field_actualitat_dest_prin_rel_e['und'] as $rel) {
 					$title = $rel['title'];
 					$url = $rel['url'];
 					if ($url != ''){
@@ -413,7 +413,7 @@ $node = $build['#node'];
 					<a href="http://www.peretarres.org" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Pere Tarrés</a><br />
 					<a href="http://www.ateneus.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
 					<a href="http://www.xvac.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
-					<a href="http://www.ensdecomunicacio.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Ens de l'Associacionisme Cultural Català</a><br />
+					<a href="http://www.iwith.org/ca/" style="color:#53544F; text-decoration:none; font-weight:normal">I-with.org</a><br />
 				</p>
 			</td><td style="padding-left:15px">
 				<p>
@@ -422,7 +422,6 @@ $node = $build['#node'];
 					<a href="http://www.federacio.net/ca" style="color:#53544F; text-decoration:none; font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
 					<a href="http://magno.uab.es/fas" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Autònoma Solidària</a><br />
 					<a href="http://www.escoltesiguies.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
-					<a href="http://www.iwith.org/ca/" style="color:#53544F; text-decoration:none; font-weight:normal">I-with.org</a><br />
 				</p>
 			</td></tr>
 		</table>

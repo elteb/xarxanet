@@ -22,6 +22,6 @@
  * the view is modified.
  */
 ?>
-<?php 
-	print sasson_xarxanet_get_label($output);
+<?php
+	if($output)	print sasson_xarxanet_get_label($output);
 ?>
