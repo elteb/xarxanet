@@ -142,17 +142,17 @@ function simplenews_save_newsletter_action_submit($form, $form_state) {
 }
 
 function simplenews_subscribe_otrs_users_action(&$object, $context = array()) {
-	$result = db_result(db_query("SELECT MAX(change_time) FROM otrs.customer_user"));
-	$timestamp = strtotime($result);
+	$result = db_query("SELECT MAX(change_time) as 'change_time' FROM otrs.customer_user");
+	$record = $result->fetchObject();
+	$timestamp = strtotime($record->change_time);
 	$var = 'last_otrs_users_revision_'.$context['tid'];
 	$time = variable_get($var, 0);
 	$date = date('Y-m-d H:i:s', $time);
 	
 	if ($time < $timestamp) {
-		// Subscribe all users since last revision
+		// Subscribe all users since last revision	
 		$result = db_query("SELECT email FROM otrs.customer_user WHERE change_time>'{$date}'");
-		
-		while ($email = db_fetch_object($result)) {
+		while ($email = $result->fetchObject()) {
 			$email = $email->email;
 			$subscription = simplenews_subscribe_user($email, $context['tid'], FALSE, 'action_otrs');
 		}
