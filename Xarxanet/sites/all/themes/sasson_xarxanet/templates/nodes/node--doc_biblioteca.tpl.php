@@ -151,7 +151,7 @@
 				else
 					echo 0;
 				?>
-			</p>	
+			</p>
 		</td></tr></table>
 		
 		<!-- PEU -->

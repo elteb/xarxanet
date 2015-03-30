@@ -136,7 +136,7 @@
             <?php if ($submitted): ?>
                 <div class="node-submitted">
                     <div class="cincestrelles"><?php print $node->content['fivestar_widget']['#value']; ?></div>
-                    <p><?php print format_date($node->changed, 'small'); ?></p>
+                    <p><?php print format_date($node->created, 'small'); ?></p>
 
                     <?php if(isset($node->field_autor['und'][0]['value'])): ?>
                         <p><strong>Autor: </strong><?php print $node->field_autor['und'][0]['value']; ?></p>

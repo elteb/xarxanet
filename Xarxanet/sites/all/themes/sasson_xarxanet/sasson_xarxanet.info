@@ -99,7 +99,7 @@ settings[sasson_overlay_url] = ''
 settings[sasson_overlay_opacity] = '0.5'
 
 settings[sasson_font] = ''
-settings[sasson_font_fallback] = 'sans-serif'
+settings[sasson_font_fallback] = ''
 settings[sasson_font_selectors] = 'body'
 
 settings[sasson_breadcrumb_hideonlyfront] = 1

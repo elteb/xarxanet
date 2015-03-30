@@ -59,10 +59,8 @@ $pathroot = 'http://www.xarxanet.org';
 $node = $build['#node'];
 
 // Banners fixes
-$banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 
-													'http://www.xarxanet.org/especial/barcelona-ecv/subscribe'),						
-						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
-													'http://www.xarxanet.org/especial/barcelona-ecv'),
+$banners_fixes = array(	'Banner PNAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_pnav.jpg', 
+													'http://pnav.voluntariat.org/'),
 						'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
 													'http://www.voluntariat.org/AgendadecursosdelPFVC.aspx'),
 						'Banner opinió' => 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_opinio.png', 
@@ -94,7 +92,11 @@ $banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/def
 						'Banner INTERREG IVC' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_interreg.gif', 
 													'http://verso.au.dk'),
 						'Banner CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_evc2014.jpg', 
-											'http://www.cev.be'));
+											'http://www.cev.be'),
+						'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 
+													'http://www.xarxanet.org/especial/barcelona-ecv/subscribe'),						
+						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
+													'http://www.xarxanet.org/especial/barcelona-ecv'));
 
 // Notícies destacades
 $num_destacades = 3;

@@ -161,7 +161,7 @@
             
             <?php if ($submitted): ?>
                 <div class="node-submitted">
-                    <p><?php print format_date($node->changed, 'small'); ?></p>
+                    <p><?php print format_date($node->created, 'small'); ?></p>
                     
                     <?php if(isset($node->field_autor['und'][0]['value'])): ?>
                         <p><strong>Autor/a: </strong><?php print $node->field_autor['und'][0]['value']; ?></p>

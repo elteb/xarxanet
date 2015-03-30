@@ -47,11 +47,10 @@
   {
     background: $main-3;
   }
-  .views-field-field-recull-secundari-principal,
-  .views-field-field-resum,
   .views-field-views-conditional-1,
-  .views-field-field-recull-secundari-secundari,
-  .views-field-field-resum-2,
+  .views-field-views-conditional-2,
+  .views-field-views-conditional-3,
+  .views-field-views-conditional-5
   {
     padding: 0px 8px;
   }
@@ -59,8 +58,8 @@
   {
     padding: 8px;
   }
-  .views-field-field-recull-secundari-principal,
-  .views-field-field-recull-secundari-secundari,
+  .views-field-views-conditional-1,
+  .views-field-views-conditional-5,
   .views-field-field-recull-secundari-lat-sup,
   .views-field-field-recull-secundari-lat-inf,
   {
@@ -70,8 +69,7 @@
     padding-top: 0.4em;
     padding-bottom: 0.4em;
   }
-  .views-field-field-resum,
-  .views-field-views-conditional-1,
+  .views-field-views-conditional-2,
   .views-field-field-resum-1,{
     padding-bottom: 20px;   
   }  
@@ -90,7 +88,7 @@
 .pane-recull-documents {
   .field-item {
     float: left;
-    font-size: 14pt;
+    font-size: 12pt;
     padding-bottom: 0;
     padding-left: 10px;
     padding-right: 15px;
