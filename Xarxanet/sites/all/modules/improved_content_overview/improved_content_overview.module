@@ -6,32 +6,45 @@
  */
 function improved_content_overview_node_admin_filters() {
 	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();
+	
+	
 	$filters = array();
 	
-	//Role Filter
-	$all_roles = array('[any]' => t('any')) + user_roles();
-	$filters['role'] = array('title' => t('role'), 'options' => $all_roles	);
-	
-	//User Filter of selected roles
-	$roles = array();
+	//Get filters
 	foreach ($filter_data as $filter) {
-		if ($filter[0] == 'role') {
-			$roles[] = $filter[1];
-		}
+		$$filter[0] = $filter[1];
 	}
-	if (!empty($roles)) {
+	
+	//Role Filter
+		$all_roles = array('[any]' => t('any')) + user_roles();
+		$filters['role'] = array('title' => t('role'), 'options' => $all_roles	);
+		if (!is_null($role)) $filters['role']['type'] = 'hidden';
+
+	//User Filter
+	if (!is_null($role)) {
 		$users = array();
-		$query = 'SELECT DISTINCT(ur.uid) FROM {users_roles} AS ur WHERE ur.rid IN (:rids)';
-		$result = db_query($query, array(':rids' => $roles));
+		$query = 'SELECT DISTINCT(ur.uid) FROM {users_roles} AS ur WHERE ur.rid = :rid';
+		$result = db_query($query, array(':rid' => $role));
 		foreach ($result as $row) {
-			$user = user_load($row->uid);
-			$users[$user->uid] = $user->name;
+			$usr = user_load($row->uid);
+			$users[$usr->uid] = $usr->name;
 		}
 		asort($users);
 		$users = array('[any]' => t('any')) + $users;
-		$filters['user'] = array('title' => t('user'), 'options' => $users	);
+		$filters['user_uid'] = array('title' => t('user'), 'options' => $users	);
+		if (!is_null($user_uid)) $filters['user_uid']['type'] = 'hidden';
 	}
 	
+	//Date Filter
+	$filters['date_type'] = array('title' => t('date type'), 'options' => array('[any]' => t('any'), 'created' => t('Created date'), 'changed' => t('Updated date')));
+	if (!is_null($date_type)) $filters['date_type']['type'] = 'hidden';
+	if (!is_null($date_type)) {
+		$filters['start_date'] = array('title' => t('start date'), 'type' => 'date_popup', 'date_format' => 'd-m-Y', 'date_label_position' => 'none');
+		if (!is_null($start_date)) $filters['start_date']['type'] = 'hidden';
+		$filters['end_date'] = array('title' => t('end date'), 'type' => 'date_popup', 'date_format' => 'd-m-Y', 'date_label_position' => 'none');
+		if (!is_null($end_date)) $filters['end_date']['type'] = 'hidden';
+	}
+		
 	return $filters;
 }
 
@@ -40,13 +53,25 @@ function improved_content_overview_node_admin_filters() {
  */
 function improved_content_overview_node_admin_filter_query_alter(SelectQueryInterface $query) {
 	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();
+	$date_type = null;
 	foreach ($filter_data as $index => $filter) {
 		list($key, $value) = $filter;
 		switch ($key) {
 			case 'role':
+				$query->join('users_roles', 'ur', 'n.uid = ur.uid'); //JOIN node with users_roles
+				$query->condition('ur.' . 'rid', $value);
 				break;
-			case 'user':
+			case 'user_uid':
 				$query->condition('n.' . 'uid', $value);
+				break;
+			case 'date_type':
+				$date_type = $value;
+				break;
+			case 'start_date':
+				$query->condition('n.' . $date_type, strtotime($value), '>=');
+				break;
+			case 'end_date':
+				$query->condition('n.' . $date_type, strtotime($value), '<=');
 				break;
 		}
 	}
