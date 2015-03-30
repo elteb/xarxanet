@@ -168,6 +168,15 @@ function simplenews_admin_issues() {
 			'sent' => array (
 					'data' => t ( 'Sent' ) 
 			),
+			/****************************************
+			 * TEBPATCH (ADD) @fcasanellas 08/01/15
+			 * XN-SN010 Mostra el valor de sent_subscriber_count a admin/content/simplenews
+			 * NEWCODE *****************************/
+			'issue_sent' => array (
+					'data' => t ( 'Issue Sent' ) 
+			),
+			/****************************************
+			 * END TEBPATCH	************************/
 			'subscribers' => array (
 					'data' => t ( 'Subscribers' ) 
 			),
@@ -191,8 +200,8 @@ function simplenews_admin_issues() {
 			'tid',
 			/****************************************
 			 * TEBPATCH (ADD) @fcasanellas 08/01/15
-			* XN-SN010 Mostra el valor de sent_subscriber_count a admin/content/simplenews
-			* NEWCODE *****************************/
+			 * XN-SN010 Mostra el valor de sent_subscriber_count a admin/content/simplenews
+			 * NEWCODE *****************************/
 			'sent_subscriber_count',
 			/****************************************
 			 * END TEBPATCH	************************/
@@ -207,14 +216,12 @@ function simplenews_admin_issues() {
 	module_load_include ( 'inc', 'simplenews', 'includes/simplenews.mail' );
 	foreach ( $query->execute () as $issue ) {
 		$categories = simplenews_category_list ();
-		/****************************************
-		 * TEBPATCH (MDF) @fcasanellas 08/01/15
-		 * XN-SN010 Mostra el valor de sent_subscriber_count a admin/content/simplenews
-		 * OLDCODE ******************************
 		$subscriber_count = simplenews_count_subscriptions ( $issue->tid );
 		/****************************************
+		 * TEBPATCH (ADD) @fcasanellas 08/01/15
+		 * XN-SN010 Mostra el valor de sent_subscriber_count a admin/content/simplenews
 		 * NEWCODE *****************************/
-		$subscriber_count = $issue->sent_subscriber_count;
+		$issue_sent = $issue->sent_subscriber_count;
 		/****************************************
 		 * END TEBPATCH ************************/
 		$pending_count = simplenews_count_spool ( array (
@@ -234,6 +241,13 @@ function simplenews_admin_issues() {
 						'status' => $issue->status 
 				) ),
 				'sent' => $send_status,
+				/****************************************
+				 * TEBPATCH (ADD) @fcasanellas 08/01/15
+				* XN-SN010 Mostra el valor de sent_subscriber_count a admin/content/simplenews
+				* NEWCODE *****************************/
+				'issue_sent' => $issue_sent,
+				/****************************************
+				 * END TEBPATCH	************************/
 				'subscribers' => $subscriber_count,
 				'operations' => l ( t ( 'edit' ), 'node/' . $issue->nid . '/edit', array (
 						'query' => drupal_get_destination () 
