@@ -131,7 +131,7 @@ function webform_custom_simplenews_token_info() {
  */
 function webform_custom_simplenews_tokens($type, $tokens, array $data = array(), array $options = array()) {
 	$values = array (
-			'newsletter-custom-content' => ''
+			'[simplenews-custom-webform:newsletter-custom-content]' => ''
 	);
 	if ($type == 'simplenews-custom-webform') {
 		if ($snid = $data['simplenews_subscriber']->snid) {
@@ -150,7 +150,7 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 				}
 				if (!empty($section_nodes)) {
 					$html = theme('custom_content_section', array('section_nodes' => $section_nodes, 'section_name' => $content));
-					$values['newsletter-custom-content'] .= $html;
+					$values['[simplenews-custom-webform:newsletter-custom-content]'] .= $html;
 				}
 			}
 		}
