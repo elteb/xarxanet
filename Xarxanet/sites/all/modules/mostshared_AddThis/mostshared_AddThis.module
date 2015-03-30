@@ -12,7 +12,7 @@ define('MOSTSHARED_SERVICE_STATUS_ERROR', -2);
 
 define('MOSTSHARED_DEFAULT_EXCLUDES', "admin/*\nuser/*\nnode/*/*\n*?*\n");
 define('MOSTSHARED_SERVICE_ADDTHIS_ID', 2);
-define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL', "month");
+define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL', "-1 month");
 define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL_ID', "1");
 define('MOSTSHARED_ADDTHIS_ENTITY_TYPE', "node");
 
@@ -94,7 +94,7 @@ class MostSharedAddThis {
 	// Clean up the URL and add query parameters
     $request_url = url(self::data_scheme . $url,
       array( 'query' => $params ));
-	
+
 	$this->result = drupal_http_request($request_url);
     
 	if (variable_get('mostshared_debug', FALSE)) {
@@ -368,7 +368,7 @@ function mostshared_AddThis_refresh($cron = FALSE) {
   $sid = MOSTSHARED_SERVICE_ADDTHIS_ID;
   $interval = MOSTSHARED_SERVICE_ADDTHIS_INTERVAL;
   $iid = MOSTSHARED_SERVICE_ADDTHIS_INTERVAL_ID;
-    
+  
   // Get the number of seconds that this interval spans.
   $now = time();
   $span = $now - strtotime($interval, $now);
