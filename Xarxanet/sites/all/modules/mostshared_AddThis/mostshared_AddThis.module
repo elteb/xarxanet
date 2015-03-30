@@ -12,7 +12,7 @@ define('MOSTSHARED_SERVICE_STATUS_ERROR', -2);
 
 define('MOSTSHARED_DEFAULT_EXCLUDES', "admin/*\nuser/*\nnode/*/*\n*?*\n");
 define('MOSTSHARED_SERVICE_ADDTHIS_ID', 2);
-define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL', "-1 month");
+define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL', "-1 day");
 define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL_ID', "1");
 define('MOSTSHARED_ADDTHIS_ENTITY_TYPE', "node");
 
@@ -92,9 +92,9 @@ class MostSharedAddThis {
 	
 	
 	// Clean up the URL and add query parameters
-    $request_url = url(self::data_scheme . $url,
-      array( 'query' => $params ));
+    $request_url = url(self::data_scheme . $url, array( 'query' => $params ));
 
+	echo $request_url; 
 	$this->result = drupal_http_request($request_url);
     
 	if (variable_get('mostshared_debug', FALSE)) {
@@ -372,7 +372,7 @@ function mostshared_AddThis_refresh($cron = FALSE) {
   // Get the number of seconds that this interval spans.
   $now = time();
   $span = $now - strtotime($interval, $now);
-  
+    
   // Get the next time this service should run.
   $row = db_select('mostshared_AddThis_last_run', 'r')
     ->fields('r', array('last_run', 'next_run'))
@@ -401,9 +401,9 @@ function mostshared_AddThis_refresh($cron = FALSE) {
     $addthis = new MostSharedAddThis($addthisuser, $addthispswd, $addthispuid);
 
 	if ($span <= 60 * 60 * 24) {
-      $params['period'] = 'day';
+      $params['period'] = 'last24';
     }
-    elseif ($span <= 60 * 60 * 24 * 7) {
+	elseif ($span <= 60 * 60 * 24 * 7) {
       $params['period'] = 'week';
     }
     // AddThis.com does not support any other options currently
