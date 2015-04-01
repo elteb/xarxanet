@@ -10,6 +10,7 @@
  */
 define ( 'SIMPLENEWS_COMMAND_SENDING_TIME', 5 );
 define ( 'SIMPLENEWS_COMMAND_NOT_SEND_YET', 6 );
+define ( 'SIMPLENEWS_SENDING_TIME_PERIOD', 10 ); //Period in minutes
 
 /**
  * Implementation of hook_perm().
@@ -102,17 +103,25 @@ function simplenews_sending_time_submit($form, &$form_state) {
  */
 function simplenews_sending_time_cron() {
 	module_load_include ( 'inc', 'simplenews', 'includes/simplenews.mail' );
-	
-	// Get the newsletters pending to send.
 	$now_time = $_SERVER ['REQUEST_TIME'];
-	$result = db_query("SELECT nid FROM {simplenews_sending_time} WHERE sent = 0 AND time <= {$now_time}");
+	$lastcron = variable_get('simplenews_sending_time_last_cron', 0);
 	
-	while ($newsletter = $result->fetchObject()) {
-		// Set newsletter sent status to pending if send by cron.
-		$pending = SIMPLENEWS_STATUS_SEND_PENDING;
-		$node = node_load($newsletter->nid);
-		db_query ( "UPDATE {simplenews_newsletter} SET status = {$pending} WHERE nid = {$newsletter->nid}");
-		simplenews_add_node_to_spool ( $node );
-		db_query ( "UPDATE {simplenews_sending_time} SET sent = 1 WHERE nid = {$newsletter->nid}" );
+	if (($lastcron+(SIMPLENEWS_SENDING_TIME_PERIOD*60)) < $now_time) {
+		// Update lastcron
+		variable_set('simplenews_sending_time_last_cron', $now_time);
+		$nextcron = date('H:i', $now_time+(SIMPLENEWS_SENDING_TIME_PERIOD*60));
+		watchdog('Simplenews Sending Time', "Simplenews Sending Time Cron executed. The next execution will take place at {$nextcron}");
+		
+		// Get the newsletters pending to send.
+		$result = db_query("SELECT nid FROM {simplenews_sending_time} WHERE sent = 0 AND time <= {$now_time}");
+		
+		while ($newsletter = $result->fetchObject()) {
+			// Set newsletter sent status to pending if send by cron.
+			$pending = SIMPLENEWS_STATUS_SEND_PENDING;
+			$node = node_load($newsletter->nid);
+			db_query ( "UPDATE {simplenews_newsletter} SET status = {$pending} WHERE nid = {$newsletter->nid}");
+			simplenews_add_node_to_spool ( $node );
+			db_query ( "UPDATE {simplenews_sending_time} SET sent = 1 WHERE nid = {$newsletter->nid}" );
+		}
 	}
 }
