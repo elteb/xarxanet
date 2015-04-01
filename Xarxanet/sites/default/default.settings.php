@@ -325,6 +325,16 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 # $cookie_domain = '.example.com';
 
+/************************************************
+ * TEBPATCH (ADD) @Joel Calvet 01/04/2015
+ * #XN-CE002 Cal indicar el domini per la creacio de la cookie de CKEditor
+ * NEWCODE **************************************/
+ 
+$cookie_domain = 'prova.xarxanet.org';
+
+/************************************************
+ * END TEBPATCH**********************************/
+ 
 /**
  * Variable overrides:
  *
@@ -343,7 +353,7 @@ ini_set('session.cookie_lifetime', 2000000);
  * Remove the leading hash signs to enable.
  */
 # $conf['site_name'] = 'My Drupal site';
-# $conf['theme_default'] = 'garland';
+# $conf['theme_default'] = 'garland';Archivo de conexión a la base de datos en Drupal
 # $conf['anonymous'] = 'Visitor';
 
 /**
@@ -405,7 +415,7 @@ ini_set('session.cookie_lifetime', 2000000);
  * Page caching:
  *
  * By default, Drupal sends a "Vary: Cookie" HTTP header for anonymous page
- * views. This tells a HTTP proxy that it may return a page from its local
+ * views. This tells a HTTP proxy that it maArchivo de conexión a la base de datos en Drupaly return a page from its local
  * cache without contacting the web server, if the user sends the same Cookie
  * header as the user who originally requested the cached page. Without "Vary:
  * Cookie", authenticated users would also be served the anonymous page from
@@ -434,7 +444,7 @@ ini_set('session.cookie_lifetime', 2000000);
 # $conf['css_gzip_compression'] = FALSE;
 # $conf['js_gzip_compression'] = FALSE;
 
-/**
+/**Archivo de conexión a la base de datos en Drupal
  * Block caching:
  *
  * Block caching may not be compatible with node access modules depending on
