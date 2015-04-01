@@ -18,6 +18,13 @@
  *
  * @return boolean
  */
+ 
+/************************************************
+ * TEBPATCH (DEL) @Joel Calvet 01/04/2015
+ * #XN-CE001 Per a que funcioni correctament el CKFinder (File Browser de CKEditor),
+ * cal comentar la seguent funció
+ * OLDCODE **************************************/
+ 
 //function CheckAuthentication()
 //{
 	// WARNING : DO NOT simply return "true". By doing so, you are allowing
@@ -32,7 +39,10 @@
 
 	//return false;
 //	}
-
+ 
+/************************************************
+ * END TEBPATCH**********************************/
+ 
 // LicenseKey : Paste your license key here. If left blank, CKFinder will be
 // fully functional, in demo mode.
 $config['LicenseName'] = '';
@@ -61,7 +71,18 @@ Examples:
 ATTENTION: The trailing slash is required.
 */
 $baseUrl = '/ckfinder/userfiles/';
+
+/************************************************
+ * TEBPATCH (ADD) @Joel Calvet 01/04/2015
+ * #XN-CE002 Es requereix el següent arxiu:
+ * '../../../../includes/filemanager.config.php'
+ * NEWCODE **************************************/
+ 
 require_once '../../../../includes/filemanager.config.php'; 
+
+/************************************************
+ * END TEBPATCH**********************************/
+
 /*
 $baseDir : the path to the local directory (in the server) which points to the
 above $baseUrl URL. This is the path used by CKFinder to handle the files in

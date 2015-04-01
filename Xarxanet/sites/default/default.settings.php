@@ -324,7 +324,17 @@ ini_set('session.cookie_lifetime', 2000000);
  * with a leading dot, as per RFC 2109.
  */
 # $cookie_domain = '.example.com';
+
+/************************************************
+ * TEBPATCH (ADD) @Joel Calvet 01/04/2015
+ * #XN-CE002 Cal indicar el domini per la creacio de la cookie de CKEditor
+ * NEWCODE **************************************/
+ 
 $cookie_domain = 'prova.xarxanet.org';
+
+/************************************************
+ * END TEBPATCH**********************************/
+ 
 /**
  * Variable overrides:
  *
