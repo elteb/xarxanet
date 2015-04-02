@@ -94,7 +94,6 @@ class MostSharedAddThis {
 	// Clean up the URL and add query parameters
     $request_url = url(self::data_scheme . $url, array( 'query' => $params ));
 
-	echo $request_url; 
 	$this->result = drupal_http_request($request_url);
     
 	if (variable_get('mostshared_debug', FALSE)) {
