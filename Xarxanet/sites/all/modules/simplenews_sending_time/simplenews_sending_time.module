@@ -120,6 +120,8 @@ function simplenews_sending_time_cron() {
 			$pending = SIMPLENEWS_STATUS_SEND_PENDING;
 			$node = node_load($newsletter->nid);
 			db_query ( "UPDATE {simplenews_newsletter} SET status = {$pending} WHERE nid = {$newsletter->nid}");
+			// Set sending time table status to pending
+			db_query ( "UPDATE {simplenews_sending_time} SET sent = 2 WHERE nid = {$newsletter->nid}" );
 			simplenews_add_node_to_spool ( $node );
 			db_query ( "UPDATE {simplenews_sending_time} SET sent = 1 WHERE nid = {$newsletter->nid}" );
 		}
