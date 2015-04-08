@@ -158,7 +158,7 @@
 		<table class='biblioteca-document' id="bilioteca-document-peu"><tr><td class="document">
 			<b>Descàrrega directa</b><br/>
 			<?php if (!empty($node->field_doc_descarrega['und'])) { ?>
-				<a href="<?php echo file_create_url($node->field_doc_descarrega['und'][0]['uri']);?>" onClick="_gaq.push(['_trackEvent', 'Descarregues Biblioteca','Descarrega <?php echo $tipo;?>','<?php echo $node->title;?>']);"><img src="/sites/default/files/biblioteca/download.png" alt="Icona de descàrrega" width="50"></a>
+				<a href="<?php echo file_create_url($node->field_doc_descarrega['und'][0]['uri']);?>" onClick="_gaq.push(['_trackEvent', 'Descàrregues Biblioteca','Descàrrega de: <?php echo $tipo;?>','<?php echo $node->title;?>']);"><img src="/sites/default/files/biblioteca/download.png" alt="Icona de descàrrega" width="50"></a>
 			<?php } else { ?>
 				<img src="/sites/default/files/biblioteca/download_bn.png" alt="Icona de descàrrega" width="50">
 			<?php } ?>
