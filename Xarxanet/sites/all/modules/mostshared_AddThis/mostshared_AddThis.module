@@ -400,7 +400,7 @@ function mostshared_AddThis_refresh($cron = FALSE) {
     $addthis = new MostSharedAddThis($addthisuser, $addthispswd, $addthispuid);
 
 	if ($span <= 60 * 60 * 24) {
-      $params['period'] = 'last24';
+      $params['period'] = 'day';
     }
 	elseif ($span <= 60 * 60 * 24 * 7) {
       $params['period'] = 'week';
