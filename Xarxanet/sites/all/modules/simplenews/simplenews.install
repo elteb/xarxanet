@@ -338,6 +338,15 @@ function simplenews_schema() {
         ),
       ),
     ),
+    /****************************************
+     * TEBPATCH (ADD) @fcasanella 09/04/2015
+     * XN-SN011 Mail UNIQUE a la taula simplenews_mail_spool
+     * NEWCODE *****************************/
+    'unique keys' => array(
+      'sid_nid' => array('sid', 'nid'),
+    ),
+    /***************************************
+     * END TEBPATCH ***********************/
   );
   return $schema;
 }
