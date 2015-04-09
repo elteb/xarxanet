@@ -400,7 +400,7 @@ function mostshared_AddThis_refresh($cron = FALSE) {
     $addthis = new MostSharedAddThis($addthisuser, $addthispswd, $addthispuid);
 
 	if ($span <= 60 * 60 * 24) {
-      $params['period'] = 'day';
+      $params['period'] = 'last24';
     }
 	elseif ($span <= 60 * 60 * 24 * 7) {
       $params['period'] = 'week';
@@ -716,7 +716,7 @@ function mostshared_AddThis_intervals($iid = NULL) {
 function mostshared_AddThis_next_run($service, $span, $last_run) {
   // If the interval is 2 days or less, refresh once per hour
   if ($span <= 60 * 60 * 24 * 2) {
-    return strtotime('1 hour', $last_run);
+    return strtotime('30 minutes', $last_run);
   }
   // If the interval is 1 year or more, refresh once per week 
   elseif ($span >= 60 * 60 * 24 * 365) {
