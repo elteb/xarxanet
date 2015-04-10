@@ -134,6 +134,29 @@
   }
 }
 
+.page-especials .view-seccions-especials {
+  .views-row {
+    clear: both;
+    .views-field {
+      padding: $space 0;
+    }
+    div {
+      float: left;
+      vertical-align: top;
+    }
+    .image { 
+      margin-right: $space;
+    }
+    .text {
+      @include grid-width(4, $ninesixty-columns, $ninesixty-gutter-width);
+      margin-left: $space;
+    }
+    h3 {
+      margin-top: $space;
+    }
+  }
+}
+
 /* ------- Biblioteca ------- */
 .section-biblioteca,
 .section-biblioteca-filtre,
