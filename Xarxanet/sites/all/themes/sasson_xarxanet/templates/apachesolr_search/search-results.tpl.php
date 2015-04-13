@@ -60,7 +60,8 @@ if ($uri[1] == 'biblioteca_cerca') {
 				<p class='teaser'>{$teaser}</p>
 				</div>
 				</td></tr></table>";
-	}	
+	}
+	echo "{$pager}";	
 } else {
 	echo "<dl class='search-results {$type}-results'>{$search_results}</dl>{$pager}";
 }
