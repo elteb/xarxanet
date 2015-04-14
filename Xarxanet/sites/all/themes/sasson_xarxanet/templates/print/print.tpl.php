@@ -107,9 +107,9 @@ if (! empty ( $print ['message'] )) {
 					$inici->setTimezone(new DateTimeZone($print['node']->field_date_event['und'][0]['timezone']));
 					$final->setTimezone(new DateTimeZone($print['node']->field_date_event['und'][0]['timezone']));
 					
-					echo '<p><strong>Inici: </strong>'.$inici->format("d/m/Y \a \l\e\s H:i").'</p>';
+					echo '<p><strong>Inici: </strong>'.$inici->format("d/m/Y \a \l\\e\s H:i").'</p>';
 					if ($print['node']->field_date_event['und'][0]['value'] != $print['node']->field_date_event['und'][0]['value2']) {
-						echo '<p><strong>Final: </strong>'.$final->format("d/m/Y \a \l\e\s H:i").'</p>';
+						echo '<p><strong>Final: </strong>'.$final->format("d/m/Y \a \l\\e\s H:i").'</p>';
 					}
 					echo $print['node']->body['und'][0]['value'];
 					
