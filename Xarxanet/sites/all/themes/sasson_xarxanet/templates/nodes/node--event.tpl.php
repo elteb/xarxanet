@@ -189,20 +189,20 @@
                   	<?php if ($inici->format("H:i") != '00:00'):?>
                       <?php print $inici->format("d/m/Y \a \l\\e\s H:i"); ?>
                     <?php else:?>
-                      <?php print $inici->format("d/m/Y \(\T\o\t \\e\l \d\i\a\)"); ?>                      
+                      <?php print $inici->format("d/m/Y \(\T\o\\t \\e\l \d\i\a\)"); ?>                      
                     <?php endif;?>
 					  &nbsp;
                       <strong> Final:</strong>
                     <?php if ($final->format("H:i") != '00:00'):?>
                       <?php print $final->format("d/m/Y \a \l\\e\s H:i"); ?>
                     <?php else:?>
-                      <?php print $final->format("d/m/Y \(\T\o\t \\e\l \d\i\a\)"); ?>                      
+                      <?php print $final->format("d/m/Y \(\T\o\\t \\e\l \d\i\a\)"); ?>                      
                     <?php endif;?>
                   <?php else:?>
                     <?php if ($inici->format("H:i") != '00:00'):?>
                       <?php print $inici->format("d/m/Y \a \l\\e\s H:i"); ?>
                     <?php else:?>
-                      <?php print $inici->format("d/m/Y \(\T\o\t \\e\l \d\i\a\)"); ?>                      
+                      <?php print $inici->format("d/m/Y \(\T\o\\t \\e\l \d\i\a\)"); ?>                      
                     <?php endif;?>
                   <?php endif;?>
                   </span>
