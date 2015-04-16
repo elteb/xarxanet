@@ -56,7 +56,7 @@
 					'</div>';
 		}
 		print '</div>';
-	}elseif (strlen($startdate) == 23){
+	}elseif (strlen($startdate) >= 20 ){
 		$date_event_fecha = substr($startdate,0, -12);
 		$date_event_hora = substr($startdate, 11);
 		print '<div class="event-data">
