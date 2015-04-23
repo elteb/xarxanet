@@ -40,9 +40,10 @@
 	$startdate = strip_tags($fields['field_date_event']->content);
 	$enddate = strip_tags($fields['field_date_event_1']->content);
 	
-	if ($startdate) {
+	if (strlen($startdate) == 18) {
 		$date_event_fecha = substr($startdate,0, -7);
 		$date_event_hora = substr($startdate, -5);
+		
 		print '<div class="event-data">
 	      		<div class="floatesquerra" ><strong>Inici  </strong>'.
 				$date_event_fecha." a les ".$date_event_hora.
@@ -53,6 +54,23 @@
 			$date_event_hora = substr($enddate, -5);
 			print '<div class="floatesquerra" ><strong>Final  </strong>'.
 					$date_event_fecha." a les ".$date_event_hora.
+					'</div>';
+		}
+		print '</div>';
+	}elseif (strlen($startdate) == 23){
+		$date_event_fecha = substr($startdate,0, -12);
+		$date_event_hora = substr($startdate, 11);
+		
+		print '<div class="event-data">
+	      		<div class="floatesquerra" ><strong>Inici  </strong>'.
+				$date_event_fecha." ".$date_event_hora.
+				'</div>';
+		
+		if ($startdate != $enddate) {
+			$date_event_fecha = substr($enddate,0, -12);
+			$date_event_hora = substr($enddate, 11);
+			print '<div class="floatesquerra" ><strong>Final  </strong>'.
+					$date_event_fecha." ".$date_event_hora.
 					'</div>';
 		}
 		print '</div>';

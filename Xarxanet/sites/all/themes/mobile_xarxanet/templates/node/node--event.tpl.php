@@ -99,8 +99,8 @@
 	
 	<div id="date">
 		<?php
-			if ($inici) print '<strong>Inici: </strong>'.$inici->format("d/m/Y \a \l\e\s H:i");;
-			if ($inici != $final) print '<br/><strong>Fi: </strong>'.$final->format("d/m/Y \a \l\e\s H:i");;  
+			if ($inici) print '<strong>Inici: </strong>'.$inici->format("d/m/Y \a \l\\e\s H:i");;
+			if ($inici != $final) print '<br/><strong>Fi: </strong>'.$final->format("d/m/Y \a \l\\e\s H:i");;  
 		?>
 	</div>
 		
