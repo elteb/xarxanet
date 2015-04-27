@@ -112,14 +112,6 @@ function google_analytics_counter_menu() {
     'weight' => 5,
     );
 
-  /* OAuth callback from Google */
-  $items['google_analytics_counter/oauth'] = array(
-    'title' => t('Google Analytics Reports OAuth Callback'),
-    'access callback' => TRUE,
-    'page callback' => 'google_analytics_counter_oauth_callback',
-    'type' => MENU_CALLBACK,
-    );
-
   return $items;
 }
 

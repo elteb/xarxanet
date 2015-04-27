@@ -441,7 +441,15 @@ function google_analytics_counter_report_data($params = array(), $cache_options 
   $params += $params_defaults;
 
   $GAFeed = google_analytics_counter_new_gafeed();
-  $GAFeed->queryReportFeed($params, $cache_options);
+  if ($GAFeed) {
+    $GAFeed->queryReportFeed($params, $cache_options);
+    return $GAFeed;
+  }
+  else {
+    drupal_set_message(t("There was an authentication error. Please check your Google API settings and try again."), 'error', FALSE);
+    $error = array('error' => TRUE);
+    return $error;
+  }
 
   return $GAFeed;
 }

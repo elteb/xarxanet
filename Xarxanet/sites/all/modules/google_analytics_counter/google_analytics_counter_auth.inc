@@ -4,7 +4,7 @@
  * @file
  * Provides the GAFeed object type and associated methods.
  *
- * Most of the Google Analytics authentication process is taken over from http://drupal.org/project/google_analytics_reports because all we need here is its Google Analytics API submodule but it is not possible to use that separately. Moreover, Google Analytics Reports requires also module Chart which is completely unrelated to this module.
+ * Most of the Google Analytics authentication process is taken over from http://drupal.org/project/google_analytics_counter because all we need here is its Google Analytics API submodule but it is not possible to use that separately. Moreover, Google Analytics Reports requires also module Chart which is completely unrelated to this module.
  */
 
 /* Seconds in an hour. */
@@ -16,16 +16,67 @@ define('GOOGLE_ANALYTICS_COUNTER_DAY', GOOGLE_ANALYTICS_COUNTER_HOUR * 24);
 /* Seconds in a week. */
 define('GOOGLE_ANALYTICS_COUNTER_WEEK', GOOGLE_ANALYTICS_COUNTER_DAY * 7);
 
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
+
 /**
  * Instantiate a new GAFeed object.
  */
 function google_analytics_counter_new_gafeed() {
   module_load_include('inc', 'google_analytics_counter', 'GAFeed.lib');
-  $key = variable_get('google_analytics_counter_consumer_key', 'anonymous');
-  $secret = variable_get('google_analytics_counter_consumer_secret', 'anonymous');
-  $oauth_token = variable_get('google_analytics_counter_oauth_token', NULL);
-  $oauth_token_secret = variable_get('google_analytics_counter_oauth_token_secret', NULL);
-  return new GAFeed($key, $secret, $oauth_token, $oauth_token_secret);
+   	if (variable_get('google_analytics_counter_access_token', NULL) && time() < variable_get('google_analytics_counter_expires_at', NULL)) {
+		// If the access token is still valid, return an authenticated GAFeed
+		return new GAFeed(variable_get('google_analytics_counter_access_token', NULL));
+	}
+	else if (variable_get('google_analytics_counter_refresh_token', NULL)) {
+		// If the site has an access token and refresh token, but the access
+		// token has expired, authenticate the user with the refresh token 
+		$client_id = variable_get('google_analytics_counter_client_id', NULL);
+		$client_secret = variable_get('google_analytics_counter_client_secret', NULL);
+		$refresh_token = variable_get('google_analytics_counter_refresh_token', NULL);
+
+		try {
+			$GAFeed = new GAFeed();
+			$GAFeed -> refreshToken($client_id, $client_secret, $refresh_token);
+			
+			variable_set("google_analytics_counter_access_token", $GAFeed->access_token);
+			variable_set("google_analytics_counter_expires_at", $GAFeed->expires_at);
+			
+			return $GAFeed;
+		}
+		catch (Exception $e) {
+			drupal_set_message(t("There was an authentication error. Message: " . $e->getMessage()), 'error', FALSE);
+			return NULL;
+		}
+	}
+	else if (isset($_GET['code'])) {
+		// If there is no access token or refresh token and client is returned
+		// to the config page with an access code, complete the authentication
+		$client_id = variable_get('google_analytics_counter_client_id', NULL);
+		$client_secret = variable_get('google_analytics_counter_client_secret', NULL);
+        $redirect_uri = variable_get('google_analytics_counter_redirect_uri', NULL);
+		
+		try {
+			$GAFeed = new GAFeed();
+			$GAFeed -> finishAuthentication($client_id, $client_secret, $redirect_uri);
+		
+			variable_set('google_analytics_counter_access_token', $GAFeed->access_token);
+			variable_set('google_analytics_counter_expires_at', $GAFeed->expires_at);
+			variable_set('google_analytics_counter_refresh_token', $GAFeed->refresh_token);
+			variable_del('google_analytics_counter_redirect_uri');
+
+            drupal_set_message(t("You have been successfully authenticated."), 'status', FALSE);
+			drupal_goto($redirect_uri);
+		}
+		catch (Exception $e) {
+			drupal_set_message(t("There was an authentication error. Message: " . $e->getMessage()), 'error', FALSE);
+			return NULL;
+		}
+	}
+	else {
+		return NULL;
+	}
 }
 
 /**
@@ -36,15 +87,15 @@ function google_analytics_counter_auth_admin() {
   $form = array();
   $account = google_analytics_counter_new_gafeed();
   //dpm($account);
-
-  if ($account->isAuthenticated()) {
+  
+  if($account->isAuthenticated()) {
     $webprops = $account->queryWebProperties()->results->items;
     $profiles = $account->queryProfiles()->results->items;
     $options = array();
     $profile_id = variable_get('google_analytics_counter_profile_id', 0);
     $set_default = FALSE;
-
-    /* Add optgroups for each web property */
+	
+	//* Add optgroups for each web property */
     foreach ($profiles as $profile) {
       $webprop = NULL;
       foreach ($webprops as $webprop_value) {
@@ -53,7 +104,7 @@ function google_analytics_counter_auth_admin() {
           break;
         }
       }
-
+		
       $options[$webprop->name][$profile->id] = theme('google_analytics_counter_profile_label', array('profile' => $profile));
       /* Rough attempt to see if the current site is in the account list */
       if (empty($profile_id) && (parse_url($webprop->websiteUrl, PHP_URL_PATH) == $_SERVER['HTTP_HOST'])) {
@@ -67,7 +118,7 @@ function google_analytics_counter_auth_admin() {
       $profile_id = key($options[key($options)]);
       $set_default = TRUE;
     }
-
+	
     if ($set_default) {
       variable_set('google_analytics_counter_profile_id', $profile_id);
     }
@@ -116,19 +167,29 @@ function google_analytics_counter_auth_admin() {
   }
   /* Else, there are no profiles, and we should just leave it at setup */
   else {
-    $form['setup'] = array(
+  	$form['setup'] = array(
       '#type' => 'fieldset',
       '#title' => t('Initial setup'),
       '#description' => t("When you submit this form, you will be redirected to Google for authentication. Login with the account that has credentials to the Google Analytics profile you'd like to use."),
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
     );
-    $form['setup']['google_analytics_counter_hd'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Google Analytics domain'),
-      '#description' => t('Select which domain tracked by Google Analytics should serve as a source for the statistical data.'),
-      '#default_value' => variable_get('google_analytics_counter_hd', ''),
-    );
+    $form['setup']['client_id'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Client ID'),
+		'#default_value' => variable_get('google_analytics_counter_client_id', ''),
+		'#size' => 30,
+		'#description' => t('Client ID created for the app in the access tab of the ') . l('Google API Console', 'http://code.google.com/apis/console', array('attributes' => array('target' => '_blank'))),
+		'#weight' => -9,
+	);
+	$form['setup']['client_secret'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Client Secret'),
+		'#default_value' => variable_get('google_analytics_counter_client_secret', ''),
+		'#size' => 30,
+		'#description' => t('Client Secret created for the app in the Google API Console'),
+		'#weight' => -8,
+	);
     $form['setup']['setup_submit'] = array(
       '#type' => 'submit',
       '#value' => t('Start setup and authorize account'),
@@ -138,37 +199,36 @@ function google_analytics_counter_auth_admin() {
 }
 
 /**
- * Submit handler.  Steps through the OAuth process, revokes tokens, saves profiles.
+ * Submit handler.  Begins the OAuth process, revokes tokens, saves profiles.
  */
 function google_analytics_counter_auth_admin_submit($form, &$form_state) {
+  
   $op = isset($form_state['values']['op']) ? $form_state['values']['op'] : '';
-  cache_clear_all('GAFeed', 'cache', '*');
-  switch ($op) {
-    case t('Start setup and authorize account'):
-        variable_set('google_analytics_counter_hd', $form_state['values']['google_analytics_counter_hd']);
-        /* Anonymous keys are a Google default */
-        $key = variable_get('google_analytics_counter_consumer_key', 'anonymous');
-        $secret = variable_get('google_analytics_counter_consumer_secret', 'anonymous');
-        module_load_include('inc', 'google_analytics_counter', 'GAFeed.lib');
-        $GAFeed = new GAFeed($key, $secret);
-        /* Step #1 of OAuth */
-        $token = $GAFeed->getRequestToken();
-        $_SESSION['google_analytics_counter_oauth']['token'] = $token;
-        $_SESSION['google_analytics_counter_oauth']['destination'] = $_GET['q'];
-
-        /* Step #2 of OAuth */
-        $GAFeed->obtainAuthorization($token);
-        //dpm($GAFeed);
-      break;
-    case t('Save settings'):
+	cache_clear_all('GAFeed', 'cache', '*');
+	switch ($op) {
+      case t('Start setup and authorize account'):
+		$client_id = $form_state['values']['client_id'];
+		$client_secret = $form_state['values']['client_secret'];
+	  	$redirect_uri = GAFeed::currentUrl();
+		
+		variable_set('google_analytics_counter_client_id', $client_id);
+		variable_set('google_analytics_counter_client_secret', $client_secret);
+  		variable_set('google_analytics_counter_redirect_uri', $redirect_uri);
+	
+	    module_load_include('inc', 'google_analytics_counter', 'GAFeed.lib'); 
+ 		$GAFeed = new GAFeed();
+		$GAFeed -> beginAuthentication($client_id, $redirect_uri);
+		break;
+	  case t('Save settings'):
         variable_set('google_analytics_counter_profile_id', $form_state['values']['google_analytics_counter_profile_id']);
+        variable_set('google_analytics_counter_cache_length', $form_state['values']['google_analytics_counter_cache_length']);
         drupal_set_message(t('Settings have been saved successfully.'));
-      break;
-    case t('Revoke access token'):
+    	break;
+      case t('Revoke access token'):
         google_analytics_counter_revoke();
         drupal_set_message(t('Access token has been successfully revoked.'));
-      break;
-  }
+      	break;
+	}
 }
 
 /**
@@ -177,7 +237,6 @@ function google_analytics_counter_auth_admin_submit($form, &$form_state) {
 function google_analytics_counter_oauth_callback() {
   $key = variable_get('google_analytics_counter_consumer_key', 'anonymous');
   $secret = variable_get('google_analytics_counter_consumer_secret', 'anonymous');
-
   $session_data = $_SESSION['google_analytics_counter_oauth'];
   unset($_SESSION['google_analytics_counter_oauth']);
 
@@ -231,11 +290,13 @@ function theme_google_analytics_counter_profile_label($variables) {
  * Programatically revoke token.
  */
 function google_analytics_counter_revoke() {
-  $GAFeed = google_analytics_counter_new_gafeed();
-  $GAFeed->revokeToken();
-  variable_del('google_analytics_counter_profile_id');
-  variable_del('google_analytics_counter_consumer_key');
-  variable_del('google_analytics_counter_consumer_secret');
-  variable_del('google_analytics_counter_oauth_token');
-  variable_del('google_analytics_counter_oauth_token_secret');
+  google_analytics_counter_new_gafeed()->revokeToken();
+	variable_del("google_analytics_counter_client_id");
+	variable_del("google_analytics_counter_client_secret");
+	variable_del("google_analytics_counter_access_token");
+	variable_del("google_analytics_counter_expires_at");
+	variable_del("google_analytics_counter_refresh_token");
+	variable_del("google_analytics_counter_profile_id");
+	variable_del('google_analytics_counter_cache_length');
+  variable_del('google_analytics_counter_redirect_uri');
 }

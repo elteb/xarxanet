@@ -4,7 +4,7 @@
  * @file
  * Provides the GAFeed object type and associated methods.
  *
- * Most of the Google Analytics authentication process is taken over from http://drupal.org/project/google_analytics_reports because all we need here is its Google Analytics API submodule but it is not possible to use that separately. Moreover, Google Analytics Reports requires also module Chart which is completely unrelated to this module.
+ * Most of the Google Analytics authentication process is taken over from http://drupal.org/project/google_analytics_counter because all we need here is its Google Analytics API submodule but it is not possible to use that separately. Moreover, Google Analytics Reports requires also module Chart which is completely unrelated to this module.
  */
 
 /**
@@ -12,6 +12,14 @@
  * the Google Analytics Data Export API.
  */
 class GAFeed {
+	
+  const OAUTH2_REVOKE_URI = 'https://accounts.google.com/o/oauth2/revoke';
+  const OAUTH2_TOKEN_URI = 'https://accounts.google.com/o/oauth2/token';
+  const OAUTH2_AUTH_URL = 'https://accounts.google.com/o/oauth2/auth';
+  const SCOPE = 'https://www.googleapis.com/auth/analytics.readonly https://www.google.com/analytics/feeds/';
+  //$this->setQueryPath('analytics/feeds/accounts/default');
+  //if ($this->query($this->queryPath, $params, 'GET', $this->generateAuthHeader(), $cache_options)) {
+  //}
 
   /* Response object */
   public $response;
@@ -31,138 +39,206 @@ class GAFeed {
   /* Host and endpoint of Google Analytics API */
   protected $host = 'www.googleapis.com/analytics/v3';
 
-  /* Request header source */
-  protected $source = 'drupal';
+  /* OAuth access token */
+  public $access_token;
 
-  /* Default is HMAC-SHA1 */
-  protected $signatureMethod;
+  /* OAuth refresh token */
+  public $refresh_token;
 
-  /* HMAC-SHA1 Consumer data */
-  protected $consumer;
-
-  /* OAuth token */
-  protected $token;
-
-  /* Google authorize callback verifier string */
-  protected $verifier;
+  /* OAuth expiration time */
+  public $expires_at;
 
   /* OAuth host */
   protected $oAuthHost = 'www.google.com';
 
   /**
    * Check if object is authenticated with Google.
-   */
+  */
+  
   public function isAuthenticated() {
-    return !empty($this->token);
+  	return !empty($this->access_token);
   }
-
+  
   /**
    * Constructor for the GAFeed class
    */
-  public function __construct($consumer_key, $consumer_secret, $oauth_token = NULL, $oauth_token_secret = NULL) {
-    $this->signatureMethod = new OAuthSignatureMethod_HMAC_SHA1();
-    $this->consumer = new OAuthConsumer($consumer_key, $consumer_secret);
-
-    /* Allow developers the option of OAuth authentication without using this class's methods */
-    if (!empty($oauth_token) && !empty($oauth_token_secret)) {
-      $this->token = new OAuthConsumer($oauth_token, $oauth_token_secret);
-    }
+  public function __construct($token = NULL) {
+    $this->access_token = $token;
   }
+
+    /**
+   * Get the current page url
+   *
+   * @return String
+   */
+  public static function currentUrl() {
+    $https = $_SERVER['HTTPS'] == 'on';
+    $url = $https ? 'https://' : 'http://';
+    $url .= $_SERVER['SERVER_NAME'];
+    if ((!$https && $_SERVER['SERVER_PORT'] != '80') ||
+      ($https && $_SERVER['SERVER_PORT'] != '443')) {
+      $url .= ':' . $_SERVER['SERVER_PORT'];
+     }
+
+    return $url . $_SERVER['REQUEST_URI'];
+   }
+ 
+	/**
+	* Create a URL to obtain user authorization.
+	* The authorization endpoint allows the user to first
+	* authenticate, and then grant/deny the access request.
+	* @param string $client_id
+	* @return string
+	*/
+	public function createAuthUrl($client_id, $redirect_uri) {
+  	$params = array(
+      'response_type=code',
+	    'redirect_uri=' . $redirect_uri,
+	    'client_id=' . urlencode($client_id),
+	    'scope=' . self::SCOPE,
+      'access_type=offline',
+      'approval_prompt=force' 
+  	);
+
+		$params = implode('&', $params);
+		return self::OAUTH2_AUTH_URL . "?$params";
+	}
+	
+	/**
+	* Authenticate with the Google API
+	*
+	* @param String $client_id
+	* @param String $client_secret
+	* @param String $refresh_token
+	* @return GAFeed
+	*/
+	protected function fetchToken($client_id, $client_secret, $redirect_uri, $refresh_token=NULL) {
+		if ($refresh_token) {
+			$params = array(
+					'client_id=' . $client_id,
+					'client_secret=' . $client_secret,
+					'refresh_token=' . $refresh_token,
+					'grant_type=refresh_token',
+					);
+		}
+		else {
+			$params = array(
+				'code=' . $_GET['code'],
+		    'grant_type=authorization_code',
+		    'redirect_uri=' . $redirect_uri,
+		    'client_id=' . $client_id,
+		    'client_secret=' . $client_secret,
+			);
+		}
+		
+		$data = implode('&', $params);
+		$this->response = drupal_http_request(self::OAUTH2_TOKEN_URI, array('headers' => array('Content-Type' => 'application/x-www-form-urlencoded'), 'method' => 'POST', 'data' => $data));
+    //var_dump($this->response);
+		if (substr($this->response->code, 0, 1) == '2') {
+			$decoded_response = json_decode($this->response->data, true);
+			$this->access_token = $decoded_response['access_token'];
+			$this->expires_at = time() + $decoded_response['expires_in'];
+			if (!$refresh_token) {
+				$this->refresh_token = $decoded_response['refresh_token'];
+			}
+		} 
+		else {
+	        $error_msg = 'Code: !code - Error: !message - Message: !details';
+		    $error_vars = array('!code' => $this->response->code, '!message' => $this->response->error, '!details' => strip_tags($this->response->data));
+		    $this->error =  t($error_msg, $error_vars);
+		    watchdog('google analytics reports', $error_msg, $error_vars, WATCHDOG_ERROR);
+		}
+	}
+
+  /**
+   * Complete the authentication process.
+   * We got here after being redirected from a successful authorization grant.
+   * Fetch the access token
+   *
+   * @param String $client_id
+   * @param String $client_secret
+   */
+  public function finishAuthentication($client_id, $client_secret, $redirect_uri) {
+    $this -> fetchToken($client_id, $client_secret, $redirect_uri);
+  }
+
+  /**
+   * Begin authentication by allowing the user to grant/deny access to the Google account
+   *
+   * @param String $client_id
+   */
+   public function beginAuthentication($client_id, $redirect_uri) {
+     drupal_goto($this -> createAuthUrl($client_id, $redirect_uri));
+   }
+
+  /**
+   * Fetches a fresh access token with the given refresh token.
+   * @param String $client_id
+   * @param String $client_secret
+   * @param string $refresh_token
+   */
+  public function refreshToken($client_id, $client_secret, $refresh_token) {
+    $this->refresh_token = $refresh_token;
+    $this -> fetchToken($client_id, $client_secret, '', $refresh_token);
+  }
+
+  /**
+   * Revoke an OAuth2 access token or refresh token. This method will revoke the current access
+   * token, if a token isn't provided.
+   * @param string|NULL $token The token (access token or a refresh token) that should be revoked.
+   * @return boolean Returns True if the revocation was successful, otherwise False.
+   */
+  public function revokeToken($token = NULL) {
+    if (!$token) {
+      $token = $this->refresh_token;
+    }
+
+    $this->response = drupal_http_request(self::OAUTH2_REVOKE_URI, array('headers' => array('Content-Type' => 'application/x-www-form-urlencoded'), 'method' => 'POST', 'data' => "token=$token"));
+
+    if ($this->response->code == 200) {
+      $this->access_token = NULL;
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Generate authorization token header for all requests
+   *
+   * @return Array
+   */
+   public function generateAuthHeader($token=NULL) {
+     if ($token == NULL) {
+       $token = $this->access_token;
+     }
+     return array('Authorization' => 'Bearer ' . $token);
+   }
 
   /**
    * Set the verifier property
    */
-  public function setVerifier($verifier) {
-    $this->verifier = $verifier;
-  }
+  	public function setVerifier($verifier) {
+      $this->verifier = $verifier;
+    }
 
   /**
    * Set the host property
    */
-  public function setHost($host) {
-    $this->host = $host;
-  }
+   public function setHost($host) {
+     $this->host = $host;
+   }
 
   /**
    * Set the queryPath property
    */
   protected function setQueryPath($path) {
-    $this->queryPath = 'https://' . $this->host . '/' . $path;
-  }
-
-  /**
-   * OAuth step #1: Fetch request token.
-   */
-  public function getRequestToken() {
-    $this->setHost($this->oAuthHost);
-    $this->setQueryPath('accounts/OAuthGetRequestToken');
-
-    /* xoauth_displayname is displayed on the Google Authentication page */
-    $params = array(
-      'scope' => 'https://www.googleapis.com/auth/analytics.readonly',
-      'oauth_callback' => url('google_analytics_counter/oauth', array('absolute' => TRUE)),
-      'xoauth_displayname' => t('Google Analytics Counter Drupal module'),
-    );
-
-    $this->query($this->queryPath, $params, 'GET', array('refresh' => TRUE));
-    parse_str($this->response->data, $token);
-    $this->token = new OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
-    return $token;
-  }
-
-  /**
-   * OAuth step #2: Authorize request token.
-   */
-  public function obtainAuthorization($token) {
-    $this->setHost($this->oAuthHost);
-    $this->setQueryPath('accounts/OAuthAuthorizeToken');
-
-    /* hd is the best way of dealing with users with multiple domains verified with Google */
-    $params = array(
-      'oauth_token' => $token['oauth_token'],
-      'hd' => variable_get('google_analytics_counter_hd', 'default'),
-    );
-
-    // Check for the overlay.
-    if (module_exists('overlay') && overlay_get_mode() == 'child') {
-      overlay_close_dialog($this->queryPath, array('query' => $params, 'external' => TRUE));
-      overlay_deliver_empty_page();
-    }
-    else {
-      drupal_goto($this->queryPath, array('query' => $params));
-    }
-  }
-
-  /**
-   * OAuth step #3: Fetch access token.
-   */
-  public function getAccessToken() {
-    $this->setHost($this->oAuthHost);
-    $this->setQueryPath('accounts/OAuthGetAccessToken');
-
-    $params = array(
-      'oauth_verifier' => $this->verifier,
-    );
-
-    $this->query($this->queryPath, $params, 'GET', array('refresh' => TRUE));
-    parse_str($this->response->data, $token);
-    $this->token = new OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
-    return $token;
-  }
-
-  /**
-   * Revoke OAuth token.
-   */
-  public function revokeToken() {
-    $this->setHost($this->oAuthHost);
-    $this->setQueryPath('accounts/AuthSubRevokeToken');
-    $this->query($this->queryPath, array(), 'GET', array('refresh' => TRUE));
+    $this->queryPath = 'https://'. $this->host .'/'. $path;
   }
 
   /**
    * Public query method for all Data Export API features.
    */
-  public function query($path, $params = array(), $method = 'GET', $cache_options = array()) {
+  public function query($url, $params = array(), $method = 'GET', $headers, $cache_options = array()) {
     $params_defaults = array(
       'start-index' => 1,
       'max-results' => 1000,
@@ -179,7 +255,7 @@ class GAFeed {
 
     /* Provide a query MD5 for the cid if the developer did not provide one */
     if (empty($cache_options['cid'])) {
-      $cache_options['cid'] = 'GAFeed:' . md5(serialize(array_merge($params, array($path, $method))));
+      $cache_options['cid'] = 'GAFeed:' . md5(serialize(array_merge($params, array($url, $method))));
     }
 
     $cache = cache_get($cache_options['cid']);
@@ -190,21 +266,12 @@ class GAFeed {
       $this->fromCache = TRUE;
     }
     else {
-      $request = OAuthRequest::from_consumer_and_token($this->consumer, $this->token, $method, $this->queryPath, $params);
-      $request->sign_request($this->signatureMethod, $this->consumer, $this->token);
-      switch ($method) {
-        case 'GET':
-          $this->request($request->to_url());
-          break;
-        case 'POST':
-          $this->request($request->get_normalized_http_url(), $request->get_parameters(), 'POST');
-          break;
-      }
+      $this->request($url, $params, $headers);
+    }
 
-      /* Do not cache erroneous queries */
-      if (empty($this->error)) {
-        cache_set($cache_options['cid'], $this->response, 'cache', $cache_options['expire']);
-      }
+    /* Do not cache erroneous queries */
+    if (empty($this->error)) {
+      cache_set($cache_options['cid'], $this->response, 'cache', $cache_options['expire']);
     }
 
     return (empty($this->error));
@@ -213,7 +280,7 @@ class GAFeed {
   /**
    * Execute a query
    */
-  protected function request($url, $params = array(), $method = 'GET') {
+  protected function request($url, $params = array(), $headers = array(), $method = 'GET') {
     $data = '';
     if (count($params) > 0) {
       if ($method == 'GET') {
@@ -223,14 +290,7 @@ class GAFeed {
         $data = http_build_query($params, '', '&');
       }
     }
-    $headers = array();
-
-    $options = array(
-      'headers' => $headers,
-      'method' => $method,
-      'data' => $data,
-    );
-    $this->response = drupal_http_request($url, $options);
+    $this->response = drupal_http_request($url, array('headers' => $headers, 'method' => $method, 'data' => $data));
 
     if ($this->response->code == '200') {
       $this->results = json_decode($this->response->data);
@@ -252,7 +312,7 @@ class GAFeed {
    */
   public function queryAccounts($params = array(), $cache_options = array()) {
     $this->setQueryPath('management/accounts');
-    $this->query($this->queryPath, $params, 'GET', $cache_options);
+    $this->query($this->queryPath, $params, 'GET', $this->generateAuthHeader(), $cache_options);
     return $this;
   }
 
@@ -264,7 +324,7 @@ class GAFeed {
       'account-id' => '~all',
     );
     $this->setQueryPath('management/accounts/' . $params['account-id'] . '/webproperties');
-    $this->query($this->queryPath, $params, 'GET', $cache_options);
+    $this->query($this->queryPath, $params, 'GET', $this->generateAuthHeader(), $cache_options);
     return $this;
   }
 
@@ -277,7 +337,7 @@ class GAFeed {
       'web-property-id' => '~all',
     );
     $this->setQueryPath('management/accounts/' . $params['account-id'] . '/webproperties/' . $params['web-property-id'] . '/profiles');
-    $this->query($this->queryPath, $params, 'GET', $cache_options);
+    	$this->query($this->queryPath, $params, 'GET', $this->generateAuthHeader(), $cache_options);
     return $this;
   }
 
@@ -286,7 +346,7 @@ class GAFeed {
    */
   public function querySegments($params = array(), $cache_options = array()) {
     $this->setQueryPath('management/segments');
-    $this->query($this->queryPath, $params, 'GET', $cache_options);
+    $this->query($this->queryPath, $params, 'GET', $this->generateAuthHeader(), $cache_options);
     return $this;
   }
 
@@ -300,7 +360,7 @@ class GAFeed {
       'profile-id' => '~all',
     );
     $this->setQueryPath('management/accounts/' . $params['account-id'] . '/webproperties/' . $params['web-property-id'] . '/profiles/' . $params['profile-id'] . '/goals');
-    $this->query($this->queryPath, $params, 'GET', $cache_options);
+    $this->query($this->queryPath, $params, 'GET', $this->generateAuthHeader(), $cache_options);
     return $this;
   }
 
@@ -377,7 +437,7 @@ class GAFeed {
     $parameters['max-results'] = $params['max_results'];
 
     $this->setQueryPath('data/ga');
-    if ($this->query($this->queryPath, $parameters, 'GET', $cache_options)) {
+    if ($this->query($this->queryPath, $parameters, 'GET', $this->generateAuthHeader(), $cache_options)) {
       $this->sanitizeReport();
     }
     return $this;
