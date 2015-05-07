@@ -34,7 +34,6 @@
 		$rawImatge = $fields['field_agenda_imatge_1']->content;
 		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-mig', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	}
-	
 	$type = $fields['type']->raw;
 	if (isset($fields['field_finfull_tipus'])) $type = strip_tags($fields['field_finfull_tipus']->content);
 	if (isset($fields['field_event_type'])) $type = strip_tags($fields['field_event_type']->content);
@@ -43,7 +42,7 @@
 	print sasson_xarxanet_get_label($type);
 	
 	$startdate = strip_tags($fields['field_date_event']->content);
-	$enddate = strip_tags($fields['field_date_event_1']->content);
+	$enddate = strip_tags($fields['field_date_event_1']->content);	
 	
 	if (strlen($startdate) == 18) {
 		$date_event_fecha = substr($startdate,0, -7);
@@ -79,8 +78,13 @@
 		print '</div>';
 	}
 	
-	print '<h3>'.$fields['title']->content.'</h3>';
-	print $fields['field_resum']->content; 
+	print '<h3>'.$fields['title']->content.'</h3>'; 
+	if ($type=='Finançament (NOU)' || $type=='Premi' || $type=='Subvenció' || $type=='Beques' || $type=='Altres'){
+		$termini = strip_tags($fields['field_date']->content);
+		print '<b>Termini</b>: '.$termini;
+	}
+	print $fields['field_resum']->content;
+	
 ?>
 
 </div>
