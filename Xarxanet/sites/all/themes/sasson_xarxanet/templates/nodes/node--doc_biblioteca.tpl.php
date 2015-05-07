@@ -89,7 +89,7 @@
 			<p>	<?php 
 					$tem1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->name;
 					$tem2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->name;
-					$tipo = $node->field_doc_tematica['und'][1]['taxonomy_term']->name;
+					$tipo = $node->field_doc_tipologia['und'][0]['taxonomy_term']->name;
 				?>
 				<?php echo '<a href="/biblioteca_filtre?field_doc_tematica_value='.str_replace(' ', '+',$tem1).'">'.$tem1.'</a>
  				 			> <a href="/biblioteca_filtre?field_doc_tematica_value='.str_replace(' ', '+',$tem2).'">'.$tem2.'</a>';?>
