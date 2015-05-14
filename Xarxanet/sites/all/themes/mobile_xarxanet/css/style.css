@@ -5,13 +5,15 @@ html {
 	font-size:75%;
 }
 
-body {
+body,
+.ui-widget-content {
 	font-family: Arial,Helvetica,sans-serif;
 	font-size: 1.1rem;
 	color: #333333;
 }
 
-body a {
+body a,
+.ui-widget-content a {
 	font-family: Georgia,Times New Roman,Times,serif;
 	font-size: 1.4rem;
 	color: #005577;
@@ -86,6 +88,7 @@ iframe { max-width: 100% !important; }
 .menu-item#financaments { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/financaments.png") no-repeat scroll 5px; }
 .menu-item#cursos { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/cursos.png") no-repeat scroll 2px; }
 .menu-item#actes { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/actes.png") no-repeat scroll 2px; }
+.menu-item#biblioteca { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/biblioteca.png") no-repeat scroll 5px; }
 .menu-item#assessorament { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/assessorament.png") no-repeat scroll 5px; }
 .menu-item#publica-continguts { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/publica.png") no-repeat scroll 5px; }
 .menu-item#butlletins { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/newsletters.png") no-repeat scroll 5px; }
@@ -293,7 +296,10 @@ iframe { max-width: 100% !important; }
 
 .node-type-page-insert-view .page-title,
 .node-type-page .page-title,
-.page-etiquetes .page-title {
+.page-etiquetes .page-title,
+.page-biblioteca .page-title,
+.page-biblioteca-filtre .page-title,
+.page-biblioteca-cerca .page-title {
 	font-family: Georgia,Times New Roman,Times,serif;
 	font-size: 1.4rem;
 	color: #ffffff;
@@ -422,6 +428,16 @@ iframe { max-width: 100% !important; }
 .node-type-page-insert-view.financaments-mobil ul.pager,
 .node-type-page.financament ul.pager { border-bottom-color: #F57310; }
 
+.page-biblioteca .page-title,
+.page-biblioteca-filtre .page-title,
+.page-biblioteca-cerca .page-title { background-color: #53544F; }
+.section-biblioteca ul.pager,
+.section-biblioteca-filtre ul.pager, 
+.section-biblioteca-cerca ul.pager { border-bottom-color: #53544F; }
+.page-biblioteca .panels-flexible-region-portada_biblioteca-espai_de_cerca,
+.page-biblioteca-filtre #biblioteca-panel .panel-col-first,
+.page-biblioteca-cerca #biblioteca-panel .panel-col-first { border-top: solid 1px #53544F; }
+
 .node-type-page-insert-view.servei .view-2011-recurs-destacat .item-content, 
 .node-type-page-insert-view.servei .view-2011-noticia-destacada .views-row-1 .item-content,
 .node-type-page-insert-view.servei .view-2011-ultims-recursos .views-row-1 .item-content,
@@ -467,6 +483,44 @@ iframe { max-width: 100% !important; }
 .section-especial #especial-documents-pane .doc_title { float: left; }
 .section-especial #especial-documents-pane .doc_image { float: left; margin-right: 10px;}
 .section-especial #especial-documents-pane #clear { clear: both; }
+
+/************ BIBLIOTECA **************/
+.section-biblioteca h2 a,
+.section-biblioteca-filtre h2 a,
+.section-biblioteca-cerca h2 a  { font-weight: normal; }
+.section-biblioteca .panel-flexible .panel-col-last,
+.section-biblioteca-filtre .panel-flexible .panel-col-last,
+.section-biblioteca-cerca .panel-flexible .panel-col-last { display: none; }
+.section-biblioteca .panel-flexible .panel-col-first, 
+.section-biblioteca-filtre .panel-flexible .panel-col-first,
+.section-biblioteca-cerca .panel-flexible .panel-col-first { width: 100%; }
+.section-biblioteca .biblioteca-document .image, 
+.section-biblioteca-filtre .biblioteca-document .image,
+.section-biblioteca-cerca .biblioteca-document .image { width: 100px; vertical-align: top; padding-top: 10px; }
+.section-biblioteca .biblioteca-document .image img, 
+.section-biblioteca-filtre .biblioteca-document .image img,
+.section-biblioteca-cerca .biblioteca-document .image img { width: 100px; }
+.section-biblioteca .biblioteca-document .text, 
+.section-biblioteca-filtre .biblioteca-document .text,
+.section-biblioteca-cerca .biblioteca-document .text { padding-left: 10px; }
+.section-biblioteca .biblioteca-document .top, 
+.section-biblioteca-filtre .biblioteca-document .top,
+.section-biblioteca-cerca .biblioteca-document .top { font-style: italic; }
+
+.section-biblioteca #apachesolr-panels-search-form .form-item,
+.section-biblioteca-cerca #apachesolr-panels-search-form .form-item { float: left; padding-right: 10px; }
+.section-biblioteca #apachesolr-panels-search-form .form-actions,
+.section-biblioteca-cerca #apachesolr-panels-search-form .form-actions { float: left; }
+.section-biblioteca .pane-block-86 { clear: both; }
+.section-biblioteca .ui-tabs-nav a { 
+    font-size: 1.2rem;
+    padding: 0.4em 1em !important;
+}
+
+.section-biblioteca-filtre .view-filters { display: none; }
+.section-biblioteca-filtre #biblioteca-panel .panel-col-first,
+.section-biblioteca-cerca #biblioteca-panel .panel-col-first { width: 100%; }
+.section-biblioteca-filtre #biblioteca-order { padding-bottom: 10px; }
 
 /************ PAGER ***************/
 
