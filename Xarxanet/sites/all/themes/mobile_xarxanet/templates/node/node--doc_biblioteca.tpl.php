@@ -109,13 +109,16 @@
 				<p class="categories">	
 					<?php 
 						$tem1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->name;
+						$tid1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->tid;
 						$tem2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->name;
+						$tid2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->tid;
 						$tipo = $node->field_doc_tipologia['und'][0]['taxonomy_term']->name;
+						$tid3 = $node->field_doc_tipologia['und'][0]['taxonomy_term']->tid;
 					?>
-					<?php echo '<a href="/biblioteca_filtre?field_doc_tematica_value='.str_replace(' ', '+',$tem1).'">'.$tem1.'</a>
-	 				 			> <a href="/biblioteca_filtre?field_doc_tematica_value='.str_replace(' ', '+',$tem2).'">'.$tem2.'</a>';?>
+					<?php echo '<a href="/biblioteca_filtre?field_doc_tematica_value='.$tid1.'">'.$tem1.'</a>
+	 				 			> <a href="/biblioteca_filtre?field_doc_tematica_value='.$tid2.'">'.$tem2.'</a>';?>
 	 				 <br />
-	 				 <?php echo '<a href="/biblioteca_filtre?field_doc_tipologia_value='.str_replace(' ', '+',$tipo).'">'.$tipo.'</a>' ?>
+	 				 <?php echo '<a href="/biblioteca_filtre?field_doc_tipologia_value='.$tid3.'">'.$tipo.'</a>' ?>
 				</p>			
 				<b>Informació de publicació</b><br/>
 				Lloc: <?php echo $node->field_doc_lloc_publi['und'][0]['value'];?><br/>
