@@ -80,56 +80,46 @@
 */
 
 ?>
-<div id="biblioteca-panel">
-	<div class="panel-col-first biblioteca-fitxa">
-		
-		<!-- CAPÇALERA -->
-		<table class='biblioteca-document top'><tr><td>
-			<p class="top"><?php echo $node->field_doc_autoria['und'][0]['value']?></p>
-			<p>	<?php 
-					$tem1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->name;
-					$tid1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->tid;
-					$tem2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->name;
-					$tid2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->tid;
-					$tipo = $node->field_doc_tipologia['und'][0]['taxonomy_term']->name;
-					$tid3 = $node->field_doc_tipologia['und'][0]['taxonomy_term']->tid;
-				?>
-				<?php echo '<a href="/biblioteca_filtre?field_doc_tematica_value='.$tid1.'">'.$tem1.'</a>
- 				 			> <a href="/biblioteca_filtre?field_doc_tematica_value='.$tid2.'">'.$tem2.'</a>';?>
- 				 <br />
- 				 <?php echo '<a href="/biblioteca_filtre?field_doc_tipologia_value='.$tid3.'">'.$tipo.'</a>' ?>
-			</p>
-		</td><td>
-			<!-- SOCIAL BUTTONS -->
-			<!-- Go to www.addthis.com/dashboard to customize your tools -->
-			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c67bc259a068b5"></script>
-            <div class="node-social-links">
-              <div class="addthis_sharing_toolbox"></div>
-            </div>
-		</td></tr></table>
-		
-		<!-- COS -->
-		<table class='biblioteca-document'><tr><td class="big_image">
+
+<article id="<?php print $node_id; ?>" class="<?php print $classes; ?>">
+	<table class='biblioteca-document'>
+		<tr><td class="big_image">
 			<?php
 				$image = field_get_items('node', $node, 'field_doc_tipologia');
 				$imagepath = (!empty($node->field_doc_imatge['und'])) ? file_create_url($node->field_doc_imatge['und'][0]['uri']) : base_path().'/sites/default/files/biblioteca/doc_base.jpg';
 			?>
-			<img src="<?php echo $imagepath;?>" alt="Portada de <?php echo $title;?>" width="215" />
-			<?php print $node->content['fivestar_widget']['#value']; ?>
-			
+			<img class="portada" src="<?php echo $imagepath;?>" alt="Portada de <?php echo $title;?>" width="100" />
+			<div id="social-icons">
+				<a href="http://www.twitter.com/share?url=<?php print $GLOBALS['base_url'].$node_url ?>">
+					<img src="/<?php print path_to_theme()?>/images/pictos/social/twitter.png" alt="compartir a twitter" />
+				</a>
+				<a href="http://www.facebook.com/sharer/sharer.php?u=<?php print $GLOBALS['base_url'].$node_url ?>">
+					<img src="/<?php print path_to_theme()?>/images/pictos/social/facebook.png" alt="compartir a twitter" />
+				</a>
+				<a href="http://www.plus.google.com/share?url=<?php print $GLOBALS['base_url'].$node_url ?>">
+					<img src="/<?php print path_to_theme()?>/images/pictos/social/plus.png" alt="compartir a twitter" />
+				</a>
+				<a href="/printmail/<?php print $nid ?>">
+					<img src="/<?php print path_to_theme()?>/images/pictos/social/mail.png" alt="compartir a twitter" />
+				</a>
+			</div>
 		</td><td class="text">
-			<p class="teaser"><?php echo strip_tags($node->field_doc_sinopsi['und'][0]['value']); ?></p>
-			 <?php 
-			 	if(!empty($node->taxonomy_vocabulary_5['und'])) {
-                	echo '<p><b>Paraules clau: </b>';
-                	$tag_str = '';
-                   	foreach($node->taxonomy_vocabulary_5['und'] as $tag) {
-						$tag_str .= ucfirst($tag['taxonomy_term']->name).', '; 
-					}
-					echo substr($tag_str, 0, -2).'</p>';
-            	}
-            ?>
 			<p>
+				<p class="autor"><?php echo $node->field_doc_autoria['und'][0]['value']?></p>
+				<p class="categories">	
+					<?php 
+						$tem1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->name;
+						$tid1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->tid;
+						$tem2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->name;
+						$tid2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->tid;
+						$tipo = $node->field_doc_tipologia['und'][0]['taxonomy_term']->name;
+						$tid3 = $node->field_doc_tipologia['und'][0]['taxonomy_term']->tid;
+					?>
+					<?php echo '<a href="/biblioteca_filtre?field_doc_tematica_value='.$tid1.'">'.$tem1.'</a>
+	 				 			> <a href="/biblioteca_filtre?field_doc_tematica_value='.$tid2.'">'.$tem2.'</a>';?>
+	 				 <br />
+	 				 <?php echo '<a href="/biblioteca_filtre?field_doc_tipologia_value='.$tid3.'">'.$tipo.'</a>' ?>
+				</p>			
 				<b>Informació de publicació</b><br/>
 				Lloc: <?php echo $node->field_doc_lloc_publi['und'][0]['value'];?><br/>
 				Any: <?php echo $node->field_doc_data_publi['und'][0]['value'];?><br/>
@@ -143,45 +133,49 @@
 				?>
 				Idioma: <?php echo $node->field_doc_idioma['und'][0]['taxonomy_term']->name;?>
 			</p>
+		</td></tr>
+	</table>	
+	<p class="teaser"><?php echo strip_tags($node->field_doc_sinopsi['und'][0]['value']); ?></p>
+	<?php 
+		if(!empty($node->taxonomy_vocabulary_5['und'])) {
+         	echo '<p><b>Paraules clau: </b>';
+          	$tag_str = '';
+           	foreach($node->taxonomy_vocabulary_5['und'] as $tag) {
+				$tag_str .= ucfirst($tag['taxonomy_term']->name).', '; 
+			}
+			echo substr($tag_str, 0, -2).'</p>';
+        }
+    ?>
+	<p>
+		<b>Referència bibliogràfica</b><br/>
+		<?php echo $node->field_doc_autoria['und'][0]['value'].'. ('.$node->field_doc_data_publi['und'][0]['value'].'). <i>'.$title.'</i>. '.$collect.$node->field_doc_lloc_publi['und'][0]['value'].': '.$node->field_doc_editorial['und'][0]['taxonomy_term']->name;?>
+	</p>
+	<p><b>Visites</b>: 
+			<?php
+		 if (strpos(google_analytics_counter_display(), '></span>')  === FALSE)
+			echo google_analytics_counter_display();
+		else
+			echo 0;
+		?>
+	</p>
+	
+	<div id="bilioteca-document-peu">
+		<?php if (!empty($node->field_doc_descarrega['und'])) { ?>
 			<p>
-				<b>Referència bibliogràfica</b><br/>
-				<?php echo $node->field_doc_autoria['und'][0]['value'].'. ('.$node->field_doc_data_publi['und'][0]['value'].'). <i>'.$title.'</i>. '.$collect.$node->field_doc_lloc_publi['und'][0]['value'].': '.$node->field_doc_editorial['und'][0]['taxonomy_term']->name;?>
+				<a href="<?php echo file_create_url($node->field_doc_descarrega['und'][0]['uri']);?>" onClick="_gaq.push(['_trackEvent', 'Descàrregues Biblioteca','Descàrrega de: <?php echo $tipo;?>','<?php echo $node->title;?>']);">Descàrrega directa</a>
 			</p>
-			<p><b>Visites</b>: 
-				<?php
-				 if (strpos(google_analytics_counter_display(), '></span>')  === FALSE)
-					echo google_analytics_counter_display();
-				else
-					echo 0;
-				?>
-			</p>
-		</td></tr></table>
-		
-		<!-- PEU -->
-		<table class='biblioteca-document' id="bilioteca-document-peu"><tr><td class="document">
-			<b>Descàrrega directa</b><br/>
-			<?php if (!empty($node->field_doc_descarrega['und'])) { ?>
-				<a href="<?php echo file_create_url($node->field_doc_descarrega['und'][0]['uri']);?>" onClick="_gaq.push(['_trackEvent', 'Descàrregues Biblioteca','Descàrrega de: <?php echo $tipo;?>','<?php echo $node->title;?>']);"><img src="/sites/default/files/biblioteca/download.png" alt="Icona de descàrrega" width="50"></a>
-			<?php } else { ?>
-				<img src="/sites/default/files/biblioteca/download_bn.png" alt="Icona de descàrrega" width="50">
-			<?php } ?>
-		</td><td class="link">
+		<?php }?>
+		<p>
 			<?php 
 				$fonts = ($node->field_doc_font['und'][0]['url'] != '') ? '<a href="'.$node->field_doc_font['und'][0]['url'].'">'.$node->field_doc_font['und'][0]['title'].'</a>' : 'No disponible';
 				echo '<b>Descàrrega externa</b><br/>'.$fonts;
 			?>
-		</td><td class="link">
+		</p>
+		<p>
 			<?php
 				$fisic = ($node->field_doc_fisic['und'][0]['url'] != '') ? '<a href="'.$node->field_doc_fisic['und'][0]['url'].'">'.$node->field_doc_fisic['und'][0]['title'].'</a>' : 'No disponible';
 				echo '<b>Disponibilitat en paper</b><br/>'.$fisic;
 			?>
-		</td></tr></table>
-		
+		</p>
 	</div>
-	<div class="panel-col-last">
-		<?php   		
-		$display = panels_load_display(5);
-		print(panels_render_display($display));
-		?>
-	</div>
-</div>
+</article>
