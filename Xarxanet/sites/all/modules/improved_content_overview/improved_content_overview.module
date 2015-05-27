@@ -5,14 +5,57 @@
  * Returns extra filter option at admin/content/node to filter on every page.
  */
 function improved_content_overview_node_admin_filters() {
-	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();
-	
+	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();	
 	
 	$filters = array();
 	
 	//Get filters
 	foreach ($filter_data as $filter) {
 		$$filter[0] = $filter[1];
+	}
+	
+	//Ambit Noticia Filter	
+	if (!is_null($type) && $type == 'noticia_general'){
+		$terms = array();
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid = 10';
+		$result = db_query($query);
+		foreach ($result as $row){
+			$tax_term = taxonomy_term_load($row->tid);
+			$terms[$tax_term->tid] = $tax_term->name;
+		}
+		asort($terms);
+		$terms = array('[any]' => t('any')) + $terms;
+		$filters['term_tid'] = array('title' => t('àmbit noticia'), 'options' => $terms	);
+		if (!is_null($term_tid)) $filters['term_tid']['type'] = 'hidden';
+	}
+	
+	if (!is_null($term_tid) && $type == 'noticia_general'){
+		$terms = array();
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid = 11';
+		$result = db_query($query);
+		foreach ($result as $row){
+			$tax_term = taxonomy_term_load($row->tid);
+			$terms[$tax_term->tid] = $tax_term->name;
+		}
+		asort($terms);
+		$terms = array('[any]' => t('any')) + $terms;
+		$filters['term_tid_noticia'] = array('title' => t('tipus noticia'), 'options' => $terms	);
+		if (!is_null($term_tid_noticia)) $filters['term_tid_noticia']['type'] = 'hidden';
+	}
+	
+	//Tipo Recurso Filter	
+	if (!is_null($type) && $type == 'recurs_general'){
+		$terms = array();
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid = 9';
+		$result = db_query($query);
+		foreach ($result as $row){
+			$tax_term = taxonomy_term_load($row->tid);
+			$terms[$tax_term->tid] = $tax_term->name;
+		}
+		asort($terms);
+		$terms = array('[any]' => t('any')) + $terms;
+		$filters['term_tid'] = array('title' => t('àmbit recurs'), 'options' => $terms	);
+		if (!is_null($term_tid)) $filters['term_tid']['type'] = 'hidden';
 	}
 	
 	//Role Filter
@@ -64,6 +107,17 @@ function improved_content_overview_node_admin_filter_query_alter(SelectQueryInte
 			case 'user_uid':
 				$query->condition('n.' . 'uid', $value);
 				break;
+			case 'term_tid':
+				$term_id = $value;
+				$query->join('taxonomy_index', 'ti', 'n.nid = ti.nid'); //JOIN node with taxonomy_index
+				$query->condition('ti.' . 'tid', $term_id);
+				//print $query;
+				break;
+			case 'term_tid_noticia':
+				$query->join('taxonomy_index', 'ti2', 'n.nid = ti2.nid'); //JOIN node with taxonomy_index
+				$query->condition('ti2.' . 'tid', $value);
+				//print $query;
+				break;			
 			case 'date_type':
 				$date_type = $value;
 				break;
@@ -75,4 +129,54 @@ function improved_content_overview_node_admin_filter_query_alter(SelectQueryInte
 				break;
 		}
 	}
+}
+
+/**
+ * Implementation of hook_form_node_admin_content_alter().
+ */
+function improved_content_overview_form_node_admin_content_alter(&$form, &$form_state, $form_id) {
+  // Load the nodes. This incurrs very little overhead as 
+  // "$nodes = node_load_multiple($nids);" has already been run on these
+  // nids in node_admin_nodes(). The static cache will be used instead of
+  // another db query being invoked
+  $nodes = node_load_multiple(array_keys($form['admin']['nodes']['#options']));
+  
+  $nids = array();
+  $termTipus = array();
+  $termAmbit = array();
+ 
+  $language = 'und';
+  // Loop through the rows in the table and add the "Tipus contingut" and "Àmbit Contingut" column
+  foreach ($form['admin']['nodes']['#options'] as $nid => $row) {
+    foreach ($nodes as $node) {
+		$type = $node->type;
+		if ($type == 'noticia_general'){
+            // Add another column to the table header
+			$form['admin']['nodes']['#header']['Tipus'] = array('data' => t('Tipus Contingut'));
+			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Ambit Contingut'));
+
+			foreach ($node->field_tipus_noticia[$language] as $delta => $value) {
+			  $termTipus[$node->nid] = taxonomy_term_load($value['tid']);
+			}
+			foreach ($node->field_ambit_noticia[$language] as $delta => $value) {
+			  $termAmbit[$node->nid] = taxonomy_term_load($value['tid']);
+			}	
+		}
+		if ($type == 'recurs_general'){
+			// Add another column to the table header
+			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Ambit Contingut'));
+						
+			foreach ($node->field_ambit[$language] as $delta => $value) {
+			  $termAmbit[$node->nid] = taxonomy_term_load($value['tid']);
+			}
+		}
+		$nids[$node->nid] = $node->nid;
+    }
+  	// Grab the "Ambit" and "Tipus" related to this node.   
+    // Add data for the new column "Tipus"
+    $form['admin']['nodes']['#options'][$nid]['Tipus'] = $termTipus[$nid]->name;
+	
+	// Add data for the new column "Ambit"
+    $form['admin']['nodes']['#options'][$nid]['Ambit'] = $termAmbit[$nid]->name;
+  }
 }
