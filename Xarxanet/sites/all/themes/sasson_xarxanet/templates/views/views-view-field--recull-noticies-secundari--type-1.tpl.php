@@ -24,4 +24,5 @@
 ?>
 <?php
 	if($output)	print sasson_xarxanet_get_label($output);
+	print_r($row);
 ?>
