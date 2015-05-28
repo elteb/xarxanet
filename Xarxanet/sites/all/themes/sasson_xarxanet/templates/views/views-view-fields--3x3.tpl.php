@@ -39,7 +39,9 @@
 	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	
 	print $rawImatge;
-	print sasson_xarxanet_get_label($fields['type']->raw);
+	$type = $fields['type']->raw;
+	if (($type == 'recurs_general') && (isset($fields['field_ambit']))) $type = 'Recurs '.strip_tags($fields['field_ambit']->content);
+	print sasson_xarxanet_get_label($type);
 	print '<h3>'.$fields['title']->content.'</h3>';
 	print $fields['field_resum']->content; 
 ?>

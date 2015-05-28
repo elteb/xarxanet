@@ -34,6 +34,9 @@
 	if(strip_tags($fields['field_event_type']->content)) {
 		$type = strip_tags($fields['field_event_type']->content);
 	}
+	if (($type == 'recurs_general') && (isset($fields['field_ambit']))) {
+		$type = 'Recurs '.strip_tags($fields['field_ambit']->content);
+	}
 
 	if ($id == 1) {
 		$rawImatge = $fields['field_agenda_imatge_2']->content;
