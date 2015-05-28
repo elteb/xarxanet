@@ -548,7 +548,16 @@ function node_admin_nodes() {
     'type' => array('data' => t('Type'), 'field' => 'n.type'),
     'author' => t('Author'),
     'status' => array('data' => t('Status'), 'field' => 'n.status'),
+  	/****************************************************
+     * TEBPATCH (MDF) @fcasanellas 28/05/2015
+     * XN-ND004 Ordena per creació enlloc de per actualització
+     * OLDCODE ******************************************
     'changed' => array('data' => t('Updated'), 'field' => 'n.changed', 'sort' => 'desc')
+    /****************************************************
+     * NEWCODE *****************************************/
+  	'created' => array('data' => t('Created'), 'field' => 'n.created', 'sort' => 'desc')
+  	/****************************************************
+     * END TEBPATCH ************************************/
   );
   if ($multilanguage) {
     $header['language'] = array('data' => t('Language'), 'field' => 'n.language');
@@ -603,7 +612,16 @@ function node_admin_nodes() {
       'type' => check_plain(node_type_get_name($node)),
       'author' => theme('username', array('account' => $node)),
       'status' => $node->status ? t('published') : t('not published'),
+    /****************************************************
+     * TEBPATCH (MDF) @fcasanellas 28/05/2015
+     * XN-ND004 Ordena per creació enlloc de per actualització
+     * OLDCODE ******************************************
       'changed' => format_date($node->changed, 'short'),
+     /***************************************************
+     * NEWCODE *****************************************/
+      'created' => format_date($node->created, 'short'),
+    /****************************************************
+     * END TEBPATCH ************************************/
     );
     if ($multilanguage) {
       if ($langcode == LANGUAGE_NONE || isset($languages[$langcode])) {
@@ -820,7 +838,7 @@ function node_export_to_csv() {
 	    ->fields('n',array('nid'))
 	    ->limit(5000)
 	    ->addTag('node_access')
-	    ->orderBy('changed', 'DESC')
+	    ->orderBy('created', 'DESC')
 	    ->execute()
 	    ->fetchCol();
   	$nodes = node_load_multiple($nids);
