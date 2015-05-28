@@ -75,6 +75,10 @@
 	}
 	
 	print '<h3>'.$fields['title']->content.'</h3>';
+	if ($type=='Finançament (NOU)' || $type=='Premi' || $type=='Subvenció' || $type=='Beques' || $type=='Altres'){
+		$termini = strip_tags($fields['field_date']->content);
+		print '<b>Termini</b>: '.$termini;
+	}
 	print $fields['field_resum']->content; 
 ?>
 
