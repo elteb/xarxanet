@@ -34,8 +34,8 @@
 	if(strip_tags($fields['field_event_type']->content)) {
 		$type = strip_tags($fields['field_event_type']->content);
 	}
-	if (($type == 'recurs_general') && (isset($fields['field_ambit']))) {
-		$type = 'Recurs '.strip_tags($fields['field_ambit']->content);
+	if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))) {
+		$type = 'Recurs '.strip_tags($fields['field_ambit_recurs']->content);
 	}
 
 	if ($id == 1) {

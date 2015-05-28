@@ -33,7 +33,7 @@
 	$type = $fields['type']->raw;
 	if (isset($fields['field_finfull_tipus'])) $type = strip_tags($fields['field_finfull_tipus']->content);
 	if (isset($fields['field_event_type'])) $type = strip_tags($fields['field_event_type']->content);
-	if (($type == 'recurs_general') && (isset($fields['field_ambit']))) $type = 'Recurs '.strip_tags($fields['field_ambit']->content);
+	if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))) $type = 'Recurs '.strip_tags($fields['field_ambit_recurs']->content);
 	
 	print $rawImatge;
 	print sasson_xarxanet_get_label($type);

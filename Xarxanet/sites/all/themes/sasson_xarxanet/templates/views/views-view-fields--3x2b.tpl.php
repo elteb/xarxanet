@@ -37,7 +37,7 @@
 	}
 	print $rawImatge;
 	$type = $fields['type']->raw;
-	if (($type == 'recurs_general') && (isset($fields['field_ambit']))) $type = 'Recurs '.strip_tags($fields['field_ambit']->content);
+	if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))) $type = 'Recurs '.strip_tags($fields['field_ambit_recurs']->content);
 	print sasson_xarxanet_get_label($type);
 	print '<h3>'.$fields['title']->content.'</h3>';
 	print $fields['field_resum']->content; 
