@@ -153,7 +153,7 @@ function improved_content_overview_form_node_admin_content_alter(&$form, &$form_
 		if ($type == 'noticia_general'){
             // Add another column to the table header
 			$form['admin']['nodes']['#header']['Tipus'] = array('data' => t('Tipus Contingut'));
-			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Ambit Contingut'));
+			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Àmbit Contingut'));
 
 			foreach ($node->field_tipus_noticia[$language] as $delta => $value) {
 			  $termTipus[$node->nid] = taxonomy_term_load($value['tid']);
@@ -164,9 +164,9 @@ function improved_content_overview_form_node_admin_content_alter(&$form, &$form_
 		}
 		if ($type == 'recurs_general'){
 			// Add another column to the table header
-			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Ambit Contingut'));
+			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Àmbit Contingut'));
 						
-			foreach ($node->field_ambit[$language] as $delta => $value) {
+			foreach ($node->field_ambit_recurs[$language] as $delta => $value) {
 			  $termAmbit[$node->nid] = taxonomy_term_load($value['tid']);
 			}
 		}
