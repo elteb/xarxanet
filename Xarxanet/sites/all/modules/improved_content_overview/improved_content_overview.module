@@ -42,19 +42,27 @@ function improved_content_overview_menu() {
  */
 function  improved_content_overview_form($form,&$form_state){
 		
-	$form['improved_content_overview_noticias_types'] = array(
+	$form['improved_content_overview_news_type'] = array(
 		'#type' => 'textfield',
 		'#description' => t('El vid es pot trobar a la taula "taxonomy_vocabulary"'),
-		'#title' => t('vid de la taxonomia "Noticia General"'),
-		'#default_value' => variable_get('improved_content_overview_noticias_types','0'),		
+		'#title' => t('vid de la taxonomia "Tipus de notícia"'),
+		'#default_value' => variable_get('improved_content_overview_news_type','0'),		
 		'#required' => FALSE,
 	);
 	
-	$form['improved_content_overview_recursos_types'] = array(
+	$form['improved_content_overview_news_area'] = array(
+			'#type' => 'textfield',
+			'#description' => t('El vid es pot trobar a la taula "taxonomy_vocabulary"'),
+			'#title' => t('vid de la taxonomia "Àmbit de notícia"'),
+			'#default_value' => variable_get('improved_content_overview_news_area','0'),
+			'#required' => FALSE,
+	);
+	
+	$form['improved_content_overview_resources_area'] = array(
 		'#type' => 'textfield',
 		'#description' => t('El vid es pot trobar a la taula "taxonomy_vocabulary"'),
-		'#title' => t('vid de la taxonomia "Recurs"'),
-		'#default_value' => variable_get('improved_content_overview_recursos_types','0'),		
+		'#title' => t('vid de la taxonomia "Àmbit del recurs"'),
+		'#default_value' => variable_get('improved_content_overview_resources_area','0'),		
 		'#required' => FALSE,
 	);
 	
@@ -67,18 +75,22 @@ function  improved_content_overview_form($form,&$form_state){
  */
 function improved_content_overview_node_admin_filters() {
 	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();	
-	
 	$filters = array();
+	
+	global $user;
+	if ($user->name == 'Administrador') {
+		print_r($filter_data);
+	}
 	
 	//Get filters
 	foreach ($filter_data as $filter) {
 		$$filter[0] = $filter[1];
 	}
 	
-	//Ambit Noticia Filter	
-	if (!is_null($type) && $type == 'noticia_general'){
+	//News area filter
+	if (!is_null($type) && (strpos($type, 'noticia_') !== false)){
 		$terms = array();
-		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid =' . variable_get('improved_content_overview_noticias_types');
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid =' . variable_get('improved_content_overview_news_area');
 		$result = db_query($query);
 		foreach ($result as $row){
 			$tax_term = taxonomy_term_load($row->tid);
@@ -86,13 +98,12 @@ function improved_content_overview_node_admin_filters() {
 		}
 		asort($terms);
 		$terms = array('[any]' => t('any')) + $terms;
-		$filters['term_tid'] = array('title' => t('àmbit noticia'), 'options' => $terms	);
+		$filters['term_tid'] = array('title' => t('àmbit de la noticia'), 'options' => $terms	);
 		if (!is_null($term_tid)) $filters['term_tid']['type'] = 'hidden';
-	}
 	
-	if (!is_null($term_tid) && $type == 'noticia_general'){
+		//News type filter
 		$terms = array();
-		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid = 11';
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid =' . variable_get('improved_content_overview_news_type');
 		$result = db_query($query);
 		foreach ($result as $row){
 			$tax_term = taxonomy_term_load($row->tid);
@@ -100,14 +111,14 @@ function improved_content_overview_node_admin_filters() {
 		}
 		asort($terms);
 		$terms = array('[any]' => t('any')) + $terms;
-		$filters['term_tid_noticia'] = array('title' => t('tipus noticia'), 'options' => $terms	);
+		$filters['term_tid_noticia'] = array('title' => t('tipus de noticia'), 'options' => $terms	);
 		if (!is_null($term_tid_noticia)) $filters['term_tid_noticia']['type'] = 'hidden';
 	}
 	
-	//Tipo Recurso Filter	
-	if (!is_null($type) && $type == 'recurs_general'){
+	//Resource area filter
+	if (!is_null($type) && (strpos($type, 'recurs_') !== false)){
 		$terms = array();
-		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid =' . variable_get('improved_content_overview_recursos_types');
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid =' . variable_get('improved_content_overview_resources_area');
 		$result = db_query($query);
 		foreach ($result as $row){
 			$tax_term = taxonomy_term_load($row->tid);
@@ -115,7 +126,7 @@ function improved_content_overview_node_admin_filters() {
 		}
 		asort($terms);
 		$terms = array('[any]' => t('any')) + $terms;
-		$filters['term_tid'] = array('title' => t('àmbit recurs'), 'options' => $terms	);
+		$filters['term_tid'] = array('title' => t('àmbit del recurs'), 'options' => $terms	);
 		if (!is_null($term_tid)) $filters['term_tid']['type'] = 'hidden';
 	}
 	
@@ -215,7 +226,7 @@ function improved_content_overview_form_node_admin_content_alter(&$form, &$form_
   foreach ($form['admin']['nodes']['#options'] as $nid => $row) {
     foreach ($nodes as $node) {
 		$type = $node->type;
-		if ($type == 'noticia_general'){
+		if (strpos($type, 'noticia_') !== false){
             // Add another column to the table header
 			$form['admin']['nodes']['#header']['Tipus'] = array('data' => t('Tipus Contingut'));
 			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Àmbit Contingut'));
@@ -227,7 +238,7 @@ function improved_content_overview_form_node_admin_content_alter(&$form, &$form_
 			  $termAmbit[$node->nid] = taxonomy_term_load($value['tid']);
 			}	
 		}
-		if ($type == 'recurs_general'){
+		if (strpos($type, 'recurs_') !== false){
 			// Add another column to the table header
 			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Àmbit Contingut'));
 						
