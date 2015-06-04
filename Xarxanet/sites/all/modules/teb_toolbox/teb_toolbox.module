@@ -40,12 +40,30 @@ function teb_toolbox_form_node_form_alter(&$form, &$form_state, $form_id) {
 function teb_toolbox_form_submit($form, &$form_state) {
 	$nid = ($form_state['node']->nid) ? $form_state['node']->nid : 0; 
 	$content_type = $form_state['node']->type;
+	
+	$content_area = null;
+	//No queda gaire clar perquè els recursos i les notícies es comporten diferent
+	if(strpos($content_type, 'noticia_') !== false) {			
+		$content_area = $form['field_ambit_noticia']['und']['#value'];
+	} elseif(strpos($content_type, 'recurs_') !== false) {
+		$content_area = $form['#node']->field_ambit_recurs['und'][0]['tid'];
+	}
+	
 	if ($form['field_dpp_portal']['und']['#value']) {
 		//Neteja el valor de tots els predecesors
-		$result = db_query("SELECT entity_id FROM {field_data_field_dpp_portal} WHERE field_dpp_portal_value=1 AND bundle = :type AND entity_id != :nid", array(
+		if(strpos($content_type, 'noticia_') !== false) {
+			$result = db_query("SELECT dpp.entity_id FROM {field_data_field_dpp_portal} AS dpp INNER JOIN {field_data_field_ambit_noticia} as ambit ON ambit.entity_id=dpp.entity_id WHERE dpp.field_dpp_portal_value=1 AND dpp.bundle = :type AND dpp.entity_id != :nid AND ambit.field_ambit_noticia_tid = :tid", array(
 				':type' => $content_type,
 				':nid' => $nid,
-		));
+				':tid' => $content_area
+			));
+		} elseif(strpos($content_type, 'recurs_') !== false) {
+			$result = db_query("SELECT dpp.entity_id FROM {field_data_field_dpp_portal} AS dpp INNER JOIN {field_data_field_ambit_recurs} as ambit ON ambit.entity_id=dpp.entity_id WHERE dpp.field_dpp_portal_value=1 AND dpp.bundle = :type AND dpp.entity_id != :nid AND ambit.field_ambit_recurs_tid = :tid", array(
+				':type' => $content_type,
+				':nid' => $nid,
+				':tid' => $content_area
+			));
+		}
 		if ($result) {
 			while ($row = $result->fetchAssoc()) {
 				$node = node_load($row['entity_id']);
@@ -57,10 +75,19 @@ function teb_toolbox_form_submit($form, &$form_state) {
 	} 
 	if ($form['field_dsp_portal']['und']['#value']) {
 		//Neteja el valor de tots els predecesors excepte el darrer
-		$result = db_query("SELECT entity_id FROM {field_data_field_dsp_portal} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid WHERE dsp.field_dsp_portal_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid ORDER BY n.changed DESC", array(
-				':type' => $content_type,
-				':nid' => $nid,
-		));
+		if(strpos($content_type, 'noticia_') !== false) {
+			$result = db_query("SELECT dsp.entity_id FROM {field_data_field_dsp_portal} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid INNER JOIN {field_data_field_ambit_noticia} as ambit ON ambit.entity_id=dsp.entity_id WHERE dsp.field_dsp_portal_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid AND ambit.field_ambit_noticia_tid = :tid ORDER BY n.changed DESC", array(
+					':type' => $content_type,
+					':nid' => $nid,
+					':tid' => $content_area
+			));
+		} elseif(strpos($content_type, 'recurs_') !== false) {
+			$result = db_query("SELECT dsp.entity_id FROM {field_data_field_dsp_portal} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid INNER JOIN {field_data_field_ambit_recurs} as ambit ON ambit.entity_id=dsp.entity_id WHERE dsp.field_dsp_portal_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid AND ambit.field_ambit_recurs_tid = :tid ORDER BY n.changed DESC", array(
+					':type' => $content_type,
+					':nid' => $nid,
+					':tid' => $content_area
+			));
+		}
 		if ($result) {
 			$row0 = $result->fetchAssoc();
 			while ($row = $result->fetchAssoc()) {
