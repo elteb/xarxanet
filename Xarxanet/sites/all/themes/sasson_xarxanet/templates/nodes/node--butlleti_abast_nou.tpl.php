@@ -236,7 +236,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			if($titol) echo ' | <a style="color:#000001; text-decoration:none" href="#bloc_lliure_'.$i.'">'.$titol.'</a>';
 		}
 		if (!empty($node->field_abast_entrevista_titol[0]['value']) || !empty($node->field_abast_entrevista_externa[0]['title'])){echo ' | <a style="color:#000001; text-decoration:none" href="#entrevista">'.$node->field_abast_entrevista_titol_sec[0]['value'].'</a>';}
-		if ($node->field_abast_activat[0]["value"] !== '0'){ echo ' | <a style="color:#000001; text-decoration:none" href="#activat">Activa\'t</a>';}
+		if ($node->field_abast_activat['und'][0]["value"] !== '0'){ echo ' | <a style="color:#000001; text-decoration:none" href="#activat">Activa\'t</a>';}
 	?>
 	</td></tr>
 
@@ -567,8 +567,8 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			$titol = $lliure->field_monografic_titol_1->value();
 			$cos = $lliure->field_monografic_cos_1->value();
 			if($titol) echo '<a name="bloc_lliure_'.$i.'"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$titol.'</h1>';
-			if($cos) echo $cos;
-			if($cos) echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
+			if($cos) echo $cos['value'];
+			if($titol) echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
 			$i++;
 		}
 		?>
@@ -609,7 +609,9 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			echo '</td></tr></table>';			
 			$i++;
 		}
-		echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
+		if ($wrapper->field_abast_entrevista_coll->count()) {
+			echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
+		}
 		?>
 	
 		
