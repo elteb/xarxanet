@@ -145,7 +145,7 @@ blockquote {
   li.megamenu-parent-4 { @include menu-submenu-2($internacional, $internacional-sec); }
   li.megamenu-parent-5 { @include menu-submenu-2($economic, $economic-sec); }
   li.megamenu-parent-6 { @include menu-submenu-2($formacio, $formacio-sec); }
-  li.megamenu-parent-7 { @include menu-submenu-2($informatic, $informatic-sec); }$actes
+  li.megamenu-parent-7 { @include menu-submenu-2($informatic, $informatic-sec); }
   li.megamenu-parent-8 { @include menu-submenu-2($juridic, $juridic-sec); }
   li.megamenu-parent-9 { @include menu-submenu-2($projectes, $projectes-sec); }
   
@@ -344,10 +344,12 @@ ul.pager {
 }
 
 /* -------- Crida Voluntariat ------- */
-/*.pane-block-87, #block-block-87 {
+.pane-block-87,
+.section-fes-voluntariat- .region-content .pane-block-87 {
   h2 {
     @include block-lat-title;
     background: url("/sites/all/themes/sasson_xarxanet/images/pictos/crida.png") $crida 10px no-repeat; 
+    text-align: left;
   }
   .more {
      @include more-title; 
@@ -363,23 +365,11 @@ ul.pager {
     @include list-display($crida);
     list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
   }
-  .views-field-field-date {
-    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/timer-orange.png") 0px 5px no-repeat;
-    padding-left: 18px;
+  .view-footer {
+    text-align: center;
+    margin-top: $space;
   }
-}*/
-
-/*.pane-block-87 { #more-others { display: none; }}
-#block-block-87 {
-  p { 
-    margin: 0px;
-    padding-bottom: $space;
-    background-color: $crida-sec;
-    text-align: right;
-    a.more { float: none; }
-  } 
-  #more-frontpage { display: none; }
-}*/
+}
 
 /* ------- Etiquetes ------- */
 #block-tagclouds-1 {
