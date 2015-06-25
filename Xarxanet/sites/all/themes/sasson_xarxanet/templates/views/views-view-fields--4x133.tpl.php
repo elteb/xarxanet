@@ -37,6 +37,7 @@
 	if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))) {
 		$type = 'Recurs '.strip_tags($fields['field_ambit_recurs']->content);
 	}
+	if (($type == 'noticia_general') && (isset($fields['field_ambit_noticia']))) $type = 'Notícia '.strip_tags($fields['field_ambit_noticia']->content);
 
 	if ($id == 1) {
 		$rawImatge = $fields['field_agenda_imatge_2']->content;
