@@ -306,7 +306,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 		$news_node = node_load($node->field_actualitat_enquesta['und'][0]['nid']);
 		$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 	?>
-		 <table class="butlleti" style='width: 265px;'><tr>
+		 <table class="butlleti" style='width: 265px; margin-bottom: 20px;'><tr>
 			<td style="background-color: #7b7b79; padding: 0px; height: 28px; width: 35px;" ><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/actualitat/enquesta.png" alt="icona_enquesta" style="margin-top: 2px; margin-left: 10px;"/></td>
 			<td style="background-color: #7b7b79; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 0px; height: 28px; padding-left: 5px">Enquesta</td>
 			</tr><tr><td colspan="2">
@@ -344,7 +344,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				$img = file_create_url($node->field_actualitat_lat_sup_img_e['und'][0]['uri']);
 				$alt = $node->field_actualitat_lat_sup_img_e['und'][0]['alt'];
 			}
-			echo "<table class='butlleti' style='width: 265px; margin-top: 20px; background-color: #ECEFF0;'><tr>";
+			echo "<table class='butlleti' style='width: 265px; margin-bottom: 20px; background-color: #ECEFF0;'><tr>";
 			
 			if ($node->field_actualitat_lat_sup_epigraf['und'][0]['value'] != '') {
 				echo "<td style='background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 0px 10px; height: 28px;'>{$node->field_actualitat_lat_sup_epigraf['und'][0]['value']}</td>";
@@ -376,7 +376,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	
 	
 	<!-- FINANÇAMENTS -->
-	<table class="butlleti" style='width: 265px; margin-top: 20px; background-color: #fef1e8'><tr>
+	<table class="butlleti" style='width: 265px; margin-bottom: 20px; background-color: #fef1e8'><tr>
 		<td style="background-color: #f37310; padding: 0px; height: 28px; width: 35px;" ><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/actualitat/financaments.png" alt="icona_finançaments" style="margin-top: 2px; margin-left: 10px;"/></td>
 		<td style="background-color: #f37310; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 0px; height: 28px; padding-left: 5px">Finançaments</td>
 		</tr><tr><td colspan="2">
@@ -406,7 +406,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	</table>
 	
 	<!-- BANNERS -->
-	 <table class="butlleti" style='width: 265px; margin-top: 20px;'><tr>
+	 <table class="butlleti" style='width: 265px; margin-bottom: 20px;'><tr>
 	<td style='padding: 0px'>
 	<a href="http://voluntariat.org/" style='text-decoration:none'>
 		<img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_voluntariat.jpg" alt="banner voluntariat" />
@@ -443,7 +443,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				$img = file_create_url($node->field_actualitat_lat_inf_img_e['und'][0]['uri']);
 				$alt = $node->field_actualitat_lat_inf_img_e['und'][0]['alt'];
 			}
-			echo "<table class='butlleti' style='width: 265px; margin-top: 20px;'><tr>";
+			echo "<table class='butlleti' style='width: 265px; margin-bottom: 20px;'><tr>";
 			
 			if ($node->field_actualitat_lat_inf_epigraf['und'][0]['value'] != '') {
 				echo "<td style='background-color: #B1290B; color: white; font-family: Georgia,Times New Roman,Times,serif; font-size: 12pt; padding: 0px 10px; height: 28px;'>{$node->field_actualitat_lat_inf_epigraf['und'][0]['value']}</td>";
