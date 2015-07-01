@@ -79,7 +79,7 @@ function improved_content_overview_node_admin_filters() {
 	
 	global $user;
 	if ($user->name == 'Administrador') {
-		print_r($filter_data);
+		//print_r($filter_data);
 	}
 	
 	//Get filters
@@ -215,15 +215,23 @@ function improved_content_overview_form_node_admin_content_alter(&$form, &$form_
   // "$nodes = node_load_multiple($nids);" has already been run on these
   // nids in node_admin_nodes(). The static cache will be used instead of
   // another db query being invoked
-  $nodes = node_load_multiple(array_keys($form['admin']['nodes']['#options']));
-  
+  global $user;
   $nids = array();
   $termTipus = array();
   $termAmbit = array();
  
   $language = 'und';
+  
+  if ($user->name == 'Administrador') {
+  	$form_admin = $form['admin']['nodes']['#options'];	
+  	$nodes = node_load_multiple(array_keys($form['admin']['nodes']['#options']));
+  }else{
+  	$form_admin = $form['admin']['nodes']['#rows'];
+  	$nodes = node_load_multiple(array_keys($form['admin']['nodes']['#rows']));	
+  }
+    
   // Loop through the rows in the table and add the "Tipus contingut" and "Àmbit Contingut" column
-  foreach ($form['admin']['nodes']['#options'] as $nid => $row) {
+  foreach ($form_admin as $nid => $row) {
     foreach ($nodes as $node) {
 		$type = $node->type;
 		if (strpos($type, 'noticia_') !== false){
@@ -248,11 +256,21 @@ function improved_content_overview_form_node_admin_content_alter(&$form, &$form_
 		}
 		$nids[$node->nid] = $node->nid;
     }
-  	// Grab the "Ambit" and "Tipus" related to this node.   
-    // Add data for the new column "Tipus"
-    $form['admin']['nodes']['#options'][$nid]['Tipus'] = $termTipus[$nid]->name;
 	
-	// Add data for the new column "Ambit"
-    $form['admin']['nodes']['#options'][$nid]['Ambit'] = $termAmbit[$nid]->name;
+	if ($user->name == 'Administrador') {
+	  	// Grab the "Ambit" and "Tipus" related to this node.   
+	    // Add data for the new column "Tipus"
+	    $form['admin']['nodes']['#options'][$nid]['Tipus'] = $termTipus[$nid]->name;
+		
+		// Add data for the new column "Ambit"
+	    $form['admin']['nodes']['#options'][$nid]['Ambit'] = $termAmbit[$nid]->name;
+	}else{
+		// Grab the "Ambit" and "Tipus" related to this node.   
+	    // Add data for the new column "Tipus"
+	    $form['admin']['nodes']['#rows'][$nid]['Tipus'] = $termTipus[$nid]->name;
+		
+		// Add data for the new column "Ambit"
+	    $form['admin']['nodes']['#rows'][$nid]['Ambit'] = $termAmbit[$nid]->name;
+	}
   }
 }
