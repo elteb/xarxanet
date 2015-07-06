@@ -29,6 +29,9 @@ function mostshared_AddThis_views_data() {
         'handler' => 'views_handler_field_numeric',
         'click sortable' => FALSE,
       ),
+      'filter' => array(
+        'handler' => 'views_handler_filter_numeric',
+      ),
     ),
     'title' => array(
       'title' => 'Title',
