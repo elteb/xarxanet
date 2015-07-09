@@ -838,7 +838,7 @@ function node_export_to_csv() {
 	    ->fields('n',array('nid'))
 	    ->limit(5000)
 	    ->addTag('node_access')
-	    ->orderBy('created', 'DESC')
+	    ->orderBy('n.created', 'DESC')
 	    ->execute()
 	    ->fetchCol();
   	$nodes = node_load_multiple($nids);
