@@ -117,3 +117,31 @@
     }
   }
 }
+
+/* ------- Llistat Entitats Col·laboradores ------- */
+.view-entitats{
+    .views-table,
+    .cols-5{
+      width:$column * 8 + $space * 6;
+        .views-field-name{ 
+          min-width:40%;          
+        }   
+        .views-field-city{ 
+          min-width:10%;          
+        }
+        .views-field-field-ambit-intervencio{ 
+          min-width:22%;          
+        }
+        .views-field-field-telefon{ 
+          min-width:10%;          
+        } 
+        .views-field-field-correu-electronic-public{ 
+          min-width:18%;          
+        }
+    }
+    .pager{
+      width:$column * 8 + $space * 6;
+      padding-left:0px;
+      padding-right:0px;      
+    }  
+}
