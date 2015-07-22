@@ -10,7 +10,7 @@
  * Google geocoder.
  * A cached version is stored in the Drupal cache in case Google is unreachable.
  */
-function google_geocode_country_list_xml() {
+/*function google_geocode_country_list_xml() {
   // Get the google data from the feed.
   $source = drupal_http_request(
     'http://spreadsheets.google.com/feeds/list/p9pdwsai2hDMsLkXsoM05KQ/default/public/values'
@@ -40,26 +40,27 @@ function google_geocode_country_list_xml() {
   }
 
   return $xml;
-}
+}*/
 
 /**
- * Return the list of ISO3166 codes supported by this geocoder.
- * Coverage list: http://gmaps-samples.googlecode.com/svn/trunk/mapcoverage_filtered.html
- * Coverage list feed: http://spreadsheets.google.com/feeds/list/p9pdwsai2hDMsLkXsoM05KQ/default/public/values
- */
+ * Return the list of ISO3166 codes supported by this geocoder. 
+ * 
+ * Google now supports geocoding for all countries:
+ * https://developers.google.com/maps/coverage
+  */
 function google_geocode_country_list() {
   // Get the google data from the feed.
-  $xml = google_geocode_country_list_xml();
+  //$xml = google_geocode_country_list_xml();
 
   // Loop through google data and find all valid entries.
-  $regionclean = array();
-  foreach ($xml->entry as $region) {
+  //$regionclean = array();
+  /*foreach ($xml->entry as $region) {
     $pos = strpos($region->content, 'geocoding:') + 11;
     $geocoding = substr($region->content, $pos, strpos($region->content, ',', $pos) - $pos);
     if (strpos($geocoding, "Yes") !== FALSE) {
       $regionclean[] = t(htmlentities($region->title));
     }
-  }
+  }*/
 
   // Get the countries list and clean it up so that names will match to google.
   // The regex removes parenthetical items so that both of the "Congo" entries
@@ -71,8 +72,9 @@ function google_geocode_country_list() {
   // Note: it may be neccessary to adjust/add to the fixes list in the future
   // if google adds countries that don't match the Drupal API list for whatever
   // reason.
+  
   $countries = location_get_iso3166_list();
-  $regex = "#[ (].*[)]#";
+  /*$regex = "#[ (].*[)]#";
   $cntryclean = preg_replace($regex, "", $countries);
   $countriesfixes = array_merge(
     $cntryclean,
@@ -93,7 +95,8 @@ function google_geocode_country_list() {
   // original name values.
   $fixedkeys = array_intersect_key($countries, $googlematched);
 
-  return array_keys($fixedkeys);
+  return array_keys($fixedkeys);*/
+  return array_keys($countries);
 }
 
 /**

@@ -17,6 +17,21 @@
 *
 * @ingroup views_templates
 */
+//print "<pre>";
+//print_r($fields['coordinates']->handler->view->result[0]);
+//print "</pre>";
+$latitude = $fields[coordinates]->handler->view->result[0]->location_latitude;
+$longitude = $fields[coordinates]->handler->view->result[0]->location_longitude; 
+$location = '' ;
+print '<div class="entitatmapa ">';				
+	if ($fields[coordinates]->handler->view->result[0]->location_street && $fields[coordinates]->handler->view->result[0]->location_city) {
+		if ($fields[coordinates]->handler->view->result[0]->location_street != '') $location .= '<b>'.$fields[coordinates]->handler->view->result[0]->location_name.'</b> <br/>';
+		$location .= $fields[coordinates]->handler->view->result[0]->location_street.'<br/>'.$fields[coordinates]->handler->view->result[0]->location_city;
+	
+	}              	
+	if ($latitude != 0 || $longitude != 0) {
+		print gmap_simple_map($latitude, $longitude, '', $location, 'default');
+	}
 
-
+print '</div>'
 ?>
