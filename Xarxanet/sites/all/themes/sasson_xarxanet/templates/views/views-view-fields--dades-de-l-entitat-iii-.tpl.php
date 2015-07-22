@@ -17,16 +17,15 @@
 *
 * @ingroup views_templates
 */
-
 print '<div id="content-block" >
 			<div class="content-block-part">
 				<div id="news-block">
-					<a href="#">Notícies</a>
+					<a href="/entitat/noticies/' . $fields['uid']->handler->view->result[0]->uid . '">Notícies</a>
 				</div>
 			</div>
 			<div class="content-block-part">
 				<div id="events-block">
-					<a href="#">Esdeveniments</a>
+					<a href="/entitat/esdeveniments/' . $fields['uid']->handler->view->result[0]->uid . '">Esdeveniments</a>
 				</div>
 			</div>
 		</div>
