@@ -31,3 +31,22 @@
     @include grid-width(5);
     float: right;
   }
+  
+/* ------- Fitxes d'entitat ------- */
+ .page-entitat {
+   .images-column,
+   .center-column {
+     margin: 0 $space;
+   }
+   .links-row {
+     #content-block {
+       @include grid-width(4, $ninesixty-columns, $ninesixty-gutter-width + $space);    
+     }
+     #social-block {
+       @include grid-width(3, $ninesixty-columns, $ninesixty-gutter-width + $space); 
+     }
+     .content-block-part {
+       width: 50%;
+     }
+   }
+ }
