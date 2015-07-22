@@ -91,8 +91,14 @@
 			$url = $node->field_especial_contingut_1_dest_['und'][0]['url'];
 		}
 	
-		if ($node->field_especial_contingut_1_form['und'][0]['value'] == 'Columna esquerra') {
+		//if ($node->field_especial_contingut_1_form['und'][0]['value'] == 'Columna esquerra') {
+		if ($node->field_especial_contingut_1_img['und'][0]['uri']) {
 			$image = file_create_url($node->field_especial_contingut_1_img['und'][0]['uri']);
+			if ($node->field_especial_contingut_1_form['und'][0]['value'] == 'Columna esquerra') {
+				$image = file_create_url($node->field_especial_contingut_1_img['und'][0]['uri']);
+			} else {
+				$image = image_style_url('tag-mig',$node->field_especial_contingut_1_img['und'][0]['uri']);
+			}
 			$alt = '';
 		} else {
 			$image = image_style_url('tag-mig',$content_node->field_agenda_imatge['und'][0]['uri']);
