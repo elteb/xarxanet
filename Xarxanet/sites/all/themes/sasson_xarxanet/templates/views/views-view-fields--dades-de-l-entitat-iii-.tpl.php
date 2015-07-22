@@ -37,14 +37,27 @@ if (!empty($events)) {
 }
 print '</div>';
 
+$fb = strip_tags($fields['field_pagina_facebook']->content);
+$tw = strip_tags($fields['field_twitter']->content);  
+$inst = strip_tags($fields['field_instagram']->content);
+$yt = strip_tags($fields['field_youtube']->content);  
+$goo = strip_tags($fields['field_google']->content);    
 print '<div id="social-block">';
-if (strip_tags($fields['field_pagina_facebook']->content)) {
-	print '<a href="'.strip_tags($fields['field_pagina_facebook']->content).'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/fb-icon.png"/></a>';
+if (!empty($fb)) {
+	print '<a href="'.$fb.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/fb-icon.png"/></a>';
 }
-if (strip_tags($fields['field_twitter']->content)) {
-	print '<a href="'.strip_tags($fields['field_twitter']->content).'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/twitter-icon.png"/></a>';
+if (!empty($tw)) {
+	print '<a href="'.$tw.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/twitter-icon.png"/></a>';
+}
+if (!empty($inst)) {
+	print '<a href="'.$inst.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/slideshare-icon.png"/></a>';
+}
+if (!empty($yt)) {
+	print '<a href="'.$yt.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/youtube-icon.png"/></a>';
+}
+if (!empty($goo)) {
+	print '<a href="'.$goo.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/flickr-icon.png"/></a>';
 }
 print '	</div>';
-
 
 ?>
