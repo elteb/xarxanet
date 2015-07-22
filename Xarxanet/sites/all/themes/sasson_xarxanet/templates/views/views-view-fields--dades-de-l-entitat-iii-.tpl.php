@@ -17,20 +17,27 @@
 *
 * @ingroup views_templates
 */
-print '<div id="content-block" >
-			<div class="content-block-part">
+$uid = $fields['uid']->handler->view->result[0]->uid;
+$news = views_get_view_result('noticies_de_l_entitat', NULL, $uid);
+$events = views_get_view_result('esdeveniments_de_l_entitat', NULL, $uid);
+print '<div id="content-block" >';
+if (!empty($news)) {
+	print '<div class="content-block-part">
 				<div id="news-block">
-					<a href="/entitat/noticies/' . $fields['uid']->handler->view->result[0]->uid . '">Notícies</a>
+					<a href="/entitat/noticies/' . $uid . '">Notícies</a>
 				</div>
-			</div>
-			<div class="content-block-part">
+			</div>';
+}
+if (!empty($events)) {
+	print '<div class="content-block-part">
 				<div id="events-block">
-					<a href="/entitat/esdeveniments/' . $fields['uid']->handler->view->result[0]->uid . '">Esdeveniments</a>
+					<a href="/entitat/esdeveniments/' . $uid . '">Esdeveniments</a>
 				</div>
-			</div>
-		</div>
-		<div id="social-block">';
-if (($fields['field_pagina_facebook']->content) || ($fields['field_twitter']->content)) print 'Segueix-nos! ';
+			</div>';
+}
+print '</div>';
+
+print '<div id="social-block">';
 if ($fields['field_pagina_facebook']->content) {
 	print '<a href="'.strip_tags($fields['field_pagina_facebook']->content).'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/fb-icon.png"/></a>';
 }
