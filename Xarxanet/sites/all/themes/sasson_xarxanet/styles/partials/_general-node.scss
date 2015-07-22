@@ -170,6 +170,91 @@
      }
    }
  }
+ 
+ /* ------- Fitxes d'entitat ------- */
+ .page-entitat {
+   .images-column {
+     img {
+       margin-bottom: $space*2;
+     }
+   }
+   .data-row {
+     background-color: $main-3;
+     padding: 0px;
+     .view-dades-de-l-entitat {
+       padding: $space;
+       #data-block {
+         margin-top: $space;
+         width: 100%;
+         .data-block-part {
+           width: 50%;
+           float: left;
+           .block-item {
+             padding-left: $space*4;
+             min-height: $space*3;
+             vertical-align: center;
+             margin-bottom: $space;
+           }
+           #item-adress { background: url("/sites/all/themes/sasson_xarxanet/images/icons/adress-icon.png") no-repeat; }
+           #item-nif { background: url("/sites/all/themes/sasson_xarxanet/images/icons/nif-icon.png") no-repeat; }
+           #item-tel { background: url("/sites/all/themes/sasson_xarxanet/images/icons/tel-icon.png") no-repeat; }
+           #item-mail { background: url("/sites/all/themes/sasson_xarxanet/images/icons/mail-icon.png") no-repeat; }
+           #item-web { background: url("/sites/all/themes/sasson_xarxanet/images/icons/web-icon.png") no-repeat; }   
+         }
+       }
+     } 
+   }
+   .links-row {
+     @include title2;
+     background-color: $main-1;
+     padding: $space;
+     color: white;
+     a, a:hover {
+       color: white;
+     }
+     #content-block {
+       float: left;
+       .content-block-part {
+         float: left;
+         #news-block { 
+           background: url("/sites/all/themes/sasson_xarxanet/images/pictos/noticies.png") 2px 4px no-repeat;
+           padding-left: 35px; 
+         }
+         #events-block { 
+           background: url("/sites/all/themes/sasson_xarxanet/images/pictos/actes.png") 0px 4px no-repeat;
+           padding-left: 40px; 
+         }
+       }
+     }
+     #social-block {
+       float: right;
+       text-align: right;
+       img {
+         margin-left: $space;
+       }
+     }
+   }
+   .transparency-row {
+     .panels-flexible-region {
+       width: 100%;
+     }
+     h2 {
+       @include grid-width(2);
+       background-color: $transparencia;
+       margin-bottom: 0px;
+       padding: $space;
+       color: white;
+     }
+     .pane-content {
+       background-color: $transparencia-sec;
+       padding: $space;
+       ul {
+         list-style: none;
+         margin-top: $space;
+       }
+     }
+   }
+ }
 
  /* ------- Butlletins ------- */
  .node-type-butlleti-financament,

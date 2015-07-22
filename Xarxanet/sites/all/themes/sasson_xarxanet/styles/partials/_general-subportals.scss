@@ -132,6 +132,7 @@
    .content_teaser, 
    #third-row { padding: 0 5px; } 
    .content-columna-esquerra img { width: 568px; }
+   .content-columna-dreta img {@include grid-width(4, $ninesixty-columns, $ninesixty-gutter-width - $space);}
   }
 }
 
