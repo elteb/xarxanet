@@ -209,6 +209,7 @@
      background-color: $main-1;
      padding: $space;
      color: white;
+     margin-top: 0px;
      a, a:hover {
        color: white;
      }
@@ -233,6 +234,7 @@
          margin-left: $space;
        }
      }
+     .pager { display: none; }
    }
    .transparency-row {
      .panels-flexible-region {

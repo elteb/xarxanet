@@ -38,10 +38,10 @@ if (!empty($events)) {
 print '</div>';
 
 print '<div id="social-block">';
-if (strip_tags($fields['field_pagina_facebook']->content)) {
+if ($fields['field_pagina_facebook']->content) {
 	print '<a href="'.strip_tags($fields['field_pagina_facebook']->content).'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/fb-icon.png"/></a>';
 }
-if (strip_tags($fields['field_twitter']->content)) {
+if ($fields['field_twitter']->content) {
 	print '<a href="'.strip_tags($fields['field_twitter']->content).'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/twitter-icon.png"/></a>';
 }
 print '	</div>';
