@@ -19,24 +19,26 @@
 */
 
 print $fields['field_missio_valors']->content;
-print '<p><b>'.$fields['field_ambit_intervencio']->label.': </b>'.strip_tags($fields['field_ambit_intervencio']->content).'</p>';
+if (strip_tags($fields['field_ambit_intervencio']->content)) {
+	print '<p><b>'.$fields['field_ambit_intervencio']->label.': </b>'.strip_tags($fields['field_ambit_intervencio']->content).'</p>';
+}
 print '<div id="data-block">
 			<div class="data-block-part" id="left-part">';
-if ($fields['address']->content) {
+if (strip_tags($fields['address']->content)) {
 	print '<div class="block-item" id="item-adress">'.$fields['address']->content.'	</div>';
 }
-if ($fields['field_nif_de_l_entitat']->content) {
+if (strip_tags($fields['field_nif_de_l_entitat']->content)) {
 	print '<div class="block-item" id="item-nif">'.$fields['field_nif_de_l_entitat']->content.'	</div>';
 }
 print	'	</div>
 			<div class="data-block-part" id="right-part">';
-if ($fields['field_telefon']->content) {
+if (strip_tags($fields['field_telefon']->content)) {
 	print '<div class="block-item" id="item-tel">'.$fields['field_telefon']->content.'	</div>';
 }
-if ($fields['field_correu_electronic_public']->content) {
+if (strip_tags($fields['field_correu_electronic_public']->content)) {
 	print '<div class="block-item" id="item-mail">'.$fields['field_correu_electronic_public']->content.'	</div>';
 }
-if ($fields['field_pagina_web']->content) {
+if (strip_tags($fields['field_pagina_web']->content)) {
 	print '<div class="block-item" id="item-web">'.$fields['field_pagina_web']->content.'	</div>';
 }
 print	'	</div>
