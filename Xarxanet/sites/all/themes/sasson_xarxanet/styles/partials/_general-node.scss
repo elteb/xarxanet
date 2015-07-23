@@ -240,6 +240,9 @@
      .panels-flexible-region {
        width: 100%;
      }
+     .panel-separator {
+       display: none;
+     }
      h2 {
        @include grid-width(2);
        background-color: $transparencia;
@@ -249,11 +252,19 @@
      }
      .pane-content {
        background-color: $transparencia-sec;
-       padding: $space;
+       padding: $space $space 0px $space;
        ul {
          list-style: none;
          margin-top: $space;
        }
+       .views-exposed-form {
+         label {
+           font-weight: normal;
+         }
+       }
+     }
+     #dades-transparencia .pane-content {
+       padding-bottom: $space;
      }
    }
  }

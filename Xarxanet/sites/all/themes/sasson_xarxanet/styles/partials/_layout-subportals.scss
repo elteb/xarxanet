@@ -43,3 +43,33 @@
     .inside { margin-left: $space }  
   }
 }
+
+/* ------- Llistat Entitats ------- */
+.view-entitats{
+    .views-table{
+        width: 100%;
+        .views-field-name{ 
+          min-width:40%;          
+        }   
+        .views-field-city{ 
+          min-width:10%;          
+        }
+        .views-field-field-ambit-intervencio{ 
+          min-width:22%;          
+        }
+        .views-field-field-telefon{ 
+          min-width:10%;          
+        } 
+        .views-field-field-correu-electronic-public{ 
+          min-width:18%;          
+        }
+        td {
+          padding: $space;
+        }
+    }
+    .pager{
+      width: 100%;
+      padding-left:0px;
+      padding-right:0px;      
+    }  
+}
