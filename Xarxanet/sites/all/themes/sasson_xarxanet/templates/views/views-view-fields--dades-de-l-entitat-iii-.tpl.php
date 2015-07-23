@@ -44,19 +44,19 @@ $yt = strip_tags($fields['field_youtube']->content);
 $goo = strip_tags($fields['field_google']->content);    
 print '<div id="social-block">';
 if (!empty($fb)) {
-	print '<a href="'.$fb.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/fb-icon.png"/></a>';
+	print '<a href="'.$fb.'" title="'.$fb.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/fb-icon.png"/></a>';
 }
 if (!empty($tw)) {
-	print '<a href="'.$tw.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/twitter-icon.png"/></a>';
+	print '<a href="'.$tw.'" title="'.$tw.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/twitter-icon.png"/></a>';
 }
 if (!empty($inst)) {
-	print '<a href="'.$inst.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/slideshare-icon.png"/></a>';
+	print '<a href="'.$inst.'" title="'.$inst.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/inst-icon.png"/></a>';
 }
 if (!empty($yt)) {
-	print '<a href="'.$yt.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/youtube-icon.png"/></a>';
+	print '<a href="'.$yt.'" title="'.$yt.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/youtube-icon.png"/></a>';
 }
 if (!empty($goo)) {
-	print '<a href="'.$goo.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/flickr-icon.png"/></a>';
+	print '<a href="'.$goo.'" title="'.$goo.'"><img src="/sites/all/themes/sasson_xarxanet/images/icons/gplus-icon.png"/></a>';
 }
 print '	</div>';
 
