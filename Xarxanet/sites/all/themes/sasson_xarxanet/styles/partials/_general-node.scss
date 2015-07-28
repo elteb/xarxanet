@@ -181,6 +181,7 @@
    .data-row {
      background-color: $main-3;
      padding: 0px;
+     .pane-title { display: none; }
      .view-dades-de-l-entitat {
        padding: $space;
        #data-block {

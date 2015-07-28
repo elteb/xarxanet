@@ -17,21 +17,27 @@
 *
 * @ingroup views_templates
 */
-$uid = $fields['uid']->handler->view->result[0]->uid;
+$uid = strip_tags($fields['uid']->content);
 $news = views_get_view_result('noticies_de_l_entitat', NULL, $uid);
 $events = views_get_view_result('esdeveniments_de_l_entitat', NULL, $uid);
+$user=user_load($uid);
+$username=$user->name;
+$breadcrumb[] = l('Inici', null);
+$breadcrumb[] = l('Entitats', 'entitats');
+$breadcrumb[] .= $username;
+drupal_set_breadcrumb($breadcrumb);
 print '<div id="content-block" >';
 if (!empty($news)) {
 	print '<div class="content-block-part">
 				<div id="news-block">
-					<a href="/entitat/noticies/' . $uid . '">Notícies</a>
+					<a href="/noticies' . $_SERVER['REQUEST_URI'] . '">Notícies</a>
 				</div>
 			</div>';
 }
 if (!empty($events)) {
 	print '<div class="content-block-part">
 				<div id="events-block">
-					<a href="/entitat/esdeveniments/' . $uid . '">Esdeveniments</a>
+					<a href="/agenda' . $_SERVER['REQUEST_URI'] . '">Esdeveniments</a>
 				</div>
 			</div>';
 }
