@@ -474,3 +474,14 @@ ul.pager {
     a { color: white; }
   } 
 }
+/* ------- Formularis d'Administració ------- */
+.form-wrapper{
+  .fieldset-legend{
+    font-weight: bold;
+    font-size: 10pt;
+    text-decoration:underline;
+  }
+  .fieldset-wrapper{
+    padding: 10px 0 0 10px;
+  } 
+}
