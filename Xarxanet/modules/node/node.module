@@ -1743,7 +1743,16 @@ function node_search_execute($keys = NULL, $conditions = NULL) {
       'type' => check_plain(node_type_get_name($node)),
       'title' => $node->title,
       'user' => theme('username', array('account' => $node)),
+    /**************************************************
+     * TEBPATCH (MDF) @fcasanellas 03/08/2015
+     * XN-ND005 Mostra la data de creació enlloc de la d'actualització
+     * OLDCODE ****************************************
       'date' => $node->changed,
+    /**************************************************
+     * NEWCODE ***************************************/
+      'date' => $node->created,
+    /**************************************************
+     * END TEBPATCH **********************************/
       'node' => $node,
       'extra' => $extra,
       'score' => $item->calculated_score,
