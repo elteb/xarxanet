@@ -22,10 +22,13 @@
   .views-field-views-conditional-1 {
     padding: 0 8px;
   }
-  .views-field-field-recull-principal-rel {
+  .views-field-nothing {
     padding: 8px;
     .views-label {
       font-weight: bold;
+    }
+    ul {
+      margin-bottom: 0px;
     }
     li {
       list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
