@@ -86,26 +86,25 @@
 			$content_node = node_load($node->field_especial_contingut_1_dest['und'][0]['nid']);
 			$title = $content_node->title;
 			$url = url('node/' . $content_node->nid, array('absolute' => TRUE));
+			$resum = $content_node->field_resum['und'][0]['value'];
 		} else {
 			$title = $node->field_especial_contingut_1_dest_['und'][0]['title'];
 			$url = $node->field_especial_contingut_1_dest_['und'][0]['url'];
+			$resum = '<p>'.$node->field_especial_contingut_1_teas['und'][0]['value'].'</p>';
 		}
-	
-		//if ($node->field_especial_contingut_1_form['und'][0]['value'] == 'Columna esquerra') {
-		if ($node->field_especial_contingut_1_img['und'][0]['uri']) {
-			$image = file_create_url($node->field_especial_contingut_1_img['und'][0]['uri']);
+		
+		if (($node->field_especial_contingut_1_img['und'][0]['uri']) || ($node->field_especial_contingut_1_img_p['und'][0]['uri'])) {
 			if ($node->field_especial_contingut_1_form['und'][0]['value'] == 'Columna esquerra') {
 				$image = file_create_url($node->field_especial_contingut_1_img['und'][0]['uri']);
 			} else {
-				$image = image_style_url('tag-mig',$node->field_especial_contingut_1_img['und'][0]['uri']);
+				$image = file_create_url($node->field_especial_contingut_1_img_p['und'][0]['uri']);
 			}
-			$alt = '';
+			$alt = '';	
 		} else {
 			$image = image_style_url('tag-mig',$content_node->field_agenda_imatge['und'][0]['uri']);
 			$alt = $content_node->field_agenda_imatge['und'][0]['alt'];
 		}
 		
-		$resum = $content_node->field_resum['und'][0]['value'];
 		$position = str_replace(' ', '-', strtolower($node->field_especial_contingut_1_form['und'][0]['value']));
 		
 		echo "	<div class='content content-{$position}'>

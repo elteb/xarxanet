@@ -358,9 +358,17 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 					{$title}
 				</a>
 				<p style='padding-top: 5px; margin: 2px 0;'>{$teaser}</p>";
-			if ($node->field_actualitat_lat_sup_rel['und'][0]['nid'] != '') {
+					
+			if (($node->field_actualitat_lat_sup_rel['und'][0]['nid'] != '') || ($node->field_actualitat_lat_sup_rel_ex['und'][0]['url'] != '')) {
 				echo '<b>Altres informacions relacionades</b>
 				<table class="butlleti">';
+				foreach ($node->field_actualitat_lat_sup_rel_ex['und'] as $rel) {
+					$title = $rel['title']; 
+					$url = $rel['url'];
+					echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+					<td style='padding: 2px;'><a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$title}</a></td>
+					</tr>";
+				}
 				foreach ($node->field_actualitat_lat_sup_rel['und'] as $rel) {
 					$news_node = node_load($rel['nid']);
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
