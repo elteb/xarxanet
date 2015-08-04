@@ -207,13 +207,29 @@ iframe { max-width: 100% !important; }
 	margin-left: 5px;
 }
 
+.view-recull-noticies-principal-mobil .views-field-nothing-1 .views-label,
+.view-recull-noticies-secundari-mobil .views-field-nothing-2 .views-label {
+    margin-left: 8px;
+}
+
+.view-recull-noticies-principal-mobil .views-field-nothing-1,
+.view-recull-noticies-secundari-mobil .views-field-nothing-2 {
+    margin-top: 15px;
+}
+
 /*.views-field-field-recull-secundari-relaciona-url .field-item,
 .views-field-field-recull-principal-rel-url .field-item,*/
 .views-field-field-recull-secundari-relaciona .field-content div,
-.views-field-field-recull-principal-rel .field-content div {
+.view-recull-noticies-principal-mobil .views-field-nothing-1 .field-content div,
+.view-recull-noticies-secundari-mobil .views-field-nothing-2 .field-content div {
 	margin: 5px;
 	padding-left: 8px;
 	list-style-image: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style.png");
+}
+
+.view-recull-noticies-principal-mobil .views-field-nothing-1 .field-content ul,
+.view-recull-noticies-secundari-mobil .views-field-nothing-2 .field-content ul {
+    margin-bottom: 0px;
 }
 
 /************ BLOCS *************/

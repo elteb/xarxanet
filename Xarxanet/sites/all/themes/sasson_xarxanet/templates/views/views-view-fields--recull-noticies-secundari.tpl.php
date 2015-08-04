@@ -34,5 +34,5 @@
 	    <?php print $field->label_html; ?>
 	    <?php print $field->content; ?>
     <?php print $field->wrapper_suffix; ?>
-    <?php if ($id == 'field_recull_secundari_relaciona') print '</div>'; ?>
+    <?php if ($id == 'nothing') print '</div>'; ?>
 <?php endforeach; ?>
