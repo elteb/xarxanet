@@ -118,4 +118,9 @@
   }
 }
 
+/* ------- Recull de documents -------- */
+.pane-recull-documents {
+  @include grid-width(6);
+}
+
 

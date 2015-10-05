@@ -227,16 +227,6 @@
                 <?php
                 	print $node->body['und'][0]['value']; ?>
             </div>
-            <span><b>Àmbit:</b></span>
-               <p><ul>
-                   <?php 
-                   foreach($node->field_ambits['und'] as $ambit): ?>
-                       <li><?php print $ambit['value']; ?></li>
-                   <?php endforeach; ?>
-               </ul></p>
-            <!-- preguntes -->
-            
-
         </div>
     </div>
 

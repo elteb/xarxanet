@@ -25,6 +25,7 @@ aside#sidebar-second {
    @include grid-width(2);
  }
  @include grid-unit-base;
+ margin-bottom: $space;
 }
 
 .view-4x133 .views-row-2, 
