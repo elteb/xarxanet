@@ -171,7 +171,114 @@
      display: inline;
     } 
   }
-  .views-exposed-form { display: none; }
+  .views-exposed-form { 
+    display: none;    
+  }
+  .view-documents-filtrats{
+    .views-exposed-form { 
+      display: none;    
+    }
+  }
+  .pane-cercador-avancat-biblioteca-panel-pane-1,
+  #views-exposed-form-cercador-avancat-biblioteca-panel-pane-1{
+    .views-exposed-form { 
+      display: inline; 
+      select{
+        width:200px;      
+      }
+      .form-text{
+        width:195px;
+      }
+      .form-submit{
+        width:94px;
+      }
+
+    }
+    .view-content{
+      display:none;
+    }
+    .view-empty{
+      display:none;
+    }
+  }
+  .pane-cercador-avancat-biblioteca,
+  .view-display-id-page_1{
+    .view-content{
+      display:inline;
+    } 
+  }
+  .pane-cercador-avancat-biblioteca-panel-pane-1{
+      h2 {
+        @include block-lat-title(3, $space, 0px);
+        background: $biblioteca; 
+      } 
+      .pane-content {
+        padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+        clear: both;
+        background-color: $main-3;
+        ul {
+          margin-bottom: $ninesixty-gutter-width;
+          padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+          list-style-type: square;
+        } 
+        ul.subterm {
+          padding: 0 $ninesixty-gutter-width*2;
+          margin: 0;
+        }
+        li { margin-bottom: $space;}
+        p { padding: $space; }
+      }
+  }
+  .pane-cercador-avan-at-biblioteca-panel-pane-1,
+  #views-exposed-form-cercador-avan-at-biblioteca-panel-pane-1{
+    .views-exposed-form { 
+      display: inline; 
+      select{
+        width:200px;      
+      }
+      .form-text{
+        width:195px;
+      }
+      .form-submit{
+        width:94px;
+      }
+
+    }
+    .view-content{
+      display:none;
+    }
+    .view-empty{
+      display:none;
+    }
+  }
+  .pane-cercador-avan-at-biblioteca,
+  .view-display-id-page_1{
+    .view-content{
+      display:inline;
+    } 
+  }
+  .pane-cercador-avan-at-biblioteca-panel-pane-1{
+      h2 {
+        @include block-lat-title(3, $space, 0px);
+        background: $biblioteca; 
+      } 
+      .pane-content {
+        padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+        clear: both;
+        background-color: $main-3;
+        ul {
+          margin-bottom: $ninesixty-gutter-width;
+          padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+          list-style-type: square;
+        } 
+        ul.subterm {
+          padding: 0 $ninesixty-gutter-width*2;
+          margin: 0;
+        }
+        li { margin-bottom: $space;}
+        p { padding: $space; }
+      }
+  }
   #biblioteca-panel {
     .views-row {
       border-bottom: 1px dotted $main-2;
@@ -180,7 +287,12 @@
     }
     .biblioteca-document {
       border-collapse: separate;
-      .text { padding: 0 $space; }
+      .text { 
+        padding: 0 $space; 
+        .teaser{
+          margin-top:0px;
+        }
+      }
       .image img {
         @include grid-width(1.5);
         border: 1px solid $main-2;
