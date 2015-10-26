@@ -24,14 +24,9 @@ if (strip_tags($fields['field_ambit_intervencio']->content)) {
 }
 print '<div id="data-block">
 			<div class="data-block-part" id="left-part">';
-if (strip_tags($fields['address']->content)) {
-	print '<div class="block-item" id="item-adress">'.$fields['address']->content.'	</div>';
-}
 if (strip_tags($fields['field_nif_de_l_entitat']->content)) {
 	print '<div class="block-item" id="item-nif">'.$fields['field_nif_de_l_entitat']->content.'	</div>';
 }
-print	'	</div>
-			<div class="data-block-part" id="right-part">';
 if (strip_tags($fields['field_telefon']->content)) {
 	print '<div class="block-item" id="item-tel">'.$fields['field_telefon']->content.'	</div>';
 }
@@ -40,6 +35,11 @@ if (strip_tags($fields['field_correu_electronic_public']->content)) {
 }
 if (strip_tags($fields['field_pagina_web']->content)) {
 	print '<div class="block-item" id="item-web">'.$fields['field_pagina_web']->content.'	</div>';
+}
+print	'	</div>
+			<div class="data-block-part" id="right-part">';
+if (strip_tags($fields['address']->content)) {
+	print '<div class="block-item" id="item-adress">'.$fields['address']->content.'	</div>';
 }
 print	'	</div>
 		</div>';
