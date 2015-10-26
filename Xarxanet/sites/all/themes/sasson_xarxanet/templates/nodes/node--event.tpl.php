@@ -170,6 +170,30 @@
 				if ($node->print_display) echo '<li class="print_html">'.l(t('Versió per imprimir'), 'print/'.$node->nid).'</li>';		
 				if ($node->print_mail_display) echo '<li class="print_mail">'.l(t('Envia a un amic'), 'printmail/'.$node->nid).'</li>';
 				if ($node->print_pdf_display) echo '<li class="print_pdf">'.l(t('Versió PDF'), 'printpdf/'.$node->nid).'</li>';
+				
+				$summary = urlencode($node->title);
+				$datestart = '';
+				$dateend = '';
+				if (!empty($node->field_date_event['und'][0])) {
+					$inici = new DateTime($node->field_date_event['und'][0]['value'], new DateTimeZone($node->field_date_event['und'][0]['timezone_db']));
+					$final = new DateTime($node->field_date_event['und'][0]['value2'], new DateTimeZone($node->field_date_event['und'][0]['timezone_db']));
+					$inici->setTimezone(new DateTimeZone($node->field_date_event['und'][0]['timezone']));
+					$final->setTimezone(new DateTimeZone($node->field_date_event['und'][0]['timezone']));
+					$datestart = urldecode($inici->getTimestamp());
+					$dateend = urldecode($final->getTimestamp());
+				}
+				$address = urlencode(strip_tags($location));
+				global $base_url;
+				$uri = urlencode($base_url.url('node/'. $node->nid));
+				$description = urlencode(strip_tags($field_resum[0]['value']));
+				$ics_path = path_to_theme()."/scripts/ics.php";
+				echo '<li class="ics">'.l(t('Afegeix a la teva agenda'), $ics_path, array('query' => array(
+						'summary' => $summary,
+						'datestart' => $datestart,
+						'dateend' => $dateend,
+						'adress' => $address,
+						'description' => $description,
+						'uri' => $uri))).'</li>';
 				echo '</ul></div></div>';
 			}
 			?>	
@@ -188,12 +212,6 @@
                   <span class="floatesquerra tipusagenda"><?php print $node->field_event_type['und'][0]['value'];?></span>
                   <span class="floatdreta"><strong>Inici:</strong>
                   <?php
-                  	if (!empty($node->field_date_event['und'][0])) {
-						$inici = new DateTime($node->field_date_event['und'][0]['value'], new DateTimeZone($node->field_date_event['und'][0]['timezone_db']));
-						$final = new DateTime($node->field_date_event['und'][0]['value2'], new DateTimeZone($node->field_date_event['und'][0]['timezone_db']));
-						$inici->setTimezone(new DateTimeZone($node->field_date_event['und'][0]['timezone']));
-						$final->setTimezone(new DateTimeZone($node->field_date_event['und'][0]['timezone']));
-					}
                   if ($node->field_date_event['und'][0]['value'] != $node->field_date_event['und'][0]['value2']):?>
                   	<?php if ($inici->format("H:i") != '00:00'):?>
                       <?php print $inici->format("d/m/Y \a \l\\e\s H:i"); ?>

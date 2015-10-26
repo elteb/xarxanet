@@ -29,9 +29,11 @@
     @include node-box;
     h2 { @include node-title(''); } 
     ul { line-height: 2.5em; }
+    li { margin-left: 1em; }
     li.print_html { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/print.png"); }
     li.print_mail { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/mail.png"); }
     li.print_pdf { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/pdf-version.png"); }
+    li.ics { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/calendar.png"); }
   }
   .node-files {
     @include node-box;
