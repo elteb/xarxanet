@@ -23,7 +23,7 @@ $events = views_get_view_result('esdeveniments_de_l_entitat', NULL, $uid);
 $user=user_load($uid);
 $username=$user->name;
 $breadcrumb[] = l('Inici', null);
-$breadcrumb[] = l('Entitats', 'entitats');
+$breadcrumb[] = l('Entitats', 'entitats-col-laboradores');
 $breadcrumb[] .= $username;
 drupal_set_breadcrumb($breadcrumb);
 print '<div id="content-block" >';
