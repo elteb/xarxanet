@@ -15,7 +15,7 @@
    id="svg3833"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Nou document 6">
+   sodipodi:docname="icon-events.svg">
   <defs
      id="defs3835">
     <clipPath
@@ -99,7 +99,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="49.873686"
+     inkscape:cx="-91.197743"
      inkscape:cy="125.63379"
      inkscape:document-units="px"
      inkscape:current-layer="capa1"
@@ -117,7 +117,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -130,9 +130,9 @@
        style="fill:#000000;fill-opacity:1;display:inline"
        id="g4567"
        transform="matrix(1.1944577,0,0,1.1944577,6.7800001e-7,977.68886)"
-       inkscape:export-filename="/home/oficina/Xarxanet/2013_Portal/2013_mobil/maqueta/menu.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150">
+       inkscape:export-filename="/home/felix/git/xarxanet7/Xarxanet/sites/all/themes/sasson_xarxanet/images/pictos/actes-taronja.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <defs
          id="defs4569">
         <rect
