@@ -111,6 +111,18 @@ function google_analytics_counter_menu() {
     'type' => MENU_LOCAL_TASK,
     'weight' => 5,
     );
+  
+  /*****************************************
+   * TEBPATCH (ADD) @fcasanellas 09/03/2015
+   * XN-GAC001 Afegeix un recompte de visites "recents"
+   * NEWCODE *******************************/
+  $items['admin/google_analytics_counter_update_top_content'] = array(
+  		'page callback' => 'google_analytics_counter_update_top_content',
+  		'access arguments' => array('administer google analytics counter'),
+  		'type' => MENU_CALLBACK,
+  );
+  /*************************************
+   * END TEBPATCH **********************/
 
   return $items;
 }
@@ -379,6 +391,7 @@ function google_analytics_counter_details() {
   $lastupdate = variable_get('google_analytics_counter_top_content_last_update', 0);
   $nextupdate = $lastupdate + (60*variable_get('google_analytics_counter_top_content_cron_interval', 30));
   $result .= t('<p>Last top content update took place in %topcontentlastupdate. The next one will take place after %topcontentnextupdate.</p>', array('%topcontentlastupdate' => date("H:i:s d-m-Y", $lastupdate), '%topcontentnextupdate' => date("H:i:s d-m-Y", $nextupdate)));
+  $result .= t('<p>'. l(t('Update top content now'), 'admin/google_analytics_counter_update_top_content') .'.');
   /******************************************
    * END TEBPATCH ***************************/
   

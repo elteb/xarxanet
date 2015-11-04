@@ -38,7 +38,7 @@ function google_analytics_counter_update_top_content() {
 			'expire' => google_analytics_counter_cache_time(),
 			'refresh' => FALSE,
 	);
-	$new_data = @google_analytics_counter_report_data($request, $cachehere);
+	$new_data = @google_analytics_counter_report_data($request, $cachehere);;
 	
 	if (!$new_data->fromCache) { // Don't write anything to google_analytics_counter if this GA data comes from cache (would be writing the same again).
 	
@@ -81,19 +81,27 @@ function google_analytics_counter_update_top_content() {
 					}
 				}
 			}
+		try {
 			if (!empty($nids_to_store)) {
+				$stored_nids = array();
 				//Clean&Store in database
 				db_truncate('google_analytics_counter_top_content')->execute();
 				foreach ($nids_to_store as $n) {
-					db_insert('google_analytics_counter_top_content')
-						->fields(array(
-								'nid' => $n['nid'],
-								'pageview_total' => $n['views'],
-						))
-						->execute();
+					if (!in_array($n['nid'], $stored_nids)) {
+						$result = db_insert('google_analytics_counter_top_content')
+											->fields(array(
+													'nid' => $n['nid'],
+													'pageview_total' => $n['views'],
+											))
+											->execute();
+						$stored_nids[] = $n['nid'];
+					}
 				}
 				variable_set('google_analytics_counter_top_content_last_update', REQUEST_TIME);
 			}
+		} catch (Exception $e) {
+			watchdog('Google Analytics Counter', 'Caught exception: '.$e->getMessage());
+		}
 		}
 	}
 }
