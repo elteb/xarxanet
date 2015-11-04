@@ -337,6 +337,63 @@
   }
 }
 
+/* ------- Panell d'entitat -------- */
+.page-panell-entitat {
+	#block-megamenu-main-menu {padding: 0;}
+	#block-megamenu-main-menu .content, #block-block-83, #block-megamenu-menu-menu-ambits-entitats { display:none; }
+	#page-title-reg {
+  		background: $general url('/sites/all/themes/sasson_xarxanet/images/pictos/panell-control.png') no-repeat top left;
+  		height: 50px;
+  		h1 {
+  			color: #fff;
+  			padding-left: 55px;
+		}
+  	}
+  	.breadcrumb {
+  		margin-right: 0px;
+  		border-top: none;
+  	}
+  	.actions {
+  		margin: $space;
+  		padding: $space;
+  		h2 { 
+  			font-weight: bold;
+  			border-bottom: solid 1px; 
+  		}
+  		&#dades {
+  			h2 { color: $social; }
+  			background-color: $social-sec;
+  		}
+  		&#publica {
+  			h2 { color: $financament; }
+  			background-color: $financament-sec;
+  		}
+  		&#ajuda {
+  			h2 { color: $actes; }
+  			background-color: $actes-sec;
+  		}
+  	}
+  	li {
+  		margin: $space;
+  		&#noticia { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/noticies-taronja.png'); }
+  		&#acte { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/actes-taronja.png'); }
+  		&#mostra { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/mostra-blau.png'); }
+  		&#edita { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/edita-blau.png'); }
+  		&#document { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/trans-blau.png'); }
+  		&#contacte { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/ajuda-verd.png'); }
+  		&#guia { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/doc-verd.png'); }
+  	}
+  	table { width: 100%; }
+  	th, td { padding: $space; }
+  	h2.pane-title {
+  		color: $main-1;
+  		border-bottom: solid $main-2 1px;
+  		padding: $space 0;
+  		font-weight: bold;
+  	}
+  	.panels-flexible-row { padding: 0 $space; }
+}
+
 /* ------- Colors ------ */
 #recurs-economic { @include subportal-header($economic); }
 #recurs-formacio { @include subportal-header($formacio); }
