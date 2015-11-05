@@ -79,6 +79,13 @@ blockquote {
     }
     .butlletins { @include menu-link-bg($main-1, $general, 'newsletters', 'newsletters'); }
     .accedeix { @include menu-link-bg($main-1, $general, 'login', 'login'); }
+    .surt-del-lloc { @include menu-link-bg($main-1, $general, 'logout', 'logout'); }
+    .panell-de-control { 
+    	@include menu-link-bg($main-1, $general, 'panell-control-menu', 'panell-control-menu');
+    	body.page-panell-entitat & {
+    		@include menu-link-bg($general, $general, 'panell-control-menu', 'panell-control-menu');
+    	} 
+    }
     .mbil {
       display: none;
       @include menu-link-bg($main-1, $general, 'mobile', 'mobile');
