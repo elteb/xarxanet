@@ -3,8 +3,8 @@
  */
 
 .ui-corner-all {
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
+  -webkit-border-radius: 0px !important;
+  border-radius: 0px !important;
 }
 
 .ui-widget {
@@ -23,4 +23,9 @@
 .ui-tabs .ui-tabs-panel {
   border-top: 1px solid #aaaaaa;
   padding: 16px 0;
+}
+
+.ui-corner-top{
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
 }
