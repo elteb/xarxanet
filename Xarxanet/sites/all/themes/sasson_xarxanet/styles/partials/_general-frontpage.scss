@@ -129,6 +129,7 @@
 /* ------- Notícia destacada lateral ------- */
 .pane-noticia-destacada-lateral {
   background: $general-sec;
+  overflow:hidden;
   h2 {
     @include block-lat-title;
     background: url("/sites/all/themes/sasson_xarxanet/images/pictos/destaquem.png") $general 10px no-repeat;
