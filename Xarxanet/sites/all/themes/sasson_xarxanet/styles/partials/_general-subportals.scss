@@ -603,6 +603,99 @@
   }
 }
 
+/* ------- Registra't i Publica -------- */
+
+.page-publica-continguts{
+  .panels-flexible-region-inside{
+    padding-left:0px;
+    padding-right:0px;
+    margin-right:3px;
+  }
+  /*-------- Nomes a Prova------
+  .panels-flexible-region-41-right_block-inside{
+    margin-left:15px; 
+  }
+  ------------------------------ 
+  */
+  .panels-flexible-region-46-right_block-inside{
+    margin-left:15px; 
+  }
+  #page-title-reg{
+    width: $ninesixty-grid-width;
+    background: $general url("/sites/all/themes/sasson_xarxanet/images/pictos/publica-contingut.png")  no-repeat scroll left top;
+    height:50px;
+  }
+  #page-title{
+    padding-left:80px;
+    color:#FFF;
+    margin: 8px 0px;
+  }
+  .breadcrumb{
+    border-top: medium none;
+    margin-right: 0px;
+  }
+  .panel-pane{
+    margin-left:8px;
+  }
+  .publica-intro{
+    h2{
+      margin-top:0px;     
+    } 
+  }
+  .pane-title{
+    @include title1;
+    margin:0px !important;
+    line-height:1.4em;
+  }
+  .primer-pas{
+    background: $general url("/sites/all/themes/sasson_xarxanet/images/pictos/pas_1.png") no-repeat scroll 10px center;
+    color:#FFF;
+    padding-left:85px;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-right:27px;
+    @include title3;
+    line-height:1.2em !important;
+    p{
+      margin-top:0px !important;
+      margin-bottom:10px !important;
+    }
+  }
+  .formulari{
+    margin-right:9px;
+  }
+  .segon-pas{
+    background: $recursos url("/sites/all/themes/sasson_xarxanet/images/pictos/pas_2.png") no-repeat scroll 10px center;
+    color:#FFF;
+    padding-left:85px;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-right:27px;
+    @include title3;
+    line-height:1.2em !important;
+    p{
+      margin-top:0px !important;
+      margin-bottom:10px !important;
+    }
+    margin-left:0px;
+  }
+  .tercer-pas{
+    background: $financament url("/sites/all/themes/sasson_xarxanet/images/pictos/pas_3.png") no-repeat scroll 10px center;
+    color:#FFF;
+    padding-left:85px;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-right:27px;
+    @include title3;
+    line-height:1.2em !important;
+    p{
+      margin-top:0px !important;
+      margin-bottom:10px !important;
+    }
+    margin-left:0px;
+  }
+}
+
 /* ------- Colors ------ */
 #recurs-economic { @include subportal-header($economic); }
 #recurs-formacio { @include subportal-header($formacio); }
