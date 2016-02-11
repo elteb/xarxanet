@@ -104,13 +104,13 @@
 				echo '</ul></div>';
             }
             		
-			if($node->print_display || $node->print_mail_display || $node->print_pdf_display) {
+			if($node->print_html_display || $node->print_mail_display || $node->print_pdf_display) {
 				echo '
 	                <div class="node-links block">
 				    	<h2 class="block-title">'.t('Other actions').'</h2>
 				    	<div class="block-content">
 						<ul class="links" role="navigation">';
-				if ($node->print_display) echo '<li class="print_html">'.l(t('Versió per imprimir'), 'print/'.$node->nid).'</li>';		
+				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Versió per imprimir'), 'print/'.$node->nid).'</li>';		
 				if ($node->print_mail_display) echo '<li class="print_mail">'.l(t('Envia a un amic'), 'printmail/'.$node->nid).'</li>';
 				if ($node->print_pdf_display) echo '<li class="print_pdf">'.l(t('Versió PDF'), 'printpdf/'.$node->nid).'</li>';
 				echo '</ul></div></div>';
