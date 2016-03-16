@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100"
+   height="100"
+   id="svg3714"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Nou document 3">
+  <defs
+     id="defs3716">
+    <clipPath
+       id="SVGID_2_-1">
+      <use
+         id="use4613"
+         overflow="visible"
+         xlink:href="#SVGID_1_-3"
+         style="overflow:visible"
+         x="0"
+         y="0"
+         width="1"
+         height="1" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="62.579533"
+     inkscape:cy="224.95434"
+     inkscape:document-units="px"
+     inkscape:current-layer="capa1"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="845"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3719">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="capa1"
+     transform="translate(0,-952.36218)">
+    <g
+       style="fill:#000000;fill-opacity:1;display:inline"
+       id="g4623"
+       transform="matrix(1.0039757,0,0,1.0039757,2.1886e-6,968.90519)"
+       inkscape:export-filename="/home/oficina/Xarxanet/2013_Portal/2013_mobil/maqueta/menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <polygon
+         style="fill:#000000;fill-opacity:1"
+         id="polygon4605"
+         points="25.003,35.055 51.011,47.928 76.003,35.055 76.003,46.72 50.857,61.744 25.003,46.72 " />
+      <g
+         style="fill:#000000;fill-opacity:1"
+         id="g4607">
+        <defs
+           id="defs4609">
+          <rect
+             height="66.649002"
+             width="99.605003"
+             id="SVGID_1_-3"
+             x="0"
+             y="0" />
+        </defs>
+        <clipPath
+           id="clipPath3709">
+          <use
+             id="use3711"
+             overflow="visible"
+             xlink:href="#SVGID_1_-3"
+             style="overflow:visible"
+             x="0"
+             y="0"
+             width="1"
+             height="1" />
+        </clipPath>
+        <path
+           style="fill:#000000;fill-opacity:1"
+           id="path4615"
+           d="M 50.979,44.768 99.604,20.523 50.978,0 0.995,20.523 11.904,25.815 c -0.248,6.283 -0.93,18.536 -1.722,22.498 -0.656,3.277 -3.826,7.947 -9.763,13.881 -0.228,0.229 -0.517,0.566 -0.387,0.879 0.136,0.328 0.618,0.328 0.777,0.328 1.534,0 5.715,-1.416 7.888,-2.863 0.318,-0.213 0.608,-0.319 0.862,-0.319 0.953,0 1.507,1.569 2.043,3.087 0.509,1.441 0.989,2.803 1.869,3.243 0.133,0.065 0.27,0.101 0.408,0.101 0.307,0 0.597,-0.164 0.881,-0.486 1.62,-1.834 2.845,-9.149 2.009,-15.832 C 16.007,44.236 16.39,33.846 16.978,28.28 L 50.979,44.768 z M 50.328,10.22 c 2.242,0 4.068,1.826 4.068,4.07 0,2.244 -1.826,4.069 -4.068,4.069 -2.243,0 -4.068,-1.825 -4.068,-4.069 0,-2.244 1.824,-4.07 4.068,-4.07"
+           clip-path="url(#SVGID_2_-1)"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+</svg>

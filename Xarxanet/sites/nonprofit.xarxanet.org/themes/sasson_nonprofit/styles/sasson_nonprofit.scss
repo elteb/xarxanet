@@ -1,0 +1,73 @@
+/* #############################################
+ * ##### Sasson - advanced drupal theming. #####
+ * #############################################
+ *   
+ * Sasson-Xarxanet theme main stylesheet.
+ * 
+ *  Index
+ *  -----------
+ *  1. Imports and Definitions
+ *    -- Colors
+ *    -- Grid dimensions
+ *  2. General Sitewide Styles
+ *    -- Layout
+ *    -- General Styles
+ *    -- Header
+ *    -- Sidebars
+ *    -- Footer
+ */
+
+/*-----------------------------------------------
+           Imports and Definitions
+-----------------------------------------------*/
+/* -----  Colors  ----- */
+$main-color: rgb(51, 51, 51); // Dark grey
+$main-1: #666666;
+$main-2: #CCCCCC;
+$main-3: rgb(236, 239, 240); //Light grey
+$link-color: rgb(0, 85, 119); // Blue
+/* $general: #B1290B; // Red */
+$general: #006680	; // Red
+/* $general-sec: #F7E9E6; */
+$general-sec: #e1eff2;
+$opinion: #F57310; // Orange
+$opinion-sec: #FDE3CF;
+$newsletter: #A7A74D; // Olive green
+$newsletter-sec: #EAECCB;
+$interview: #005EA7; // Electric blue 
+$interview-sec: #EBF6FF;
+$twitter: #55ACEE;
+
+/* -----  Grid dimensions  ----- */
+$ninesixty-grid-width: [grid-width];
+$ninesixty-columns: [columns];
+$ninesixty-gutter-width: [gutter-width];
+
+$space : $ninesixty-gutter-width / 2;
+$column: $ninesixty-grid-width / $ninesixty-columns - $space;
+
+// @import "compass/css3";           // Uncomment to use CSS3 mixins (http://compass-style.org/reference/compass/css3/)
+ @import "960/grid";               // Uncomment to use 960gs mixins (see Sasson's layout partials for examples)
+// @import "salsa/salsa";             // Uncomment to use gridy mixins (the layout system powering Sasson v3.x)
+ @import "partials/mixins";        // Uncomment to call your own mixins partial (check your /partials directory)
+// @import "sprites/smart";          // Uncomment to call your 'smart' sprite (check your /images/sprites directory)
+
+/*-----------------------------------------------
+          General Sitewide Styles
+-----------------------------------------------*/
+/* -----  Layout  ----- */
+@import "partials/layout-general";
+@import "partials/layout-frontpage";
+@import "partials/layout-subportals";
+@import "partials/layout-node";
+
+/* -----  General Styles (Colors, Backgrounds, Typography, Links, etc.)  ----- */
+@import "partials/general";
+@import "partials/general-frontpage";
+@import "partials/general-subportals";
+@import "partials/general-node";
+
+/* ----- jQuery UI CSS Framework ----- */
+@import "partials/ui";
+
+

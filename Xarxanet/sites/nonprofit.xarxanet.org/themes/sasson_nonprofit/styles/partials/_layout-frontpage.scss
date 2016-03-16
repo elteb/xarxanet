@@ -1,0 +1,32 @@
+/**
+ *   Frontpage Layout
+ */
+/* ------- General ------- */
+.front .title {
+  display: none;
+}
+
+/* ------- Panels -------*/
+.panel-2col {
+	.panel-col-first {
+	  width: $ninesixty-grid-width / $ninesixty-columns * 6 - $space;
+	  padding-left: $space; 
+	}
+	
+	.panel-col-last {
+	 	width: $ninesixty-grid-width / $ninesixty-columns * 4;
+	  	@include grid-width(4);
+	  	a img {
+			@include grid-width(4);
+	  	}
+	  	@include grid-unit-base
+	}
+}
+
+/* ------- Notícia destacada principal ------- */
+.pane-recull-noticies-principal,
+.views-field-views-conditional-2 img {
+  width: $column * 6 + $space * 4;
+}
+
+
