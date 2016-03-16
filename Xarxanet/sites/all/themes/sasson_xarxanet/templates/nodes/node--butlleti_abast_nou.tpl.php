@@ -402,6 +402,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		<?php
 		foreach ($wrapper->field_abast_formacions_xn as $form){
 			$form_xn = $form->field_abast_formacions_xarxanet->value();
+			$location = '';
 			if ($form_xn->nid){
 				$title = $form_xn->title;
 				$url = url('node/' . $form_xn->nid, array('absolute' => TRUE));
@@ -411,13 +412,15 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 					$data = strtotime($form_xn->field_date_event['und'][0]['value']);
 					$data = $dies[date('N', $data)-1].', '.date('j', $data).' '.$mesos[date('n', $data)-1].' de '.date('Y', $data);
 				}
-				if ($form_xn->location['name']) {
-					$location = $form_xn->location['name'];
-					if ($location != 'Curs en línia') {
-						$location .= ', '.$form_xn->location['city'];
-					}
-				} 							
-				$lloc = ($form->field_abast_formacions_lloc->value()) ? $form->field_abast_formacions_lloc->value() : $location;
+				if ($form_xn->location['name'] || $form_xn->location['street'] || $form_xn->location['city']) {
+					if ($form_xn->location['name']) $location .= $form_xn->location['name'].'. ';
+					if ($form_xn->location['street']) $location .= $form_xn->location['street'].'. ';
+					if ($form_xn->location['city']) $location .= $form_xn->location['city'];
+				}
+				
+				$lloc = $form->field_abast_formacions_lloc->value();
+				if (!$lloc && $location) $lloc = $location;
+				if (!$lloc && $form_xn->field_esdeveniment_en_linia['und'][0]['value']) $lloc='Esdeveniment en línia';
 				$entitat = ($form->field_abast_formacions_entitat->value()) ? $form->field_abast_formacions_entitat->value() : $form_xn->field_organizer['und'][0]['value'];				
 				echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
 				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
