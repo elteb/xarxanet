@@ -57,7 +57,9 @@ $node = $build['#node'];
 
 
 // Banners fixes
-$banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 
+$banners_fixes = array(	'Banner 3CCAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_3ccav.png', 
+													'http://www.xarxanet.org/3ccav'),
+						'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 
 													'http://www.xarxanet.org/especial/barcelona-ecv/subscribe'),						
 						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
 													'http://www.xarxanet.org/especial/barcelona-ecv'),

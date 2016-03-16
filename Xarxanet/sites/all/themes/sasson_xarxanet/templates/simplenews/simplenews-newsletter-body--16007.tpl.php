@@ -348,6 +348,10 @@ $node = $build['#node'];
 	<!-- BANNERS -->
 	<table style='width: 265px; margin-top: 20px; border-collapse: collapse;'><tr>
 	<td style='padding: 0px'>
+	<a style="text-decoration:none" href="http://www.xarxanet.org/3ccav">
+		<img src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/banner_3ccav.png" alt="Banner 3CCAV" width="265px" style="margin:2px 0;"/>
+	</a></td></tr><tr>
+	<td style='padding: 10px 0 0 0'>
 	<a href="http://voluntariat.org/" style='text-decoration:none'>
 		<img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_voluntariat.jpg" alt="banner voluntariat" style='border: 0 none;'/>
 	</a></td></tr><tr>

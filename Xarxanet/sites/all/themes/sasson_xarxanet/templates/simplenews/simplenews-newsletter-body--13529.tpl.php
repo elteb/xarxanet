@@ -59,7 +59,9 @@ $pathroot = 'http://www.xarxanet.org';
 $node = $build['#node'];
 
 // Banners fixes
-$banners_fixes = array(	'Banner PNAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_pnav.jpg', 
+$banners_fixes = array(	'Banner 3CCAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_3ccav.png', 
+													'http://www.xarxanet.org/3ccav'),
+						'Banner PNAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_pnav.jpg', 
 													'http://pnav.voluntariat.org/'),
 						'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
 													'http://www.voluntariat.org/AgendadecursosdelPFVC.aspx'),
