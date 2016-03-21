@@ -29,3 +29,14 @@
     width: 100%;
   }
 }
+
+/*--------Opinion------*/
+.view-opinion{
+  #left-column,
+  .views-row-clear-0,
+  .views-row-clear-1,
+  {
+    width: $column * 4.5 + $space * 2;
+    float: left;
+  }
+}

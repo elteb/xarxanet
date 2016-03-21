@@ -2,3 +2,21 @@
  *   Frontpage Styles (Colors, Backgrounds, Typography, Links, etc.)
  */
 
+/*------ Opinion -----*/
+.view-opinion{
+  #left-column 
+  {
+    .views-row-clear-0{
+      background: $main-3;
+      img{
+        width: $column * 4.5 + $space * 2;
+        height:auto;
+      }
+      h2{
+      }
+    }
+  }
+  .view-footer{
+    clear:both;
+  }
+}

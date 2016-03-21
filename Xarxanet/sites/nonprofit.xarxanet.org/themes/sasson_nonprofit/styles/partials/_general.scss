@@ -248,3 +248,70 @@ ul.pager {
   #more-frontpage { display: none; }
 }
 
+/* ------- Footer ------- */
+#block-block-5 {
+  clear: both;
+  background-color: $main-3;
+  
+  .footer-row-1 {
+    .footer-col {
+      float: left;width: $ninesixty-grid-width/4;
+      h2 {
+        margin-top: 0;
+        padding: $space;
+        background-color: $main-1;
+        color: white;
+      }
+      ul {
+        padding: 0;
+        margin-left: $space;
+        list-style: none;
+      }
+      li { 
+        padding-bottom: $space;
+        img {
+          margin-right: $space;
+        } 
+      }
+    }
+    .footer-col-1 {
+      h2 { 
+        padding-left: $ninesixty-gutter-width;
+        padding-right: 0; 
+      }      
+      ul { margin-left: $ninesixty-gutter-width;}
+    }  
+  }
+  .footer-row-2 {
+    clear: both;
+    padding: $ninesixty-gutter-width;
+    div{
+      display:inline-block;
+    }   
+    .right-logo{
+      padding-left: $ninesixty-gutter-width;
+    } 
+  }
+  .outer-footer {
+    background-color: black;
+    color: white;
+    height: 40px;
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul.left-menu { 
+      float: left;
+      padding-left: $space; 
+    }
+    ul.right-menu { 
+      float: right;
+      padding-right: $space; 
+    }
+    li { 
+      display: inline-block;
+      margin: 0 $space; 
+    }
+    a { color: white; }
+  } 
+}
