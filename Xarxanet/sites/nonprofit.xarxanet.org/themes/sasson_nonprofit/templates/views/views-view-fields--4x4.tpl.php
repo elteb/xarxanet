@@ -28,60 +28,12 @@
 
 <?php
 	$rawImatge = $fields['field_agenda_imatge']->content;
+	 
 	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	
-	$type = $fields['type']->raw;
-	if (isset($fields['field_finfull_tipus'])) $type = strip_tags($fields['field_finfull_tipus']->content);
-	if (isset($fields['field_event_type'])) $type = strip_tags($fields['field_event_type']->content);
-	if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))) $type = 'Recurs '.strip_tags($fields['field_ambit_recurs']->content);
-	if (($type == 'noticia_general') && (isset($fields['field_ambit_noticia']))) $type = 'Notícia '.strip_tags($fields['field_ambit_noticia']->content);
-	
 	print $rawImatge;
-	print sasson_xarxanet_get_label($type);
-	
-	$startdate = strip_tags($fields['field_date_event']->content);
-	$enddate = strip_tags($fields['field_date_event_1']->content);
-	
-	if (strlen($startdate) == 18) {
-		$date_event_fecha = substr($startdate,0, -7);
-		$date_event_hora = substr($startdate, -5);
-		print '<div class="event-data">
-	      		<div class="floatesquerra" ><strong>Inici  </strong>'.
-		      		$date_event_fecha." a les ".$date_event_hora.
-		      		'</div>';
-	
-		if ($startdate != $enddate) {
-			$date_event_fecha = substr($enddate,0, -7);
-			$date_event_hora = substr($enddate, -5);
-			print '<div class="floatesquerra" ><strong>Final  </strong>'.
-					$date_event_fecha." a les ".$date_event_hora.
-					'</div>';
-		}
-		print '</div>';
-	}elseif (strlen($startdate) >= 20 ){
-		$date_event_fecha = substr($startdate,0, -12);
-		$date_event_hora = substr($startdate, 11);
-		print '<div class="event-data">
-	      		<div class="floatesquerra" ><strong>Inici  </strong>'.
-		      		$date_event_fecha." ".$date_event_hora.
-		      		'</div>';
-	
-		if ($startdate != $enddate) {
-			$date_event_fecha = substr($enddate,0, -12);
-			$date_event_hora = substr($enddate, 11);
-			print '<div class="floatesquerra" ><strong>Final  </strong>'.
-					$date_event_fecha." ".$date_event_hora.
-					'</div>';
-		}
-		print '</div>';
-	}
-	
 	print '<h3>'.$fields['title']->content.'</h3>';
-	if ($type=='Finançament (NOU)' || $type=='Premi' || $type=='Subvenció' || $type=='Beques' || $type=='Altres'){
-		$termini = strip_tags($fields['field_date']->content);
-		print '<b>Termini</b>: '.$termini;
-	}
-	print $fields['field_resum']->content; 
+	print $fields['field_resum']->content;  
 ?>
 
 </div>
