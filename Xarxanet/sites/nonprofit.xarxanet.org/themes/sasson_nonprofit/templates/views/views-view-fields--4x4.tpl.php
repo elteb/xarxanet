@@ -27,12 +27,14 @@
 <div class="<?php print $fields['type']->raw; ?>">
 
 <?php
+
 	$rawImatge = $fields['field_agenda_imatge']->content;
-	 
+	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = $fields['field_square_photo']->content;
 	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	
 	print $rawImatge;
 	print '<h3>'.$fields['title']->content.'</h3>';
+	if ($fields['field_opinion_author']) echo $fields['field_opinion_author']->content.$fields['created']->content;
 	print $fields['field_resum']->content;  
 ?>
 

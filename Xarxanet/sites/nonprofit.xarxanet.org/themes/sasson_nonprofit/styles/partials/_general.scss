@@ -120,7 +120,9 @@ h1.title { float: left; }
   border-top: solid 10px $general;
   clear: both;
   .section-interviews & { border-top-color: $interview; }
-  .section-opinions & { border-top-color: $opinion; }
+  .section-opinion & { border-top-color: $opinion; }
+  .section-author & { border-top-color: $opinion; }
+  .section-newsletter & { border-top-color: $newsletter; }
 }
 
 
@@ -149,7 +151,8 @@ ul.pager {
 }
 
 /* -------- Blocks ---------- */
-.region-sidebar-second .block {
+.region-sidebar-second .block,
+.node-type-author .sidebar {
   #more-others {
     float: none;
   }
@@ -227,7 +230,6 @@ ul.pager {
     @include block-body;
     background-color: $opinion-sec;
   }
-  
   .views-row {
     @include list-display($opinion);
     list-style-image: image-url('bullets/news-list-style-orange.png');
@@ -246,6 +248,32 @@ ul.pager {
     a.more { float: none; }
   } 	
   #more-frontpage { display: none; }
+}
+
+/* -------- Tags --------- */
+.block-tagclouds {
+  h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/etiquetes.png') $general 10px no-repeat;
+  }
+  .content {
+    background-color: $main-3;
+    padding: $space;
+  }
+}
+
+/* -------- Related content --------*/
+#block-views-related-content-block {
+  h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/relacionats.png') $general 10px no-repeat;
+  }
+  img {
+  	width: 176px;
+  }
+  p {
+    margin-bottom: 2*$space;
+  }
 }
 
 /* ------- Footer ------- */
@@ -300,11 +328,11 @@ ul.pager {
       list-style: none;
       padding: 0;
     }
-    ul.left-menu { 
+    .left-menu ul { 
       float: left;
       padding-left: $space; 
     }
-    ul.right-menu { 
+    .right-menu ul{ 
       float: right;
       padding-right: $space; 
     }

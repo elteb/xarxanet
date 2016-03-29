@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default simple view template to all the fields as a row.
@@ -24,17 +23,21 @@
  * @ingroup views_templates
  */
 ?>
-<?php $actRow = $view->row_index; ?>
-<?php 
-	if($actRow == 0){
-		$imatge = $fields['field_horizontal_photo']->content;
-	}else{
-		$imatge = $fields['field_vertical_photo']->content;
+
+<div class="<?php print $fields['type']->raw; ?>">
+
+<?php
+	$row = $view->row_index;
+	if ($row == 0) {
+		$rawImatge = $fields['field_agenda_imatge_1']->content;
+		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
+	} else {
+		$rawImatge = $fields['field_agenda_imatge']->content;
+		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-mig', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	}
+	print $rawImatge;
+	print '<h3>'.$fields['title']->content.'</h3>';
+	print $fields['field_resum']->content; 
 ?>
-<?php print $imatge; ?>
-<?php print '<div class="article-info">'.$fields['title']->content; ?>
-<?php $author = $fields['field_opinion_author']->content;?>
-<?php $data = $fields['created']->content;?>
-<?php print $author.' - '.$data; ?>
-<?php print $fields['field_resum']->content.'</div>'; ?>
+
+</div>

@@ -94,7 +94,7 @@
   overflow:hidden;
   h2 {
     @include block-lat-title;
-    background: image-url("pictos/destaquem.png") $general 10px no-repeat;
+    background: image-url("pictos/noticies.png") $general 10px no-repeat;
     width: $column * 4 + $space * 2 - 50px;
   }
   .views-field-field-destacada-lat-ellac-1 {

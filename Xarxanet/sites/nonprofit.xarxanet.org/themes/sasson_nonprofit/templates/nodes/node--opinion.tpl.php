@@ -96,13 +96,32 @@
     				</div>
                 </div>
             <?php endif; ?>
-            
+         
+        <?php 
+        	echo '<div class="node-opinion-author block"><h2 class="block-title">'.t('More articles').'</h2>';
+        	echo views_embed_view('opinion_by_author', 'block_2', $author->nid, $node->nid);
+        	echo '</div>';
+        ?>
+        
+        <?php
+            if(!empty($node->field_taxonomy_vocabulary_1['und'])): ?>
+                <div class="node-terms">
+                    <h2>Tags</h2>
+                    <ul class="links tags" role="navigation">
+                    <?php
+						foreach($node->field_taxonomy_vocabulary_1['und'] as $tag) {
+						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'tags/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						
+						} 
+                    ?>
+                    </ul>
+                </div>
+       	<?php endif; ?>  
                         
 		<?php 		
 			if($node->print_html_display || $node->print_mail_display || $node->print_pdf_display) {
 				echo '
 	                <div class="node-links block">
-				    	<h2 class="block-title">'.t('Other actions').'</h2>
+				    	<h2 class="block-title">'.t('More').'</h2>
 				    	<div class="block-content">
 						<ul class="links" role="navigation">';
 				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Print version'), 'print/'.$node->nid).'</li>';		

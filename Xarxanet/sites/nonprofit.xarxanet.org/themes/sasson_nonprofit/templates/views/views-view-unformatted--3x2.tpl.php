@@ -7,15 +7,16 @@
  * @ingroup views_templates
  */
 ?>
+<?php if (!empty($title)): ?>
+  <h3><?php print $title; ?></h3>
+<?php endif; ?>
+
 <?php
 $itRow = 1;
 foreach ($rows as $id => $row):  ?>
-<?php if ($itRow == 1) print '<div id="left-column">'; ?>
   <div class="<?php print $classes_array[$id] . " views-row-clear-" .($itRow - 1) % 3 ?> ">
     <?php print $row; ?>
   </div>
-	<?php 
-	if($itRow == 2) print '</div><div id="right-column">';
-	if($itRow == 5) print '</div>';
-	$itRow++;
+<?php
+$itRow++;
 endforeach; ?>
