@@ -98,9 +98,11 @@
             <?php endif; ?>
          
         <?php 
-        	echo '<div class="node-opinion-author block"><h2 class="block-title">'.t('More articles').'</h2>';
-        	echo views_embed_view('opinion_by_author', 'block_2', $author->nid, $node->nid);
-        	echo '</div>';
+        	if (views_get_view_result('opinion_by_author', 'block_2', $author->nid, $node->nid)) {
+	        	echo '<div class="node-opinion-author block"><h2 class="block-title">'.t('More articles').'</h2>';
+	        	echo views_embed_view('opinion_by_author', 'block_2', $author->nid, $node->nid);
+	        	echo '</div>';
+        	}
         ?>
         
         <?php

@@ -2,6 +2,9 @@
  *   Frontpage Styles (Colors, Backgrounds, Typography, Links, etc.)
  */
 /* ------- Panels -------*/
+/* ------ Panel ------- */
+.page-frontpage .panel-col-first .panel-separator { margin: 0px !important; }
+
 /* ------- Notícia destacada principal ------- */
 .view-recull-noticies-principal {
   background: $main-3;
