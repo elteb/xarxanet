@@ -1,0 +1,5 @@
+; $Id$
+name = Equi Cerca Test
+description = Prova de cerques amb apachesolr
+package = Equilibri - Cerca
+core = 6.x

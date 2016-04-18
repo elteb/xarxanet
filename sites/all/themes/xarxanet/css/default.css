@@ -1,0 +1,23 @@
+/*
+  Cascading style sheets for "Xarxanet" (20090810)
+  ---
+  Designed in 2009 by Emanuele Rodriguez <erodri@gmail.com>
+*/
+
+/* yui reset css */
+@import url("reset.css");
+
+/* main page structures */
+@import url("main.css");
+
+/* elements definitions */
+@import url("elements.css");
+
+/* themes definitions */
+@import url("themes.css");
+
+/* page-specific overrides */
+@import url("pages.css");
+
+/* extra styles (plugins) */
+@import url("thickbox.css");

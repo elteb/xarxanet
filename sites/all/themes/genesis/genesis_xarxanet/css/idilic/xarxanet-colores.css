@@ -1,0 +1,3494 @@
+/*COLORES MENU*/
+/*MENU 1/
+/*Inici*/
+.Menu li.Inici ul, li.Inici ul li, li.Inici ul:hover, ul.li.Inici:hover, .Menu li.Inici:hover, .Menu li.Inici.sfHover {
+	background-color:#F00;/*COLOR BARRA*/
+}
+.Menu ul li.Inici:focus, li.Inici ul li:hover, li.Inici ul li.sfHover, a.Inici:focus, a.Inici:active, .Menu a.Inici:focus, .Menu a.Inici:hover, .Menu a.Inici:active {
+	background:#c13113;/*COLOR ROLLOVER*/
+}
+/*Recursos*/
+/*Color 1: 005ea7*/
+.Menu li.Recursos ul, li.Recursos ul li, li.Recursos ul:hover, ul.li.Recursos:hover, .Menu li.Recursos:hover, .Menu li.Recursos.sfHover, .Recursos a.BotoMas:link, .Recursos a.BotoMas:visited, .Recursos a.BotoMas:active, .Recursos a.BotoMas:hover, .Recursos input.Boto, .e_comments.Recursos h2, .Recursos ul.links li a:link, .Recursos ul.links li a:visited, .Recursos ul.links li a:active, .Recursos .indented, .Recursos .form-submit:active, .Recursos .form-submit:visited, .Recursos .form-submit:link, .Recursos .captcha legend, .Recursos .form-submit, .Recursos .close, #Mapas.Recursos h2 {
+	background-color:#005ea7;
+}
+p.legend.Recursos, h2.Recursos, ul li a.Recursos:hover, a.Veure.Recursos:link, a.Veure.Recursos:visited, a.Veure.Recursos:active {
+	background-color:#005ea7;
+}
+h2.Recursos, .QueEs.Recursos h2 {
+	border-bottom-color:#005ea7;
+	background-color:#FFF;
+}
+.H1.Recursos a:hover, p a.Recursos:link, p a.Recursos:visited, p a.Recursos:active, .Recursos .author a:link, .Recursos .author a:visited, .Recursos .author a:active, .Recursos p a:link, .Recursos p a:visited, .Recursos p a:active, .Tags.Recursos ul li a:link, .Tags.Recursos ul li a:visited, .Tags.Recursos ul li a:active {
+	color:#005ea7;
+}
+#New-S p a.Recursos:link, #New-S p a.Recursos:visited, #New-S p a.Recursos:active, #New-M p a.Recursos:link, #New-M p a.Recursos:visited, #New-M p a.Recursos:active, #New-L p a.Recursos:link, #New-L p a.Recursos:visited, #New-L p a.Recursos:active, #New-XL p a.Recursos:link, #New-XL p a.Recursos:visited, #New-XL p a.Recursos:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Recursos:link, p a.Recursos:visited, p a.Recursos:active, #New-S p a.Recursos:hover, #New-M p a.Recursos:hover, #New-L p a.Recursos:hover, #New-XL p a.Recursos:hover {
+	color:#005ea7;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Recursos:link, p a.Recursos:visited, p a.Recursos:active, .Recursos p a:link, .Recursos p a:visited, .Recursos p a:active {
+	color:#005ea7;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Recursos:link, h3 a.Recursos:visited, h3 a.Recursos:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Recursos:hover {
+	color:#005ea7;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Recursos:link, ul li a.Recursos:visited, ul li a.Recursos:active {
+	background-color:transparent;
+}
+ul li a.Recursos:hover {
+	background-color:#005ea7;
+}
+.H1.Recursos:hover, .H1.Recursos {
+	border-bottom-color:#005ea7;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Recursos:link, .Menu-AS li ul li a.Recursos:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Recursos:hover {
+	background-color:#005ea7;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Recursos:link, .Menu-AS li ul.Menu-AS-Sub li a.Recursos:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Recursos:hover {
+	background-color:#005ea7;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Recursos li a:hover, .PaginacioAbaix.Recursos, .QueEs.Recursos h2 {
+	border-bottom-color:#005ea7;
+}
+.PaginacioAdalt.Recursos {
+	border-top-color:#005ea7;
+}
+.Menu-AS-Sub li.Recursos:hover {
+	background-color:#005ea7;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Recursos:hover a.Recursos {
+	color:#FFF;
+}
+.Recursos a.BotoMas:link, .Recursos a.BotoMas:visited, .Recursos a.BotoMas:active, .Recursos a.BotoMas:hover, a.New-S.Recursos:link, a.New-S.Recursos:visited, a.New-S.Recursos:active, a.New-S.Recursos:hover, a.New-M.Recursos:link, a.New-M.Recursos:visited, a.New-M.Recursos:active, a.New-M.Recursos:hover, a.New-L.Recursos:link, a.New-L.Recursos:visited, a.New-L.Recursos:active, a.New-L.Recursos:hover, .Recursos h2.Bloque-S {
+	background-color:#005ea7;
+}
+a.Veure.Recursos:link, a.Veure.Recursos:visited, a.Veure.Recursos:active, .Tags.Recursos h2 {
+	background-color: #005ea7;
+	color:#FFF;
+}
+.Recursos.QueEs {
+	border-color:#005ea7;
+}
+/*Color 2: 00236d*/
+p a.Recursos:hover, .Recursos #Bloque-Gran-Txt h3 a, .Recursos #Bloque-Gran-Txt h3 a:link, .Recursos #Bloque-Gran-Txt h3 a:visited, .Recursos #Bloque-Gran-Txt h3 a:active, .Recursos #Bloque-Gran-Txt h3 a:hover, .Recursos ul, .Recursos ul li a:hover, .breadcrumbs.Recursos a:link, .breadcrumbs.Recursos a:visited, .breadcrumbs.Recursos a:active, .breadcrumbs.Recursos a:hover, .breadcrumbs.Recursos, span.field-prefix, .Recursos .author, .Recursos .author a:hover, .Recursos p a:hover, .Tags.Recursos ul li a:hover, #BloquesListas.Recursos ul li a:hover, .Recursos p a:hover, #BloquesListas.Recursos ul li {
+	color:#00236d;
+}
+#BloquesListas.Recursos ul li a:hover {
+	text-decoration:underline;
+}
+.Menu ul li.Recursos:focus, li.Recursos ul li:hover, li.Recursos ul li.sfHover, a.Recursos:focus, a.Recursos:active, .Menu a.Recursos:focus, .Menu a.Recursos:hover, .Menu a.Recursos:active, .Recursos h2, .Recursos a.BotoMas:hover, .Recursos a.BotoMas:hover, a.New-S.Recursos:hover, a.New-M.Recursos:hover, a.New-L.Recursos:hover, a.Veure.Recursos:hover, #Paginacio ul.Recursos li a:hover, .Recursos input.Boto:hover, .Recursos ul.links li a:hover, .Recursos .form-submit:hover, .Recursos .close:hover {
+	background-color:#00236d;
+}
+#Paginacio ul.Recursos li a:hover, a.Veure.Recursos:hover {
+	color:#FFF;
+}
+/*Color 3: edf4f9*/
+#Paginacio ul.Recursos, #Paginacio ul.Recursos li a:link, #Paginacio ul.Recursos li a:visited, #Paginacio ul.Recursos li a:active, .Recursos ul, .Tags.Recursos, #Bloque-Gran.Recursos, #BloquesListas.Recursos, #Fechas.Recursos, #Mapas.Recursos {
+	background-color:#edf4f9;
+	color:#333;
+}
+.breadcrumbs.Recursos, #Fechas.Recursos, .Recursos .author, .Recursos .box .content {
+	background-color:#edf4f9;
+}
+.Recursos #Bloque-Gran-Options {
+	width:180px;
+}
+.Recursos #Bloque-Gran-Txt {
+	width:180px;
+}
+.Recursos .comment {
+	border-color:#edf4f9;
+}
+.Recursos ul.links li, .Recursos .author {
+	border-top-color:#edf4f9;
+}
+/*Pager*/
+#Paginacio.Recursos ul, #Paginacio.Recursos ul li a:link, #Paginacio.Recursos ul li a:visited, #Paginacio.Recursos ul li a:active {
+	background-color:#edf4f9;
+	color:#005ea7;
+}
+#Paginacio.Recursos ul li a:hover {
+	background-color: #00236d;
+	color:#FFF;
+}
+#Paginacio.Recursos ul li.pager-current {
+	background-color:#005ea7;
+}
+/*Noticies*/
+/*Color 1: 71a956*/
+.Menu li.Noticies ul, li.Noticies ul li, li.Noticies ul:hover, ul.li.Noticies:hover, .Menu li.Noticies:hover, .Menu li.Noticies.sfHover, .Noticies a.BotoMas:link, .Noticies a.BotoMas:visited, .Noticies a.BotoMas:active, .Noticies a.BotoMas:hover, .Noticies input.Boto, .e_comments.Noticies h2, .Noticies ul.links li a:link, .Noticies ul.links li a:visited, .Noticies ul.links li a:active, .Noticies .indented, .Noticies .form-submit:active, .Noticies .form-submit:visited, .Noticies .form-submit:link, .Noticies .captcha legend, .Noticies .form-submit, .Recursos .close, #Mapas.Noticies h2 {
+	background-color:#71a956;
+}
+p.legend.Noticies, h2.Noticies, ul li a.Noticies:hover, a.Veure.Noticies:link, a.Veure.Noticies:visited, a.Veure.Noticies:active {
+	background-color:#71a956;
+}
+h2.Noticies, .QueEs.Noticies h2 {
+	border-bottom-color:#71a956;
+	background-color:#FFF;
+}
+.H1.Noticies a:hover, p a.Noticies:link, p a.Noticies:visited, p a.Noticies:active, .Noticies .author a:link, .Noticies .author a:visited, .Noticies .author a:active, .Noticies p a:link, .Noticies p a:visited, .Noticies p a:active, .Tags.Noticies ul li a:link, .Tags.Noticies ul li a:visited, .Tags.Noticies ul li a:active {
+	color:#71a956;
+}
+#New-S p a.Noticies:link, #New-S p a.Noticies:visited, #New-S p a.Noticies:active, #New-M p a.Noticies:link, #New-M p a.Noticies:visited, #New-M p a.Noticies:active, #New-L p a.Noticies:link, #New-L p a.Noticies:visited, #New-L p a.Noticies:active, #New-XL p a.Noticies:link, #New-XL p a.Noticies:visited, #New-XL p a.Noticies:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Noticies:link, p a.Noticies:visited, p a.Noticies:active, #New-S p a.Noticies:hover, #New-M p a.Noticies:hover, #New-L p a.Noticies:hover, #New-XL p a.Noticies:hover {
+	color:#71a956;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Noticies:link, p a.Noticies:visited, p a.Noticies:active, .Noticies p a:link, .Noticies p a:visited, .Noticies p a:active {
+	color:#71a956;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Noticies:link, h3 a.Noticies:visited, h3 a.Noticies:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Noticies:hover {
+	color:#71a956;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Noticies:link, ul li a.Noticies:visited, ul li a.Noticies:active {
+	background-color:transparent;
+}
+ul li a.Noticies:hover {
+	background-color:#71a956;
+}
+.H1.Noticies:hover, .H1.Noticies {
+	border-bottom-color:#71a956;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Noticies:link, .Menu-AS li ul li a.Noticies:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Noticies:hover {
+	background-color:#71a956;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Noticies:link, .Menu-AS li ul.Menu-AS-Sub li a.Noticies:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Noticies:hover {
+	background-color:#71a956;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Noticies li a:hover, .PaginacioAbaix.Noticies, .QueEs.Noticies h2 {
+	border-bottom-color:#71a956;
+}
+.PaginacioAdalt.Noticies {
+	border-top-color:#71a956;
+}
+.Menu-AS-Sub li.Noticies:hover {
+	background-color:#71a956;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Noticies:hover a.Noticies {
+	color:#FFF;
+}
+.Noticies a.BotoMas:link, .Noticies a.BotoMas:visited, .Noticies a.BotoMas:active, .Noticies a.BotoMas:hover, a.New-S.Noticies:link, a.New-S.Noticies:visited, a.New-S.Noticies:active, a.New-S.Noticies:hover, a.New-M.Noticies:link, a.New-M.Noticies:visited, a.New-M.Noticies:active, a.New-M.Noticies:hover, a.New-L.Noticies:link, a.New-L.Noticies:visited, a.New-L.Noticies:active, a.New-L.Noticies:hover, .Noticies h2.Bloque-S {
+	background-color:#71a956;
+}
+a.Veure.Noticies:link, a.Veure.Noticies:visited, a.Veure.Noticies:active, .Tags.Noticies h2 {
+	background-color: #71a956;
+	color:#FFF;
+}
+.Noticies.QueEs {
+	border-color:#71a956;
+}
+/*Color 2: 32701d*/
+p a.Noticies:hover, .Noticies #Bloque-Gran-Txt h3 a, .Noticies #Bloque-Gran-Txt h3 a:link, .Noticies #Bloque-Gran-Txt h3 a:visited, .Noticies #Bloque-Gran-Txt h3 a:active, .Noticies #Bloque-Gran-Txt h3 a:hover, .Noticies ul, .Noticies ul li a:hover, .breadcrumbs.Noticies a:link, .breadcrumbs.Noticies a:visited, .breadcrumbs.Noticies a:active, .breadcrumbs.Noticies a:hover, .breadcrumbs.Noticies, span.field-prefix, .Noticies .author, .Noticies .author a:hover, .Noticies p a:hover, .Tags.Noticies ul li a:hover, #BloquesListas.Noticies ul li a:hover, .Noticies p a:hover, #BloquesListas.Noticies ul li {
+	color:#32701d;
+}
+#BloquesListas.Noticies ul li a:hover {
+	text-decoration:underline;
+}
+.Menu ul li.Noticies:focus, li.Noticies ul li:hover, li.Noticies ul li.sfHover, a.Noticies:focus, a.Noticies:active, .Menu a.Noticies:focus, .Menu a.Noticies:hover, .Menu a.Noticies:active, .Noticies h2, .Noticies a.BotoMas:hover, .Noticies a.BotoMas:hover, a.New-S.Noticies:hover, a.New-M.Noticies:hover, a.New-L.Noticies:hover, a.Veure.Noticies:hover, #Paginacio ul.Noticies li a:hover, .Noticies input.Boto:hover, .Noticies ul.links li a:hover, .Noticies .form-submit:hover, .Noticies .close:hover {
+	background-color:#32701d;
+}
+#Paginacio ul.Noticies li a:hover, a.Veure.Noticies:hover {
+	color:#FFF;
+}
+/*Color 3: e3eedf*/
+#Paginacio ul.Noticies, #Paginacio ul.Noticies li a:link, #Paginacio ul.Noticies li a:visited, #Paginacio ul.Noticies li a:active, .Noticies ul, .Tags.Noticies, #Bloque-Gran.Noticies, #BloquesListas.Noticies, #Fechas.Noticies, #Mapas.Noticies h2 {
+	background-color:#e3eedf;
+	color:#333;
+}
+.breadcrumbs.Noticies, #Fechas.Noticies, .Noticies .author, .Noticies .box .content {
+	background-color:#e3eedf;
+}
+.Noticies #Bloque-Gran-Options {
+	width:180px;
+}
+.Noticies #Bloque-Gran-Txt {
+	width:180px;
+}
+.Noticies .comment {
+	border-color:#e3eedf;
+}
+.Noticies ul.links li, .Noticies .author {
+	border-top-color:#e3eedf;
+}
+/*Pager*/
+#Paginacio.Noticies ul, #Paginacio.Noticies ul li a:link, #Paginacio.Noticies ul li a:visited, #Paginacio.Noticies ul li a:active {
+	background-color:#e3eedf;
+	color:#71a956;
+}
+#Paginacio.Noticies ul li a:hover {
+	background-color: #32701d;
+	color:#FFF;
+}
+#Paginacio.Noticies ul li.pager-current {
+	background-color:#71a956;
+}
+/*Agenda*/
+/*Color 1: abb22f*/
+.Menu li.Agenda ul, li.Agenda ul li, li.Agenda ul:hover, ul.li.Agenda:hover, .Menu li.Agenda:hover, .Menu li.Agenda.sfHover, .Agenda a.BotoMas:link, .Agenda a.BotoMas:visited, .Agenda a.BotoMas:active, .Agenda a.BotoMas:hover, .Agenda input.Boto, .e_comments.Agenda h2, .Agenda ul.links li a:link, .Agenda ul.links li a:visited, .Agenda ul.links li a:active, .Agenda .indented, .Agenda .form-submit:active, .Agenda .form-submit:visited, .Agenda .form-submit:link, .Agenda .captcha legend, .Agenda .form-submit, .Agenda .close, #Mapas.Agenda h2 {
+	background-color:#abb22f;
+}
+p.legend.Agenda, h2.Agenda, ul li a.Agenda:hover, a.Veure.Agenda:link, a.Veure.Agenda:visited, a.Veure.Agenda:active {
+	background-color:#abb22f;
+}
+h2.Agenda, .QueEs.Agenda h2 {
+	border-bottom-color:#abb22f;
+	background-color:#FFF;
+}
+.H1.Agenda a:hover, p a.Agenda:link, p a.Agenda:visited, p a.Agenda:active, .Agenda .author a:link, .Agenda .author a:visited, .Agenda .author a:active, .Agenda p a:link, .Agenda p a:visited, .Agenda p a:active, .Tags.Agenda ul li a:link, .Tags.Agenda ul li a:visited, .Tags.Agenda ul li a:active, #BloquesListas.Agenda ul li {
+	color:#abb22f;
+}
+#New-S p a.Agenda:link, #New-S p a.Agenda:visited, #New-S p a.Agenda:active, #New-M p a.Agenda:link, #New-M p a.Agenda:visited, #New-M p a.Agenda:active, #New-L p a.Agenda:link, #New-L p a.Agenda:visited, #New-L p a.Agenda:active, #New-XL p a.Agenda:link, #New-XL p a.Agenda:visited, #New-XL p a.Agenda:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Agenda:link, p a.Agenda:visited, p a.Agenda:active, #New-S p a.Agenda:hover, #New-M p a.Agenda:hover, #New-L p a.Agenda:hover, #New-XL p a.Agenda:hover {
+	color:#abb22f;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Agenda:link, p a.Agenda:visited, p a.Agenda:active, .Agenda p a:link, .Agenda p a:visited, .Agenda p a:active {
+	color:#abb22f;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Agenda:link, h3 a.Agenda:visited, h3 a.Agenda:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Agenda:hover {
+	color:#abb22f;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Agenda:link, ul li a.Agenda:visited, ul li a.Agenda:active {
+	background-color:transparent;
+}
+ul li a.Agenda:hover {
+	background-color:#abb22f;
+}
+.H1.Agenda:hover, .H1.Agenda {
+	border-bottom-color:#abb22f;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Agenda:link, .Menu-AS li ul li a.Agenda:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Agenda:hover {
+	background-color:#abb22f;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Agenda:link, .Menu-AS li ul.Menu-AS-Sub li a.Agenda:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Agenda:hover {
+	background-color:#abb22f;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Agenda li a:hover, .PaginacioAbaix.Agenda, .QueEs.Agenda h2 {
+	border-bottom-color:#abb22f;
+}
+.PaginacioAdalt.Agenda {
+	border-top-color:#abb22f;
+}
+.Menu-AS-Sub li.Agenda:hover {
+	background-color:#abb22f;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Agenda:hover a.Agenda {
+	color:#FFF;
+}
+.Agenda a.BotoMas:link, .Agenda a.BotoMas:visited, .Agenda a.BotoMas:active, .Agenda a.BotoMas:hover, a.New-S.Agenda:link, a.New-S.Agenda:visited, a.New-S.Agenda:active, a.New-S.Agenda:hover, a.New-M.Agenda:link, a.New-M.Agenda:visited, a.New-M.Agenda:active, a.New-M.Agenda:hover, a.New-L.Agenda:link, a.New-L.Agenda:visited, a.New-L.Agenda:active, a.New-L.Agenda:hover, .Agenda h2.Bloque-S {
+	background-color:#abb22f;
+}
+a.Veure.Agenda:link, a.Veure.Agenda:visited, a.Veure.Agenda:active, .Tags.Agenda h2 {
+	background-color: #abb22f;
+	color:#FFF;
+}
+.Agenda.QueEs {
+	border-color:#abb22f;
+}
+/*Color 2: 5a6205*/
+p a.Agenda:hover, .Agenda #Bloque-Gran-Txt h3 a, .Agenda #Bloque-Gran-Txt h3 a:link, .Agenda #Bloque-Gran-Txt h3 a:visited, .Agenda #Bloque-Gran-Txt h3 a:active, .Agenda #Bloque-Gran-Txt h3 a:hover, .Agenda ul, .Agenda ul li a:hover, .breadcrumbs.Agenda a:link, .breadcrumbs.Agenda a:visited, .breadcrumbs.Agenda a:active, .breadcrumbs.Agenda a:hover, .breadcrumbs.Agenda, span.field-prefix, .Agenda .author, .Agenda .author a:hover, .Agenda p a:hover, .Tags.Agenda ul li a:hover, #BloquesListas.Agenda ul li a:hover, .Agenda p a:hover {
+	color:#5a6205;
+}
+#BloquesListas.Agenda ul li a:hover {
+	text-decoration:underline;
+}
+.Menu ul li.Agenda:focus, li.Agenda ul li:hover, li.Agenda ul li.sfHover, a.Agenda:focus, a.Agenda:active, .Menu a.Agenda:focus, .Menu a.Agenda:hover, .Menu a.Agenda:active, .Agenda h2, .Agenda a.BotoMas:hover, .Agenda a.BotoMas:hover, a.New-S.Agenda:hover, a.New-M.Agenda:hover, a.New-L.Agenda:hover, a.Veure.Agenda:hover, #Paginacio ul.Agenda li a:hover, .Agenda input.Boto:hover, .Agenda ul.links li a:hover, .Agenda .form-submit:hover, .Agenda .close:hover {
+	background-color:#5a6205;
+}
+#Paginacio ul.Agenda li a:hover, a.Veure.Agenda:hover {
+	color:#FFF;
+}
+/*Color 3: eaeccb*/
+#Paginacio ul.Agenda, #Paginacio ul.Agenda li a:link, #Paginacio ul.Agenda li a:visited, #Paginacio ul.Agenda li a:active, .Agenda ul, .Tags.Agenda, #Bloque-Gran.Agenda, #BloquesListas.Agenda, #Fechas.Agenda, #Mapas.Agenda {
+	background-color:#eaeccb;
+	color:#333;
+}
+.breadcrumbs.Agenda, #Fechas.Agenda, .Agenda .author, .Agenda .box .content {
+	background-color:#eaeccb;
+}
+.Agenda #Bloque-Gran-Options {
+	width:180px;
+}
+.Agenda #Bloque-Gran-Txt {
+	width:180px;
+}
+.Agenda .comment {
+	border-color:#eaeccb;
+}
+.Agenda ul.links li, .Agenda .author {
+	border-top-color:#eaeccb;
+}
+/*Pager*/
+#Paginacio.Agenda ul, #Paginacio.Agenda ul li a:link, #Paginacio.Agenda ul li a:visited, #Paginacio.Agenda ul li a:active {
+	background-color:#eaeccb;
+	color:#abb22f;
+}
+#Paginacio.Agenda ul li a:hover {
+	background-color: #5a6205;
+	color:#FFF;
+}
+#Paginacio.Agenda ul li.pager-current {
+	background-color:#abb22f;
+}
+/*Financament*/
+/*Color 1: f57310*/
+.Menu li.Financament ul, li.Financament ul li, li.Financament ul:hover, ul.li.Financament:hover, .Menu li.Financament:hover, .Menu li.Financament.sfHover, .Financament a.BotoMas:link, .Financament a.BotoMas:visited, .Financament a.BotoMas:active, .Financament a.BotoMas:hover, .Financament input.Boto, .e_comments.Financament h2, .Financament ul.links li a:link, .Financament ul.links li a:visited, .Financament ul.links li a:active, .Financament .indented, .Financament .form-submit:active, .Financament .form-submit:visited, .Financament .form-submit:link, .Financament .captcha legend, .Financament .form-submit, .Financament .close, #Mapas.Financament h2 {
+	background-color:#f57310;
+}
+p.legend.Financament, h2.Financament, ul li a.Financament:hover, a.Veure.Financament:link, a.Veure.Financament:visited, a.Veure.Financament:active {
+	background-color:#f57310;
+}
+h2.Financament, .QueEs.Financament h2 {
+	border-bottom-color:#f57310;
+	background-color:#FFF;
+}
+.H1.Financament a:hover, p a.Financament:link, p a.Financament:visited, p a.Financament:active, .Financament .author a:link, .Financament .author a:visited, .Financament .author a:active, .Financament p a:link, .Financament p a:visited, .Financament p a:active, .Tags.Financament ul li a:link, .Tags.Financament ul li a:visited, .Tags.Financament ul li a:active, #BloquesListas.Financament ul li {
+	color:#f57310;
+}
+#New-S p a.Financament:link, #New-S p a.Financament:visited, #New-S p a.Financament:active, #New-M p a.Financament:link, #New-M p a.Financament:visited, #New-M p a.Financament:active, #New-L p a.Financament:link, #New-L p a.Financament:visited, #New-L p a.Financament:active, #New-XL p a.Financament:link, #New-XL p a.Financament:visited, #New-XL p a.Financament:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Financament:link, p a.Financament:visited, p a.Financament:active, #New-S p a.Financament:hover, #New-M p a.Financament:hover, #New-L p a.Financament:hover, #New-XL p a.Financament:hover {
+	color:#f57310;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Financament:link, p a.Financament:visited, p a.Financament:active, .Financament p a:link, .Financament p a:visited, .Financament p a:active {
+	color:#f57310;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Financament:link, h3 a.Financament:visited, h3 a.Financament:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Financament:hover {
+	color:#f57310;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Financament:link, ul li a.Financament:visited, ul li a.Financament:active {
+	background-color:transparent;
+}
+ul li a.Financament:hover {
+	background-color:#f57310;
+}
+.H1.Financament:hover, .H1.Financament {
+	border-bottom-color:#f57310;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Financament:link, .Menu-AS li ul li a.Financament:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Financament:hover {
+	background-color:#f57310;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Financament:link, .Menu-AS li ul.Menu-AS-Sub li a.Financament:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Financament:hover {
+	background-color:#f57310;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Financament li a:hover, .PaginacioAbaix.Financament, .QueEs.Financament h2 {
+	border-bottom-color:#f57310;
+}
+.PaginacioAdalt.Financament {
+	border-top-color:#f57310;
+}
+.Menu-AS-Sub li.Financament:hover {
+	background-color:#f57310;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Financament:hover a.Financament {
+	color:#FFF;
+}
+.Financament a.BotoMas:link, .Financament a.BotoMas:visited, .Financament a.BotoMas:active, .Financament a.BotoMas:hover, a.New-S.Financament:link, a.New-S.Financament:visited, a.New-S.Financament:active, a.New-S.Financament:hover, a.New-M.Financament:link, a.New-M.Financament:visited, a.New-M.Financament:active, a.New-M.Financament:hover, a.New-L.Financament:link, a.New-L.Financament:visited, a.New-L.Financament:active, a.New-L.Financament:hover, .Financament h2.Bloque-S {
+	background-color:#f57310;
+}
+a.Veure.Financament:link, a.Veure.Financament:visited, a.Veure.Financament:active, .Tags.Financament h2 {
+	background-color: #f57310;
+	color:#FFF;
+}
+.Financament.QueEs {
+	border-color:#f57310;
+}
+/*Color 2: c80200*/
+p a.Financament:hover, .Financament #Bloque-Gran-Txt h3 a, .Financament #Bloque-Gran-Txt h3 a:link, .Financament #Bloque-Gran-Txt h3 a:visited, .Financament #Bloque-Gran-Txt h3 a:active, .Financament #Bloque-Gran-Txt h3 a:hover, .Financament ul, .Financament ul li a:hover, .breadcrumbs.Financament a:link, .breadcrumbs.Financament a:visited, .breadcrumbs.Financament a:active, .breadcrumbs.Financament a:hover, .breadcrumbs.Financament, span.field-prefix, .Financament .author, .Financament .author a:hover, .Financament p a:hover, .Tags.Financament ul li a:hover, #BloquesListas.Financament ul li a:hover, .Financament p a:hover {
+	color:#c80200;
+}
+#BloquesListas.Financament ul li a:hover {
+	text-decoration:underline;
+}
+.Menu ul li.Financament:focus, li.Financament ul li:hover, li.Financament ul li.sfHover, a.Financament:focus, a.Financament:active, .Menu a.Financament:focus, .Menu a.Financament:hover, .Menu a.Financament:active, .Financament h2, .Financament a.BotoMas:hover, .Financament a.BotoMas:hover, a.New-S.Financament:hover, a.New-M.Financament:hover, a.New-L.Financament:hover, a.Veure.Financament:hover, #Paginacio ul.Financament li a:hover, .Financament input.Boto:hover, .Financament ul.links li a:hover, .Financament .form-submit:hover, .Financament .close:hover {
+	background-color:#c80200;
+}
+#Paginacio ul.Financament li a:hover, a.Veure.Financament:hover {
+	color:#FFF;
+}
+/*Color 3: fde3cf*/
+#Paginacio ul.Financament, #Paginacio ul.Financament li a:link, #Paginacio ul.Financament li a:visited, #Paginacio ul.Financament li a:active, .Financament ul, .Tags.Financament, #Bloque-Gran.Financament, #BloquesListas.Financament, #Fechas.Financament, #Mapas.Financament {
+	background-color:#fde3cf;
+	color:#333;
+}
+.breadcrumbs.Financament, #Fechas.Financament, .Financament .author, .Financament .box .content {
+	background-color:#fde3cf;
+}
+.Financament #Bloque-Gran-Options {
+	width:180px;
+}
+.Financament #Bloque-Gran-Txt {
+	width:180px;
+}
+.Financament .comment {
+	border-color:#fde3cf;
+}
+.Financament ul.links li, .Financament .author {
+	border-top-color:#fde3cf;
+}
+/*Pager*/
+#Paginacio.Financament ul, #Paginacio.Financament ul li a:link, #Paginacio.Financament ul li a:visited, #Paginacio.Financament ul li a:active {
+	background-color:#fde3cf;
+	color:#f57310;
+}
+#Paginacio.Financament ul li a:hover {
+	background-color: #c80200;
+	color:#FFF;
+}
+#Paginacio.Financament ul li.pager-current {
+	background-color:#f57310;
+}
+/*QuePotsFer*/
+.Menu li.QuePotsFer {
+	float:right;
+}
+.Menu li.QuePotsFer ul, li.QuePotsFer ul li, li.QuePotsFer ul:hover, ul.li.QuePotsFer:hover, .Menu li.QuePotsFer:hover, .Menu li.QuePotsFer.sfHover, .QuePotsFer a.BotoMas:link, .QuePotsFer a.BotoMas:visited, .QuePotsFer a.BotoMas:active, .QuePotsFer a.BotoMas:hover {
+	background-color:#000;/*COLOR BARRA*/
+	float:right;
+}
+.Menu ul li.QuePotsFer:focus, li.QuePotsFer ul li:hover, li.QuePotsFer ul li.sfHover, a.QuePotsFer:focus, a.QuePotsFer:active, .Menu a.QuePotsFer:focus, .Menu a.QuePotsFer:hover, .Menu a.QuePotsFer:active, .QuePotsFer h2, .QuePotsFer a.BotoMas:hover {
+	background:#c13113;/*COLOR ROLLOVER*/
+}
+.QuePotsFer ul {
+	background:#f3d6d0;
+	color:#c13113;
+}
+.QuePotsFer ul li a:link {
+	color:#333;
+}
+.QuePotsFer ul li a:visited {
+	color:#333;
+}
+.QuePotsFer ul li a:active {
+	color:#333;
+}
+.QuePotsFer ul li a:hover {
+	color:#c13113;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+/*SUBMENU 1*/
+/*Agenda Actes*/
+/*Color 1: 97976c*/
+.Menu li.Actes ul, li.Actes ul li, li.Actes ul:hover, ul.li.Actes:hover, .Menu li.Actes:hover, .Menu li.Actes.sfHover, .Actes a.BotoMas:link, .Actes a.BotoMas:visited, .Actes a.BotoMas:active, .Actes a.BotoMas:hover, .Actes input.Boto, .e_comments.Actes h2, .Actes ul.links li a:link, .Actes ul.links li a:visited, .Actes ul.links li a:active, .Actes .indented, .Actes .form-submit:active, .Actes .form-submit:visited, .Actes .form-submit:link, .Actes .captcha legend, .Actes .form-submit, .Actes .close, #Mapas.Actes h2, .Menu a.Actes:focus, .Menu a.Actes:hover, .Menu a.Actes:active {
+	background-color:#97976c;
+}
+p.legend.Actes, h2.Actes, ul li a.Actes:hover, a.Veure.Actes:link, a.Veure.Actes:visited, a.Veure.Actes:active {
+	background-color:#97976c;
+}
+h2.Actes, .QueEs.Actes h2 {
+	border-bottom-color:#97976c;
+	background-color:#FFF;
+}
+.H1.Actes a:hover, p a.Actes:link, p a.Actes:visited, p a.Actes:active, .Actes .author a:link, .Actes .author a:visited, .Actes .author a:active, .Actes p a:link, .Actes p a:visited, .Actes p a:active, .Tags.Actes ul li a:link, .Tags.Actes ul li a:visited, .Tags.Actes ul li a:active {
+	color:#97976c;
+}
+#New-S p a.Actes:link, #New-S p a.Actes:visited, #New-S p a.Actes:active, #New-M p a.Actes:link, #New-M p a.Actes:visited, #New-M p a.Actes:active, #New-L p a.Actes:link, #New-L p a.Actes:visited, #New-L p a.Actes:active, #New-XL p a.Actes:link, #New-XL p a.Actes:visited, #New-XL p a.Actes:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Actes:link, p a.Actes:visited, p a.Actes:active, #New-S p a.Actes:hover, #New-M p a.Actes:hover, #New-L p a.Actes:hover, #New-XL p a.Actes:hover {
+	color:#97976c;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Actes:link, p a.Actes:visited, p a.Actes:active, .Actes p a:link, .Actes p a:visited, .Actes p a:active {
+	color:#97976c;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Actes:link, h3 a.Actes:visited, h3 a.Actes:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Actes:hover {
+	color:#97976c;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Actes:link, ul li a.Actes:visited, ul li a.Actes:active {
+	background-color:transparent;
+}
+ul li a.Actes:hover {
+	background-color:#97976c;
+}
+.H1.Actes:hover, .H1.Actes {
+	border-bottom-color:#97976c;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Actes:link, .Menu-AS li ul li a.Actes:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Actes:hover {
+	background-color:#97976c;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Actes:link, .Menu-AS li ul.Menu-AS-Sub li a.Actes:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Actes:hover {
+	background-color:#97976c;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Actes li a:hover, .PaginacioAbaix.Actes, .QueEs.Actes h2 {
+	border-bottom-color:#97976c;
+}
+.PaginacioAdalt.Actes {
+	border-top-color:#97976c;
+}
+.Menu-AS-Sub li.Actes:hover {
+	background-color:#97976c;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Actes:hover a.Actes {
+	color:#FFF;
+}
+.Actes a.BotoMas:link, .Actes a.BotoMas:visited, .Actes a.BotoMas:active, .Actes a.BotoMas:hover, a.New-S.Actes:link, a.New-S.Actes:visited, a.New-S.Actes:active, a.New-S.Actes:hover, a.New-M.Actes:link, a.New-M.Actes:visited, a.New-M.Actes:active, a.New-M.Actes:hover, a.New-L.Actes:link, a.New-L.Actes:visited, a.New-L.Actes:active, a.New-L.Actes:hover, .Actes h2.Bloque-S {
+	background-color:#97976c;
+}
+a.Veure.Actes:link, a.Veure.Actes:visited, a.Veure.Actes:active, .Tags.Actes h2 {
+	background-color: #97976c;
+	color:#FFF;
+}
+.Actes.QueEs {
+	border-color:#97976c;
+}
+/*Color 2: 59592e*/
+p a.Actes:hover, .Actes #Bloque-Gran-Txt h3 a, .Actes #Bloque-Gran-Txt h3 a:link, .Actes #Bloque-Gran-Txt h3 a:visited, .Actes #Bloque-Gran-Txt h3 a:active, .Actes #Bloque-Gran-Txt h3 a:hover, .Actes ul, .Actes ul li a:hover, .breadcrumbs.Actes a:link, .breadcrumbs.Actes a:visited, .breadcrumbs.Actes a:active, .breadcrumbs.Actes a:hover, .breadcrumbs.Actes, span.field-prefix, .Actes .author, .Actes .author a:hover, .Actes p a:hover, .Tags.Actes ul li a:hover, #BloquesListas.Actes ul li a:hover, .Actes p a:hover, #BloquesListas.Actes ul li {
+	color:#59592e;
+}
+#BloquesListas.Actes ul li a:hover {
+	text-decoration:underline;
+}
+li.Actes ul li:hover, li.Actes ul li.sfHover, a.Actes:focus, a.Actes:active, .Actes h2, .Actes a.BotoMas:hover, .Actes a.BotoMas:hover, a.New-S.Actes:hover, a.New-M.Actes:hover, a.New-L.Actes:hover, a.Veure.Actes:hover, #Paginacio ul.Actes li a:hover, .Actes input.Boto:hover, .Actes ul.links li a:hover, .Actes .form-submit:hover, .Actes .close:hover {
+	background-color:#59592e;
+}
+#Paginacio ul.Actes li a:hover, a.Veure.Actes:hover {
+	color:#FFF;
+}
+/*Color 3: e0e0d3*/
+#Paginacio ul.Actes, #Paginacio ul.Actes li a:link, #Paginacio ul.Actes li a:visited, #Paginacio ul.Actes li a:active, .Actes ul, .Tags.Actes, #Bloque-Gran.Actes, #BloquesListas.Actes, #Fechas.Actes, #Mapas.Actes {
+	background-color:#e0e0d3;
+	color:#333;
+}
+.breadcrumbs.Actes, #Fechas.Actes, .Actes .author, .Actes .box .content {
+	background-color:#e0e0d3;
+}
+.Actes #Bloque-Gran-Options {
+	width:180px;
+}
+.Actes #Bloque-Gran-Txt {
+	width:180px;
+}
+.Actes .comment {
+	border-color:#e0e0d3;
+}
+.Actes ul.links li, .Actes .author {
+	border-top-color:#e0e0d3;
+}
+/*Pager*/
+#Paginacio.Actes ul, #Paginacio.Actes ul li a:link, #Paginacio.Actes ul li a:visited, #Paginacio.Actes ul li a:active {
+	background-color:#e0e0d3;
+	color:#97976c;
+}
+#Paginacio.Actes ul li a:hover {
+	background-color: #59592e;
+	color:#FFF;
+}
+#Paginacio.Actes ul li.pager-current {
+	background-color:#97976c;
+}
+/*Agenda Cursos*/
+/*Color 1: 899218*/
+.Menu li.Cursos ul, li.Cursos ul li, li.Cursos ul:hover, ul.li.Cursos:hover, .Menu li.Cursos:hover, .Menu li.Cursos.sfHover, .Cursos a.BotoMas:link, .Cursos a.BotoMas:visited, .Cursos a.BotoMas:active, .Cursos a.BotoMas:hover, .Cursos input.Boto, .e_comments.Cursos h2, .Cursos ul.links li a:link, .Cursos ul.links li a:visited, .Cursos ul.links li a:active, .Cursos .indented, .Cursos .form-submit:active, .Cursos .form-submit:visited, .Cursos .form-submit:link, .Cursos .captcha legend, .Cursos .form-submit, .Cursos .close, #Mapas.Cursos h2, .Menu a.Cursos:focus, .Menu a.Cursos:hover, .Menu a.Cursos:active {
+	background-color:#899218;
+}
+p.legend.Cursos, h2.Cursos, ul li a.Cursos:hover, a.Veure.Cursos:link, a.Veure.Cursos:visited, a.Veure.Cursos:active {
+	background-color:#899218;
+}
+h2.Cursos, .QueEs.Cursos h2 {
+	border-bottom-color:#899218;
+	background-color:#FFF;
+}
+.H1.Cursos a:hover, p a.Cursos:link, p a.Cursos:visited, p a.Cursos:active, .Cursos .author a:link, .Cursos .author a:visited, .Cursos .author a:active, .Cursos p a:link, .Cursos p a:visited, .Cursos p a:active, .Tags.Cursos ul li a:link, .Tags.Cursos ul li a:visited, .Tags.Cursos ul li a:active {
+	color:#899218;
+}
+#New-S p a.Cursos:link, #New-S p a.Cursos:visited, #New-S p a.Cursos:active, #New-M p a.Cursos:link, #New-M p a.Cursos:visited, #New-M p a.Cursos:active, #New-L p a.Cursos:link, #New-L p a.Cursos:visited, #New-L p a.Cursos:active, #New-XL p a.Cursos:link, #New-XL p a.Cursos:visited, #New-XL p a.Cursos:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Cursos:link, p a.Cursos:visited, p a.Cursos:active, #New-S p a.Cursos:hover, #New-M p a.Cursos:hover, #New-L p a.Cursos:hover, #New-XL p a.Cursos:hover {
+	color:#899218;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Cursos:link, p a.Cursos:visited, p a.Cursos:active, .Cursos p a:link, .Cursos p a:visited, .Cursos p a:active {
+	color:#899218;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Cursos:link, h3 a.Cursos:visited, h3 a.Cursos:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Cursos:hover {
+	color:#899218;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Cursos:link, ul li a.Cursos:visited, ul li a.Cursos:active {
+	background-color:transparent;
+}
+ul li a.Cursos:hover {
+	background-color:#899218;
+}
+.H1.Cursos:hover, .H1.Cursos {
+	border-bottom-color:#899218;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Cursos:link, .Menu-AS li ul li a.Cursos:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Cursos:hover {
+	background-color:#899218;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Cursos:link, .Menu-AS li ul.Menu-AS-Sub li a.Cursos:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Cursos:hover {
+	background-color:#899218;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Cursos li a:hover, .PaginacioAbaix.Cursos, .QueEs.Cursos h2 {
+	border-bottom-color:#899218;
+}
+.PaginacioAdalt.Cursos {
+	border-top-color:#899218;
+}
+.Menu-AS-Sub li.Cursos:hover {
+	background-color:#899218;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Cursos:hover a.Cursos {
+	color:#FFF;
+}
+.Cursos a.BotoMas:link, .Cursos a.BotoMas:visited, .Cursos a.BotoMas:active, .Cursos a.BotoMas:hover, a.New-S.Cursos:link, a.New-S.Cursos:visited, a.New-S.Cursos:active, a.New-S.Cursos:hover, a.New-M.Cursos:link, a.New-M.Cursos:visited, a.New-M.Cursos:active, a.New-M.Cursos:hover, a.New-L.Cursos:link, a.New-L.Cursos:visited, a.New-L.Cursos:active, a.New-L.Cursos:hover, .Cursos h2.Bloque-S {
+	background-color:#899218;
+}
+a.Veure.Cursos:link, a.Veure.Cursos:visited, a.Veure.Cursos:active, .Tags.Cursos h2 {
+	background-color: #899218;
+	color:#FFF;
+}
+.Cursos.QueEs {
+	border-color:#899218;
+}
+/*Color 2: 5a6205*/
+p a.Cursos:hover, .Cursos #Bloque-Gran-Txt h3 a, .Cursos #Bloque-Gran-Txt h3 a:link, .Cursos #Bloque-Gran-Txt h3 a:visited, .Cursos #Bloque-Gran-Txt h3 a:active, .Cursos #Bloque-Gran-Txt h3 a:hover, .Cursos ul, .Cursos ul li a:hover, .breadcrumbs.Cursos a:link, .breadcrumbs.Cursos a:visited, .breadcrumbs.Cursos a:active, .breadcrumbs.Cursos a:hover, .breadcrumbs.Cursos, span.field-prefix, .Cursos .author, .Cursos .author a:hover, .Cursos p a:hover, .Tags.Cursos ul li a:hover, #BloquesListas.Cursos ul li a:hover, .Cursos p a:hover, #BloquesListas.Cursos ul li {
+	color:#5a6205;
+}
+#BloquesListas.Cursos ul li a:hover {
+	text-decoration:underline;
+}
+li.Cursos ul li:hover, li.Cursos ul li.sfHover, a.Cursos:focus, a.Cursos:active, .Cursos h2, .Cursos a.BotoMas:hover, .Cursos a.BotoMas:hover, a.New-S.Cursos:hover, a.New-M.Cursos:hover, a.New-L.Cursos:hover, a.Veure.Cursos:hover, #Paginacio ul.Cursos li a:hover, .Cursos input.Boto:hover, .Cursos ul.links li a:hover, .Cursos .form-submit:hover, .Cursos .close:hover {
+	background-color:#5a6205;
+}
+#Paginacio ul.Cursos li a:hover, a.Veure.Cursos:hover {
+	color:#FFF;
+}
+/*Color 3: eaeccb*/
+#Paginacio ul.Cursos, #Paginacio ul.Cursos li a:link, #Paginacio ul.Cursos li a:visited, #Paginacio ul.Cursos li a:active, .Cursos ul, .Tags.Cursos, #Bloque-Gran.Cursos, #BloquesListas.Cursos, #Fechas.Cursos, #Mapas.Cursos {
+	background-color:#eaeccb;
+	color:#333;
+}
+.breadcrumbs.Cursos, #Fechas.Cursos, .Cursos .author, .Cursos .box .content {
+	background-color:#eaeccb;
+}
+.Cursos #Bloque-Gran-Options {
+	width:180px;
+}
+.Cursos #Bloque-Gran-Txt {
+	width:180px;
+}
+.Cursos .comment {
+	border-color:#eaeccb;
+}
+.Cursos ul.links li, .Cursos .author {
+	border-top-color:#eaeccb;
+}
+/*Pager*/
+#Paginacio.Cursos ul, #Paginacio.Cursos ul li a:link, #Paginacio.Cursos ul li a:visited, #Paginacio.Cursos ul li a:active {
+	background-color:#eaeccb;
+	color:#899218;
+}
+#Paginacio.Cursos ul li a:hover {
+	background-color: #5a6205;
+	color:#FFF;
+}
+#Paginacio.Cursos ul li.pager-current {
+	background-color:#899218;
+}
+/*Agenda Esdeveniments-Antics*/
+/*Color 1: 5e6025*/
+.Menu li.Esdeveniments-Antics ul, li.Esdeveniments-Antics ul li, li.Esdeveniments-Antics ul:hover, ul.li.Esdeveniments-Antics:hover, .Menu li.Esdeveniments-Antics:hover, .Menu li.Esdeveniments-Antics.sfHover, .Esdeveniments-Antics a.BotoMas:link, .Esdeveniments-Antics a.BotoMas:visited, .Esdeveniments-Antics a.BotoMas:active, .Esdeveniments-Antics a.BotoMas:hover, .Esdeveniments-Antics input.Boto, .e_comments.Esdeveniments-Antics h2, .Esdeveniments-Antics ul.links li a:link, .Esdeveniments-Antics ul.links li a:visited, .Esdeveniments-Antics ul.links li a:active, .Esdeveniments-Antics .indented, .Esdeveniments-Antics .form-submit:active, .Esdeveniments-Antics .form-submit:visited, .Esdeveniments-Antics .form-submit:link, .Esdeveniments-Antics .captcha legend, .Esdeveniments-Antics .form-submit, .Esdeveniments-Antics .close, #Mapas.Esdeveniments-Antics h2, .Menu a.Esdeveniments-Antics:focus, .Menu a.Esdeveniments-Antics:hover, .Menu a.Esdeveniments-Antics:active {
+	background-color:#5e6025;
+}
+p.legend.Esdeveniments-Antics, h2.Esdeveniments-Antics, ul li a.Esdeveniments-Antics:hover, a.Veure.Esdeveniments-Antics:link, a.Veure.Esdeveniments-Antics:visited, a.Veure.Esdeveniments-Antics:active {
+	background-color:#5e6025;
+}
+h2.Esdeveniments-Antics, .QueEs.Esdeveniments-Antics h2 {
+	border-bottom-color:#5e6025;
+	background-color:#FFF;
+}
+.H1.Esdeveniments-Antics a:hover, p a.Esdeveniments-Antics:link, p a.Esdeveniments-Antics:visited, p a.Esdeveniments-Antics:active, .Esdeveniments-Antics .author a:link, .Esdeveniments-Antics .author a:visited, .Esdeveniments-Antics .author a:active, .Esdeveniments-Antics p a:link, .Esdeveniments-Antics p a:visited, .Esdeveniments-Antics p a:active, .Tags.Esdeveniments-Antics ul li a:link, .Tags.Esdeveniments-Antics ul li a:visited, .Tags.Esdeveniments-Antics ul li a:active {
+	color:#5e6025;
+}
+#New-S p a.Esdeveniments-Antics:link, #New-S p a.Esdeveniments-Antics:visited, #New-S p a.Esdeveniments-Antics:active, #New-M p a.Esdeveniments-Antics:link, #New-M p a.Esdeveniments-Antics:visited, #New-M p a.Esdeveniments-Antics:active, #New-L p a.Esdeveniments-Antics:link, #New-L p a.Esdeveniments-Antics:visited, #New-L p a.Esdeveniments-Antics:active, #New-XL p a.Esdeveniments-Antics:link, #New-XL p a.Esdeveniments-Antics:visited, #New-XL p a.Esdeveniments-Antics:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Esdeveniments-Antics:link, p a.Esdeveniments-Antics:visited, p a.Esdeveniments-Antics:active, #New-S p a.Esdeveniments-Antics:hover, #New-M p a.Esdeveniments-Antics:hover, #New-L p a.Esdeveniments-Antics:hover, #New-XL p a.Esdeveniments-Antics:hover {
+	color:#5e6025;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Esdeveniments-Antics:link, p a.Esdeveniments-Antics:visited, p a.Esdeveniments-Antics:active, .Esdeveniments-Antics p a:link, .Esdeveniments-Antics p a:visited, .Esdeveniments-Antics p a:active {
+	color:#5e6025;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Esdeveniments-Antics:link, h3 a.Esdeveniments-Antics:visited, h3 a.Esdeveniments-Antics:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Esdeveniments-Antics:hover {
+	color:#5e6025;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Esdeveniments-Antics:link, ul li a.Esdeveniments-Antics:visited, ul li a.Esdeveniments-Antics:active {
+	background-color:transparent;
+}
+ul li a.Esdeveniments-Antics:hover {
+	background-color:#5e6025;
+}
+.H1.Esdeveniments-Antics:hover, .H1.Esdeveniments-Antics {
+	border-bottom-color:#5e6025;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Esdeveniments-Antics:link, .Menu-AS li ul li a.Esdeveniments-Antics:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Esdeveniments-Antics:hover {
+	background-color:#5e6025;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Esdeveniments-Antics:link, .Menu-AS li ul.Menu-AS-Sub li a.Esdeveniments-Antics:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Esdeveniments-Antics:hover {
+	background-color:#5e6025;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Esdeveniments-Antics li a:hover, .PaginacioAbaix.Esdeveniments-Antics, .QueEs.Esdeveniments-Antics h2 {
+	border-bottom-color:#5e6025;
+}
+.PaginacioAdalt.Esdeveniments-Antics {
+	border-top-color:#5e6025;
+}
+.Menu-AS-Sub li.Esdeveniments-Antics:hover {
+	background-color:#5e6025;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Esdeveniments-Antics:hover a.Esdeveniments-Antics {
+	color:#FFF;
+}
+.Esdeveniments-Antics a.BotoMas:link, .Esdeveniments-Antics a.BotoMas:visited, .Esdeveniments-Antics a.BotoMas:active, .Esdeveniments-Antics a.BotoMas:hover, a.New-S.Esdeveniments-Antics:link, a.New-S.Esdeveniments-Antics:visited, a.New-S.Esdeveniments-Antics:active, a.New-S.Esdeveniments-Antics:hover, a.New-M.Esdeveniments-Antics:link, a.New-M.Esdeveniments-Antics:visited, a.New-M.Esdeveniments-Antics:active, a.New-M.Esdeveniments-Antics:hover, a.New-L.Esdeveniments-Antics:link, a.New-L.Esdeveniments-Antics:visited, a.New-L.Esdeveniments-Antics:active, a.New-L.Esdeveniments-Antics:hover, .Esdeveniments-Antics h2.Bloque-S {
+	background-color:#5e6025;
+}
+a.Veure.Esdeveniments-Antics:link, a.Veure.Esdeveniments-Antics:visited, a.Veure.Esdeveniments-Antics:active, .Tags.Esdeveniments-Antics h2 {
+	background-color: #5e6025;
+	color:#FFF;
+}
+.Esdeveniments-Antics.QueEs {
+	border-color:#5e6025;
+}
+/*Color 2: 414115*/
+p a.Esdeveniments-Antics:hover, .Esdeveniments-Antics #Bloque-Gran-Txt h3 a, .Esdeveniments-Antics #Bloque-Gran-Txt h3 a:link, .Esdeveniments-Antics #Bloque-Gran-Txt h3 a:visited, .Esdeveniments-Antics #Bloque-Gran-Txt h3 a:active, .Esdeveniments-Antics #Bloque-Gran-Txt h3 a:hover, .Esdeveniments-Antics ul, .Esdeveniments-Antics ul li a:hover, .breadcrumbs.Esdeveniments-Antics a:link, .breadcrumbs.Esdeveniments-Antics a:visited, .breadcrumbs.Esdeveniments-Antics a:active, .breadcrumbs.Esdeveniments-Antics a:hover, .breadcrumbs.Esdeveniments-Antics, span.field-prefix, .Esdeveniments-Antics .author, .Esdeveniments-Antics .author a:hover, .Esdeveniments-Antics p a:hover, .Tags.Esdeveniments-Antics ul li a:hover, #BloquesListas.Esdeveniments-Antics ul li a:hover, .Esdeveniments-Antics p a:hover, #BloquesListas.Esdeveniments-Antics ul li {
+	color:#414115;
+}
+#BloquesListas.Esdeveniments-Antics ul li a:hover {
+	text-decoration:underline;
+}
+li.Esdeveniments-Antics ul li:hover, li.Esdeveniments-Antics ul li.sfHover, a.Esdeveniments-Antics:focus, a.Esdeveniments-Antics:active, .Esdeveniments-Antics h2, .Esdeveniments-Antics a.BotoMas:hover, .Esdeveniments-Antics a.BotoMas:hover, a.New-S.Esdeveniments-Antics:hover, a.New-M.Esdeveniments-Antics:hover, a.New-L.Esdeveniments-Antics:hover, a.Veure.Esdeveniments-Antics:hover, #Paginacio ul.Esdeveniments-Antics li a:hover, .Esdeveniments-Antics input.Boto:hover, .Esdeveniments-Antics ul.links li a:hover, .Esdeveniments-Antics .form-submit:hover, .Esdeveniments-Antics .close:hover {
+	background-color:#414115;
+}
+#Paginacio ul.Esdeveniments-Antics li a:hover, a.Veure.Esdeveniments-Antics:hover {
+	color:#FFF;
+}
+/*Color 3: cecfbd*/
+#Paginacio ul.Esdeveniments-Antics, #Paginacio ul.Esdeveniments-Antics li a:link, #Paginacio ul.Esdeveniments-Antics li a:visited, #Paginacio ul.Esdeveniments-Antics li a:active, .Esdeveniments-Antics ul, .Tags.Esdeveniments-Antics, #Bloque-Gran.Esdeveniments-Antics, #BloquesListas.Esdeveniments-Antics, #Fechas.Esdeveniments-Antics, #Mapas.Esdeveniments-Antics {
+	background-color:#cecfbd;
+	color:#333;
+}
+.breadcrumbs.Esdeveniments-Antics, #Fechas.Esdeveniments-Antics, .Esdeveniments-Antics .author, .Esdeveniments-Antics .box .content {
+	background-color:#cecfbd;
+}
+.Esdeveniments-Antics #Bloque-Gran-Options {
+	width:180px;
+}
+.Esdeveniments-Antics #Bloque-Gran-Txt {
+	width:180px;
+}
+.Esdeveniments-Antics .comment {
+	border-color:#cecfbd;
+}
+.Esdeveniments-Antics ul.links li, .Esdeveniments-Antics .author {
+	border-top-color:#cecfbd;
+}
+/*Pager*/
+#Paginacio.Esdeveniments-Antics ul, #Paginacio.Esdeveniments-Antics ul li a:link, #Paginacio.Esdeveniments-Antics ul li a:visited, #Paginacio.Esdeveniments-Antics ul li a:active {
+	background-color:#cecfbd;
+	color:#5e6025;
+}
+#Paginacio.Esdeveniments-Antics ul li a:hover {
+	background-color: #414115;
+	color:#FFF;
+}
+#Paginacio.Esdeveniments-Antics ul li.pager-current {
+	background-color:#5e6025;
+}
+/*Financament Public*/
+/*Color 1: d62405*/
+.Menu li.Public ul, li.Public ul li, li.Public ul:hover, ul.li.Public:hover, .Menu li.Public:hover, .Menu li.Public.sfHover, .Public a.BotoMas:link, .Public a.BotoMas:visited, .Public a.BotoMas:active, .Public a.BotoMas:hover, .Public input.Boto, .e_comments.Public h2, .Public ul.links li a:link, .Public ul.links li a:visited, .Public ul.links li a:active, .Public .indented, .Public .form-submit:active, .Public .form-submit:visited, .Public .form-submit:link, .Public .captcha legend, .Public .form-submit, .Public .close, #Mapas.Public h2, .Menu a.Public:focus, .Menu a.Public:hover, .Menu a.Public:active {
+	background-color:#d62405;
+}
+p.legend.Public, h2.Public, ul li a.Public:hover, a.Veure.Public:link, a.Veure.Public:visited, a.Veure.Public:active {
+	background-color:#d62405;
+}
+h2.Public, .QueEs.Public h2 {
+	border-bottom-color:#d62405;
+	background-color:#FFF;
+}
+.H1.Public a:hover, p a.Public:link, p a.Public:visited, p a.Public:active, .Public .author a:link, .Public .author a:visited, .Public .author a:active, .Public p a:link, .Public p a:visited, .Public p a:active, .Tags.Public ul li a:link, .Tags.Public ul li a:visited, .Tags.Public ul li a:active {
+	color:#d62405;
+}
+#New-S p a.Public:link, #New-S p a.Public:visited, #New-S p a.Public:active, #New-M p a.Public:link, #New-M p a.Public:visited, #New-M p a.Public:active, #New-L p a.Public:link, #New-L p a.Public:visited, #New-L p a.Public:active, #New-XL p a.Public:link, #New-XL p a.Public:visited, #New-XL p a.Public:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Public:link, p a.Public:visited, p a.Public:active, #New-S p a.Public:hover, #New-M p a.Public:hover, #New-L p a.Public:hover, #New-XL p a.Public:hover {
+	color:#d62405;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Public:link, p a.Public:visited, p a.Public:active, .Public p a:link, .Public p a:visited, .Public p a:active {
+	color:#d62405;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Public:link, h3 a.Public:visited, h3 a.Public:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Public:hover {
+	color:#d62405;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Public:link, ul li a.Public:visited, ul li a.Public:active {
+	background-color:transparent;
+}
+ul li a.Public:hover {
+	background-color:#d62405;
+}
+.H1.Public:hover, .H1.Public {
+	border-bottom-color:#d62405;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Public:link, .Menu-AS li ul li a.Public:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Public:hover {
+	background-color:#d62405;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Public:link, .Menu-AS li ul.Menu-AS-Sub li a.Public:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Public:hover {
+	background-color:#d62405;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Public li a:hover, .PaginacioAbaix.Public, .QueEs.Public h2 {
+	border-bottom-color:#d62405;
+}
+.PaginacioAdalt.Public {
+	border-top-color:#d62405;
+}
+.Menu-AS-Sub li.Public:hover {
+	background-color:#d62405;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Public:hover a.Public {
+	color:#FFF;
+}
+.Public a.BotoMas:link, .Public a.BotoMas:visited, .Public a.BotoMas:active, .Public a.BotoMas:hover, a.New-S.Public:link, a.New-S.Public:visited, a.New-S.Public:active, a.New-S.Public:hover, a.New-M.Public:link, a.New-M.Public:visited, a.New-M.Public:active, a.New-M.Public:hover, a.New-L.Public:link, a.New-L.Public:visited, a.New-L.Public:active, a.New-L.Public:hover, .Public h2.Bloque-S {
+	background-color:#d62405;
+}
+a.Veure.Public:link, a.Veure.Public:visited, a.Veure.Public:active, .Tags.Public h2 {
+	background-color: #d62405;
+	color:#FFF;
+}
+.Public.QueEs {
+	border-color:#d62405;
+}
+/*Color 2: 921903*/
+p a.Public:hover, .Public #Bloque-Gran-Txt h3 a, .Public #Bloque-Gran-Txt h3 a:link, .Public #Bloque-Gran-Txt h3 a:visited, .Public #Bloque-Gran-Txt h3 a:active, .Public #Bloque-Gran-Txt h3 a:hover, .Public ul, .Public ul li a:hover, .breadcrumbs.Public a:link, .breadcrumbs.Public a:visited, .breadcrumbs.Public a:active, .breadcrumbs.Public a:hover, .breadcrumbs.Public, span.field-prefix, .Public .author, .Public .author a:hover, .Public p a:hover, .Tags.Public ul li a:hover, #BloquesListas.Public ul li a:hover, .Public p a:hover, #BloquesListas.Public ul li {
+	color:#921903;
+}
+#BloquesListas.Public ul li a:hover {
+	text-decoration:underline;
+}
+li.Public ul li:hover, li.Public ul li.sfHover, a.Public:focus, a.Public:active, .Public h2, .Public a.BotoMas:hover, .Public a.BotoMas:hover, a.New-S.Public:hover, a.New-M.Public:hover, a.New-L.Public:hover, a.Veure.Public:hover, #Paginacio ul.Public li a:hover, .Public input.Boto:hover, .Public ul.links li a:hover, .Public .form-submit:hover, .Public .close:hover {
+	background-color:#921903;
+}
+#Paginacio ul.Public li a:hover, a.Veure.Public:hover {
+	color:#FFF;
+}
+/*Color 3: f5c8c0*/
+#Paginacio ul.Public, #Paginacio ul.Public li a:link, #Paginacio ul.Public li a:visited, #Paginacio ul.Public li a:active, .Public ul, .Tags.Public, #Bloque-Gran.Public, #BloquesListas.Public, #Fechas.Public, #Mapas.Public {
+	background-color:#f5c8c0;
+	color:#333;
+}
+.breadcrumbs.Public, #Fechas.Public, .Public .author, .Public .box .content {
+	background-color:#f5c8c0;
+}
+.Public #Bloque-Gran-Options {
+	width:180px;
+}
+.Public #Bloque-Gran-Txt {
+	width:180px;
+}
+.Public .comment {
+	border-color:#f5c8c0;
+}
+.Public ul.links li, .Public .author {
+	border-top-color:#f5c8c0;
+}
+/*Pager*/
+#Paginacio.Public ul, #Paginacio.Public ul li a:link, #Paginacio.Public ul li a:visited, #Paginacio.Public ul li a:active {
+	background-color:#f5c8c0;
+	color:#d62405;
+}
+#Paginacio.Public ul li a:hover {
+	background-color: #921903;
+	color:#FFF;
+}
+#Paginacio.Public ul li.pager-current {
+	background-color:#d62405;
+}
+/*Financament Privat*/
+/*Color 1: f52e77*/
+.Menu li.Privat ul, li.Privat ul li, li.Privat ul:hover, ul.li.Privat:hover, .Menu li.Privat:hover, .Menu li.Privat.sfHover, .Privat a.BotoMas:link, .Privat a.BotoMas:visited, .Privat a.BotoMas:active, .Privat a.BotoMas:hover, .Privat input.Boto, .e_comments.Privat h2, .Privat ul.links li a:link, .Privat ul.links li a:visited, .Privat ul.links li a:active, .Privat .indented, .Privat .form-submit:active, .Privat .form-submit:visited, .Privat .form-submit:link, .Privat .captcha legend, .Privat .form-submit, .Privat .close, #Mapas.Privat h2, .Menu a.Privat:focus, .Menu a.Privat:hover, .Menu a.Privat:active {
+	background-color:#f52e77;
+}
+p.legend.Privat, h2.Privat, ul li a.Privat:hover, a.Veure.Privat:link, a.Veure.Privat:visited, a.Veure.Privat:active {
+	background-color:#f52e77;
+}
+h2.Privat, .QueEs.Privat h2 {
+	border-bottom-color:#f52e77;
+	background-color:#FFF;
+}
+.H1.Privat a:hover, p a.Privat:link, p a.Privat:visited, p a.Privat:active, .Privat .author a:link, .Privat .author a:visited, .Privat .author a:active, .Privat p a:link, .Privat p a:visited, .Privat p a:active, .Tags.Privat ul li a:link, .Tags.Privat ul li a:visited, .Tags.Privat ul li a:active {
+	color:#f52e77;
+}
+#New-S p a.Privat:link, #New-S p a.Privat:visited, #New-S p a.Privat:active, #New-M p a.Privat:link, #New-M p a.Privat:visited, #New-M p a.Privat:active, #New-L p a.Privat:link, #New-L p a.Privat:visited, #New-L p a.Privat:active, #New-XL p a.Privat:link, #New-XL p a.Privat:visited, #New-XL p a.Privat:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Privat:link, p a.Privat:visited, p a.Privat:active, #New-S p a.Privat:hover, #New-M p a.Privat:hover, #New-L p a.Privat:hover, #New-XL p a.Privat:hover {
+	color:#f52e77;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Privat:link, p a.Privat:visited, p a.Privat:active, .Privat p a:link, .Privat p a:visited, .Privat p a:active {
+	color:#f52e77;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Privat:link, h3 a.Privat:visited, h3 a.Privat:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Privat:hover {
+	color:#f52e77;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Privat:link, ul li a.Privat:visited, ul li a.Privat:active {
+	background-color:transparent;
+}
+ul li a.Privat:hover {
+	background-color:#f52e77;
+}
+.H1.Privat:hover, .H1.Privat {
+	border-bottom-color:#f52e77;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Privat:link, .Menu-AS li ul li a.Privat:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Privat:hover {
+	background-color:#f52e77;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Privat:link, .Menu-AS li ul.Menu-AS-Sub li a.Privat:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Privat:hover {
+	background-color:#f52e77;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Privat li a:hover, .PaginacioAbaix.Privat, .QueEs.Privat h2 {
+	border-bottom-color:#f52e77;
+}
+.PaginacioAdalt.Privat {
+	border-top-color:#f52e77;
+}
+.Menu-AS-Sub li.Privat:hover {
+	background-color:#f52e77;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Privat:hover a.Privat {
+	color:#FFF;
+}
+.Privat a.BotoMas:link, .Privat a.BotoMas:visited, .Privat a.BotoMas:active, .Privat a.BotoMas:hover, a.New-S.Privat:link, a.New-S.Privat:visited, a.New-S.Privat:active, a.New-S.Privat:hover, a.New-M.Privat:link, a.New-M.Privat:visited, a.New-M.Privat:active, a.New-M.Privat:hover, a.New-L.Privat:link, a.New-L.Privat:visited, a.New-L.Privat:active, a.New-L.Privat:hover, .Privat h2.Bloque-S {
+	background-color:#f52e77;
+}
+a.Veure.Privat:link, a.Veure.Privat:visited, a.Veure.Privat:active, .Tags.Privat h2 {
+	background-color: #f52e77;
+	color:#FFF;
+}
+.Privat.QueEs {
+	border-color:#f52e77;
+}
+/*Color 2: b31f7f*/
+p a.Privat:hover, .Privat #Bloque-Gran-Txt h3 a, .Privat #Bloque-Gran-Txt h3 a:link, .Privat #Bloque-Gran-Txt h3 a:visited, .Privat #Bloque-Gran-Txt h3 a:active, .Privat #Bloque-Gran-Txt h3 a:hover, .Privat ul, .Privat ul li a:hover, .breadcrumbs.Privat a:link, .breadcrumbs.Privat a:visited, .breadcrumbs.Privat a:active, .breadcrumbs.Privat a:hover, .breadcrumbs.Privat, span.field-prefix, .Privat .author, .Privat .author a:hover, .Privat p a:hover, .Tags.Privat ul li a:hover, #BloquesListas.Privat ul li a:hover, .Privat p a:hover, #BloquesListas.Privat ul li {
+	color:#b31f7f;
+}
+#BloquesListas.Privat ul li a:hover {
+	text-decoration:underline;
+}
+li.Privat ul li:hover, li.Privat ul li.sfHover, a.Privat:focus, a.Privat:active, .Privat h2, .Privat a.BotoMas:hover, .Privat a.BotoMas:hover, a.New-S.Privat:hover, a.New-M.Privat:hover, a.New-L.Privat:hover, a.Veure.Privat:hover, #Paginacio ul.Privat li a:hover, .Privat input.Boto:hover, .Privat ul.links li a:hover, .Privat .form-submit:hover, .Privat .close:hover {
+	background-color:#b31f7f;
+}
+#Paginacio ul.Privat li a:hover, a.Veure.Privat:hover {
+	color:#FFF;
+}
+/*Color 3: fccbdd*/
+#Paginacio ul.Privat, #Paginacio ul.Privat li a:link, #Paginacio ul.Privat li a:visited, #Paginacio ul.Privat li a:active, .Privat ul, .Tags.Privat, #Bloque-Gran.Privat, #BloquesListas.Privat, #Fechas.Privat, #Mapas.Privat {
+	background-color:#fccbdd;
+	color:#333;
+}
+.breadcrumbs.Privat, #Fechas.Privat, .Privat .author, .Privat .box .content {
+	background-color:#fccbdd;
+}
+.Privat #Bloque-Gran-Options {
+	width:180px;
+}
+.Privat #Bloque-Gran-Txt {
+	width:180px;
+}
+.Privat .comment {
+	border-color:#fccbdd;
+}
+.Privat ul.links li, .Privat .author {
+	border-top-color:#fccbdd;
+}
+/*Pager*/
+#Paginacio.Privat ul, #Paginacio.Privat ul li a:link, #Paginacio.Privat ul li a:visited, #Paginacio.Privat ul li a:active {
+	background-color:#fccbdd;
+	color:#f52e77;
+}
+#Paginacio.Privat ul li a:hover {
+	background-color: #b31f7f;
+	color:#FFF;
+}
+#Paginacio.Privat ul li.pager-current {
+	background-color:#f52e77;
+}
+/*Financament Premis*/
+/*Color 1: cb2390*/
+.Menu li.Premis ul, li.Premis ul li, li.Premis ul:hover, ul.li.Premis:hover, .Menu li.Premis:hover, .Menu li.Premis.sfHover, .Premis a.BotoMas:link, .Premis a.BotoMas:visited, .Premis a.BotoMas:active, .Premis a.BotoMas:hover, .Premis input.Boto, .e_comments.Premis h2, .Premis ul.links li a:link, .Premis ul.links li a:visited, .Premis ul.links li a:active, .Premis .indented, .Premis .form-submit:active, .Premis .form-submit:visited, .Premis .form-submit:link, .Premis .captcha legend, .Premis .form-submit, .Premis .close, #Mapas.Premis h2, .Menu a.Premis:focus, .Menu a.Premis:hover, .Menu a.Premis:active {
+	background-color:#cb2390;
+}
+p.legend.Premis, h2.Premis, ul li a.Premis:hover, a.Veure.Premis:link, a.Veure.Premis:visited, a.Veure.Premis:active {
+	background-color:#cb2390;
+}
+h2.Premis, .QueEs.Premis h2 {
+	border-bottom-color:#cb2390;
+	background-color:#FFF;
+}
+.H1.Premis a:hover, p a.Premis:link, p a.Premis:visited, p a.Premis:active, .Premis .author a:link, .Premis .author a:visited, .Premis .author a:active, .Premis p a:link, .Premis p a:visited, .Premis p a:active, .Tags.Premis ul li a:link, .Tags.Premis ul li a:visited, .Tags.Premis ul li a:active {
+	color:#cb2390;
+}
+#New-S p a.Premis:link, #New-S p a.Premis:visited, #New-S p a.Premis:active, #New-M p a.Premis:link, #New-M p a.Premis:visited, #New-M p a.Premis:active, #New-L p a.Premis:link, #New-L p a.Premis:visited, #New-L p a.Premis:active, #New-XL p a.Premis:link, #New-XL p a.Premis:visited, #New-XL p a.Premis:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Premis:link, p a.Premis:visited, p a.Premis:active, #New-S p a.Premis:hover, #New-M p a.Premis:hover, #New-L p a.Premis:hover, #New-XL p a.Premis:hover {
+	color:#cb2390;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Premis:link, p a.Premis:visited, p a.Premis:active, .Premis p a:link, .Premis p a:visited, .Premis p a:active {
+	color:#cb2390;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Premis:link, h3 a.Premis:visited, h3 a.Premis:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Premis:hover {
+	color:#cb2390;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Premis:link, ul li a.Premis:visited, ul li a.Premis:active {
+	background-color:transparent;
+}
+ul li a.Premis:hover {
+	background-color:#cb2390;
+}
+.H1.Premis:hover, .H1.Premis {
+	border-bottom-color:#cb2390;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Premis:link, .Menu-AS li ul li a.Premis:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Premis:hover {
+	background-color:#cb2390;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Premis:link, .Menu-AS li ul.Menu-AS-Sub li a.Premis:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Premis:hover {
+	background-color:#cb2390;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Premis li a:hover, .PaginacioAbaix.Premis, .QueEs.Premis h2 {
+	border-bottom-color:#cb2390;
+}
+.PaginacioAdalt.Premis {
+	border-top-color:#cb2390;
+}
+.Menu-AS-Sub li.Premis:hover {
+	background-color:#cb2390;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Premis:hover a.Premis {
+	color:#FFF;
+}
+.Premis a.BotoMas:link, .Premis a.BotoMas:visited, .Premis a.BotoMas:active, .Premis a.BotoMas:hover, a.New-S.Premis:link, a.New-S.Premis:visited, a.New-S.Premis:active, a.New-S.Premis:hover, a.New-M.Premis:link, a.New-M.Premis:visited, a.New-M.Premis:active, a.New-M.Premis:hover, a.New-L.Premis:link, a.New-L.Premis:visited, a.New-L.Premis:active, a.New-L.Premis:hover, .Premis h2.Bloque-S {
+	background-color:#cb2390;
+}
+a.Veure.Premis:link, a.Veure.Premis:visited, a.Veure.Premis:active, .Tags.Premis h2 {
+	background-color: #cb2390;
+	color:#FFF;
+}
+.Premis.QueEs {
+	border-color:#cb2390;
+}
+/*Color 2: 881760*/
+p a.Premis:hover, .Premis #Bloque-Gran-Txt h3 a, .Premis #Bloque-Gran-Txt h3 a:link, .Premis #Bloque-Gran-Txt h3 a:visited, .Premis #Bloque-Gran-Txt h3 a:active, .Premis #Bloque-Gran-Txt h3 a:hover, .Premis ul, .Premis ul li a:hover, .breadcrumbs.Premis a:link, .breadcrumbs.Premis a:visited, .breadcrumbs.Premis a:active, .breadcrumbs.Premis a:hover, .breadcrumbs.Premis, span.field-prefix, .Premis .author, .Premis .author a:hover, .Premis p a:hover, .Tags.Premis ul li a:hover, #BloquesListas.Premis ul li a:hover, .Premis p a:hover, #BloquesListas.Premis ul li {
+	color:#881760;
+}
+#BloquesListas.Premis ul li a:hover {
+	text-decoration:underline;
+}
+li.Premis ul li:hover, li.Premis ul li.sfHover, a.Premis:focus, a.Premis:active, .Premis h2, .Premis a.BotoMas:hover, .Premis a.BotoMas:hover, a.New-S.Premis:hover, a.New-M.Premis:hover, a.New-L.Premis:hover, a.Veure.Premis:hover, #Paginacio ul.Premis li a:hover, .Premis input.Boto:hover, .Premis ul.links li a:hover, .Premis .form-submit:hover, .Premis .close:hover {
+	background-color:#881760;
+}
+#Paginacio ul.Premis li a:hover, a.Veure.Premis:hover {
+	color:#FFF;
+}
+/*Color 3: f2c8e3*/
+#Paginacio ul.Premis, #Paginacio ul.Premis li a:link, #Paginacio ul.Premis li a:visited, #Paginacio ul.Premis li a:active, .Premis ul, .Tags.Premis, #Bloque-Gran.Premis, #BloquesListas.Premis, #Fechas.Premis, #Mapas.Premis {
+	background-color:#f2c8e3;
+	color:#333;
+}
+.breadcrumbs.Premis, #Fechas.Premis, .Premis .author, .Premis .box .content {
+	background-color:#f2c8e3;
+}
+.Premis #Bloque-Gran-Options {
+	width:180px;
+}
+.Premis #Bloque-Gran-Txt {
+	width:180px;
+}
+.Premis .comment {
+	border-color:#f2c8e3;
+}
+.Premis ul.links li, .Premis .author {
+	border-top-color:#f2c8e3;
+}
+/*Pager*/
+#Paginacio.Premis ul, #Paginacio.Premis ul li a:link, #Paginacio.Premis ul li a:visited, #Paginacio.Premis ul li a:active {
+	background-color:#f2c8e3;
+	color:#cb2390;
+}
+#Paginacio.Premis ul li a:hover {
+	background-color: #881760;
+	color:#FFF;
+}
+#Paginacio.Premis ul li.pager-current {
+	background-color:#cb2390;
+}
+/*Financament Subvencio*/
+/*Color 1: d62369*/
+.Menu li.Subvencio ul, li.Subvencio ul li, li.Subvencio ul:hover, ul.li.Subvencio:hover, .Menu li.Subvencio:hover, .Menu li.Subvencio.sfHover, .Subvencio a.BotoMas:link, .Subvencio a.BotoMas:visited, .Subvencio a.BotoMas:active, .Subvencio a.BotoMas:hover, .Subvencio input.Boto, .e_comments.Subvencio h2, .Subvencio ul.links li a:link, .Subvencio ul.links li a:visited, .Subvencio ul.links li a:active, .Subvencio .indented, .Subvencio .form-submit:active, .Subvencio .form-submit:visited, .Subvencio .form-submit:link, .Subvencio .captcha legend, .Subvencio .form-submit, .Subvencio .close, #Mapas.Subvencio h2, .Menu a.Subvencio:focus, .Menu a.Subvencio:hover, .Menu a.Subvencio:active {
+	background-color:#d62369;
+}
+p.legend.Subvencio, h2.Subvencio, ul li a.Subvencio:hover, a.Veure.Subvencio:link, a.Veure.Subvencio:visited, a.Veure.Subvencio:active {
+	background-color:#d62369;
+}
+h2.Subvencio, .QueEs.Subvencio h2 {
+	border-bottom-color:#d62369;
+	background-color:#FFF;
+}
+.H1.Subvencio a:hover, p a.Subvencio:link, p a.Subvencio:visited, p a.Subvencio:active, .Subvencio .author a:link, .Subvencio .author a:visited, .Subvencio .author a:active, .Subvencio p a:link, .Subvencio p a:visited, .Subvencio p a:active, .Tags.Subvencio ul li a:link, .Tags.Subvencio ul li a:visited, .Tags.Subvencio ul li a:active {
+	color:#d62369;
+}
+#New-S p a.Subvencio:link, #New-S p a.Subvencio:visited, #New-S p a.Subvencio:active, #New-M p a.Subvencio:link, #New-M p a.Subvencio:visited, #New-M p a.Subvencio:active, #New-L p a.Subvencio:link, #New-L p a.Subvencio:visited, #New-L p a.Subvencio:active, #New-XL p a.Subvencio:link, #New-XL p a.Subvencio:visited, #New-XL p a.Subvencio:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Subvencio:link, p a.Subvencio:visited, p a.Subvencio:active, #New-S p a.Subvencio:hover, #New-M p a.Subvencio:hover, #New-L p a.Subvencio:hover, #New-XL p a.Subvencio:hover {
+	color:#d62369;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Subvencio:link, p a.Subvencio:visited, p a.Subvencio:active, .Subvencio p a:link, .Subvencio p a:visited, .Subvencio p a:active {
+	color:#d62369;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Subvencio:link, h3 a.Subvencio:visited, h3 a.Subvencio:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Subvencio:hover {
+	color:#d62369;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Subvencio:link, ul li a.Subvencio:visited, ul li a.Subvencio:active {
+	background-color:transparent;
+}
+ul li a.Subvencio:hover {
+	background-color:#d62369;
+}
+.H1.Subvencio:hover, .H1.Subvencio {
+	border-bottom-color:#d62369;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Subvencio:link, .Menu-AS li ul li a.Subvencio:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Subvencio:hover {
+	background-color:#d62369;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Subvencio:link, .Menu-AS li ul.Menu-AS-Sub li a.Subvencio:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Subvencio:hover {
+	background-color:#d62369;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Subvencio li a:hover, .PaginacioAbaix.Subvencio, .QueEs.Subvencio h2 {
+	border-bottom-color:#d62369;
+}
+.PaginacioAdalt.Subvencio {
+	border-top-color:#d62369;
+}
+.Menu-AS-Sub li.Subvencio:hover {
+	background-color:#d62369;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Subvencio:hover a.Subvencio {
+	color:#FFF;
+}
+.Subvencio a.BotoMas:link, .Subvencio a.BotoMas:visited, .Subvencio a.BotoMas:active, .Subvencio a.BotoMas:hover, a.New-S.Subvencio:link, a.New-S.Subvencio:visited, a.New-S.Subvencio:active, a.New-S.Subvencio:hover, a.New-M.Subvencio:link, a.New-M.Subvencio:visited, a.New-M.Subvencio:active, a.New-M.Subvencio:hover, a.New-L.Subvencio:link, a.New-L.Subvencio:visited, a.New-L.Subvencio:active, a.New-L.Subvencio:hover, .Subvencio h2.Bloque-S {
+	background-color:#d62369;
+}
+a.Veure.Subvencio:link, a.Veure.Subvencio:visited, a.Veure.Subvencio:active, .Tags.Subvencio h2 {
+	background-color: #d62369;
+	color:#FFF;
+}
+.Subvencio.QueEs {
+	border-color:#d62369;
+}
+/*Color 2: 701237*/
+p a.Subvencio:hover, .Subvencio #Bloque-Gran-Txt h3 a, .Subvencio #Bloque-Gran-Txt h3 a:link, .Subvencio #Bloque-Gran-Txt h3 a:visited, .Subvencio #Bloque-Gran-Txt h3 a:active, .Subvencio #Bloque-Gran-Txt h3 a:hover, .Subvencio ul, .Subvencio ul li a:hover, .breadcrumbs.Subvencio a:link, .breadcrumbs.Subvencio a:visited, .breadcrumbs.Subvencio a:active, .breadcrumbs.Subvencio a:hover, .breadcrumbs.Subvencio, span.field-prefix, .Subvencio .author, .Subvencio .author a:hover, .Subvencio p a:hover, .Tags.Subvencio ul li a:hover, #BloquesListas.Subvencio ul li a:hover, .Subvencio p a:hover, #BloquesListas.Subvencio ul li {
+	color:#701237;
+}
+#BloquesListas.Subvencio ul li a:hover {
+	text-decoration:underline;
+}
+li.Subvencio ul li:hover, li.Subvencio ul li.sfHover, a.Subvencio:focus, a.Subvencio:active, .Subvencio h2, .Subvencio a.BotoMas:hover, .Subvencio a.BotoMas:hover, a.New-S.Subvencio:hover, a.New-M.Subvencio:hover, a.New-L.Subvencio:hover, a.Veure.Subvencio:hover, #Paginacio ul.Subvencio li a:hover, .Subvencio input.Boto:hover, .Subvencio ul.links li a:hover, .Subvencio .form-submit:hover, .Subvencio .close:hover {
+	background-color:#701237;
+}
+#Paginacio ul.Subvencio li a:hover, a.Veure.Subvencio:hover {
+	color:#FFF;
+}
+/*Color 3: f5c8d9*/
+#Paginacio ul.Subvencio, #Paginacio ul.Subvencio li a:link, #Paginacio ul.Subvencio li a:visited, #Paginacio ul.Subvencio li a:active, .Subvencio ul, .Tags.Subvencio, #Bloque-Gran.Subvencio, #BloquesListas.Subvencio, #Fechas.Subvencio, #Mapas.Subvencio {
+	background-color:#f5c8d9;
+	color:#333;
+}
+.breadcrumbs.Subvencio, #Fechas.Subvencio, .Subvencio .author, .Subvencio .box .content {
+	background-color:#f5c8d9;
+}
+.Subvencio #Bloque-Gran-Options {
+	width:180px;
+}
+.Subvencio #Bloque-Gran-Txt {
+	width:180px;
+}
+.Subvencio .comment {
+	border-color:#f5c8d9;
+}
+.Subvencio ul.links li, .Subvencio .author {
+	border-top-color:#f5c8d9;
+}
+/*Pager*/
+#Paginacio.Subvencio ul, #Paginacio.Subvencio ul li a:link, #Paginacio.Subvencio ul li a:visited, #Paginacio.Subvencio ul li a:active {
+	background-color:#f5c8d9;
+	color:#d62369;
+}
+#Paginacio.Subvencio ul li a:hover {
+	background-color: #701237;
+	color:#FFF;
+}
+#Paginacio.Subvencio ul li.pager-current {
+	background-color:#d62369;
+}
+/*Financament Beques*/
+/*Color 1: bd523e*/
+.Menu li.Beques ul, li.Beques ul li, li.Beques ul:hover, ul.li.Beques:hover, .Menu li.Beques:hover, .Menu li.Beques.sfHover, .Beques a.BotoMas:link, .Beques a.BotoMas:visited, .Beques a.BotoMas:active, .Beques a.BotoMas:hover, .Beques input.Boto, .e_comments.Beques h2, .Beques ul.links li a:link, .Beques ul.links li a:visited, .Beques ul.links li a:active, .Beques .indented, .Beques .form-submit:active, .Beques .form-submit:visited, .Beques .form-submit:link, .Beques .captcha legend, .Beques .form-submit, .Beques .close, #Mapas.Beques h2, .Menu a.Beques:focus, .Menu a.Beques:hover, .Menu a.Beques:active {
+	background-color:#bd523e;
+}
+p.legend.Beques, h2.Beques, ul li a.Beques:hover, a.Veure.Beques:link, a.Veure.Beques:visited, a.Veure.Beques:active {
+	background-color:#bd523e;
+}
+h2.Beques, .QueEs.Beques h2 {
+	border-bottom-color:#bd523e;
+	background-color:#FFF;
+}
+.H1.Beques a:hover, p a.Beques:link, p a.Beques:visited, p a.Beques:active, .Beques .author a:link, .Beques .author a:visited, .Beques .author a:active, .Beques p a:link, .Beques p a:visited, .Beques p a:active, .Tags.Beques ul li a:link, .Tags.Beques ul li a:visited, .Tags.Beques ul li a:active {
+	color:#bd523e;
+}
+#New-S p a.Beques:link, #New-S p a.Beques:visited, #New-S p a.Beques:active, #New-M p a.Beques:link, #New-M p a.Beques:visited, #New-M p a.Beques:active, #New-L p a.Beques:link, #New-L p a.Beques:visited, #New-L p a.Beques:active, #New-XL p a.Beques:link, #New-XL p a.Beques:visited, #New-XL p a.Beques:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Beques:link, p a.Beques:visited, p a.Beques:active, #New-S p a.Beques:hover, #New-M p a.Beques:hover, #New-L p a.Beques:hover, #New-XL p a.Beques:hover {
+	color:#bd523e;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Beques:link, p a.Beques:visited, p a.Beques:active, .Beques p a:link, .Beques p a:visited, .Beques p a:active {
+	color:#bd523e;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Beques:link, h3 a.Beques:visited, h3 a.Beques:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Beques:hover {
+	color:#bd523e;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Beques:link, ul li a.Beques:visited, ul li a.Beques:active {
+	background-color:transparent;
+}
+ul li a.Beques:hover {
+	background-color:#bd523e;
+}
+.H1.Beques:hover, .H1.Beques {
+	border-bottom-color:#bd523e;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Beques:link, .Menu-AS li ul li a.Beques:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Beques:hover {
+	background-color:#bd523e;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Beques:link, .Menu-AS li ul.Menu-AS-Sub li a.Beques:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Beques:hover {
+	background-color:#bd523e;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Beques li a:hover, .PaginacioAbaix.Beques, .QueEs.Beques h2 {
+	border-bottom-color:#bd523e;
+}
+.PaginacioAdalt.Beques {
+	border-top-color:#bd523e;
+}
+.Menu-AS-Sub li.Beques:hover {
+	background-color:#bd523e;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Beques:hover a.Beques {
+	color:#FFF;
+}
+.Beques a.BotoMas:link, .Beques a.BotoMas:visited, .Beques a.BotoMas:active, .Beques a.BotoMas:hover, a.New-S.Beques:link, a.New-S.Beques:visited, a.New-S.Beques:active, a.New-S.Beques:hover, a.New-M.Beques:link, a.New-M.Beques:visited, a.New-M.Beques:active, a.New-M.Beques:hover, a.New-L.Beques:link, a.New-L.Beques:visited, a.New-L.Beques:active, a.New-L.Beques:hover, .Beques h2.Bloque-S {
+	background-color:#bd523e;
+}
+a.Veure.Beques:link, a.Veure.Beques:visited, a.Veure.Beques:active, .Tags.Beques h2 {
+	background-color: #bd523e;
+	color:#FFF;
+}
+.Beques.QueEs {
+	border-color:#bd523e;
+}
+/*Color 2: d62369*/
+p a.Beques:hover, .Beques #Bloque-Gran-Txt h3 a, .Beques #Bloque-Gran-Txt h3 a:link, .Beques #Bloque-Gran-Txt h3 a:visited, .Beques #Bloque-Gran-Txt h3 a:active, .Beques #Bloque-Gran-Txt h3 a:hover, .Beques ul, .Beques ul li a:hover, .breadcrumbs.Beques a:link, .breadcrumbs.Beques a:visited, .breadcrumbs.Beques a:active, .breadcrumbs.Beques a:hover, .breadcrumbs.Beques, span.field-prefix, .Beques .author, .Beques .author a:hover, .Beques p a:hover, .Tags.Beques ul li a:hover, #BloquesListas.Beques ul li a:hover, .Beques p a:hover, #BloquesListas.Beques ul li {
+	color:#d62369;
+}
+#BloquesListas.Beques ul li a:hover {
+	text-decoration:underline;
+}
+li.Beques ul li:hover, li.Beques ul li.sfHover, a.Beques:focus, a.Beques:active, .Beques h2, .Beques a.BotoMas:hover, .Beques a.BotoMas:hover, a.New-S.Beques:hover, a.New-M.Beques:hover, a.New-L.Beques:hover, a.Veure.Beques:hover, #Paginacio ul.Beques li a:hover, .Beques input.Boto:hover, .Beques ul.links li a:hover, .Beques .form-submit:hover, .Beques .close:hover {
+	background-color:#d62369;
+}
+#Paginacio ul.Beques li a:hover, a.Veure.Beques:hover {
+	color:#FFF;
+}
+/*Color 3: fccbcf*/
+#Paginacio ul.Beques, #Paginacio ul.Beques li a:link, #Paginacio ul.Beques li a:visited, #Paginacio ul.Beques li a:active, .Beques ul, .Tags.Beques, #Bloque-Gran.Beques, #BloquesListas.Beques, #Fechas.Beques, #Mapas.Beques {
+	background-color:#fccbcf;
+	color:#333;
+}
+.breadcrumbs.Beques, #Fechas.Beques, .Beques .author, .Beques .box .content {
+	background-color:#fccbcf;
+}
+.Beques #Bloque-Gran-Options {
+	width:180px;
+}
+.Beques #Bloque-Gran-Txt {
+	width:180px;
+}
+.Beques .comment {
+	border-color:#fccbcf;
+}
+.Beques ul.links li, .Beques .author {
+	border-top-color:#fccbcf;
+}
+/*Pager*/
+#Paginacio.Beques ul, #Paginacio.Beques ul li a:link, #Paginacio.Beques ul li a:visited, #Paginacio.Beques ul li a:active {
+	background-color:#fccbcf;
+	color:#bd523e;
+}
+#Paginacio.Beques ul li a:hover {
+	background-color: #d62369;
+	color:#FFF;
+}
+#Paginacio.Beques ul li.pager-current {
+	background-color:#bd523e;
+}
+/*Financament Altres*/
+/*Color 1: d62405*/
+.Menu li.Altres ul, li.Altres ul li, li.Altres ul:hover, ul.li.Altres:hover, .Menu li.Altres:hover, .Menu li.Altres.sfHover, .Altres a.BotoMas:link, .Altres a.BotoMas:visited, .Altres a.BotoMas:active, .Altres a.BotoMas:hover, .Altres input.Boto, .e_comments.Altres h2, .Altres ul.links li a:link, .Altres ul.links li a:visited, .Altres ul.links li a:active, .Altres .indented, .Altres .form-submit:active, .Altres .form-submit:visited, .Altres .form-submit:link, .Altres .captcha legend, .Altres .form-submit, .Altres .close, #Mapas.Altres h2, .Menu a.Altres:focus, .Menu a.Altres:hover, .Menu a.Altres:active {
+	background-color:#d62405;
+}
+p.legend.Altres, h2.Altres, ul li a.Altres:hover, a.Veure.Altres:link, a.Veure.Altres:visited, a.Veure.Altres:active {
+	background-color:#d62405;
+}
+h2.Altres, .QueEs.Altres h2 {
+	border-bottom-color:#d62405;
+	background-color:#FFF;
+}
+.H1.Altres a:hover, p a.Altres:link, p a.Altres:visited, p a.Altres:active, .Altres .author a:link, .Altres .author a:visited, .Altres .author a:active, .Altres p a:link, .Altres p a:visited, .Altres p a:active, .Tags.Altres ul li a:link, .Tags.Altres ul li a:visited, .Tags.Altres ul li a:active {
+	color:#d62405;
+}
+#New-S p a.Altres:link, #New-S p a.Altres:visited, #New-S p a.Altres:active, #New-M p a.Altres:link, #New-M p a.Altres:visited, #New-M p a.Altres:active, #New-L p a.Altres:link, #New-L p a.Altres:visited, #New-L p a.Altres:active, #New-XL p a.Altres:link, #New-XL p a.Altres:visited, #New-XL p a.Altres:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Altres:link, p a.Altres:visited, p a.Altres:active, #New-S p a.Altres:hover, #New-M p a.Altres:hover, #New-L p a.Altres:hover, #New-XL p a.Altres:hover {
+	color:#d62405;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Altres:link, p a.Altres:visited, p a.Altres:active, .Altres p a:link, .Altres p a:visited, .Altres p a:active {
+	color:#d62405;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Altres:link, h3 a.Altres:visited, h3 a.Altres:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Altres:hover {
+	color:#d62405;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Altres:link, ul li a.Altres:visited, ul li a.Altres:active {
+	background-color:transparent;
+}
+ul li a.Altres:hover {
+	background-color:#d62405;
+}
+.H1.Altres:hover, .H1.Altres {
+	border-bottom-color:#d62405;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Altres:link, .Menu-AS li ul li a.Altres:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Altres:hover {
+	background-color:#d62405;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Altres:link, .Menu-AS li ul.Menu-AS-Sub li a.Altres:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Altres:hover {
+	background-color:#d62405;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Altres li a:hover, .PaginacioAbaix.Altres, .QueEs.Altres h2 {
+	border-bottom-color:#d62405;
+}
+.PaginacioAdalt.Altres {
+	border-top-color:#d62405;
+}
+.Menu-AS-Sub li.Altres:hover {
+	background-color:#d62405;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Altres:hover a.Altres {
+	color:#FFF;
+}
+.Altres a.BotoMas:link, .Altres a.BotoMas:visited, .Altres a.BotoMas:active, .Altres a.BotoMas:hover, a.New-S.Altres:link, a.New-S.Altres:visited, a.New-S.Altres:active, a.New-S.Altres:hover, a.New-M.Altres:link, a.New-M.Altres:visited, a.New-M.Altres:active, a.New-M.Altres:hover, a.New-L.Altres:link, a.New-L.Altres:visited, a.New-L.Altres:active, a.New-L.Altres:hover, .Altres h2.Bloque-S {
+	background-color:#d62405;
+}
+a.Veure.Altres:link, a.Veure.Altres:visited, a.Veure.Altres:active, .Tags.Altres h2 {
+	background-color: #d62405;
+	color:#FFF;
+}
+.Altres.QueEs {
+	border-color:#d62405;
+}
+/*Color 2: 921903*/
+p a.Altres:hover, .Altres #Bloque-Gran-Txt h3 a, .Altres #Bloque-Gran-Txt h3 a:link, .Altres #Bloque-Gran-Txt h3 a:visited, .Altres #Bloque-Gran-Txt h3 a:active, .Altres #Bloque-Gran-Txt h3 a:hover, .Altres ul, .Altres ul li a:hover, .breadcrumbs.Altres a:link, .breadcrumbs.Altres a:visited, .breadcrumbs.Altres a:active, .breadcrumbs.Altres a:hover, .breadcrumbs.Altres, span.field-prefix, .Altres .author, .Altres .author a:hover, .Altres p a:hover, .Tags.Altres ul li a:hover, #BloquesListas.Altres ul li a:hover, .Altres p a:hover, #BloquesListas.Altres ul li {
+	color:#921903;
+}
+#BloquesListas.Altres ul li a:hover {
+	text-decoration:underline;
+}
+li.Altres ul li:hover, li.Altres ul li.sfHover, a.Altres:focus, a.Altres:active, .Altres h2, .Altres a.BotoMas:hover, .Altres a.BotoMas:hover, a.New-S.Altres:hover, a.New-M.Altres:hover, a.New-L.Altres:hover, a.Veure.Altres:hover, #Paginacio ul.Altres li a:hover, .Altres input.Boto:hover, .Altres ul.links li a:hover, .Altres .form-submit:hover, .Altres .close:hover {
+	background-color:#921903;
+}
+#Paginacio ul.Altres li a:hover, a.Veure.Altres:hover {
+	color:#FFF;
+}
+/*Color 3: fceac3*/
+#Paginacio ul.Altres, #Paginacio ul.Altres li a:link, #Paginacio ul.Altres li a:visited, #Paginacio ul.Altres li a:active, .Altres ul, .Tags.Altres, #Bloque-Gran.Altres, #BloquesListas.Altres, #Fechas.Altres, #Mapas.Altres {
+	background-color:#fceac3;
+	color:#333;
+}
+.breadcrumbs.Altres, #Fechas.Altres, .Altres .author, .Altres .box .content {
+	background-color:#fceac3;
+}
+.Altres #Bloque-Gran-Options {
+	width:180px;
+}
+.Altres #Bloque-Gran-Txt {
+	width:180px;
+}
+.Altres .comment {
+	border-color:#fceac3;
+}
+.Altres ul.links li, .Altres .author {
+	border-top-color:#fceac3;
+}
+/*Pager*/
+#Paginacio.Altres ul, #Paginacio.Altres ul li a:link, #Paginacio.Altres ul li a:visited, #Paginacio.Altres ul li a:active {
+	background-color:#fceac3;
+	color:#921903;
+}
+#Paginacio.Altres ul li a:hover {
+	background-color: #921903;
+	color:#FFF;
+}
+#Paginacio.Altres ul li.pager-current {
+	background-color:#921903;
+}
+/*Internacional*/
+/*Color 1: a75387*/
+.Menu li.Internacional ul, li.Internacional ul li, li.Internacional ul:hover, ul.li.Internacional:hover, .Menu li.Internacional:hover, .Menu li.Internacional.sfHover, .Internacional a.BotoMas:link, .Internacional a.BotoMas:visited, .Internacional a.BotoMas:active, .Internacional a.BotoMas:hover, .Internacional input.Boto, .e_comments.Internacional h2, .Internacional ul.links li a:link, .Internacional ul.links li a:visited, .Internacional ul.links li a:active, .Internacional .indented, .Internacional .form-submit:active, .Internacional .form-submit:visited, .Internacional .form-submit:link, .Internacional .captcha legend, .Internacional .form-submit, .Internacional .close, #Mapas.Internacional h2, .Menu a.Internacional:focus, .Menu a.Internacional:hover, .Menu a.Internacional:active {
+	background-color:#a75387;
+}
+p.legend.Internacional, h2.Internacional, ul li a.Internacional:hover, a.Veure.Internacional:link, a.Veure.Internacional:visited, a.Veure.Internacional:active {
+	background-color:#a75387;
+}
+h2.Internacional, .QueEs.Internacional h2 {
+	border-bottom-color:#a75387;
+	background-color:#FFF;
+}
+.H1.Internacional a:hover, p a.Internacional:link, p a.Internacional:visited, p a.Internacional:active, .Internacional .author a:link, .Internacional .author a:visited, .Internacional .author a:active, .Internacional p a:link, .Internacional p a:visited, .Internacional p a:active, .Tags.Internacional ul li a:link, .Tags.Internacional ul li a:visited, .Tags.Internacional ul li a:active {
+	color:#a75387;
+}
+#New-S p a.Internacional:link, #New-S p a.Internacional:visited, #New-S p a.Internacional:active, #New-M p a.Internacional:link, #New-M p a.Internacional:visited, #New-M p a.Internacional:active, #New-L p a.Internacional:link, #New-L p a.Internacional:visited, #New-L p a.Internacional:active, #New-XL p a.Internacional:link, #New-XL p a.Internacional:visited, #New-XL p a.Internacional:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Internacional:link, p a.Internacional:visited, p a.Internacional:active, #New-S p a.Internacional:hover, #New-M p a.Internacional:hover, #New-L p a.Internacional:hover, #New-XL p a.Internacional:hover {
+	color:#a75387;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Internacional:link, p a.Internacional:visited, p a.Internacional:active, .Internacional p a:link, .Internacional p a:visited, .Internacional p a:active {
+	color:#a75387;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Internacional:link, h3 a.Internacional:visited, h3 a.Internacional:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Internacional:hover {
+	color:#a75387;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Internacional:link, ul li a.Internacional:visited, ul li a.Internacional:active {
+	background-color:transparent;
+}
+ul li a.Internacional:hover {
+	background-color:#a75387;
+}
+.H1.Internacional:hover, .H1.Internacional {
+	border-bottom-color:#a75387;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Internacional:link, .Menu-AS li ul li a.Internacional:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Internacional:hover {
+	background-color:#a75387;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Internacional:link, .Menu-AS li ul.Menu-AS-Sub li a.Internacional:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Internacional:hover {
+	background-color:#a75387;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Internacional li a:hover, .PaginacioAbaix.Internacional, .QueEs.Internacional h2 {
+	border-bottom-color:#a75387;
+}
+.PaginacioAdalt.Internacional {
+	border-top-color:#a75387;
+}
+.Menu-AS-Sub li.Internacional:hover {
+	background-color:#a75387;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Internacional:hover a.Internacional {
+	color:#FFF;
+}
+.Internacional a.BotoMas:link, .Internacional a.BotoMas:visited, .Internacional a.BotoMas:active, .Internacional a.BotoMas:hover, a.New-S.Internacional:link, a.New-S.Internacional:visited, a.New-S.Internacional:active, a.New-S.Internacional:hover, a.New-M.Internacional:link, a.New-M.Internacional:visited, a.New-M.Internacional:active, a.New-M.Internacional:hover, a.New-L.Internacional:link, a.New-L.Internacional:visited, a.New-L.Internacional:active, a.New-L.Internacional:hover, .Internacional h2.Bloque-S {
+	background-color:#a75387;
+}
+a.Veure.Internacional:link, a.Veure.Internacional:visited, a.Veure.Internacional:active, .Tags.Internacional h2 {
+	background-color: #a75387;
+	color:#FFF;
+}
+.Internacional.QueEs {
+	border-color:#a75387;
+}
+/*Color 2: 843161*/
+p a.Internacional:hover, .Internacional #Bloque-Gran-Txt h3 a, .Internacional #Bloque-Gran-Txt h3 a:link, .Internacional #Bloque-Gran-Txt h3 a:visited, .Internacional #Bloque-Gran-Txt h3 a:active, .Internacional #Bloque-Gran-Txt h3 a:hover, .Internacional ul, .Internacional ul li a:hover, .breadcrumbs.Internacional a:link, .breadcrumbs.Internacional a:visited, .breadcrumbs.Internacional a:active, .breadcrumbs.Internacional a:hover, .breadcrumbs.Internacional, span.field-prefix, .Internacional .author, .Internacional .author a:hover, .Internacional p a:hover, .Tags.Internacional ul li a:hover, #BloquesListas.Internacional ul li a:hover, .Internacional p a:hover, #BloquesListas.Internacional ul li {
+	color:#843161;
+}
+#BloquesListas.Internacional ul li a:hover {
+	text-decoration:underline;
+}
+li.Internacional ul li:hover, li.Internacional ul li.sfHover, a.Internacional:focus, a.Internacional:active, .Internacional h2, .Internacional a.BotoMas:hover, .Internacional a.BotoMas:hover, a.New-S.Internacional:hover, a.New-M.Internacional:hover, a.New-L.Internacional:hover, a.Veure.Internacional:hover, #Paginacio ul.Internacional li a:hover, .Internacional input.Boto:hover, .Internacional ul.links li a:hover, .Internacional .form-submit:hover, .Internacional .close:hover {
+	background-color:#843161;
+}
+#Paginacio ul.Internacional li a:hover, a.Veure.Internacional:hover {
+	color:#FFF;
+}
+/*Color 3: e9d4e1*/
+#Paginacio ul.Internacional, #Paginacio ul.Internacional li a:link, #Paginacio ul.Internacional li a:visited, #Paginacio ul.Internacional li a:active, .Internacional ul, .Tags.Internacional, #Bloque-Gran.Internacional, #BloquesListas.Internacional, #Fechas.Internacional, #Mapas.Internacional {
+	background-color:#e9d4e1;
+	color:#333;
+}
+.breadcrumbs.Internacional, #Fechas.Internacional, .Internacional .author, .Internacional .box .content {
+	background-color:#e9d4e1;
+}
+.Internacional #Bloque-Gran-Options {
+	width:180px;
+}
+.Internacional #Bloque-Gran-Txt {
+	width:180px;
+}
+.Internacional .comment {
+	border-color:#e9d4e1;
+}
+.Internacional ul.links li, .Internacional .author {
+	border-top-color:#e9d4e1;
+}
+/*Pager*/
+#Paginacio.Internacional ul, #Paginacio.Internacional ul li a:link, #Paginacio.Internacional ul li a:visited, #Paginacio.Internacional ul li a:active {
+	background-color:#e9d4e1;
+	color:#a75387;
+}
+#Paginacio.Internacional ul li a:hover {
+	background-color: #843161;
+	color:#FFF;
+}
+#Paginacio.Internacional ul li.pager-current {
+	background-color:#a75387;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Ambiental*/
+/*Color 1: 8fbd7f*/
+.Menu li.Ambiental ul, li.Ambiental ul li, li.Ambiental ul:hover, ul.li.Ambiental:hover, .Menu li.Ambiental:hover, .Menu li.Ambiental.sfHover, .Ambiental a.BotoMas:link, .Ambiental a.BotoMas:visited, .Ambiental a.BotoMas:active, .Ambiental a.BotoMas:hover, .Ambiental input.Boto, .e_comments.Ambiental h2, .Ambiental ul.links li a:link, .Ambiental ul.links li a:visited, .Ambiental ul.links li a:active, .Ambiental .indented, .Ambiental .form-submit:active, .Ambiental .form-submit:visited, .Ambiental .form-submit:link, .Ambiental .captcha legend, .Ambiental .form-submit, .Ambiental .close, #Mapas.Ambiental h2, .Menu a.Ambiental:focus, .Menu a.Ambiental:hover, .Menu a.Ambiental:active {
+	background-color:#8fbd7f;
+}
+p.legend.Ambiental, h2.Ambiental, ul li a.Ambiental:hover, a.Veure.Ambiental:link, a.Veure.Ambiental:visited, a.Veure.Ambiental:active {
+	background-color:#8fbd7f;
+}
+h2.Ambiental, .QueEs.Ambiental h2, .QueEs.Ambiental h2 {
+	border-bottom-color:#8fbd7f;
+	background-color:#FFF;
+}
+.H1.Ambiental a:hover, p a.Ambiental:link, p a.Ambiental:visited, p a.Ambiental:active, .Ambiental .author a:link, .Ambiental .author a:visited, .Ambiental .author a:active, .Ambiental p a:link, .Ambiental p a:visited, .Ambiental p a:active, .Tags.Ambiental ul li a:link, .Tags.Ambiental ul li a:visited, .Tags.Ambiental ul li a:active {
+	color:#8fbd7f;
+}
+#New-S p a.Ambiental:link, #New-S p a.Ambiental:visited, #New-S p a.Ambiental:active, #New-M p a.Ambiental:link, #New-M p a.Ambiental:visited, #New-M p a.Ambiental:active, #New-L p a.Ambiental:link, #New-L p a.Ambiental:visited, #New-L p a.Ambiental:active, #New-XL p a.Ambiental:link, #New-XL p a.Ambiental:visited, #New-XL p a.Ambiental:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Ambiental:link, p a.Ambiental:visited, p a.Ambiental:active, #New-S p a.Ambiental:hover, #New-M p a.Ambiental:hover, #New-L p a.Ambiental:hover, #New-XL p a.Ambiental:hover {
+	color:#8fbd7f;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Ambiental:link, p a.Ambiental:visited, p a.Ambiental:active, .Ambiental p a:link, .Ambiental p a:visited, .Ambiental p a:active {
+	color:#8fbd7f;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Ambiental:link, h3 a.Ambiental:visited, h3 a.Ambiental:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Ambiental:hover {
+	color:#8fbd7f;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Ambiental:link, ul li a.Ambiental:visited, ul li a.Ambiental:active {
+	background-color:transparent;
+}
+ul li a.Ambiental:hover {
+	background-color:#8fbd7f;
+}
+.H1.Ambiental:hover, .H1.Ambiental {
+	border-bottom-color:#8fbd7f;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Ambiental:link, .Menu-AS li ul li a.Ambiental:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Ambiental:hover {
+	background-color:#8fbd7f;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Ambiental:link, .Menu-AS li ul.Menu-AS-Sub li a.Ambiental:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Ambiental:hover {
+	background-color:#8fbd7f;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Ambiental li a:hover, .PaginacioAbaix.Ambiental, .QueEs.Ambiental h2 {
+	border-bottom-color:#8fbd7f;
+}
+.PaginacioAdalt.Ambiental {
+	border-top-color:#8fbd7f;
+}
+.Menu-AS-Sub li.Ambiental:hover {
+	background-color:#8fbd7f;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Ambiental:hover a.Ambiental {
+	color:#FFF;
+}
+.Ambiental a.BotoMas:link, .Ambiental a.BotoMas:visited, .Ambiental a.BotoMas:active, .Ambiental a.BotoMas:hover, a.New-S.Ambiental:link, a.New-S.Ambiental:visited, a.New-S.Ambiental:active, a.New-S.Ambiental:hover, a.New-M.Ambiental:link, a.New-M.Ambiental:visited, a.New-M.Ambiental:active, a.New-M.Ambiental:hover, a.New-L.Ambiental:link, a.New-L.Ambiental:visited, a.New-L.Ambiental:active, a.New-L.Ambiental:hover, .Ambiental h2.Bloque-S {
+	background-color:#8fbd7f;
+}
+a.Veure.Ambiental:link, a.Veure.Ambiental:visited, a.Veure.Ambiental:active, .Tags.Ambiental h2 {
+	background-color: #8fbd7f;
+	color:#FFF;
+}
+.Ambiental.QueEs {
+	border-color:#8fbd7f;
+}
+/*Color 2: 3e7a2f*/
+p a.Ambiental:hover, .Ambiental #Bloque-Gran-Txt h3 a, .Ambiental #Bloque-Gran-Txt h3 a:link, .Ambiental #Bloque-Gran-Txt h3 a:visited, .Ambiental #Bloque-Gran-Txt h3 a:active, .Ambiental #Bloque-Gran-Txt h3 a:hover, .Ambiental ul, .Ambiental ul li a:hover, .breadcrumbs.Ambiental a:link, .breadcrumbs.Ambiental a:visited, .breadcrumbs.Ambiental a:active, .breadcrumbs.Ambiental a:hover, .breadcrumbs.Ambiental, span.field-prefix, .Ambiental .author, .Ambiental .author a:hover, .Ambiental p a:hover, .Tags.Ambiental ul li a:hover, #BloquesListas.Ambiental ul li a:hover, .Ambiental p a:hover, #BloquesListas.Ambiental ul li {
+	color:#3e7a2f;
+}
+#BloquesListas.Ambiental ul li a:hover {
+	text-decoration:underline;
+}
+li.Ambiental ul li:hover, li.Ambiental ul li.sfHover, a.Ambiental:focus, a.Ambiental:active, .Ambiental h2, .Ambiental a.BotoMas:hover, .Ambiental a.BotoMas:hover, a.New-S.Ambiental:hover, a.New-M.Ambiental:hover, a.New-L.Ambiental:hover, a.Veure.Ambiental:hover, #Paginacio ul.Ambiental li a:hover, .Ambiental input.Boto:hover, .Ambiental ul.links li a:hover, .Ambiental .form-submit:hover, .Ambiental .close:hover {
+	background-color:#3e7a2f;
+}
+#Paginacio ul.Ambiental li a:hover, a.Veure.Ambiental:hover {
+	color:#FFF;
+}
+/*Color 3: ddebd8*/
+#Paginacio ul.Ambiental, #Paginacio ul.Ambiental li a:link, #Paginacio ul.Ambiental li a:visited, #Paginacio ul.Ambiental li a:active, .Ambiental ul, .Tags.Ambiental, #Bloque-Gran.Ambiental, #BloquesListas.Ambiental, #Fechas.Ambiental, #Mapas.Ambiental {
+	background-color:#ddebd8;
+	color:#333;
+}
+.breadcrumbs.Ambiental, #Fechas.Ambiental, .Ambiental .author, .Ambiental .box .content {
+	background-color:#ddebd8;
+}
+.Ambiental #Bloque-Gran-Options {
+	width:180px;
+}
+.Ambiental #Bloque-Gran-Txt {
+	width:180px;
+}
+.Ambiental .comment {
+	border-color:#ddebd8;
+}
+.Ambiental ul.links li, .Ambiental .author {
+	border-top-color:#ddebd8;
+}
+/*Pager*/
+#Paginacio.Ambiental ul, #Paginacio.Ambiental ul li a:link, #Paginacio.Ambiental ul li a:visited, #Paginacio.Ambiental ul li a:active {
+	background-color:#ddebd8;
+	color:#8fbd7f;
+}
+#Paginacio.Ambiental ul li a:hover {
+	background-color: #3e7a2f;
+	color:#FFF;
+}
+#Paginacio.Ambiental ul li.pager-current {
+	background-color:#8fbd7f;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Comunitari*/
+/*Color 1: f4bc44*/
+.Menu li.Comunitari ul, li.Comunitari ul li, li.Comunitari ul:hover, ul.li.Comunitari:hover, .Menu li.Comunitari:hover, .Menu li.Comunitari.sfHover, .Comunitari a.BotoMas:link, .Comunitari a.BotoMas:visited, .Comunitari a.BotoMas:active, .Comunitari a.BotoMas:hover, .Comunitari input.Boto, .e_comments.Comunitari h2, .Comunitari ul.links li a:link, .Comunitari ul.links li a:visited, .Comunitari ul.links li a:active, .Comunitari .indented, .Comunitari .form-submit:active, .Comunitari .form-submit:visited, .Comunitari .form-submit:link, .Comunitari .captcha legend, .Comunitari .form-submit, .Comunitari .close, #Mapas.Comunitari h2, .Menu a.Comunitari:focus, .Menu a.Comunitari:hover, .Menu a.Comunitari:active {
+	background-color:#f4bc44;
+}
+p.legend.Comunitari, h2.Comunitari, ul li a.Comunitari:hover, a.Veure.Comunitari:link, a.Veure.Comunitari:visited, a.Veure.Comunitari:active {
+	background-color:#f4bc44;
+}
+h2.Comunitari, .QueEs.Comunitari h2 {
+	border-bottom-color:#f4bc44;
+	background-color:#FFF;
+}
+.H1.Comunitari a:hover, p a.Comunitari:link, p a.Comunitari:visited, p a.Comunitari:active, .Comunitari .author a:link, .Comunitari .author a:visited, .Comunitari .author a:active, .Comunitari p a:link, .Comunitari p a:visited, .Comunitari p a:active, .Tags.Comunitari ul li a:link, .Tags.Comunitari ul li a:visited, .Tags.Comunitari ul li a:active {
+	color:#f4bc44;
+}
+#New-S p a.Comunitari:link, #New-S p a.Comunitari:visited, #New-S p a.Comunitari:active, #New-M p a.Comunitari:link, #New-M p a.Comunitari:visited, #New-M p a.Comunitari:active, #New-L p a.Comunitari:link, #New-L p a.Comunitari:visited, #New-L p a.Comunitari:active, #New-XL p a.Comunitari:link, #New-XL p a.Comunitari:visited, #New-XL p a.Comunitari:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Comunitari:link, p a.Comunitari:visited, p a.Comunitari:active, #New-S p a.Comunitari:hover, #New-M p a.Comunitari:hover, #New-L p a.Comunitari:hover, #New-XL p a.Comunitari:hover {
+	color:#f4bc44;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Comunitari:link, p a.Comunitari:visited, p a.Comunitari:active, .Comunitari p a:link, .Comunitari p a:visited, .Comunitari p a:active {
+	color:#f4bc44;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Comunitari:link, h3 a.Comunitari:visited, h3 a.Comunitari:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Comunitari:hover {
+	color:#f4bc44;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Comunitari:link, ul li a.Comunitari:visited, ul li a.Comunitari:active {
+	background-color:transparent;
+}
+ul li a.Comunitari:hover {
+	background-color:#f4bc44;
+}
+.H1.Comunitari:hover, .H1.Comunitari {
+	border-bottom-color:#f4bc44;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Comunitari:link, .Menu-AS li ul li a.Comunitari:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Comunitari:hover {
+	background-color:#f4bc44;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Comunitari:link, .Menu-AS li ul.Menu-AS-Sub li a.Comunitari:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Comunitari:hover {
+	background-color:#f4bc44;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Comunitari li a:hover, .PaginacioAbaix.Comunitari, .QueEs.Comunitari h2 {
+	border-bottom-color:#f4bc44;
+}
+.PaginacioAdalt.Comunitari {
+	border-top-color:#f4bc44;
+}
+.Menu-AS-Sub li.Comunitari:hover {
+	background-color:#f4bc44;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Comunitari:hover a.Comunitari {
+	color:#FFF;
+}
+.Comunitari a.BotoMas:link, .Comunitari a.BotoMas:visited, .Comunitari a.BotoMas:active, .Comunitari a.BotoMas:hover, a.New-S.Comunitari:link, a.New-S.Comunitari:visited, a.New-S.Comunitari:active, a.New-S.Comunitari:hover, a.New-M.Comunitari:link, a.New-M.Comunitari:visited, a.New-M.Comunitari:active, a.New-M.Comunitari:hover, a.New-L.Comunitari:link, a.New-L.Comunitari:visited, a.New-L.Comunitari:active, a.New-L.Comunitari:hover, .Comunitari h2.Bloque-S {
+	background-color:#f4bc44;
+}
+a.Veure.Comunitari:link, a.Veure.Comunitari:visited, a.Veure.Comunitari:active, .Tags.Comunitari h2 {
+	background-color: #f4bc44;
+	color:#FFF;
+}
+.Comunitari.QueEs {
+	border-color:#f4bc44;
+}
+/*Color 2: df6605*/
+p a.Comunitari:hover, .Comunitari #Bloque-Gran-Txt h3 a, .Comunitari #Bloque-Gran-Txt h3 a:link, .Comunitari #Bloque-Gran-Txt h3 a:visited, .Comunitari #Bloque-Gran-Txt h3 a:active, .Comunitari #Bloque-Gran-Txt h3 a:hover, .Comunitari ul, .Comunitari ul li a:hover, .breadcrumbs.Comunitari a:link, .breadcrumbs.Comunitari a:visited, .breadcrumbs.Comunitari a:active, .breadcrumbs.Comunitari a:hover, .breadcrumbs.Comunitari, span.field-prefix, .Comunitari .author, .Comunitari .author a:hover, .Comunitari p a:hover, .Tags.Comunitari ul li a:hover, #BloquesListas.Comunitari ul li a:hover, .Comunitari p a:hover, #BloquesListas.Comunitari ul li {
+	color:#df6605;
+}
+#BloquesListas.Comunitari ul li a:hover {
+	text-decoration:underline;
+}
+li.Comunitari ul li:hover, li.Comunitari ul li.sfHover, a.Comunitari:focus, a.Comunitari:active, .Comunitari h2, .Comunitari a.BotoMas:hover, .Comunitari a.BotoMas:hover, a.New-S.Comunitari:hover, a.New-M.Comunitari:hover, a.New-L.Comunitari:hover, a.Veure.Comunitari:hover, #Paginacio ul.Comunitari li a:hover, .Comunitari input.Boto:hover, .Comunitari ul.links li a:hover, .Comunitari .form-submit:hover, .Comunitari .close:hover {
+	background-color:#df6605;
+}
+#Paginacio ul.Comunitari li a:hover, a.Veure.Comunitari:hover {
+	color:#FFF;
+}
+/*Color 3: fcebc7*/
+#Paginacio ul.Comunitari, #Paginacio ul.Comunitari li a:link, #Paginacio ul.Comunitari li a:visited, #Paginacio ul.Comunitari li a:active, .Comunitari ul, .Tags.Comunitari, #Bloque-Gran.Comunitari, #BloquesListas.Comunitari, #Fechas.Comunitari, #Mapas.Comunitari {
+	background-color:#fcebc7;
+	color:#333;
+}
+.breadcrumbs.Comunitari, #Fechas.Comunitari, .Comunitari .author, .Comunitari .box .content {
+	background-color:#fcebc7;
+}
+.Comunitari #Bloque-Gran-Options {
+	width:180px;
+}
+.Comunitari #Bloque-Gran-Txt {
+	width:180px;
+}
+.Comunitari .comment {
+	border-color:#fcebc7;
+}
+.Comunitari ul.links li, .Comunitari .author {
+	border-top-color:#fcebc7;
+}
+/*Pager*/
+#Paginacio.Comunitari ul, #Paginacio.Comunitari ul li a:link, #Paginacio.Comunitari ul li a:visited, #Paginacio.Comunitari ul li a:active {
+	background-color:#fcebc7;
+	color:#f4bc44;
+}
+#Paginacio.Comunitari ul li a:hover {
+	background-color: #df6605;
+	color:#FFF;
+}
+#Paginacio.Comunitari ul li.pager-current {
+	background-color:#f4bc44;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Cultural*/
+/*Color 1: 959fd6*/
+.Menu li.Cultural ul, li.Cultural ul li, li.Cultural ul:hover, ul.li.Cultural:hover, .Menu li.Cultural:hover, .Menu li.Cultural.sfHover, .Cultural a.BotoMas:link, .Cultural a.BotoMas:visited, .Cultural a.BotoMas:active, .Cultural a.BotoMas:hover, .Cultural input.Boto, .e_comments.Cultural h2, .Cultural ul.links li a:link, .Cultural ul.links li a:visited, .Cultural ul.links li a:active, .Cultural .indented, .Cultural .form-submit:active, .Cultural .form-submit:visited, .Cultural .form-submit:link, .Cultural .captcha legend, .Cultural .form-submit, .Cultural .close, #Mapas.Cultural h2, .Menu a.Cultural:focus, .Menu a.Cultural:hover, .Menu a.Cultural:active {
+	background-color:#959fd6;
+}
+p.legend.Cultural, h2.Cultural, ul li a.Cultural:hover, a.Veure.Cultural:link, a.Veure.Cultural:visited, a.Veure.Cultural:active {
+	background-color:#959fd6;
+}
+h2.Cultural, .QueEs.Cultural h2 {
+	border-bottom-color:#959fd6;
+	background-color:#FFF;
+}
+.H1.Cultural a:hover, p a.Cultural:link, p a.Cultural:visited, p a.Cultural:active, .Cultural .author a:link, .Cultural .author a:visited, .Cultural .author a:active, .Cultural p a:link, .Cultural p a:visited, .Cultural p a:active, .Tags.Cultural ul li a:link, .Tags.Cultural ul li a:visited, .Tags.Cultural ul li a:active {
+	color:#959fd6;
+}
+#New-S p a.Cultural:link, #New-S p a.Cultural:visited, #New-S p a.Cultural:active, #New-M p a.Cultural:link, #New-M p a.Cultural:visited, #New-M p a.Cultural:active, #New-L p a.Cultural:link, #New-L p a.Cultural:visited, #New-L p a.Cultural:active, #New-XL p a.Cultural:link, #New-XL p a.Cultural:visited, #New-XL p a.Cultural:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Cultural:link, p a.Cultural:visited, p a.Cultural:active, #New-S p a.Cultural:hover, #New-M p a.Cultural:hover, #New-L p a.Cultural:hover, #New-XL p a.Cultural:hover {
+	color:#959fd6;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Cultural:link, p a.Cultural:visited, p a.Cultural:active, .Cultural p a:link, .Cultural p a:visited, .Cultural p a:active {
+	color:#959fd6;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Cultural:link, h3 a.Cultural:visited, h3 a.Cultural:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Cultural:hover {
+	color:#959fd6;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Cultural:link, ul li a.Cultural:visited, ul li a.Cultural:active {
+	background-color:transparent;
+}
+ul li a.Cultural:hover {
+	background-color:#959fd6;
+}
+.H1.Cultural:hover, .H1.Cultural {
+	border-bottom-color:#959fd6;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Cultural:link, .Menu-AS li ul li a.Cultural:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Cultural:hover {
+	background-color:#959fd6;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Cultural:link, .Menu-AS li ul.Menu-AS-Sub li a.Cultural:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Cultural:hover {
+	background-color:#959fd6;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Cultural li a:hover, .PaginacioAbaix.Cultural, .QueEs.Cultural h2 {
+	border-bottom-color:#959fd6;
+}
+.PaginacioAdalt.Cultural {
+	border-top-color:#959fd6;
+}
+.Menu-AS-Sub li.Cultural:hover {
+	background-color:#959fd6;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Cultural:hover a.Cultural {
+	color:#FFF;
+}
+.Cultural a.BotoMas:link, .Cultural a.BotoMas:visited, .Cultural a.BotoMas:active, .Cultural a.BotoMas:hover, a.New-S.Cultural:link, a.New-S.Cultural:visited, a.New-S.Cultural:active, a.New-S.Cultural:hover, a.New-M.Cultural:link, a.New-M.Cultural:visited, a.New-M.Cultural:active, a.New-M.Cultural:hover, a.New-L.Cultural:link, a.New-L.Cultural:visited, a.New-L.Cultural:active, a.New-L.Cultural:hover, .Cultural h2.Bloque-S {
+	background-color:#959fd6;
+}
+a.Veure.Cultural:link, a.Veure.Cultural:visited, a.Veure.Cultural:active, .Tags.Cultural h2 {
+	background-color: #959fd6;
+	color:#FFF;
+}
+.Cultural.QueEs {
+	border-color:#959fd6;
+}
+/*Color 2: 4550a5*/
+p a.Cultural:hover, .Cultural #Bloque-Gran-Txt h3 a, .Cultural #Bloque-Gran-Txt h3 a:link, .Cultural #Bloque-Gran-Txt h3 a:visited, .Cultural #Bloque-Gran-Txt h3 a:active, .Cultural #Bloque-Gran-Txt h3 a:hover, .Cultural ul, .Cultural ul li a:hover, .breadcrumbs.Cultural a:link, .breadcrumbs.Cultural a:visited, .breadcrumbs.Cultural a:active, .breadcrumbs.Cultural a:hover, .breadcrumbs.Cultural, span.field-prefix, .Cultural .author, .Cultural .author a:hover, .Cultural p a:hover, .Tags.Cultural ul li a:hover, #BloquesListas.Cultural ul li a:hover, .Cultural p a:hover, #BloquesListas.Cultural ul li {
+	color:#4550a5;
+}
+#BloquesListas.Cultural ul li a:hover {
+	text-decoration:underline;
+}
+li.Cultural ul li:hover, li.Cultural ul li.sfHover, a.Cultural:focus, a.Cultural:active, .Cultural h2, .Cultural a.BotoMas:hover, .Cultural a.BotoMas:hover, a.New-S.Cultural:hover, a.New-M.Cultural:hover, a.New-L.Cultural:hover, a.Veure.Cultural:hover, #Paginacio ul.Cultural li a:hover, .Cultural input.Boto:hover, .Cultural ul.links li a:hover, .Cultural .form-submit:hover, .Cultural .close:hover {
+	background-color:#4550a5;
+}
+#Paginacio ul.Cultural li a:hover, a.Veure.Cultural:hover {
+	color:#FFF;
+}
+/*Color 3: dfe2f3*/
+#Paginacio ul.Cultural, #Paginacio ul.Cultural li a:link, #Paginacio ul.Cultural li a:visited, #Paginacio ul.Cultural li a:active, .Cultural ul, .Tags.Cultural, #Bloque-Gran.Cultural, #BloquesListas.Cultural, #Fechas.Cultural, #Mapas.Cultural {
+	background-color:#dfe2f3;
+	color:#333;
+}
+.breadcrumbs.Cultural, #Fechas.Cultural, .Cultural .author, .Cultural .box .content {
+	background-color:#dfe2f3;
+}
+.Cultural #Bloque-Gran-Options {
+	width:180px;
+}
+.Cultural #Bloque-Gran-Txt {
+	width:180px;
+}
+.Cultural .comment {
+	border-color:#dfe2f3;
+}
+.Cultural ul.links li, .Cultural .author {
+	border-top-color:#dfe2f3;
+}
+/*Pager*/
+#Paginacio.Cultural ul, #Paginacio.Cultural ul li a:link, #Paginacio.Cultural ul li a:visited, #Paginacio.Cultural ul li a:active {
+	background-color:#dfe2f3;
+	color:#959fd6;
+}
+#Paginacio.Cultural ul li a:hover {
+	background-color: #4550a5;
+	color:#FFF;
+}
+#Paginacio.Cultural ul li.pager-current {
+	background-color:#959fd6;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Social*/
+/*Color 1: eb9de3*/
+.Menu li.Social ul, li.Social ul li, li.Social ul:hover, ul.li.Social:hover, .Menu li.Social:hover, .Menu li.Social.sfHover, .Social a.BotoMas:link, .Social a.BotoMas:visited, .Social a.BotoMas:active, .Social a.BotoMas:hover, .Social input.Boto, .e_comments.Social h2, .Social ul.links li a:link, .Social ul.links li a:visited, .Social ul.links li a:active, .Social .indented, .Social .form-submit:active, .Social .form-submit:visited, .Social .form-submit:link, .Social .captcha legend, .Social .form-submit, .Social .close, #Mapas.Social h2, .Menu a.Social:focus, .Menu a.Social:hover, .Menu a.Social:active {
+	background-color:#eb9de3;
+}
+p.legend.Social, h2.Social, ul li a.Social:hover, a.Veure.Social:link, a.Veure.Social:visited, a.Veure.Social:active {
+	background-color:#eb9de3;
+}
+h2.Social, .QueEs.Social h2 {
+	border-bottom-color:#eb9de3;
+	background-color:#FFF;
+}
+.H1.Social a:hover, p a.Social:link, p a.Social:visited, p a.Social:active, .Social .author a:link, .Social .author a:visited, .Social .author a:active, .Social p a:link, .Social p a:visited, .Social p a:active, .Tags.Social ul li a:link, .Tags.Social ul li a:visited, .Tags.Social ul li a:active {
+	color:#eb9de3;
+}
+#New-S p a.Social:link, #New-S p a.Social:visited, #New-S p a.Social:active, #New-M p a.Social:link, #New-M p a.Social:visited, #New-M p a.Social:active, #New-L p a.Social:link, #New-L p a.Social:visited, #New-L p a.Social:active, #New-XL p a.Social:link, #New-XL p a.Social:visited, #New-XL p a.Social:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Social:link, p a.Social:visited, p a.Social:active, #New-S p a.Social:hover, #New-M p a.Social:hover, #New-L p a.Social:hover, #New-XL p a.Social:hover {
+	color:#eb9de3;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Social:link, p a.Social:visited, p a.Social:active, .Social p a:link, .Social p a:visited, .Social p a:active {
+	color:#eb9de3;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Social:link, h3 a.Social:visited, h3 a.Social:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Social:hover {
+	color:#eb9de3;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Social:link, ul li a.Social:visited, ul li a.Social:active {
+	background-color:transparent;
+}
+ul li a.Social:hover {
+	background-color:#eb9de3;
+}
+.H1.Social:hover, .H1.Social {
+	border-bottom-color:#eb9de3;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Social:link, .Menu-AS li ul li a.Social:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Social:hover {
+	background-color:#eb9de3;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Social:link, .Menu-AS li ul.Menu-AS-Sub li a.Social:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Social:hover {
+	background-color:#eb9de3;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Social li a:hover, .PaginacioAbaix.Social, .QueEs.Social h2 {
+	border-bottom-color:#eb9de3;
+}
+.PaginacioAdalt.Social {
+	border-top-color:#eb9de3;
+}
+.Menu-AS-Sub li.Social:hover {
+	background-color:#eb9de3;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Social:hover a.Social {
+	color:#FFF;
+}
+.Social a.BotoMas:link, .Social a.BotoMas:visited, .Social a.BotoMas:active, .Social a.BotoMas:hover, a.New-S.Social:link, a.New-S.Social:visited, a.New-S.Social:active, a.New-S.Social:hover, a.New-M.Social:link, a.New-M.Social:visited, a.New-M.Social:active, a.New-M.Social:hover, a.New-L.Social:link, a.New-L.Social:visited, a.New-L.Social:active, a.New-L.Social:hover, .Social h2.Bloque-S {
+	background-color:#eb9de3;
+}
+a.Veure.Social:link, a.Veure.Social:visited, a.Veure.Social:active, .Tags.Social h2 {
+	background-color: #eb9de3;
+	color:#FFF;
+}
+.Social.QueEs {
+	border-color:#eb9de3;
+}
+/*Color 2: d252c1*/
+p a.Social:hover, .Social #Bloque-Gran-Txt h3 a, .Social #Bloque-Gran-Txt h3 a:link, .Social #Bloque-Gran-Txt h3 a:visited, .Social #Bloque-Gran-Txt h3 a:active, .Social #Bloque-Gran-Txt h3 a:hover, .Social ul, .Social ul li a:hover, .breadcrumbs.Social a:link, .breadcrumbs.Social a:visited, .breadcrumbs.Social a:active, .breadcrumbs.Social a:hover, .breadcrumbs.Social, span.field-prefix, .Social .author, .Social .author a:hover, .Social p a:hover, .Tags.Social ul li a:hover, #BloquesListas.Social ul li a:hover, .Social p a:hover, #BloquesListas.Social ul li {
+	color:#d252c1;
+}
+#BloquesListas.Social ul li a:hover {
+	text-decoration:underline;
+}
+li.Social ul li:hover, li.Social ul li.sfHover, a.Social:focus, a.Social:active, .Social h2, .Social a.BotoMas:hover, .Social a.BotoMas:hover, a.New-S.Social:hover, a.New-M.Social:hover, a.New-L.Social:hover, a.Veure.Social:hover, #Paginacio ul.Social li a:hover, .Social input.Boto:hover, .Social ul.links li a:hover, .Social .form-submit:hover, .Social .close:hover {
+	background-color:#d252c1;
+}
+#Paginacio ul.Social li a:hover, a.Veure.Social:hover {
+	color:#FFF;
+}
+/*Color 3: f5f6fb*/
+#Paginacio ul.Social, #Paginacio ul.Social li a:link, #Paginacio ul.Social li a:visited, #Paginacio ul.Social li a:active, .Social ul, .Tags.Social, #Bloque-Gran.Social, #BloquesListas.Social, #Fechas.Social, #Mapas.Social {
+	background-color:#f5f6fb;
+	color:#333;
+}
+.breadcrumbs.Social, #Fechas.Social, .Social .author, .Social .box .content {
+	background-color:#f5f6fb;
+}
+.Social #Bloque-Gran-Options {
+	width:180px;
+}
+.Social #Bloque-Gran-Txt {
+	width:180px;
+}
+.Social .comment {
+	border-color:#f5f6fb;
+}
+.Social ul.links li, .Social .author {
+	border-top-color:#f5f6fb;
+}
+/*Pager*/
+#Paginacio.Social ul, #Paginacio.Social ul li a:link, #Paginacio.Social ul li a:visited, #Paginacio.Social ul li a:active {
+	background-color:#f5f6fb;
+	color:#eb9de3;
+}
+#Paginacio.Social ul li a:hover {
+	background-color: #d252c1;
+	color:#FFF;
+}
+#Paginacio.Social ul li.pager-current {
+	background-color:#eb9de3;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Projectes*/
+/*Color 1: e39595*/
+.Menu li.Projectes ul, li.Projectes ul li, li.Projectes ul:hover, ul.li.Projectes:hover, .Menu li.Projectes:hover, .Menu li.Projectes.sfHover, .Projectes a.BotoMas:link, .Projectes a.BotoMas:visited, .Projectes a.BotoMas:active, .Projectes a.BotoMas:hover, .Projectes input.Boto, .e_comments.Projectes h2, .Projectes ul.links li a:link, .Projectes ul.links li a:visited, .Projectes ul.links li a:active, .Projectes .indented, .Projectes .form-submit:active, .Projectes .form-submit:visited, .Projectes .form-submit:link, .Projectes .captcha legend, .Projectes .form-submit, .Projectes .close, #Mapas.Projectes h2, .Menu a.Projectes:focus, .Menu a.Projectes:hover, .Menu a.Projectes:active {
+	background-color:#e39595;
+}
+p.legend.Projectes, h2.Projectes, ul li a.Projectes:hover, a.Veure.Projectes:link, a.Veure.Projectes:visited, a.Veure.Projectes:active {
+	background-color:#e39595;
+}
+h2.Projectes, .QueEs.Projectes h2 {
+	border-bottom-color:#e39595;
+	background-color:#FFF;
+}
+.H1.Projectes a:hover, p a.Projectes:link, p a.Projectes:visited, p a.Projectes:active, .Projectes .author a:link, .Projectes .author a:visited, .Projectes .author a:active, .Projectes p a:link, .Projectes p a:visited, .Projectes p a:active, .Tags.Projectes ul li a:link, .Tags.Projectes ul li a:visited, .Tags.Projectes ul li a:active {
+	color:#e39595;
+}
+#New-S p a.Projectes:link, #New-S p a.Projectes:visited, #New-S p a.Projectes:active, #New-M p a.Projectes:link, #New-M p a.Projectes:visited, #New-M p a.Projectes:active, #New-L p a.Projectes:link, #New-L p a.Projectes:visited, #New-L p a.Projectes:active, #New-XL p a.Projectes:link, #New-XL p a.Projectes:visited, #New-XL p a.Projectes:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Projectes:link, p a.Projectes:visited, p a.Projectes:active, #New-S p a.Projectes:hover, #New-M p a.Projectes:hover, #New-L p a.Projectes:hover, #New-XL p a.Projectes:hover {
+	color:#e39595;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Projectes:link, p a.Projectes:visited, p a.Projectes:active, .Projectes p a:link, .Projectes p a:visited, .Projectes p a:active {
+	color:#e39595;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Projectes:link, h3 a.Projectes:visited, h3 a.Projectes:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Projectes:hover {
+	color:#e39595;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Projectes:link, ul li a.Projectes:visited, ul li a.Projectes:active {
+	background-color:transparent;
+}
+ul li a.Projectes:hover {
+	background-color:#e39595;
+}
+.H1.Projectes:hover, .H1.Projectes {
+	border-bottom-color:#e39595;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Projectes:link, .Menu-AS li ul li a.Projectes:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Projectes:hover {
+	background-color:#e39595;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Projectes:link, .Menu-AS li ul.Menu-AS-Sub li a.Projectes:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Projectes:hover {
+	background-color:#e39595;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Projectes li a:hover, .PaginacioAbaix.Projectes, .QueEs.Projectes h2 {
+	border-bottom-color:#e39595;
+}
+.PaginacioAdalt.Projectes {
+	border-top-color:#e39595;
+}
+.Menu-AS-Sub li.Projectes:hover {
+	background-color:#e39595;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Projectes:hover a.Projectes {
+	color:#FFF;
+}
+.Projectes a.BotoMas:link, .Projectes a.BotoMas:visited, .Projectes a.BotoMas:active, .Projectes a.BotoMas:hover, a.New-S.Projectes:link, a.New-S.Projectes:visited, a.New-S.Projectes:active, a.New-S.Projectes:hover, a.New-M.Projectes:link, a.New-M.Projectes:visited, a.New-M.Projectes:active, a.New-M.Projectes:hover, a.New-L.Projectes:link, a.New-L.Projectes:visited, a.New-L.Projectes:active, a.New-L.Projectes:hover, .Projectes h2.Bloque-S {
+	background-color:#e39595;
+}
+a.Veure.Projectes:link, a.Veure.Projectes:visited, a.Veure.Projectes:active, .Tags.Projectes h2 {
+	background-color: #e39595;
+	color:#FFF;
+}
+.Projectes.QueEs {
+	border-color:#e39595;
+}
+/*Color 2: bf4545*/
+p a.Projectes:hover, .Projectes #Bloque-Gran-Txt h3 a, .Projectes #Bloque-Gran-Txt h3 a:link, .Projectes #Bloque-Gran-Txt h3 a:visited, .Projectes #Bloque-Gran-Txt h3 a:active, .Projectes #Bloque-Gran-Txt h3 a:hover, .Projectes ul, .Projectes ul li a:hover, .breadcrumbs.Projectes a:link, .breadcrumbs.Projectes a:visited, .breadcrumbs.Projectes a:active, .breadcrumbs.Projectes a:hover, .breadcrumbs.Projectes, span.field-prefix, .Projectes .author, .Projectes .author a:hover, .Projectes p a:hover, .Tags.Projectes ul li a:hover, #BloquesListas.Projectes ul li a:hover, .Projectes p a:hover, #BloquesListas.Projectes ul li {
+	color:#bf4545;
+}
+#BloquesListas.Projectes ul li a:hover {
+	text-decoration:underline;
+}
+li.Projectes ul li:hover, li.Projectes ul li.sfHover, a.Projectes:focus, a.Projectes:active, .Projectes h2, .Projectes a.BotoMas:hover, .Projectes a.BotoMas:hover, a.New-S.Projectes:hover, a.New-M.Projectes:hover, a.New-L.Projectes:hover, a.Veure.Projectes:hover, #Paginacio ul.Projectes li a:hover, .Projectes input.Boto:hover, .Projectes ul.links li a:hover, .Projectes .form-submit:hover, .Projectes .close:hover {
+	background-color:#bf4545;
+}
+#Paginacio ul.Projectes li a:hover, a.Veure.Projectes:hover {
+	color:#FFF;
+}
+/*Color 3: f7dfdf*/
+#Paginacio ul.Projectes, #Paginacio ul.Projectes li a:link, #Paginacio ul.Projectes li a:visited, #Paginacio ul.Projectes li a:active, .Projectes ul, .Tags.Projectes, #Bloque-Gran.Projectes, #BloquesListas.Projectes, #Fechas.Projectes, #Mapas.Projectes {
+	background-color:#f7dfdf;
+	color:#333;
+}
+.breadcrumbs.Projectes, #Fechas.Projectes, .Projectes .author, .Projectes .box .content {
+	background-color:#f7dfdf;
+}
+.Projectes #Bloque-Gran-Options {
+	width:180px;
+}
+.Projectes #Bloque-Gran-Txt {
+	width:180px;
+}
+.Projectes .comment {
+	border-color:#f7dfdf;
+}
+.Projectes ul.links li, .Projectes .author {
+	border-top-color:#f7dfdf;
+}
+/*Pager*/
+#Paginacio.Projectes ul, #Paginacio.Projectes ul li a:link, #Paginacio.Projectes ul li a:visited, #Paginacio.Projectes ul li a:active {
+	background-color:#f7dfdf;
+	color:#e39595;
+}
+#Paginacio.Projectes ul li a:hover {
+	background-color: #bf4545;
+	color:#FFF;
+}
+#Paginacio.Projectes ul li.pager-current {
+	background-color:#e39595;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Juridic*/
+/*Color 1: 62aec4*/
+.Menu li.Juridic ul, li.Juridic ul li, li.Juridic ul:hover, ul.li.Juridic:hover, .Menu li.Juridic:hover, .Menu li.Juridic.sfHover, .Juridic a.BotoMas:link, .Juridic a.BotoMas:visited, .Juridic a.BotoMas:active, .Juridic a.BotoMas:hover, .Juridic input.Boto, .e_comments.Juridic h2, .Juridic ul.links li a:link, .Juridic ul.links li a:visited, .Juridic ul.links li a:active, .Juridic .indented, .Juridic .form-submit:active, .Juridic .form-submit:visited, .Juridic .form-submit:link, .Juridic .captcha legend, .Juridic .form-submit, .Juridic .close, #Mapas.Juridic h2, .Menu a.Juridic:focus, .Menu a.Juridic:hover, .Menu a.Juridic:active {
+	background-color:#62aec4;
+}
+p.legend.Juridic, h2.Juridic, ul li a.Juridic:hover, a.Veure.Juridic:link, a.Veure.Juridic:visited, a.Veure.Juridic:active {
+	background-color:#62aec4;
+}
+h2.Juridic, .QueEs.Juridic h2 {
+	border-bottom-color:#62aec4;
+	background-color:#FFF;
+}
+.H1.Juridic a:hover, p a.Juridic:link, p a.Juridic:visited, p a.Juridic:active, .Juridic .author a:link, .Juridic .author a:visited, .Juridic .author a:active, .Juridic p a:link, .Juridic p a:visited, .Juridic p a:active, .Tags.Juridic ul li a:link, .Tags.Juridic ul li a:visited, .Tags.Juridic ul li a:active {
+	color:#62aec4;
+}
+#New-S p a.Juridic:link, #New-S p a.Juridic:visited, #New-S p a.Juridic:active, #New-M p a.Juridic:link, #New-M p a.Juridic:visited, #New-M p a.Juridic:active, #New-L p a.Juridic:link, #New-L p a.Juridic:visited, #New-L p a.Juridic:active, #New-XL p a.Juridic:link, #New-XL p a.Juridic:visited, #New-XL p a.Juridic:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Juridic:link, p a.Juridic:visited, p a.Juridic:active, #New-S p a.Juridic:hover, #New-M p a.Juridic:hover, #New-L p a.Juridic:hover, #New-XL p a.Juridic:hover {
+	color:#62aec4;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Juridic:link, p a.Juridic:visited, p a.Juridic:active, .Juridic p a:link, .Juridic p a:visited, .Juridic p a:active {
+	color:#62aec4;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Juridic:link, h3 a.Juridic:visited, h3 a.Juridic:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Juridic:hover {
+	color:#62aec4;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Juridic:link, ul li a.Juridic:visited, ul li a.Juridic:active {
+	background-color:transparent;
+}
+ul li a.Juridic:hover {
+	background-color:#62aec4;
+}
+.H1.Juridic:hover, .H1.Juridic {
+	border-bottom-color:#62aec4;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Juridic:link, .Menu-AS li ul li a.Juridic:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Juridic:hover {
+	background-color:#62aec4;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Juridic:link, .Menu-AS li ul.Menu-AS-Sub li a.Juridic:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Juridic:hover {
+	background-color:#62aec4;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Juridic li a:hover, .PaginacioAbaix.Juridic, .QueEs.Juridic h2 {
+	border-bottom-color:#62aec4;
+}
+.PaginacioAdalt.Juridic {
+	border-top-color:#62aec4;
+}
+.Menu-AS-Sub li.Juridic:hover {
+	background-color:#62aec4;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Juridic:hover a.Juridic {
+	color:#FFF;
+}
+.Juridic a.BotoMas:link, .Juridic a.BotoMas:visited, .Juridic a.BotoMas:active, .Juridic a.BotoMas:hover, a.New-S.Juridic:link, a.New-S.Juridic:visited, a.New-S.Juridic:active, a.New-S.Juridic:hover, a.New-M.Juridic:link, a.New-M.Juridic:visited, a.New-M.Juridic:active, a.New-M.Juridic:hover, a.New-L.Juridic:link, a.New-L.Juridic:visited, a.New-L.Juridic:active, a.New-L.Juridic:hover, .Juridic h2.Bloque-S {
+	background-color:#62aec4;
+}
+a.Veure.Juridic:link, a.Veure.Juridic:visited, a.Veure.Juridic:active, .Tags.Juridic h2 {
+	background-color: #62aec4;
+	color:#FFF;
+}
+.Juridic.QueEs {
+	border-color:#62aec4;
+}
+/*Color 2: 1a6485*/
+p a.Juridic:hover, .Juridic #Bloque-Gran-Txt h3 a, .Juridic #Bloque-Gran-Txt h3 a:link, .Juridic #Bloque-Gran-Txt h3 a:visited, .Juridic #Bloque-Gran-Txt h3 a:active, .Juridic #Bloque-Gran-Txt h3 a:hover, .Juridic ul, .Juridic ul li a:hover, .breadcrumbs.Juridic a:link, .breadcrumbs.Juridic a:visited, .breadcrumbs.Juridic a:active, .breadcrumbs.Juridic a:hover, .breadcrumbs.Juridic, span.field-prefix, .Juridic .author, .Juridic .author a:hover, .Juridic p a:hover, .Tags.Juridic ul li a:hover, #BloquesListas.Juridic ul li a:hover, .Juridic p a:hover, #BloquesListas.Juridic ul li {
+	color:#1a6485;
+}
+#BloquesListas.Juridic ul li a:hover {
+	text-decoration:underline;
+}
+li.Juridic ul li:hover, li.Juridic ul li.sfHover, a.Juridic:focus, a.Juridic:active, .Juridic h2, .Juridic a.BotoMas:hover, .Juridic a.BotoMas:hover, a.New-S.Juridic:hover, a.New-M.Juridic:hover, a.New-L.Juridic:hover, a.Veure.Juridic:hover, #Paginacio ul.Juridic li a:hover, .Juridic input.Boto:hover, .Juridic ul.links li a:hover, .Juridic .form-submit:hover, .Juridic .close:hover {
+	background-color:#1a6485;
+}
+#Paginacio ul.Juridic li a:hover, a.Veure.Juridic:hover {
+	color:#FFF;
+}
+/*Color 3: d9ecf1*/
+#Paginacio ul.Juridic, #Paginacio ul.Juridic li a:link, #Paginacio ul.Juridic li a:visited, #Paginacio ul.Juridic li a:active, .Juridic ul, .Tags.Juridic, #Bloque-Gran.Juridic, #BloquesListas.Juridic, #Fechas.Juridic, #Mapas.Juridic {
+	background-color:#d9ecf1;
+	color:#333;
+}
+.breadcrumbs.Juridic, #Fechas.Juridic, .Juridic .author, .Juridic .box .content {
+	background-color:#d9ecf1;
+}
+.Juridic #Bloque-Gran-Options {
+	width:180px;
+}
+.Juridic #Bloque-Gran-Txt {
+	width:180px;
+}
+.Juridic .comment {
+	border-color:#d9ecf1;
+}
+.Juridic ul.links li, .Juridic .author {
+	border-top-color:#d9ecf1;
+}
+/*Pager*/
+#Paginacio.Juridic ul, #Paginacio.Juridic ul li a:link, #Paginacio.Juridic ul li a:visited, #Paginacio.Juridic ul li a:active {
+	background-color:#d9ecf1;
+	color:#62aec4;
+}
+#Paginacio.Juridic ul li a:hover {
+	background-color: #1a6485;
+	color:#FFF;
+}
+#Paginacio.Juridic ul li.pager-current {
+	background-color:#62aec4;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Informatic*/
+/*Color 1: 9b8cd2*/
+.Menu li.Informatic ul, li.Informatic ul li, li.Informatic ul:hover, ul.li.Informatic:hover, .Menu li.Informatic:hover, .Menu li.Informatic.sfHover, .Informatic a.BotoMas:link, .Informatic a.BotoMas:visited, .Informatic a.BotoMas:active, .Informatic a.BotoMas:hover, .Informatic input.Boto, .e_comments.Informatic h2, .Informatic ul.links li a:link, .Informatic ul.links li a:visited, .Informatic ul.links li a:active, .Informatic .indented, .Informatic .form-submit:active, .Informatic .form-submit:visited, .Informatic .form-submit:link, .Informatic .captcha legend, .Informatic .form-submit, .Informatic .close, #Mapas.Informatic h2, .Menu a.Informatic:focus, .Menu a.Informatic:hover, .Menu a.Informatic:active {
+	background-color:#9b8cd2;
+}
+p.legend.Informatic, h2.Informatic, ul li a.Informatic:hover, a.Veure.Informatic:link, a.Veure.Informatic:visited, a.Veure.Informatic:active {
+	background-color:#9b8cd2;
+}
+h2.Informatic, .QueEs.Informatic h2 {
+	border-bottom-color:#9b8cd2;
+	background-color:#FFF;
+}
+.H1.Informatic a:hover, p a.Informatic:link, p a.Informatic:visited, p a.Informatic:active, .Informatic .author a:link, .Informatic .author a:visited, .Informatic .author a:active, .Informatic p a:link, .Informatic p a:visited, .Informatic p a:active, .Tags.Informatic ul li a:link, .Tags.Informatic ul li a:visited, .Tags.Informatic ul li a:active {
+	color:#9b8cd2;
+}
+#New-S p a.Informatic:link, #New-S p a.Informatic:visited, #New-S p a.Informatic:active, #New-M p a.Informatic:link, #New-M p a.Informatic:visited, #New-M p a.Informatic:active, #New-L p a.Informatic:link, #New-L p a.Informatic:visited, #New-L p a.Informatic:active, #New-XL p a.Informatic:link, #New-XL p a.Informatic:visited, #New-XL p a.Informatic:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Informatic:link, p a.Informatic:visited, p a.Informatic:active, #New-S p a.Informatic:hover, #New-M p a.Informatic:hover, #New-L p a.Informatic:hover, #New-XL p a.Informatic:hover {
+	color:#9b8cd2;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Informatic:link, p a.Informatic:visited, p a.Informatic:active, .Informatic p a:link, .Informatic p a:visited, .Informatic p a:active {
+	color:#9b8cd2;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Informatic:link, h3 a.Informatic:visited, h3 a.Informatic:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Informatic:hover {
+	color:#9b8cd2;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Informatic:link, ul li a.Informatic:visited, ul li a.Informatic:active {
+	background-color:transparent;
+}
+ul li a.Informatic:hover {
+	background-color:#9b8cd2;
+}
+.H1.Informatic:hover, .H1.Informatic {
+	border-bottom-color:#9b8cd2;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Informatic:link, .Menu-AS li ul li a.Informatic:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Informatic:hover {
+	background-color:#9b8cd2;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Informatic:link, .Menu-AS li ul.Menu-AS-Sub li a.Informatic:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Informatic:hover {
+	background-color:#9b8cd2;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Informatic li a:hover, .PaginacioAbaix.Informatic, .QueEs.Informatic h2 {
+	border-bottom-color:#9b8cd2;
+}
+.PaginacioAdalt.Informatic {
+	border-top-color:#9b8cd2;
+}
+.Menu-AS-Sub li.Informatic:hover {
+	background-color:#9b8cd2;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Informatic:hover a.Informatic {
+	color:#FFF;
+}
+.Informatic a.BotoMas:link, .Informatic a.BotoMas:visited, .Informatic a.BotoMas:active, .Informatic a.BotoMas:hover, a.New-S.Informatic:link, a.New-S.Informatic:visited, a.New-S.Informatic:active, a.New-S.Informatic:hover, a.New-M.Informatic:link, a.New-M.Informatic:visited, a.New-M.Informatic:active, a.New-M.Informatic:hover, a.New-L.Informatic:link, a.New-L.Informatic:visited, a.New-L.Informatic:active, a.New-L.Informatic:hover, .Informatic h2.Bloque-S {
+	background-color:#9b8cd2;
+}
+a.Veure.Informatic:link, a.Veure.Informatic:visited, a.Veure.Informatic:active, .Tags.Informatic h2 {
+	background-color: #9b8cd2;
+	color:#FFF;
+}
+.Informatic.QueEs {
+	border-color:#9b8cd2;
+}
+/*Color 2: 4b3b9d*/
+p a.Informatic:hover, .Informatic #Bloque-Gran-Txt h3 a, .Informatic #Bloque-Gran-Txt h3 a:link, .Informatic #Bloque-Gran-Txt h3 a:visited, .Informatic #Bloque-Gran-Txt h3 a:active, .Informatic #Bloque-Gran-Txt h3 a:hover, .Informatic ul, .Informatic ul li a:hover, .breadcrumbs.Informatic a:link, .breadcrumbs.Informatic a:visited, .breadcrumbs.Informatic a:active, .breadcrumbs.Informatic a:hover, .breadcrumbs.Informatic, span.field-prefix, .Informatic .author, .Informatic .author a:hover, .Informatic p a:hover, .Tags.Informatic ul li a:hover, #BloquesListas.Informatic ul li a:hover, .Informatic p a:hover, #BloquesListas.Informatic ul li {
+	color:#4b3b9d;
+}
+#BloquesListas.Informatic ul li a:hover {
+	text-decoration:underline;
+}
+li.Informatic ul li:hover, li.Informatic ul li.sfHover, a.Informatic:focus, a.Informatic:active, .Informatic h2, .Informatic a.BotoMas:hover, .Informatic a.BotoMas:hover, a.New-S.Informatic:hover, a.New-M.Informatic:hover, a.New-L.Informatic:hover, a.Veure.Informatic:hover, #Paginacio ul.Informatic li a:hover, .Informatic input.Boto:hover, .Informatic ul.links li a:hover, .Informatic .form-submit:hover, .Informatic .close:hover {
+	background-color:#4b3b9d;
+}
+#Paginacio ul.Informatic li a:hover, a.Veure.Informatic:hover {
+	color:#FFF;
+}
+/*Color 3: e7e3f4*/
+#Paginacio ul.Informatic, #Paginacio ul.Informatic li a:link, #Paginacio ul.Informatic li a:visited, #Paginacio ul.Informatic li a:active, .Informatic ul, .Tags.Informatic, #Bloque-Gran.Informatic, #BloquesListas.Informatic, #Fechas.Informatic, #Mapas.Informatic {
+	background-color:#e7e3f4;
+	color:#333;
+}
+.breadcrumbs.Informatic, #Fechas.Informatic, .Informatic .author, .Informatic .box .content {
+	background-color:#e7e3f4;
+}
+.Informatic #Bloque-Gran-Options {
+	width:180px;
+}
+.Informatic #Bloque-Gran-Txt {
+	width:180px;
+}
+.Informatic .comment {
+	border-color:#e7e3f4;
+}
+.Informatic ul.links li, .Informatic .author {
+	border-top-color:#e7e3f4;
+}
+/*Pager*/
+#Paginacio.Informatic ul, #Paginacio.Informatic ul li a:link, #Paginacio.Informatic ul li a:visited, #Paginacio.Informatic ul li a:active {
+	background-color:#e7e3f4;
+	color:#9b8cd2;
+}
+#Paginacio.Informatic ul li a:hover {
+	background-color: #4b3b9d;
+	color:#FFF;
+}
+#Paginacio.Informatic ul li.pager-current {
+	background-color:#9b8cd2;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Formacio*/
+/*Color 1: c09158*/
+.Menu li.Formacio ul, li.Formacio ul li, li.Formacio ul:hover, ul.li.Formacio:hover, .Menu li.Formacio:hover, .Menu li.Formacio.sfHover, .Formacio a.BotoMas:link, .Formacio a.BotoMas:visited, .Formacio a.BotoMas:active, .Formacio a.BotoMas:hover, .Formacio input.Boto, .e_comments.Formacio h2, .Formacio ul.links li a:link, .Formacio ul.links li a:visited, .Formacio ul.links li a:active, .Formacio .indented, .Formacio .form-submit:active, .Formacio .form-submit:visited, .Formacio .form-submit:link, .Formacio .captcha legend, .Formacio .form-submit, .Formacio .close, #Mapas.Formacio h2, .Menu a.Formacio:focus, .Menu a.Formacio:hover, .Menu a.Formacio:active {
+	background-color:#c09158;
+}
+p.legend.Formacio, h2.Formacio, ul li a.Formacio:hover, a.Veure.Formacio:link, a.Veure.Formacio:visited, a.Veure.Formacio:active {
+	background-color:#c09158;
+}
+h2.Formacio, .QueEs.Formacio h2 {
+	border-bottom-color:#c09158;
+	background-color:#FFF;
+}
+.H1.Formacio a:hover, p a.Formacio:link, p a.Formacio:visited, p a.Formacio:active, .Formacio .author a:link, .Formacio .author a:visited, .Formacio .author a:active, .Formacio p a:link, .Formacio p a:visited, .Formacio p a:active, .Tags.Formacio ul li a:link, .Tags.Formacio ul li a:visited, .Tags.Formacio ul li a:active {
+	color:#c09158;
+}
+#New-S p a.Formacio:link, #New-S p a.Formacio:visited, #New-S p a.Formacio:active, #New-M p a.Formacio:link, #New-M p a.Formacio:visited, #New-M p a.Formacio:active, #New-L p a.Formacio:link, #New-L p a.Formacio:visited, #New-L p a.Formacio:active, #New-XL p a.Formacio:link, #New-XL p a.Formacio:visited, #New-XL p a.Formacio:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Formacio:link, p a.Formacio:visited, p a.Formacio:active, #New-S p a.Formacio:hover, #New-M p a.Formacio:hover, #New-L p a.Formacio:hover, #New-XL p a.Formacio:hover {
+	color:#c09158;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Formacio:link, p a.Formacio:visited, p a.Formacio:active, .Formacio p a:link, .Formacio p a:visited, .Formacio p a:active {
+	color:#c09158;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Formacio:link, h3 a.Formacio:visited, h3 a.Formacio:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Formacio:hover {
+	color:#c09158;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Formacio:link, ul li a.Formacio:visited, ul li a.Formacio:active {
+	background-color:transparent;
+}
+ul li a.Formacio:hover {
+	background-color:#c09158;
+}
+.H1.Formacio:hover, .H1.Formacio {
+	border-bottom-color:#c09158;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Formacio:link, .Menu-AS li ul li a.Formacio:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Formacio:hover {
+	background-color:#c09158;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Formacio:link, .Menu-AS li ul.Menu-AS-Sub li a.Formacio:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Formacio:hover {
+	background-color:#c09158;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Formacio li a:hover, .PaginacioAbaix.Formacio, .QueEs.Formacio h2 {
+	border-bottom-color:#c09158;
+}
+.PaginacioAdalt.Formacio {
+	border-top-color:#c09158;
+}
+.Menu-AS-Sub li.Formacio:hover {
+	background-color:#c09158;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Formacio:hover a.Formacio {
+	color:#FFF;
+}
+.Formacio a.BotoMas:link, .Formacio a.BotoMas:visited, .Formacio a.BotoMas:active, .Formacio a.BotoMas:hover, a.New-S.Formacio:link, a.New-S.Formacio:visited, a.New-S.Formacio:active, a.New-S.Formacio:hover, a.New-M.Formacio:link, a.New-M.Formacio:visited, a.New-M.Formacio:active, a.New-M.Formacio:hover, a.New-L.Formacio:link, a.New-L.Formacio:visited, a.New-L.Formacio:active, a.New-L.Formacio:hover, .Formacio h2.Bloque-S {
+	background-color:#c09158;
+}
+a.Veure.Formacio:link, a.Veure.Formacio:visited, a.Veure.Formacio:active, .Tags.Formacio h2 {
+	background-color: #c09158;
+	color:#FFF;
+}
+.Formacio.QueEs {
+	border-color:#c09158;
+}
+/*Color 2: 7f4014*/
+p a.Formacio:hover, .Formacio #Bloque-Gran-Txt h3 a, .Formacio #Bloque-Gran-Txt h3 a:link, .Formacio #Bloque-Gran-Txt h3 a:visited, .Formacio #Bloque-Gran-Txt h3 a:active, .Formacio #Bloque-Gran-Txt h3 a:hover, .Formacio ul, .Formacio ul li a:hover, .breadcrumbs.Formacio a:link, .breadcrumbs.Formacio a:visited, .breadcrumbs.Formacio a:active, .breadcrumbs.Formacio a:hover, .breadcrumbs.Formacio, span.field-prefix, .Formacio .author, .Formacio .author a:hover, .Formacio p a:hover, .Tags.Formacio ul li a:hover, #BloquesListas.Formacio ul li a:hover, .Formacio p a:hover, #BloquesListas.Formacio ul li {
+	color:#7f4014;
+}
+#BloquesListas.Formacio ul li a:hover {
+	text-decoration:underline;
+}
+li.Formacio ul li:hover, li.Formacio ul li.sfHover, a.Formacio:focus, a.Formacio:active, .Formacio h2, .Formacio a.BotoMas:hover, .Formacio a.BotoMas:hover, a.New-S.Formacio:hover, a.New-M.Formacio:hover, a.New-L.Formacio:hover, a.Veure.Formacio:hover, #Paginacio ul.Formacio li a:hover, .Formacio input.Boto:hover, .Formacio ul.links li a:hover, .Formacio .form-submit:hover, .Formacio .close:hover {
+	background-color:#7f4014;
+}
+#Paginacio ul.Formacio li a:hover, a.Veure.Formacio:hover {
+	color:#FFF;
+}
+/*Color 3: f0e5d7*/
+#Paginacio ul.Formacio, #Paginacio ul.Formacio li a:link, #Paginacio ul.Formacio li a:visited, #Paginacio ul.Formacio li a:active, .Formacio ul, .Tags.Formacio, #Bloque-Gran.Formacio, #BloquesListas.Formacio, #Fechas.Formacio, #Mapas.Formacio {
+	background-color:#f0e5d7;
+	color:#333;
+}
+.breadcrumbs.Formacio, #Fechas.Formacio, .Formacio .author, .Formacio .box .content {
+	background-color:#f0e5d7;
+}
+.Formacio #Bloque-Gran-Options {
+	width:180px;
+}
+.Formacio #Bloque-Gran-Txt {
+	width:180px;
+}
+.Formacio .comment {
+	border-color:#f0e5d7;
+}
+.Formacio ul.links li, .Formacio .author {
+	border-top-color:#f0e5d7;
+}
+/*Pager*/
+#Paginacio.Formacio ul, #Paginacio.Formacio ul li a:link, #Paginacio.Formacio ul li a:visited, #Paginacio.Formacio ul li a:active {
+	background-color:#f0e5d7;
+	color:#c09158;
+}
+#Paginacio.Formacio ul li a:hover {
+	background-color: #7f4014;
+	color:#FFF;
+}
+#Paginacio.Formacio ul li.pager-current {
+	background-color:#c09158;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*Economic*/
+/*Color 1: d1b91a*/
+.Menu li.Economic ul, li.Economic ul li, li.Economic ul:hover, ul.li.Economic:hover, .Menu li.Economic:hover, .Menu li.Economic.sfHover, .Economic a.BotoMas:link, .Economic a.BotoMas:visited, .Economic a.BotoMas:active, .Economic a.BotoMas:hover, .Economic input.Boto, .e_comments.Economic h2, .Economic ul.links li a:link, .Economic ul.links li a:visited, .Economic ul.links li a:active, .Economic .indented, .Economic .form-submit:active, .Economic .form-submit:visited, .Economic .form-submit:link, .Economic .captcha legend, .Economic .form-submit, .Economic .close, #Mapas.Economic h2, .Menu a.Economic:focus, .Menu a.Economic:hover, .Menu a.Economic:active {
+	background-color:#d1b91a;
+}
+p.legend.Economic, h2.Economic, ul li a.Economic:hover, a.Veure.Economic:link, a.Veure.Economic:visited, a.Veure.Economic:active {
+	background-color:#d1b91a;
+}
+h2.Economic, .QueEs.Economic h2 {
+	border-bottom-color:#d1b91a;
+	background-color:#FFF;
+}
+.H1.Economic a:hover, p a.Economic:link, p a.Economic:visited, p a.Economic:active, .Economic .author a:link, .Economic .author a:visited, .Economic .author a:active, .Economic p a:link, .Economic p a:visited, .Economic p a:active, .Tags.Economic ul li a:link, .Tags.Economic ul li a:visited, .Tags.Economic ul li a:active {
+	color:#d1b91a;
+}
+#New-S p a.Economic:link, #New-S p a.Economic:visited, #New-S p a.Economic:active, #New-M p a.Economic:link, #New-M p a.Economic:visited, #New-M p a.Economic:active, #New-L p a.Economic:link, #New-L p a.Economic:visited, #New-L p a.Economic:active, #New-XL p a.Economic:link, #New-XL p a.Economic:visited, #New-XL p a.Economic:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.Economic:link, p a.Economic:visited, p a.Economic:active, #New-S p a.Economic:hover, #New-M p a.Economic:hover, #New-L p a.Economic:hover, #New-XL p a.Economic:hover {
+	color:#d1b91a;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.Economic:link, p a.Economic:visited, p a.Economic:active, .Economic p a:link, .Economic p a:visited, .Economic p a:active {
+	color:#d1b91a;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.Economic:link, h3 a.Economic:visited, h3 a.Economic:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.Economic:hover {
+	color:#d1b91a;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.Economic:link, ul li a.Economic:visited, ul li a.Economic:active {
+	background-color:transparent;
+}
+ul li a.Economic:hover {
+	background-color:#d1b91a;
+}
+.H1.Economic:hover, .H1.Economic {
+	border-bottom-color:#d1b91a;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.Economic:link, .Menu-AS li ul li a.Economic:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.Economic:hover {
+	background-color:#d1b91a;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Economic:link, .Menu-AS li ul.Menu-AS-Sub li a.Economic:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.Economic:hover {
+	background-color:#d1b91a;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.Economic li a:hover, .PaginacioAbaix.Economic, .QueEs.Economic h2 {
+	border-bottom-color:#d1b91a;
+}
+.PaginacioAdalt.Economic {
+	border-top-color:#d1b91a;
+}
+.Menu-AS-Sub li.Economic:hover {
+	background-color:#d1b91a;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.Economic:hover a.Economic {
+	color:#FFF;
+}
+.Economic a.BotoMas:link, .Economic a.BotoMas:visited, .Economic a.BotoMas:active, .Economic a.BotoMas:hover, a.New-S.Economic:link, a.New-S.Economic:visited, a.New-S.Economic:active, a.New-S.Economic:hover, a.New-M.Economic:link, a.New-M.Economic:visited, a.New-M.Economic:active, a.New-M.Economic:hover, a.New-L.Economic:link, a.New-L.Economic:visited, a.New-L.Economic:active, a.New-L.Economic:hover, .Economic h2.Bloque-S {
+	background-color:#d1b91a;
+}
+a.Veure.Economic:link, a.Veure.Economic:visited, a.Veure.Economic:active, .Tags.Economic h2 {
+	background-color: #d1b91a;
+	color:#FFF;
+}
+.Economic.QueEs {
+	border-color:#d1b91a;
+}
+/*Color 2: b79504*/
+p a.Economic:hover, .Economic #Bloque-Gran-Txt h3 a, .Economic #Bloque-Gran-Txt h3 a:link, .Economic #Bloque-Gran-Txt h3 a:visited, .Economic #Bloque-Gran-Txt h3 a:active, .Economic #Bloque-Gran-Txt h3 a:hover, .Economic ul, .Economic ul li a:hover, .breadcrumbs.Economic a:link, .breadcrumbs.Economic a:visited, .breadcrumbs.Economic a:active, .breadcrumbs.Economic a:hover, .breadcrumbs.Economic, span.field-prefix, .Economic .author, .Economic .author a:hover, .Economic p a:hover, .Tags.Economic ul li a:hover, #BloquesListas.Economic ul li a:hover, .Economic p a:hover, #BloquesListas.Economic ul li {
+	color:#b79504;
+}
+#BloquesListas.Economic ul li a:hover {
+	text-decoration:underline;
+}
+li.Economic ul li:hover, li.Economic ul li.sfHover, a.Economic:focus, a.Economic:active, .Economic h2, .Economic a.BotoMas:hover, .Economic a.BotoMas:hover, a.New-S.Economic:hover, a.New-M.Economic:hover, a.New-L.Economic:hover, a.Veure.Economic:hover, #Paginacio ul.Economic li a:hover, .Economic input.Boto:hover, .Economic ul.links li a:hover, .Economic .form-submit:hover, .Economic .close:hover {
+	background-color:#b79504;
+}
+#Paginacio ul.Economic li a:hover, a.Veure.Economic:hover {
+	color:#FFF;
+}
+/*Color 3: f9f5d5*/
+#Paginacio ul.Economic, #Paginacio ul.Economic li a:link, #Paginacio ul.Economic li a:visited, #Paginacio ul.Economic li a:active, .Economic ul, .Tags.Economic, #Bloque-Gran.Economic, #BloquesListas.Economic, #Fechas.Economic, #Mapas.Economic {
+	background-color:#f9f5d5;
+	color:#333;
+}
+.breadcrumbs.Economic, #Fechas.Economic, .Economic .author, .Economic .box .content {
+	background-color:#f9f5d5;
+}
+.Economic #Bloque-Gran-Options {
+	width:180px;
+}
+.Economic #Bloque-Gran-Txt {
+	width:180px;
+}
+.Economic .comment {
+	border-color:#f9f5d5;
+}
+.Economic ul.links li, .Economic .author {
+	border-top-color:#f9f5d5;
+}
+/*Pager*/
+#Paginacio.Economic ul, #Paginacio.Economic ul li a:link, #Paginacio.Economic ul li a:visited, #Paginacio.Economic ul li a:active {
+	background-color:#f9f5d5;
+	color:#d1b91a;
+}
+#Paginacio.Economic ul li a:hover {
+	background-color: #b79504;
+	color:#FFF;
+}
+#Paginacio.Economic ul li.pager-current {
+	background-color:#d1b91a;
+}
+/*/////////////////////////////////////////////////////////////////////*/
+
+/*General*/
+/*Color 1: b4cf4f*/
+.Menu li.General ul, li.General ul li, li.General ul:hover, ul.li.General:hover, .Menu li.General:hover, .Menu li.General.sfHover, .General a.BotoMas:link, .General a.BotoMas:visited, .General a.BotoMas:active, .General a.BotoMas:hover, .General input.Boto, .e_comments.General h2, .General ul.links li a:link, .General ul.links li a:visited, .General ul.links li a:active, .General .indented, .General .form-submit:active, .General .form-submit:visited, .General .form-submit:link, .General .captcha legend, .General .form-submit, .General .close, #Mapas.General h2, .Menu a.General:focus, .Menu a.General:hover, .Menu a.General:active {
+	background-color:#b4cf4f;
+}
+p.legend.General, h2.General, ul li a.General:hover, a.Veure.General:link, a.Veure.General:visited, a.Veure.General:active {
+	background-color:#b4cf4f;
+}
+h2.General, .QueEs.General h2 {
+	border-bottom-color:#b4cf4f;
+	background-color:#FFF;
+}
+.H1.General a:hover, p a.General:link, p a.General:visited, p a.General:active, .General .author a:link, .General .author a:visited, .General .author a:active, .General p a:link, .General p a:visited, .General p a:active, .Tags.General ul li a:link, .Tags.General ul li a:visited, .Tags.General ul li a:active {
+	color:#b4cf4f;
+}
+#New-S p a.General:link, #New-S p a.General:visited, #New-S p a.General:active, #New-M p a.General:link, #New-M p a.General:visited, #New-M p a.General:active, #New-L p a.General:link, #New-L p a.General:visited, #New-L p a.General:active, #New-XL p a.General:link, #New-XL p a.General:visited, #New-XL p a.General:active {
+	color:#333;
+	text-decoration:none;
+	font-weight:normal;
+}
+p a.General:link, p a.General:visited, p a.General:active, #New-S p a.General:hover, #New-M p a.General:hover, #New-L p a.General:hover, #New-XL p a.General:hover {
+	color:#b4cf4f;
+	text-decoration:underline;
+	font-weight:normal;
+}
+p a.General:link, p a.General:visited, p a.General:active, .General p a:link, .General p a:visited, .General p a:active {
+	color:#b4cf4f;
+	text-decoration:underline;
+	font-weight:bold;
+}
+h3 a.General:link, h3 a.General:visited, h3 a.General:active {
+	color:inherit;
+	background-color:#FFF;
+	font-weight:normal;
+	text-decoration:none
+}
+h3 a.General:hover {
+	color:#b4cf4f;
+	background-color: #FFF;
+	text-decoration:underline;
+	font-weight:normal;
+}
+ul li a.General:link, ul li a.General:visited, ul li a.General:active {
+	background-color:transparent;
+}
+ul li a.General:hover {
+	background-color:#b4cf4f;
+}
+.H1.General:hover, .H1.General {
+	border-bottom-color:#b4cf4f;
+	background-color:#FFF;
+}
+.Menu-AS li ul li a.General:link, .Menu-AS li ul li a.General:hover {
+	background-color:transparent;
+	padding:13px;
+	margin:-13px;
+	margin-top:-9px;
+	padding-bottom:7px;
+	padding-top:9px;
+}
+.Menu-AS li ul li a.General:hover {
+	background-color:#b4cf4f;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.General:link, .Menu-AS li ul.Menu-AS-Sub li a.General:hover {
+	background-color:transparent;
+	padding:12px;
+	padding-top:12px;
+	margin-top:-9px;
+	padding-bottom:9px;
+}
+.Menu-AS li ul.Menu-AS-Sub li a.General:hover {
+	background-color:#b4cf4f;
+	color:#FFF;
+}
+.Menu-AS li ul.Menu-AS-Sub li ul.General li a:hover, .PaginacioAbaix.General, .QueEs.General h2 {
+	border-bottom-color:#b4cf4f;
+}
+.PaginacioAdalt.General {
+	border-top-color:#b4cf4f;
+}
+.Menu-AS-Sub li.General:hover {
+	background-color:#b4cf4f;
+	padding-bottom:13px;
+}
+.Menu-AS-Sub li.General:hover a.General {
+	color:#FFF;
+}
+.General a.BotoMas:link, .General a.BotoMas:visited, .General a.BotoMas:active, .General a.BotoMas:hover, a.New-S.General:link, a.New-S.General:visited, a.New-S.General:active, a.New-S.General:hover, a.New-M.General:link, a.New-M.General:visited, a.New-M.General:active, a.New-M.General:hover, a.New-L.General:link, a.New-L.General:visited, a.New-L.General:active, a.New-L.General:hover, .General h2.Bloque-S {
+	background-color:#b4cf4f;
+}
+a.Veure.General:link, a.Veure.General:visited, a.Veure.General:active, .Tags.General h2 {
+	background-color: #b4cf4f;
+	color:#FFF;
+}
+.General.QueEs {
+	border-color:#b4cf4f;
+}
+/*Color 2: 7fa818*/
+p a.General:hover, .General #Bloque-Gran-Txt h3 a, .General #Bloque-Gran-Txt h3 a:link, .General #Bloque-Gran-Txt h3 a:visited, .General #Bloque-Gran-Txt h3 a:active, .General #Bloque-Gran-Txt h3 a:hover, .General ul, .General ul li a:hover, .breadcrumbs.General a:link, .breadcrumbs.General a:visited, .breadcrumbs.General a:active, .breadcrumbs.General a:hover, .breadcrumbs.General, span.field-prefix, .General .author, .General .author a:hover, .General p a:hover, .Tags.General ul li a:hover, #BloquesListas.General ul li a:hover, .General p a:hover, #BloquesListas.General ul li {
+	color:#7fa818;
+}
+#BloquesListas.General ul li a:hover {
+	text-decoration:underline;
+}
+li.General ul li:hover, li.General ul li.sfHover, a.General:focus, a.General:active, .General h2, .General a.BotoMas:hover, .General a.BotoMas:hover, a.New-S.General:hover, a.New-M.General:hover, a.New-L.General:hover, a.Veure.General:hover, #Paginacio ul.General li a:hover, .General input.Boto:hover, .General ul.links li a:hover, .General .form-submit:hover, .General .close:hover {
+	background-color:#7fa818;
+}
+#Paginacio ul.General li a:hover, a.Veure.General:hover {
+	color:#FFF;
+}
+/*Color 3: f0f5dc*/
+#Paginacio ul.General, #Paginacio ul.General li a:link, #Paginacio ul.General li a:visited, #Paginacio ul.General li a:active, .General ul, .Tags.General, #Bloque-Gran.General, #BloquesListas.General, #Fechas.General, #Mapas.General {
+	background-color:#f0f5dc;
+	color:#333;
+}
+.breadcrumbs.General, #Fechas.General, .General .author, .General .box .content {
+	background-color:#f0f5dc;
+}
+.General #Bloque-Gran-Options {
+	width:180px;
+}
+.General #Bloque-Gran-Txt {
+	width:180px;
+}
+.General .comment {
+	border-color:#f0f5dc;
+}
+.General ul.links li, .General .author {
+	border-top-color:#f0f5dc;
+}
+/*Pager*/
+#Paginacio.General ul, #Paginacio.General ul li a:link, #Paginacio.General ul li a:visited, #Paginacio.General ul li a:active {
+	background-color:#f0f5dc;
+	color:#b4cf4f;
+}
+#Paginacio.General ul li a:hover {
+	background-color: #7fa818;
+	color:#FFF;
+}
+#Paginacio.General ul li.pager-current {
+	background-color:#b4cf4f;
+} 
+
+/*/////////////////////////////////////////////////////////////////////*/

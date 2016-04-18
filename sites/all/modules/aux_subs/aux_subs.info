@@ -1,0 +1,4 @@
+; $Id$
+name = Auxiliar Subscription
+description = Funcions Auxiliars per a Subscripcions de l'Abast i el Butlletí
+core = 6.x

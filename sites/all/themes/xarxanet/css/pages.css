@@ -1,0 +1,239 @@
+/*
+  Cascading style sheets for "Xarxanet" (20090810)
+  ---
+  Designed in 2009 by Emanuele Rodriguez <erodri@gmail.com>
+  ---
+  pages.css - Page-specific overrides
+*/
+
+
+/* p_01 */
+.p_01 #info {
+  position: absolute;
+  left: -999em;
+  overflow: hidden;
+}
+
+
+.p_01 #footer .copyright {
+  float: left;
+  margin-left: 0;
+  padding-left: 10px;
+  width: 223px;
+}
+
+.p_01 #footer .copyright .scv {
+  float: none;
+  padding-bottom: 1em;
+}
+
+.p_01 #footer .copyright .gencat {
+  float: none;
+  padding-left: .5em;
+}
+
+.support {
+  float: left;
+  padding-right: .1em;
+  
+  
+}
+.p_01 .support {
+	width: 726px;	
+}
+
+.support .title {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 1em 0 .2em .55em;
+}
+
+.support li {
+  float: left;
+  padding: 0 0 1em .7em;
+  width: 13.4em;
+  
+}
+.support .page li {
+  float: left;
+  padding: 0 0 1em .7em;
+  width: 11.4em;
+  
+}
+#content .support li
+{
+	list-style:none outside none;
+  background:none;
+}
+
+.support li a {
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  display: block;
+  height: 4em;
+}
+
+ .support li.row1 a {
+  padding-top: 4.5em;
+}
+
+ .support li.row2 a {
+  padding-top: 6.5em;
+}
+
+ .support li.l_sace a       { background-image: url(../img/ftr_logo_sace.gif); }
+ .support li.l_sace a:hover { background-image: url(../img/ftr_logo_sace_on.gif); }
+ .support li.l_fce a        { background-image: url(../img/ftr_logo_fce.gif); }
+ .support li.l_fce a:hover  { background-image: url(../img/ftr_logo_fce_on.gif); }
+ .support li.l_fpt a        { background-image: url(../img/ftr_logo_fpt.gif); }
+ .support li.l_fpt a:hover  { background-image: url(../img/ftr_logo_fpt_on.gif); }
+ .support li.l_fac a        { background-image: url(../img/ftr_logo_fac.gif); }
+ .support li.l_fac a:hover  { background-image: url(../img/ftr_logo_fac_on.gif); }
+ .support li.l_xvac a       { background-image: url(../img/ftr_logo_xvac.gif); }
+ .support li.l_xvac a:hover { background-image: url(../img/ftr_logo_xvac_on.gif); }
+ .support li.l_eca a        { background-image: url(../img/ftr_logo_eca.gif); }
+ .support li.l_eca a:hover  { background-image: url(../img/ftr_logo_eca_on.gif); }
+ .support li.l_teb a        { background-image: url(../img/ftr_logo_teb.gif); }
+ .support li.l_teb a:hover  { background-image: url(../img/ftr_logo_teb_on.gif); }
+ .support li.l_rn a         { background-image: url(../img/ftr_logo_rn.gif); }
+ .support li.l_rn a:hover   { background-image: url(../img/ftr_logo_rn_on.gif); }
+ .support li.l_fcvs a       { background-image: url(../img/ftr_logo_fcvs.gif); }
+ .support li.l_fcvs a:hover { background-image: url(../img/ftr_logo_fcvs_on.gif); }
+ .support li.l_fas a        { background-image: url(../img/ftr_logo_fas.gif); }
+ .support li.l_fas a:hover  { background-image: url(../img/ftr_logo_fas_on.gif); }
+ .support li.l_megc a       { background-image: url(../img/ftr_logo_megc.gif); }
+ .support li.l_megc a:hover { background-image: url(../img/ftr_logo_megc_on.gif); }
+ .support li.l_fiw a        { background-image: url(../img/ftr_logo_fiw.gif); }
+ .support li.l_fiw a:hover  { background-image: url(../img/ftr_logo_fiw_on.gif); }
+
+ 
+ 
+ .support .page li.l_sace a { background-image: url(../img/ftr_logo_sace_on.gif); }
+ 
+ .support .page li.l_fce a  { background-image: url(../img/ftr_logo_fce_on.gif); }
+ 
+ .support .page li.l_fpt a  { background-image: url(../img/ftr_logo_fpt_on.gif); }
+ 
+ .support .page li.l_fac a  { background-image: url(../img/ftr_logo_fac_on.gif); }
+ 
+ .support .page li.l_xvac a { background-image: url(../img/ftr_logo_xvac_on.gif); }
+ 
+ .support .page li.l_eca a  { background-image: url(../img/ftr_logo_eca_on.gif); }
+ 
+ .support .page li.l_teb a  { background-image: url(../img/ftr_logo_teb_on.gif); }
+ 
+ .support .page li.l_rn a:  { background-image: url(../img/ftr_logo_rn_on.gif); }
+ 
+ .support .page li.l_fcvs a { background-image: url(../img/ftr_logo_fcvs_on.gif); }
+ 
+ .support .page li.l_fas a  { background-image: url(../img/ftr_logo_fas_on.gif); }
+ 
+ .support .page li.l_megc a { background-image: url(../img/ftr_logo_megc_on.gif); }
+ 
+ .support .page li.l_fiw a { background-image: url(../img/ftr_logo_fiw_on.gif); }
+ 
+
+
+/* p03 */
+
+.p_03 #content .e_news .section {
+  position: absolute;
+  left: -999em;
+  overflow: hidden;
+}
+
+.p_03 #content .rel {
+  padding-top: .77em;
+}
+
+
+
+
+/* p04 */
+
+.p_04 #content .rel {
+  padding-top: .77em;
+}
+
+
+
+
+/* p05 */
+
+.p_05 #content .e_text {
+  border-bottom: none;
+}
+
+.p_05 #content .e_share {
+  border-top: 1px solid #c2c2c2;
+}
+
+.p_05 #content .rel {
+  padding-top: 2.2em;
+}
+
+
+
+
+/* p06 */
+
+.p_06 #content {
+  padding-top: .4em;
+}
+
+.p_06 #content .rel {
+  padding-top: 4.2em;
+}
+
+.p_06 #content .e_news .section {
+  position: absolute;
+  left: -999em;
+  overflow: hidden;
+}
+
+
+
+
+/* p07 */
+
+.p_07 #content .rel {
+  padding-top: 2.2em;
+}
+
+
+
+
+/* p09 */
+
+.p_09 #content .rel {
+  padding-top: .77em;
+}
+
+
+
+
+/* p10 */
+
+.p_10 #content .e_recursos_search {
+  margin: 1.5em 0;
+}
+
+.p_10 #content .e_news .section {
+  position: absolute;
+  left: -999em;
+  overflow: hidden;
+}
+
+
+
+
+/* p11 */
+
+.p_11 #content .e_info {
+  margin-bottom: 0;
+}
+
+.p_11 #content .rel {
+  padding-top: 2.2em;
+}
+

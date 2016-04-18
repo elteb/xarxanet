@@ -1,0 +1,60 @@
+/* $Id: comments.css,v 1.1.2.11 2009/05/21 16:23:51 jmburnz Exp $ */
+
+/**
+ * @file comments.css
+ * Basic styles for comments.
+ */
+
+/**********************************************************
+ *                     Comments
+ **********************************************************/
+/* Comment wrapper */
+#comments {
+	float: right;
+    height: auto;
+    margin-bottom: 15px;
+    position: relative;
+	width: 477px;
+}
+	
+.comment {
+	margin: 0 0 1em;
+	border-color: #DFE2F3;
+}
+
+.comment-submitted {
+	background-color: #DFE2F3;
+    height: auto;
+    padding: 5px;
+
+}
+
+#comments .indented {
+	margin-left: 0;
+}
+
+span.respon{
+	background-color: #959FD6;
+    float: right;
+    margin: 0;
+    padding: 4px 0 0;
+	display: inline;
+	text-transform: uppercase;
+}
+.comment-submitted .respon ul li a{
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+.comment-submitted  .respon ul li a:hover {
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+#comments-title {
+	font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 12pt;
+	background-color: #DFE2F3;
+	color: #FFFFFF;
+}
+

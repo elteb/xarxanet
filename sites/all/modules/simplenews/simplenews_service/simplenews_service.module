@@ -1,0 +1,150 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Adds a remote subcribe/unsubscribe service to Simplenews
+ */
+
+/**
+ * Implementation of hook_perm().
+ */
+function simplenews_service_perm() {
+  return array('test simplenews service', 'use simplenews service');
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function simplenews_service_menu() {
+  $items = array();
+  $items['admin/settings/simplenews/testxmlrpc'] = array(
+    'title' => t('Test service'),
+    'description' => t('Test Simplenews XML-RPC service.'),
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'simplenews_service_test',
+    'access arguments' => array('test simplenews service'),
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_xmlrpc().
+ */
+function simplenews_service_xmlrpc() {
+  $methods = array(
+    'simplenews.listNewsletters' => 'simplenews_service_list_newsletters',
+    'simplenews.subscribe' => 'simplenews_service_subscribe_user',
+    'simplenews.unsubscribe' => 'simplenews_service_unsubscribe_user',
+  );
+  return $methods;
+}
+
+/**
+ * Helper function to handle errors
+ */
+function simplenews_service_error($message) {
+  static $xmlrpcusererr;
+  if (!is_array($message)) {
+    $message = array($message);
+  }
+  $message = implode(' ', $message);
+  return xmlrpc_error($xmlrpcusererr + 1, strip_tags($message));
+}
+
+/**
+ * Helper function to handle authentication
+ */
+function simplenews_service_validate_key($key) {
+  if ($key == NULL || $key == '') {
+    // No authentication
+    return simplenews_service_error(t('You should authenticate to use this service.'));
+  } else if ($key != simplenews_private_key()) {
+    // Authentication is invalid
+    return simplenews_service_error(t('Your authentication to this service is invalid.'));
+  }
+  return TRUE;
+}
+
+/**
+ * XML-RPC callback returning the list of newsletters currently on the site
+ */
+function simplenews_service_list_newsletters($key = NULL) {
+  // Validate authentication
+  $status = simplenews_service_validate_key($key);
+  if ($status !== TRUE) {
+    return $status;
+  }
+  // Else, everything is ok, we return the newsletter list
+  $newsletters = simplenews_get_newsletters(variable_get('simplenews_vid', ''), TRUE); 
+  return $newsletters;
+}
+
+/**
+ * XML-RPC callback subscribing a user to a mailing-list
+ */
+function simplenews_service_subscribe_user($key, $mail, $tid, $confirm = TRUE) {
+  // Validate authentication
+  $status = simplenews_service_validate_key($key);
+  if ($status !== TRUE) {
+    return $status;
+  }
+  // Else authentication is ok, so we subscribe the user
+  return simplenews_subscribe_user($mail, $tid, $confirm, 'service');
+}
+
+/**
+ * XML-RPC callback UNsubscribing a user to a mailing-list
+ */
+function simplenews_service_unsubscribe_user($key, $mail, $tid, $confirm = TRUE) {
+  // Validate authentication
+  $status = simplenews_service_validate_key($key);
+  if ($status !== TRUE) {
+    return $status;
+  }
+  // Else authentication is ok, so we subscribe the user
+  return simplenews_unsubscribe_user($mail, $tid, $confirm, 'service');
+}
+
+/**
+ * XML-RPC service test page
+ */
+function simplenews_service_test() {
+  $key = simplenews_private_key();
+  $url = url('xmlrpc.php', array('absolute' => TRUE));
+  switch ($_GET['op']) {
+    case 'listMethods':
+      drupal_set_message('<pre>'. print_r(xmlrpc($url, 'system.listMethods'), TRUE) .'</pre>');
+    break;
+    case 'listNewsletters':
+      drupal_set_message('<pre>'. print_r(xmlrpc($url, 'simplenews.listNewsletters', $key), TRUE) .'</pre>');
+    break;
+    case 'listNewslettersWithoutKey':
+      $call = xmlrpc($url, 'simplenews.listNewsletters');
+      drupal_set_message('<pre>'. print_r(xmlrpc_error_msg(), TRUE) .'</pre>');
+    break;
+    case 'listNewslettersWithKey':
+      $call = xmlrpc($url, 'simplenews.listNewsletters', 'badkey');
+      drupal_set_message('<pre>'. print_r(xmlrpc_error_msg(), TRUE) .'</pre>');
+    break;
+    case 'subscribe':
+      drupal_set_message('<pre>'. print_r(xmlrpc($url, 'simplenews.subscribe', $key, 'bob@test.com', $_GET['tid'], FALSE), TRUE) .'</pre>');
+    break;
+    case 'unsubscribe':
+      drupal_set_message('<pre>'. print_r(xmlrpc($url, 'simplenews.unsubscribe', $key, 'bob@test.com', $_GET['tid'], FALSE), TRUE) .'</pre>');
+    break;
+    default:
+    break;
+  }
+  $output .= '<p>'. 'Each link allows you to test one service offered by this module.' .'</p>';
+  $output .= '<p>'. l('List of methods', 'admin/settings/simplenews/testxmlrpc', array('query' => array('op' => 'listMethods'))) .'</p>';
+  $output .= '<p>'. l('List of newsletters', 'admin/settings/simplenews/testxmlrpc', array('query' => array('op' => 'listNewsletters'))) .'</p>';
+  $output .= '<p>'. l('List of newsletters without authentication', 'admin/settings/simplenews/testxmlrpc', array('query' => array('op' => 'listNewslettersWithoutKey'))) .'</p>';
+  $output .= '<p>'. l('List of newsletters with bad authentication', 'admin/settings/simplenews/testxmlrpc', array('query' => array('op' => 'listNewslettersWithKey'))) .'</p>';
+  foreach(simplenews_get_newsletters(variable_get('simplenews_vid', ''), TRUE) as $tid => $newsletter) {
+    $output .= '<p>'. l('Subscribe a test user to '. $newsletter->name, 'admin/settings/simplenews/testxmlrpc', array('query' => array('op' => 'subscribe', 'tid' => $tid))) .'</p>';
+    $output .= '<p>'. l('Unsubscribe a test user to '. $newsletter->name, 'admin/settings/simplenews/testxmlrpc', array('query' => array('op' => 'unsubscribe', 'tid' => $tid))) .'</p>';
+  }
+  $output .= '<p>'. '<b>Current Simplenews key: </b>'.$key.'</p>';
+  return $output;
+}

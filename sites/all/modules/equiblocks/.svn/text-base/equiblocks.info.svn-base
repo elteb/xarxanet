@@ -1,0 +1,6 @@
+; $Id$ 
+name = Equiblocks
+description = Equilibri-made Blocks
+package = Equilibri
+core = 6.x
+php = 5.2

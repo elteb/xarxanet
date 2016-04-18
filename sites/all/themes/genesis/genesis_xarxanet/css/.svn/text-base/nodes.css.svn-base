@@ -1,0 +1,519 @@
+/* $Id: nodes.css,v 1.1.2.13 2009/06/05 17:49:59 jmburnz Exp $ */
+
+/**
+ * @file nodes.css
+ * Basic styles for nodes.
+ */
+
+/**********************************************************
+ *                      Nodes
+ **********************************************************/
+.node {
+  margin: 0 0 1.5em;
+}
+
+/* Inner wrapper div for nodes. */
+.node-inner {
+    width: 770px;
+}
+
+/* Node resum */
+.node-intro * {
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-size:12pt;
+    line-height:1.3em;
+    font-weight:normal;
+    color:#333;
+}
+
+/* Node title on teasers and other lists. */
+.node-title {}
+
+.node-title a:link,
+.node-title a:visited,
+.node-title a:active {
+  text-decoration: none;
+}
+
+.node-title a:hover {
+  text-decoration: underline;
+}
+
+/* Node content wrapper. */
+.node-content, .node-content-Full {
+    position:relative;
+    height:auto;
+    margin-bottom:15px;
+}
+/*.node-content p, .node-content ul, .node-content h2, .node-content h3, .node-content h4, .node-content ol, .node-content a {
+    position:relative;
+    clear:both;
+    width:100%;
+}*/
+.node-content ol {
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-size:12pt;
+    margin-bottom:15px;
+    width:95%;
+}
+.node-content ul, .node-content ol {
+    list-style-position: inside;
+}
+.node-content ol li a:link,.node-content ol li a:visited,.node-content ol li a:active{text-decoration:none;}
+.node-content ol li a:hover{text-decoration:underline;}
+
+.node-content ol{list-style-type:decimal;}
+.node-content ol li a:link,.node-content ol li a:visited,.node-content ol li a:active{color:#900; text-decoration:none;}
+.node-content ol li a:hover{color:#F00;}
+
+.node-content h3.label:hover{text-decoration:none;}
+
+/* User Picture. */
+.node .user-picture {}
+.node .user-picture img {}
+
+/* Submitted */
+.node-submitted {
+    width:100%;
+    height:auto;
+    margin-bottom:10px;
+}
+.node-submitted p, .node-submitted li {
+    font-size:8pt;
+    line-height:1.3em;
+    color:#333;
+    padding-bottom:0px;
+}
+#stars {
+    position:relative;
+    height:auto;
+    width:auto;
+    float:right;
+    line-height:0em;
+}
+
+/* Common links classes. */
+.node ul.links {}
+.node ul.links li {
+  padding: 0 1em 0 0;
+}
+.node ul.links li a {}
+
+/* Links. */
+.node-links {
+    float: none;
+    width: 190px;
+    height: 90px;
+}
+.node-links ul {
+    margin-bottom: 15px;
+}
+.node-links ul.links li  {
+    display: inline;
+    padding-top: 10px;
+	
+}
+.node-links ul.links li a img {
+    margin-right: 10px;
+}
+.node-links ul.links li a div {
+    float: right;
+    line-height: 20px;
+}
+
+/* Taxonomy terms. */
+.node-terms {
+    position:relative;
+    float:left;
+    width:100%;
+    height:auto;
+    background-color:#e0e0e0;
+}
+.node-terms h2 {
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-weight:normal;
+    font-size:11pt;
+    color:#FFF;
+    padding:5px;
+    margin-bottom:5px;
+    background-color:#333333;
+    border-bottom-style:solid;
+    border-bottom-color:#FFF;
+    border-bottom-width:5px;
+}
+.node-terms ul.tags, .node-terms ul.tags li {
+    margin:5px;
+    list-style-type:none;
+    float:left;
+    line-height:1em;
+}
+.node-terms ul.tags li a {}
+.node-terms a:link	{color:#53544F;}
+.node-terms a:visited	{color:#b2290c;}
+.node-terms a:active	{color:#b2290c;}
+.node-terms a:hover 	{color:#b2290c;text-decoration:underline;}
+
+/* TODO colocar legend a imagefield? */
+.legend {
+    position:relative;
+    height:auto;
+    width:auto;
+    padding:10px 10px 8px;
+    font-size:9pt;
+    color:#FFF;
+    margin-bottom:15px;
+    margin-top:-5px;
+	background-color:#333;
+	width:257px;	
+}
+
+.legend p{
+	color:#FFF;
+}
+
+/* Style module links. */
+ul.links li.node_read_more a {}
+ul.links li.comment_add a {}
+ul.links li.comment_comments a {}
+ul.links li.comment_new_comments a {}
+ul.links li.blog_usernames_blog a {}
+
+/* Node ul link first and last classes. */
+.node ul.links li.first {}
+.node ul.links li.last  {}
+
+/* Node classes for node workflow states. */
+.node-add    {}
+.node-edit   {}
+.node-delete {}
+.node-preview  {}
+.node-sticky   {}
+.node-promoted {}
+
+/* Node status. */
+.node-unpublished {}
+
+/* Theme the node teaser seperatly. */
+.node-teaser {}
+
+/* Node social and service links (Facebook, Twitter, etc.) */
+.node-social-links {
+    border-color:#999;
+    border-style:solid;
+    border-width:1px;
+    border-right:none;
+    border-left:none;
+    padding:15px 0 20px 0;
+    margin-top:5px;
+    margin-bottom:5px;
+    clear: both;
+    height: 15px;
+}
+
+.service-links {
+    clear: left;
+}
+
+.tweetbutton, .fb-social-like-widget {
+    float: left;
+}
+.service-label {
+    display: none;
+}
+
+.service-links ul {}
+
+.service-links ul li {
+    display: inline;
+    float: left;
+}
+
+/**********************************************************
+ *                   Core node types
+ **********************************************************/
+.node-blog  {}
+.node-page  {}
+.node-story {}
+.node-forum {}
+.node-book  {}
+.node-poll  {}
+
+
+/**********************************************************
+ *                 Custom node types
+ **********************************************************/
+/** 
+ * Replace CONTENT_TYPE with the content type 
+ * machine-readable name. 
+ */
+.node-type-CONTENT_TYPE {}
+
+
+/**********************************************************
+ *                    CCK Fields
+ **********************************************************/
+/* Wrapper for any CCK field. */
+.field {}
+
+/* Use "datetime" when creating new CCK date fields. */
+.field-type-datetime {}
+
+/* Filefield field. */
+.field-type-filefield {}
+
+/* Imagefield field. */
+.field-type-image {}
+
+/* Node reference field. */
+.field-type-nodereference {}
+
+/* User reference field. */
+.field-type-userreference {}
+
+/* Number fields. */
+.field-type-number-decimal {}
+.field-type-number-float   {}
+.field-type-number-integer {}
+
+/* Text field. */
+.field-type-text {}
+
+/**
+ * Specific field names.
+ */
+/* Underscores in field name are replaced with dashes. */
+.field-field-FIELDNAME {}
+
+/**
+  *Idilic - columna d'imatges i tags
+  */
+.node-column-images{
+    position:relative;
+    height:auto;
+    width:277px;
+    margin-right:15px;
+    float:left;
+}
+.node-column-images ul, .node-column-images ul li{
+    list-style-type:none;
+    float:left;
+}
+.node-column-text {
+    width: 477px;
+    float:right;
+}
+
+/****************************************** 
+*               Recursos
+******************************************/
+
+#main-content a.tornar{
+	text-decoration:none;
+	padding: 5px;
+    position: relative;
+    width: 97%;
+	float:left;
+	clear:both;
+	color:#FFF!important;
+	margin-bottom:15px;
+}
+
+#main-content a.tornar:hover{
+	background-color:#00236D;
+}
+
+.cincestrelles{
+	float:right;	
+}
+.cincestrelles .fivestar-widget{
+	float:right;
+	clear:both;
+}
+.cincestrelles .description{
+	float:right;
+	clear:both;
+}
+.floatesquerra{float:left;}
+.floatdreta{float:right;}
+.floatesquerra .fb-social-like-widget{width:10px;}
+
+/***********************************
+*      Agenda
+*************************************/
+.calendari{ 
+	overflow:hidden;
+	margin-bottom:10px;
+	font-size:13px;
+	padding:5px 10px 5px 10px;
+	background-color:#ABB22F;
+	color:#FFF;
+}
+
+.tipusagenda{
+	text-transform:uppercase;
+	font-weight:bold;
+	color:#000;
+}
+
+.agendainformacio{
+	background-color:#EAECCB;
+	padding: 10px;
+	color:#333333;
+}
+
+div.mb{
+	margin-bottom:10px;		
+}
+
+h2.minfo{
+	background-color:#ABB22F;
+	color:#FFF;
+	padding:5px;
+	font-weight: normal;
+	margin-bottom: 5px;
+}
+
+/*****************************
+*       Portades 
+***********************************/
+div.portada-superior-esquerra{
+	float:left;
+	width:378px;
+	clear: both;
+	position:relative;
+}
+
+div.portada-superior-dreta{
+	float:left;
+	width:378px;
+	margin-left: 10px;
+	position:relative;
+}
+div.portada-inferior{
+	clear:both;
+}
+
+h2.portada-titol{
+	font-size: 14pt;
+	padding: 0 10px 5px;
+	border-bottom-style: solid;
+    border-bottom-width: 5px;
+	font-weight: normal;
+}
+#portada-recurs h2.portada-titol{border-color:#005EA7;}
+#portada-noticia h2.portada-titol{border-color:#71A956;}
+
+
+#main-content a.veure-recursos {
+    display: inline-block;
+    float: right;
+    font-size: 8pt;       
+    padding: 5px;
+    position: absolute;
+      
+}
+
+#main-content #portada-recurs a.veure-recursos {
+	background-color: #005EA7;
+	color:#FFF;
+	font-weight: normal;
+	top: 1px; 
+	left: 310px;
+}
+#main-content #portada-recurs a.veure-recursos:hover {
+    background-color: #00236D;
+   	color:#FFF;
+	text-decoration:none;
+    
+}
+
+#main-content #portada-noticia a.veure-recursos {
+	background-color: #71A956;
+	color:#FFF;
+	font-weight: normal;
+	top: 1px; 
+	right: 0;
+}
+#main-content #portada-noticia a.veure-recursos:hover {
+    background-color: #32701D;
+   	color:#FFF;
+	text-decoration:none;
+    
+}
+
+
+
+
+
+#recurs-economic h2.portada-titol{border-color:#D1B91A;}
+#recurs-formacio h2.portada-titol{border-color:#C09158;}
+#recurs-informatic h2.portada-titol{border-color:#9B8CD2;}
+#recurs-juridic h2.portada-titol{border-color:#62AEC4;}
+#recurs-projectes h2.portada-titol{border-color:#E39595;}
+#recurs-general h2.portada-titol{border-color:#B4CF4F;}
+
+
+#financament-premis h2.portada-titol{border-color:#CB2390;}
+#financament-subvencio h2.portada-titol{border-color:#D62369;}
+#financament-beques h2.portada-titol{border-color:#BD523E;}
+#financament-altres h2.portada-titol{border-color:#D62405;}
+
+
+#main-content #recurs-economic a.veure-recursos {background-color:#D1B91A;}
+#main-content #recurs-formacio a.veure-recursos {background-color:#C09158;}
+#main-content #recurs-informatic a.veure-recursos {background-color:#9B8CD2;}
+#main-content #recurs-juridic a.veure-recursos {background-color:#62AEC4;}
+#main-content #recurs-projectes a.veure-recursos {background-color:#E39595;}
+#main-content #recurs-general a.veure-recursos {background-color:#B4CF4F}
+
+#main-content #financament-premis a.veure-recursos {background-color:#CB2390;}
+#main-content #financament-subvencio a.veure-recursos {background-color:#D62369;}
+#main-content #financament-beques a.veure-recursos {background-color:#BD523E;}
+#main-content #financament-altres a.veure-recursos {background-color:#D62405;}
+
+#main-content a.veure-recursos:hover{
+	text-decoration:none;  
+}
+
+#main-content #recurs-economic a.veure-recursos,
+#main-content #recurs-informatic a.veure-recursos,
+#main-content #recurs-projectes a.veure-recursos,
+#main-content #financament-premis a.veure-recursos,
+#main-content #financament-beques a.veure-recursos
+{
+	color:#FFF;
+	font-weight: normal;
+	top: 1px; 
+	left: 310px;
+}
+
+#main-content #recurs-formacio a.veure-recursos,
+#main-content #recurs-juridic a.veure-recursos,
+#main-content #recurs-general a.veure-recursos,
+#main-content #financament-subvencio a.veure-recursos,
+#main-content #financament-altres a.veure-recursos 
+{
+	color:#FFF;
+	font-weight: normal;
+	top: 1px; 
+	right: 0;
+}
+
+#main-content #recurs-economic a.veure-recursos:hover {background-color:#b79504;}
+#main-content #recurs-formacio a.veure-recursos:hover {background-color:#7f4014;}
+#main-content #recurs-informatic a.veure-recursos:hover {background-color:#4b3b9d;}
+#main-content #recurs-juridic a.veure-recursos:hover {background-color:#1a6485;}
+#main-content #recurs-projectes a.veure-recursos:hover {background-color:#bf4545;}
+#main-content #recurs-general a.veure-recursos:hover {background-color:#7fa818}
+
+
+#main-content #financament-premis a.veure-recursos:hover {background-color:#881760;}
+#main-content #financament-subvencio a.veure-recursos:hover {background-color:#701237;}
+#main-content #financament-beques a.veure-recursos:hover {background-color:#d62369;}
+#main-content #financament-altres a.veure-recursos:hover {background-color:#921903;}
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+<?php
+
+include_once('vistes_2011_xarxanet.features.inc');

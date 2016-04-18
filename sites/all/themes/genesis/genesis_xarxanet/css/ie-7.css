@@ -1,0 +1,60 @@
+.Menu-AS li.Ambits ul, .Menu-AS li.Serveis ul {
+    margin-top:20px;
+}
+#Header{
+	height:245px;
+}
+#Columna{
+	margin-top:-15px;
+}
+#Columna-Home{
+	margin-top:-19px;
+}
+#Contenido{
+	margin-top:-19px;
+}
+h3 a:link	{color:#333 !important;}
+h3 a:visited{color:#333 !important;}
+h3 a:active	{color:#333 !important;}
+h3 a:hover 	{color:#333 !important;}
+
+#Carrusel-Txt p, #Carrusel-Txt p:link, #Carrusel-Txt p:visited, #Carrusel-Txt p:active {color:#FFF;text-decoration:none; font-weight:normal;}
+#Carrusel-Txt p:hover	{color:#b2290c; text-decoration:underline; font-weight:normal;}
+
+.Form-S, .Form-M, .Form-XL, .Form-L{
+	height:auto;
+}
+.form-item{
+	width:auto;
+	height:auto;
+}
+.form-item span{
+	width:150px;
+	height:100%;
+	margin-left:22px;
+	float:left;
+	border:none;
+}
+#Cercador-Seleccio{
+	margin-bottom:10px;
+}
+.legend{
+	width:267px;
+	margin-top:-4px;
+}
+.node-column-images ul li {
+	margin-bottom:20px;
+}
+.node-terms ul, .node-terms li{
+	position:relative;
+	margin:5px;
+	list-style-type:none;
+	float:left;
+	line-height:1em;
+	display:inline-block;
+}
+
+.node-body-text blockquote{
+	border-top: 1px solid #999999 !important;
+	border-bottom: 1px solid #999999 !important;
+}

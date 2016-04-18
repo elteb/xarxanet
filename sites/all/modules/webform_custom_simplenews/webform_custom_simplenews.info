@@ -1,0 +1,7 @@
+name = Webform Custom Simplenews Component
+description = Integration for Simplenews & Webform with custom contents
+core = 6.x
+package = Webform
+dependencies[] = webform
+dependencies[] = simplenews
+

@@ -1,0 +1,24 @@
+/*
+  Cascading style sheets for "Xarxanet" (20090810)
+  ---
+  Designed in 2009 by Emanuele Rodriguez <erodri@gmail.com>
+  ---
+  print.css - Page print layout
+*/
+
+#header {
+  display: none;
+}
+
+#content {
+  float: none;
+  overflow: visible !important;
+}
+
+#nav {
+  display: none;
+}
+
+#footer {
+  display: none;
+}
