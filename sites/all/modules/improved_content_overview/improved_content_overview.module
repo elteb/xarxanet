@@ -1,0 +1,276 @@
+<?php
+
+/**
+ * Valid permissions for this module
+ * @return array An array of valid permissions for the test_module module
+ */
+function improved_content_overview_permission() {
+   $permissions['administer improved_content_overview'] = array(
+    'title' => t('Administer improved content overview'),
+    'description' => t('Access to improved content overview permissions admin page'),
+   );
+   return $permissions;
+}
+
+/**
+ * Menu for this module
+ * @return array An array with this module's settings.
+ */
+function improved_content_overview_menu() {
+  $items = array();
+
+  $items['admin/config/improved_content_overview'] = array(
+    'title' => t('Improved Content Overview'),
+    'description' => t('Configure Improved Content Overview module'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('improved_content_overview_form'),
+    //'type' => MENU_NORMAL_ITEM,  // Not necessary since this is the default.
+    'access arguments' => array('administer improved_content_overview'),
+    'weight' => 0,
+    );
+	
+  return $items;
+}
+
+/**
+ * @file
+ * Settings form.
+ */
+
+/**
+ * Config form shown at admin/config/system/improved_content_overview
+ */
+function  improved_content_overview_form($form,&$form_state){
+		
+	$form['improved_content_overview_news_type'] = array(
+		'#type' => 'textfield',
+		'#description' => t('El vid es pot trobar a la taula "taxonomy_vocabulary"'),
+		'#title' => t('vid de la taxonomia "Tipus de notícia"'),
+		'#default_value' => variable_get('improved_content_overview_news_type','0'),		
+		'#required' => FALSE,
+	);
+	
+	$form['improved_content_overview_news_area'] = array(
+			'#type' => 'textfield',
+			'#description' => t('El vid es pot trobar a la taula "taxonomy_vocabulary"'),
+			'#title' => t('vid de la taxonomia "Àmbit de notícia"'),
+			'#default_value' => variable_get('improved_content_overview_news_area','0'),
+			'#required' => FALSE,
+	);
+	
+	$form['improved_content_overview_resources_area'] = array(
+		'#type' => 'textfield',
+		'#description' => t('El vid es pot trobar a la taula "taxonomy_vocabulary"'),
+		'#title' => t('vid de la taxonomia "Àmbit del recurs"'),
+		'#default_value' => variable_get('improved_content_overview_resources_area','0'),		
+		'#required' => FALSE,
+	);
+	
+	return system_settings_form($form);
+}
+
+/**
+ * Implementation of hook_node_admin_filters().
+ * Returns extra filter option at admin/content/node to filter on every page.
+ */
+function improved_content_overview_node_admin_filters() {
+	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();	
+	$filters = array();
+	
+	global $user;
+	if ($user->name == 'Administrador') {
+		//print_r($filter_data);
+	}
+	
+	//Get filters
+	foreach ($filter_data as $filter) {
+		$$filter[0] = $filter[1];
+	}
+	
+	//News area filter
+	if (!is_null($type) && (strpos($type, 'noticia_') !== false)){
+		$terms = array();
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid =' . variable_get('improved_content_overview_news_area');
+		$result = db_query($query);
+		foreach ($result as $row){
+			$tax_term = taxonomy_term_load($row->tid);
+			$terms[$tax_term->tid] = $tax_term->name;
+		}
+		asort($terms);
+		$terms = array('[any]' => t('any')) + $terms;
+		$filters['term_tid'] = array('title' => t('àmbit de la noticia'), 'options' => $terms	);
+		if (!is_null($term_tid)) $filters['term_tid']['type'] = 'hidden';
+	
+		//News type filter
+		$terms = array();
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid =' . variable_get('improved_content_overview_news_type');
+		$result = db_query($query);
+		foreach ($result as $row){
+			$tax_term = taxonomy_term_load($row->tid);
+			$terms[$tax_term->tid] = $tax_term->name;
+		}
+		asort($terms);
+		$terms = array('[any]' => t('any')) + $terms;
+		$filters['term_tid_noticia'] = array('title' => t('tipus de noticia'), 'options' => $terms	);
+		if (!is_null($term_tid_noticia)) $filters['term_tid_noticia']['type'] = 'hidden';
+	}
+	
+	//Resource area filter
+	if (!is_null($type) && (strpos($type, 'recurs_') !== false)){
+		$terms = array();
+		$query = 'SELECT term.tid FROM {taxonomy_term_data} AS term WHERE term.vid =' . variable_get('improved_content_overview_resources_area');
+		$result = db_query($query);
+		foreach ($result as $row){
+			$tax_term = taxonomy_term_load($row->tid);
+			$terms[$tax_term->tid] = $tax_term->name;
+		}
+		asort($terms);
+		$terms = array('[any]' => t('any')) + $terms;
+		$filters['term_tid'] = array('title' => t('àmbit del recurs'), 'options' => $terms	);
+		if (!is_null($term_tid)) $filters['term_tid']['type'] = 'hidden';
+	}
+	
+	//Role Filter
+		$all_roles = array('[any]' => t('any')) + user_roles();
+		$filters['role'] = array('title' => t('role'), 'options' => $all_roles	);
+		if (!is_null($role)) $filters['role']['type'] = 'hidden';
+
+	//User Filter
+	if (!is_null($role)) {
+		$users = array();
+		$query = 'SELECT DISTINCT(ur.uid) FROM {users_roles} AS ur WHERE ur.rid = :rid';
+		$result = db_query($query, array(':rid' => $role));
+		foreach ($result as $row) {
+			$usr = user_load($row->uid);
+			$users[$usr->uid] = $usr->name;
+		}
+		asort($users);
+		$users = array('[any]' => t('any')) + $users;
+		$filters['user_uid'] = array('title' => t('user'), 'options' => $users	);
+		if (!is_null($user_uid)) $filters['user_uid']['type'] = 'hidden';
+	}
+	
+	//Date Filter
+	$filters['date_type'] = array('title' => t('date type'), 'options' => array('[any]' => t('any'), 'created' => t('Created date'), 'changed' => t('Updated date')));
+	if (!is_null($date_type)) $filters['date_type']['type'] = 'hidden';
+	if (!is_null($date_type)) {
+		$filters['start_date'] = array('title' => t('start date'), 'type' => 'date_popup', 'date_format' => 'd-m-Y', 'date_label_position' => 'none');
+		if (!is_null($start_date)) $filters['start_date']['type'] = 'hidden';
+		$filters['end_date'] = array('title' => t('end date'), 'type' => 'date_popup', 'date_format' => 'd-m-Y', 'date_label_position' => 'none');
+		if (!is_null($end_date)) $filters['end_date']['type'] = 'hidden';
+	}
+		
+	return $filters;
+}
+
+/**
+ * Implementation of hook_node_admin_filter_query_alter().
+ */
+function improved_content_overview_node_admin_filter_query_alter(SelectQueryInterface $query) {
+	$filter_data = isset($_SESSION['node_overview_filter']) ? $_SESSION['node_overview_filter'] : array();
+	$date_type = null;
+	foreach ($filter_data as $index => $filter) {
+		list($key, $value) = $filter;
+		switch ($key) {
+			case 'role':
+				$query->join('users_roles', 'ur', 'n.uid = ur.uid'); //JOIN node with users_roles
+				$query->condition('ur.' . 'rid', $value);
+				break;
+			case 'user_uid':
+				$query->condition('n.' . 'uid', $value);
+				break;
+			case 'term_tid':
+				$term_id = $value;
+				$query->join('taxonomy_index', 'ti', 'n.nid = ti.nid'); //JOIN node with taxonomy_index
+				$query->condition('ti.' . 'tid', $term_id);
+				//print $query;
+				break;
+			case 'term_tid_noticia':
+				$query->join('taxonomy_index', 'ti2', 'n.nid = ti2.nid'); //JOIN node with taxonomy_index
+				$query->condition('ti2.' . 'tid', $value);
+				//print $query;
+				break;			
+			case 'date_type':
+				$date_type = $value;
+				break;
+			case 'start_date':
+				$query->condition('n.' . $date_type, strtotime($value), '>=');
+				break;
+			case 'end_date':
+				$query->condition('n.' . $date_type, strtotime($value), '<=');
+				break;
+		}
+	}
+}
+
+/**
+ * Implementation of hook_form_node_admin_content_alter().
+ * 
+ * Aquest hook ens a serveix per apoder modificar la taula  
+ * de resultats de l'administració de nodes.
+ *  
+ */
+function improved_content_overview_form_node_admin_content_alter(&$form, &$form_state, $form_id) {
+  // Load the nodes. This incurrs very little overhead as 
+  // "$nodes = node_load_multiple($nids);" has already been run on these
+  // nids in node_admin_nodes(). The static cache will be used instead of
+  // another db query being invoked
+  global $user;
+  $nids = array();
+  $termTipus = array();
+  $termAmbit = array();
+ 
+  $language = 'und';
+  
+  if ($user->name == 'Administrador') {
+  	$form_admin = $form['admin']['nodes']['#options'];	
+  	$nodes = node_load_multiple(array_keys($form['admin']['nodes']['#options']));
+  }else{
+  	$form_admin = $form['admin']['nodes']['#rows'];
+  	$nodes = node_load_multiple(array_keys($form['admin']['nodes']['#rows']));	
+  }
+    
+  // Loop through the rows in the table and add the "Tipus contingut" and "Àmbit Contingut" column
+  foreach ($form_admin as $nid => $row) {
+    foreach ($nodes as $node) {
+		$type = $node->type;
+		if (strpos($type, 'noticia_') !== false){
+            // Add another column to the table header
+			$form['admin']['nodes']['#header']['Tipus'] = array('data' => t('Tipus Contingut'));
+			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Àmbit Contingut'));
+
+			foreach ($node->field_tipus_noticia[$language] as $delta => $value) {
+			  $termTipus[$node->nid] = taxonomy_term_load($value['tid']);
+			}
+			foreach ($node->field_ambit_noticia[$language] as $delta => $value) {
+			  $termAmbit[$node->nid] = taxonomy_term_load($value['tid']);
+			}	
+		}
+		if (strpos($type, 'recurs_') !== false){
+			// Add another column to the table header
+			$form['admin']['nodes']['#header']['Ambit'] = array('data' => t('Àmbit Contingut'));
+						
+			foreach ($node->field_ambit_recurs[$language] as $delta => $value) {
+			  $termAmbit[$node->nid] = taxonomy_term_load($value['tid']);
+			}
+		}
+		$nids[$node->nid] = $node->nid;
+    }
+	
+	if ($user->name == 'Administrador') {
+	  	// Grab the "Ambit" and "Tipus" related to this node.   
+	    // Add data for the new column "Tipus"
+	    $form['admin']['nodes']['#options'][$nid]['Tipus'] = $termTipus[$nid]->name;
+		
+		// Add data for the new column "Ambit"
+	    $form['admin']['nodes']['#options'][$nid]['Ambit'] = $termAmbit[$nid]->name;
+	}else{
+		// Grab the "Ambit" and "Tipus" related to this node.   
+	    // Add data for the new column "Tipus"
+	    $form['admin']['nodes']['#rows'][$nid]['Tipus'] = $termTipus[$nid]->name;
+		
+		// Add data for the new column "Ambit"
+	    $form['admin']['nodes']['#rows'][$nid]['Ambit'] = $termAmbit[$nid]->name;
+	}
+  }
+}

@@ -1,0 +1,8 @@
+; $Id$
+; Drupal Addthis.com Most Shared - Showcase the most popular content across your Drupal website and engage your audience.
+
+name = Most Shared AddThis 
+description = "Most Shared AddThis provides a block where site users can see the top shared stories
+and other metrics From Addthis.com"
+core = 7.x
+package = Most Shared AddThis 

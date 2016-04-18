@@ -1,0 +1,290 @@
+/**
+ *   Node Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+
+ /* ------- Notícies i Recursos ------- */
+ .node-column-images {
+  .node-image {
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .legend {
+      p {
+        background-color: $main-color;
+        color: white;
+        margin: 0;
+        padding: $space;
+      }
+      margin-bottom: $ninesixty-gutter-width; 
+    }
+  }
+  .node-terms {
+    @include node-box;
+    h2 { @include node-title('etiquetes'); } 
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+    line-height: 1.8em;
+  }
+  .node-links {
+    @include node-box;
+    h2 { @include node-title(''); } 
+    ul { line-height: 2.5em; }
+    li { margin-left: 1em; }
+    li.print_html { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/print.png"); }
+    li.print_mail { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/mail.png"); }
+    li.print_pdf { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/pdf-version.png"); }
+    li.ics { list-style-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/calendar.png"); }
+  }
+  .node-files {
+    @include node-box;
+    h2 { @include node-title('fitxers'); } 
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+    line-height: 1.8em;
+  }
+ }
+ 
+ .node-content {
+  .node-intro {
+    border-bottom: solid 1px $main-1;
+    p { 
+      @include title3;
+      margin-bottom: $ninesixty-gutter-width; 
+    }
+  }
+  .node-social-links {
+    margin-top: $ninesixty-gutter-width;
+    margin-bottom: $space;
+  }
+  .node-submitted {
+    margin: $space 0;
+    font-size: 8pt;
+    p { margin: 0 !important; }
+  }
+  .node-body-text {
+    margin: $ninesixty-gutter-width 0;
+  }
+  .resource-answer {
+    margin-top: $ninesixty-gutter-width;
+    p.tornar { text-align: right; }
+ }
+}
+ 
+ section#comments {
+   margin-right: $space;
+   h2.title { 
+     @include node-title('globus');
+     margin-bottom: 0; 
+   }
+   article {
+    background-color: $main-3;
+    padding: $space;
+    margin-bottom: $space;
+    h3, .permalink { display: none; }
+    time {
+      color: #32701D;
+      font-style: italic;
+    }
+    .content {
+      background-color: white;
+      padding: $space;
+    }
+    footer {
+      text-align: right;
+      margin: $ninesixty-gutter-width 0 $space;
+      li { padding: 0; } 
+      a { 
+        padding: $space $ninesixty-gutter-width ;
+        color: white;
+        background-color: $main-1;
+        text-transform: capitalize;
+      }
+    }
+  }
+  
+  #comment-form-wrapper {
+    background-color: $main-3;
+    h2 { @include node-title('comentaris'); }
+    form { padding: $space; }
+    
+  }
+  
+  .form-actions {
+   text-align: right;
+    input { margin-left: 8px; }
+  }
+ }
+ 
+ /* ------- Esdeveniments ------- */
+ .section-agenda {
+  .node-column-images {
+    .node-image { margin: $ninesixty-gutter-width 0; }
+    .more-info {
+      @include node-box($actes-sec);
+      h2 { @include node-title('info', $agenda); }
+      .agendainformacio { padding: $space; } 
+     }
+   }
+  .node-content .node-intro { border: none; }
+  .calendari {
+    overflow: hidden;
+    padding: 8px;
+    background-color: $agenda;
+    color: white;
+    .floatesquerra {
+      float: left;
+      font-weight: bold;
+    }
+    .floatdreta {
+      float: right;
+    }
+  }
+ }
+ 
+ /* ------- Finançaments ------- */
+ .section-financament {
+  .node-column-images {
+    .node-image { margin: $ninesixty-gutter-width 0; }
+  }
+ }
+ 
+ 
+ /* ------- Doc Biblioteca ------- */
+ .biblioteca-fitxa {
+   tbody { border-top: none; }
+   .biblioteca-document {
+     width: 100%;
+     margin-bottom: $space;
+     .node-social-links {
+       text-align: right;
+       padding: $space;
+     }
+     img { border: solid 1px #cccccc; } 
+   }
+   #bilioteca-document-peu {
+     background-color: $main-3;
+     border-top: solid 2px $main-1;
+     td {
+       text-align: center;
+       padding: $space;
+     }
+     img {
+       margin-top: 8px;
+     }
+   }
+ }
+ 
+ /* ------- Fitxes d'entitat ------- */
+ .page-entitat {
+   .images-column {
+     img {
+       margin-bottom: $space*2;
+       width: 100%;
+       height: auto;
+     }
+   }
+   .data-row {
+     background-color: $main-3;
+     padding: 0px;
+     .pane-title { display: none; }
+     .view-dades-de-l-entitat {
+       padding: $space;
+       #data-block {
+         margin-top: $space;
+         width: 100%;
+         .data-block-part {
+           width: 50%;
+           float: left;
+           .block-item {
+             padding-left: $space*4;
+             min-height: $space*3;
+             vertical-align: center;
+             margin-bottom: $space;
+           }
+           #item-adress { background: url("/sites/all/themes/sasson_xarxanet/images/icons/adress-icon.png") no-repeat; }
+           #item-nif { background: url("/sites/all/themes/sasson_xarxanet/images/icons/nif-icon.png") no-repeat; }
+           #item-tel { background: url("/sites/all/themes/sasson_xarxanet/images/icons/tel-icon.png") no-repeat; }
+           #item-mail { background: url("/sites/all/themes/sasson_xarxanet/images/icons/mail-icon.png") no-repeat; }
+           #item-web { background: url("/sites/all/themes/sasson_xarxanet/images/icons/web-icon.png") no-repeat; }   
+         }
+       }
+     } 
+   }
+   .links-row {
+     @include title2;
+     background-color: $main-1;
+     padding: $space;
+     color: white;
+     margin-top: 0px;
+     a, a:hover {
+       color: white;
+     }
+     #content-block {
+       float: left;
+       .content-block-part {
+         float: left;
+         #news-block { 
+           background: url("/sites/all/themes/sasson_xarxanet/images/pictos/noticies.png") 2px 4px no-repeat;
+           padding-left: 35px; 
+         }
+         #events-block { 
+           background: url("/sites/all/themes/sasson_xarxanet/images/pictos/actes.png") 0px 4px no-repeat;
+           padding-left: 40px; 
+         }
+       }
+     }
+     #social-block {
+       float: right;
+       text-align: right;
+       img {
+         margin-left: $space;
+       }
+     }
+     .pager { display: none; }
+   }
+   .transparency-row {
+     .panels-flexible-region {
+       width: 100%;
+     }
+     .panel-separator {
+       display: none;
+     }
+     h2 {
+       @include grid-width(2);
+       background-color: $transparencia;
+       margin-bottom: 0px;
+       padding: $space;
+       color: white;
+     }
+     .pane-content {
+       background-color: $transparencia-sec;
+       padding: $space $space 0px $space;
+       ul {
+         list-style: none;
+         margin-top: $space;
+       }
+       .views-exposed-form {
+         label {
+           font-weight: normal;
+         }
+       }
+     }
+     #dades-transparencia .pane-content {
+       padding-bottom: $space;
+     }
+   }
+ }
+
+ /* ------- Butlletins ------- */
+ .node-type-butlleti-financament,
+ .node-type-butlleti-actualitat {
+   .title { display: none; }
+   .region-content .content { padding: $space; }
+ }
+
+ table.butlleti { 
+  border-collapse: inherit;
+  td { 
+    border: white;
+    padding: .375em .5em;
+  }
+}

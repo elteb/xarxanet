@@ -1,0 +1,75 @@
+/**
+ *   Layout Subportals
+ */
+
+.panel-2col .panel-panel .inside {
+  margin: 0px;
+}
+
+/* ------- Biblioteca ------- */
+.section-biblioteca,
+.section-biblioteca-filtre,
+.section-biblioteca-cerca {
+  #main {
+    width: $ninesixty-grid-width - $ninesixty-gutter-width;
+    margin: 0 $space;
+  }
+  .breadcrumb { margin-right: 0px;}
+  .panel-col-first { 
+    @include grid-width(7);
+    margin-right: $space;
+    float: left;
+  }
+  .panel-col-last { 
+    @include grid-width(3);
+    margin-left: $space;
+    float: left; 
+  }
+  .panels-flexible-region {
+    width: 100%;
+  }
+}
+
+/* ------- Seccions especials ------- */
+.section-especial,
+.section-fes-voluntariat
+ {
+  .panel-col-first {
+    width: $ninesixty-grid-width / $ninesixty-columns * 6;
+    .inside { margin-right: $space } 
+  }
+  .panel-col-last { 
+    width: $ninesixty-grid-width / $ninesixty-columns * 4;
+    .inside { margin-left: $space }  
+  }
+}
+
+/* ------- Llistat Entitats ------- */
+.view-entitats{
+    .views-table{
+        width: 100%;
+        .views-field-name{ 
+          min-width:40%;          
+        }   
+        .views-field-city{ 
+          min-width:10%;          
+        }
+        .views-field-field-ambit-intervencio{ 
+          min-width:22%;          
+        }
+        .views-field-field-telefon{ 
+          min-width:10%;          
+        } 
+        .views-field-field-correu-electronic-public{ 
+          min-width:18%;          
+        }
+        td {
+          padding: $space;
+        }
+    }
+    .pager{
+      width: 100%;
+      padding-left:0px;
+      padding-right:0px;      
+    }  
+}

@@ -1,0 +1,75 @@
+/* TODO canviar floating cap a right */
+#block-xarxanet_recursos-0 {
+    width: 380px;
+}
+#block-xarxanet_recursos-0 .e_relevants {
+    float: left;
+    width: 100%;
+    position: relative;
+    background-color: #EDF4F9;
+    color: #333333;
+}
+#block-xarxanet_recursos-0 a {
+    color: #00236D;
+}
+.xarxanet-recursos-heading {
+    margin-bottom: 15px;
+}
+.xarxanet-recursos-heading h2 {
+    position:absolute;
+    top:105px;
+    left:10px;
+    color:#FFF;
+    font-weight:normal;
+    font-size:14pt;
+    text-shadow: 2px 2px 2px #292829;
+    filter: dropshadow(color=#292829, offx=2, offy=2);
+    background-color:transparent;
+}
+.xarxanet-recursos-resums {
+    float:left;
+    width: 170px;
+    position:relative;
+    height:auto;
+    margin-left:10px;
+    margin-top:0px;
+}
+.xarxanet-recursos-resums h3 a       {font-size:13pt;line-height:1.2em;}
+.xarxanet-recursos-resums h3 a:hover {text-decoration:underline;}
+.xarxanet-recursos-titles {
+    float:right;
+    height:auto;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-right:10px;
+    margin-top:0px;
+    width: 180px;
+    list-style-type: none;
+}
+.xarxanet-recursos-titles li {
+    padding: 5px 5px 5px 20px;
+}
+.xarxanet-recursos-titles li:hover {
+    text-decoration: none;
+    outline: none;
+    color: #FFF !important;
+    background: url("arrow.gif") no-repeat left center #005EA7;
+}
+.xarxanet-recursos-mes {
+    float: left;
+    height: 35px;
+    width: 100%;
+    font-weight:bold;
+    background-color: #005EA7;
+    padding-left: 10px;
+}
+.xarxanet-recursos-mes a {
+    line-height: 35px;
+    color: #FFF;
+}
+.xarxanet-recursos-mes a:link,
+.xarxanet-recursos-mes a:active,
+.xarxanet-recursos-mes a:visited,
+.xarxanet-recursos-mes a:hover {
+    color: #FFF;
+}

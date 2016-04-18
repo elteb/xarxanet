@@ -1,0 +1,20 @@
+<?php
+/*
+ * 
+ */
+function mobile_detect_frontpage_init() {
+	if ($_SERVER['REQUEST_URI'] == base_path()) {
+		$detect = mobile_detect_get_object();
+		$is_mobile = $detect->isMobile();
+		$is_tablet = $detect->isTablet();
+		if ($is_mobile || $is_tablet) {
+			if (!isset($_COOKIE['device-theme'])) {
+				drupal_goto('mobile-frontpage');
+			} else {
+				if ($_COOKIE['device-theme'] == 'mobile') {
+					drupal_goto('mobile-frontpage');
+				}	
+			}
+		}
+    }
+}

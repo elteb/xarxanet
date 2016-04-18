@@ -1,0 +1,70 @@
+/**
+ *   Frontpage Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+
+/*------ Opinion -----*/
+.view-opinion{
+  p { margin-bottom: 0px; }
+  .article-info { 
+  	float: left;
+  	width: $column * 3 + $space; 
+  }
+  .vertical-photo { 
+  	width: $column;
+  	float: left; 
+  }
+  .views-row-2, .views-row-3, .views-row-4, .views-row-5 {
+  	clear: both;
+  	h2 { margin-top: 0px; }
+  }
+  .views-row-2, .views-row-4, .views-row-5 { padding-top: 2*$space; }
+  #left-column {
+    .views-row-clear-0 {
+      background: $main-3;
+      h2 a { font-size: 18pt; }
+      .article-info { 
+      	padding: $space;
+      	float: none;
+      	width: $column * 4; 
+      }
+    }
+  }
+  .view-footer{
+  	.past-articles {
+	  	padding: 4px 8px 4px 0px;
+	  	background-color: $main-3;
+	  	text-align: right;
+  	} 
+  	padding-right: $space;
+  	padding-top: 2*$space;
+    clear:both;
+  }
+}
+
+.view-opinion-authors {
+	.views-row {
+		width: 100px;
+		float: left;
+		margin: 8px 12px 8px 12px;
+		.views-field-title {
+			text-align: center;
+			padding: $space;
+		}
+		&.views-row-7 { clear: both; }
+	}
+}
+
+.all-authors {
+	clear: both;
+	padding-top: 2*$space;
+	margin-right: $space;
+	border-bottom: solid 2px $general;
+	h2 {
+	 	@include title3;
+	   	color: white;
+	   	padding: $space 0 $space $space;
+	   	margin-bottom: 0;
+	   	width: $column*1.5;
+	   	background-color: $general;
+	}   	
+}

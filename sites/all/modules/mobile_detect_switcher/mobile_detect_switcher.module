@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implement hook_menu
+ */
+function mobile_detect_switcher_menu() {
+	$items['mobile-switcher'] = array(
+		'access callback' => true,
+		'page callback' => 'mobile_detect_switcher_set_cookie',
+	);
+	return $items;
+}
+
+/**
+ * Set Cookie
+ */
+function mobile_detect_switcher_set_cookie($theme) {
+	setcookie('device-theme', $theme, 0, '/');
+	drupal_goto();
+}

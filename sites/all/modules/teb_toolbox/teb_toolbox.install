@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Teb Toolbox
+ */
+
+/**
+ * Implements hook_update_N().
+ * Resets 'taxonomy_override_selector' variable.
+ */
+function teb_toolbox_update_7001() {
+  // update field_resum lenght
+   teb_toolbox_change_text_field_max_length('field_resum', 250);
+}

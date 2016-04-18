@@ -1,0 +1,53 @@
+<?php
+
+function xarxanet_recursos_block($op = 'list', $delta = 0, $edit = array()){
+    switch($op){
+        case "list":
+            $blocks = array();
+            $blocks[0]['info'] = t("Bloc de recursos",null,"ca");
+            return $blocks;
+        case 'view':
+            $blocks = array();
+            $blocks[0]['subject'] = null;
+            $blocks[0]['content'] = xarxanet_recursos_content();
+            return $blocks[$delta];
+    }
+}
+function xarxanet_recursos_content(){
+    drupal_add_js(drupal_get_path('module','xarxanet_recursos')."/xarxanet_recursos.js");
+    drupal_add_css(drupal_get_path('module','xarxanet_recursos')."/xarxanet_recursos.css");
+    
+    $view = views_get_view("recursos_destacats_portada");
+    $view->preview();
+    
+    $titles = '';
+    $resums = '';
+    $selectedTitle = 'selected';
+    $styleResums = '';
+    
+    foreach($view->result as $row => $result) {
+        $title = $view->render_field('title', $row);
+        $resum = $view->render_field('field_resum_value', $row);
+
+        $titles.= '<li class="title-bloc-recursos ' . $selectedTitle . '">' . $title . '</li>';
+        $resums.= '<div class="item-bloc-recursos" ' . $styleResums . '><h3 class="title">' . $title . '</h3>' . $resum . '</div>';
+
+        //Style switching
+        $selectedTitle = '';
+        $styleResums = 'style="display:none;"';
+    }
+
+    return '
+    <div class="xarxanet-recursos-heading">
+        <a class="New" title="" href=""><img src="' . base_path() . 'sites/all/modules/xarxanet_recursos/demo-recursos-utils.jpg" alt="Recursos destacats" /></a>
+    </div>
+    <h2>Recursos útils per a les entitats</h2>
+    <div class="xarxanet-recursos-resums">' . $resums . '</div>
+    <div id="xarxanet-recursos-arrow"></div>
+    <ul class="xarxanet-recursos-titles">' . $titles . '</ul>
+    <div class="xarxanet-recursos-mes">
+        <a href="" class="xarxanet_recursos_mes">VEURE´LS TOTS</a>
+    </div>';
+}
+
+?>

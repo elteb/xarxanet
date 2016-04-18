@@ -1,0 +1,105 @@
+
+/************ BLOCK *************/
+#header-blocks { margin-left: 0; }
+#block-megamenu-0 { width: 965px; background-color: #CCCCCC; position: relative; z-index: 3000;}
+#block-megamenu-0 .megamenu-bin { z-index: 1000; }
+#block-megamenu-0 .block-content { height: 32px; border-top: 3px solid #666;}
+ul#megamenu-menu-menu-ambits-entitats { margin-left: 0; } 
+
+
+/************ MENU **************/
+ul.megamenu-skin-xarxanet { height: auto;}
+.megamenu-skin-xarxanet a { 
+	font-family: Arial,Helvetica,sans-serif; 
+	font-size: 10pt; 	 
+	font-style: normal; 
+	color: #53544F;}
+.megamenu-skin-xarxanet li.megamenu-parent { margin-top: 9px; }
+.megamenu-skin-xarxanet li.megamenu-parent.half-1 { float: left; }
+.megamenu-skin-xarxanet li.megamenu-parent.half-2 { float: right; }
+.megamenu-skin-xarxanet h2 a { padding: 8px 12px 8px; font-weight: bold;}
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-0 h2 a:hover,
+#container.ambiental .megamenu-skin-xarxanet li.megamenu-parent.leaf-0 h2 a,
+#container.page-etiquetes-ambiental .megamenu-skin-xarxanet li.megamenu-parent.leaf-0 h2 a { background-color: #8FBD7F; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-1 h2 a:hover,
+#container.comunitari .megamenu-skin-xarxanet li.megamenu-parent.leaf-1 h2 a,
+#container.page-etiquetes-comunitari .megamenu-skin-xarxanet li.megamenu-parent.leaf-1 h2 a { background-color: #F4BC44; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-2 h2 a:hover,
+#container.cultural .megamenu-skin-xarxanet li.megamenu-parent.leaf-2 h2 a,
+#container.page-etiquetes-cultural .megamenu-skin-xarxanet li.megamenu-parent.leaf-2 h2 a { background-color: #959FD6; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-3 h2 a:hover,
+#container.social .megamenu-skin-xarxanet li.megamenu-parent.leaf-3 h2 a,
+#container.page-etiquetes-social .megamenu-skin-xarxanet li.megamenu-parent.leaf-3 h2 a{ background-color: #005577; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-4 h2 a:hover,
+#container.internacional .megamenu-skin-xarxanet li.megamenu-parent.leaf-4 h2 a,
+#container.page-etiquetes-internacional .megamenu-skin-xarxanet li.megamenu-parent.leaf-4 h2 a{ background-color: #A75387; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-5 h2 a:hover,
+#container.economic .megamenu-skin-xarxanet li.megamenu-parent.leaf-5 h2 a,
+#container.page-etiquetes-economic .megamenu-skin-xarxanet li.megamenu-parent.leaf-5 h2 a { background-color: #D1B91A; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-6 h2 a:hover,
+#container.formacio .megamenu-skin-xarxanet li.megamenu-parent.leaf-6 h2 a,
+#container.page-etiquetes-formacio .megamenu-skin-xarxanet li.megamenu-parent.leaf-6 h2 a { background-color: #C09158; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-7 h2 a:hover,
+#container.informatic .megamenu-skin-xarxanet li.megamenu-parent.leaf-7 h2 a,
+#container.page-etiquetes-informatic .megamenu-skin-xarxanet li.megamenu-parent.leaf-7 h2 a { background-color: #9B8CD2; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-8 h2 a:hover,
+#container.juridic .megamenu-skin-xarxanet li.megamenu-parent.leaf-8 h2 a,
+#container.page-etiquetes-juridic .megamenu-skin-xarxanet li.megamenu-parent.leaf-8 h2 a { background-color: #62AEC4; color: #FFFFFF; }
+
+.megamenu-skin-xarxanet li.megamenu-parent.leaf-9 h2 a:hover,
+#container.projectes .megamenu-skin-xarxanet li.megamenu-parent.leaf-9 h2 a,
+#container.page-etiquetes-projectes .megamenu-skin-xarxanet li.megamenu-parent.leaf-9 h2 a { background-color: #E39595; color: #FFFFFF; }
+
+
+/************ SUBMENU ************/
+.megamenu-skin-xarxanet ul.megamenu-bin { margin-top: 8px; list-style-type: none; width: 432px !important; padding: 10px 15px;}
+.megamenu-skin-xarxanet .leaf-0 ul.megamenu-bin { background-color: #DEEBD9; }
+.megamenu-skin-xarxanet .leaf-1 ul.megamenu-bin { background-color: #FBEBC7; }
+.megamenu-skin-xarxanet .leaf-2 ul.megamenu-bin { background-color: #D4D9EF; }
+.megamenu-skin-xarxanet .leaf-3 ul.megamenu-bin { background-color: #CBE3ED; }
+.megamenu-skin-xarxanet .leaf-4 ul.megamenu-bin { background-color: #E6CBDC; }
+.megamenu-skin-xarxanet .leaf-5 ul.megamenu-bin { background-color: #EDE4A3; }
+.megamenu-skin-xarxanet .leaf-6 ul.megamenu-bin { background-color: #EBDECD; }
+.megamenu-skin-xarxanet .leaf-7 ul.megamenu-bin { background-color: #D7D1ED; }
+.megamenu-skin-xarxanet .leaf-8 ul.megamenu-bin { background-color: #C1DFE7; }
+.megamenu-skin-xarxanet .leaf-9 ul.megamenu-bin { background-color: #F7DFDF; }
+.megamenu-skin-xarxanet .leaf-1 ul.megamenu-bin { left: -88px !important; }
+.megamenu-skin-xarxanet .leaf-2 ul.megamenu-bin { left: -182px !important; }
+.megamenu-skin-xarxanet .leaf-3 ul.megamenu-bin { left: -256px !important; }
+.megamenu-skin-xarxanet .leaf-4 ul.megamenu-bin { left: -319px !important; }
+.megamenu-skin-xarxanet .leaf-5 ul.megamenu-bin { left: -375px !important; }
+.megamenu-skin-xarxanet .leaf-6 ul.megamenu-bin { left: -292px !important; }
+.megamenu-skin-xarxanet .leaf-7 ul.megamenu-bin { left: -205px !important; }
+.megamenu-skin-xarxanet .leaf-8 ul.megamenu-bin { left: -138px !important; }
+.megamenu-skin-xarxanet .leaf-9 ul.megamenu-bin { left: -56px !important; }
+
+.megamenu-skin-xarxanet li.megamenu-slot { margin: 0px; }
+.megamenu-skin-xarxanet li.megamenu-slot.first { width: 60%; }
+.megamenu-skin-xarxanet li.megamenu-slot.last { width: 40%; }
+
+.megamenu-skin-xarxanet .half-1 .megamenu-slot-title a { pointer-events: none; cursor: default; }
+.megamenu-skin-xarxanet .half-2 .megamenu-slot.last h3 { margin-top: 18px; }
+.megamenu-skin-xarxanet .half-2 .megamenu-slot.last a { font-weight: normal; color: #53544F !important; }
+
+.megamenu-skin-xarxanet .megamenu-slot-title a { font-weight: bold; }
+.megamenu-skin-xarxanet li.megamenu-item { margin: 5px 0; }
+
+
+
+.block-megamenu {
+  position: relative;
+  z-index: 3000;
+}
+.megamenu-menu  .megamenu-bin {
+  z-index: 1000;
+}
+

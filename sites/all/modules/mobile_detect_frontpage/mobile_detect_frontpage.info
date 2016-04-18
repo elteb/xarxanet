@@ -1,0 +1,7 @@
+name = Mobile Detect Frontpage
+description = Frontpage definition for mobile devices
+core = 7.x
+package = Mobile Detect
+dependencies[] = mobile_detect
+files[] = mobile_detect_frontpage.module
+

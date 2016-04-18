@@ -1,0 +1,41 @@
+/**
+ *   Layout Subportals
+ */
+
+.panel-2col .panel-panel .inside {
+  margin: 0px;
+}
+
+/* ------- Biblioteca ------- */
+.section-biblioteca,
+.section-biblioteca-filtre,
+.section-biblioteca-cerca {
+  #main {
+    width: $ninesixty-grid-width - $ninesixty-gutter-width;
+    margin: 0 $space;
+  }
+  .breadcrumb { margin-right: 0px;}
+  .panel-col-first { 
+    @include grid-width(7);
+    margin-right: $space;
+    float: left;
+  }
+  .panel-col-last { 
+    @include grid-width(3);
+    margin-left: $space;
+    float: left; 
+  }
+  .panels-flexible-region {
+    width: 100%;
+  }
+}
+
+/*--------Opinion------*/
+.view-opinion{
+  #left-column, #right-column {
+    width: $column * 4 + 1.5 * $space;
+    float: left;
+  }
+  #left-column { margin-right: $space }
+  #right-column { margin-left: $space }
+}

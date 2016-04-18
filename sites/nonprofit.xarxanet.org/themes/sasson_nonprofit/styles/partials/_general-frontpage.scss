@@ -1,0 +1,110 @@
+/**
+ *   Frontpage Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+/* ------- Panels -------*/
+/* ------ Panel ------- */
+.page-frontpage .panel-col-first .panel-separator { margin: 0px !important; }
+
+/* ------- Notícia destacada principal ------- */
+.view-recull-noticies-principal {
+  background: $main-3;
+  .views-field-title {
+    @include title3;
+    @include block-title;
+    background: $general;
+    text-align: center;
+    width: 100%;
+    padding: 8px 0px;
+  }
+  .views-field-field-recull-principal-principal,
+  .views-field-views-conditional {
+    @include title1;
+    padding: 0 8px;
+  }
+  .views-field-field-resum,
+  .views-field-views-conditional-1 {
+    padding: 0 8px;
+  }
+  .views-field-nothing {
+    padding: 8px;
+    .views-label {
+      font-weight: bold;
+    }
+    ul {
+      margin-bottom: 0px;
+    }
+    li {
+      list-style-image: image-url("bullets/news-list-style.png");
+      line-height: 1.5em;
+    }
+  }
+}
+
+/* ------- Notícia destacada secundària ------- */
+.view-recull-noticies-secundari {
+  .views-field-title {
+    @include title3;
+    @include block-title;
+    background: $general;
+    text-align: center;
+    padding: 8px 0px;
+  }
+  #left-column 
+  {
+    background: $main-3;
+  }
+  .views-field-views-conditional-1,
+  .views-field-views-conditional-2,
+  .views-field-views-conditional-4,
+  .views-field-views-conditional-5
+  {
+    padding: 0px 8px;
+  }
+  .views-field-nothing,
+  {
+    padding: 8px;
+  }
+  .views-field-views-conditional-1,
+  .views-field-views-conditional-4,
+  .views-field-field-recull-secundari-lat-sup,
+  .views-field-field-recull-secundari-lat-inf,
+  {
+    @include title3;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+  .views-field-views-conditional-2,
+  .views-field-field-resum-1,{
+    padding-bottom: 20px;   
+  }  
+  .views-field-nothing {
+    .views-label {
+      font-weight: bold;
+    }
+    li {
+      list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+      line-height: 1.5em;
+    }
+  }
+}
+
+/* ------- Blocks -------*/
+/* ------- Notícia destacada lateral ------- */
+.pane-noticia-destacada-lateral {
+  background: $main-3;
+  overflow:hidden;
+  h2 {
+    @include block-lat-title;
+    background: image-url("pictos/noticies.png") $general 10px no-repeat;
+    width: $column * 4 + $space * 2 - 50px;
+  }
+  .views-field-field-destacada-lat-ellac-1 {
+    @include title3;
+    padding: 0px 12px;
+  }
+  .views-field-field-destacada-lat-entr {
+    padding: 0px 12px 12px;
+  }
+}

@@ -1,0 +1,106 @@
+/* #############################################
+ * ##### Sasson - advanced drupal theming. #####
+ * #############################################
+ *   
+ * Sasson-Xarxanet theme main stylesheet.
+ * 
+ *  Index
+ *  -----------
+ *  1. Imports and Definitions
+ *    -- Colors
+ *    -- Grid dimensions
+ *  2. General Sitewide Styles
+ *    -- Layout
+ *    -- General Styles
+ *    -- Header
+ *    -- Sidebars
+ *    -- Footer
+ */
+
+/*-----------------------------------------------
+           Imports and Definitions
+-----------------------------------------------*/
+/* -----  Colors  ----- */
+$main-color: rgb(51, 51, 51); // Dark grey
+$main-1: #666666;
+$main-2: #CCCCCC;
+$main-3: rgb(236, 239, 240); //Light grey
+$link-color: rgb(0, 85, 119); // Blue
+
+$general: #B1290B; // Red
+$general-sec: #F7E9E6;
+$financament: #F57310; // Orange
+$financament-sec: #FDE3CF;
+$crida: #006868; 
+$crida-sec: #D5E3E3;
+$agenda: #ABB22F; // Guacamole green
+$actes: #A7A74D; // Olive green
+$actes-sec: #EAECCB;
+$cursos: #AEB22A; // Grass green
+$cursos-sec: #F2F2E4;
+$events-antics: #5B6300; // Dark green
+$recursos: #005EA7; // Electric blue 
+$recursos-sec: #EBF6FF;
+$biblioteca: #53544F; //Grey
+$ambiental: rgb(143, 189, 127);
+$ambiental-sec: rgb(222, 235, 217);
+$comunitari: rgb(244, 188, 68);
+$comunitari-sec: rgb(251, 235, 199);
+$cultural: rgb(149, 159, 214);
+$cultural-sec: rgb(217, 217, 239);
+$social: rgb(0, 85, 119);
+$social-sec: rgb(203, 227, 237);
+$internacional: rgb(167, 83, 135);
+$internacional-sec: rgb(230, 203, 220);
+$projectes: rgb(227, 149, 149);
+$projectes-sec: rgb(247, 223, 223);
+$juridic: rgb(98, 174, 196);
+$juridic-sec: rgb(193, 223, 231);
+$informatic: rgb(155, 140, 210);
+$informatic-sec: rgb(215, 209, 237);
+$formacio: rgb(192, 145, 88);
+$formacio-sec: rgb(235, 222, 205);
+$economic: rgb(209, 185, 26);
+$economic-sec: rgb(237, 228, 163);
+$premis: #CB2390;
+$subvencio: #D62369;
+$beques: #BD523E;
+$altres: #D62405;
+$especials: #3F1E48;
+$especials-sec: #E8DBEC;
+$transparencia: #284A66;
+$transparencia-sec: #D6E0E7;
+
+/* -----  Grid dimensions  ----- */
+$ninesixty-grid-width: [grid-width];
+$ninesixty-columns: [columns];
+$ninesixty-gutter-width: [gutter-width];
+
+$space : $ninesixty-gutter-width / 2;
+$column: $ninesixty-grid-width / $ninesixty-columns - $space;
+
+// @import "compass/css3";           // Uncomment to use CSS3 mixins (http://compass-style.org/reference/compass/css3/)
+ @import "960/grid";               // Uncomment to use 960gs mixins (see Sasson's layout partials for examples)
+// @import "salsa/salsa";             // Uncomment to use gridy mixins (the layout system powering Sasson v3.x)
+ @import "partials/mixins";        // Uncomment to call your own mixins partial (check your /partials directory)
+// @import "sprites/smart";          // Uncomment to call your 'smart' sprite (check your /images/sprites directory)
+
+/*-----------------------------------------------
+          General Sitewide Styles
+-----------------------------------------------*/
+/* -----  Layout  ----- */
+@import "partials/layout-general";
+@import "partials/layout-frontpage";
+@import "partials/layout-subportals";
+@import "partials/layout-node";
+
+/* -----  General Styles (Colors, Backgrounds, Typography, Links, etc.)  ----- */
+@import "partials/general";
+@import "partials/general-frontpage";
+@import "partials/general-subportals";
+@import "partials/general-node";
+
+/* ----- jQuery UI CSS Framework ----- */
+@import "partials/ui";
+
+
