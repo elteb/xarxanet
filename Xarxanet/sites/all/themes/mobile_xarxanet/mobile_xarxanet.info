@@ -1,9 +1,0 @@
-name        = Mobile Xarxanet
-description = Xarxanet theme for mobile devices
-
-core         = 6.x
-version 	 = 6.x-1.0
-engine       = phptemplate
-screenshot   = images/screenshot.png
-
-stylesheets[all][] = css/style.css

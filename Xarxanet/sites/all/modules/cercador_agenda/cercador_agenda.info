@@ -1,6 +1,0 @@
-;$Id$
-name = Cercador agenda
-description = Aquest modul cerca en els events del portal.
-core = 6.x
-package = XARXANET
-

@@ -1,5 +1,0 @@
-﻿; $Id$
-name = Abast	
-description = Formulari i connexió a la BD de l'Abast (POMMO).
-core = 6.x
-package = XARXANET
