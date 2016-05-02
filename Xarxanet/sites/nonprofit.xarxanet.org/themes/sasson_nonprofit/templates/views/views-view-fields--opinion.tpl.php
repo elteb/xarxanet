@@ -27,9 +27,9 @@
 <?php $actRow = $view->row_index; ?>
 <?php 
 	if($actRow == 0){
-		$imatge = $fields['field_horizontal_photo']->content;
+		$imatge = (strip_tags($fields['field_optional_image']->content, '<img>')) ? $fields['field_optional_image']->content : $fields['field_horizontal_photo']->content;
 	}else{
-		$imatge = $fields['field_vertical_photo']->content;
+		$imatge = (strip_tags($fields['field_optional_image_1']->content, '<img>')) ? $fields['field_optional_image_1']->content : $fields['field_vertical_photo']->content;
 	}
 ?>
 <?php print $imatge; ?>
