@@ -86,7 +86,9 @@
     	<img alt="Author photo" src="<?php echo file_create_url($node->field_square_photo['und'][0]['uri']); ?>">
     	<h3><?php echo $node->title; ?></h3>
     	<p><?php echo $node->field_description['und'][0]['value']; ?></p>
-    	<a class="twitter-profile" href="<?php echo $node->field_twitter['und'][0]['url']; ?>"><?php echo $node->field_twitter['und'][0]['title']; ?></a>
+    	<?php if ($node->field_twitter['und']) : ?>
+    		<a class="twitter-profile" href="<?php echo $node->field_twitter['und'][0]['url']; ?>"><?php echo $node->field_twitter['und'][0]['title']; ?></a>
+    	<?php endif;?>
     	
     </div>
     <div id="author-related-content">

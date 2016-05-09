@@ -86,15 +86,17 @@
         <div class="node-column-images">
             <?php
             if(!empty($node->field_opinion_author['und'])): ?>
-                <div class="article-author">
-                	<?php $author = node_load($node->field_opinion_author['und'][0]['nid']); ?>
-                	<img alt="Author photo" src="<?php echo file_create_url($author->field_square_photo['und'][0]['uri']); ?>">
-                	<div class="article-author-text">
-	                	<h3><a href="<?php echo url('node/'. $author->nid); ?>"><?php echo $author->title; ?></a></h3>
-	    				<p><?php echo $author->field_description['und'][0]['value']; ?></p>
-	    				<a class="twitter-profile" href="<?php echo $author->field_twitter['und'][0]['url']; ?>"><?php echo $author->field_twitter['und'][0]['title']; ?></a>
-    				</div>
-                </div>
+            	<?php foreach ($node->field_opinion_author['und'] as $author):?>
+	                <div class="article-author">
+	                	<?php $author = node_load($author['nid']); ?>
+	                	<img alt="Author photo" src="<?php echo file_create_url($author->field_square_photo['und'][0]['uri']); ?>">
+	                	<div class="article-author-text">
+		                	<h3><a href="<?php echo url('node/'. $author->nid); ?>"><?php echo $author->title; ?></a></h3>
+		    				<p><?php echo $author->field_description['und'][0]['value']; ?></p>
+		    				<a class="twitter-profile" href="<?php echo $author->field_twitter['und'][0]['url']; ?>"><?php echo $author->field_twitter['und'][0]['title']; ?></a>
+	    				</div>
+	                </div>
+	        	<?php endforeach; ?>
             <?php endif; ?>
          
         <?php 
