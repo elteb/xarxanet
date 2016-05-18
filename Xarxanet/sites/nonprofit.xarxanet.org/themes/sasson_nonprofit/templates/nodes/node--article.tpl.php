@@ -169,16 +169,9 @@
                     <?php if(isset($node->field_autor_noticies['und'][0]['value'])): ?>
                         <p><strong>Author: </strong><?php print $node->field_autor_noticies['und'][0]['value']; ?></p>
                     <?php endif; ?>
-                        <p><strong>Organization: </strong><?php print $node->name; ?></p>
-                    <?php if(isset($node->field_entitat['und'][0]['value']) && !empty($node->field_entitat['und'][0]['value'])): ?>
-                        <p><strong>Related organizations: </strong>
-                              <ul>
-                                 <?php foreach($node->field_entitat['und'] as $entitat): ?>
-                                    <li><?php print $entitat['value']; ?></li>
-                                 <?php endforeach; ?>
-                              </ul>
-                        </p>
-                    <?php endif; ?>
+                    <?php if(isset($node->field_entitat['und'][0]['value'])): ?>
+		            	<p><b>Related organizations: </b><?php print $node->field_entitat['und'][0]['value']; ?></p>
+		            <?php endif; ?>
                 </div>
             <?php endif; ?>
 
