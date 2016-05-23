@@ -415,10 +415,6 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	
 	<!-- BANNERS -->
 	 <table class="butlleti" style='width: 265px; margin-bottom: 20px;'><tr>
-	<td style='padding: 0px'>
-	<a style="text-decoration:none" href="http://www.xarxanet.org/3ccav">
-		<img src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/banner_3ccav.png" alt="Banner 3CCAV" width="265px" style="margin:2px 0;"/>
-	</a></td></tr><tr>
 	<td style='padding: 10px 0 0 0'>
 	<a href="http://voluntariat.org/" style='text-decoration:none'>
 		<img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_voluntariat.jpg" alt="banner voluntariat" />
@@ -426,6 +422,10 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	<td style='padding: 10px 0 0 0'>
 	<a href="http://www.xarxanet.org/formulari-dassessorament" style='text-decoration:none'>
 		<img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_assessorament.jpg" alt="banner voluntariat" style='border: 0 none;'/>
+	</a></td></tr>
+	<td style='padding: 10px 0 0 0'>
+	<a style="text-decoration:none" href="http://nonprofit.xarxanet.org">
+		<img src="<?php echo $pathroot?>/sites/default/files/butlletins/actualitat/banner_nonprofit.png" alt="Banner nonprofit" width="265px" style="margin:2px 0;"/>
 	</a></td></tr>
 	<?php
 	foreach ($node->field_actualitat_banner['und'] as $banner) {
