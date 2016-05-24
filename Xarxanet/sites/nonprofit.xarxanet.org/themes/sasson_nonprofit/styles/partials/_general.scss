@@ -164,7 +164,7 @@ ul.pager {
   margin-bottom: $ninesixty-gutter-width;
 }
 /* -------- Twitter timeline ------- */
-.pane-block-1, #block-block-1 {
+.pane-block-1, #block-block-1, #block-block-8 {
   h2 {
     @include block-lat-title;
    	background: image-url('pictos/twitter-blanc.png') $general 10px no-repeat;
