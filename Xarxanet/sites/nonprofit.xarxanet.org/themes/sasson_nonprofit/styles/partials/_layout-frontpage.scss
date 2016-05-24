@@ -31,6 +31,9 @@
 
 /* ------- Notícia destacada secundària ------- */
 .view-recull-noticies-secundari {
+  .views-row{
+    display:inline-block;
+  }
   #left-column,
   .views-field-title,
   .views-field-views-conditional,
@@ -41,6 +44,8 @@
   }
   .views-field-views-conditional img,
   .views-field-views-conditional-3 img,
+  .views-field-field-horizontal-photo img,
+  .views-field-field-horizontal-photo-1 img,
   {
     width: $column * 4 + $space * 2;
   }  
@@ -58,17 +63,22 @@
   .views-field-field-resum-2,
   .views-field-field-agenda-imatge-3,
   .views-field-field-recull-secundari-lat-inf,
-  .views-field-field-resum-3
+  .views-field-field-resum-3,
+  .views-field-field-square-photo,
+  .views-field-field-square-photo-1,
   {
     margin-left: $column * 4 + $space * 4;
     width: $column * 2;
     clear: right;
   }
-  .views-field-field-agenda-imatge-3{
+  .views-field-field-agenda-imatge-3
+  {
     padding-top:0.5em;
   }
   .views-field-field-agenda-imatge-2 img,
   .views-field-field-agenda-imatge-3 img,
+  .views-field-field-square-photo img,
+  .views-field-field-square-photo-1 img,
   {
     width: $column * 2;
   }

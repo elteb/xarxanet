@@ -58,9 +58,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 $pathroot = 'http://www.xarxanet.org';
 
 // Banners fixes
-$banners_fixes = array(	'Banner 3CCAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_3ccav.png', 
-													'http://www.xarxanet.org/3ccav'),
-						'Banner PNAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_pnav.jpg', 
+$banners_fixes = array(	'Banner PNAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_pnav.jpg', 
 													'http://pnav.voluntariat.org/'),	
 						'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 
 													'http://www.xarxanet.org/especial/barcelona-ecv/subscribe'),						
@@ -70,6 +68,8 @@ $banners_fixes = array(	'Banner 3CCAV' => 	array  ($pathroot.'/sites/default/fil
 													'http://www.voluntariat.org/AgendadecursosdelPFVC.aspx'),
 						'Banner opinió' => 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_opinio.png', 
 													'http://bloc.xarxanet.org/'),
+						'Banner nonprofit' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_nonprofit.png', 
+													'http://nonprofit.xarxanet.org/'),
 						'Banner subs. butlletí' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subsButlleti.png', 
 															$pathroot.'/user/register'),
 						'Banner fes-te voluntari' => array ($pathroot.'/sites/default/files/butlletins/abast/banner_festeVoluntari.gif', 
