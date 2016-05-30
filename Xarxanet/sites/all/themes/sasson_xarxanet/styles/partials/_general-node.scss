@@ -147,6 +147,50 @@
   }
  }
  
+ /* ------- Opinió ------- */
+  .node-type-opinio {
+	.node-column-images {
+		.article-author {
+			img { width: auto; }
+			.article-author-text {
+				background-color: $main-3;
+				padding: $space;
+				.twitter-profile { 
+			 		background: image-url("pictos/twitter-blau-20.png") 0px no-repeat;
+			 		padding: 5px 0px 5px 25px; 
+			 	}
+			}
+			padding-bottom: $space;
+			margin-bottom: $space;
+		} 
+	}
+ }
+ 
+ /* ------- Authors ------- */
+ #author-description { 
+ 	background-color: $main-3;
+ 	.twitter-profile { 
+ 		background: image-url("pictos/twitter-blau-20.png") 0px no-repeat;
+ 		padding: 5px 0px 5px 25px; 
+ 	} 
+ }
+ #author-related-content {
+ 	#author-articles {
+	 	.section-title {
+	 		border-bottom: solid 2px $opinio;
+	 		h2 {
+	 			background-color: $opinio;
+	 			color: white;
+ 			}	
+ 		}
+ 		.views-row {
+ 			border-bottom: dotted 1px $opinio;
+ 			&.views-row-last {
+ 				border-bottom: none;
+ 			}
+ 		}
+ 	}
+ }
  
  /* ------- Doc Biblioteca ------- */
  .biblioteca-fitxa {

@@ -31,6 +31,43 @@
     @include grid-width(5);
     float: right;
   }
+
+/* ------- Authors ------- */
+ #author-description { 
+    height: 175px;
+    margin-right: $space;
+    margin-bottom: $space;
+	img { 
+		float: left;
+		margin-right: $space;
+  	}
+  	h3 { padding-top: $space; }	  
+ }
+ #author-related-content {
+ 	padding-top: $space;
+ 	aside {
+ 		float: left;
+ 		margin-right: $space;
+ 		@include grid-width(2);
+ 	}
+ 	#author-articles {
+ 		float: left; 
+ 		margin-left: $space;
+ 		@include grid-width(6);
+	 	.section-title{
+	 		h2 { margin: 0px; 
+	 			padding: $space;
+	 			@include grid-width(1.5);
+ 			}
+	 	}
+ 	}
+ } 
+
+/* ------- Opinió ------- */
+ .node-type-opinio {
+	.node-column-images { @include grid-width(2); }
+	.node-content, section#comments { @include grid-width(6); }
+ }
   
 /* ------- Fitxes d'entitat ------- */
  .page-entitat {

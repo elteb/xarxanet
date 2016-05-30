@@ -189,6 +189,8 @@ h1.title { float: left; }
 .section-informatic .breadcrumb, .page-etiquetes-informatic .breadcrumb { border-top-color: $informatic; }
 .section-formacio .breadcrumb, .page-etiquetes-formacio .breadcrumb { border-top-color: $formacio; }
 .section-economic .breadcrumb, .page-etiquetes-economic .breadcrumb { border-top-color: $economic; }
+.section-opinio .breadcrumb { border-top-color: $opinio; }
+.section-autora .breadcrumb { border-top-color: $opinio; }
 
 /* -------- Pager --------- */
 ul.pager {
@@ -414,6 +416,44 @@ ul.pager {
 /* ------- Cerca finançaments ------- */
 #block-views-4658fea6643a7926dd1dfdcd87e58d85 {
   @include search-block($financament, $financament-sec);
+}
+
+/* -------- Opinions --------- */
+.opinion-articles,
+.region-sidebar-second #block-block-88 {
+  h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/opinio.png') $opinio 10px no-repeat;
+  }
+  .more {
+     @include more-title; 
+  }
+  .content {
+    background-color: $opinio-sec;
+  }
+  .view {
+    @include block-body;
+    background-color: $opinio-sec;
+  }
+  .views-row {
+    @include list-display($opinio);
+    list-style-image: image-url('bullets/news-list-style-orange.png');
+  }
+  #more-others { float: none; }
+}
+.pane-block-88 { 
+	#more-others { display: none; }
+	p { margin: 0px; }
+}
+#block-block-88 {
+  p { 
+    margin: 0px;
+    padding-bottom: $space;
+    background-color: $opinio-sec;
+    text-align: right;
+    a.more { float: none; }
+  } 	
+  #more-frontpage { display: none; }
 }
 
 /* ------- Content ------- */

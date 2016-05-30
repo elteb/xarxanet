@@ -73,3 +73,13 @@
       padding-right:0px;      
     }  
 }
+
+/*--------Opinion------*/
+.view-opinion{
+  #left-column, #right-column {
+    width: $column * 4 + 1.5 * $space;
+    float: left;
+  }
+  #left-column { margin-right: $space }
+  #right-column { margin-left: $space }
+}
