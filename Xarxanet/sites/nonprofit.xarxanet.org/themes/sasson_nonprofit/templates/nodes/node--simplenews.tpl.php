@@ -828,7 +828,7 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 										    <tr>
 										        <td>
 										            <a href="http://xarxanet.org" target="_blank" title="xarxanet.org">
-										            	<img alt="Logo xarxanet.org" src="http://nonprofit.xarxanet.org/sites/nonprofit.xarxanet.org/themes/sasson_nonprofit/Logo_Xarxanet_transparent_butlleti.png">
+										            	<img alt="Logo xarxanet.org" src="http://nonprofit.xarxanet.org/sites/nonprofit.xarxanet.org/themes/sasson_nonprofit/images/logos/Logo_Xarxanet_transparent_butlleti.png">
 										            </a>
 										        </td>
 										    </tr>										    							    
