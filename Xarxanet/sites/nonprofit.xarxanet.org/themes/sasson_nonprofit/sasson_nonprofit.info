@@ -23,7 +23,7 @@ styles[styles/sasson_nonprofit.scss][options][media] = all
 
 ; Theme Script Files ------------------------------------------------------
 
-scripts[] = scripts/sasson_nonprofit.js
+;scripts[] = scripts/sasson_nonprofit.js
 
 
 ; Regions -----------------------------------------------------------------
