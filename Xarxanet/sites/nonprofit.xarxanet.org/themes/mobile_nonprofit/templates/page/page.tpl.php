@@ -104,7 +104,7 @@
 				<a href="/mobile-frontpage"><img src="/<?php print path_to_theme()?>/images/logo-nonprofit.jpg" alt="logo xarxanet" /></a>
 			</div>
 			<div id="menu-tab">
-				Menú
+				Menu
 			</div>
 			<div id="nothing" ></div>
 		</div>
