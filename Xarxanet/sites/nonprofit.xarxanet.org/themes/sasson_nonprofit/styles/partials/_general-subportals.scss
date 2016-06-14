@@ -29,29 +29,48 @@
       }
     }
   }
-  .view-footer{
-  	.past-articles {
-	  	padding: 4px 8px 4px 0px;
-	  	background-color: $main-3;
-	  	text-align: right;
-  	} 
-  	padding-right: $space;
-  	padding-top: 2*$space;
-    clear:both;
-  }
+    .view-footer{
+    	.past-articles {
+  	  	padding: 4px 8px 4px 0px;
+  	  	background-color: $main-3;
+  	  	text-align: right;
+    	} 
+    	padding-right: $space;
+    	padding-top: 2*$space;
+      clear:both;
+    }
 }
 
 .view-opinion-authors {
 	.views-row {
 		width: 100px;
-		float: left;
-		margin: 8px 12px 8px 12px;
+		//float: left;
+		display:inline-block;
+		vertical-align:top;
+		margin: 8px 11px 8px 11px;
 		.views-field-title {
 			text-align: center;
 			padding: $space;
 		}
+		.views-field-field-opinion-author{
+		  text-align: center;
+      padding: $space;
+		}
 		&.views-row-7, &.views-row-13, &.views-row-19 { clear: both; }
 	}
+	h3{
+	  display:none;
+	}
+	.view-footer{
+    .past-articles {
+      padding: 4px 8px 4px 0px;
+      background-color: $main-3;
+      text-align: right;
+    } 
+    padding-right: $space;
+    padding-top: 2*$space;
+    clear:both;
+  }
 }
 
 .all-authors {
@@ -64,7 +83,7 @@
 	   	color: white;
 	   	padding: $space 0 $space $space;
 	   	margin-bottom: 0;
-	   	width: $column*1.5;
+	   	width: $column*1.8;
 	   	background-color: $general;
 	}   	
 }
