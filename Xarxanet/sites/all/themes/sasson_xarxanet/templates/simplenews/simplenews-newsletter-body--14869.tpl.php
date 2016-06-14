@@ -288,6 +288,7 @@ ksort($financ_nodes);
 			<?php } 
 			}?>
 			<!-- BANNER FIXE -->
+			<a style="text-decoration:none" href="http://xarxanet.org/projectes/noticies/calendari-de-convocatories-de-financament-anuals"><img src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/bannerbutllfinan.jpg" alt="Calendari de convocatòries de finançament anuals" width="265px" style="margin:2px 0; border: solid 1px #000;"/></a>
 			<a style="text-decoration:none" href="http://www.xarxanet.org/formulari-dassessorament"><img src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/banner_assessorament.jpg" alt="Banner Assessorament" width="265px" style="margin:2px 0; border: solid 1px #000;"/></a>
 			<a style="text-decoration:none" href="http://www.twitter.com/ajuts_entitats"><img src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/banner_twitter.jpg" alt="Banner Twitter" width="265px" style="margin:2px 0;  border: solid 1px #000;"/></a>
 			<a style="text-decoration:none" href="http://nonprofit.xarxanet.org"><img src="<?php echo $pathroot?>/sites/default/files/butlletins/actualitat/banner_nonprofit.png" alt="Banner nonprofit" width="265px" style="margin:2px 0;  border: solid 1px #000;"/></a>
