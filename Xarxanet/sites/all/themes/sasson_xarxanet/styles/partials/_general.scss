@@ -96,26 +96,30 @@ blockquote {
 /* -------- Menú --------*/
 #block-megamenu-main-menu {  
   @include menu-link;
-  li.megamenu-parent-0, li.megamenu-parent-1, li.megamenu-parent-2, li.megamenu-parent-3, li.megamenu-parent-4, {
+  li.megamenu-parent-0, li.megamenu-parent-1, li.megamenu-parent-2, li.megamenu-parent-3, li.megamenu-parent-4, li.megamenu-parent-5, {
     @include menu-element(left); 
   }
-  li.megamenu-parent-5, li.megamenu-parent-6, li.megamenu-parent-7, {
+  li.megamenu-parent-6, li.megamenu-parent-7, li.megamenu-parent-8, {
     @include menu-element(right); 
   }
-  li.megamenu-parent-0, li.megamenu-parent-1 { @include menu-link-bg( false, $general); }
-  li.megamenu-parent-2 { 
+  li.megamenu-parent-0, li.megamenu-parent-2 { @include menu-link-bg( false, $general); }
+  li.megamenu-parent-1 { 
+    @include menu-link-bg( false, $opinio); 
+    @include menu-submenu-1($opinio);
+  }
+  li.megamenu-parent-3 { 
     @include menu-link-bg( false, $financament); 
     @include menu-submenu-1($financament);
   }
-  li.megamenu-parent-3 { 
+  li.megamenu-parent-4 { 
     @include menu-link-bg( false, $agenda);
     @include menu-submenu-1($agenda);
   }
-  li.megamenu-parent-4 { @include menu-link-bg( false, $biblioteca); }
-  
-  li.megamenu-parent-5 { @include menu-link-bg( false, $general, 'fes-voluntariat', 'fes-voluntariat-hover'); }
-  li.megamenu-parent-6 { @include menu-link-bg( false, $general, 'publica', 'publica-hover'); }
-  li.megamenu-parent-7 { @include menu-link-bg( false, $general, 'assessorat', 'assessorat-hover'); }
+  li.megamenu-parent-5 { @include menu-link-bg( false, $biblioteca); }
+   
+  li.megamenu-parent-6 { @include menu-link-bg( false, $general, 'fes-voluntariat', 'fes-voluntariat-hover'); }
+  li.megamenu-parent-7 { @include menu-link-bg( false, $general, 'publica', 'publica-hover'); }
+  li.megamenu-parent-8 { @include menu-link-bg( false, $general, 'assessorat', 'assessorat-hover'); }
   
   border-top: solid 2px $main-1;
   border-bottom: solid 1px $main-1;
