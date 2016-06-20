@@ -79,15 +79,17 @@
 * @ingroup themeable
 */ 
 
-/*
- * Modificació <head> per incloure imatge per a twitter card
- */
 if(!empty($node->field_opinion_author['und'])):
   foreach ($node->field_opinion_author['und'] as $author):
   	$author = node_load($author['nid']);
 	$imatge = file_create_url($author->field_horizontal_photo['und'][0]['uri']);
+	$imatge_quadrada = file_create_url($author->field_square_photo['und'][0]['uri']);
   endforeach;
 endif;
+
+/*
+ * Modificació <head> per incloure imatge per a twitter card
+ */
 
 // First, we must set up an array
 $element = array(
@@ -98,6 +100,23 @@ $element = array(
   ),
 );
 drupal_add_html_head($element, 'twitter image');
+/*
+ *FI modifiació <head> 
+ */
+ 
+/*
+ * Modificació <head> per incloure imatge per a facebook
+ */
+
+// First, we must set up an array
+$element = array(
+  '#tag' => 'meta', // The #tag is the html tag - <link />
+  '#attributes' => array( // Set up an array of attributes inside the tag
+    'property' => 'og:image',
+    'content' => $imatge_quadrada,
+  ),
+);
+drupal_add_html_head($element, 'facebook image');
 /*
  *FI modifiació <head> 
  */
