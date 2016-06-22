@@ -550,21 +550,16 @@
 }
 
 .view-opinion-authors {
-	.views-row {
+	.autor {
 		width: 100px;
 		//float: left;
 		display:inline-block;
 		vertical-align:top;
 		margin: 8px 11px 8px 11px;
-		.views-field-title {
-			text-align: center;
-			padding: $space;
+		text-align: center;
+		img{
+		  padding-bottom:5px;
 		}
-		.views-field-field-autor-a{
-		  text-align:center;
-		  padding: $space;
-		}
-		&.views-row-7, &.views-row-13, &.views-row-19 { clear: both; }
 	}
 	.view-footer{
     .past-articles {

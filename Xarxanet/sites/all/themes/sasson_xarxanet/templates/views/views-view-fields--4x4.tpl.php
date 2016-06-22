@@ -28,6 +28,7 @@
 
 <?php
 	$rawImatge = $fields['field_agenda_imatge']->content;
+	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = (strip_tags($fields['field_imatge_opcional']->content, '<img>')) ? $fields['field_imatge_opcional']->content : $fields['field_autor_foto_quadrada']->content;
 	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	
 	$type = $fields['type']->raw;
@@ -37,7 +38,9 @@
 	if (($type == 'noticia_general') && (isset($fields['field_ambit_noticia']))) $type = 'Notícia '.strip_tags($fields['field_ambit_noticia']->content);
 	
 	print $rawImatge;
-	print sasson_xarxanet_get_label($type);
+	if ($type != 'opinio'){
+		print sasson_xarxanet_get_label($type);
+	}
 	
 	$startdate = strip_tags($fields['field_date_event']->content);
 	$enddate = strip_tags($fields['field_date_event_1']->content);
@@ -80,6 +83,10 @@
 	if ($type=='Finançament (NOU)' || $type=='Premi' || $type=='Subvenció' || $type=='Beques' || $type=='Altres'){
 		$termini = strip_tags($fields['field_date']->content);
 		print '<b>Termini</b>: '.$termini;
+	}
+	if ($type == 'opinio'){
+		print $fields['field_autor_a']->content;
+		print $fields['created']->content;
 	}
 	print $fields['field_resum']->content; 
 ?>
