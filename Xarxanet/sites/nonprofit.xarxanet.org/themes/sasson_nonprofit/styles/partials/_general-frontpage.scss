@@ -43,6 +43,7 @@
 
 /* ------- Notícia destacada secundària ------- */
 .view-recull-noticies-secundari {
+  margin-bottom: 16px;
   .views-field-title {
     @include title3;
     @include block-title;
