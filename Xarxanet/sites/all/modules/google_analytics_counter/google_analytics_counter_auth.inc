@@ -16,10 +16,6 @@ define('GOOGLE_ANALYTICS_COUNTER_DAY', GOOGLE_ANALYTICS_COUNTER_HOUR * 24);
 /* Seconds in a week. */
 define('GOOGLE_ANALYTICS_COUNTER_WEEK', GOOGLE_ANALYTICS_COUNTER_DAY * 7);
 
-error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
-
 /**
  * Instantiate a new GAFeed object.
  */
@@ -88,7 +84,7 @@ function google_analytics_counter_auth_admin() {
   $account = google_analytics_counter_new_gafeed();
   //dpm($account);
   
-  if($account->isAuthenticated()) {
+  if($account && $account->isAuthenticated()) {
     $webprops = $account->queryWebProperties()->results->items;
     $profiles = $account->queryProfiles()->results->items;
     $options = array();
