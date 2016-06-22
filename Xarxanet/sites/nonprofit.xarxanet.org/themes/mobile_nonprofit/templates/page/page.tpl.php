@@ -101,7 +101,11 @@
 		<div id="header">
 			<a name="header"></a>
 			<div id="logo">
-				<a href="/mobile-frontpage"><img src="/<?php print path_to_theme()?>/images/logo-nonprofit.jpg" alt="logo xarxanet" /></a>
+				<a href="/mobile-frontpage">
+					<!--[if lte IE 8]><img src="/<?php print path_to_theme()?>/images/logo-nonprofit.jpg" alt="logo nonprofit" /><![endif]-->
+					<!--[if gt IE 8]><img src="/<?php print path_to_theme()?>/images/svg/logo-nonprofit.svg" alt="logo nonprofit" /><![endif]-->
+					<!--[if !IE]> --><img src="/<?php print path_to_theme()?>/images/svg/logo-nonprofit.svg" alt="logo nonprofit" /><!-- <![endif]-->
+				</a>
 			</div>
 			<div id="menu-tab">
 				Menu
