@@ -41,23 +41,15 @@
     }
 }
 
-.view-opinion-authors {
-	.views-row {
-		width: 100px;
-		//float: left;
-		display:inline-block;
-		vertical-align:top;
-		margin: 8px 11px 8px 11px;
-		.views-field-title {
-			text-align: center;
-			padding: $space;
-		}
-		.views-field-field-opinion-author{
-		  text-align: center;
-      padding: $space;
-		}
-		&.views-row-7, &.views-row-13, &.views-row-19 { clear: both; }
-	}
+.view-opinion-authors{
+	.autor{
+  	width: 100px;
+    //float: left;
+    display:inline-block;
+    vertical-align:top;
+    margin: 8px 11px 8px 11px;
+    text-align: center;
+  }
 	h3{
 	  display:none;
 	}

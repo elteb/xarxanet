@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default simple view template to all the fields as a row.
@@ -23,19 +24,12 @@
  * @ingroup views_templates
  */
 ?>
-
-<div class="<?php print $fields['type']->raw; ?>">
-
-<?php
-
-	$rawImatge = $fields['field_agenda_imatge']->content;
-	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = (strip_tags($fields['views_conditional']->content, '<img>')) ? $fields['views_conditional']->content : $fields['views_conditional']->content;
-	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
-	
-	print $rawImatge;
-	print '<h3>'.$fields['title']->content.'</h3>';
-	if ($fields['field_opinion_author']) echo $fields['field_opinion_author']->content.$fields['created']->content;
-	print $fields['field_resum']->content;  
+<?php $actRow = $view->row_index; ?>
+<?php 
+	$imatge = (strip_tags($fields['field_square_photo']->content, '<img>')) ? $fields['field_square_photo']->content : $fields['field_square_photo']->content;
 ?>
-
-</div>
+<?php print '<div class="autor">'; ?>
+<?php print $imatge; ?>
+<?php $author = (!empty($fields['field_opinion_author']->content)) ? $fields['field_opinion_author']->content : $fields['title']->content;?>
+<?php print $author;?>
+<?php print '</div>'; ?>
