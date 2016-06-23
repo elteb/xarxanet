@@ -82,7 +82,7 @@
 
 <article id="<?php print $node_id; ?>" class="<?php print $classes; ?>">
     <div id="credits">
-		<div id="date"><?php print format_date($node->changed, 'small'); ?></div>
+		<div id="date"><?php print format_date($node->created, 'small'); ?></div>
 		<div id="author">
 			<?php if(isset($node->field_autor_noticies['und'][0]['value'])): ?>
             	<b>Author: </b><?php print $node->field_autor_noticies['und'][0]['value']; ?><br />
