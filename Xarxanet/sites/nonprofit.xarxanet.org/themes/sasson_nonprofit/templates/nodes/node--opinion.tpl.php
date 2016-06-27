@@ -136,9 +136,9 @@ drupal_add_html_head($element, 'facebook image');
 	                	<div class="article-author-text">
 		                	<h3><a href="<?php echo url('node/'. $author->nid); ?>"><?php echo $author->title; ?></a></h3>
 		    				<p><?php echo $author->field_description['und'][0]['value']; ?></p>
-		    				<?php if ($node->field_twitter['und']) : ?>
-		    				<a class="twitter-profile" href="<?php echo $author->field_twitter['und'][0]['url']; ?>"><?php echo $author->field_twitter['und'][0]['title']; ?></a>
-		    				<?php endif; ?> 
+		    				<?php if (!empty($author->field_twitter['und'])): ?>
+		    				<a class="twitter-profile" href="<?php echo $author->field_twitter['und'][0]['url']; ?>"><?php echo $author->field_twitter['und'][0]['title']; ?></a> 
+	    					<?php endif; ?>
 	    				</div>
 	                </div>
 	        	<?php endforeach; ?>
