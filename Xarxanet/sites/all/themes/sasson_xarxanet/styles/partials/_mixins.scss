@@ -62,7 +62,7 @@
 }
 
 @mixin menu-link-bg($color1:false, $color2:false, $icon1:false, $icon2:false) {
-  $padding = 0.75em 1em 0.75em 3.5em;
+  $padding = 0.75em 0.8em 0.75em 3.3em;
   $position = 10%;
   a { 
     @if ($color1) {
