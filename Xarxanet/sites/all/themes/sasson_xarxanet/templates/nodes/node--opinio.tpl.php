@@ -101,7 +101,7 @@
          
         <?php 
         	if (views_get_view_result('opinion_by_author', 'block_2', $author->nid, $node->nid)) {
-	        	echo '<div class="node-opinion-author block"><h2 class="block-title">'.t('More articles').'</h2>';
+	        	echo '<div class="node-opinion-author block"><h2 class="block-title">'.t('Més articles').'</h2>';
 	        	echo views_embed_view('opinion_by_author', 'block_2', $author->nid, $node->nid);
 	        	echo '</div>';
         	}
@@ -114,7 +114,7 @@
                     <ul class="links tags" role="navigation">
                     <?php
 						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'tags/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						
+						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						
 						} 
                     ?>
                     </ul>
