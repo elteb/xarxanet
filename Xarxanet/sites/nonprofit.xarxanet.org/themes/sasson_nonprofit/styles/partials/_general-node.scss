@@ -120,6 +120,7 @@
  /* ------- Authors ------- */
  #author-description { 
  	background-color: $main-3;
+ 	img{ width:175px; }
  	.twitter-profile { 
  		background: image-url("pictos/twitter-blau-20.png") 0px no-repeat;
  		padding: 5px 0px 5px 25px; 
@@ -147,7 +148,7 @@
  .node-type-opinion {
 	.node-column-images {
 		.article-author {
-			img { width: auto; }
+			img { width: 175px; }
 			.article-author-text {
 				background-color: $main-3;
 				padding: $space;
