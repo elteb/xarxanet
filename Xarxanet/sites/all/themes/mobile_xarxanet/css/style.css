@@ -84,6 +84,7 @@ iframe { max-width: 100% !important; }
 #menu-left .menu-item { padding: 7.5px 0 7.5px 35px; }
 .menu-item#portada { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/portada.png") no-repeat scroll 5px; }
 .menu-item#noticies { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/noticies.png") no-repeat scroll 8px; }
+.menu-item#opinio { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/opinio.png") no-repeat scroll 8px; }
 .menu-item#recursos { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/recursos.png") no-repeat scroll 5px; }
 .menu-item#financaments { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/financaments.png") no-repeat scroll 5px; }
 .menu-item#cursos { background: url("/sites/all/themes/mobile_xarxanet/images/pictos/mobile_menu/cursos.png") no-repeat scroll 2px; }
@@ -614,6 +615,7 @@ ul.pager {
 
 .page-node.noticia .page-title,
 .page-node.recurs .page-title,
+.node-type-opinio .page-title,
 .node-type-event .page-title,
 .node-type-webform .page-title,
 .node-type-financament-full .page-title,
@@ -629,6 +631,7 @@ ul.pager {
 .page-node.noticia .image img,
 .page-node.recurs .image img,
 .page-node.agenda .image img,
+.node-type-opinio .image img,
 .page-node.financament .image img { width: 100%; }
 
 .page-node.noticia #picto,
@@ -646,13 +649,16 @@ ul.pager {
 .page-node.financament #credits,
 .page-node.agenda #date,
 .page-node.agenda #credits,
-.page-node.agenda #credits a { 
+.page-node.agenda #credits a,
+.node-type-opinio #credits,
+.node-type-opinio #date{ 
 	font-size: 1rem;
 }
 
 .page-node.noticia #credits,
 .page-node.recurs #credits,
-.page-node.financament #credits { margin: 10px 0 5px; }
+.page-node.financament #credits,
+.node-type-opinio #credits { margin: 10px 0 5px; }
 
 .page-node.noticia #category,
 .page-node.recurs #category,
@@ -685,6 +691,7 @@ ul.pager {
 .page-node.noticia .node-body-text a,
 .page-node.recurs .node-body-text a,  
 .page-node.agenda .node-body-text a,
+.node-type-opinio .node-body-text a,
 .page-node.financament .node-body-text a { font-size: 1.1rem; }
 
 .page-node.noticia .node-body-text,
@@ -698,18 +705,21 @@ ul.pager {
 .page-node.noticia .node-body-text .teaser,
 .page-node.recurs .node-body-text .teaser,
 .page-node.agenda .node-body-text .teaser,
+.node-type-opinio .node-body-text .teaser,
 .page-node.financament .node-body-text .teaser {
 	font-style: italic;
 	border-bottom: dotted 1.5px #cccccc;
 }
 
-.page-node.financament .node-body-text .teaser {
+.page-node.financament .node-body-text .teaser,
+.node-type-opinio .node-body-text .teaser {
 	margin-bottom: 10px;
 }
 
 .page-node.noticia .node-body-text .teaser a,
 .page-node.recurs .node-body-text .teaser a,
 .page-node.agenda .node-body-text .teaser a,
+.node-type-opinio .node-body-text .teaser a,
 .page-node.financament .node-body-text .teaser a {
 	font-style: normal;
 }
