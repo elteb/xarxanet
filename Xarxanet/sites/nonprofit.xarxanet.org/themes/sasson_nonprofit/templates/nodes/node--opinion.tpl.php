@@ -110,15 +110,6 @@ $element = array(
   ),
 );
 drupal_add_html_head($element, 'twitter image');
-
-$element = array(
-  '#tag' => 'meta', // The #tag is the html tag - <link />
-  '#attributes' => array( // Set up an array of attributes inside the tag
-    'name' => 'twitterimagetest',
-    'content' => $original_content,
-  ),
-);
-drupal_add_html_head($element, 'twitter image test');
 /*
  *FI modifiació <head> 
  */
