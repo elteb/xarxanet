@@ -78,6 +78,58 @@
 *
 * @ingroup themeable
 */ 
+
+/**
+* Recuperem la foto horitzontal i quadrada dels autors
+* per la twitter card i la OG de Facebook
+*/
+if(!empty($node->field_autor_a['und'])):
+  foreach ($node->field_autor_a['und'] as $author):
+  	$author = node_load($author['nid']);
+	$original_dummy_file = _imagefield_crop_file_to_crop($author->field_autor_foto_horitzontal["und"][0]["fid"]);
+    // Assegurem que tenim un fid
+    if (!empty($original_dummy_file)) {
+    // extreiem la url de l'arxiu original
+    	$imatge = file_create_url($original_dummy_file->uri);		
+	}
+	$imatge_quadrada = file_create_url($author->field_autor_foto_quadrada['und'][0]['uri']);
+  endforeach;
+endif;
+
+/**
+* Modificació <head> per incloure imatge per a twitter card
+*/
+
+// First, we must set up an array
+$element = array(
+  '#tag' => 'meta', // The #tag is the html tag - <link />
+  '#attributes' => array( // Set up an array of attributes inside the tag
+    'name' => 'twitter:image',
+    'content' => $imatge,
+  ),
+);
+drupal_add_html_head($element, 'twitter image');
+/*
+ *FI modifiació <head> 
+ */
+ 
+/*
+ * Modificació <head> per incloure imatge per a facebook
+ */
+
+// First, we must set up an array
+$element = array(
+  '#tag' => 'meta', // The #tag is the html tag - <link />
+  '#attributes' => array( // Set up an array of attributes inside the tag
+    'property' => 'og:image',
+    'content' => $imatge_quadrada,
+  ),
+);
+drupal_add_html_head($element, 'facebook image');
+/*
+ *FI modifiació <head> 
+ */
+
 ?>
 
 <article id="<?php print $node_id; ?>" class="<?php print $classes; ?>">
