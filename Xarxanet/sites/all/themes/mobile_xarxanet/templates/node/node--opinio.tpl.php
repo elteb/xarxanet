@@ -78,92 +78,109 @@
 *
 * @ingroup themeable
 */ 
+
+/**
+* Recuperem la foto horitzontal i quadrada dels autors
+* per la twitter card i la OG de Facebook
+*/
+if(!empty($node->field_autor_a['und'])):
+  foreach ($node->field_autor_a['und'] as $author):
+  	$author = node_load($author['nid']);
+	$original_dummy_file = _imagefield_crop_file_to_crop($author->field_autor_foto_horitzontal["und"][0]["fid"]);
+    // Assegurem que tenim un fid
+    if (!empty($original_dummy_file)) {
+    // extreiem la url de l'arxiu original
+    	$imatge = file_create_url($original_dummy_file->uri);		
+	}
+	$imatge_quadrada = file_create_url($author->field_autor_foto_quadrada['und'][0]['uri']);
+  endforeach;
+endif;
+
+/**
+* Modificació <head> per incloure imatge per a twitter card
+*/
+
+// First, we must set up an array
+$element = array(
+  '#tag' => 'meta', // The #tag is the html tag - <link />
+  '#attributes' => array( // Set up an array of attributes inside the tag
+    'name' => 'twitter:image',
+    'content' => $imatge,
+  ),
+);
+drupal_add_html_head($element, 'twitter image');
+/*
+ *FI modifiació <head> 
+ */
+ 
+/*
+ * Modificació <head> per incloure imatge per a facebook
+ */
+
+// First, we must set up an array
+$element = array(
+  '#tag' => 'meta', // The #tag is the html tag - <link />
+  '#attributes' => array( // Set up an array of attributes inside the tag
+    'property' => 'og:image',
+    'content' => $imatge_quadrada,
+  ),
+);
+drupal_add_html_head($element, 'facebook image');
+/*
+ *FI modifiació <head> 
+ */
+
 ?>
 
-
 <article id="<?php print $node_id; ?>" class="<?php print $classes; ?>">
-    <div class="node-inner">
-        <div class="node-column-images">
-            <?php
-            if(!empty($node->field_autor_a['und'])): ?>
-            	<?php foreach ($node->field_autor_a['und'] as $author):?>
-	                <div class="article-author">
-	                	<?php $author = node_load($author['nid']); ?>
-	                	<img alt="Fotografia de l'autor/a" src="<?php echo file_create_url($author->field_autor_foto_quadrada['und'][0]['uri']); ?>">
-	                	<div class="article-author-text">
-		                	<h3><a href="<?php echo url('node/'. $author->nid); ?>"><?php echo $author->title; ?></a></h3>
-		    				<p><?php echo $author->field_autor_presentacio['und'][0]['value']; ?></p>
-		    				<?php if ($author->field_autor_twitter['und']) : ?>
-		    				<a class="twitter-profile" href="<?php echo $author->field_autor_twitter['und'][0]['url']; ?>"><?php echo $author->field_autor_twitter['und'][0]['title']; ?></a>
-	    					<?php endif; ?>
-	    				</div>
-	                </div>
-	        	<?php endforeach; ?>
+    <div id="credits">
+		<div id="date"><?php print format_date($node->created, 'small'); ?></div>
+		<div id="author">
+			<?php if(isset($node->field_autor_a['und'][0]['nid'])): ?>
+            	<b>Autor/a: </b>
+            		<?php
+            			$authors = '';
+            			foreach ($node->field_autor_a['und'] as $author) {
+            				$author = node_load($author['nid']);
+            				$url = url('node/'. $author->nid);
+            				$authors .= "<a href='{$url}'>{$author->title}</a>,";
+            			}
+            			echo substr($authors, 0, -1);
+            		?>
+            	<br />
             <?php endif; ?>
-         
-        <?php 
-        	if (views_get_view_result('opinion_by_author', 'block_2', $author->nid, $node->nid)) {
-	        	echo '<div class="node-opinion-author block"><h2 class="block-title">'.t('Més articles').'</h2>';
-	        	echo views_embed_view('opinion_by_author', 'block_2', $author->nid, $node->nid);
-	        	echo '</div>';
-        	}
-        ?>
-        
-        <?php
-            if(!empty($node->taxonomy_vocabulary_1['und'])): ?>
-                <div class="node-terms">
-                    <h2>Tags</h2>
-                    <ul class="links tags" role="navigation">
-                    <?php
-						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						
-						} 
-                    ?>
-                    </ul>
-                </div>
-       	<?php endif; ?>  
-                        
-		<?php 		
-			if($node->print_html_display || $node->print_mail_display || $node->print_pdf_display) {
-				echo '
-	                <div class="node-links block">
-				    	<h2 class="block-title">'.t('Altres accions').'</h2>
-				    	<div class="block-content">
-						<ul class="links" role="navigation">';
-				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Imprimeix'), 'print/'.$node->nid).'</li>';		
-				if ($node->print_mail_display) echo '<li class="print_mail">'.l(t('Envia a un amic'), 'printmail/'.$node->nid).'</li>';
-				if ($node->print_pdf_display) echo '<li class="print_pdf">'.l(t('Versió PDF'), 'printpdf/'.$node->nid).'</li>';
-				echo '</ul></div></div>';
-			}
-		?>
-        </div>
-      
-        <div class="node-content node-column-text">
-            <?php if ($unpublished): ?>
-                <div class="unpublished"><?php print t('No publicat'); ?></div>
-            <?php endif; ?>
+          </div>
+		<div id="nothing"></div>
+	</div>
 
-            <div class="node-intro">
-                <?php print $field_resum[0]['value'] ?>
-            </div><!-- .e_intro -->
-                
-            <!-- Go to www.addthis.com/dashboard to customize your tools -->
-			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c67bc259a068b5"></script>
-			<div class="node-social-links">
-				<div class="addthis_sharing_toolbox"></div>
-			</div>
-            
-            <?php if ($submitted): ?>
-                <div class="node-submitted">
-                    <p><?php print format_date($node->created, 'small'); ?></p>
-                </div>
-            <?php endif; ?>
-
-            <div class="node-body-text">
-                <?php 
-                print $node->body['und'][0]['value']; ?>
-            </div>
-        </div>
-    </div>
-    <?php print render($content['comments']); ?>
+	<?php
+		$uri = ($node->field_imatge_opcional['und'][0]['uri']) ? $node->field_imatge_opcional['und'][0]['uri'] : $author->field_autor_foto_horitzontal['und'][0]['uri'] ;
+		$fileurl = image_style_url('tag-gran', $uri);
+		$alt = 'author photo'; 
+	?>
+	<div class='image'>
+		<img src='<?php print $fileurl ?>' alt='<?php print $alt ?>'/>
+	</div>
+	<div id="sub-image-1">
+	
+		<div id="social-icons">
+			<a href="http://www.twitter.com/share?url=<?php print $GLOBALS['base_url'].$node_url ?>">
+				<img src="/<?php print path_to_theme()?>/images/pictos/social/twitter.png" alt="compartir a twitter" />
+			</a>
+			<a href="http://www.facebook.com/sharer/sharer.php?u=<?php print $GLOBALS['base_url'].$node_url ?>">
+				<img src="/<?php print path_to_theme()?>/images/pictos/social/facebook.png" alt="compartir a twitter" />
+			</a>
+			<a href="http://www.plus.google.com/share?url=<?php print $GLOBALS['base_url'].$node_url ?>">
+				<img src="/<?php print path_to_theme()?>/images/pictos/social/plus.png" alt="compartir a twitter" />
+			</a>
+			<a href="/printmail/<?php print $nid ?>">
+				<img src="/<?php print path_to_theme()?>/images/pictos/social/mail.png" alt="compartir a twitter" />
+			</a>
+		</div>
+		<div id="nothing"></div>
+	</div>
+	<div class="node-body-text">
+		<div class="teaser"><?php print $node->field_resum['und'][0]['value']; ?></div>
+		<?php print $node->body['und'][0]['value']; ?>
+	</div>
 </article><!-- /node -->

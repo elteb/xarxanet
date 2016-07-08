@@ -79,17 +79,27 @@
 * @ingroup themeable
 */ 
 
+
+/**
+* Recuperem la foto horitzontal i quadrada dels autors
+* per la twitter card i la OG de Facebook
+*/
 if(!empty($node->field_opinion_author['und'])):
   foreach ($node->field_opinion_author['und'] as $author):
   	$author = node_load($author['nid']);
-	$imatge = file_create_url($author->field_horizontal_photo['und'][0]['uri']);
+	$original_dummy_file = _imagefield_crop_file_to_crop($author->field_horizontal_photo["und"][0]["fid"]);
+    // Assegurem que tenim un fid
+    if (!empty($original_dummy_file)) {
+    // extreiem la url de l'arxiu original
+    	$imatge = file_create_url($original_dummy_file->uri);		
+	}
 	$imatge_quadrada = file_create_url($author->field_square_photo['und'][0]['uri']);
   endforeach;
 endif;
 
-/*
- * Modificació <head> per incloure imatge per a twitter card
- */
+/**
+* Modificació <head> per incloure imatge per a twitter card
+*/
 
 // First, we must set up an array
 $element = array(

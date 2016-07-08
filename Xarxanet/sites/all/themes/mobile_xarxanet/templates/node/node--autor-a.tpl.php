@@ -80,90 +80,29 @@
 */ 
 ?>
 
-
 <article id="<?php print $node_id; ?>" class="<?php print $classes; ?>">
-    <div class="node-inner">
-        <div class="node-column-images">
-            <?php
-            if(!empty($node->field_autor_a['und'])): ?>
-            	<?php foreach ($node->field_autor_a['und'] as $author):?>
-	                <div class="article-author">
-	                	<?php $author = node_load($author['nid']); ?>
-	                	<img alt="Fotografia de l'autor/a" src="<?php echo file_create_url($author->field_autor_foto_quadrada['und'][0]['uri']); ?>">
-	                	<div class="article-author-text">
-		                	<h3><a href="<?php echo url('node/'. $author->nid); ?>"><?php echo $author->title; ?></a></h3>
-		    				<p><?php echo $author->field_autor_presentacio['und'][0]['value']; ?></p>
-		    				<?php if ($author->field_autor_twitter['und']) : ?>
-		    				<a class="twitter-profile" href="<?php echo $author->field_autor_twitter['und'][0]['url']; ?>"><?php echo $author->field_autor_twitter['und'][0]['title']; ?></a>
-	    					<?php endif; ?>
-	    				</div>
-	                </div>
-	        	<?php endforeach; ?>
-            <?php endif; ?>
-         
-        <?php 
-        	if (views_get_view_result('opinion_by_author', 'block_2', $author->nid, $node->nid)) {
-	        	echo '<div class="node-opinion-author block"><h2 class="block-title">'.t('Més articles').'</h2>';
-	        	echo views_embed_view('opinion_by_author', 'block_2', $author->nid, $node->nid);
-	        	echo '</div>';
-        	}
-        ?>
-        
-        <?php
-            if(!empty($node->taxonomy_vocabulary_1['und'])): ?>
-                <div class="node-terms">
-                    <h2>Tags</h2>
-                    <ul class="links tags" role="navigation">
-                    <?php
-						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						
-						} 
-                    ?>
-                    </ul>
-                </div>
-       	<?php endif; ?>  
-                        
-		<?php 		
-			if($node->print_html_display || $node->print_mail_display || $node->print_pdf_display) {
-				echo '
-	                <div class="node-links block">
-				    	<h2 class="block-title">'.t('Altres accions').'</h2>
-				    	<div class="block-content">
-						<ul class="links" role="navigation">';
-				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Imprimeix'), 'print/'.$node->nid).'</li>';		
-				if ($node->print_mail_display) echo '<li class="print_mail">'.l(t('Envia a un amic'), 'printmail/'.$node->nid).'</li>';
-				if ($node->print_pdf_display) echo '<li class="print_pdf">'.l(t('Versió PDF'), 'printpdf/'.$node->nid).'</li>';
-				echo '</ul></div></div>';
-			}
-		?>
-        </div>
-      
-        <div class="node-content node-column-text">
-            <?php if ($unpublished): ?>
-                <div class="unpublished"><?php print t('No publicat'); ?></div>
-            <?php endif; ?>
-
-            <div class="node-intro">
-                <?php print $field_resum[0]['value'] ?>
-            </div><!-- .e_intro -->
-                
-            <!-- Go to www.addthis.com/dashboard to customize your tools -->
-			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c67bc259a068b5"></script>
-			<div class="node-social-links">
-				<div class="addthis_sharing_toolbox"></div>
-			</div>
-            
-            <?php if ($submitted): ?>
-                <div class="node-submitted">
-                    <p><?php print format_date($node->created, 'small'); ?></p>
-                </div>
-            <?php endif; ?>
-
-            <div class="node-body-text">
-                <?php 
-                print $node->body['und'][0]['value']; ?>
-            </div>
-        </div>
+   <?php
+		$fileurl = image_style_url('tag-gran', $node->field_autor_foto_horitzontal['und'][0]['uri']);
+		$alt = 'author photo'; 
+	?>
+	<div class='image'>
+		<img src='<?php print $fileurl ?>' alt='<?php print $alt ?>'/>
+	</div>
+	<div id="sub-image-1">
+		<div id="social-icons">
+			<?php if ($node->field_autor_twitter['und']) : ?>
+	    		<a class="twitter-profile" href="<?php echo $node->field_autor_twitter['und'][0]['url']; ?>"><?php echo $node->field_autor_twitter['und'][0]['title']; ?></a>
+	    	<?php endif;?>
+		</div>
+	</div>
+	<div class="node-body-text">
+		<p>
+		<?php print $node->field_autor_presentacio['und'][0]['value']; ?></div>
+		</p>
+	</div>
+	<div id="nothing"></div>
+	<div class="author-articles">
+    	<div class="section-title">Articles</div>
+    	<?php echo views_embed_view('opinion_by_author', 'block_1', $node->nid); ?>
     </div>
-    <?php print render($content['comments']); ?>
 </article><!-- /node -->
