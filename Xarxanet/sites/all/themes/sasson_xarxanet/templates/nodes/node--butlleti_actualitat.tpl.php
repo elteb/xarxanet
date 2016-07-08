@@ -175,8 +175,16 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 			$news_node = node_load($nid['und'][0]['nid']);
 			$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 			$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
-			$img = image_style_url('tag-petit',$news_node->field_agenda_imatge['und'][0]['uri']);
-			$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
+			$type = $news_node->type;
+			if ($type == 'opinio'){
+				$autor = $news_node->field_autor_a['und'][0]['nid'];
+				$autor = node_load($autor);
+				$img = image_style_url('tag-petit',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
+				$alt = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
+			}else{
+				$img = image_style_url('tag-petit',$news_node->field_agenda_imatge['und'][0]['uri']);
+				$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
+			}
 			$paddingright = ($i < 3) ? 20 : 0;
 			echo "<td style='vertical-align: top; padding: 0px; padding-right: {$paddingright}px'>
 				<a href='{$url}' style='text-decoration:none'>
@@ -334,8 +342,16 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				$news_node = node_load($node->field_actualitat_lat_sup_noti['und'][0]['nid']);
 				$title = $news_node->title;
 				$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
-				$img = image_style_url('financ-petit', $news_node->field_agenda_imatge['und'][0]['uri']);
-				$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
+				$type = $news_node->type;
+				if ($type == 'opinio'){
+					$autor = $news_node->field_autor_a['und'][0]['nid'];
+					$autor = node_load($autor);
+					$img = image_style_url('financ-petit',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
+					$alt = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
+				}else{
+					$img = image_style_url('financ-petit',$news_node->field_agenda_imatge['und'][0]['uri']);
+					$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
+				}
 				$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 			} else {
 				$title = $node->field_actualitat_lat_sup_noti_e['und'][0]['title'];
@@ -445,8 +461,16 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				$news_node = node_load($node->field_actualitat_lat_inf_noticia['und'][0]['nid']);
 				$title = $news_node->title;
 				$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
-				$img = image_style_url('financ-petit', $news_node->field_agenda_imatge['und'][0]['uri']);
-				$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
+				$type = $news_node->type;
+				if ($type == 'opinio'){
+					$autor = $news_node->field_autor_a['und'][0]['nid'];
+					$autor = node_load($autor);
+					$img = image_style_url('financ-petit',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
+					$alt = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
+				}else{
+					$img = image_style_url('financ-petit',$news_node->field_agenda_imatge['und'][0]['uri']);
+					$alt = $news_node->field_agenda_imatge['und'][0]['alt'];
+				}
 				$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 			} else {
 				$title = $node->field_actualitat_lat_inf_noti_e['und'][0]['title'];
