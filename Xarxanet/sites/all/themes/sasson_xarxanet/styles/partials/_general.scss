@@ -459,6 +459,25 @@ ul.pager {
   } 	
   #more-frontpage { display: none; }
 }
+#block-block-89 {
+	h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/twitter-blanc.png') $opinio 10px no-repeat;
+  }
+}
+.node-opinion-author.block {
+	@include node-box;
+    h2 { @include node-title('opinio'); }
+    .views-row { 
+	    display: list-item;
+	    margin: 0 10px 0 30px;
+	    padding: 4px 0;
+	    line-height: 1.8em;
+	    border-bottom: dotted 1px #006680;
+	    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+	}
+	.views-row.views-row-last { border-bottom: none; }
+}
 
 /* ------- Content ------- */
 .region-content,
