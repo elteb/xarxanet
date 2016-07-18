@@ -90,13 +90,21 @@ $noticia_prin_esq = array();
 
 if ($node_ =  node_load($node->field_financ_prin_xarxanet_esq['und'][0]['nid'])) {
 	//Noticia Xarxanet
-	if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-		$noticia_prin_esq['imatge'] = image_style_url('financ-gran',$node_->field_agenda_imatge['und'][0]['uri']);
-		$noticia_prin_esq['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
+	$type = $node_->type;
+	if ($type == 'opinio'){
+		$autor = $node_->field_autor_a['und'][0]['nid'];
+		$autor = node_load($autor);
+		$noticia_prin_esq['imatge'] = image_style_url('financ-gran',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
+		$noticia_prin_esq['alt'] = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
 	}else{
-		$noticia_prin_esq['imatge'] = image_style_url('financ-gran', $node_->field_imatges['und'][0]['uri']);
-		$noticia_prin_esq['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
-	}
+		if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
+			$noticia_prin_esq['imatge'] = image_style_url('financ-gran',$node_->field_agenda_imatge['und'][0]['uri']);
+			$noticia_prin_esq['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
+		}else{
+			$noticia_prin_esq['imatge'] = image_style_url('financ-gran', $node_->field_imatges['und'][0]['uri']);
+			$noticia_prin_esq['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
+		}
+		}
 	$noticia_prin_esq['title'] = $node_->title;
 	$noticia_prin_esq['teaser'] = strip_tags($node_->field_resum['und'][0]['value']);
 	$noticia_prin_esq['link'] = url('node/' . $node_->nid, array('absolute' => TRUE));
@@ -113,12 +121,20 @@ if ($node_ =  node_load($node->field_financ_prin_xarxanet_esq['und'][0]['nid']))
 $noticia_prin_dreta = array();
 if ($node_ =  node_load($node->field_financ_prin_xarxanet_dreta['und'][0]['nid'])) {
 	//Noticia Xarxanet
-	if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-		$noticia_prin_dreta['imatge'] = image_style_url('financ-gran',$node_->field_agenda_imatge['und'][0]['uri']);
-		$noticia_prin_dreta['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
+	$type = $node_->type;
+	if ($type == 'opinio'){
+		$autor = $node_->field_autor_a['und'][0]['nid'];
+		$autor = node_load($autor);
+		$noticia_prin_dreta['imatge'] = image_style_url('financ-gran',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
+		$noticia_prin_dreta['alt'] = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
 	}else{
-		$noticia_prin_dreta['imatge'] = image_style_url('financ-gran', $node_->field_imatges['und'][0]['uri']);
-		$noticia_prin_dreta['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
+		if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
+			$noticia_prin_dreta['imatge'] = image_style_url('financ-gran',$node_->field_agenda_imatge['und'][0]['uri']);
+			$noticia_prin_dreta['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
+		}else{
+			$noticia_prin_dreta['imatge'] = image_style_url('financ-gran', $node_->field_imatges['und'][0]['uri']);
+			$noticia_prin_dreta['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
+		}
 	}
 	$noticia_prin_dreta['title'] = $node_->title;
 	$noticia_prin_dreta['teaser'] = strip_tags($node_->field_resum['und'][0]['value']);
@@ -140,12 +156,20 @@ for ($i = 1; $i <= 4; $i++){
 	$noticia = $node->$noticia;
 	if ($node_ =  node_load($noticia['und'][0]['nid'])) {
 		//Noticia Xarxanet
-		if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-			$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_agenda_imatge['und'][0]['uri']);
-			$noticia_secundaria[$i]['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
+		$type = $node_->type;
+		if ($type == 'opinio'){
+			$autor = $node_->field_autor_a['und'][0]['nid'];
+			$autor = node_load($autor);
+			$noticia_secundaria[$i]['imatge'] = image_style_url('financ-gran',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
+			$noticia_secundaria[$i]['alt'] = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
 		}else{
-			$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_imatges['und'][0]['uri']); 
-			$noticia_secundaria[$i]['alt'] = $node_->field_imatges['und'][0]['alt'];
+			if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
+				$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_agenda_imatge['und'][0]['uri']);
+				$noticia_secundaria[$i]['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
+			}else{
+				$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_imatges['und'][0]['uri']); 
+				$noticia_secundaria[$i]['alt'] = $node_->field_imatges['und'][0]['alt'];
+			}
 		}
 		$noticia_secundaria[$i]['title'] = $node_->title;
 		$noticia_secundaria[$i]['teaser'] = strip_tags($node_->field_resum['und'][0]['value']);

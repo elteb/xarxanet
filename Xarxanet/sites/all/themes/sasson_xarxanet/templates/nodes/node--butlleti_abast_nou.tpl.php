@@ -107,11 +107,18 @@ foreach ($wrapper->field_abast_destacades as $destacada){
 	$noticia = $destacada->field_abast_destacades_xarxanet->value();
 	$titular = $destacada->field_abast_destacades_titular->value();
 	$img = $destacada->field_abast_crop->value();
+	$type = $noticia->type;
 	
 	if ($num_destacades != 0 && (($noticia) || ($titular))){
 		if ($img){
 			$imatge = file_create_url($img[0]['uri']);
 			$alt = $img[0]['alt'];
+		}elseif($type == 'opinio'){
+			//extreure autor de la opinio i imatge
+			$autor = $noticia->field_autor_a['und'][0]['nid'];
+			$autor = node_load($autor);
+			$imatge = image_style_url('abast-gran',$autor->field_autor_foto_horitzontal['und'][0]['uri']);
+			$alt = $autor->field_autor_foto_horitzontal['und'][0]['alt'];
 		}elseif (!empty($noticia->field_agenda_imatge['und'])){
 			$imatge = image_style_url('abast-gran',$noticia->field_agenda_imatge['und'][0]['uri']);
 			$alt = $noticia->field_agenda_imatge['und'][0]['alt'];
@@ -146,7 +153,14 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		$tit = $noti_xn->title;
 		$link = url('node/' . $noti_xn->nid, array('absolute' => TRUE));
 		$resum = $noti_xn->field_resum['und'][0]['value'];
-		if (!empty($noti_xn->field_agenda_imatge['und'])){
+		$type = $noti_xn->type;
+		if ($type == 'opinio'){
+			//extreure autor de la opinio i imatge
+			$autor = $noti_xn->field_autor_a['und'][0]['nid'];
+			$autor = node_load($autor);
+			$imatge = image_style_url('abast-gran',$autor->field_autor_foto_horitzontal['und'][0]['uri']);
+			$alt = $autor->field_autor_foto_horitzontal['und'][0]['alt'];
+		}elseif (!empty($noti_xn->field_agenda_imatge['und'])){
 			$imatge = image_style_url('abast-gran',$noti_xn->field_agenda_imatge['und'][0]['uri']);
 			$alt = $noti_xn->field_agenda_imatge['und'][0]['alt'];
 		}else{
@@ -529,7 +543,14 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 					if ($xn->nid){
 						$title = $xn->title;
 						$url = url('node/' . $xn->nid, array('absolute' => TRUE));
-						if (isset($xn->field_agenda_imatge['und'][0]['uri'])){
+						$type = $xn->type;
+						if($type == 'opinio'){
+							//extreure autor de la opinio i imatge
+							$autor = $xn->field_autor_a['und'][0]['nid'];
+							$autor = node_load($autor);
+							$imatge = image_style_url('abast-petit',$autor->field_autor_foto_horitzontal['und'][0]['uri']);
+							$alt = $autor->field_autor_foto_horitzontal['und'][0]['alt'];
+						}elseif (isset($xn->field_agenda_imatge['und'][0]['uri'])){
 							$imatge = image_style_url('abast-petit',$xn->field_agenda_imatge['und'][0]['uri']);
 							$alt = $xn->field_agenda_imatge['und'][0]['alt'];
 						}else{

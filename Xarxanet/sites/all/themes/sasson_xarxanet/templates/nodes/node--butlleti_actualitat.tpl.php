@@ -146,9 +146,18 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				foreach ($node->field_actualitat_dest_prin_rel['und'] as $rel) {
 					$news_node = node_load($rel['nid']);
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-					echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+					$type = $news_node->type;
+					if ($type == 'opinio'){
+						$autor = $news_node->field_autor_a['und'][0]['nid'];
+						$autor = node_load($autor);
+						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+							<td style='padding: 2px;'><a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 11pt'>Opinio - {$autor->title}: {$news_node->title}</a></td>
+							</tr>";
+					}else{
+						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
 							<td style='padding: 2px;'><a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
-							</tr>";	
+							</tr>";
+					}	
 				}
 				foreach ($node->field_actualitat_dest_prin_rel_e['und'] as $rel) {
 					$title = $rel['title'];
