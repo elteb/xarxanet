@@ -75,7 +75,9 @@
     <header id="header" role="banner">
       <?php if ($logo): ?>
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+          <!--[if lte IE 8]><img src="/<?php print path_to_theme()?>/logo.png" alt="logo xarxanet" /><![endif]-->
+		  <!--[if gt IE 8]><img src="/<?php print path_to_theme()?>/images/svg/logo-xarxanet.svg" alt="logo xarxanet" /><![endif]-->
+		  <!--[if !IE]> --><img src="/<?php print path_to_theme()?>/images/svg/logo-xarxanet.svg" alt="logo xarxanet" /><!-- <![endif]-->
         </a>
       <?php endif; ?>
 
