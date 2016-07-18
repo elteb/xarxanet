@@ -95,7 +95,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	-->
 	<tr><td>
 		<a href="http://www.xarxanet.org" style="text-decoration:none">
-			<img src="http://www.xarxanet.org/sites/all/themes/genesis/genesis_xarxanet/images/header-logo-xarxanet.gif" alt="logotip xarxanet" style="margin-left:5px"/>
+			<img src="http://www.xarxanet.org/sites/all/themes/sasson_xarxanet/logo_h.png" alt="logotip xarxanet" style="margin-left:5px"/>
 		</a>
 	</td><td>
 		<p style="font-size:38px; color:#B2290C; text-align:right; font-weight:bold; margin:10px 5px">Actualitat</p>
