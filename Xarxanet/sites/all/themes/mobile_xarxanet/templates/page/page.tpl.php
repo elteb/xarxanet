@@ -100,7 +100,9 @@
 		<div id="header">
 			<a name="header"></a>
 			<div id="logo">
-				<a href="/mobile-frontpage"><img src="/<?php print path_to_theme()?>/images/logo-xarxanet-org.png" alt="logo xarxanet" /></a>
+				<!--[if lte IE 8]><img src="/<?php print path_to_theme()?>/images/logo-xarxanet-org.png" alt="logo xarxanet" /><![endif]-->
+		  		<!--[if gt IE 8]><img src="/<?php print path_to_theme()?>/images/svg/logo-xarxanet.svg" alt="logo xarxanet" /><![endif]-->
+		  		<!--[if !IE]> --><img src="/<?php print path_to_theme()?>/images/svg/logo-xarxanet.svg" alt="logo xarxanet" /><!-- <![endif]-->
 			</div>
 			<div id="menu-tab">
 				Menú
