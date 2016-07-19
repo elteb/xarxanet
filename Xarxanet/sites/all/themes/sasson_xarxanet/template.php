@@ -60,6 +60,7 @@ function sasson_xarxanet_get_label($tipus) {
 	if($tipus == "Acte") $text = "Esdeveniment > Acte";
 	if($tipus == "Esdeveniment") $text = "Agenda";
 	if($tipus == "event") $text = "Agenda";
+	if($tipus == "opinio") $text = "Opinio";
 
 	if($tipus == "Finançament (NOU)") $text = "Finançament";
 	if($tipus == "Premi") $text = "Finançament > Premi";

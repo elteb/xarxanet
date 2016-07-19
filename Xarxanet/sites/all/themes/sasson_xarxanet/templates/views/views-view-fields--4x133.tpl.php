@@ -41,12 +41,15 @@
 
 	if ($id == 1) {
 		$rawImatge = $fields['field_agenda_imatge_2']->content;
+		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = $fields['field_autor_foto_horitzontal_1']->content;
 		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-gran', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	} else if (($id == 2) || ($id == 7)) {
 		$rawImatge = $fields['field_agenda_imatge_1']->content;
+		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = $fields['field_autor_foto_horitzontal']->content;
 		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-mig', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	} else {
 		$rawImatge = $fields['field_agenda_imatge']->content;
+		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = $fields['field_autor_foto_quadrada']->content;
 		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	}
 	
