@@ -151,7 +151,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 						$autor = $news_node->field_autor_a['und'][0]['nid'];
 						$autor = node_load($autor);
 						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
-							<td style='padding: 2px;'><a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 11pt'>Opinio - {$autor->title}: {$news_node->title}</a></td>
+							<td style='padding: 2px;'><a href='{$url}' style='font-family: Georgia,Times New Roman,Times,serif; color: #005577; font-weight: lighter; text-decoration: none; font-size: 11pt'>Opinió - {$autor->title}: {$news_node->title}</a></td>
 							</tr>";
 					}else{
 						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
