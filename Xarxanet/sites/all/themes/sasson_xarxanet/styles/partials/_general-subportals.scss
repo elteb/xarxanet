@@ -510,6 +510,149 @@
   }
 }
 
+/* ------- Publica a Xarxanet -------- */
+
+.page-publica-a-xarxanet{
+  .panels-flexible-region-inside{
+    padding-left:0px;
+    padding-right:0px;
+    margin-right:3px;
+  }
+  .panels-flexible-region-46-right_block-inside{
+    margin-left:15px; 
+  }
+  #page-title-reg{
+    width: $ninesixty-grid-width;
+    height:50px;
+  }
+  #page-title{
+    color:#000;
+    margin: 8px 0px;
+  }
+  .breadcrumb{
+    border-top-color: $general;
+    margin-right: 0px;
+  }
+  .panel-pane{
+    margin-left:8px;
+  }
+  .publica-intro{
+    h2{
+      margin-top:0px;     
+    } 
+  }
+  .pane-title{
+    @include title1;
+    margin:0px !important;
+    line-height:1.4em;
+  }
+  #acte-formacio{
+    background: #e3e5ba 10px 20px;
+    @include title3;
+    line-height:1.2em !important;
+    height: 274px;
+    .pane-title{
+      padding-left:85px;
+      padding-top:12px;
+      padding-right:17px;
+      background: $agenda url("/sites/all/themes/sasson_xarxanet/images/pictos/publica-agenda.png") no-repeat scroll 10px 20px;
+      line-height: 1.2em;
+      color: #fff;
+      height: 102px;
+    }
+    a{
+      color: #7f841e;
+    }
+    p{
+      padding-left: 15px;
+      font-size: 1em;
+    }
+  }
+  .formulari{
+    margin-right:9px;
+    heigth: 205px;
+  }
+  #colabora{
+    background: $general-sec 10px 20px;
+    @include title3;
+    line-height:1.2em !important;
+    margin-left:0px;
+    height: 274px;
+    .pane-title{
+      padding-left:85px;
+      padding-top:12px;
+      padding-right:17px;
+      background: $general url("/sites/all/themes/sasson_xarxanet/images/pictos/colabora.png") no-repeat scroll 10px 20px;
+      line-height: 1.2em;
+      color: #fff;
+      height: 102px;
+    }
+    a{
+      color: $general;
+    }
+    p{
+      padding-left: 15px;
+      font-size: 1em;
+    }
+  }
+  #accedeix{
+    background: $main-2 10px 10px;
+    color: $main-1;
+    @include title3;
+    line-height:1.2em !important;
+    margin-left:0px;
+    height: 274px;
+    .pane-title{
+      padding-left:85px;
+      padding-top:23px;
+      padding-right:17px;
+      background: $main-2 url("/sites/all/themes/sasson_xarxanet/images/pictos/login_2.png") no-repeat scroll 15px 20px;
+      line-height: 1.2em;
+      color: #fff;
+      height: 92px;
+    }
+    p{
+      padding-left:15px;
+      font-size: 1em;
+    }
+    a{
+      color: $main-1;
+    }
+    .rec_pass{
+      font-size: 0.6em;
+      padding-left:10px;
+    }
+    form{
+      font-size: 0.6em;
+      padding-left:10px;
+      .form-item{
+        margin-top:0px !important;
+        margin-bottom:0px !important;
+      }
+      .form-actions{
+        margin-bottom:0px !important;
+      }
+      input{
+        width:280px;
+      }
+      .description{
+        display:none;
+      }
+      #edit-actions{
+       input{
+        width: 105px;
+        height: 25px;
+        font-family: Georgia;
+        color: #666666;
+       }
+      }
+    }
+  }
+  #footer{
+    margin-left:0px !important;
+  }
+}
+
 /*------ Opinion -----*/
 .view-opinion{
   p { margin-bottom: 0px; }

@@ -79,6 +79,7 @@ blockquote {
     }
     .butlletins { @include menu-link-bg($main-1, $general, 'newsletters', 'newsletters'); }
     .accedeix { @include menu-link-bg($main-1, $general, 'login', 'login'); }
+    .publica { @include menu-link-bg($main-1, $general, 'publica2', 'publica2'); }
     .surt-del-lloc { @include menu-link-bg($main-1, $general, 'logout', 'logout'); }
     .panell-de-control { 
     	@include menu-link-bg($main-1, $general, 'panell-control-menu', 'panell-control-menu');
@@ -118,8 +119,7 @@ blockquote {
   li.megamenu-parent-5 { @include menu-link-bg( false, $biblioteca); }
    
   li.megamenu-parent-6 { @include menu-link-bg( false, $general, 'fes-voluntariat', 'fes-voluntariat-hover'); }
-  li.megamenu-parent-7 { @include menu-link-bg( false, $general, 'publica', 'publica-hover'); }
-  li.megamenu-parent-8 { @include menu-link-bg( false, $general, 'assessorat', 'assessorat-hover'); }
+  li.megamenu-parent-7 {@include menu-link-bg( false, $general, 'assessorat', 'assessorat-hover'); }
   
   border-top: solid 2px $main-1;
   border-bottom: solid 1px $main-1;
