@@ -99,18 +99,20 @@ iframe { max-width: 100% !important; }
 .section-especial .item-content .image,
 .section-etiquetes .item-content .image { 
 	float: left;
-	margin-right: 5px;	
+	margin: 5px 5px 0 0;	
 }
 
 .view-recull-noticies-principal .views-field-views-conditional,
-.view-recull-noticies-secundari .views-field-title,
-.view-recull-noticies-secundari .views-field-views-conditional-1,
-.view-recull-noticies-secundari .views-field-views-conditional-4 {
+.view-recull-noticies-secundari #left-column .views-field-title,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-1,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-4 {
 	margin: 15px 0 3px;
 }
 
-.view-main-highlighted-frontpage .item-content,
-.view-secondary-highlighted-frontpage .item-content{
+.view-main-highlighted-frontpage .views-row-2 .item-content,
+.view-secondary-highlighted-frontpage .views-row-2 .item-content,
+.view-recull-noticies-secundari .views-field-field-recull-secundari-lat-sup-1,
+.view-recull-noticies-secundari .views-field-field-recull-secundari-lat-inf-1{
 	padding-top: 15px;
 	clear: both;
 }
@@ -150,8 +152,10 @@ iframe { max-width: 100% !important; }
 }
 
 .view-recull-noticies-principal .views-field-views-conditional-1,
-.view-recull-noticies-secundari .views-field-views-conditional-2,
-.view-recull-noticies-secundari .views-field-views-conditional-5,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-2,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-5,
+.view-recull-noticies-secundari .views-field-field-resum-2,
+.view-recull-noticies-secundari .views-field-field-resum-3,
 .pane-main-highlighted-frontpage-panel-pane-2 .teaser,
 .pane-secondary-highlighted-frontpage-panel-pane-2 .teaser,
 .node-type-page-insert-view .item-content .teaser,
@@ -159,13 +163,14 @@ iframe { max-width: 100% !important; }
 .section-mobile-opinion .item-content .teaser,
 .section-mobile-opinion .item-content .info {
 	margin-left: 105px;
+	margin-top: 5px;
 }
 
 
 /************ PORTADA *************/
 
 .view-recull-noticies-principal .views-field-title,
-.view-recull-noticies-secundari .views-field-title,
+.view-recull-noticies-secundari #left-column .views-field-title,
 .view-noticies-destacades-mobil .view-header {
 	font-family: Georgia,Times New Roman,Times,serif;
 	font-size: 1.4rem;
@@ -176,16 +181,16 @@ iframe { max-width: 100% !important; }
 }
 
 .view-recull-noticies-principal,
-.view-recull-noticies-secundari {
+.view-recull-noticies-secundari #left-column {
 	background-color: #ECEFF0;
 	padding-bottom: 10px;
 }
 
 .view-recull-noticies-principal img,
-.view-recull-noticies-secundari img,
+.view-recull-noticies-secundari #left-column img,
 .view-recull-noticies-principal .views-field-views-conditional,
-.view-recull-noticies-secundari .views-field-views-conditional-1,
-.view-recull-noticies-secundari .views-field-views-conditional-4{
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-1,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-4{
 	margin-left:5px;
 }
 
@@ -203,12 +208,12 @@ iframe { max-width: 100% !important; }
 }
 
 .view-recull-noticies-principal .views-field-nothing .views-label,
-.view-recull-noticies-secundari .views-field-nothing .views-label {
+.view-recull-noticies-secundari #left-column .views-field-nothing .views-label {
     margin-left: 8px;
 }
 
 .view-recull-noticies-principal .views-field-nothing,
-.view-recull-noticies-secundari .views-field-nothing {
+.view-recull-noticies-secundari #left-column .views-field-nothing {
     margin-top: 15px;
 }
 
@@ -216,16 +221,22 @@ iframe { max-width: 100% !important; }
 .views-field-field-recull-principal-rel-url .field-item,*/
 .views-field-field-recull-secundari-relaciona .field-content div,
 .view-recull-noticies-principal .views-field-nothing .field-content div,
-.view-recull-noticies-secundari .views-field-nothing .field-content div {
+.view-recull-noticies-secundari #left-column .views-field-nothing .field-content div {
 	margin: 5px;
 	padding-left: 8px;
 	list-style-image: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/news-list-style.png");
 }
 
 .view-recull-noticies-principal .views-field-nothing .field-content ul,
-.view-recull-noticies-secundari .views-field-nothing .field-content ul {
+.view-recull-noticies-secundari #left-column .views-field-nothing .field-content ul {
     margin-bottom: 0px;
 }
+
+.panel-flexible .panel-separator {
+    clear: both;
+}
+
+.teaser { margin-top: 5px; }
 
 /************ BLOCS *************/
 
