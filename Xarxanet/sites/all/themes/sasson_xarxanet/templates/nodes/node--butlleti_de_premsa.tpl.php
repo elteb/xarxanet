@@ -79,35 +79,65 @@
 $wrapper = entity_metadata_wrapper('node', $node);
 ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-    <?php print render(field_view_field('node', $node, 'field_resum', array('label' => 'hidden'))); ?>
-    
-    <h2 style="border-bottom: solid 1px; font-weight: bold; margin-top:25px;">Esdeveniments</h2>
+    <p>Aquest servei d’alertes us mantindrà informats sobre els principals esdeveniments que han de passar o han passat al tercer sector i al conjunt de l’àmbit no lucratiu. L’objectiu d’aquests enviaments és acostar-vos la realitat del sector per tal de facilitar-vos la tasca de donar veu al món de l’associacionisme i el voluntariat. Aquest és un servei del portal <a href="http://xarxanet.org">xarxanet.org</a> per a periodistes.</p>
+    <hr/>
     <?php
     $events = array();
     foreach ($wrapper->field_premsa_esdeveniments as $event){
     	$link = $event->field_premsa_esd_enllac->value();
-    	$date = $event->field_premsa_esd_data->value();
+    	$date = $event->field_premsa_esd_data->value();    	
     	$start=new DateTime($date['value'],new DateTimeZone($date['timezone_db']));
     	$end=new DateTime($date['value2'],new DateTimeZone($date['timezone_db']));
     	$start->setTimezone(new DateTimeZone($date['timezone']));
     	$end->setTimezone(new DateTimeZone($date['timezone']));
-    	$events[strtotime($date['value'])] = array('link' => $link, 'start' => $start, 'end' => $end, 'teaser' => $event->field_premsa_esd_desc->value());
+    	if ($start != $end) {
+    		$date_str = "Del {$start->format('d/m/Y, H:i')} al {$end->format('d/m/Y, H:i')}";
+    	} else {
+    		if ($start->format('H:i') == '00:00') { 
+    			$date_str = "{$start->format('d/m/Y')}, tot el dia";
+    		} else {
+    			$date_str = $start->format('d/m/Y, H:i');
+    		}
+    	}    	
+    	$events[strtotime($date['value'])] = array('link' => $link, 'date' => $date_str, 'teaser' => $event->field_premsa_esd_desc->value());
+    }
+    foreach ($wrapper->field_premsa_esdeveniments_xn as $event){
+    	$event = $event->value();
+    	$event = node_load($event->nid);
+    	$link = array('url' => url('node/' . $event->nid, array('absolute' => TRUE)), 'title' => $event->title );
+    	$event_wrapper = entity_metadata_wrapper('node', $event);
+    	$date = $event_wrapper->field_date_event->value();
+    	$start=new DateTime($date['value'],new DateTimeZone($date['timezone_db']));
+    	$end=new DateTime($date['value2'],new DateTimeZone($date['timezone_db']));
+    	$start->setTimezone(new DateTimeZone($date['timezone']));
+    	$end->setTimezone(new DateTimeZone($date['timezone']));
+    	$teaser = strip_html_tags(render(field_view_field('node', $event, 'field_resum', array('label' => 'hidden'))));
+    	if ($start != $end) {
+    		$date_str = "Del {$start->format('d/m/Y, H:i')} al {$end->format('d/m/Y, H:i')}";
+    	} else {
+    		if ($start->format('H:i') == '00:00') {
+    			$date_str = "{$start->format('d/m/Y')}, tot el dia";
+    		} else {
+    			$date_str = $start->format('d/m/Y, H:i');
+    		}
+    	}
+    	$events[strtotime($date['value'])] = array('link' => $link, 'date' => $date_str, 'teaser' => $teaser);
     }
     ksort($events);
+    
     foreach ($events as $event) {
-    	print "<p><a href='{$event['link']['url']}'><b>{$event['link']['title']}</b></a><br/>";
-    	print "<i>Del {$event['start']->format('d/m/Y, H:i')} al {$event['end']->format('d/m/Y, H:i')}</i><br/>";
-    	print "{$event['teaser']}</p>";
+    	print "<h3><a href='{$event['link']['url']}'>{$event['link']['title']}</a></h3>";
+    	print "<p style='margin-bottom: 25px;'><i>{$event['date']}</i><br/>{$event['teaser']}</p>";
     }
     ?>
-    
-    <h2 style="border-bottom: solid 1px; font-weight: bold; margin-top:25px;">Continguts Xarxanet.org</h2>
+    <hr />
+    <h1 style="margin:15px 0;">També us pot interessar!</h1>
     <?php 
     foreach ($wrapper->field_premsa_xarxanet as $xn){
     	$xn = $xn->value();
     	$xn = node_load($xn->nid);
     	$url = url('node/' . $xn->nid, array('absolute' => TRUE));
-    	print "<p><a href='{$url}'><b>{$xn->title}</b></a><br/>";
+    	print "<h3><a href='{$url}'>{$xn->title}</a></h3><p style='margin-bottom: 25px;'>";
     	print strip_html_tags(render(field_view_field('node', $xn, 'field_resum', array('label' => 'hidden'))));
     	print "</p>";
     }
