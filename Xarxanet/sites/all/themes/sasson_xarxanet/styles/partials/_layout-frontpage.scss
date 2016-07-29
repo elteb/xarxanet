@@ -59,12 +59,16 @@
   .views-field-type,
   .views-field-views-conditional-4,
   .views-field-type-1,
+  .views-field-field-autor-foto-horitzontal,
+  .views-field-field-autor-foto-horitzontal-1,
   {
     width: $column * 4 + $space * 2;
     float: left;
   }
   .views-field-views-conditional img,
   .views-field-views-conditional-4 img,
+  .views-field-field-autor-foto-horitzontal img,
+  .views-field-field-autor-foto-horitzontal-1 img,
   {
     width: $column * 4 + $space * 2;
   }  
@@ -72,7 +76,8 @@
   .views-field-views-conditional-2,
   .views-field-views-conditional-3,
   .views-field-views-conditional-5,
-  .views-field-nothing, 
+  .views-field-nothing,
+  .views-field-field-recull-secundari-rel-xn, 
   {
     width: $column * 4 + $space * 2 - 16;
     float: left;
@@ -84,7 +89,9 @@
   .views-field-field-agenda-imatge-3,
   .views-field-type-3,
   .views-field-field-recull-secundari-lat-inf,
-  .views-field-field-resum-3
+  .views-field-field-resum-3,
+  .views-field-field-autor-foto-quadrada,
+  .views-field-field-autor-foto-quadrada-1,
   {
     margin-left: $column * 4 + $space * 4;
     width: $column * 2;
@@ -92,6 +99,8 @@
   }
   .views-field-field-agenda-imatge-1 img,
   .views-field-field-agenda-imatge-3 img,
+  .views-field-field-autor-foto-quadrada-1 img,
+  .views-field-field-autor-foto-quadrada img,
   {
     width: $column * 2;
   }

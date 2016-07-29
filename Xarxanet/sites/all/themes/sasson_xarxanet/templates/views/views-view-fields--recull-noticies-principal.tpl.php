@@ -25,17 +25,16 @@
  */
 ?>
 <?php foreach ($fields as $id => $field): ?>
-	<?php if ($id == 'title') print '<div id="left-column">'; ?>
-    <?php if (!empty($field->separator)): ?>
-    	<?php print $field->separator; ?>
-    <?php endif; ?>
-	
-    <?php print $field->wrapper_prefix; ?>
-		<?php print $field->label_html; ?>
-		<?php if ($id == 'field_recull_secundari_relaciona') { ?>
+  <?php if (!empty($field->separator)): ?>
+    <?php print $field->separator; ?>
+  <?php endif; ?>
+
+  <?php print $field->wrapper_prefix; ?>
+    <?php print $field->label_html; ?>
+    <?php if ($id == 'field_recull_principal_rel') { ?>
 			<?php $noti_rel_ext = $field->content; ?>
 		<?php } ?>
-		<?php if ($id == 'field_recull_secundari_rel_xn') { ?>
+		<?php if ($id == 'field_recull_principal_rel_xn') { ?>
 			<?php $nodes_rel = explode(",",$field->content); ?>
 			<?php print '<div class="item-list"><ul>'; ?>
 			<?php foreach($nodes_rel as $node_rel){
@@ -53,10 +52,9 @@
 			print $noti_rel_ext;
 			?>			
 		<?php }else{ ?>
-			<?php if ($id != 'field_recull_secundari_relaciona'): ?>
+			<?php if ($id != 'field_recull_principal_rel'): ?>
 	    		<?php print $field->content; ?>
 	    	<?php endif; ?>
 	   	<?php } ?>
     <?php print $field->wrapper_suffix; ?>
-    <?php if ($id == 'field_recull_secundari_rel_xn') print '</div>'; ?>
 <?php endforeach; ?>

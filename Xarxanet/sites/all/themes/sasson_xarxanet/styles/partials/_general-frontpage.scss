@@ -22,7 +22,8 @@
   .views-field-views-conditional-1 {
     padding: 0 8px;
   }
-  .views-field-nothing {
+  .views-field-nothing,
+  .views-field-field-recull-principal-rel-xn {
     padding: 8px;
     .views-label {
       font-weight: bold;
@@ -59,6 +60,7 @@
     padding: 0px 8px;
   }
   .views-field-nothing,
+  .views-field-field-recull-secundari-rel-xn,
   {
     padding: 8px;
   }
@@ -77,7 +79,8 @@
   .views-field-field-resum-1,{
     padding-bottom: 20px;   
   }  
-  .views-field-nothing {
+  .views-field-nothing, 
+  .views-field-field-recull-secundari-rel-xn,{
     .views-label {
       font-weight: bold;
     }
