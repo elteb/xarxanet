@@ -34,7 +34,7 @@
 ">
 
 <?php
-	$rawImatge = $fields['field_agenda_imatge']->content;
+	$rawImatge = ($fields['type']->raw == 'opinio') ? $fields['field_autor_foto_quadrada']->content : $fields['field_agenda_imatge']->content;
 	 
 	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	

@@ -29,11 +29,11 @@
 <?php
 	$row = $view->row_index;
 	if ($row == 0) {
-		$rawImatge = $fields['field_agenda_imatge_1']->content;
-		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
-	} else {
-		$rawImatge = $fields['field_agenda_imatge']->content;
+		$rawImatge = ($fields['type']->raw == 'opinio') ? $fields['field_autor_foto_horitzontal']->content : $fields['field_agenda_imatge']->content;
 		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-mig', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
+	} else {
+		$rawImatge = ($fields['type']->raw == 'opinio') ? $fields['field_autor_foto_quadrada']->content : $fields['field_agenda_imatge_1']->content;
+		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	}
 	print $rawImatge;
 	$type = $fields['type']->raw;
