@@ -169,7 +169,7 @@ $pathroot = 'http://www.xarxanet.org';
                                       </tr>
                                     </tbody>
                                   </table>
-                                  <p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;margin-bottom:10px;padding:0;text-align:left">Aquest servei d’alertes us mantindrà informats sobre els principals esdeveniments que han de passar o han passat al tercer sector i al conjunt de l’àmbit no lucratiu. L’objectiu d’aquests enviaments és acostar-vos la realitat del sector per tal de facilitar-vos la tasca de donar veu al món de l’associacionisme i el voluntariat. Aquest és un servei del portal xarxanet.org per a periodistes.</p>
+                                  <p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;margin-bottom:10px;padding:0;text-align:left">Aquest servei d’alertes us mantindrà informats sobre els principals esdeveniments que han de passar o han passat al tercer sector i al conjunt de l’àmbit no lucratiu. L’objectiu d’aquests enviaments és acostar-vos la realitat del sector per tal de facilitar-vos la tasca de donar veu al món de l’associacionisme i el voluntariat. Aquest és un servei del portal <a href="<?php echo $pathroot?>/sobre-el-projecte">xarxanet.org</a> per a periodistes.</p>
                                 </th>
                                 <th class="expander" style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
                               </tr>
@@ -380,6 +380,7 @@ $pathroot = 'http://www.xarxanet.org';
                                   </table>
                                   <p class="text-right" style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;margin-bottom:10px;padding:0;text-align:right">
                                   	<a href="<?php echo $pathroot?>/baixa_premsa" style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-weight:700;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none">Donar-me de baixa</a>
+                                  	| <a href="<?php echo $pathroot?>/alta_premsa" style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-weight:700;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none">Donar-me d'alta</a>
                                    	| <a href="mailto:incidencies@xarxanet.org?Subject=Consulta%20butlletí" style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-weight:700;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none">Contacte</a>
                                    	| <a href="<?php echo $pathroot?>/avis-legal" style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-weight:700;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none">Avís legal</a></p>
                                 </th>

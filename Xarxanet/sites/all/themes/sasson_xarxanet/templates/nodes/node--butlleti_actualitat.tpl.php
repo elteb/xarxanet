@@ -234,7 +234,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 		<td colspan="3" style="background-color: #f6f5e3; vertical-align: top;">
 			<table class="butlleti">
 			<?php 
-				$view = views_get_view_result('propers_cursos');
+				$view = views_get_view_result('propers_cursos', 'block_1');
 				foreach ($view as $elem) {
 					$news_node = node_load($elem->nid);
 					$date = $news_node->field_date_event['und'][0];
@@ -258,7 +258,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 		<td colspan="3" style="background-color: #f1f2e4; vertical-align: top;">
 			<table class="butlleti">
 			<?php 
-				$view = views_get_view_result('propers_events');
+				$view = views_get_view_result('propers_events', 'block_2');
 				foreach ($view as $elem) {
 					$news_node = node_load($elem->nid);
 					$date = $news_node->field_date_event['und'][0];

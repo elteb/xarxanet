@@ -79,7 +79,7 @@
 $wrapper = entity_metadata_wrapper('node', $node);
 ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-    <p>Aquest servei d’alertes us mantindrà informats sobre els principals esdeveniments que han de passar o han passat al tercer sector i al conjunt de l’àmbit no lucratiu. L’objectiu d’aquests enviaments és acostar-vos la realitat del sector per tal de facilitar-vos la tasca de donar veu al món de l’associacionisme i el voluntariat. Aquest és un servei del portal <a href="http://xarxanet.org">xarxanet.org</a> per a periodistes.</p>
+    <p>Aquest servei d’alertes us mantindrà informats sobre els principals esdeveniments que han de passar o han passat al tercer sector i al conjunt de l’àmbit no lucratiu. L’objectiu d’aquests enviaments és acostar-vos la realitat del sector per tal de facilitar-vos la tasca de donar veu al món de l’associacionisme i el voluntariat. Aquest és un servei del portal <a href="http://xarxanet.org/sobre-el-projecte">xarxanet.org</a> per a periodistes.</p>
     <hr/>
     <?php
     $events = array();
