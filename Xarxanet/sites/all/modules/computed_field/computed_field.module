@@ -391,23 +391,37 @@ function computed_field_field_formatter_view($entity_type, $entity, $field, $ins
 		}
 		
 		// Output the formatted display item
-		switch ($display ['type']) {
-			case 'computed_field_unsanitized' :
-				$element [$delta] = array (
-						'#markup' => $display_output 
-				);
-				break;
-			case 'computed_field_plain' :
-				$element [$delta] = array (
-						'#markup' => check_plain ( $display_output ) 
-				);
-				break;
-			case 'computed_field_markup' :
-				$element [$delta] = array (
-						'#markup' => check_markup ( $display_output ) 
-				);
-				break;
+		/************************************************
+		 * TEBPATCH (ADD) @fcasanellas 16/09/2016
+		 * #XN-CF001 Evita l'error quan no s'ha definit un tipus de display
+		 * NEWCODE *************************************/
+		if (is_array($display)) {
+		/************************************************
+		 * END TEBPATCH ********************************/
+			switch ($display ['type']) {
+				case 'computed_field_unsanitized' :
+					$element [$delta] = array (
+							'#markup' => $display_output 
+					);
+					break;
+				case 'computed_field_plain' :
+					$element [$delta] = array (
+							'#markup' => check_plain ( $display_output ) 
+					);
+					break;
+				case 'computed_field_markup' :
+					$element [$delta] = array (
+							'#markup' => check_markup ( $display_output ) 
+					);
+					break;
+			}
+		/************************************************
+		 * TEBPATCH (ADD) @fcasanellas 16/09/2016
+		 * #XN-CF001 Evita l'error quan no s'ha definit un tipus de display
+		 * NEWCODE *************************************/
 		}
+		/************************************************
+		 * END TEBPATCH ********************************/
 	}
 	return $element;
 }
