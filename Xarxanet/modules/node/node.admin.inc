@@ -691,8 +691,25 @@ function node_admin_nodes() {
       '#empty' => t('No content available.'),
     );
   }
-
-  $form['pager'] = array('#markup' => theme('pager'));
+	
+  /********************************************
+   * TEBPATCH (MDF) @fcasanellas 16/09/2016
+   * #XN-ND006 Paginació lleugera   
+   * OLDCODE **********************************
+   * $form['pager'] = array('#markup' => theme('pager'));
+   ********************************************
+   * NEWCODE *********************************/
+  $current_page = ($_GET['page']) ? $_GET['page'] : 0;
+  $next = $current_page + 1;
+  $prev = $current_page - 1;
+  $pager = "  Pàgina {$next}  ";
+  if ($current_page > 0) $pager = "<a href='/admin/content?page=".$prev."'>‹‹</a> ".$pager;
+  if (count($nodes) >= 49) $pager .= "<a href='/admin/content?page=".$next."'>››</a>";
+  $pager = '<div class="pager" style="text-align:center;">'.$pager.'</div>';  
+  $form['pager'] = array('#markup' => $pager);
+  /**********************************************
+   * END TEBPATCH ******************************/
+  
   return $form;
 }
 
