@@ -717,7 +717,7 @@
   h3{
       display:none;
     }
-}
+}	
 
 .all-authors {
 	clear: both;
@@ -732,6 +732,20 @@
 	   	width: $column*3;
 	   	background-color: $opinio;
 	}   	
+}
+
+/* ------ Webinars ----- */
+.all-webinars {
+	border-bottom: solid 2px $general;
+	h2 {
+	 	@include title3;
+	   	color: white;
+	   	padding: $space 0 $space $space;
+	   	margin-bottom: 0;
+	   	width: $column*2;
+	   	background-color: $general;
+	}
+	.views-row-first { margin-top: 2*$space; }   	
 }
 
 /* ------- Colors ------ */

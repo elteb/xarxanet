@@ -356,6 +356,26 @@ ul.pager {
   }
 }
 
+/* -------- Propers webinars ------- */
+.pane-propers-webinars {
+  h2 {
+    @include block-lat-title(2, 50px, 10px);
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/globus.png") $general 10px no-repeat; 
+  }
+  .pane-content {
+    background-color: $general-sec;
+    clear: both;
+  }
+  .view {
+    @include block-body;
+    background-color: $general-sec;
+  }
+  .views-row {
+    @include list-display(none);
+    list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
+  }
+}
+
 /* -------- Crida Voluntariat ------- */
 .pane-block-87,
 .section-fes-voluntariat .region-content .pane-block-87 {
