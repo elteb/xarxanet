@@ -152,10 +152,16 @@ class mimemail_compress {
 		}
 		
 		// This removes styles from your email that contain display:none. You could comment these out if you want.
+		/********************************************
+		 * TEBPATCH (DEL) @fcasanellas 07/11/2016
+		 * XN-MM001 Evita que s'eliminin els elements amb display:none
+		 ********************************************
 		$nodes = $xpath->query ( '//*[contains(translate(@style," ",""), "display:none")]' );
 		foreach ( $nodes as $node ) {
 			$node->parentNode->removeChild ( $node );
 		}
+		/********************************************
+		 * END TEBPATCH ****************************/
 		
 		if (variable_get ( 'mimemail_preserve_class', 0 ) == FALSE) {
 			$nodes = $xpath->query ( '//*[@class]' );
