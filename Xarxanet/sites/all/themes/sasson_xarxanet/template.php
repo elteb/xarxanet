@@ -146,6 +146,9 @@ function sasson_xarxanet_preprocess_page(&$vars) {
 	drupal_add_library('system', 'jquery.cookie');
 }
 
+/**
+ * Canviem la mida del camp "Assumpte" i ocultem el camp "Pagina inicial" 
+ */
 function sasson_xarxanet_form_comment_form_alter(&$form, &$form_state) {
 	$form['subject']['#size'] = 52;
 	$form['author']['homepage']['#type'] = 'hidden';
