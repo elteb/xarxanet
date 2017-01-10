@@ -1986,16 +1986,7 @@ function comment_form($form, &$form_state, $comment) {
     '#access' => $is_admin || (!$user->uid && $anonymous_contact != COMMENT_ANONYMOUS_MAYNOT_CONTACT),
   );
   $form['author']['homepage'] = array(
-  	/*******************************************************
-  	* TEBPATCH (MDF) @fcasanellas 03/08/2015
-  	* XN-CM002 Ocultem el camp "Pàgina inicial" al formulari  
-  	* OLDCODE *********************************************
-  	'#type' => 'textfield',
-  	/*******************************************************
-  	* NEWCODE ********************************************/
-  	'#type' => 'hidden',
-  	/*******************************************************
-  	 * END TEBPATCH ***************************************/
+    '#type' => 'textfield',
     '#title' => t('Homepage'),
     '#default_value' => $comment->homepage,
     '#maxlength' => 255,
