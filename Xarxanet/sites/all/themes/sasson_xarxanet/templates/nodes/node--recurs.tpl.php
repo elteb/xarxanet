@@ -155,6 +155,18 @@
                 
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c67bc259a068b5"></script>
+			<!-- Afegim el text via @xarxanetorg quan es comparteix a twitter desde AddThis-->
+			<script type="text/javascript">
+				var addthis_share = addthis_share || {}
+				addthis_share = {
+					passthrough : {
+						twitter: {
+							via: "xarxanetorg"
+						}
+					}
+				}
+			</script>
+			<div class
 			<div class="node-social-links">
 				<div class="addthis_sharing_toolbox"></div>
 			</div>
