@@ -34,6 +34,29 @@
 		$rawImatge = $fields['field_agenda_imatge_1']->content;
 		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-mig', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	}
+	if ((strip_tags($fields['field_imatge_emergent']->content) != '') || (strip_tags($fields['field_video_emergent']->content) != '')) {
+		if (strip_tags($fields['field_imatge_emergent']->content) != '') {
+			//Imatge emergent
+			$class = 'imatge';
+			$newurl = strip_tags($fields['field_imatge_emergent']->content);
+			$rel = "lightbox";
+		}
+		if (strip_tags($fields['field_video_emergent']->content) != '') {
+			//Vídeo emergent
+			$class = 'video';
+			$rel = "lightframe";
+			$newurl = strip_tags($fields['field_video_emergent']->content);
+		}
+		$title = strip_tags($fields['title']->content);
+		$rawImatge = strip_tags($rawImatge, "<img>");
+		$rawImatge = '	<div class="field-content lightbox-item">
+			                '.$rawImatge.'
+						  	<div class="content">
+ 								<a rel="'.$rel.'" href="'.$newurl.'" class="info" title="'.$title.'"><img alt="icona '.$class.'" src="/sites/all/themes/sasson_xarxanet/images/pictos/emergent-'.$class.'.svg" /></a>
+						  	</div>
+			            </div>';
+	}
+	
 	$type = $fields['type']->raw;
 	if (isset($fields['field_finfull_tipus'])) $type = strip_tags($fields['field_finfull_tipus']->content);
 	if (isset($fields['field_event_type'])) $type = strip_tags($fields['field_event_type']->content);

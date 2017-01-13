@@ -44,6 +44,29 @@
 	if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))) $type = 'Recurs '.strip_tags($fields['field_ambit_recurs']->content);
 	if (($type == 'noticia_general') && (isset($fields['field_ambit_noticia']))) $type = 'Notícia '.strip_tags($fields['field_ambit_noticia']->content);
 	
+	if ((strip_tags($fields['field_imatge_emergent']->content) != '') || (strip_tags($fields['field_video_emergent']->content) != '')) {
+		if (strip_tags($fields['field_imatge_emergent']->content) != '') {
+			//Imatge emergent
+			$class = 'imatge';
+			$newurl = strip_tags($fields['field_imatge_emergent']->content);
+			$rel = "lightbox";
+		}
+		if (strip_tags($fields['field_video_emergent']->content) != '') {
+			//Vídeo emergent
+			$class = 'video';
+			$rel = "lightframe";
+			$newurl = strip_tags($fields['field_video_emergent']->content);
+		}
+		$title = strip_tags($fields['title']->content);
+		$rawImatge = strip_tags($rawImatge, "<img>");
+		$rawImatge = '	<div class="field-content lightbox-item">
+			                '.$rawImatge.'
+						  	<div class="content">
+ 								<a rel="'.$rel.'" href="'.$newurl.'" class="info" title="'.$title.'"><img alt="icona '.$class.'" src="/sites/all/themes/sasson_xarxanet/images/pictos/emergent-'.$class.'.svg" /></a>
+						  	</div>
+			            </div>';
+	}
+	
 	print $rawImatge;
 	print sasson_xarxanet_get_label($type);
 	

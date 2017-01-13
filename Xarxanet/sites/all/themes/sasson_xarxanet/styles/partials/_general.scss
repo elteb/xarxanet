@@ -417,6 +417,41 @@ ul.pager {
   }
 }
 
+/* ------- Imatges i vídeos emergents ------- */
+.lightbox-item {
+	position: relative;
+	overflow: hidden;
+	.content {
+		position: absolute;
+	   	overflow: hidden;
+	   	width: 45px;
+	   	height: 45px;
+	   	bottom: 0;
+	   	right: 0;
+	   	transition: all 0.4s ease-in-out;
+	   	background-color: rgba(0,0,0,0.7);
+	}
+	.info img {
+   		position: relative;
+   		height: 50%;
+		width: 50%;
+	   	top: 50%;
+	   	left: 50%;
+  		transform: translate(-50%, -50%);
+	   	z-index: 10;
+	}
+	&:hover .content {
+	   	width: 100%;
+	   	height: 100%;
+	}
+}
+
+/* ------- Lightbox ------- */
+.lightbox2-alt-layout, .lightbox2-alt-layout-data {
+	#bottomNav { margin-bottom: auto !important; height: auto !important; }
+	#bottomNavClose { margin-top: auto !important; }
+}
+
 /* ------- Continguts relacionats ------- */
 #block-views-5c23d6449d8a4d5fecd33b8ecec85495 {
   h2 { background: url("/sites/all/themes/sasson_xarxanet/images/pictos/relacionats.png") $general 10px no-repeat; }
