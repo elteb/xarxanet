@@ -121,8 +121,9 @@
 						print "<div class='menu-box' id='menu-box-{$i}'>";
  						print "<div class='menu-item-title'>{$item['title']}</div>";
 					} else {
+						$href = (strrchr('http://', $item['href'])) ? $item['href'] : '/'.$item['href'];
 						print "<div class='menu-item' id='{$item['attributes']['title']}'>
-									<a href='/{$item['href']}'>{$item['title']}</a>
+									<a href='{$href}'>{$item['title']}</a>
 								</div>";
  					}
 				}
