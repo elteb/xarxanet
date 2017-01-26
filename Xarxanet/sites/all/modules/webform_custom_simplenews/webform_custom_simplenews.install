@@ -54,3 +54,17 @@ function webform_custom_simplenews_install() {
 function webform_custom_simplenews_uninstall() {
 	drupal_uninstall_schema('webform_custom_simplenews');
 }
+
+
+/**
+ * Add a field in the base table
+ */
+function webform_custom_simplenews_update_7000() {
+    db_add_field('webform_custom_simplenews', 'field', array(
+    'type' => 'text',
+    'not null' => FALSE,
+    'size' => 'medium',
+    'serialize' => TRUE,
+    'description' => 'The term reference field name',
+  ));
+}

@@ -97,11 +97,17 @@ function _webform_edit_newsletter_param($component) {
 			'#maxlength' => 10 
 	);
 	
-	$types = node_type_get_types();
+	$taxonomy_fields = field_read_fields(array('type' => 'taxonomy_term_reference'));
 	$options = array();
-	foreach ($types as $type) {
-		$options[$type->type] = $type->name;
+	foreach ($taxonomy_fields as $name => $fields) {
+		$options[$name] = $name;
 	}
+	
+	/*$vocabularies = taxonomy_get_vocabularies();
+	$options = array();
+	foreach ($vocabularies as $voc) {
+		$options[$voc->vid] = $voc->name;
+	}*/
 	$form['extra']['custom_content'] = array(
 			'#type' => 'select',
 			'#title' => t('Custom content'),
@@ -172,13 +178,16 @@ function _webform_render_newsletter_param($component, $value = NULL, $filter = T
 		);
 	}
 	
-	$allowed_types = $component['extra']['custom_content'];
-	$types = node_type_get_types();
+	$field = $component['extra']['custom_content'];
+	$field = field_read_field(array_shift($field));
+	$allowed_values = array_shift($field['settings']['allowed_values']);
+	$vocabulary = taxonomy_vocabulary_machine_name_load($allowed_values['vocabulary']);
+	$tree = taxonomy_get_tree($vocabulary->vid);
 	$options = array();
-	foreach ($allowed_types as $key => $type) {
-		$options[$type] = $types[$type]->name;
+	foreach ($tree as $term) {
+		$options[$term->tid] = $term->name;
 	}
-	if (count($allowed_types) > 1) {
+	if (!empty($options)) {
 		$element['newsletter_content_selection'] = array(
 				'#prefix' => '',
 				'#type' => 'checkboxes',
@@ -254,7 +263,8 @@ function _webform_submit_newsletter_param($component, $value) {
 			}
 			if ($action == 'subscribe') {
 				$subscription = simplenews_subscribe_user($mail, $v, $confirm, 'unknown', NULL, TRUE);
-				if($subscription) register_custom_content($subscription->snid, $v, $custom_content);
+				$field = array_shift($component['extra']['custom_content']);
+				if($subscription) register_custom_content($subscription->snid, $v, $field, $custom_content);
 			}else{
 				simplenews_unsubscribe_user ( $mail, $v, $confirm );
 			}

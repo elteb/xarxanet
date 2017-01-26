@@ -97,9 +97,9 @@ function webform_custom_simplenews_theme() {
  * @param $custom_content array
  *        	of types of the custom content
  */
-function register_custom_content($snid, $tid, $custom_content) {
-	$serial_content = serialize($custom_content);
-	$query = "INSERT IGNORE INTO webform_custom_simplenews (snid, tid, custom_content) VALUES ({$snid}, {$tid}, '{$serial_content}')";
+function register_custom_content($snid, $tid, $field, $custom_content) {
+	$serial_content = implode(",", $custom_content);
+	$query = "INSERT IGNORE INTO webform_custom_simplenews (snid, tid, custom_content, field) VALUES (".$snid.", ".$tid.", '".$serial_content."', '".$field."')";
 	db_query ($query);
 }
 
@@ -136,21 +136,25 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 	if ($type == 'simplenews-custom-webform') {
 		if ($snid = $data['simplenews_subscriber']->snid) {
 			$tid = $data['category']->tid;
-			$contents = db_query("SELECT custom_content FROM {webform_custom_simplenews} WHERE snid = :snid AND tid= :tid", array(':snid' => $snid, ':tid' =>$tid))->fetchObject();
-			$contents = unserialize($contents->custom_content);
-						
+			$contents = db_query("SELECT field, custom_content FROM {webform_custom_simplenews} WHERE snid = :snid AND tid= :tid", array(':snid' => $snid, ':tid' =>$tid))->fetchObject();
+			$field = $contents->field;			
+			$contents = explode(',', $contents->custom_content);
 			$lapse = variable_get ('webform_custom_simplenews_lapse', '7');
 			$created = time() - $lapse * 86400;
 			foreach ( $contents as $content ) {
-				$section_nodes = array();
-				$query = "SELECT nid FROM node WHERE type = '{$content}' AND created >= {$created} AND status = 1 ORDER BY created DESC";
-				$result = db_query($query);
-				while($obj = $result->fetchObject()) {
-					$section_nodes[] = $obj->nid;
-				}
-				if (!empty($section_nodes)) {
-					$html = theme('custom_content_section', array('section_nodes' => $section_nodes, 'section_name' => $content));
-					$values['[simplenews-custom-webform:newsletter-custom-content]'] .= $html;
+				if ($content) {				
+					$section_nodes = array();
+					$query = "SELECT n.nid FROM field_data_{$field} AS f INNER JOIN node as n ON f.entity_id=n.nid WHERE f.{$field}_tid={$content} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
+					//$query = "SELECT nid FROM node WHERE type = '{$content}' AND created >= {$created} AND status = 1 ORDER BY created DESC";
+					$result = db_query($query);
+					while($obj = $result->fetchObject()) {
+						$section_nodes[] = $obj->nid;
+					}
+					if (!empty($section_nodes)) {
+						$term = taxonomy_term_load($content);
+						$html = theme('custom_content_section', array('section_nodes' => $section_nodes, 'section_name' => $term->name));
+						$values['[simplenews-custom-webform:newsletter-custom-content]'] .= $html;
+					}
 				}
 			}
 		}
