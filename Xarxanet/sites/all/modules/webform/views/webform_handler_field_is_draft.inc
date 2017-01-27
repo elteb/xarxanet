@@ -11,8 +11,10 @@
  * @ingroup views_field_handlers
  */
 class webform_handler_field_is_draft extends views_handler_field {
-	function render($values) {
-		$is_draft = $values->{$this->field_alias};
-		return $is_draft ? t ( 'draft' ) : t ( 'completed' );
-	}
+  function render($values) {
+    $is_draft = $values->{$this->field_alias};
+    return isset($is_draft)
+              ? ($is_draft ? t('draft') : t('completed'))
+              : t('no submission');
+  }
 }
