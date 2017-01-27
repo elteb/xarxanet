@@ -26,11 +26,11 @@ $location = '' ;
 print '<div class="entitatmapa ">';				
 	if ($fields[coordinates]->handler->view->result[0]->location_street && $fields[coordinates]->handler->view->result[0]->location_city) {
 		if ($fields[coordinates]->handler->view->result[0]->location_street != '') $location .= '<b>'.$fields[coordinates]->handler->view->result[0]->location_name.'</b> <br/>';
-		$location .= $fields[coordinates]->handler->view->result[0]->location_street.'<br/>'.$fields[coordinates]->handler->view->result[0]->location_city;
-	
+		$location .= '<b>'.$fields[coordinates]->handler->view->result[0]->users_name.'</b><br/>'.$fields[coordinates]->handler->view->result[0]->location_street.'<br/>'.$fields[coordinates]->handler->view->result[0]->location_city;
+		
 	}              	
 	if ($latitude != 0 || $longitude != 0) {
-		print gmap_simple_map($latitude, $longitude, '', $location, 'default');
+		print gmap_simple_map($latitude, $longitude, '', $location, 'default', '269px', 'default');
 	}
 
 print '</div>'
