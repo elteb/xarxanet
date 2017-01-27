@@ -79,7 +79,7 @@ function google_analytics_counter_views_data() {
   				'help' => t('Recent pageview counts'),
   				'field' => array(
   						'handler' => 'views_handler_field_numeric',
-  						'click sortable' => TRUE,
+  						'click sortable' => FALSE,
   				),
   				'filter' => array(
   						'handler' => 'views_handler_filter_numeric',
