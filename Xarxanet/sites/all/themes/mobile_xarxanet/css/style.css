@@ -186,8 +186,12 @@ iframe { max-width: 100% !important; }
 	padding: 4px 5px;
 }
 
-.view-recull-noticies-principal-mobil,
-.view-recull-noticies-secundari-mobil {
+.view-recull-noticies-principal-mobil{
+	background-color: #ECEFF0;
+	padding-bottom: 10px;
+}
+
+.view-recull-noticies-secundari-mobil #left-column{
 	background-color: #ECEFF0;
 	padding-bottom: 10px;
 }
@@ -196,19 +200,33 @@ iframe { max-width: 100% !important; }
 .view-recull-noticies-secundari-mobil img,
 .view-recull-noticies-principal-mobil .views-field-views-conditional,
 .view-recull-noticies-secundari-mobil .views-field-title-1,
-.view-recull-noticies-secundari-mobil .views-field-title-2{
+.view-recull-noticies-secundari-mobil .views-field-title-2,
+.views-field-views-conditional-1,
+.views-field-views-conditional-5{
 	margin-left:5px;
+	margin-top:5px;
 }
 
 .view-noticies-destacades-mobil .view-header p { margin: 0px; }
 
+.views-field-views-conditional-2 p,
+.views-field-views-conditional-3 p,
+.views-field-field-resum-1 p,
+.views-field-field-resum-3 p{
+	margin:5px 5px;
+}
+
 .views-field-field-recull-secundari-relaciona,
-.views-field-field-recull-principal-rel {
+.views-field-field-recull-principal-rel,
+.views-field-field-recull-secundari-lat-sup, 
+.views-field-field-recull-secundari-lat-inf{
 	margin-top: 15px
 }
 
 .views-field-field-recull-secundari-relaciona .views-label,
-.views-field-field-recull-principal-rel .views-label     {
+.views-field-field-recull-principal-rel .views-label,
+.views-field-field-recull-principal-rel-xn .views-label,
+.views-field-field-recull-secundari-rel-xn .views-label    {
 	font-weight: bold;
 	margin-left: 5px;
 }
@@ -219,7 +237,9 @@ iframe { max-width: 100% !important; }
 }
 
 .view-recull-noticies-principal-mobil .views-field-nothing-1,
-.view-recull-noticies-secundari-mobil .views-field-nothing-2 {
+.view-recull-noticies-secundari-mobil .views-field-nothing-2, 
+.view-recull-noticies-principal-mobil .views-field-field-recull-principal-rel-xn,
+.view-recull-noticies-secundari-mobil .views-field-field-recull-secundari-rel-xn {
     margin-top: 15px;
 }
 
@@ -227,14 +247,17 @@ iframe { max-width: 100% !important; }
 .views-field-field-recull-principal-rel-url .field-item,*/
 .views-field-field-recull-secundari-relaciona .field-content div,
 .view-recull-noticies-principal-mobil .views-field-nothing-1 .field-content div,
-.view-recull-noticies-secundari-mobil .views-field-nothing-2 .field-content div {
+.view-recull-noticies-secundari-mobil .views-field-nothing-2 .field-content div,
+.views-field-field-recull-secundari-rel-xn .item-list,
+.views-field-field-recull-principal-rel-xn .item-list{
 	margin: 5px;
 	padding-left: 8px;
 	list-style-image: url("/sites/all/themes/mobile_xarxanet/images/pictos/news-list-style.png");
 }
 
 .view-recull-noticies-principal-mobil .views-field-nothing-1 .field-content ul,
-.view-recull-noticies-secundari-mobil .views-field-nothing-2 .field-content ul {
+.view-recull-noticies-secundari-mobil .views-field-nothing-2 .field-content ul,
+.views-field-field-recull-secundari-rel-xn ul{
     margin-bottom: 0px;
 }
 
