@@ -4,69 +4,87 @@
  */
 
 /* @group Reset */
+
 .views-admin .links {
-	list-style: none outside none;
-	margin: 0;
+  list-style: none outside none;
+  margin: 0;
 }
 
 .views-admin a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /* @end */
 
 /* @group Layout */
+
 .box-padding {
-	padding-left: 12px;
-	padding-right: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .box-margin {
-	margin: 12px 12px 0 12px;
+  margin: 12px 12px 0 12px;
 }
 
 /* @end */
 
 /* @group Icons */
+
 .views-admin .icon {
-	height: 16px;
-	width: 16px;
+  height: 16px;
+  width: 16px;
 }
 
-.views-admin .icon, .views-admin .icon-text {
-	background-attachment: scroll;
-	background-image: url("../images/sprites.png");
-	background-position: left top; /* LTR */
-	background-repeat: no-repeat;
+.views-admin .icon,
+.views-admin .icon-text {
+  background-attachment: scroll;
+  background-image: url("../images/sprites.png");
+  background-position: left top; /* LTR */
+  background-repeat: no-repeat;
 }
 
 .views-admin a.icon {
-	background-image: url("../images/sprites.png"),
-		-moz-linear-gradient(-90deg, #ffffff 0px, #e8e8e8 100%);
-	background-image: url("../images/sprites.png"),
-		-webkit-gradient(linear, left top, left bottom, color-stop(0.0, rgba(255
-		, 255, 255, 1.0)), color-stop(1.0, rgba(232, 232, 232, 1.0)));
-	background-image: url("../images/sprites.png"),
-		-webkit-linear-gradient(-90deg, #ffffff 0px, #e8e8e8 100%);
-	background-repeat: no-repeat, repeat-y;
-	border: 1px solid #dddddd;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	-moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0.3333) inset;
-	-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.3333) inset;
-	box-shadow: 0 0 0 rgba(0, 0, 0, 0.3333) inset;
+  background-image:
+    url("../images/sprites.png"),
+    -moz-linear-gradient(
+      -90deg,
+      #ffffff 0px,
+      #e8e8e8 100%);
+  background-image:
+    url("../images/sprites.png"),
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0.0, rgba(255, 255, 255, 1.0)),
+      color-stop(1.0, rgba(232, 232, 232, 1.0))
+    );
+  background-image:
+    url("../images/sprites.png"),
+    -webkit-linear-gradient(
+      -90deg,
+      #ffffff 0px,
+      #e8e8e8 100%);
+  background-repeat: no-repeat, repeat-y;
+  border: 1px solid #dddddd;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0 0 0 rgba(0,0,0,0.3333) inset;
+  -webkit-box-shadow: 0 0 0 rgba(0,0,0,0.3333) inset;
+  box-shadow: 0 0 0 rgba(0,0,0,0.3333) inset;
 }
 
 .views-admin a.icon:hover {
-	border-color: #d0d0d0;
-	-moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3333) inset;
-	-webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3333) inset;
-	box-shadow: 0 0 1px rgba(0, 0, 0, 0.3333) inset;
+  border-color: #d0d0d0;
+  -moz-box-shadow: 0 0 1px rgba(0,0,0,0.3333) inset;
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.3333) inset;
+  box-shadow: 0 0 1px rgba(0,0,0,0.3333) inset;
 }
 
 .views-admin a.icon:active {
-	border-color: #c0c0c0;
+  border-color: #c0c0c0;
 }
 
 /**
@@ -74,130 +92,134 @@
  * This assumes no visible text from the span.
  */
 .views-admin span.icon {
-	display: inline-block;
-	float: left;
-	position: relative;
+  display: inline-block;
+  float: left;
+  position: relative;
 }
 
 .views-admin .icon.compact {
-	display: block;
-	overflow: hidden;
-	text-indent: -9999px;
+  display: block;
+  overflow: hidden;
+  text-indent: -9999px;
 }
 
 /* Targets any element with an icon -> text combo */
 .views-admin .icon-text {
-	padding-left: 19px; /* LTR */
+  padding-left: 19px; /* LTR */
 }
 
 .views-admin .icon.linked {
-	background-position: center -153px;
+  background-position: center -153px;
 }
 
 .views-admin .icon.unlinked {
-	background-position: center -195px;
+  background-position: center -195px;
 }
 
 .views-admin .icon.add {
-	background-position: center 3px;
+  background-position: center 3px;
 }
 
 .views-admin a.icon.add {
-	background-position: center 3px, left top;
+  background-position: center 3px, left top;
 }
 
 .views-admin .icon.delete {
-	background-position: center -52px;
+  background-position: center -52px;
 }
 
 .views-admin a.icon.delete {
-	background-position: center -52px, left top;
+  background-position: center -52px, left top;
 }
 
 .views-admin .icon.rearrange {
-	background-position: center -111px;
+  background-position: center -111px;
 }
 
 .views-admin a.icon.rearrange {
-	background-position: center -111px, left top;
+  background-position: center -111px, left top;
 }
 
-.views-displays .secondary a:hover>.icon.add {
-	background-position: center -25px;
+.views-displays .secondary a:hover > .icon.add {
+  background-position: center -25px;
 }
 
-.views-displays .secondary .open a:hover>.icon.add {
-	background-position: center 3px;
+.views-displays .secondary .open a:hover > .icon.add {
+  background-position: center 3px;
 }
 
 /* @end */
 
 /* @group Forms */
+
 fieldset.box-padding {
-	border: none;
+  border: none;
 }
 
 .views-admin fieldset fieldset {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .form-item {
-	margin-top: 9px;
-	padding-bottom: 0;
-	padding-top: 0;
+  margin-top: 9px;
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .form-type-checkbox {
-	margin-top: 6px;
+  margin-top: 6px;
 }
 
-input.form-checkbox, input.form-radio {
-	vertical-align: baseline;
+input.form-checkbox,
+input.form-radio {
+  vertical-align: baseline;
 }
 
-.form-submit:not (.js-hide ) +.form-submit, .views-admin a.button:not (.js-hide
-	) +a.button {
-	margin-left: 1em; /* LTR */
+.form-submit:not(.js-hide) + .form-submit,
+.views-admin a.button:not(.js-hide) + a.button {
+  margin-left: 1em; /* LTR */
 }
 
 .container-inline {
-	padding-top: 15px;
+  padding-top: 15px;
 }
 
-.container-inline>*+*, .container-inline .fieldset-wrapper>*+* {
-	padding-left: 4pt; /* LTR */
+.container-inline > * + *,
+.container-inline .fieldset-wrapper > * + * {
+  padding-left: 4pt; /* LTR */
 }
 
 .views-admin fieldset fieldset.container-inline {
-	margin-bottom: 1em;
-	margin-top: 1em;
-	padding-top: 0;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding-top: 0;
 }
 
-.views-admin fieldset fieldset.container-inline>.fieldset-wrapper {
-	padding-bottom: 0;
+.views-admin fieldset fieldset.container-inline > .fieldset-wrapper {
+  padding-bottom: 0;
 }
 
 /* Indent form elements so they're directly underneath the label of the checkbox that reveals them */
-.views-admin .form-type-checkbox+.form-wrapper {
-	margin-left: 16px; /* LTR */
+.views-admin .form-type-checkbox + .form-wrapper {
+  margin-left: 16px; /* LTR */
 }
 
 /* Hide 'remove' checkboxes. */
 .views-remove-checkbox {
-	display: none;
+    display: none;
 }
 
 /* sizes the labels of checkboxes and radio button to the height of the text */
-.views-admin .form-type-checkbox label, .views-admin .form-type-radio label
-	{
-	line-height: 2;
+.views-admin .form-type-checkbox label,
+.views-admin .form-type-radio label {
+  line-height: 2;
 }
 
 /* @group Dependent options */
+
 .views-admin-dependent .form-item {
-	margin-bottom: 6px;
-	margin-top: 6px;
+  margin-bottom: 6px;
+  margin-top: 6px;
 }
 
 /* @end */
@@ -205,20 +227,22 @@ input.form-checkbox, input.form-radio {
 /* @end */
 
 /* @group Lists */
-.horizontal>*+* {
-	margin-left: 9px; /* LTR */
-	padding-left: 9px; /* LTR */
+
+.horizontal > * + * {
+  margin-left: 9px; /* LTR */
+  padding-left: 9px; /* LTR */
 }
 
 .views-ui-view-title {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 /* @end */
 
 /* @group Messages */
+
 .view-changed {
-	margin-bottom: 21px;
+  margin-bottom: 21px;
 }
 
 /* @end */
@@ -227,17 +251,19 @@ input.form-checkbox, input.form-radio {
 
 /* Intentionally targeting h1 */
 .views-admin h1.unit-title {
-	font-size: 15px;
-	line-height: 1.6154;
-	margin-bottom: 0;
-	margin-top: 18px;
+  font-size: 15px;
+  line-height: 1.6154;
+  margin-bottom: 0;
+  margin-top: 18px;
 }
 
 /* @end */
 
 /* @group Tables */
-table td, table th {
-	vertical-align: top;
+
+table td,
+table th {
+  vertical-align: top;
 }
 
 /* @end */
@@ -245,24 +271,25 @@ table td, table th {
 /* @group List views */
 
 /* These header classes are ambiguous and should be scoped to th elements */
+
 th.views-ui-name {
-	width: 18%;
+  width: 18%;
 }
 
 th.views-ui-description {
-	width: 26%;
+  width: 26%;
 }
 
 th.views-ui-tag {
-	width: 8%;
+  width: 8%;
 }
 
 th.views-ui-path {
-	width: auto;
+  width: auto;
 }
 
 th.views-ui-operations {
-	width: 24%;
+  width: 24%;
 }
 
 /* @end */
@@ -279,36 +306,38 @@ th.views-ui-operations {
  * fixed it may no longer be necessary to do this.
  */
 .views-admin .container-inline .progress-disabled {
-	float: none;
+  float: none;
 }
 
 /**
  * I wish this didn't have to be so specific
  */
-.form-item-description-enable+.form-item-description {
-	margin-top: 0;
+.form-item-description-enable + .form-item-description {
+  margin-top: 0;
 }
 
 .form-item-description-enable label {
-	font-weight: bold;
+  font-weight: bold;
 }
 
-.form-item-page-create, .form-item-block-create {
-	margin-top: 13px;
+.form-item-page-create,
+.form-item-block-create {
+  margin-top: 13px;
 }
 
-.form-item-page-create label, .form-item-block-create label {
-	font-weight: bold;
+.form-item-page-create label,
+.form-item-block-create label {
+  font-weight: bold;
 }
 
 /* This makes the form elements after the "Display Format" label flow underneath the label */
-.form-item-page-style-style-plugin>label,
-	.form-item-block-style-style-plugin>label {
-	display: block;
+.form-item-page-style-style-plugin > label,
+.form-item-block-style-style-plugin > label {
+  display: block;
 }
 
 .views-attachment .options-set label {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 /* @end */
@@ -317,42 +346,45 @@ th.views-ui-operations {
  *
  * Styling for the form that allows views filters to be rearranged.
  */
+
 .group-populated {
-	display: none;
+  display: none;
 }
 
 td.group-title {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .views-ui-dialog td.group-title {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .views-ui-dialog td.group-title span {
-	display: block;
-	height: 1px;
-	overflow: hidden;
+  display: block;
+  height: 1px;
+  overflow: hidden;
 }
 
-.group-message .form-submit, .views-remove-group-link, #views-add-group
-	{
-	float: right;
-	clear: both;
+.group-message .form-submit,
+.views-remove-group-link,
+#views-add-group {
+  float: right;
+  clear: both;
 }
 
 .views-operator-label {
-	font-style: italic;
-	font-weight: bold;
-	padding-left: 0.5em; /* LTR */
-	text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+  padding-left: 0.5em; /* LTR */
+  text-transform: uppercase;
 }
 
-.grouped-description, .exposed-description {
-	float: left;
-	padding-top: 3px;
-	padding-right: 10px;
+.grouped-description,
+.exposed-description {
+  float: left;
+  padding-top: 3px;
+  padding-right: 10px;
 }
 
 /* This keeps the collapsible fieldsets of options from crashing into the bottom
@@ -361,48 +393,49 @@ td.group-title {
  * the float edit option columns.
  */
 #edit-options .collapsible {
-	float: left;
-	width: 100%;
+  float: left;
+  width: 100%;
 }
 
 #edit-options-more {
-	clear: both;
+  clear: both;
 }
 
 /* @end */
 
 /* @group Attachments */
+
 .views-displays {
-	border: 1px solid #CCC;
-	padding-bottom: 36px;
+  border: 1px solid #CCC;
+  padding-bottom: 36px;
 }
 
 .views-display-top {
-	background-color: #F9F9F9;
-	border-bottom: 1px solid #CCCCCC;
-	padding: 8px 8px 8px; /* LTR */
-	position: relative;
+  background-color: #F9F9F9;
+  border-bottom: 1px solid #CCCCCC;
+  padding: 8px 8px 8px; /* LTR */
+  position: relative;
 }
 
 .views-display-top .secondary {
-	margin-right: 18em;
+  margin-right: 18em;
 }
 
-.views-display-top .secondary>li {
-	margin-right: 6px;
-	padding-left: 0;
+.views-display-top .secondary > li {
+  margin-right: 6px;
+  padding-left: 0;
 }
 
-.views-display-top .secondary>li:last-child {
-	margin-right: 0;
+.views-display-top .secondary > li:last-child {
+  margin-right: 0;
 }
 
 #views-display-extra-actions li {
-	padding: 3px 9px;
+  padding: 3px 9px;
 }
 
 .views-display-top #views-display-top {
-	max-width: 180px;
+  max-width: 180px;
 }
 
 /* @end */
@@ -411,106 +444,108 @@ td.group-title {
  *
  * The tabs that switch between sections
  */
+
 ul#views-display-menu-tabs {
-	margin-right: 200px;
+  margin-right: 200px;
 }
 
 ul#views-display-menu-tabs li {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-ul#views-display-menu-tabs li.add ul.action-list li {
-	margin: 0;
+ul#views-display-menu-tabs li.add ul.action-list li{
+  margin: 0;
 }
 
 .views-displays .secondary a {
-	border: 1px solid #cbcbcb;
-	display: inline-block;
-	font-size: small;
-	line-height: 1.3333;
-	padding: 3px 7px;
+  border: 1px solid #cbcbcb;
+  display: inline-block;
+  font-size: small;
+  line-height: 1.3333;
+  padding: 3px 7px;
 }
 
 /**
  * Display a red border if the display doesn't validate.
  */
-.views-displays ul.secondary li.active a.active.error, .views-displays .secondary a.error
-	{
-	border: 2px solid #ED541D;
-	padding: 1px 6px;
+.views-displays ul.secondary li.active a.active.error,
+.views-displays .secondary a.error {
+  border: 2px solid #ED541D;
+  padding: 1px 6px;
 }
 
 .views-displays .secondary a:focus {
-	outline: none;
+  outline: none;
 }
 
-.views-displays .secondary a:hover, .views-displays .secondary .active a
-	{
-	background-color: #666666;
-	color: #ffffff;
-	border-bottom-width: 1px;
+.views-displays .secondary a:hover,
+.views-displays .secondary .active a {
+  background-color: #666666;
+  color: #ffffff;
+  border-bottom-width: 1px;
 }
 
-.views-displays .secondary .open>a {
-	background-color: #f1f1f1;
-	border-bottom: 1px solid transparent;
-	position: relative;
+.views-displays .secondary .open > a {
+  background-color: #f1f1f1;
+  border-bottom: 1px solid transparent;
+  position: relative;
 }
 
-.views-displays .secondary .open>a:hover {
-	background-color: #f1f1f1;
+.views-displays .secondary .open > a:hover {
+  background-color: #f1f1f1;
 }
 
 .views-displays .secondary .action-list  li {
-	background-color: #f1f1f1;
-	border-color: #cbcbcb;
-	border-style: solid;
-	border-width: 0 1px;
-	padding: 2px 9px;
+  background-color: #f1f1f1;
+  border-color: #cbcbcb;
+  border-style: solid;
+  border-width: 0 1px;
+  padding: 2px 9px;
 }
 
 .views-displays .secondary .action-list  li:first-child {
-	border-width: 1px 1px 0;
+  border-width: 1px 1px 0;
 }
 
 .views-displays .secondary .action-list  li.last {
-	border-width: 0 1px 1px;
+  border-width: 0 1px 1px;
 }
 
 .views-displays .secondary .action-list  li:last-child {
-	border-width: 0 1px 1px;
+  border-width: 0 1px 1px;
 }
 
 .views-displays .secondary .action-list input.form-submit {
-	background: none repeat scroll 0 0 transparent;
-	border: medium none;
-	margin: 0;
-	padding: 0;
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  margin: 0;
+  padding: 0;
 }
 
 .views-displays .secondary .action-list li:hover {
-	background-color: #dddddd;
+  background-color: #dddddd;
 }
 
 /* @end */
 
 /* @group Attachment details */
+
 #edit-display-settings-title {
-	font-size: 14px;
-	line-height: 1.5;
-	margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
 }
 
 #edit-display-settings-top {
-	padding-bottom: 4px;
+  padding-bottom: 4px;
 }
 
 #edit-display-settings-content {
-	margin-top: 12px;
+  margin-top: 12px;
 }
 
 #edit-display-settings-main {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* @end */
@@ -519,48 +554,51 @@ ul#views-display-menu-tabs li.add ul.action-list li {
  *
  * The columns that contain the option buckets e.g. Format and Basic Settings
  */
-.views-display-column+.views-display-column {
-	margin-top: 0;
-}
 
-/* @end */
+.views-display-column + .views-display-column {
+   margin-top: 0;
+ }
+
+ /* @end */
 
 /* @group Auto preview
  *
  * The auto-preview checkbox line.
  */
-#views-ui-preview-form>div>div, #views-ui-preview-form>div>input {
-	float: left;
+
+#views-ui-preview-form > div > div,
+#views-ui-preview-form > div > input {
+  float: left;
 }
 
 #views-ui-preview-form .form-type-checkbox {
-	margin-top: 2px;
-	margin-left: 2px;
+  margin-top: 2px;
+  margin-left: 2px;
 }
 
 #views-ui-preview-form .form-type-textfield {
-	margin-top: 5px;
+  margin-top: 5px;
 }
 
 #views-ui-preview-form .arguments-preview {
-	font-size: 1em;
+  font-size: 1em;
 }
 
-#views-ui-preview-form .arguments-preview, #views-ui-preview-form .form-type-textfield
-	{
-	margin-left: 14px;
+#views-ui-preview-form .arguments-preview,
+#views-ui-preview-form .form-type-textfield {
+  margin-left: 14px;
 }
 
 #views-ui-preview-form .form-type-textfield label {
-	display: inline-block;
-	float: left;
-	font-weight: normal;
-	height: 6ex;
-	margin-right: 0.75em;
+  display: inline-block;
+  float: left;
+  font-weight: normal;
+  height: 6ex;
+  margin-right: 0.75em;
 }
 
 #views-ui-preview-form .form-type-textfield .description {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 /* @end */
@@ -569,47 +607,48 @@ ul#views-display-menu-tabs li.add ul.action-list li {
  *
  * These are the individual "buckets," or boxes, inside the display settings area
  */
+
 .views-ui-display-tab-bucket {
-	border: 1px solid #f3f3f3;
-	line-height: 20px;
-	margin: 0;
-	padding-top: 4px;
+  border: 1px solid #f3f3f3;
+  line-height: 20px;
+  margin: 0;
+  padding-top: 4px;
 }
 
-.views-ui-display-tab-bucket+.views-ui-display-tab-bucket {
-	border-top: medium none;
+.views-ui-display-tab-bucket + .views-ui-display-tab-bucket {
+  border-top: medium none;
 }
 
-.views-ui-display-tab-bucket>h3, .views-ui-display-tab-bucket>.views-display-setting
-	{
-	padding: 2px 6px 4px;
+.views-ui-display-tab-bucket > h3,
+.views-ui-display-tab-bucket > .views-display-setting {
+  padding: 2px 6px 4px;
 }
 
 .views-ui-display-tab-bucket h3 {
-	font-size: small;
-	margin: 0;
+  font-size: small;
+  margin: 0;
 }
 
 .views-ui-display-tab-bucket .horizontal.actions {
-	margin-right: 6px;
+  margin-right: 6px;
 }
 
-.views-ui-display-tab-bucket .actions.horizontal li+li {
-	margin-left: 3px;
-	padding-left: 3px;
+.views-ui-display-tab-bucket .actions.horizontal li + li {
+  margin-left: 3px;
+  padding-left: 3px;
 }
 
 .views-ui-display-tab-bucket.access {
-	padding-top: 0;
+  padding-top: 0;
 }
 
 .views-ui-display-tab-bucket.page-settings {
-	border-bottom: medium none;
+  border-bottom: medium none;
 }
 
 .views-display-setting .views-ajax-link {
-	margin-left: 0.2083em;
-	margin-right: 0.2083em;
+  margin-left: 0.2083em;
+  margin-right: 0.2083em;
 }
 
 /* @end */
@@ -622,16 +661,18 @@ ul#views-display-menu-tabs li.add ul.action-list li {
  * generic icon classed element. For the moment, we'll style the bucket
  * header specifically with the overriden font style.
  */
-.views-ui-display-tab-setting.overridden, .views-ui-display-tab-bucket.overridden>h3
-	{
-	font-style: italic;
+
+.views-ui-display-tab-setting.overridden,
+.views-ui-display-tab-bucket.overridden > h3 {
+  font-style: italic;
 }
 
 /* @end */
 
 /* @group Attachment bucket drop button */
+
 .views-ui-display-tab-bucket {
-	position: relative;
+  position: relative;
 }
 
 /* @end */
@@ -640,23 +681,24 @@ ul#views-display-menu-tabs li.add ul.action-list li {
  *
  * This is each row within one of the "boxes."
  */
+
 .views-ui-display-tab-bucket .views-display-setting {
-	color: #666666;
-	font-size: 12px;
-	padding-bottom: 2px;
+  color: #666666;
+  font-size: 12px;
+  padding-bottom: 2px;
 }
 
 .views-ui-display-tab-bucket .even {
-	background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .views-ui-display-tab-bucket .views-group-text {
-	margin-top: 6px;
-	margin-bottom: 6px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .views-display-setting .label {
-	margin-right: 3pt; /* LTR */
+  margin-right: 3pt; /* LTR */
 }
 
 /* @end */
@@ -665,36 +707,37 @@ ul#views-display-menu-tabs li.add ul.action-list li {
  *
  * The preview controls and the preview pane
  */
-#edit-displays-preview-controls .fieldset-wrapper>* {
-	float: left;
+
+#edit-displays-preview-controls .fieldset-wrapper > * {
+  float: left;
 }
 
-#edit-displays-preview-controls .fieldset-wrapper>.form-item {
-	margin-top: 0.3333em;
+#edit-displays-preview-controls .fieldset-wrapper > .form-item {
+  margin-top: 0.3333em;
 }
 
 #edit-displays-preview-controls .form-submit {
-	display: inline-block;
-	margin-right: 1em;
+  display: inline-block;
+  margin-right: 1em;
 }
 
 #edit-displays-preview-controls .form-type-textfield {
-	margin-left: 1em;
-	position: relative;
+  margin-left: 1em;
+  position: relative;
 }
 
 #edit-displays-preview-controls .form-type-textfield label {
-	border-left: 1px solid #999;
-	padding-left: 1em;
-	position: absolute;
+  border-left: 1px solid #999;
+  padding-left: 1em;
+  position: absolute;
 }
 
 #edit-displays-preview-controls .form-type-textfield label:after {
-	content: ":";
+  content: ":";
 }
 
 #edit-displays-preview-controls .form-type-textfield label ~ * {
-	margin-left: 105px;
+  margin-left: 105px;
 }
 
 /* @end */
@@ -703,137 +746,138 @@ ul#views-display-menu-tabs li.add ul.action-list li {
  *
  * The contents of the popup dialog on the views edit form.
  */
+
 .views-ui-dialog {
-	font-size: small;
-	padding: 0;
+  font-size: small;
+  padding: 0;
 }
 
 .views-ui-dialog .ui-dialog-titlebar-close {
-	background: url("../images/close.png") no-repeat scroll 6px 3px #F3F4EE;
-	border-color: #aaaaaa;
-	-moz-border-radius: 0 10px 12px 0;
-	-webkit-border-radius: 0 10px 12px 0;
-	border-radius: 0 10px 12px 0;
-	border-style: solid;
-	border-width: 1px 1px 1px 0;
-	-moz-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.1);
-	box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.1);
-	height: 22px;
-	right: -28px;
-	top: 0;
-	width: 26px;
+  background: url("../images/close.png") no-repeat scroll 6px 3px #F3F4EE;
+  border-color: #aaaaaa;
+  -moz-border-radius: 0 10px 12px 0;
+  -webkit-border-radius: 0 10px 12px 0;
+  border-radius: 0 10px 12px 0;
+  border-style: solid;
+  border-width: 1px 1px 1px 0;
+  -moz-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.1);
+  height: 22px;
+  right: -28px;
+  top: 0;
+  width: 26px;
 }
 
 .views-ui-dialog .ui-dialog-titlebar-close span {
-	display: none;
+  display: none;
 }
 
 .views-filterable-options .form-type-checkbox {
-	border: 1px solid #CCC;
-	padding: 5px 8px;
-	border-top: none;
+  border: 1px solid #CCC;
+  padding: 5px 8px;
+  border-top: none;
 }
 
 .views-filterable-options {
-	border-top: 1px solid #CCC;
+  border-top:  1px solid #CCC;
 }
 
 .views-filterable-options .even .form-type-checkbox {
-	background-color: #F3F4EE;
+  background-color: #F3F4EE;
 }
 
 .filterable-option .form-item {
-	margin-bottom: 0;
-	margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .views-filterable-options .form-type-checkbox .description {
-	margin-top: 0;
-	margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #views-filterable-options-controls {
-	margin: 1em 0;
+  margin: 1em 0;
 }
 
 #views-filterable-options-controls .form-item {
-	width: 45%;
-	margin-right: 2%; /* LTR */
+  width: 45%;
+  margin-right: 2%; /* LTR */
 }
 
 #views-filterable-options-controls input,
-	#views-filterable-options-controls select {
-	width: 200px;
+#views-filterable-options-controls select {
+  width: 200px;
 }
 
 .views-ui-dialog .views-filterable-options {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .views-ui-dialog .views-add-form-selected.container-inline {
-	padding-top: 0;
+  padding-top: 0;
 }
 
-.views-ui-dialog .views-add-form-selected.container-inline>div {
-	display: block;
+.views-ui-dialog .views-add-form-selected.container-inline > div {
+  display: block;
 }
 
 .views-ui-dialog #edit-selected {
-	margin: 0;
-	padding: 6px 16px;
+  margin: 0;
+  padding: 6px 16px;
 }
 
-.views-ui-dialog #views-ajax-title, .views-ui-dialog .views-override {
-	background-color: #F3F4EE;
+.views-ui-dialog #views-ajax-title,
+.views-ui-dialog .views-override {
+  background-color: #F3F4EE;
 }
 
 .views-ui-dialog .views-override {
-	padding: 0 13px 8px;
+  padding: 0 13px 8px;
 }
 
-.views-ui-dialog .views-override>* {
-	margin: 0;
+.views-ui-dialog .views-override > * {
+  margin: 0;
 }
 
 .views-ui-dialog #views-ajax-title {
-	font-size: 15px;
-	padding: 8px 13px;
+  font-size: 15px;
+  padding: 8px 13px;
 }
 
 .views-ui-dialog #views-progress-indicator {
-	font-size: 11px;
-	position: absolute;
-	right: 10px; /* LTR */
-	top: 8px;
+  font-size: 11px;
+  position: absolute;
+  right: 10px; /* LTR */
+  top: 8px;
 }
 
 .views-ui-dialog #views-progress-indicator:before {
-	content: "\003C\00A0";
+  content: "\003C\00A0";
 }
 
 .views-ui-dialog #views-progress-indicator:after {
-	content: "\00A0\003E";
+  content: "\00A0\003E";
 }
 
 .views-ui-dialog .scroll {
-	border: 1px solid #CCC;
-	border-width: 1px 0;
-	padding: 8px 13px;
+  border: 1px solid #CCC;
+  border-width: 1px 0;
+  padding: 8px 13px;
 }
 
 .views-ui-dialog fieldset .item-list {
-	padding-left: 2em;
+  padding-left: 2em;
 }
 
 .views-ui-dialog .form-buttons {
-	background-color: #F3F4EE;
-	padding: 8px 13px;
+  background-color: #F3F4EE;
+  padding: 8px 13px;
 }
-
 .views-ui-dialog .form-buttons input {
-	margin-bottom: 0;
-	margin-right: 0;
+  margin-bottom: 0;
+  margin-right: 0;
 }
 
 /* @end */
@@ -842,140 +886,148 @@ ul#views-display-menu-tabs li.add ul.action-list li {
 
 /* @todo the width and border info could be moved into a more generic class */
 /* @todo Make this a class to be used anywhere there's node types? */
-.form-type-checkboxes #edit-options-value, .form-type-checkboxes #edit-options-validate-options-node-types
-	{
-	border-color: #CCCCCC;
-	border-style: solid;
-	border-width: 1px;
-	max-height: 210px;
-	overflow: auto;
-	margin-top: 5px;
-	padding: 0 5px;
-	width: 190px;
+.form-type-checkboxes #edit-options-value,
+.form-type-checkboxes #edit-options-validate-options-node-types {
+  border-color: #CCCCCC;
+  border-style: solid;
+  border-width: 1px;
+  max-height: 210px;
+  overflow: auto;
+  margin-top: 5px;
+  padding: 0 5px;
+  width: 190px;
 }
 
 /* @end */
 
 /* @group Rearrange filter criteria */
+
 #views-ui-rearrange-filter-form table {
-	border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 #views-ui-rearrange-filter-form tr td[rowspan] {
-	border-color: #CDCDCD;
-	border-style: solid;
-	border-width: 0 1px 1px 1px;
+  border-color: #CDCDCD;
+  border-style: solid;
+  border-width: 0 1px 1px 1px;
 }
 
 #views-ui-rearrange-filter-form tr[id^="views-row"] {
-	border-right: 1px solid #CDCDCD;
+  border-right: 1px solid #CDCDCD;
 }
 
 #views-ui-rearrange-filter-form tr[id^="views-row"].even td {
-	background-color: #F3F4ED;
+  background-color: #F3F4ED;
 }
 
 #views-ui-rearrange-filter-form .views-group-title {
-	border-top: 1px solid #CDCDCD;
+  border-top: 1px solid #CDCDCD;
 }
 
 #views-ui-rearrange-filter-form .group-empty {
-	border-bottom: 1px solid #CDCDCD;
+  border-bottom: 1px solid #CDCDCD;
 }
 
 /* @end */
 
 /* @group Expose filter form items */
-.form-item-options-expose-required, .form-item-options-expose-label,
-	.form-item-options-expose-description {
-	margin-bottom: 6px;
-	margin-left: 18px;
-	margin-top: 6px;
+
+.form-item-options-expose-required,
+.form-item-options-expose-label,
+.form-item-options-expose-description {
+  margin-bottom: 6px;
+  margin-left: 18px;
+  margin-top: 6px;
 }
 
 /* @end */
 
 /* @group Live preview elements */
+
 #views-preview-wrapper {
-	border: 1px solid #CCC;
-	border-top: 2px solid #CCC;
-	padding-bottom: 12px;
-	padding-top: 12px;
+  border: 1px solid #CCC;
+  border-top: 2px solid #CCC;
+  padding-bottom: 12px;
+  padding-top: 12px;
 }
 
 #views-ui-preview-form {
-	margin: 12px;
+  margin: 12px;
 }
 
 #views-live-preview {
-	margin: 0 12px;
+  margin: 0 12px;
 }
 
 #views-live-preview .views-query-info {
-	overflow: auto;
+  overflow: auto;
 }
 
 /* Intentionally targeting h1 */
 #views-live-preview h1.section-title {
-	color: #818181;
-	display: inline-block;
-	font-size: 13px;
-	font-weight: normal;
-	line-height: 1.6154;
-	margin-bottom: 0;
-	margin-top: 0;
+  color: #818181;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.6154;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
-#views-live-preview .view>* {
-	margin-top: 18px;
+#views-live-preview .view > * {
+  margin-top: 18px;
 }
 
 #views-live-preview .preview-section {
-	border: 1px dashed #DEDEDE;
-	margin: 0 -5px;
-	padding: 3px 5px;
+  border: 1px dashed #DEDEDE;
+  margin: 0 -5px;
+  padding: 3px 5px;
 }
 
-#views-live-preview li.views-row+li.views-row {
-	margin-top: 18px;
+#views-live-preview li.views-row + li.views-row {
+  margin-top: 18px;
 }
 
 /* The div.views-row is intentional and excludes li.views-row, for example */
-#views-live-preview div.views-row+div.views-row {
-	margin-top: 36px;
+#views-live-preview div.views-row + div.views-row {
+  margin-top: 36px;
 }
 
 /* @group Query info table */
+
 .views-query-info table {
-	border-collapse: separate;
-	border-color: #dddddd;
-	border-spacing: 0;
-	margin: 10px 0;
+  border-collapse: separate;
+  border-color: #dddddd;
+  border-spacing: 0;
+  margin: 10px 0;
 }
 
 .views-query-info table tr {
-	background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
-.views-query-info table th, .views-query-info table td {
-	color: #666666;
-	padding: 4px 10px;
+.views-query-info table th,
+.views-query-info table td {
+  color: #666666;
+  padding: 4px 10px;
 }
 
 /* @end */
 
 /* @group Grid */
-#views-live-preview .views-view-grid th, #views-live-preview .views-view-grid td
-	{
-	vertical-align: top;
+
+#views-live-preview .views-view-grid th,
+#views-live-preview .views-view-grid td {
+  vertical-align: top;
 }
 
 /* @end */
 
 /* @group HTML list */
-#views-live-preview .view-content>.item-list>ul {
-	list-style-position: outside;
-	padding-left: 21px; /* LTR */
+
+#views-live-preview .view-content > .item-list > ul {
+  list-style-position: outside;
+  padding-left: 21px; /* LTR */
 }
 
 /* @end */
@@ -983,15 +1035,16 @@ ul#views-display-menu-tabs li.add ul.action-list li {
 /* @end */
 
 /* @group Add/edit argument form */
+
 #edit-options-default-action {
-	width: 300px;
-	float: left;
+  width: 300px;
+  float: left;
 }
 
 #edit-options-exception.collapsible {
-	float: right;
-	width: 250px;
-	margin-top: -2px;
+  float: right;
+  width: 250px;
+  margin-top: -2px;
 }
 
 /* @end */
@@ -1000,21 +1053,21 @@ ul#views-display-menu-tabs li.add ul.action-list li {
 
 /* Hide the drupal system throbber image */
 .ajax-progress .throbber {
-	display: none;
+  display: none;
 }
 
 .ajax-progress-throbber {
-	background-color: #232323;
-	background-image: url("../images/loading-small.gif");
-	background-position: center center;
-	background-repeat: no-repeat;
-	-moz-border-radius: 7px;
-	-webkit-border-radius: 7px;
-	border-radius: 7px;
-	height: 24px;
-	opacity: .9;
-	padding: 4px;
-	width: 24px;
+  background-color: #232323;
+  background-image: url("../images/loading-small.gif");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+  height: 24px;
+  opacity: .9;
+  padding: 4px;
+  width: 24px;
 }
 
 /* @end */
@@ -1024,7 +1077,7 @@ ul#views-display-menu-tabs li.add ul.action-list li {
  * Overrides to Drupal system CSS
  */
 div.messages {
-	margin-bottom: 18px;
+  margin-bottom: 18px;
 }
 
 /* @end */

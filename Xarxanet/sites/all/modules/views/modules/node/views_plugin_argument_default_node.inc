@@ -11,16 +11,16 @@
  * This plugin actually has no options so it odes not need to do a great deal.
  */
 class views_plugin_argument_default_node extends views_plugin_argument_default {
-	function get_argument() {
-		foreach ( range ( 1, 3 ) as $i ) {
-			$node = menu_get_object ( 'node', $i );
-			if (! empty ( $node )) {
-				return $node->nid;
-			}
-		}
-		
-		if (arg ( 0 ) == 'node' && is_numeric ( arg ( 1 ) )) {
-			return arg ( 1 );
-		}
-	}
+  function get_argument() {
+    foreach (range(1, 3) as $i) {
+      $node = menu_get_object('node', $i);
+      if (!empty($node)) {
+        return $node->nid;
+      }
+    }
+
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      return arg(1);
+    }
+  }
 }

@@ -6,96 +6,104 @@
 /* @end */
 
 /* @group Icons */
-.actions a, .views-admin .icon, .views-admin .icon-text {
-	background-position: right top;
+
+.actions a,
+.views-admin .icon,
+.views-admin .icon-text {
+  background-position: right top;
 }
 
 /* Targets any element with an icon -> text combo */
 .views-admin .icon-text {
-	padding-right: 19px;
+  padding-right: 19px;
 }
 
 .views-admin .icon-linked {
-	background-position: right -153px;
+  background-position: right -153px;
 }
 
 .views-admin .icon-unlinked {
-	background-position: right -195px;
+  background-position: right -195px;
 }
 
 .actions .views-button-add {
-	background-position: right -39px;
+  background-position: right -39px;
 }
 
 .actions .views-button-rearrange {
-	background-position: right -96px;
+  background-position: right -96px;
 }
 
 .actions .views-button-add:hover {
-	background-position: right -58px;
+  background-position: right -58px;
 }
 
 .actions .views-button-rearrange:hover {
-	background-position: right -115px;
+  background-position: right -115px;
 }
 
 .actions .views-button-add:active {
-	background-position: right -77px;
+  background-position: right -77px;
 }
 
 .actions .views-button-rearrange:active {
-	background-position: right -134px;
+  background-position: right -134px;
 }
 
 .views-displays .icon-add {
-	background-position: right -3px;
+  background-position: right -3px;
 }
 
-.views-displays .secondary a:hover>.icon-add {
-	background-position: right -21px;
+.views-displays .secondary a:hover > .icon-add {
+  background-position: right -21px;
 }
 
-.views-displays .secondary .open a:hover>.icon-add {
-	background-position: right -3px;
+.views-displays .secondary .open a:hover > .icon-add {
+  background-position: right -3px;
 }
 
 /* @end */
 
 /* @group Forms */
-.form-submit+.form-submit, .views-admin a.button+a.button {
-	margin-right: 1em;
+
+.form-submit + .form-submit,
+.views-admin a.button + a.button {
+  margin-right: 1em;
 }
 
-.container-inline>*+*, .container-inline .fieldset-wrapper>*+* {
-	padding-left: 0;
-	padding-right: 4pt;
+.container-inline > * + *,
+.container-inline .fieldset-wrapper > * + * {
+  padding-left: 0;
+  padding-right: 4pt;
 }
 
-.views-admin .form-type-checkbox+.form-wrapper {
-	margin-right: 16px;
+.views-admin .form-type-checkbox + .form-wrapper {
+  margin-right: 16px;
 }
 
 /* @end */
 
 /* @group Lists */
-.horizontal>*+* {
-	margin-right: 9px;
-	padding-right: 9px;
+
+.horizontal > * + * {
+  margin-right: 9px;
+  padding-right: 9px;
 }
 
 /* @end */
 
 /* @group Attachments */
+
 .views-displays .secondary {
-	padding: 6px 8px 8px;
+  padding: 6px 8px 8px;
 }
 
-.views-displays .views-display-top>ul>li+li {
-	margin-right: 3px;
+.views-displays .views-display-top > ul > li + li {
+  margin-right: 3px;
 }
 
 .views-displays .views-extra-actions {
-	left: 10px;
+  left: 10px;
 }
 
 /* @end */
@@ -104,11 +112,12 @@
  *
  * The tabs that switch between sections
  */
+
 .views-displays .secondary .action-list  li:first-child {
-	-moz-border-radius: 7px 0 0 0;
-	-webkit-border-top-left-radius: 7px;
-	-webkit-border-top-right-radius: 0;
-	border-radius: 7px 0 0 0;
+  -moz-border-radius: 7px 0 0 0;
+  -webkit-border-top-left-radius: 7px;
+  -webkit-border-top-right-radius: 0;
+  border-radius: 7px 0 0 0;
 }
 
 /* @end */
@@ -118,9 +127,10 @@
  * The attachment details section is a collapsible fieldset, but should not
  * have a border around it.
  */
+
 .views-display-tab .fieldset-legend {
-	left: auto;
-	right: -5px;
+  left: auto;
+  right: -5px;
 }
 
 /* @end */
@@ -129,8 +139,9 @@
  *
  * The auto-preview checkbox line. This may have more stuff added to it.
  */
+
 div.form-item-displays-live-preview {
-	text-align: left;
+  text-align: left;
 }
 
 /* @end */
@@ -140,8 +151,9 @@ div.form-item-displays-live-preview {
  * These are the individual "buckets," or boxes, inside the three columns in the
  * attachment details section.
  */
+
 .views-ui-display-tab-bucket .icon-text {
-	padding-right: 25px;
+  padding-right: 25px;
 }
 
 /* @end */
@@ -150,8 +162,9 @@ div.form-item-displays-live-preview {
  *
  * This is each row within one of the "boxes."
  */
+
 .views-display-setting .label {
-	margin-left: 3pt;
+  margin-left: 3pt;
 }
 
 /* @end */
@@ -160,13 +173,14 @@ div.form-item-displays-live-preview {
  *
  * The contents of the popup dialog on the views edit form.
  */
+
 #views-filterable-options-controls .form-item {
-	margin-left: 2%;
+  margin-left: 2%;
 }
 
 .views-ui-dialog #views-progress-indicator {
-	left: 10px;
-	right: auto;
+  left: 10px;
+  right: auto;
 }
 
 /* @end */
@@ -176,7 +190,7 @@ div.form-item-displays-live-preview {
  * Styling for the form that allows views filters to be rearranged.
  */
 .views-operator-label {
-	padding-right: 0.5em;
+  padding-right: 0.5em;
 }
 
 /* @end */
@@ -184,8 +198,9 @@ div.form-item-displays-live-preview {
 /* @group Live preview elements */
 
 /* @group HTML list */
-#views-live-preview .view-content>.item-list>ul {
-	padding-right: 21px;
+
+#views-live-preview .view-content > .item-list > ul {
+  padding-right: 21px;
 }
 
 /* @end */

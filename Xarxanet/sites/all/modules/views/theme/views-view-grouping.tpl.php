@@ -18,8 +18,8 @@
  */
 ?>
 <div class="view-grouping">
-	<div class="view-grouping-header"><?php print $title; ?></div>
-	<div class="view-grouping-content">
+  <div class="view-grouping-header"><?php print $title; ?></div>
+  <div class="view-grouping-content">
     <?php print $content; ?>
   </div>
 </div>

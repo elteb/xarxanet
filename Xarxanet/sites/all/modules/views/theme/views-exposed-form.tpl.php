@@ -21,16 +21,15 @@
 ?>
 <?php if (!empty($q)): ?>
   <?php
-	// This ensures that, if clean URLs are off, the 'q' is added first so that
-	// it shows up first in the URL.
-	print $q;
-	?>
+    // This ensures that, if clean URLs are off, the 'q' is added first so that
+    // it shows up first in the URL.
+    print $q;
+  ?>
 <?php endif; ?>
 <div class="views-exposed-form">
-	<div class="views-exposed-widgets clearfix">
+  <div class="views-exposed-widgets clearfix">
     <?php foreach ($widgets as $id => $widget): ?>
-      <div id="<?php print $widget->id; ?>-wrapper"
-			class="views-exposed-widget views-widget-<?php print $id; ?>">
+      <div id="<?php print $widget->id; ?>-wrapper" class="views-exposed-widget views-widget-<?php print $id; ?>">
         <?php if (!empty($widget->label)): ?>
           <label for="<?php print $widget->id; ?>">
             <?php print $widget->label; ?>
@@ -55,7 +54,7 @@
       <div class="views-exposed-widget views-widget-sort-by">
         <?php print $sort_by; ?>
       </div>
-		<div class="views-exposed-widget views-widget-sort-order">
+      <div class="views-exposed-widget views-widget-sort-order">
         <?php print $sort_order; ?>
       </div>
     <?php endif; ?>

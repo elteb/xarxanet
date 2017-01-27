@@ -11,8 +11,8 @@
  * This plugin actually has no options so it odes not need to do a great deal.
  */
 class views_plugin_argument_default_current_user extends views_plugin_argument_default {
-	function get_argument() {
-		global $user;
-		return $user->uid;
-	}
+  function get_argument() {
+    global $user;
+    return $user->uid;
+  }
 }

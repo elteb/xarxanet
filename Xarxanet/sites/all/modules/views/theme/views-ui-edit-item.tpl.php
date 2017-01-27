@@ -7,28 +7,26 @@
 ?>
 <?php print $rearrange; ?>
 <?php print $add; ?>
-<div
-	class="views-category-title<?php
-	if ($overridden) {
-		print ' overridden';
-	}
-	if ($defaulted) {
-		print ' defaulted';
-	}
-	?>">
+<div class="views-category-title<?php
+  if ($overridden) {
+    print ' overridden';
+  }
+  if ($defaulted) {
+    print ' defaulted';
+  }
+  ?>">
   <?php print $item_help_icon; ?>
   <?php print $title; ?>
 </div>
 
-<div
-	class="views-category-content<?php
-	if ($overridden) {
-		print ' overridden';
-	}
-	if ($defaulted) {
-		print ' defaulted';
-	}
-	?>">
+<div class="views-category-content<?php
+  if ($overridden) {
+    print ' overridden';
+  }
+  if ($defaulted) {
+    print ' defaulted';
+  }
+  ?>">
   <?php if (!empty($no_fields)): ?>
     <div><?php print t('The style selected does not utilize fields.'); ?></div>
   <?php elseif (empty($fields)): ?>
@@ -38,8 +36,7 @@
       <?php if (!empty($field['links'])): ?>
         <?php print $field['links']; ?>
       <?php endif; ?>
-      <div
-		class="<?php print $field['class']; if (!empty($field['changed'])) { print ' changed'; } ?>">
+      <div class="<?php print $field['class']; if (!empty($field['changed'])) { print ' changed'; } ?>">
         <?php print $field['title']; ?>
         <?php print $field['info']; ?>
       </div>
