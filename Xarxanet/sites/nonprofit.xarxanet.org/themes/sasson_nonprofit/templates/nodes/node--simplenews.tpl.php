@@ -383,7 +383,7 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 							        <td class="data">
 			                            <?php
 											$created = $node->created;
-											echo $dies[date('N', $created)-1].', '.$mesos[date('n', $created)-1]. ' '.date('jS', $created).' of '.date('Y', $created).' - No. '.$title;
+											echo $dies[date('N', $created)-1].', '.date('d', $created). ' '.$mesos[date('n', $created)-1].' '.date('Y', $created).' - No. '.$title;
 										?>
 									</td>
 							    </tr>							    
