@@ -27,134 +27,124 @@
  *   links by date, requires the date argument and uses the current
  *   date argument default to set a starting point for the view.
  */
+
 /**
- * Implements hook_views_plugins
+ * Implements hook_views_plugins().
  */
 function date_views_views_plugins() {
-	$path = drupal_get_path ( 'module', 'date_views' );
-	$views_path = drupal_get_path ( 'module', 'views' );
-	module_load_include ( 'inc', 'date_views', 'theme/theme' );
-	
-	return array (
-			'module' => 'date_views', // This just tells our themes are elsewhere.
-			'display' => array (
-					// Display plugin for date navigation.
-					'date_nav' => array (
-							'title' => t ( 'Date browser' ),
-							'help' => t ( 'Date back/next navigation to attach to other displays. Requires the Date argument.' ),
-							'handler' => 'date_plugin_display_attachment',
-							'parent' => 'attachment',
-							'path' => "$path/includes",
-							'theme' => 'views_view',
-							'use ajax' => TRUE,
-							'admin' => t ( 'Date browser' ),
-							'help topic' => 'date-browser' 
-					) 
-			),
-			
-			'pager' => array (
-					'date_views_pager' => array (
-							'title' => t ( 'Page by date' ),
-							'help' => t ( 'Page using the value of a date field.' ),
-							'handler' => 'date_views_plugin_pager',
-							'path' => "$path/includes",
-							'help topic' => 'date-views-pager',
-							'uses options' => TRUE 
-					) 
-			),
-			
-			'style' => array (
-					'date_nav' => array (
-							'title' => t ( 'Date browser style' ),
-							'help' => t ( 'Creates back/next navigation.' ),
-							'handler' => 'date_navigation_plugin_style',
-							'path' => "$path/includes",
-							'theme' => 'date_navigation',
-							'theme file' => 'theme.inc',
-							'theme path' => "$path/theme",
-							'uses row plugin' => FALSE,
-							'uses fields' => FALSE,
-							'uses options' => TRUE,
-							'type' => 'date_nav',
-							'even empty' => TRUE 
-					) 
-			) 
-	);
+  $path = drupal_get_path('module', 'date_views');
+  $views_path = drupal_get_path('module', 'views');
+  module_load_include('inc', 'date_views', 'theme/theme');
+
+  return array(
+    // This just tells our themes are elsewhere.
+    'module' => 'date_views',
+    'display' => array(
+      // Display plugin for date navigation.
+      'date_nav' => array(
+        'title' => t('Date browser'),
+        'help' => t('Date back/next navigation to attach to other displays. Requires the Date argument.'),
+        'handler' => 'date_plugin_display_attachment',
+        'parent' => 'attachment',
+        'path' => "$path/includes",
+        'theme' => 'views_view',
+        'use ajax' => TRUE,
+        'admin' => t('Date browser'),
+        'help topic' => 'date-browser',
+      ),
+    ),
+
+    'pager' => array(
+      'date_views_pager' => array(
+        'title' => t('Page by date'),
+        'help' => t('Page using the value of a date field.'),
+        'handler' => 'date_views_plugin_pager',
+        'path' => "$path/includes",
+        'help topic' => 'date-views-pager',
+        'uses options' => TRUE,
+      ),
+    ),
+
+    'style' => array(
+      'date_nav' => array(
+        'title' => t('Date browser style'),
+        'help' => t('Creates back/next navigation.'),
+        'handler' => 'date_navigation_plugin_style',
+        'path' => "$path/includes",
+        'theme' => 'date_navigation',
+        'theme file' => 'theme.inc',
+        'theme path' => "$path/theme",
+        'uses row plugin' => FALSE,
+        'uses fields' => FALSE,
+        'uses options' => TRUE,
+        'type' => 'date_nav',
+        'even empty' => TRUE,
+      ),
+    ),
+  );
 }
 
 /**
- * Implements hook_views_data()
+ * Implements hook_views_data().
  */
 function date_views_views_data() {
-	$data = array ();
-	
-	$tables = date_views_base_tables ();
-	
-	foreach ( $tables as $base_table => $entity ) {
-		// The flexible date argument.
-		$data [$base_table] ['date_argument'] = array (
-				'group' => t ( 'Date' ),
-				'title' => t ( 'Date (!base_table)', array (
-						'!base_table' => $base_table 
-				) ),
-				'help' => t ( 'Filter any Views !base_table date field by a date argument, using any common ISO date/period format (i.e. YYYY, YYYY-MM, YYYY-MM-DD, YYYY-W99, YYYY-MM-DD--P3M, P90D, etc). ', array (
-						'!base_table' => $base_table 
-				) ),
-				'argument' => array (
-						'handler' => 'date_views_argument_handler',
-						'empty field name' => t ( 'Undated' ),
-						'is date' => TRUE 
-				// 'skip base' => $base_table,
-								) 
-		);
-		// The flexible date filter.
-		$data [$base_table] ['date_filter'] = array (
-				'group' => t ( 'Date' ),
-				'title' => t ( 'Date (!base_table)', array (
-						'!base_table' => $base_table 
-				) ),
-				'help' => t ( 'Filter any Views !base_table date field.', array (
-						'!base_table' => $base_table 
-				) ),
-				'filter' => array (
-						'handler' => 'date_views_filter_handler',
-						'empty field name' => t ( 'Undated' ),
-						'is date' => TRUE 
-				// 'skip base' => $base_table,
-								) 
-		);
-	}
-	
-	return $data;
+  $data = array();
+
+  $tables = date_views_base_tables();
+
+  foreach ($tables as $base_table => $entity) {
+    // The flexible date argument.
+    $data[$base_table]['date_argument'] = array(
+      'group' => t('Date'),
+      'title' => t('Date (!base_table)', array('!base_table' => $base_table)),
+      'help' => t('Filter any Views !base_table date field by a date argument, using any common ISO date/period format (i.e. YYYY, YYYY-MM, YYYY-MM-DD, YYYY-W99, YYYY-MM-DD--P3M, P90D, etc).', array('!base_table' => $base_table)),
+      'argument' => array(
+        'handler' => 'date_views_argument_handler',
+        'empty field name' => t('Undated'),
+        'is date' => TRUE,
+        // 'skip base' => $base_table,
+      ),
+    );
+    // The flexible date filter.
+    $data[$base_table]['date_filter'] = array(
+      'group' => t('Date'),
+      'title' => t('Date (!base_table)', array('!base_table' => $base_table)),
+      'help' => t('Filter any Views !base_table date field.', array('!base_table' => $base_table)),
+      'filter' => array(
+        'handler' => 'date_views_filter_handler',
+        'empty field name' => t('Undated'),
+        'is date' => TRUE,
+        // 'skip base' => $base_table,
+      ),
+    );
+  }
+
+  return $data;
 }
 
 /**
  * Implements hook_views_data_alter().
  */
 function date_views_views_data_alter(&$data) {
-	
-	// Mark all the core date handlers as date fields.
-	// This will identify all handlers that directly use the _date handlers,
-	// will not pick up any that extend those handlers.
-	foreach ( $data as $module => &$table ) {
-		foreach ( $table as $id => &$field ) {
-			foreach ( array (
-					'field',
-					'sort',
-					'filter',
-					'argument' 
-			) as $type ) {
-				if (isset ( $field [$type] ) && isset ( $field [$type] ['handler'] ) && ($field [$type] ['handler'] == 'views_handler_' . $type . '_date')) {
-					$field [$type] ['is date'] = TRUE;
-				}
-			}
-		}
-	}
+
+  // Mark all the core date handlers as date fields.
+  // This will identify all handlers that directly use the _date handlers,
+  // will not pick up any that extend those handlers.
+  foreach ($data as $base_table => &$table) {
+    foreach ($table as $id => &$field) {
+      foreach (array('field', 'sort', 'filter', 'argument') as $type) {
+        if (isset($field[$type]) && isset($field[$type]['handler']) && ($field[$type]['handler'] == 'views_handler_' . $type . '_date')) {
+          $field[$type]['is date'] = TRUE;
+        }
+      }
+    }
+  }
 }
 
 /**
- * Central function for setting up the right timezone values
- * in the SQL date handler.
+ * Central function for setting up the right timezone values.
+ *
+ * In the SQL date handler.
  *
  * The date handler will use this information to decide if the
  * database value needs a timezone conversion.
@@ -164,49 +154,63 @@ function date_views_views_data_alter(&$data) {
  * value to compare to the local value.
  */
 function date_views_set_timezone(&$date_handler, &$view, $field) {
-	switch ($field ['tz_handling']) {
-		case 'date' :
-			$date_handler->db_timezone = 'UTC';
-			$date_handler->local_timezone_field = $field ['timezone_field'];
-			$date_handler->offset_field = $field ['offset_field'];
-			break;
-		case 'none' :
-			$date_handler->db_timezone = date_default_timezone ();
-			$date_handler->local_timezone = date_default_timezone ();
-			break;
-		case 'utc' :
-			$date_handler->db_timezone = 'UTC';
-			$date_handler->local_timezone = 'UTC';
-			break;
-		default :
-			$date_handler->db_timezone = 'UTC';
-			$date_handler->local_timezone = date_default_timezone ();
-			break;
-	}
+  switch ($field['tz_handling']) {
+    case 'date':
+      $date_handler->db_timezone = 'UTC';
+      $date_handler->local_timezone_field = $field['timezone_field'];
+      $date_handler->offset_field = $field['offset_field'];
+      break;
+
+    case 'none':
+      $date_handler->db_timezone = date_default_timezone();
+      $date_handler->local_timezone = date_default_timezone();
+      break;
+
+    case 'utc':
+      $date_handler->db_timezone = 'UTC';
+      $date_handler->local_timezone = 'UTC';
+      break;
+
+    default:
+      $date_handler->db_timezone = 'UTC';
+      $date_handler->local_timezone = date_default_timezone();
+      break;
+  }
 }
+
+/**
+ * Helper function to generate a query string.
+ *
+ * @param object $view
+ *   A View object.
+ *
+ * @param array $extra_params
+ *   An extra parameters.
+ *
+ * @return null/string
+ *   Return a query or NULL.
+ */
 function date_views_querystring($view, $extra_params = array()) {
-	$query_params = array_merge ( $_GET, $extra_params );
-	// Allow NULL params to be removed from the query string.
-	foreach ( $extra_params as $key => $value ) {
-		if (! isset ( $value )) {
-			unset ( $query_params [$key] );
-		}
-	}
-	// Filter the special "q" and "view" variables out of the query string.
-	$exclude = array (
-			'q' 
-	);
-	// If we don't explicitly add a value for "view", filter it out.
-	if (empty ( $extra_params ['view'] )) {
-		$exclude [] = 'view';
-	}
-	// Clear out old date pager settings if not explicitly added.
-	if (! empty ( $view->date_info->pager_id ) && empty ( $extra_params [$view->date_info->pager_id] )) {
-		$exclude [] = $view->date_info->pager_id;
-	}
-	
-	$query = drupal_get_query_parameters ( $query_params, $exclude );
-	// To prevent an empty query string from adding a "?" on to the end of a URL,
-	// we return NULL.
-	return ! empty ( $query ) ? $query : NULL;
+  $query_params = array_merge($_GET, $extra_params);
+  // Allow NULL params to be removed from the query string.
+  foreach ($extra_params as $key => $value) {
+    if (!isset($value)) {
+      unset($query_params[$key]);
+    }
+  }
+  // Filter the special "q" and "view" variables out of the query string.
+  $exclude = array('q');
+  // If we don't explicitly add a value for "view", filter it out.
+  if (empty($extra_params['view'])) {
+    $exclude[] = 'view';
+  }
+  // Clear out old date pager settings if not explicitly added.
+  if (!empty($view->date_info->pager_id) && empty($extra_params[$view->date_info->pager_id])) {
+    $exclude[] = $view->date_info->pager_id;
+  }
+
+  $query = drupal_get_query_parameters($query_params, $exclude);
+  // To prevent an empty query string from adding a "?" on to the end of a URL,
+  // we return NULL.
+  return !empty($query) ? $query : NULL;
 }
