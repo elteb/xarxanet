@@ -1,11 +1,7 @@
-body {
-	direction: rtl;
-}
-
-th {
-	text-align: right;
-}
-
-.print-links, .print-source_url, .print-taxonomy {
-	text-align: left;
+body {direction: rtl;}
+th {text-align: right;}
+.print-links,
+.print-source_url,
+.print-taxonomy {
+  text-align: left;
 }
