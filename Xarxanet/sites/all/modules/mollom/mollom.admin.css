@@ -1,3 +1,4 @@
+
 /**
  * Override common theme styles for form actions and buttons.
  *
@@ -5,6 +6,7 @@
  * buttons, which adds too much vertical spacing to the first table row in the
  * blacklist table.
  */
-#mollom-blacklist .form-actions, #mollom-blacklist .form-submit {
-	margin: 0;
+#mollom-blacklist .form-actions,
+#mollom-blacklist .form-submit {
+  margin: 0;
 }
