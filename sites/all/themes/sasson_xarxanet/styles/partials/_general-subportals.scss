@@ -1,0 +1,768 @@
+/**
+ *   Frontpage Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+
+/* -------- Link Veure Més ------- */
+.veure-mes-p {
+  float: right;
+}
+
+.veure-mes-p, .veure-recursos {
+  font-size: 13pt;
+  padding: $ninesixty-gutter-width $ninesixty-gutter-width 0 0;
+}
+
+/* ------- Panels ------- */
+.section-recursos,
+.section-agenda,
+.section-financaments,
+.section-projectes,
+.section-juridic,
+.section-informatic,
+.section-formacio,
+.section-economic, {
+  .portada-superior-esquerra, .portada-superior-dreta {
+    @include grid-width(4);
+    float: left;
+    .views-row-odd {
+      margin-left: 0;
+    }
+    .views-row-even {
+      margin-right: 0;
+    }
+    
+    /* ------- Headers ------ */
+    .header { 
+      display: flex;
+      h2.portada-titol {
+        @include grid-width(2, $ninesixty-columns, $ninesixty-gutter-width+$space);
+        @include title3;
+        color: white;
+        padding: $space 0 $space $space;
+        margin-bottom: 0;
+      }
+      p { 
+        display: flex;
+        @include grid-width(2, $ninesixty-columns, $ninesixty-gutter-width);
+        margin-left: $ninesixty-gutter-width;
+      }
+      a { 
+        width: 100%;
+        text-align: right; 
+      } 
+    }
+  }
+  .portada-superior-esquerra {
+    margin-right: $space;
+    margin-bottom: $space;
+    clear: both;
+  }
+  .portada-superior-dreta {
+    margin-left: $space;
+    margin-bottom: $space;
+  }
+}
+
+/* ------- Seccions especials ------- */
+.section-especial,
+.section-fes-voluntariat {
+  .pane-content { margin-bottom: 15px; }
+  #page-title-reg h1 { margin: $space 0; }
+  #clear { clear: both; }
+  #third-row { 
+    padding-bottom: 10px;
+    .item { 
+      display: block;
+      background: url('/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png') 5px 6px no-repeat;
+      padding-left: 18px;
+      line-height: 1.6em;
+    } 
+  }
+  /* .pane-custom .pane-content { padding: 10px; } */
+  .pane-custom.no-padding .pane-content { padding: 0px; }
+  .breadcrumb { 
+     border-top: none;
+     margin-right: 0px; 
+  }
+  .region-content {
+    margin-top: $ninesixty-gutter-width;
+    h2 {
+      font-size: 14pt;
+      font-weight: lighter !important;
+      text-align: center;
+      padding: $space/2;
+      margin-bottom: 0px;
+    }
+    h3 {
+      font-size: 14pt;
+      line-height: 1.4em;
+      font-weight: normal;
+    } 
+  }
+  .pane-tags-especial-repositori {
+    .views-row { margin-right: 12px; }
+    .views-row-clear-0 { margin-left: 10px; }
+    .views-row-clear-4 { margin-right: 10px; }
+  }
+  #especial-documents-pane {
+    .row { padding-top: 10px; }
+    .doc_title { 
+      float: left;
+      width: 140px; 
+      padding: 0px 15px 0px 10px;
+    }
+    .doc_image { float: left;  }
+    .doc_image img { 
+      width: 110px;
+      border: 1px solid #CCCCCC;
+      margin-left: 5px 
+    }
+    #third-row { padding: 10px 5px; }
+  }
+  #especial-4-continguts-pane {
+    .content { 
+      float:left;
+      margin: 10px 3px; 
+    }
+    .content-large { width: 377px; }
+    .content-small { width: 179px; }
+    #third-row { padding: 0 5px 10px; } 
+  }
+  #especial-1-contingut-pane {
+    padding-bottom: $ninesixty-gutter-width;
+   .content_title, 
+   .content_teaser, 
+   #third-row { padding: 0 5px; } 
+   .content-columna-esquerra img { width: 568px; }
+   .content-columna-dreta img {@include grid-width(4, $ninesixty-columns, $ninesixty-gutter-width - $space);}
+  }
+}
+
+.page-especials .view-seccions-especials {
+  .views-row {
+    clear: both;
+    .views-field {
+      padding: $space 0;
+    }
+    div {
+      float: left;
+      vertical-align: top;
+    }
+    .image { 
+      margin-right: $space;
+    }
+    .text {
+      @include grid-width(4, $ninesixty-columns, $ninesixty-gutter-width);
+      margin-left: $space;
+    }
+    h3 {
+      margin-top: $space;
+    }
+  }
+}
+
+/* ------- Biblioteca ------- */
+.section-biblioteca,
+.section-biblioteca-filtre,
+.section-biblioteca-cerca {
+  form {
+    margin-bottom: $ninesixty-gutter-width;
+    .form-item, .form-actions {
+     display: inline;
+    } 
+  }
+  .views-exposed-form { 
+    display: none;    
+  }
+  .view-documents-filtrats{
+    .views-exposed-form { 
+      display: none;    
+    }
+  }
+  .pane-cercador-avancat-biblioteca-panel-pane-1,
+  #views-exposed-form-cercador-avancat-biblioteca-panel-pane-1{
+    .views-exposed-form { 
+      display: inline; 
+      select{
+        width:200px;      
+      }
+      .form-text{
+        width:195px;
+      }
+      .form-submit{
+        width:94px;
+      }
+
+    }
+    .view-content{
+      display:none;
+    }
+    .view-empty{
+      display:none;
+    }
+  }
+  .pane-cercador-avancat-biblioteca,
+  .view-display-id-page_1{
+    .view-content{
+      display:inline;
+    } 
+  }
+  .pane-cercador-avancat-biblioteca-panel-pane-1{
+      h2 {
+        @include block-lat-title(3, $space, 0px);
+        background: $biblioteca; 
+      } 
+      .pane-content {
+        padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+        clear: both;
+        background-color: $main-3;
+        ul {
+          margin-bottom: $ninesixty-gutter-width;
+          padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+          list-style-type: square;
+        } 
+        ul.subterm {
+          padding: 0 $ninesixty-gutter-width*2;
+          margin: 0;
+        }
+        li { margin-bottom: $space;}
+        p { padding: $space; }
+      }
+  }
+  .pane-cercador-avan-at-biblioteca-panel-pane-1,
+  #views-exposed-form-cercador-avan-at-biblioteca-panel-pane-1{
+    .views-exposed-form { 
+      display: inline; 
+      select{
+        width:200px;      
+      }
+      .form-text{
+        width:195px;
+      }
+      .form-submit{
+        width:94px;
+      }
+
+    }
+    .view-content{
+      display:none;
+    }
+    .view-empty{
+      display:none;
+    }
+  }
+  .pane-cercador-avan-at-biblioteca,
+  .view-display-id-page_1{
+    .view-content{
+      display:inline;
+    } 
+  }
+  .pane-cercador-avan-at-biblioteca-panel-pane-1{
+      h2 {
+        @include block-lat-title(3, $space, 0px);
+        background: $biblioteca; 
+      } 
+      .pane-content {
+        padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+        clear: both;
+        background-color: $main-3;
+        ul {
+          margin-bottom: $ninesixty-gutter-width;
+          padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+          list-style-type: square;
+        } 
+        ul.subterm {
+          padding: 0 $ninesixty-gutter-width*2;
+          margin: 0;
+        }
+        li { margin-bottom: $space;}
+        p { padding: $space; }
+      }
+  }
+  #biblioteca-panel {
+    .views-row {
+      border-bottom: 1px dotted $main-2;
+      table { margin: $space 0; }
+      tbody { border: none; } 
+    }
+    .biblioteca-document {
+      border-collapse: separate;
+      .text { 
+        padding: 0 $space; 
+        .teaser{
+          margin-top:0px;
+        }
+      }
+      .image img {
+        @include grid-width(1.5);
+        border: 1px solid $main-2;
+      }
+      h2 a {
+        @include title3;
+        color: $link-color;
+      }
+      .top {
+        color: $main-1;
+        font-style: italic;
+      }
+    }
+  #biblioteca-order {
+    margin-bottom: $ninesixty-gutter-width;
+    a { margin: 0 $space; }
+    a.currentsort { font-weight: bold; }
+  }
+    
+    /* ------- Blocks ------- */
+    .pane-block-67, .pane-block-69, .pane-block-73 {
+      h2 {
+        @include block-lat-title(3, $space, 0px);
+        background: $biblioteca; 
+      } 
+      .pane-content {
+        clear: both;
+        background-color: $main-3;
+        ul {
+          margin-bottom: $ninesixty-gutter-width;
+          padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
+          list-style-type: square;
+        } 
+        ul.subterm {
+          padding: 0 $ninesixty-gutter-width*2;
+          margin: 0;
+        }
+        li { margin-bottom: $space;}
+        p { padding: $space; }
+      }
+    }
+  }
+}
+
+/* ------- Panell d'entitat -------- */
+.page-panell-entitat {
+	#block-megamenu-main-menu {padding: 0;}
+	#block-megamenu-main-menu .content, #block-block-83, #block-megamenu-menu-menu-ambits-entitats { display:none; }
+	#page-title-reg {
+  		background: $general url('/sites/all/themes/sasson_xarxanet/images/pictos/panell-control.png') no-repeat top left;
+  		height: 50px;
+  		h1 {
+  			color: #fff;
+  			padding-left: 55px;
+		}
+  	}
+  	.breadcrumb {
+  		margin-right: 0px;
+  		border-top: none;
+  	}
+  	.actions {
+  		margin: $space;
+  		padding: $space;
+  		height: 160px;
+  		h2 { 
+  			font-weight: bold;
+  			border-bottom: solid 1px; 
+  		}
+  		&#dades {
+  			h2 { color: $social; }
+  			background-color: $social-sec;
+  		}
+  		&#publica {
+  			h2 { color: $financament; }
+  			background-color: $financament-sec;
+  		}
+  		&#ajuda {
+  			h2 { color: $actes; }
+  			background-color: $actes-sec;
+  		}
+  	}
+  	li {
+  		margin: $space;
+  		&#noticia { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/noticies-taronja.png'); }
+  		&#acte { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/actes-taronja.png'); }
+  		&#mostra { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/mostra-blau.png'); }
+  		&#edita { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/edita-blau.png'); }
+  		&#document { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/trans-blau.png'); }
+  		&#contacte { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/ajuda-verd.png'); }
+  		&#guia { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/doc-verd.png'); }
+  		&#intranet { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/intranet-verd.png'); }
+  		&#analytics { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/googleanalytics-verd.png'); }
+  		&#recurs { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/recursos-taronja.png'); }
+  		&#otrs { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/otrs-verd.png'); }
+  	}
+  	table.views-table { 
+  		width: 100%;
+  		th, td { padding: $space; } 
+  	}
+  	h2.pane-title {
+  		color: $main-1;
+  		border-bottom: solid $main-2 1px;
+  		padding: $space 0;
+  		font-weight: bold;
+  	}
+  	.panels-flexible-row { padding: 0 $space; }
+  	#publicacions-entitat {
+  		form {
+  			#edit-date-filter-min-wrapper, #edit-date-filter-max-wrapper { float: left; }
+  			.form-type-date-popup {
+  				label {
+  					float: left;
+  					font-weight: normal;
+  					margin-right: $space; 
+  				}
+  				.date-padding { float: left; }
+  				input { width: 100px; }
+  			}
+  			.form-submit { margin-top: 1.3em; }
+  		}	
+  	}
+  	#comentaris-entitat { margin-top: $ninesixty-gutter-width; }
+}
+
+/* ------- Registra't i Publica -------- */
+
+.page-publica-continguts{
+  .panels-flexible-region-inside{
+    padding-left:0px;
+    padding-right:0px;
+    margin-right:3px;
+  }
+  /*-------- Nomes a Prova------
+  .panels-flexible-region-41-right_block-inside{
+    margin-left:15px; 
+  }
+  ------------------------------ 
+  */
+  .panels-flexible-region-46-right_block-inside{
+    margin-left:15px; 
+  }
+  #page-title-reg{
+    width: $ninesixty-grid-width;
+    background: $general url("/sites/all/themes/sasson_xarxanet/images/pictos/publica-contingut.png")  no-repeat scroll left top;
+    height:50px;
+  }
+  #page-title{
+    padding-left:80px;
+    color:#FFF;
+    margin: 8px 0px;
+  }
+  .breadcrumb{
+    border-top: medium none;
+    margin-right: 0px;
+  }
+  .panel-pane{
+    margin-left:8px;
+  }
+  .publica-intro{
+    h2{
+      margin-top:0px;     
+    } 
+  }
+  .pane-title{
+    @include title1;
+    margin:0px !important;
+    line-height:1.4em;
+  }
+  .primer-pas{
+    background: $general url("/sites/all/themes/sasson_xarxanet/images/pictos/pas_1.png") no-repeat scroll 10px center;
+    color:#FFF;
+    padding-left:85px;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-right:27px;
+    @include title3;
+    line-height:1.2em !important;
+    p{
+      margin-top:0px !important;
+      margin-bottom:10px !important;
+    }
+  }
+  .formulari{
+    margin-right:9px;
+  }
+  .segon-pas{
+    background: $recursos url("/sites/all/themes/sasson_xarxanet/images/pictos/pas_2.png") no-repeat scroll 10px center;
+    color:#FFF;
+    padding-left:85px;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-right:27px;
+    @include title3;
+    line-height:1.2em !important;
+    p{
+      margin-top:0px !important;
+      margin-bottom:10px !important;
+    }
+    margin-left:0px;
+  }
+  .tercer-pas{
+    background: $financament url("/sites/all/themes/sasson_xarxanet/images/pictos/pas_3.png") no-repeat scroll 10px center;
+    color:#FFF;
+    padding-left:85px;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-right:27px;
+    @include title3;
+    line-height:1.2em !important;
+    p{
+      margin-top:0px !important;
+      margin-bottom:10px !important;
+    }
+    margin-left:0px;
+  }
+}
+
+/* ------- Publica a Xarxanet -------- */
+
+.page-publica-a-xarxanet{
+  .panels-flexible-region-inside{
+    padding-left:0px;
+    padding-right:0px;
+    margin-right:3px;
+  }
+  .panels-flexible-region-46-right_block-inside{
+    margin-left:15px; 
+  }
+  #page-title-reg{
+    width: $ninesixty-grid-width;
+    height:50px;
+  }
+  #page-title{
+    color:#000;
+    margin: 8px 0px;
+  }
+  .breadcrumb{
+    border-top-color: $general;
+    margin-right: 0px;
+  }
+  .panel-pane{
+    margin-left:8px;
+  }
+  .publica-intro{
+    h2{
+      margin-top:0px;     
+    } 
+  }
+  .pane-title{
+    @include title1;
+    margin:0px !important;
+    line-height:1.4em;
+  }
+  #acte-formacio{
+    background: #e3e5ba 10px 20px;
+    @include title3;
+    line-height:1.2em !important;
+    height: 274px;
+    .pane-title{
+      padding-left:85px;
+      padding-top:12px;
+      padding-right:17px;
+      background: $agenda url("/sites/all/themes/sasson_xarxanet/images/pictos/publica-agenda.png") no-repeat scroll 10px 20px;
+      line-height: 1.2em;
+      color: #fff;
+      height: 102px;
+    }
+    a{
+      color: #7f841e;
+    }
+    p{
+      padding-left: 15px;
+      font-size: 1em;
+    }
+  }
+  .formulari{
+    margin-right:9px;
+    heigth: 205px;
+  }
+  #colabora{
+    background: $general-sec 10px 20px;
+    @include title3;
+    line-height:1.2em !important;
+    margin-left:0px;
+    height: 274px;
+    .pane-title{
+      padding-left:85px;
+      padding-top:12px;
+      padding-right:17px;
+      background: $general url("/sites/all/themes/sasson_xarxanet/images/pictos/colabora.png") no-repeat scroll 10px 20px;
+      line-height: 1.2em;
+      color: #fff;
+      height: 102px;
+    }
+    a{
+      color: $general;
+    }
+    p{
+      padding-left: 15px;
+      font-size: 1em;
+    }
+  }
+  #accedeix{
+    background: $main-2 10px 10px;
+    color: $main-1;
+    @include title3;
+    line-height:1.2em !important;
+    margin-left:0px;
+    height: 274px;
+    .pane-title{
+      padding-left:85px;
+      padding-top:23px;
+      padding-right:17px;
+      background: $main-2 url("/sites/all/themes/sasson_xarxanet/images/pictos/login_2.png") no-repeat scroll 15px 20px;
+      line-height: 1.2em;
+      color: #fff;
+      height: 92px;
+    }
+    p{
+      padding-left:15px;
+      font-size: 1em;
+    }
+    a{
+      color: $main-1;
+    }
+    .rec_pass{
+      font-size: 0.6em;
+      padding-left:10px;
+    }
+    form{
+      font-size: 0.6em;
+      padding-left:10px;
+      .form-item{
+        margin-top:0px !important;
+        margin-bottom:0px !important;
+      }
+      .form-actions{
+        margin-bottom:0px !important;
+      }
+      input{
+        width:280px;
+      }
+      .description{
+        display:none;
+      }
+      #edit-actions{
+       input{
+        width: 105px;
+        height: 25px;
+        font-family: Georgia;
+        color: #666666;
+       }
+      }
+    }
+  }
+  #footer{
+    margin-left:0px !important;
+  }
+}
+
+/*------ Opinion -----*/
+.view-opinion{
+  p { margin-bottom: 0px; }
+  .article-info { 
+  	float: left;
+  	width: $column * 3 + $space; 
+  }
+  .vertical-photo { 
+  	width: $column;
+  	float: left; 
+  }
+  .views-row-2, .views-row-3, .views-row-4, .views-row-5 {
+  	clear: both;
+  	h2 { margin-top: 0px; }
+  }
+  .views-row-2, .views-row-4, .views-row-5 { padding-top: 2*$space; }
+  #left-column {
+    .views-row-clear-0 {
+      background: $main-3;
+      h2 a { font-size: 18pt; }
+      .article-info { 
+      	padding: $space;
+      	float: none;
+      	width: $column * 4; 
+      }
+    }
+  }
+  .view-footer{
+  	.past-articles {
+	  	padding: 4px 8px 4px 0px;
+	  	background-color: $main-3;
+	  	text-align: right;
+  	} 
+  	padding-right: $space;
+  	padding-top: 2*$space;
+    clear:both;
+  }
+}
+
+.view-opinion-authors {
+	.autor {
+		width: 100px;
+		//float: left;
+		display:inline-block;
+		vertical-align:top;
+		margin: 8px 11px 8px 11px;
+		text-align: center;
+		img{
+		  padding-bottom:5px;
+		}
+	}
+	.view-footer{
+    .past-articles {
+      padding: 4px 8px 4px 0px;
+      background-color: $main-3;
+      text-align: right;
+    } 
+    padding-right: $space;
+    padding-top: 2*$space;
+    clear:both;
+  }
+  h3{
+      display:none;
+    }
+}	
+
+.all-authors {
+	clear: both;
+	padding-top: 2*$space;
+	margin-right: $space;
+	border-bottom: solid 2px $opinio;
+	h2 {
+	 	@include title3;
+	   	color: white;
+	   	padding: $space 0 $space $space;
+	   	margin-bottom: 0;
+	   	width: $column*3;
+	   	background-color: $opinio;
+	}   	
+}
+
+/* ------ Webinars ----- */
+.all-webinars {
+	border-bottom: solid 2px $general;
+	h2 {
+	 	@include title3;
+	   	color: white;
+	   	padding: $space 0 $space $space;
+	   	margin-bottom: 0;
+	   	width: $column*2;
+	   	background-color: $general;
+	}
+	.views-row { margin-top: 2*$space; }   	
+}
+
+/* ------- Colors ------ */
+#recurs-economic { @include subportal-header($economic); }
+#recurs-formacio { @include subportal-header($formacio); }
+#recurs-informatic { @include subportal-header($informatic); }
+#recurs-juridic { @include subportal-header($juridic); }
+#recurs-projectes { @include subportal-header($projectes); }
+#recurs-general { @include subportal-header($general); }
+#financament-premis { @include subportal-header($premis); }
+#financament-subvencio { @include subportal-header($subvencio); }
+#financament-beques { @include subportal-header($beques); }
+#financament-altres { @include subportal-header($altres); }
+#portada-actes { @include subportal-header($actes); }
+#portada-cursos { @include subportal-header($cursos); }
+.section-projectes #portada-recurs, .section-projectes #portada-noticia { @include subportal-header($projectes); }
+.section-juridic #portada-recurs, .section-juridic #portada-noticia { @include subportal-header($juridic); }
+.section-informatic #portada-recurs, .section-informatic #portada-noticia { @include subportal-header($informatic); }
+.section-formacio #portada-recurs, .section-formacio #portada-noticia { @include subportal-header($formacio); }
+.section-economic #portada-recurs, .section-economic #portada-noticia { @include subportal-header($economic); } 

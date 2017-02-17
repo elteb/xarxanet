@@ -1,0 +1,765 @@
+@CHARSET "UTF-8";
+
+/************ GENERAL *************/
+html {
+	font-size:75%;
+}
+
+body,
+.ui-widget-content {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1.1rem;
+	color: #333333;
+}
+
+body a,
+.ui-widget-content a {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.2rem;
+	color: #005577;
+	text-decoration: none;
+}
+
+iframe { max-width: 100% !important; }
+
+/************ HEADER ***************/
+
+#header {
+	margin-bottom: 10px;
+	border-bottom: 3px solid #666666;
+}
+
+#logo img { margin: 10px 0 5px;}
+#logo { float: left; }
+
+#menu-tab {
+	float: right;
+	font-weight: bold;
+	color: #53544F;
+	background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/mobile_menu/menu_hover.png") no-repeat scroll 55px #ECEFF0;
+	padding: 10px 50px 10px 10px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+#nothing { clear: both; }
+
+
+/************** MENU ***************/
+
+#menu {
+	background-color: #ECEFF0;
+	margin-top: -10px;
+	font-family: Arial,Helvetica,sans-serif;
+	color: #53544F;
+	margin-bottom: 10px;
+	display:none;
+}
+
+#menu a {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1.1rem;
+	color: #53544F;
+}
+
+#menu-left, #menu-right {
+	float: left;
+	width: 45%;
+	margin: 10px 5px 10px 10px;
+}
+
+#menu-box-1, #menu-box-3 {
+	border-top: dotted 1.5px #cccccc;
+	margin: 7.5px 0;
+	padding-top: 10px;
+}
+
+.menu-item-title { 
+	font-style: italic;
+	margin-bottom: 7px; 
+}
+
+#menu-left .menu-item { padding: 7.5px 0 7.5px 15px; }
+.menu-item#news { background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/mobile_menu/news.png") no-repeat scroll 0px; }
+.menu-item#interviews { background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/mobile_menu/interviews.png") no-repeat scroll 0px; }
+.menu-item#opinion { background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/mobile_menu/opinion.png") no-repeat scroll 0px; }
+.menu-item#newsletter { background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/mobile_menu/newsletter.png") no-repeat scroll 0px; }
+
+#menu-right .menu-item { padding: 7.5px 0 7.5px 35px; }
+.menu-item#about-us { background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/mobile_menu/about-us.png") no-repeat scroll 5px; }
+.menu-item#contact-us { background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/mobile_menu/contact-us.png") no-repeat scroll 5px; }
+.menu-item#follow-us { background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/mobile_menu/follow-us.png") no-repeat scroll 5px; }
+
+/******** NOTICIES IMATGE **********/
+
+.field-content img,
+.node-type-page-insert-view .item-content .image,
+.pane-views-panes .item-content .image,
+.node-type-page .item-content .image,
+.section-especial .item-content .image,
+.section-etiquetes .item-content .image { 
+	float: left;
+	margin: 5px 5px 0 0;	
+}
+
+.view-recull-noticies-principal .views-field-views-conditional,
+.view-recull-noticies-secundari #left-column .views-field-title,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-1,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-4 {
+	margin: 15px 0 3px;
+}
+
+.view-main-highlighted-frontpage .views-row-2 .item-content,
+.view-secondary-highlighted-frontpage .views-row-2 .item-content,
+.view-recull-noticies-secundari .views-field-field-recull-secundari-lat-sup-1,
+.view-recull-noticies-secundari .views-field-field-recull-secundari-lat-inf-1{
+	padding-top: 15px;
+	clear: both;
+}
+
+.view-main-highlighted-frontpage .item-content .title,
+.view-secondary-highlighted-frontpage .item-content .title,
+.view-noticies-no-destacades-portada .item-content .title {
+	margin-bottom: 3px;
+}
+
+.node-type-page-insert-view .item-content .title,
+.node-type-page .item-content .title,
+.section-mobile-opinion .item-content .title,
+.section-etiquetes .item-content .title {
+	padding: 15px 0 3px;
+}
+
+.view-noticies-no-destacades-portada .item-content {
+	padding: 7.5px 0;
+	border-top: dotted 1.5px #cccccc;
+}
+
+.views-field-nothing,
+.views-field-nothing-1,
+.node-type-page-insert-view .item-content,
+.node-type-page .item-content,
+.section-mobile-opinion .item-content,
+.section-etiquetes .item-content,
+.author-articles .views-row { 
+	clear: both; 
+}
+
+.pane-recull-noticies-principal-mobil .views-field-field-resum,
+.pane-recull-noticies-secundari-mobil .views-field-field-resum-value,
+.pane-recull-noticies-secundari-mobil .views-field-field-resum-value-1 {
+	margin-left: 110px;
+}
+
+.view-recull-noticies-principal .views-field-views-conditional-1,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-2,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-5,
+.view-recull-noticies-secundari .views-field-field-resum-2,
+.view-recull-noticies-secundari .views-field-field-resum-3,
+.pane-main-highlighted-frontpage-panel-pane-2 .teaser,
+.pane-secondary-highlighted-frontpage-panel-pane-2 .teaser,
+.node-type-page-insert-view .item-content .teaser,
+.node-type-page .item-content .teaser,
+.section-mobile-opinion .item-content .teaser,
+.section-mobile-opinion .item-content .info {
+	margin-left: 105px;
+	margin-top: 5px;
+}
+
+
+/************ PORTADA *************/
+
+.view-recull-noticies-principal .views-field-title,
+.view-recull-noticies-secundari #left-column .views-field-title,
+.view-noticies-destacades-mobil .view-header {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #ffffff;
+	text-align: center;
+	background-color: #006680;
+	padding: 4px 5px;
+}
+
+.view-recull-noticies-principal,
+.view-recull-noticies-secundari #left-column {
+	background-color: #ECEFF0;
+	padding-bottom: 10px;
+}
+
+.view-recull-noticies-principal img,
+.view-recull-noticies-secundari #left-column img,
+.view-recull-noticies-principal .views-field-views-conditional,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-1,
+.view-recull-noticies-secundari #left-column .views-field-views-conditional-4{
+	margin-left:5px;
+}
+
+.view-noticies-destacades-mobil .view-header p { margin: 0px; }
+
+.views-field-field-recull-secundari-relaciona,
+.views-field-field-recull-principal-rel {
+	margin-top: 15px
+}
+
+.views-field-field-recull-secundari-relaciona .views-label,
+.views-field-field-recull-principal-rel .views-label     {
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.view-recull-noticies-principal .views-field-nothing .views-label,
+.view-recull-noticies-secundari #left-column .views-field-nothing .views-label {
+    margin-left: 8px;
+}
+
+.view-recull-noticies-principal .views-field-nothing,
+.view-recull-noticies-secundari #left-column .views-field-nothing {
+    margin-top: 15px;
+}
+
+/*.views-field-field-recull-secundari-relaciona-url .field-item,
+.views-field-field-recull-principal-rel-url .field-item,*/
+.views-field-field-recull-secundari-relaciona .field-content div,
+.view-recull-noticies-principal .views-field-nothing .field-content div,
+.view-recull-noticies-secundari #left-column .views-field-nothing .field-content div {
+	margin: 5px;
+	padding-left: 8px;
+	list-style-image: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/news-list-style.png");
+}
+
+.view-recull-noticies-principal .views-field-nothing .field-content ul,
+.view-recull-noticies-secundari #left-column .views-field-nothing .field-content ul {
+    margin-bottom: 0px;
+}
+
+.panel-flexible .panel-separator {
+    clear: both;
+}
+
+.teaser { margin-top: 5px; }
+
+/************ BLOCS *************/
+
+.pane-block h2,
+.panel-pane h2 {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #ffffff;
+	float: left;
+	margin: 0px;
+	font-weight: normal;
+    padding: 4px 0px 4px 50px;
+}
+
+.highlights-block { clear: both; }
+
+.pane-block .more,
+.pane-custom .more { 
+	float: right;
+	padding: 4px; 
+}
+
+.pane-block .view { clear: both; }
+.pane-block .views-row { padding: 5px; }
+
+.pane-block.opinion-articles { margin-top: 20px; }
+.pane-block.opinion-articles #more-others { display: none; }
+.pane-block.opinion-articles .view-content { background-color: #FDE3CF; }
+.pane-block.opinion-articles h2 {
+	background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/opinion.png") no-repeat scroll 10px center #F57310;
+    min-width: 100px;
+    padding-left: 40px;
+    padding-right: 3px;
+}
+
+.pane-noticia-destacada-lateral-panel-pane-2 .view { 
+	background-color: #ECEFF0;
+	padding: 5px; 
+}
+.views-field-field-destacada-lat-entr .field-content { margin-left: 105px; }
+.views-field-field-destacada-lat-ellac-1 { padding-bottom: 5px; }
+.pane-noticia-destacada-lateral-panel-pane-2 h2{
+	background: url("/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/destaquem.png") no-repeat scroll 10px center #006680;
+    min-width: 100px;
+    padding-left: 40px;
+    padding-right: 3px;
+}
+
+
+/*********** SECCIONS *************/
+
+.node-type-page-insert-view .page-title,
+.node-type-page .page-title,
+.node-type-webform .page-title,
+.section-mobile-opinion .page-title,
+.author-articles .section-title {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #ffffff;
+	padding: 4px 5px;
+	float: left;
+}
+
+.node-type-page-insert-view .veure-mes-p { 
+	float: right; 
+	margin: 0px;
+	padding-top: 8px;
+}
+
+.node-type-page-insert-view .subtitle {
+	float: left;
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #666666;
+	padding-top: 8px;
+	clear: both;
+}
+
+.node-type-page-insert-view .data {
+	margin: 0 0 5px;
+	font-size: 1rem;
+}
+
+.node-type-page-insert-view #clock {
+	float: left;
+	margin-right: 5px;
+}
+
+.node-type-page.section-news .page-title,
+.node-type-page.section-about-nonprofit .page-title,
+.node-type-webform.section-contact-us .page-title { background-color: #006680; }
+.node-type-page.section-news .views-row-first .item-content { border-top: solid 1px #006680;}
+.node-type-page.section-news  ul.pager { border-bottom-color: #006680; }
+
+.node-type-page.section-about-nonprofit .region-content,
+.node-type-webform.section-contact-us .region-content {
+	clear: both;
+	padding-top: 5px;
+	border-top: solid 1px #006680;
+}
+
+.node-type-page.section-interviews .page-title { background-color: #A75387; }
+.node-type-page.section-interviews .views-row-first .item-content { border-top: solid 1px #A75387;}
+.node-type-page.section-interviews  ul.pager { border-bottom-color: #A75387; }
+
+.node-type-webform.section-newsletter .page-title { background-color: #A7A74D; }
+.node-type-webform.section-newsletter .region-content {
+	clear: both;
+	padding-top: 5px;
+	border-top: solid 1px #A7A74D;
+}
+.node-type-webform.section-newsletter table { width: 100%; }
+
+.section-mobile-opinion .page-title,
+.author-articles .section-title { background-color: #F57310; }
+.section-mobile-opinion .views-row-first .item-content,
+.author-articles .views-row-first { border-top: solid 1px #F57310;}
+.section-mobile-opinion  ul.pager { border-bottom-color: #F57310; }
+.section-mobile-opinion .item-content .info { margin-top: 5px; }
+.section-mobile-opinion .item-content .info a { font-size: 1.2rem; }
+.author-articles .views-field-title h3 {
+	font-weight: normal;
+	margin-bottom: 5px;
+}
+.author-articles .views-row { border-top: dotted 1px #F57310;}
+.author-articles .views-row-first { border-top: solid 1px #F57310;}
+.author-articles .views-field-field-resum p { margin-top: 5px; }
+.author-articles { margin-top: 5px; }
+
+/************ PAGER ***************/
+
+ul.pager { 
+	margin-top: 15px;
+	background-color: #EBEFF0;
+	padding: 2.5px 0;
+	border-bottom: solid 2px; 
+}
+
+.pager a {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1.1rem;
+}
+
+.pager li { 
+	padding: 0px !important;
+	margin: 0 2px !important; 
+}
+
+
+/************ FOOTER ***************/
+
+#footer { margin-top: 10px; }
+
+#footer #first-line { background-color: #727270; }
+#footer #first-line a { 
+	color: #FFFFFF;
+	font-size: 11pt; 
+}
+
+#footer #first-line #classica { 
+	float: left;
+	padding: 3px 0 3px 5px;
+}
+
+#footer #first-line #top { 
+	float: right;
+	padding: 3px 5px 3px 0;
+}
+
+#footer #second-line {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.1rem;
+	color: #53544F;
+	background-color: #d7d7d7;
+}
+
+#footer #second-line a {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.1rem;
+	color: #53544F;
+}
+
+#footer #second-line div.item {
+	max-width: 90px;
+	width: 25%;
+	float: left;
+	text-align: center;
+	margin-top: 5px;
+	padding-bottom: 10px;
+}
+
+#footer #third-line {
+	font-weight: bold;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	background-color: #d7d7d7;
+}
+
+#footer #third-line .logo-gene,
+#footer #third-line .logo-xn { 
+	display: inline-block;
+	margin: 5px; 
+}
+
+
+
+/****** NOTICIA/RECURS/EVENT/DOCUMENT *******/
+
+.node-type-article .page-title,
+.node-type-opinion .page-title,
+.node-type-author .page-title { 
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.6rem;
+	color: #333333;	
+}
+
+.node-type-article .image img,
+.node-type-opinion .image img,
+.node-type-author .image img { width: 100%; }
+
+.node-type-article #picto,
+.node-type-opinion #picto { 
+	width: 17px;
+	float: left;	
+}
+
+.node-type-article #credits,
+.node-type-opinion #credits { 
+	font-size: 1rem;
+}
+
+.node-type-article #credits,
+.node-type-opinion #credits { margin: 10px 0 5px; }
+
+.node-type-article #text,
+.node-type-opinion #text { 
+	float: left;
+	width: 60%; 
+}
+
+.node-type-article .sub-image-1 #social-icons,
+.node-type-opinion .sub-image-1 #social-icons,
+.node-type-author .sub-image-1 #social-icons
+ { 
+	margin-top: 5px;
+	float: right; 
+}
+
+.node-type-article .node-body-text a,
+.node-type-opinion .node-body-text a { font-size: 1.1rem; }
+
+.node-type-article .node-body-text,
+.node-type-opinion .node-body-text {
+	border-top: dotted 1.5px #cccccc;
+	margin-top: 5px;
+}
+
+.node-type-article .teaser,
+.node-type-opinion .teaser  {
+	font-style: italic;
+	border-bottom: dotted 1.5px #cccccc;
+}
+
+.node-type-article .node-body-text .teaser a,
+.node-type-opinion .node-body-text .teaser a {
+	font-style: normal;
+}
+
+
+/*********** COMENTARIS ************/
+
+#comments h2 {
+	font-family: Georgia,Times New Roman,Times,serif;
+	font-size: 1.4rem;
+	color: #ffffff;
+	margin: 10px 0;
+	font-weight: normal;
+	padding: 4px 0 4px 60px;
+}
+
+#comments-title{ background: url('/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/globus.png') #7B7B79 10px no-repeat; }
+#comments .box h2 {	background: url('/sites/nonprofit.xarxanet.org/themes/mobile_nonprofit/images/pictos/comentaris.png') #7B7B79 10px no-repeat; }
+
+#comments #edit-comment,
+#comments #recaptcha_table,
+#comments #edit-subject { width: 100%; }
+
+#comments .form-item {
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+#comments .comment a { font-size: 1.1rem; }
+#comments .comment h3 { margin: 10px 0; }
+#comments .comment ul.links { text-align: right; }
+
+#comments .comment .submited { 
+	font-size: 1rem;
+	font-style: italic; 
+}
+
+#comments .indented { border-top: dotted 1.5px #cccccc; }
+#comments .links { margin-bottom: 15px; }
+
+
+/*********** FOMULARI ************/
+
+.formulari-dassessorament .form-text,
+.formulari-dassessorament .form-textarea {
+	width: 100%;
+}
+
+
+/********** NEWSLETTER **************/
+.node-type-simplenews .page-title { display: none; }
+.node-type-simplenews table {
+  border-spacing: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+}
+.node-type-simplenews tbody {
+  border-top: 0px;
+}
+.node-type-simplenews td {
+  padding: 0;
+}
+.node-type-simplenews img {
+  border: 0;
+}
+.node-type-simplenews .wrapper {
+  width: 100%;
+  table-layout: fixed;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+.node-type-simplenews .webkit {
+  max-width: 600px;
+}
+.node-type-simplenews .outer {
+  Margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+.node-type-simplenews .inner {
+  padding: 0px;
+}
+.node-type-simplenews p {
+  Margin: 0;
+  font-size: 12px;
+}
+.node-type-simplenews a {
+  color: #006680;
+}
+.node-type-simplenews .h1 {
+  font-size: 22px;
+  font-family: Georgia;
+}
+.node-type-simplenews .h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-family: Georgia;
+  text-decoration: none;
+  padding-bottom: 5px;
+}
+.node-type-simplenews .one-column .contents {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.node-type-simplenews .one-column p {
+  font-size: 10px;
+  Margin-bottom: 10px;
+}
+.node-type-simplenews .two-column {
+  text-align: center;
+  font-size: 0;
+}
+.node-type-simplenews .two-column .column {
+  width: 100%;
+  max-width: 272px;
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 6px;
+  padding-left: 6px;
+  margin: 5px;
+}
+.node-type-simplenews .contents {
+  width: 100%;
+}
+.node-type-simplenews .two-column .contents {
+  text-align: left;
+}
+.node-type-simplenews .contents-right {
+  text-align: right;
+}
+.node-type-simplenews .two-column .img-article {
+  width: 272px;
+  height: auto;
+  padding-bottom: 10px;
+}
+.node-type-simplenews .two-column .text {
+  max-width: 272px;
+  padding-bottom: 10px;
+}
+.node-type-simplenews .three-column {
+  text-align: center;
+  font-size: 0;
+}
+.node-type-simplenews .three-column .column {
+  width: 100%;
+  max-width: 180px;
+  display: inline-block;
+  vertical-align: top;
+  Margin: 5px;
+}
+.node-type-simplenews .three-column .contents {
+  font-size: 14px;
+  text-align: left;
+}
+.node-type-simplenews .three-column .img-article {
+  width: 100%;
+  padding-bottom: 10px;
+}
+.node-type-simplenews .three-column .text {
+  padding-bottom: 10px;
+}
+.node-type-simplenews .capcalera .contents {
+  text-align: center;
+}
+.node-type-simplenews .capcalera p {
+  font-size: 38px;
+  color: #006680;
+  font-weight: bold;
+  Margin: 10px 5px;
+  text-align: center;
+}
+.node-type-simplenews .capcalera .logo {
+  text-align: center;
+  Margin: 10px 5px;
+}
+.node-type-simplenews .capcalera .logo img {
+  height: auto;
+  width: 155px;
+  Margin-top: 10px;
+}
+.node-type-simplenews .sub-capcelera {
+  background-color: #cccccc;
+  border-top: solid 2px #4d4d4d;
+  font-size: 10px;
+  height: 22px;
+}
+.node-type-simplenews .sub-capcelera .contents td {
+  text-align: center;
+}
+.node-type-simplenews .sub-capcelera .contents a {
+  font-size: 10px;
+  color: #4d4d4d;
+  text-decoration: none;
+  font-weight: bold;
+}
+.node-type-simplenews .sub-capcelera .contents .data {
+  font-size: 10px;
+  color: #4d4d4d;
+  text-decoration: none;
+  font-weight: bold;
+}
+.node-type-simplenews .titol-seccio {
+  text-align: center;
+  color: #505050;
+  text-decoration: none;
+  cursor: default;
+  border-bottom: solid 1px #505050;
+  margin-top: 10px;
+}
+.node-type-simplenews .peu {
+  background-color: #cccccc;
+  border-top: solid 2px #4d4d4d;
+}
+.node-type-simplenews .peu .contents {
+  text-align: left;
+  padding: 0px;
+}
+.node-type-simplenews .peu table {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.node-type-simplenews .peu .two-column {
+  text-align: left;
+  padding-left: 8px;
+}
+.node-type-simplenews .peu .two-column .column {
+  width: auto;
+  padding: 0px;
+}
+.node-type-simplenews .peu .inner p {
+  Margin: 20px 0 0 10px;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: left;
+  text-decoration: none;
+}
+.node-type-simplenews .sub-peu {
+  background-color: #1a1a1a;
+}
+.node-type-simplenews .sub-peu .contents {
+  text-align: left;
+}
+.node-type-simplenews .sub-peu table {
+  padding: 0px;
+}
+.node-type-simplenews .sub-peu .inner {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  font-size: 12px;
+  font-family: Georgia;
+  text-align: right;
+  color: #FFFFFF;
+}
+.node-type-simplenews .sub-peu .inner a {
+  color: #FFFFFF;
+  font-size: 12px;
+  font-family: Georgia;
+  text-decoration: none;
+}

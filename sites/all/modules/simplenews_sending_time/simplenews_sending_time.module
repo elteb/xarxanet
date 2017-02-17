@@ -1,0 +1,129 @@
+<?php
+/**
+ * @file
+ * Module to define a sending time for each simplenews issue.
+ */
+
+/**
+ * NEWSLETTER SEND COMMAND
+ * Extends the options in Simplenews module.
+ */
+define ( 'SIMPLENEWS_COMMAND_SENDING_TIME', 5 );
+define ( 'SIMPLENEWS_COMMAND_NOT_SEND_YET', 6 );
+define ( 'SIMPLENEWS_SENDING_TIME_PERIOD', 10 ); //Period in minutes
+
+/**
+ * Implementation of hook_perm().
+ */
+function simplenews_sending_time_perm() {
+	return array (
+			'define issue sending time' 
+	);
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ * Add sending time field to the newsletter edit form.
+ */
+function simplenews_sending_time_form_simplenews_node_tab_send_form_alter(&$form, &$form_state) {
+	global $user;
+	
+	$nid = arg(1);
+	$newsletter = simplenews_newsletter_load($nid);
+	
+	if (user_access ( 'define issue sending time' ) && ($newsletter->status == SIMPLENEWS_STATUS_SEND_NOT)) {
+		
+		// Set the default values.
+		$form ['#submit'] [] = "simplenews_sending_time_submit";
+		$result = db_query ( "SELECT * FROM {simplenews_sending_time} WHERE nid = {$nid}");
+		$row = $result->fetchObject();
+		$time = ($row) ? $row->time : $_SERVER ['REQUEST_TIME'];
+		//$time = new DateTime(date('c', $time));
+		
+		// Add further commands to the 'Send action' radio buttons.
+		$form ['simplenews'] ['send'] ['#options'] [SIMPLENEWS_COMMAND_SENDING_TIME] = t ( 'Send newsletter on defined time' );
+		$form ['simplenews'] ['send'] ['#options'] [SIMPLENEWS_COMMAND_NOT_SEND_YET] = t ( 'Not send yet' );
+		$form ['simplenews'] ['send'] ['#default_value'] = ($row) ? SIMPLENEWS_COMMAND_SENDING_TIME : SIMPLENEWS_COMMAND_NOT_SEND_YET;
+		
+		$form ['simplenews'] ['sending_time'] = array (
+				'#type' => 'fieldset',
+				'#title' => t ( 'Sending time' ),
+				'#attributes' => array (
+						'class' => array('sending_time')
+				),
+				'#collapsible' => FALSE,
+				'#collapsed' => FALSE,
+				'#tree' => TRUE 
+		);
+		
+		// Translate formatted date results.
+		$format = 'Y-m-d H:i:s';
+		$data = date($format, $time);
+		$form ['simplenews'] ['sending_time'] ['time'] = array (
+				'#type' => 'date_select',
+				'#title' => t ( 'Date' ),
+				'#default_value' => $data,
+				'#date_format' => $format,
+				'#date_timezone' => date_default_timezone(),
+				'#date_label_position' => 'none',
+				'#date_increment' => 1,
+				'#date_year_range' => '0:+3',
+				'#required' => TRUE 
+		);
+	}
+}
+
+function simplenews_sending_time_submit($form, &$form_state) {
+	// Get form values from Simplenews.
+	$send = $form_state ['values'] ['simplenews'] ['send'];
+	$nid = $form_state ['values'] ['nid'];
+	$time = $form_state ['values'] ['simplenews'] ['sending_time'] ['time'];
+	$time = strtotime($time);
+	
+	db_query("DELETE FROM {simplenews_sending_time} WHERE nid = {$nid}");
+	
+	if ($send == SIMPLENEWS_COMMAND_SENDING_TIME) {
+		// Set sending time
+		$record = array (
+				'nid' => $nid,
+				'time' => $time 
+		);
+		$result = drupal_write_record ('simplenews_sending_time', $record);		
+		
+		if ($result)
+			drupal_set_message ( t ( 'Newsletter sending time saved' ) );
+	}
+}
+
+/**
+ * Implementation of hook_cron().
+ *
+ * Essentially we are just checking against a status table
+ * and sending pending newsletters.
+ */
+function simplenews_sending_time_cron() {
+	module_load_include ( 'inc', 'simplenews', 'includes/simplenews.mail' );
+	$now_time = $_SERVER ['REQUEST_TIME'];
+	$lastcron = variable_get('simplenews_sending_time_last_cron', 0);
+	
+	if (($lastcron+(SIMPLENEWS_SENDING_TIME_PERIOD*60)) < $now_time) {
+		// Update lastcron
+		variable_set('simplenews_sending_time_last_cron', $now_time);
+		$nextcron = date('H:i', $now_time+(SIMPLENEWS_SENDING_TIME_PERIOD*60));
+		watchdog('Simplenews Sending Time', "Simplenews Sending Time Cron executed. The next execution will take place at {$nextcron}");
+		
+		// Get the newsletters pending to send.
+		$result = db_query("SELECT nid FROM {simplenews_sending_time} WHERE sent = 0 AND time <= {$now_time}");
+		
+		while ($newsletter = $result->fetchObject()) {
+			// Set newsletter sent status to pending if send by cron.
+			$pending = SIMPLENEWS_STATUS_SEND_PENDING;
+			$node = node_load($newsletter->nid);
+			db_query ( "UPDATE {simplenews_sending_time} SET sent = 2 WHERE nid = {$newsletter->nid}" );
+			// Set sending time table status to pending
+			db_query ( "UPDATE {simplenews_newsletter} SET status = {$pending} WHERE nid = {$newsletter->nid}");
+			simplenews_add_node_to_spool ( $node );
+			db_query ( "UPDATE {simplenews_sending_time} SET sent = 1 WHERE nid = {$newsletter->nid}" );
+		}
+	}
+}

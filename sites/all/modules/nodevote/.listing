@@ -1,0 +1,10 @@
+drwxr-xr-x    3 xarxanet xarxanet     4096 Oct  5 22:25 .
+drwxr-xr-x   48 xarxanet xarxanet     4096 Oct  6 12:31 ..
+-rw-r--r--    1 xarxanet xarxanet    14940 Oct  5 22:16 LICENSE.txt
+-rw-r--r--    1 xarxanet xarxanet     3166 Oct  5 22:16 README.txt
+-rw-r--r--    1 xarxanet xarxanet      299 Oct  5 22:16 nodevote.info
+-rw-r--r--    1 xarxanet xarxanet     1492 Oct  5 22:16 nodevote.install
+-rw-r--r--    1 xarxanet xarxanet    17536 Oct  5 22:16 nodevote.module
+-rw-r--r--    1 xarxanet xarxanet      280 Oct  5 22:16 star_off.png
+-rw-r--r--    1 xarxanet xarxanet      630 Oct  5 22:16 star_on.png
+drwxr-xr-x    2 xarxanet xarxanet     4096 Oct  5 22:25 translations

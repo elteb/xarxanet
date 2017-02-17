@@ -1,0 +1,199 @@
+<?php
+
+/**
+ * Utility to change the max length of a text field
+ */
+function teb_toolbox_change_text_field_max_length($field_name, $new_length) {
+	$field_table = 'field_data_' . $field_name;
+	$field_revision_table = 'field_revision_' . $field_name;
+	$field_column = $field_name . '_value';
+
+	// Alter value field length in fields table
+	//db_query("ALTER TABLE `{$field_table}` CHANGE `{$field_column}` `{$field_column}` VARCHAR( {$new_length} )");
+	// Alter value field length in fields revision table
+	//db_query("ALTER TABLE `{$field_revision_table}` CHANGE `{$field_column}` `{$field_column}` VARCHAR( {$new_length} )");
+
+	// Update field config with new max length
+	$result = db_query("SELECT CAST(`data` AS CHAR(10000) CHARACTER SET utf8) FROM `field_config` WHERE field_name = '{$field_name}'");
+	$config = $result->fetchField();
+	$config_array = unserialize($config);
+	$config_array['settings']['max_length'] = $new_length;
+	$config = serialize($config_array);
+	db_update('field_config')
+	->fields(array('data' => $config))
+	->condition('field_name', $field_name)
+	->execute();
+}
+
+/**
+ * Limita el nombre de nodes que es poden destacar en cada espai
+ */
+function teb_toolbox_form_node_form_alter(&$form, &$form_state, $form_id) {
+	if ($form['field_dpp_portal'] || $form['field_dsp_portal'] || $form['field_dpp'] || $form['field_dsp']) {
+		$form['#submit'][] = teb_toolbox_form_submit;
+	}
+}
+
+/**
+ * Limita el nombre de nodes que es poden destacar en cada espai
+ */
+function teb_toolbox_form_submit($form, &$form_state) {
+	$nid = ($form_state['node']->nid) ? $form_state['node']->nid : 0; 
+	$content_type = $form_state['node']->type;
+	
+	$content_area = null;
+	//No queda gaire clar perquè els recursos i les notícies es comporten diferent
+	if(strpos($content_type, 'noticia_') !== false) {			
+		$content_area = $form['field_ambit_noticia']['und']['#value'];
+	} elseif(strpos($content_type, 'recurs_') !== false) {
+		$content_area = $form['#node']->field_ambit_recurs['und'][0]['tid'];
+	}
+	
+	if ($form['field_dpp_portal']['und']['#value']) {
+		//Neteja el valor de tots els predecesors
+		if(strpos($content_type, 'noticia_') !== false) {
+			$result = db_query("SELECT dpp.entity_id FROM {field_data_field_dpp_portal} AS dpp INNER JOIN {field_data_field_ambit_noticia} as ambit ON ambit.entity_id=dpp.entity_id WHERE dpp.field_dpp_portal_value=1 AND dpp.bundle = :type AND dpp.entity_id != :nid AND ambit.field_ambit_noticia_tid = :tid", array(
+				':type' => $content_type,
+				':nid' => $nid,
+				':tid' => $content_area
+			));
+		} elseif(strpos($content_type, 'recurs_') !== false) {
+			$result = db_query("SELECT dpp.entity_id FROM {field_data_field_dpp_portal} AS dpp INNER JOIN {field_data_field_ambit_recurs} as ambit ON ambit.entity_id=dpp.entity_id WHERE dpp.field_dpp_portal_value=1 AND dpp.bundle = :type AND dpp.entity_id != :nid AND ambit.field_ambit_recurs_tid = :tid", array(
+				':type' => $content_type,
+				':nid' => $nid,
+				':tid' => $content_area
+			));
+		}
+		if ($result) {
+			while ($row = $result->fetchAssoc()) {
+				$node = node_load($row['entity_id']);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				$node_wrapper->field_dpp_portal->set(0);
+				$node_wrapper->save();
+			}
+		}
+	} 
+	if ($form['field_dsp_portal']['und']['#value']) {
+		//Neteja el valor de tots els predecesors excepte el darrer
+		if(strpos($content_type, 'noticia_') !== false) {
+			$result = db_query("SELECT dsp.entity_id FROM {field_data_field_dsp_portal} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid INNER JOIN {field_data_field_ambit_noticia} as ambit ON ambit.entity_id=dsp.entity_id WHERE dsp.field_dsp_portal_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid AND ambit.field_ambit_noticia_tid = :tid ORDER BY n.changed DESC", array(
+					':type' => $content_type,
+					':nid' => $nid,
+					':tid' => $content_area
+			));
+		} elseif(strpos($content_type, 'recurs_') !== false) {
+			$result = db_query("SELECT dsp.entity_id FROM {field_data_field_dsp_portal} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid INNER JOIN {field_data_field_ambit_recurs} as ambit ON ambit.entity_id=dsp.entity_id WHERE dsp.field_dsp_portal_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid AND ambit.field_ambit_recurs_tid = :tid ORDER BY n.changed DESC", array(
+					':type' => $content_type,
+					':nid' => $nid,
+					':tid' => $content_area
+			));
+		}
+		if ($result) {
+			$row0 = $result->fetchAssoc();
+			while ($row = $result->fetchAssoc()) {
+				$node = node_load($row['entity_id']);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				$node_wrapper->field_dsp_portal->set(0);
+				$node_wrapper->save();
+			}
+		}
+	}
+	if ($form['field_dpp']['und']['#value']) {
+		//Neteja el valor de tots els predecesors
+		$result = db_query("SELECT entity_id FROM {field_data_field_dpp} AS dpp INNER JOIN {node} AS n ON dpp.entity_id=n.nid WHERE dpp.field_dpp_value=1 AND dpp.entity_id != :nid ORDER BY n.changed DESC", array(
+				':nid' => $nid,
+		));
+		if ($result) {
+			$row0 = $result->fetchAssoc();
+			while ($row = $result->fetchAssoc()) {
+				$node = node_load($row['entity_id']);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				$node_wrapper->field_dpp->set(0);
+				$node_wrapper->save();
+			}
+		}
+	}
+	if ($form['field_dsp']['und']['#value']) {
+		//Neteja el valor de tots els predecesors excepte el darrer
+		$result = db_query("SELECT entity_id FROM {field_data_field_dsp} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid WHERE dsp.field_dsp_value=1 AND dsp.entity_id != :nid ORDER BY n.changed DESC", array(
+				':nid' => $nid,
+		));
+		if ($result) {
+			$row0 = $result->fetchAssoc();
+			while ($row = $result->fetchAssoc()) {
+				$node = node_load($row['entity_id']);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				$node_wrapper->field_dsp->set(0);
+				$node_wrapper->save();
+			}
+		}
+	}
+}
+
+/**
+ * Implements hook_filter_info().
+ */
+function teb_toolbox_filter_info() {
+  $filters = array();
+
+  $filters['kill_nbsp'] = array(
+    'title' => t('Kill Non-Breaking Spaces'),
+    'description' => t('Remove non-breaking spaces.'),
+    'process callback' => '_teb_toolbox_kill_nbsp',
+    'tips callback' => '_teb_toolbox_kill_nbsp_tips',
+  );
+
+  return $filters;
+}
+
+/**
+ * Filter callbacks.
+ */
+function _teb_toolbox_kill_nbsp($text, $filter) {
+  return preg_replace('/&nbsp;/', ' ', $text);
+}
+
+/**
+ * Filter tips.
+ */
+function _teb_toolbox_kill_nbsp_tips($filter, $format, $long = FALSE) {
+  if (!$long) {
+    // This string will be shown in the content add/edit form.
+    return t('Don\'t use non-breaking spaces.  Ever.');
+  }
+  else {
+    // And this one on the "Filter Tips" page.
+    return t('Non-breaking spaces are evil and will be eradicated.');
+  }
+}
+
+/**
+ * Node Revision Trigger
+ * Implements hook_trigger_info()
+ */
+function teb_toolbox_trigger_info() {
+	return array(
+    	'node' => array(
+      		'node_revision' => array(
+        		'label' => t('After new revision'),
+        	),
+      	),
+	);
+}
+
+
+/**
+ * Node Revision Trigger
+ * Implementation of hook_node_update().
+ */
+function teb_toolbox_node_update($node) {
+	if ($node->revision) {
+		// When creating a new revision
+		$actions = trigger_get_assigned_actions('node_revision');
+		$actions = array_keys($actions);
+		$context = array();
+		actions_do($actions, $node, $context);
+	}
+}
+
+?>

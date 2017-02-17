@@ -1,0 +1,434 @@
+/**
+ *   Node Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+
+ /* ------- Notícies i Recursos ------- */
+ .node-column-images {
+  .node-image {
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .legend {
+      p {
+        background-color: $main-color;
+        color: white;
+        margin: 0;
+        padding: $space;
+      }
+      margin-bottom: $ninesixty-gutter-width; 
+    }
+  }
+  .node-opinion-author {
+  	@include node-box;
+    h2 { @include node-title('opinion'); } 
+    line-height: 1.8em;
+    .views-row {
+	  @include list-display($opinion);
+	  list-style-image: image-url('bullets/news-list-style.png');
+	} 
+  }
+  .node-terms {
+    @include node-box;
+    h2 { @include node-title('etiquetes'); } 
+    list-style-image: image-url("bullets/news-list-style.png");
+    line-height: 1.8em;
+  }
+  .node-links {
+    @include node-box;
+    h2 { @include node-title(''); } 
+    ul { line-height: 2.5em; }
+    li { margin-left: 1em; }
+    li.print_html { list-style-image: image-url("pictos/print.png"); }
+    li.print_mail { list-style-image: image-url("pictos/mail.png"); }
+    li.print_pdf { list-style-image: image-url("pictos/pdf-version.png"); }
+    li.ics { list-style-image: image-url("pictos/calendar.png"); }
+  }
+ }
+ 
+ .node-content {
+  .node-intro {
+    border-bottom: solid 1px $main-1;
+    p { 
+      @include title3;
+      margin-bottom: $ninesixty-gutter-width; 
+    }
+  }
+  .node-social-links {
+    margin-top: $ninesixty-gutter-width;
+    margin-bottom: $space;
+  }
+  .node-submitted {
+    margin: $space 0;
+    font-size: 8pt;
+    p { margin: 0 !important; }
+  }
+  .node-body-text {
+    margin: $ninesixty-gutter-width 0;
+  }
+  .resource-answer {
+    margin-top: $ninesixty-gutter-width;
+    p.tornar { text-align: right; }
+ }
+}
+ 
+ section#comments {
+   margin-right: $space;
+   h2.title { 
+     @include node-title('globus');
+     margin-bottom: 0; 
+   }
+   article {
+    background-color: $main-3;
+    padding: $space;
+    margin-bottom: $space;
+    h3, .permalink { display: none; }
+    time {
+      color: #32701D;
+      font-style: italic;
+    }
+    .content {
+      background-color: white;
+      padding: $space;
+    }
+    footer {
+      text-align: right;
+      margin: $ninesixty-gutter-width 0 $space;
+      li { padding: 0; } 
+      a { 
+        padding: $space $ninesixty-gutter-width ;
+        color: white;
+        background-color: $main-1;
+        text-transform: capitalize;
+      }
+    }
+  }
+  
+  #comment-form-wrapper {
+    background-color: $main-3;
+    h2 { @include node-title('comentaris'); }
+    form { padding: $space; }
+    
+  }
+  
+  .form-actions {
+   text-align: right;
+    input { margin-left: 8px; }
+  }
+ }
+
+ /* ------- Authors ------- */
+ #author-description { 
+ 	background-color: $main-3;
+ 	img{ width:175px; }
+ 	.twitter-profile { 
+ 		background: image-url("pictos/twitter-blau-20.png") 0px no-repeat;
+ 		padding: 5px 0px 5px 25px; 
+ 	} 
+ }
+ #author-related-content {
+ 	#author-articles {
+	 	.section-title {
+	 		border-bottom: solid 2px $opinion;
+	 		h2 {
+	 			background-color: $opinion;
+	 			color: white;
+ 			}	
+ 		}
+ 		.views-row {
+ 			border-bottom: dotted 1px $opinion;
+ 			&.views-row-last {
+ 				border-bottom: none;
+ 			}
+ 		}
+ 	}
+ }
+ 
+ /* ------- Opinion ------- */
+ .node-type-opinion {
+	.node-column-images {
+		.article-author {
+			img { width: 175px; }
+			.article-author-text {
+				background-color: $main-3;
+				padding: $space;
+				.twitter-profile { 
+			 		background: image-url("pictos/twitter-blau-20.png") 0px no-repeat;
+			 		padding: 5px 0px 5px 25px; 
+			 	}
+			}
+			padding-bottom: $space;
+			margin-bottom: $space;
+		} 
+	}
+ }
+ 
+/* ------- Butlletins Nonprofit ------- */
+
+.node-type-simplenews{
+  /* Basics */  
+  table {
+      border-spacing: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+  }
+  
+  tbody{
+    border-top:0px;
+  }
+  
+  td {
+      padding: 0;
+  }
+  
+  img {
+      border: 0;
+  }
+  
+  .wrapper {
+      width: 100%;
+      table-layout: fixed;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+  }
+  
+  .webkit {
+      max-width: 600px;
+  }
+   
+  .outer {
+      Margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+  }
+  
+  .inner {
+      padding: 0px;
+  }
+  
+  p {
+      Margin: 0;
+      font-size:12px;
+  }
+  
+  a {
+      color: #006680;
+  }
+  
+  .h1 {
+      font-size: 22px;
+      font-family:Georgia;
+  }
+  
+  .h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      font-family:Georgia;
+      text-decoration:none;
+      padding-bottom:5px;
+  }
+  
+  /* One column layout */
+  .one-column .contents {
+      text-align: left;
+      margin-top:10px;
+      margin-bottom:10px;
+  }
+  
+  .one-column p {
+      font-size: 10px;
+      Margin-bottom: 10px;
+  }
+  
+  /*Two column layout*/
+  .two-column {
+      text-align: center;
+      font-size: 0;
+  }
+  
+  .two-column .column {
+      width: 100%;
+      max-width: 272px;
+      display: inline-block;
+      vertical-align: top;
+      padding-right:6px;
+      padding-left:6px;
+      margin:5px;
+  }
+  
+  .contents {
+      width: 100%;
+  }
+  
+  .two-column .contents {
+      text-align: left;
+  }
+  
+  .contents-right {
+      text-align: right;
+  }
+  
+  .two-column .img-article {
+      width: 272px;
+      height: auto;
+      padding-bottom:10px;
+  }
+  
+  .two-column .text {
+      max-width:272px;
+      padding-bottom:10px;
+  }
+  
+  /*Three column layout*/
+  .three-column {
+      text-align: center;
+      font-size: 0;
+  }
+  
+  .three-column .column {
+    width: 100%;
+    max-width: 180px;
+    display: inline-block;
+    vertical-align: top;
+    Margin: 5px;
+  }
+  
+  .three-column .contents {
+      font-size: 14px;
+      text-align: left;
+  }
+  
+  .three-column .img-article {
+      width: 100%;    
+      padding-bottom:10px;
+  }
+  
+  .three-column .text {
+      padding-bottom:10px;
+  }
+  
+  .capcalera .contents{
+    text-align:center;
+  }
+  
+  .capcalera p{
+    font-size:38px; 
+    color:#006680; 
+    font-weight:bold; 
+    Margin:10px 5px;
+    text-align:center;
+  }
+  
+  .capcalera .logo{
+    text-align:center;
+    Margin:10px 5px;
+  }
+  
+  .capcalera .logo img{
+      height: auto;
+      width:155px;   
+      Margin-top:10px;   
+  }
+  
+  .sub-capcelera{
+    background-color:#cccccc;
+    border-top:solid 2px #4d4d4d;
+    font-size:10px;
+    height:22px;
+  }
+  
+  .sub-capcelera .contents td{
+    text-align:center;
+  }
+  
+  .sub-capcelera .contents a{
+    font-size:10px;
+    color:#4d4d4d;
+    text-decoration:none;
+    font-weight:bold;
+  }
+  
+  .sub-capcelera .contents .data{
+    font-size:10px;
+    color:#4d4d4d;
+    text-decoration:none;
+    font-weight:bold;
+  }
+  
+  .titol-seccio{
+    text-align: center;
+    color:#505050;
+    text-decoration:none;
+    cursor:default;
+    border-bottom:solid 1px #505050;  
+    margin-top:10px;
+  } 
+  
+  .peu{
+    background-color:#cccccc;
+    border-top:solid 2px #4d4d4d;
+  }
+  
+  .peu .contents {
+      text-align: left;
+      padding:0px;
+  }
+  
+  .peu table{
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+  
+  .peu .two-column{
+    text-align:left;
+    padding-left:8px;
+  }
+  
+  .peu .two-column .column{
+    width:auto;
+    padding:0px;
+  }
+  
+  .peu .inner p{
+    Margin:20px 0 0 10px;
+    font-size:12px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    text-align:left;
+    text-decoration:none;
+  }
+  
+  .sub-peu{
+    background-color:#1a1a1a;
+  }
+  
+  .sub-peu .contents {
+      text-align: left;
+  }
+  
+  .sub-peu table{
+    padding:0px;
+  }
+  
+  .sub-peu .inner{
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:5px;
+    font-size:12px;
+    font-family:Georgia;
+    text-align: right;
+    color:#FFFFFF;
+  }
+  
+  .sub-peu .inner a{
+    color:#FFFFFF;
+    font-size:12px;
+    font-family:Georgia;
+    text-decoration:none;
+  }
+  
+  /* Windows Phone Viewport Fix */
+  @-ms-viewport { 
+      width: device-width; 
+  }
+}

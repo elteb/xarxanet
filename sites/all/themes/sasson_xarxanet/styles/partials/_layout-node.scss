@@ -1,0 +1,89 @@
+/**
+ *   Node Layout
+ */
+ 
+ /* ------- Notícies i Recursos ------- */
+ .node-column-images {
+ 	@include grid-width(3);
+ 	float: left;
+ 	margin-right: $space;
+ 	img {
+ 		@include grid-width(3);
+ 	}
+ }
+ 
+ .node-content {
+ 	@include grid-width(5);
+ 	img {
+ 		@include grid-width(5);
+ 	}
+ 	#player {
+ 		@include grid-width(5);
+ 	}
+ 	iframe {
+    width: 464px !important;
+  }
+ 	float: left;
+ 	margin-left: $space;
+ }
+ 
+  section#comments {
+    @include grid-width(5);
+    float: right;
+  }
+
+/* ------- Authors ------- */
+ #author-description { 
+    height: 175px;
+    margin-right: $space;
+    margin-bottom: $space;
+	img { 
+		float: left;
+		margin-right: $space;
+  	}
+  	h3 { padding-top: $space; }	  
+ }
+ #author-related-content {
+ 	padding-top: $space;
+ 	aside {
+ 		float: left;
+ 		margin-right: $space;
+ 		@include grid-width(2);
+ 	}
+ 	#author-articles {
+ 		float: left; 
+ 		margin-left: $space;
+ 		@include grid-width(6);
+	 	.section-title{
+	 		h2 { margin: 0px; 
+	 			padding: $space;
+	 			@include grid-width(1.5);
+ 			}
+	 	}
+ 	}
+ } 
+
+/* ------- Opinió ------- */
+ .node-type-opinio {
+	.node-column-images { @include grid-width(2); }
+	.node-content, section#comments { @include grid-width(6); }
+ }
+  
+/* ------- Fitxes d'entitat ------- */
+ .page-entitat {
+   .images-column,
+   .center-column {
+     margin: 0 $space;
+   }
+   .links-row {
+     #content-block {
+       @include grid-width(4, $ninesixty-columns, $ninesixty-gutter-width + $space);    
+     }
+     #social-block {
+       @include grid-width(3, $ninesixty-columns, $ninesixty-gutter-width + $space); 
+     }
+     .content-block-part {
+       width: 50%;
+     }
+   }
+ }

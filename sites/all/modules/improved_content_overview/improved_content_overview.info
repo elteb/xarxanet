@@ -1,0 +1,5 @@
+name = Improved Content Overview
+description = This module improve the content overview adding new filters and functions
+package = "Administration"
+core = 7.x
+files[] = improved_content_overview.module

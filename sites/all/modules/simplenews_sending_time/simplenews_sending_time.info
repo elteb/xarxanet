@@ -1,0 +1,7 @@
+name = Simplenews Sending Time
+description = Allows to define the sending time of a simplenews issue.
+version = 7.x-1.0
+core = 7.x
+package = Mail
+dependencies[] = simplenews
+scripts[] = simplenews_sending_time.js

@@ -1,0 +1,9 @@
+name        = Mobile Nonprofit
+description = Nonprofit.xarxanet.org theme for mobile devices
+
+core         = 7.x
+version 	 = 7.01
+engine       = phptemplate
+screenshot   = images/screenshot.png
+
+stylesheets[all][] = css/style.css

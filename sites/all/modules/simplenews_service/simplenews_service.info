@@ -1,0 +1,8 @@
+name = Simplenews Service
+description = XMLRPC Webservice for Simplenews module.
+version = 7.x-1.0
+core = 7.x
+package = Mail
+dependencies[] = simplenews
+files[] = simplenews_service.inc
+files[] = simplenews_service.module

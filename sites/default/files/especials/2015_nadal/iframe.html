@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Nadal 2015</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 1.23.1" />
+	<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body style="">
+	<div id="bauble-container" style="width:100%">
+		<img src="arbre.png" alt="arbre de nadal" style="width:100%" />
+		<ul>
+			<li id="b9" class="ball">
+				<div class="bauble red-bauble">
+					<div class="text" id="t9">Educatiu</div>
+				</div>
+			</li>
+			<li id="b10" class="ball">	
+				<div class="bauble blue-bauble">
+					<div class="text" id="t10">Altruista</div>
+				</div>
+			</li>
+			<li id="b11" class="ball">	
+				<div class="bauble yellow-bauble">
+					<div class="text" id="t11">Infantil</div>
+				</div>	
+			</li>	
+			<li id="b14" class="ball">	
+				<div class="bauble green-bauble">
+					<div class="text" id="t14">Solidari</div>
+				</div>
+			</li>
+			<li id="b15" class="ball">
+				<div class="bauble red-bauble">
+					<div class="text" id="t15">Sostenible</div>
+				</div>
+			</li>
+			<li id="b16" class="ball">	
+				<div class="bauble blue-bauble">
+					<div class="text" id="t16">Participatiu</div>
+				</div>
+			</li>
+			<li id="b17" class="ball">	
+				<div class="bauble yellow-bauble">
+					<div class="text" id="t17">Jove</div>
+				</div>	
+			</li>	
+			<li id="b18" class="ball">	
+				<div class="bauble green-bauble">
+					<div class="text" id="t18">Cultural</div>
+				</div>
+			</li>
+			<li id="b21" class="ball">
+				<div class="bauble red-bauble">
+					<div class="text" id="t21">Virtual</div>
+				</div>
+			</li>
+			<li id="b22" class="ball">	
+				<div class="bauble blue-bauble">
+					<div class="text" id="t22">Global</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$( document ).ready(function() {
+		var d = new Date();
+		var day = d.getDate();
+		
+		//URL array
+		var url_array = [];
+		url_array[9] = "http://xarxanet.org/general/noticies/propostes-un-nadal-educatiu";
+		url_array[10] = "http://xarxanet.org/general/noticies/propostes-un-nadal-altruista";
+		url_array[11] = "http://xarxanet.org/general/noticies/propostes-un-nadal-infantil";
+		url_array[14] = "http://xarxanet.org/general/noticies/propostes-un-nadal-altruista-0";
+		url_array[15] = "http://xarxanet.org/general/noticies/propostes-un-nadal-sostenible";
+		url_array[16] = "http://xarxanet.org/general/noticies/propostes-un-nadal-participatiu";
+		url_array[17] = "http://xarxanet.org/general/noticies/propostes-un-nadal-jove";
+		url_array[18] = "http://xarxanet.org/general/noticies/propostes-un-nadal-cultural";
+		url_array[21] = "http://xarxanet.org/general/noticies/propostes-un-nadal-virtual";
+		url_array[22] = "http://xarxanet.org/general/noticies/propostes-un-nadal-global";
+		
+		$(".ball").each(function() {
+			//Ckeck date
+			if (day >= this.id.substr(1)) {
+				$(this).addClass('active');
+			}else{
+				$(this).addClass('inactive');
+			}
+		});
+		
+		$(".active").click(function(){
+			top.location = url_array[this.id.substr(1)];
+		});
+		
+		$(".active").hover(function(){
+			$("#t"+this.id.substr(1)).fadeToggle();
+		});
+	});
+</script>
+</body>
+
+</html>

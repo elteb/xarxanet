@@ -1,0 +1,163 @@
+<?php
+
+/**
+ * Implementation of hook_menu().
+ */
+function webform_custom_simplenews_menu($may_cache) {
+	$items ['admin/settings/webform_custom_simplenews'] = array (
+			'title' => 'Webform Custom Simplenews settings',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array (
+					'webform_custom_simplenews_admin' 
+			),
+			'access arguments' => array (
+					'administer settings' 
+			),
+			'type' => MENU_NORMAL_ITEM 
+	);
+	return $items;
+}
+
+/**
+ * Admin configuration form
+ */
+function webform_custom_simplenews_admin() {
+	$form = array ();
+	$form ['webform_custom_simplenews_lapse'] = array (
+			'#type' => 'textfield',
+			'#title' => t ( 'Publish content since' ),
+			'#description' => t ( 'days before sending moment' ),
+			'#default_value' => variable_get ( 'webform_custom_simplenews_lapse', '7' ),
+			'#size' => 2,
+			'#maxlength' => 2,
+			'#required' => TRUE 
+	);
+	
+	return system_settings_form ( $form );
+}
+
+/**
+ * Admin configuration form
+ */
+function webform_custom_simplenews_admin_validate($form, &$form_state) {
+	$lapse = $form_state ['values'] ['webform_custom_simplenews_lapse'];
+	if (! is_numeric ( $lapse )) {
+		form_set_error ( 'onthisdate_maxdisp', t ( 'You must enter an integer.' ) );
+	} elseif ($lapse <= 0) {
+		form_set_error ( 'onthisdate_maxdisp', t ( 'Maximum number of links must be positive.' ) );
+	}
+}
+
+/**
+ * Implementation of hook_webform_component_info().
+ */
+function webform_custom_simplenews_webform_component_info() {
+	$components = array ();
+	$components ['newsletter_param'] = array (
+			'label' => t ( 'Newsletter parameters' ),
+			'description' => t ( 'Parameters for newsletter' ),
+			'features' => array (
+					'csv' => TRUE,
+					'email' => TRUE,
+					'required' => TRUE,
+					'conditional' => TRUE,
+					'email_address' => TRUE,
+					'spam_analysis' => TRUE 
+			),
+			'file' => 'webform_custom_simplenews.inc' 
+	);
+	return $components;
+}
+
+/**
+ * Implementation of hook_theme()
+ */
+function webform_custom_simplenews_theme() {
+	$path = drupal_get_path ( 'module', 'webform_custom_simplenews' );
+	
+	return array (
+			'custom_content_section' => array (
+					'variables' => array (
+							'section_nodes' => Null,
+							'section_name' => Null 
+					),
+					'template' => 'custom-content-section',
+					'path' => $path . '/templates' 
+			) 
+	);
+}
+
+/**
+ * Function to register custom content to a subscription
+ * 
+ * @param $snid subscriptor
+ *        	ID
+ * @param $tid newsletter
+ *        	term ID
+ * @param $custom_content array
+ *        	of types of the custom content
+ */
+function register_custom_content($snid, $tid, $field, $custom_content) {
+	$serial_content = implode(",", $custom_content);
+	$query = "INSERT IGNORE INTO webform_custom_simplenews (snid, tid, custom_content, field) VALUES (".$snid.", ".$tid.", '".$serial_content."', '".$field."')";
+	db_query ($query);
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function webform_custom_simplenews_token_info() {	
+	$types ['simplenews-custom-webform'] = array (
+			'name' => t ( 'Simplenews Custom Webform' ),
+			'description' => t ( 'Tokens related to the newsletter custom content' ),
+			'needs-data' => ''
+	);
+	
+	$custom['newsletter-custom-content'] = array(
+			'name' => t("Custom content"),
+			'description' => t("Custom contents for the newsletter."),
+	);
+	
+	return array (
+			'types' => $types,
+			'tokens' => array (
+					'simplenews-custom-webform' => $custom,
+			) 
+	);
+}
+
+/**
+ * Implementation of hook_tokens().
+ */
+function webform_custom_simplenews_tokens($type, $tokens, array $data = array(), array $options = array()) {
+	$values = array (
+			'[simplenews-custom-webform:newsletter-custom-content]' => ''
+	);
+	if ($type == 'simplenews-custom-webform') {
+		if ($snid = $data['simplenews_subscriber']->snid) {
+			$tid = $data['category']->tid;
+			$contents = db_query("SELECT field, custom_content FROM {webform_custom_simplenews} WHERE snid = :snid AND tid= :tid", array(':snid' => $snid, ':tid' =>$tid))->fetchObject();
+			$field = $contents->field;			
+			$contents = explode(',', $contents->custom_content);
+			$lapse = variable_get ('webform_custom_simplenews_lapse', '7');
+			$created = time() - $lapse * 86400;
+			foreach ( $contents as $content ) {
+				if ($content) {				
+					$section_nodes = array();
+					$query = "SELECT n.nid FROM field_data_{$field} AS f INNER JOIN node as n ON f.entity_id=n.nid WHERE f.{$field}_tid={$content} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
+					//$query = "SELECT nid FROM node WHERE type = '{$content}' AND created >= {$created} AND status = 1 ORDER BY created DESC";
+					$result = db_query($query);
+					while($obj = $result->fetchObject()) {
+						$section_nodes[] = $obj->nid;
+					}
+					if (!empty($section_nodes)) {
+						$term = taxonomy_term_load($content);
+						$html = theme('custom_content_section', array('section_nodes' => $section_nodes, 'section_name' => $term->name));
+						$values['[simplenews-custom-webform:newsletter-custom-content]'] .= $html;
+					}
+				}
+			}
+		}
+	}
+	return $values;
+}

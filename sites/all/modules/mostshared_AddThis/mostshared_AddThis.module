@@ -1,0 +1,727 @@
+<?php
+/**
+ * @file
+ * The mostshared module provides a block with most shared count information.
+ */
+ 
+define('MOSTSHARED_SERVICE_STATUS_ERROR', -2);
+//define('MOSTPOPULAR_SERVICE_STATUS_DISABLED', -1);
+//define('MOSTPOPULAR_SERVICE_STATUS_PENDING', 0);
+//define('MOSTPOPULAR_SERVICE_STATUS_CONFIGURED', 1);
+//define('MOSTPOPULAR_SERVICE_STATUS_OK', 2);
+
+define('MOSTSHARED_DEFAULT_EXCLUDES', "admin/*\nuser/*\nnode/*/*\n*?*\n");
+define('MOSTSHARED_SERVICE_ADDTHIS_ID', 2);
+define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL', "-1 week");
+define('MOSTSHARED_SERVICE_ADDTHIS_INTERVAL_ID', "1");
+define('MOSTSHARED_ADDTHIS_ENTITY_TYPE', "node");
+
+/**
+ * Implements hook_views_api().
+ */
+function mostshared_AddThis_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'mostshared_AddThis') . '/views',
+  );
+}
+
+
+/**
+ * @file
+ * Provides a connector to the AddThis.com API.
+ *
+ * See http://www.addthis.com/help/analytics-api
+ */
+class MostSharedAddThis {
+  const data_scheme = 'https://';
+  const data_url = 'api.addthis.com/analytics/1.0/pub/shares';
+
+  protected $pubid;
+  protected $username;
+  protected $password;
+  protected $result;
+   
+  /**
+   * Constructs a new AddThis class.
+   */
+  public function MostSharedAddThis($username, $password, $pubid) {
+    $this->username = $username;
+    $this->password = $password;	
+    $this->pubid = $pubid;
+  }
+
+  /**
+   * Makes a generic call to the AddThis.com server.
+   *
+   * See http://www.addthis.com/help/analytics-api
+   *
+   * @param string $dimension
+   *   The dimension we're interested in.  It must be null or one of:
+   *   - url
+   *   - continent
+   *   - country
+   *   - domain
+   *   - service
+   * @param string $format
+   *   The format to return results, either 'csv' or 'json'.
+   * @param string $params
+   *   Additional parameters to send.  The following are allowed:
+   *   - period: 'day', 'week' or 'month'
+   *   - domain: any URL domain
+   *   - service: 'email'
+   */
+  public function fetch($dimension = '', $format = 'csv', $params = array()) {
+    if (empty($this->pubid)) {
+      drupal_set_message(t('You must configure the AddThis.com username, password, and publisher profile id.'), 'error');
+      return FALSE;
+    }
+
+    // Create the URL
+    $params += array(
+      'userid' => $this->username,
+      'password' => $this->password,
+      'pubid' => $this->pubid,
+    );
+
+    $url = self::data_url;
+    if (!empty($dimension)) {
+      $url .= '/' . $dimension;
+    }
+    $url .= '.' . $format;
+	
+	
+	// Clean up the URL and add query parameters
+    $request_url = url(self::data_scheme . $url, array( 'query' => $params ));
+
+	$this->result = drupal_http_request($request_url);
+    
+	if (variable_get('mostshared_debug', FALSE)) {
+      watchdog('mostshared_addthis', 'Request to !url<pre>!response</pre>', array(
+        '!url' => $request_url,
+        '!response' => print_r($this->result, TRUE),
+      ), WATCHDOG_DEBUG);
+    }
+
+    if (isset($this->result->error)) {
+      $msg = '';
+      // Parse the error to figure out what happened.
+      if (preg_match("/<b>message<\/b> <u>(.+?)<\/u>/", $this->result->data, $matches)) {
+        $msg = $matches[1];
+      }
+      
+      drupal_set_message(t(
+"Error connecting to AddThis.com service.<br/>
+!url<br/>
+@code @error %msg", array(
+          '!url' => url(self::data_scheme . $url, array( 'query' => $params )),
+          '@code' => $this->result->code,
+          '@error' => $this->result->error,
+          '%msg' => $msg,
+        )), 'error');
+		
+      return FALSE;
+    }
+    return $this->result->data;
+  }
+
+  /**
+   * Makes a call to the AddThis.com server and parses the JSON response.
+   *
+   * @param string $dimension
+   *   The dimension we're interested in.  It must be null or one of:
+   *   - url
+   *   - continent
+   *   - country
+   *   - domain
+   *   - service
+   * @param string $params
+   *   Additional parameters to send.  The following are allowed:
+   *   - period: 'day', 'week' or 'month'
+   *   - domain: any URL domain
+   *   - service: 'email'
+   *
+   * @return array
+   *   An array of associative arrays, each containing:
+   *     - shares: The number of times the page was shared.
+   *     - url: The URL of the page.
+   */
+  public function fetchJson($dimension = '', $params = array()) {
+  	$data = $this->fetch($dimension, 'json', $params);
+    if ($data !== FALSE) {
+	  return drupal_json_decode($data);
+    }
+    return FALSE;
+  }
+}
+
+/**
+ * Implementation of hook_help().
+ */
+function mostshared_AddThis_help($path, $args) {
+  if ($path == 'admin/help#mostshared_AddThis') {
+    return t('The Most Shared module retrieves a list of the most shared content on your site through AddThis, and provides a block for displaying the most shared content to users.');
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function mostshared_AddThis_menu() {
+  $items = array();
+
+  $items['admin/config/mostshared_AddThis'] = array(
+    'title' => 'Most Shared',
+    'description' => 'Configure the Most Shared block functionality.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mostshared_AddThis_settings_form'),
+    'access arguments' => array('administer mostshared'),
+    'file path' => drupal_get_path('module', 'system'),
+    'position' => 'right',
+    'type' => MENU_NORMAL_ITEM,
+  );
+    
+  $items['admin/config/mostshared_AddThis/config'] = array(
+    'title' => 'Settings',
+    'description' => 'Basic settings for all Most Shared blocks.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mostshared_AddThis_settings_form'),
+    'access arguments' => array('administer mostshared'),
+    'type' => MENU_LOCAL_TASK | MENU_VISIBLE_IN_TREE,
+    'weight' => 0,
+  );
+  
+  /*$items['admin/config/mostshared_AddThis/intervals'] = array(
+   * 'title' => 'Intervals',
+   * 'description' => 'Configure the intervals of time used for each Most Popular block.',
+   * 'file' => 'mostshared_AddThis.intervals.inc',
+   * 'page callback' => 'drupal_get_form',
+   * 'page arguments' => array('mostshared_AddThis_intervals_admin_form'),
+   * 'access callback' => 'user_access',
+   * 'access arguments' => array('administer mostshared'),
+   * 'type' => MENU_LOCAL_TASK | MENU_VISIBLE_IN_TREE,
+   * 'weight' => 20,
+  );
+  */
+  
+  /*$items['admin/config/mostshared_AddThis/configAddThis'] = array(
+   * 'title' => 'AddThis Credential Settings',
+   * 'description' => 'Credentials settings for Most Shared AddThis.',
+   * 'page callback' => 'drupal_get_form',
+   * 'page arguments' => array('mostshared_Addthis_config_form'),
+   * 'access arguments' => array('administer mostshared'),
+   * 'type' => MENU_LOCAL_TASK | MENU_VISIBLE_IN_TREE,
+   * 'weight' => 30,
+  );
+   */
+  $items['admin/config/mostshared_AddThis/refresh'] = array(
+    'title' => 'Refresh Stats',
+    'description' => 'Refresh the Most Shared stats.',
+    'page callback' => 'mostshared_AddThis_refresh',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer mostshared'),
+    'type' => MENU_LOCAL_TASK | MENU_VISIBLE_IN_TREE,
+    'weight' => 60,
+  );
+
+  $items['mostshared_AddThis/ajax/%/%/%'] = array(
+    'title' => 'Get the most shared stats via AJAX',
+    'page callback' => 'mostshared_AddThis_items_ajax',
+    'page arguments' => array(2, 3, 4),
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/* ----------------------------------------------------------------------------
+ * Settings Form
+ * --------------------------------------------------------------------------*/
+function mostshared_AddThis_settings_form() {
+  $form = array();
+  // Add a fieldset for configuring MOSTSHARED_SERVICE_ADDTHIS_INTERVAL Drupal paths
+  $form['paths'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Drupal Paths'),
+  );
+
+  $form['credentials'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Credentials AddThis'),
+  );
+    
+  // Get the configured base paths
+  $site_base = url('', array('absolute' => TRUE));
+  $path_base = url('');
+  $basepaths = variable_get('mostshared_AddThis_basepaths', array($site_base, $path_base));
+
+  $form['paths']['mostshared_AddThis_basepaths'] = array(
+    '#type' => 'textarea',
+    '#rows' => 6,
+    '#title' => t('Base Paths'),
+    '#default_value' => implode("\n", $basepaths),
+    '#description' => t(<<<EOT
+	<p>These base URLs will be stripped from the beginning of any full page URLs returned
+	by the various services. This allows the most popular content to work across several
+	site configurations.  This will only work, however, if the node nids are shared
+	between all sites.</p>
+<p>Put each base URL on a separate line. Each must end with a slash.</p>
+EOT
+    ),
+  );
+
+  // Get the configured exclude paths
+  $excludepaths = variable_get('mostshared_AddThis_exclude_paths', MOSTSHARED_DEFAULT_EXCLUDES);
+  $form['paths']['mostshared_AddThis_exclude_paths'] = array(
+    '#type' => 'textarea',
+    '#rows' => 10,
+    '#title' => t('Paths to exclude'),
+    '#default_value' => $excludepaths,
+    '#description' => t(<<<EOT
+<p>These Drupal pages will be excluded from the most popular results for any 
+services that return nodes.  The homepage will automatically be excluded, but
+you can use this field to hide landing pages or other non-content pages.</p>
+<p>Each URL should be an internal Drupal path with no leading slash, and can
+point either to node/%d or to an alias. Put each path on a separate line and 
+use '*' to denote wildcards.</p>
+EOT
+    ),
+  );
+  
+  // Get the configured AddThis USER
+  $addthisuser = variable_get('mostshared_AddThis_username',null);
+  $form['credentials']['mostshared_AddThis_username'] = array(
+    '#type' => 'textfield',
+    '#title' => t('User Name'),
+    '#required' => TRUE,
+    '#default_value' => $addthisuser,
+  );
+
+  // Get the configured AddThis PSWD
+  $addthispswd = variable_get('mostshared_AddThis_pass',null);
+  $form['credentials']['mostshared_AddThis_pass'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Password'),
+    '#required' => TRUE,
+    '#default_value' => $addthispswd,
+  );
+
+  // Get the configured AddThis PUID
+  $addthispuid = variable_get('mostshared_AddThis_puid',null);
+  $form['credentials']['mostshared_AddThis_puid'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PUID Name'),
+    '#required' => TRUE,
+    '#default_value' => $addthispuid,
+  );    
+    
+  $form['mostshared_AddThis_debug'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Log debug messages from the services?'),
+    '#default_value' => variable_get('mostshared_AddThis_debug', FALSE),
+  );
+  
+  $form['#validate'][] = 'mostshared_AddThis_settings_form_validate';
+  $form = system_settings_form($form);
+  return $form;
+}
+
+function mostshared_AddThis_settings_form_validate($form, &$form_state) {
+  // Change the encoding for the path fields
+  $basepaths = explode("\n", $form_state['values']['mostshared_AddThis_basepaths']);
+  $form_state['values']['mostshared_AddThis_basepaths'] = array();
+  foreach ($basepaths as $path) {
+  	$path = trim($path);
+    if (!empty($path)) {
+      $form_state['values']['mostshared_AddThis_basepaths'][] = $path;
+    }
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Cron jobs to fetch stats
+ * --------------------------------------------------------------------------*/
+/**
+ * Implements hook_cron().
+ *
+ * Refreshes data from the services periodically.
+ */
+function mostshared_AddThis_cron() {
+  $t = mostshared_AddThis_refresh(TRUE);
+  watchdog('mostshared_AddThis_cron', $t);
+}
+
+/**
+ * Refreshes data from each service by invoking the refresh callback for AddThis service.
+ */
+function mostshared_AddThis_refresh($cron = FALSE) {
+  // Report all errors
+  //error_reporting(E_ALL);	
+  
+  $t = '';
+  
+  $sid = MOSTSHARED_SERVICE_ADDTHIS_ID;
+  $interval = MOSTSHARED_SERVICE_ADDTHIS_INTERVAL;
+  $iid = MOSTSHARED_SERVICE_ADDTHIS_INTERVAL_ID;
+  
+  // Get the number of seconds that this interval spans.
+  $now = time();
+  $span = $now - strtotime($interval, $now);
+    
+  // Get the next time this service should run.
+  $row = db_select('mostshared_AddThis_last_run', 'r')
+    ->fields('r', array('last_run', 'next_run'))
+    ->condition('sid', $sid)
+    ->condition('iid', $iid)
+    ->range(0, 1)
+    ->execute()
+    ->fetch();
+      
+  if ($row) {
+    $last_run = $row->last_run;
+    $next_run = $row->next_run;
+  }
+  else {
+  	$last_run = 0;
+    $next_run = $now;
+  }
+  
+  $addthisuser = variable_get('mostshared_AddThis_username',null);
+  $addthispswd = variable_get('mostshared_AddThis_pass',null);
+  $addthispuid = variable_get('mostshared_AddThis_puid',null);    
+  // When running as a cron job, ask the service how often it should refresh.
+  // When running as a page request, refresh the service immediately.
+  if (!$cron || $next_run <= $now) {
+  	// Create a class
+    $addthis = new MostSharedAddThis($addthisuser, $addthispswd, $addthispuid);
+
+	if ($span <= 60 * 60 * 24) {
+      $params['period'] = 'last24';
+    }
+	elseif ($span <= 60 * 60 * 24 * 7) {
+      $params['period'] = 'week';
+    }
+    // AddThis.com does not support any other options currently
+    else {
+      $params['period'] = 'month';
+    }
+	
+	// Get the data from AddThis.com
+    $data = $addthis->fetchJson('url', $params);
+    $limit = 10;
+	
+	$out = array();
+
+  	// If there was an error, report it.
+    if ($data === FALSE) {
+      return FALSE;
+	}
+	
+    $status = '';
+    foreach ($data as $v) {
+      $count = $v['shares'];
+      $url = $v['url'];
+	  
+	  // Match the URL to a node
+      $obj = mostshared_AddThis_match_result_nodes($url, $count);
+	  
+      if (isset($obj)) {
+        $out[] = $obj;
+		$obj->entity_type = MOSTSHARED_ADDTHIS_ENTITY_TYPE;
+      	
+        $status .= t('@url (@count)', array(
+          '@url' => $url,
+          '@count' => $count,
+        ));
+        if (isset($obj->entity_type)) {
+          $status .= t(' is %entity: %id', array(
+        	  '%entity' => $obj->entity_type,
+        	  '%id' => $obj->entity_id,
+          ));
+        }
+        $status .= '<br>';
+      }
+
+      // Return only the first results
+      if (count($out) >= $limit) {
+        break;
+      }
+    }
+    watchdog('mostshared_addthis', 'Found %num items (of %count results) for @services<br/>!status', array(
+      '%num' => count($out),
+      '%count' => count($data),
+      '!status' => $status,
+    ), WATCHDOG_DEBUG);
+ 	  
+    // If the module returned any results, save them to the database.
+    if ($addthis !== FALSE) {
+      if (count($out) > 0) {
+  
+        // Remove the previous results, if there are any
+        db_delete('mostshared_AddThis_item')
+          ->condition('sid', $sid)
+          ->condition('iid', $iid)
+          ->execute();
+  	
+        // Write the new results to the cache table
+        foreach ($out as $value) {
+          $value->sid = $sid;
+          $value->iid = $iid;
+		  $value->entity_type = MOSTSHARED_ADDTHIS_ENTITY_TYPE;
+		      
+		  // Fill in the entity properties if they are not already set.
+          if (!empty($value->entity_type) && !empty($value->entity_id)) {
+            if (empty($value->path) || empty($value->title)) {
+              $entity = reset(entity_load($value->entity_type, array($value->entity_id)));
+				                  
+              if ($entity && empty($value->path)) {
+                $uri = entity_uri($value->entity_type, $entity);
+                if (isset($uri['path'])) {
+                    $value->path = $uri['path'];
+                }
+              }
+              if ($entity && empty($value->title)) {
+                $value->title = entity_label($value->entity_type, $entity);
+              }
+            }
+          }
+          // Save the URL as an absolute path, so we can reuse it on other sites.
+          $value->url = url($value->path, array(
+            'absolute' => TRUE,
+          ));
+          
+          drupal_write_record('mostshared_AddThis_item', $value);
+        }
+      }
+          
+      // Ask the service when it should next run on this interval.
+      $service = MOSTSHARED_SERVICE_ADDTHIS_ID;
+      $last_run = $now;
+	  $next_run = mostshared_AddThis_next_run($service, $span, $last_run);
+      
+      db_merge('mostshared_AddThis_last_run')
+        ->fields(array(
+          'last_run' => $last_run,
+          'next_run' => $next_run,
+        ))
+        ->key(array(
+          'sid' => $sid,
+          'iid' => $iid,
+        ))
+        ->execute();
+         
+      // Clear the item cache
+      cache_clear_all("mostshared_AddThis_items:{$sid}:{$iid}", 'cache_block');
+          
+      $status = t("%interval: Found %count items", array(
+        '%interval' => MOSTSHARED_SERVICE_ADDTHIS_INTERVAL,
+        '%count' => count($out),
+      ));
+    }
+    else {
+      $status = t("%interval: Error retrieving results", array(
+        '%interval' => $interval->title,
+      ));
+      //$service->status = MOSTPOPULAR_SERVICE_STATUS_ERROR;
+      //mostshared_service_save($service);
+    }
+  }
+  else {
+    $status = t('%interval: No need to refresh yet', array(
+      '%interval' => $interval->title,
+    ));
+  }
+   
+  if (empty($t)) {
+    $t .= t("Last %interval: Found %count items", array(
+        '%interval' => MOSTSHARED_SERVICE_ADDTHIS_INTERVAL,
+        '%count' => count($out)
+    ));
+  }
+  return $t;
+}
+
+/**
+ * Matches the given URL to a Drupal node, resolving aliases appropriately.
+ * The homepage will never be included in this list.
+ *
+ * The URL can be an internal URL or it can start with one of the configured
+ * Drupal base paths, which will be stripped from the URL before the alias is
+ * resolved.
+ *
+ * If the URL corresponds to a node, an array will be returned with properties
+ * of that node from the most popular service.
+ *
+ * @param string $url
+ *   A URL to match.  This can be either an internal Drupal URL or it can start
+ *   with one of the configured site basepaths.
+ * @param integer $count
+ *   The number of times this node appears.
+ *
+ * @return array
+ *   If the url corresponds to an entity, returns an array containing:
+ *     - entity_type: the type of entity.
+ *     - entity_id: the ID of the entity.
+ *     - title: the title of the entity, fetched from the entity itself.
+ *     - url: the external URL of the entity.
+ *     - path: the internal Drupal path of the entity.
+ *     - count: the number of times the entity was referenced.
+ *   Otherwise, returns NULL.
+ */
+function mostshared_AddThis_match_result_nodes($url, $count) {
+    
+  $url = trim($url);
+
+  // Strip out the base path from the URL.
+  $basepaths = variable_get('mostshared_AddThis_basepaths', array());
+  foreach ($basepaths as $base) {
+  	if (stripos($url, $base) === 0) {
+  	  $url = drupal_substr($url, drupal_strlen($base));
+      break;
+    }
+  }
+  // Strip off any leading slashes
+  if (stripos($url, '/') === 0) {
+    $url = drupal_substr($url, 1);
+  }
+
+  // If the URL points to an excluded path, ignore it.
+  $excludepaths = variable_get('mostshared_AddThis_exclude_paths', '');
+  if (empty($url) || drupal_match_path($url, $excludepaths)) {
+    return NULL;
+  }
+
+  // Get the internal path for the URL alias.
+  $path = drupal_get_normal_path($url);
+
+  // If the URL points to an excluded path, ignore it.
+  if (drupal_match_path($path, $excludepaths)) {
+    return NULL;
+  }
+  
+  $out = (object)array(
+    'path' => $path,
+    'count' => $count,
+  );
+  
+  // Attempt to lookup the entity 
+  $item = menu_get_item($path);
+  $entity = NULL;
+  if (!empty($item['load_functions'])) {
+    foreach ($item['load_functions'] as $i => $func) {
+      if ($func == 'menu_tail_load') {
+        break;
+      }
+      // Extract the entity type from the name of the load function
+      $entity_type = substr($func, 0, -5);
+      
+      // Compare this to the list of valid entity types 
+      if (empty($options['entity_types']) || isset($options['entity_types'][$entity_type])) {
+        
+        // Load the entity
+        $parts = explode('/', $path);
+        if (isset($parts[$i]) && function_exists($func)) {
+          $entity = $func($parts[$i]);
+          
+          // Check that the bundle matches
+          if (isset($entity) && is_object($entity)) {
+            list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
+            if (!empty($options['entity_types']) && !isset($options['entity_types'][$entity_type][$bundle])) {
+              $entity = NULL;
+            }
+          }
+          else {
+            $entity = NULL;
+          }
+        }
+      }
+      break;
+    }
+  }
+  
+  if (isset($entity)) {
+    // Check that anonymous users have access to view this entity
+    $access = entity_access('view', $entity_type, $entity, user_load(0));
+    if (isset($access) && $access === FALSE) {
+      return NULL;
+    }
+    
+    $out->entity_type = $entity_type;
+    $out->entity_id = entity_id($entity_type, $entity);
+    $out->title = entity_label($entity_type, $entity);
+    
+    $uri = entity_uri($entity_type, $entity);
+    if (isset($uri['path'])) {
+      $out->path = $uri['path'];
+    }
+  }
+  if ($entity) {
+    return $out;
+  }
+  return NULL;
+}
+
+/**
+ * Gets the configured intervals for the given block.
+ * 
+ * @param integer $sid The ID of the service.
+ */
+function mostshared_AddThis_interval_load() {
+  if (!isset($intervals[$sid])) {
+    $intervals[$sid] = db_select('mostshared_AddThis_interval', 'i')
+      ->fields('i')
+      ->condition('sid', $sid)
+      ->orderBy('weight', 'ASC')
+      ->execute()
+      ->fetchAllAssoc('iid');
+  }
+  return $intervals[$sid];
+}
+
+/**
+ * Gets the configured Most Shared intervals.
+ * 
+ * @param integer $iid Optionally the ID of a single interval to retrieve.
+ */
+function mostshared_AddThis_intervals($iid = NULL) {
+  $intervals = &drupal_static(__FUNCTION__);
+  if (!isset($intervals)) {
+    $intervals = db_select('mostshared_AddThis_interval', 'i')
+      ->fields('i')
+      ->execute()
+      ->fetchAllAssoc('iid');
+  }
+  if (!empty($iid)) {
+    if (isset($intervals[$iid])) {
+      return $intervals[$iid];
+    }
+    return FALSE;
+  }
+  return $intervals;
+}
+
+/**
+ * Implements the 'next_run' callback for the AddThis emailed mostpopular service.
+ * 
+ * Returns the timestamp at which to next refresh the data for this interval.
+ * 
+ * @param array $service The service definition
+ * @param integer $span The number of seconds representing the current interval.
+ * @param integer $last_run The timestamp at which this service was last run for this interval.
+ */
+function mostshared_AddThis_next_run($service, $span, $last_run) {
+  // If the interval is 2 days or less, refresh once per hour
+  if ($span <= 60 * 60 * 24 * 2) {
+    return strtotime('30 minutes', $last_run);
+  }
+  // If the interval is 1 year or more, refresh once per week 
+  elseif ($span >= 60 * 60 * 24 * 365) {
+    return strtotime('1 week', $last_run);
+  }
+  // Otherwise, refresh once per day.
+  return strtotime('1 day', $last_run);
+}

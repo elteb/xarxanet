@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for the Simplenews Sending 
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function simplenews_sending_time_install() {
+	drupal_install_schema('simplenews_sending_time');
+}
+
+/**
+ * Implementation of hook_schema().
+ */
+function simplenews_sending_time_schema() {
+	$schema['simplenews_sending_time'] = array(
+		'description' => 'Newsletter sendign time data',
+		'fields' => array(
+			'nid' => array(
+				'description' => 'Issue nid.',
+				'type' => 'int',
+				'not null' => TRUE,
+				'default' => 0,
+			),
+			'time' => array(
+				'description' => 'The timestamp of the sending time.',
+				'type' => 'int',
+				'not null' => TRUE,
+				'default' => 0,
+			),
+			'sent' => array(
+				'description' => 'Sent or not.',
+				'type' => 'int',
+				'size' => 'tiny',
+				'not null' => TRUE,
+				'default' => 0,
+			),
+		),
+		'primary key' => array('nid'),
+  	);
+	return $schema;
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function simplenews_sending_time_uninstall() {
+	// Remove tables.
+	drupal_uninstall_schema('simplenews_sending_time');
+}

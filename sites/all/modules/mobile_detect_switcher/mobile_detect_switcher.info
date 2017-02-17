@@ -1,0 +1,6 @@
+name = Mobile Detect Switcher
+description = Implement URL calls to switch between mobile and desktop themes
+core = 7.x
+package = Mobile Detect
+dependencies[] = mobile_detect
+files[] = mobile_detect_switcher.module

@@ -1,0 +1,85 @@
+/**
+ *   Frontpage Layout
+ */
+/* ------- General ------- */
+.front .title {
+  display: none;
+}
+
+/* ------- Panels -------*/
+.panel-2col {
+	.panel-col-first {
+	  width: $ninesixty-grid-width / $ninesixty-columns * 6 - $space;
+	  padding-left: $space; 
+	}
+	
+	.panel-col-last {
+	 	width: $ninesixty-grid-width / $ninesixty-columns * 4;
+	  	@include grid-width(4);
+	  	a img {
+			@include grid-width(4);
+	  	}
+	  	@include grid-unit-base
+	}
+}
+
+/* ------- Notícia destacada principal ------- */
+.pane-recull-noticies-principal,
+.views-field-views-conditional-2 img {
+  width: $column * 6 + $space * 4;
+}
+
+/* ------- Notícia destacada secundària ------- */
+.view-recull-noticies-secundari {
+  .views-row{
+    display:inline-block;
+  }
+  #left-column,
+  .views-field-title,
+  .views-field-views-conditional,
+  .views-field-views-conditional-3,
+  {
+    width: $column * 4 + $space * 2;
+    float: left;
+  }
+  .views-field-views-conditional img,
+  .views-field-views-conditional-3 img,
+  .views-field-field-horizontal-photo img,
+  .views-field-field-horizontal-photo-1 img,
+  {
+    width: $column * 4 + $space * 2;
+  }  
+  .views-field-views-conditional-1,
+  .views-field-views-conditional-2,
+  .views-field-views-conditional-4,
+  .views-field-views-conditional-5,
+  .views-field-nothing, 
+  {
+    width: $column * 4 + $space * 2 - 16;
+    float: left;
+  }  
+  .views-field-field-agenda-imatge-2,
+  .views-field-field-recull-secundari-lat-sup,
+  .views-field-field-resum-2,
+  .views-field-field-agenda-imatge-3,
+  .views-field-field-recull-secundari-lat-inf,
+  .views-field-field-resum-3,
+  .views-field-field-square-photo,
+  .views-field-field-square-photo-1,
+  {
+    margin-left: $column * 4 + $space * 4;
+    width: $column * 2;
+    clear: right;
+  }
+  .views-field-field-agenda-imatge-3
+  {
+    padding-top:0.5em;
+  }
+  .views-field-field-agenda-imatge-2 img,
+  .views-field-field-agenda-imatge-3 img,
+  .views-field-field-square-photo img,
+  .views-field-field-square-photo-1 img,
+  {
+    width: $column * 2;
+  }
+}

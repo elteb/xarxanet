@@ -1,0 +1,4 @@
+; $Id: xarxanet_revisions.info
+name = Xarxanet Revisions
+description = Envia mails a quan es crea cada revisio
+core = 6.x

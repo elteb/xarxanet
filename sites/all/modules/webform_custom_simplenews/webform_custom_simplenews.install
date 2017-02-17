@@ -1,0 +1,70 @@
+<?php 
+
+/**
+ * Implementation of hook_schema().
+ */
+function webform_custom_simplenews_schema() {
+    
+    $schema = array();
+	$schema['webform_custom_simplenews'] = array(
+		'description' => 'Newsletter series subscription data with custom content.',
+		'fields' => array(
+				'snid' => array(
+						'description' => 'The {simplenews_subscriptions}.snid who is subscribed.',
+						'type' => 'int',
+						'not null' => TRUE,
+						'default' => 0,
+				),
+				'tid' => array(
+						'description' => 'The newsletter series ({term_data}.tid) the subscriber is subscribed to.',
+						'type' => 'int',
+						'not null' => TRUE,
+						'default' => 0,
+				),
+				'custom_content' => array(
+						'description' => 'Serialized list of custom content types',
+						'type' => 'text',
+						'size' => 'medium',
+						'not null' => FALSE,
+						'default' => NULL,
+				),
+			),
+			'primary key' => array('snid', 'tid'),
+		);
+	return $schema;
+}
+
+
+/**
+ * Implementation of hook_install().
+ */
+function webform_custom_simplenews_install() {
+	if (drupal_install_schema('webform_custom_simplenews')) {
+		drupal_set_message(t('Webform Custom Simplenews Component was successfully installed.'));
+	}
+	else {
+		drupal_set_message(t('The installation of Webform Custom Simplenews Component was not successful.'), 'error');
+	}
+}
+
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function webform_custom_simplenews_uninstall() {
+	drupal_uninstall_schema('webform_custom_simplenews');
+}
+
+
+/**
+ * Add a field in the base table
+ */
+function webform_custom_simplenews_update_7000() {
+    db_add_field('webform_custom_simplenews', 'field', array(
+    'type' => 'text',
+    'not null' => FALSE,
+    'size' => 'medium',
+    'serialize' => TRUE,
+    'description' => 'The term reference field name',
+  ));
+}

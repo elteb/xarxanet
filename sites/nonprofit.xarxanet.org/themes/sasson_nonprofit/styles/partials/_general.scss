@@ -1,0 +1,349 @@
+/**
+ *   General Styles (Colors, Backgrounds, Typography, Links, etc.)
+ */
+
+body {
+  color: $main-color;
+  font-size: 10pt;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: $link-color;
+  font-family: Georgia;
+  text-decoration: none;
+  &:visited {
+    color: $link-color;  
+  }
+}
+
+h1 {
+  @include title1;
+  a {
+    @include title1;
+  }
+}
+
+h2 {
+  @include title2;
+  a {
+    @include title2;
+  }
+}
+
+h3 {
+  @include title3;
+  a {
+    @include title3;
+  }
+}
+
+p {
+  -webkit-margin-before: 0.4em;
+  -webkit-margin-after: 0.4em;
+}
+
+blockquote {
+  font-family: Georgia;
+  font-style: italic;
+  border-top: solid 1px $main-2;
+  border-bottom: solid 1px $main-2;
+}
+
+#page {
+  background-color: white;
+  padding: 0 $space;
+}
+
+#main {
+  margin-bottom: $ninesixty-gutter-width !important;
+}
+
+.region { margin-top: $ninesixty-gutter-width; }
+
+
+/* -------- Header --------*/
+#header {
+  margin: $ninesixty-gutter-width 0;
+  
+  #logo { margin: $space; }
+  
+  .block-menu-capcalera {
+    @include menu-link;
+    li {
+     @include menu-element(right);
+     a { 
+      color: white;     
+     } 
+    }
+    .follow-us { 
+    	@include menu-link-bg($general, $main-1, 'twitter-blanc', 'twitter-blanc');
+    	a, a:hover {
+    		background-position: 0.5em center;
+    		padding-left: 3em;
+    		padding-right: 1em;
+    	} 
+    }
+  }
+}
+
+/* -------- Menú --------*/
+#block-megamenu-main-menu {  
+  @include menu-link;
+  li.megamenu-parent-0, li.megamenu-parent-1, li.megamenu-parent-2, li.megamenu-parent-3, li.megamenu-parent-4, {
+    @include menu-element(left); 
+  }
+  li.megamenu-parent-5 {
+    @include menu-element(right); 
+  }
+  li.megamenu-parent-0 { @include menu-link-bg( false, $general); }
+  li.megamenu-parent-1 { @include menu-link-bg( false, $interview); }
+  li.megamenu-parent-2 { @include menu-link-bg( false, $opinion); }
+  li.megamenu-parent-3 { @include menu-link-bg( false, $newsletter); }
+  li.megamenu-parent-4 { @include menu-link-bg( false, $general); }
+  
+  li.megamenu-parent-5 { @include menu-link-bg( false, $general, 'assessorat', 'assessorat-hover'); }
+  
+  border-top: solid 2px $main-1;
+  border-bottom: solid 1px $main-1;
+}
+
+/* -------- Title ------- */
+h1.title { float: left; }
+
+/* -------- Breadcrumb -------- */
+.breadcrumb { 
+  font-size: 9pt;
+  padding: 5px 0 5px 10px;
+  background-color: $main-3;
+  margin-right: 8px;
+  border-top: solid 10px $general;
+  clear: both;
+  .section-interviews & { border-top-color: $interview; }
+  .section-opinion & { border-top-color: $opinion; }
+  .section-author & { border-top-color: $opinion; }
+  .section-newsletter & { border-top-color: $newsletter; }
+}
+
+
+
+/* -------- Pager --------- */
+ul.pager {
+  padding: $space;
+  background-color: $main-3;
+  border-bottom: solid 4px $main-1;
+  li.pager-current {
+    font-family: Georgia;
+    font-weight: normal;
+  }
+}
+
+/* ------- Formularis d'Administració ------- */
+.form-wrapper{
+  .fieldset-legend{
+    font-weight: bold;
+    font-size: 10pt;
+    text-decoration:underline;
+  }
+  .fieldset-wrapper{
+    padding: 10px 0 0 10px;
+  } 
+}
+
+/* -------- Blocks ---------- */
+.region-sidebar-second .block,
+.node-type-author .sidebar {
+  #more-others {
+    float: none;
+  }
+  &.banners {
+    .content {
+      background-color: white;
+    }
+  }
+  margin-bottom: $ninesixty-gutter-width;
+}
+/* -------- Twitter timeline ------- */
+.pane-block-1, #block-block-1, #block-block-8 {
+  h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/twitter-blanc.png') $general 10px no-repeat;
+  }
+  &.pane-block-1 h2 { width: $column * 4 + $space * 2 - 50px; }
+}
+
+/* -------- Newsletter --------- */
+.newsletter-archive-block {
+  h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/newsletters.png') $newsletter 10px no-repeat;
+  }
+  .more {
+     @include more-title; 
+  }
+  .content {
+    background-color: $newsletter-sec;
+  }
+  .view {
+    @include block-body;
+    background-color: $newsletter-sec;
+  }
+  
+  .newsletter-row {
+    @include list-display($newsletter);
+    list-style-image: image-url('bullets/news-list-style-green.png');
+  }
+  .newsletter-date {
+    background: image-url('pictos/timer.png') 0px 5px no-repeat;
+    padding-left: 18px;
+  }
+  
+}
+.pane-block-2 { 
+	#more-others { display: none; }
+	p { margin: 0px; }
+}
+#block-block-2 {
+  p { 
+    margin: 0px;
+    padding-bottom: $space;
+    background-color: $newsletter-sec;
+    text-align: right;
+    a.more { float: none; }
+  } 	
+  #more-frontpage { display: none; }
+}
+
+/* -------- Opinions --------- */
+.opinion-articles {
+  h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/opinion.png') $opinion 10px no-repeat;
+  }
+  .more {
+     @include more-title; 
+  }
+  .content {
+    background-color: $opinion-sec;
+  }
+  .view {
+    @include block-body;
+    background-color: $opinion-sec;
+  }
+  .views-row {
+    @include list-display($opinion);
+    list-style-image: image-url('bullets/news-list-style-orange.png');
+  }  
+}
+.pane-block-3 { 
+	#more-others { display: none; }
+	p { margin: 0px; }
+}
+#block-block-3 {
+  p { 
+    margin: 0px;
+    padding-bottom: $space;
+    background-color: $opinion-sec;
+    text-align: right;
+    a.more { float: none; }
+  } 	
+  #more-frontpage { display: none; }
+}
+
+/* -------- Tags --------- */
+.block-tagclouds {
+  h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/etiquetes.png') $general 10px no-repeat;
+  }
+  .content {
+    background-color: $main-3;
+    padding: $space;
+  }
+}
+
+/* -------- Related content --------*/
+#block-views-related-content-block {
+  h2 {
+    @include block-lat-title;
+   	background: image-url('pictos/relacionats.png') $general 10px no-repeat;
+  }
+  img {
+  	width: 176px;
+  }
+  p {
+    margin-bottom: 2*$space;
+  }
+}
+
+/* ------- Content ------- */
+.region-content,
+.messages { clear: both; } 
+
+/* ------- Footer ------- */
+#block-block-5 {
+  clear: both;
+  background-color: $main-3;
+  
+  .footer-row-1 {
+    .footer-col {
+      float: left;width: $ninesixty-grid-width/4;
+      h2 {
+        margin-top: 0;
+        padding: $space;
+        background-color: $main-1;
+        color: white;
+      }
+      ul {
+        padding: 0;
+        margin-left: $space;
+        list-style: none;
+      }
+      li { 
+        padding-bottom: $space;
+        img {
+          margin-right: $space;
+        } 
+      }
+    }
+    .footer-col-1 {
+      h2 { 
+        padding-left: $ninesixty-gutter-width;
+        padding-right: 0; 
+      }      
+      ul { margin-left: $ninesixty-gutter-width;}
+    }  
+  }
+  .footer-row-2 {
+    clear: both;
+    padding: $ninesixty-gutter-width;
+    div{
+      display:inline-block;
+    }   
+    .right-logo{
+      padding-left: $ninesixty-gutter-width;
+    } 
+  }
+  .outer-footer {
+    background-color: black;
+    color: white;
+    height: 40px;
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    .left-menu ul { 
+      float: left;
+      padding-left: $space; 
+    }
+    .right-menu ul{ 
+      float: right;
+      padding-right: $space; 
+    }
+    li { 
+      display: inline-block;
+      margin: 0 $space; 
+    }
+    a { color: white; }
+  } 
+}

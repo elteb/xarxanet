@@ -1,0 +1,224 @@
+/* 
+ * ##### Sasson - advanced drupal theming. #####
+ *   
+ * SASS mixins
+ * http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+ * 
+ */
+
+/* ------- General ------- */
+@mixin title {
+  font: {
+    family: Georgia;
+    line-height: 1.4em;
+    weight: lighter;
+  }
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+@mixin title1 {
+  font-size: 18pt;
+  @include title;
+}
+
+@mixin title2 {
+  font-size: 12pt;
+  @include title;
+}
+
+@mixin title3 {
+  font-size: 14pt;
+  @include title;
+}
+
+/* -------- Menú -------- */
+@mixin menu-element($side) {
+  float: $side;
+  list-style: none;
+  list-style-image: none;
+}
+
+@mixin menu-link {
+  a {
+    color: $main-1;
+    font: {
+      size: 10pt;
+      family: Arial,Helvetica,sans-serif;
+      weight: bold;
+      decoration: none;
+    }
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    padding: 0.65em 0.9em;
+  }
+  ul {
+    padding: 0px;
+    margin: 0px;
+  }
+  padding: 10px 0;
+}
+
+@mixin menu-link-bg($color1:false, $color2:false, $icon1:false, $icon2:false) {
+  $padding = 0.75em 0.8em 0.75em 3.3em;
+  $position = 10%;
+  a { 
+    @if ($color1) {
+      $side = right;
+      $padding = 0.75em 3.5em 0.75em 1em;
+      $position = 95%;
+      background-color: $color1; 
+    }
+    @if ($icon1) {
+      background-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/#{$icon1}.png");
+      background-repeat: no-repeat;
+      background-position: $position;
+      padding: $padding;
+    }
+  } 
+  a:hover {
+    @if ($color2) {
+      background-color: $color2; 
+    }
+    @if ($icon2) {
+      background-image: url("/sites/all/themes/sasson_xarxanet/images/pictos/#{$icon2}.png");
+      background-repeat: no-repeat;
+      background-position: $position;
+      padding: $padding;
+    }
+  }
+} 
+
+@mixin menu-submenu-1 ($color) {
+  ul {
+    background-color: $color;
+    list-style-type: none;
+  }
+  ul li {
+    margin: 0px;
+    padding: 12px 5px;
+    width: auto;
+  }
+  li a {
+    color: white;
+  }
+}
+
+@mixin menu-submenu-2 ($color1, $color2) {
+  h2 a:hover {
+    background-color: $color1;
+  }
+  h3 {
+    padding: 10px;
+    a {
+      padding: 0px;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+  ul.megamenu-slots-columnar {
+    background-color: $color2;
+  }
+  li.megamenu-slot-0 {
+    float: left;
+  }
+  li.megamenu-slot-1 {
+    float: right;
+  }
+  li.megamenu-item {
+    float: none;
+    padding: 3px 10px;
+    a {
+      font-weight: normal;
+      padding: 0px;
+      &:hover {
+        color: $main-1;
+      }
+    }
+  }
+}
+
+
+/* -------- Blocks -------- */
+@mixin block-title($offset: 50px) {
+  padding: $space 0px $space $offset;
+  color: white;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  float: left;
+  margin: 0px;
+}
+
+@mixin block-lat-title ($num-cols: 2, $offset: 50px, $margin: 50px) {
+  width: $column * $num-cols - $margin;
+  @include block-title($offset);
+}
+
+@mixin block-body {
+  clear: both;
+  padding: $space 0px;
+}
+
+@mixin more-title {
+  @include title2;
+  float: right;
+  margin: $space;
+}
+
+@mixin list-display($color) {
+  display: list-item;
+  margin: 0 10px 0 30px;
+  padding: 4px 0;
+  line-height: 1.8em;
+  @if $color != none { 
+    border-bottom: dotted 1px $color;
+  }
+  &.views-row-last {
+    border-bottom: none;
+  }
+}
+
+@mixin search-block($color1, $color2) {
+  h2 { background: url("/sites/all/themes/sasson_xarxanet/images/pictos/search.png") $color1 10px no-repeat; }
+  .content {
+    padding: $space; 
+    background-color: $color2; 
+  }
+  .views-exposed-form .views-submit-button {
+    float: right;
+    padding: 0px;
+    input { margin-top: $ninesixty-gutter-width; }
+  }
+  select {
+    max-width: ($column*2)-$ninesixty-gutter-width;
+  }
+} 
+
+/* ------- Subportals ------- */
+@mixin subportal-header($color) {
+  h2 { background-color: $color; }
+  .header { 
+    border-bottom: solid 2px $color;
+    margin-bottom: $ninesixty-gutter-width; 
+  }
+}
+
+/* ------- Nodes ------- */
+@mixin node-title($icon, $color:$main-1) {
+  @if $icon == '' {
+    background-color: $color;
+  } @else {
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/#{$icon}.png") $color 10px no-repeat;
+  }
+  color: white;
+  padding: $space;
+  padding-left: 50px; 
+}
+
+@mixin node-box($color:$main-3){
+  background-color: $color;
+  padding-bottom: $space; 
+  margin-bottom: $ninesixty-gutter-width; 
+}
