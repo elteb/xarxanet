@@ -77,7 +77,7 @@
 * @see template_process()
 *
 * @ingroup themeable
-*/ 
+*/
 
 $pathroot = 'http://nonprofit.xarxanet.org';
 
@@ -255,13 +255,13 @@ if ($node_ =  node_load($node->field_ter_xarxanet_dreta['und'][0]['nid'])) {
 $opinion_primera = array();
 if ($node_ =  node_load($node->field_opinio_primer_xarxanet['und'][0]['nid'])) {
 	//Opinion Xarxanet
-	$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
-	if (isset($node_autor->field_horizontal_photo['und'][0]['uri'])){
+	if ($node_->field_square_photo){
+		$opinion_primera['imatge'] = image_style_url('tag-petit', $node_->field_square_photo['und'][0]['uri']);
+		$opinion_primera['alt'] = $node_->field_square_photo['und'][0]['data']['alt'];
+	} else {
+		$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
 		$opinion_primera['imatge'] = image_style_url('tag-petit',$node_autor->field_square_photo['und'][0]['uri']);
 		$opinion_primera['alt'] = $node_autor->field_square_photo['und'][0]['alt'];
-	}else{
-		$opinion_primera['imatge'] = image_style_url('tag-petit', $node_->field_imatges['und'][0]['uri']);
-		$opinion_primera['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$opinion_primera['title'] = $node_->title;
 	if (isset($node->field_opinio_primer_abstract['und'][0]['value'])){
@@ -276,13 +276,13 @@ if ($node_ =  node_load($node->field_opinio_primer_xarxanet['und'][0]['nid'])) {
 $opinion_segona = array();
 if ($node_ =  node_load($node->field_opinio_segon_xarxanet['und'][0]['nid'])) {
 	//Opinion Xarxanet
-	$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
-	if (isset($node_autor->field_horizontal_photo['und'][0]['uri'])){
+	if ($node_->field_square_photo){
+		$opinion_segona['imatge'] = image_style_url('tag-petit', $node_->field_square_photo['und'][0]['uri']);
+		$opinion_segona['alt'] = $node_->field_square_photo['und'][0]['data']['alt'];
+	} else {
+		$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
 		$opinion_segona['imatge'] = image_style_url('tag-petit',$node_autor->field_square_photo['und'][0]['uri']);
 		$opinion_segona['alt'] = $node_autor->field_square_photo['und'][0]['alt'];
-	}else{
-		$opinion_segona['imatge'] = image_style_url('tag-petit', $node_->field_imatges['und'][0]['uri']);
-		$opinion_segona['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$opinion_segona['title'] = $node_->title;
 	if (isset($node->field_opinio_segon_abstract['und'][0]['value'])){
@@ -297,13 +297,13 @@ if ($node_ =  node_load($node->field_opinio_segon_xarxanet['und'][0]['nid'])) {
 $opinion_tercera = array();
 if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 	//Opinion Xarxanet
-	$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
-	if (isset($node_autor->field_horizontal_photo['und'][0]['uri'])){
+	if ($node_->field_square_photo){
+		$opinion_tercera['imatge'] = image_style_url('tag-petit', $node_->field_square_photo['und'][0]['uri']);
+		$opinion_tercera['alt'] = $node_->field_square_photo['und'][0]['data']['alt'];
+	} else {
+		$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
 		$opinion_tercera['imatge'] = image_style_url('tag-petit',$node_autor->field_square_photo['und'][0]['uri']);
 		$opinion_tercera['alt'] = $node_autor->field_square_photo['und'][0]['alt'];
-	}else{
-		$opinion_tercera['imatge'] = image_style_url('tag-petit', $node_->field_imatges['und'][0]['uri']);
-		$opinion_tercera['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$opinion_tercera['title'] = $node_->title;
 	if (isset($node->field_opinio_tercer_abstract['und'][0]['value'])){
@@ -367,8 +367,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 													<img src="http://nonprofit.xarxanet.org/sites/nonprofit.xarxanet.org/themes/sasson_nonprofit/logo.png" alt="logotip xarxanet"/>
 												</a>
 									        </td>
-									    </tr>							    
-									</table>                            							    
+									    </tr>
+									</table>
 					            </td>
 					        </tr>
 					    </table>
@@ -385,7 +385,7 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 									        <td>
 					                			<p>Newsletter</p>
 					            			</td>
-									    </tr>							    
+									    </tr>
 									</table>
 					            </td>
 					        </tr>
@@ -417,8 +417,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 													echo $dies[date('N', $created)-1].', '.date('d', $created). ' '.$mesos[date('n', $created)-1].' '.date('Y', $created).' - No. '.$title;
 												?>
 											</td>
-									    </tr>							    
-									</table>							    
+									    </tr>
+									</table>
 					            </td>
 					        </tr>
 					    </table>
@@ -432,12 +432,12 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 					            <td>
 					            	<table class="contents">
 									    <tr>
-									        <td> 
+									        <td>
 					                			<a href="http://nonprofit.xarxanet.org/newsletter-archive">
 					                				Previous Newsletters
 					                			</a>
 					                		</td>
-									    </tr>							    
+									    </tr>
 									</table>
 					            </td>
 					        </tr>
@@ -507,8 +507,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 									    	<td class="text">
 									    		<p style="margin: 2px 0;"><?php echo $noticia_prin_esq['teaser']?></p>
 									    	</td>
-									    </tr>							    
-									</table>                            							    
+									    </tr>
+									</table>
 					            </td>
 					        </tr>
 					    </table>
@@ -539,8 +539,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 									    	<td class="text">
 									    		<p style="margin: 2px 0;"><?php echo $noticia_prin_dreta['teaser']?></p>
 									    	</td>
-									    </tr>							    
-									</table>                            							    
+									    </tr>
+									</table>
 					            </td>
 					        </tr>
 					    </table>
@@ -582,8 +582,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 									    	<td class="text">
 									    		<p style="margin: 2px 0;"><?php echo $noticia_secundaria_esq['teaser']?></p>
 									    	</td>
-									    </tr>							    
-									</table>                            							    
+									    </tr>
+									</table>
 					            </td>
 					        </tr>
 					    </table>
@@ -614,8 +614,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 									    	<td class="text">
 									    		<p style="margin: 2px 0;"><?php echo $noticia_secundaria_dreta['teaser']?></p>
 									    	</td>
-									    </tr>							    
-									</table>                            							    
+									    </tr>
+									</table>
 					            </td>
 					        </tr>
 					    </table>
@@ -660,8 +660,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 									    	<td class="text">
 									    		<p style="margin: 2px 0;"><?php echo $noticia_terciaria_esq['teaser']?></p>
 									    	</td>
-									    </tr>							    
-									</table>                            							    
+									    </tr>
+									</table>
 					            </td>
 					        </tr>
 					    </table>
@@ -692,8 +692,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 									    	<td class="text">
 									    		<p style="margin: 2px 0;"><?php echo $noticia_terciaria_dreta['teaser']?></p>
 									    	</td>
-									    </tr>							    
-									</table>                            							    
+									    </tr>
+									</table>
 					            </td>
 					        </tr>
 					    </table>
@@ -747,12 +747,12 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 				                    <td class="text">
 				                        <a href="<?php echo $opinion_primera['link']?>" class="h2">
 											<?php echo $opinion_primera['title']?>
-										</a> 
+										</a>
 				                    </td>
 				                </tr>
 				                <tr>
 				                    <td class="text">
-				                        <p style="margin: 2px 0;"><?php echo $opinion_primera['teaser']?></p> 
+				                        <p style="margin: 2px 0;"><?php echo $opinion_primera['teaser']?></p>
 				                    </td>
 				                </tr>
 				            </table>
@@ -777,12 +777,12 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 				                    <td class="text">
 				                        <a href="<?php echo $opinion_segona['link']?>" class="h2">
 											<?php echo $opinion_segona['title']?>
-										</a> 
+										</a>
 				                    </td>
 				                </tr>
 				                <tr>
 				                    <td class="text">
-				                        <p style="margin: 2px 0;"><?php echo $opinion_segona['teaser']?></p> 
+				                        <p style="margin: 2px 0;"><?php echo $opinion_segona['teaser']?></p>
 				                    </td>
 				                </tr>
 				            </table>
@@ -807,12 +807,12 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 				                    <td class="text">
 				                        <a href="<?php echo $opinion_tercera['link']?>" class="h2">
 											<?php echo $opinion_tercera['title']?>
-										</a> 
+										</a>
 				                    </td>
 				                </tr>
 				                <tr>
 				                    <td class="text">
-				                        <p style="margin: 2px 0;"><?php echo $opinion_tercera['teaser']?></p> 
+				                        <p style="margin: 2px 0;"><?php echo $opinion_tercera['teaser']?></p>
 				                    </td>
 				                </tr>
 				            </table>
@@ -850,10 +850,10 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 												        <td>
 												            <a href="http://benestar.gencat.cat/" target="_blank" title="Generalitat">
 												            	<img alt="Logo Generalitat" src="http://nonprofit.xarxanet.org/sites/nonprofit.xarxanet.org/themes/sasson_nonprofit/images/logos/logo-generalitat.png">
-												            </a>														
+												            </a>
 												        </td>
-												    </tr>						    
-												</table>                            							    
+												    </tr>
+												</table>
 								            </td>
 								        </tr>
 								    </table>
@@ -872,8 +872,8 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 												            	<img alt="Logo xarxanet.org" src="http://nonprofit.xarxanet.org/sites/nonprofit.xarxanet.org/themes/sasson_nonprofit/images/logos/Logo_Xarxanet_transparent_butlleti.png">
 												            </a>
 												        </td>
-												    </tr>										    							    
-												</table>                            							    
+												    </tr>
+												</table>
 								            </td>
 								        </tr>
 								    </table>
@@ -893,7 +893,7 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 					<table width="100%">
 						<tr>
 							<td class="inner">
-								<a href="/newsletter" target="_blank">Subscribe</a> | <a href="/newsletter/unsubscribe" target="_blank">Unsubscribe</a> | <a href="/content/contact-us" target="_blank">Contact us</a> | <a href="/legal-terms" target="_blank">Legal terms</a>				
+								<a href="/newsletter" target="_blank">Subscribe</a> | <a href="/newsletter/unsubscribe" target="_blank">Unsubscribe</a> | <a href="/content/contact-us" target="_blank">Contact us</a> | <a href="/legal-terms" target="_blank">Legal terms</a>
 							</td>
 						</tr>
 					</table>

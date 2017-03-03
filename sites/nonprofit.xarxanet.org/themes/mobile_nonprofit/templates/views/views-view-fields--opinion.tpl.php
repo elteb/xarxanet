@@ -24,16 +24,13 @@
  * @ingroup views_templates
  */
 
-$actRow = $view->row_index; 
-$imatge = (strip_tags($fields['field_optional_image_1']->content, '<img>')) ? $fields['field_optional_image_1']->content : $fields['field_square_photo']->content; 
+$actRow = $view->row_index;
+$imatge = (strip_tags($fields['field_square_photo_1']->content, '<img>')) ? $fields['field_square_photo_1']->content : $fields['field_square_photo']->content;
 print '<div class="item-content">';
-print "<div class='title'>{$fields['title']->content}</div>"; 
+print "<div class='title'>{$fields['title']->content}</div>";
 print "<div class='image'>{$imatge}</div>";
 $author = $fields['field_opinion_author']->content;
 $data = $fields['created']->content;
 print "<div class='teaser'>{$fields['field_resum']->content}</div>";
 print "<div class='info'>{$author} - {$data}</div>";
 print '</div>';
-
-
-

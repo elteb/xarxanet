@@ -26,15 +26,18 @@
 
 <?php
 	$uri = $row->field_field_agenda_imatge[0]['raw']['uri'];
+	if (!$uri) $uri = $row->field_field_square_photo_1[0]['raw']['uri'];
 	if (!$uri) $uri = $row->field_field_square_photo[0]['raw']['uri'];
 	$fileurl = image_style_url('mobile', $uri);
 	$teaser = strip_html_tags($fields['field_resum']->content);
+	$path = strip_html_tags($fields['path']->content);
+	$title = strip_html_tags($fields['title']->content);
 	print "
 		<div class='item-content'>
 			<div class='title'>{$fields['title']->content}</div>
 			<div class='image'>
-				<a href='{$fields['path']->content}'>
-					<img src='$fileurl' alt='imatge de {$fields['title']->content}'/>
+				<a href='{$path}'>
+					<img src='$fileurl' alt='imatge de {$title}'/>
 				</a>
 			</div>
 			<div class='teaser'>{$teaser}</div>

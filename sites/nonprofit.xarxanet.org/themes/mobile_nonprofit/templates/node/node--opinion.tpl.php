@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * @file
 * Default theme implementation to display a node.
@@ -77,7 +77,7 @@
 * @see template_process()
 *
 * @ingroup themeable
-*/ 
+*/
 
 /**
 * Recuperem la foto horitzontal i quadrada dels autors
@@ -90,7 +90,7 @@ if(!empty($node->field_opinion_author['und'])):
     // Assegurem que tenim un fid
     if (!empty($original_dummy_file)) {
     // extreiem la url de l'arxiu original
-    	$imatge = file_create_url($original_dummy_file->uri);		
+    	$imatge = file_create_url($original_dummy_file->uri);
 	}
 	$imatge_quadrada = file_create_url($author->field_square_photo['und'][0]['uri']);
   endforeach;
@@ -110,9 +110,9 @@ $element = array(
 );
 drupal_add_html_head($element, 'twitter image');
 /*
- *FI modifiació <head> 
+ *FI modifiació <head>
  */
- 
+
 /*
  * Modificació <head> per incloure imatge per a facebook
  */
@@ -127,7 +127,7 @@ $element = array(
 );
 drupal_add_html_head($element, 'facebook image');
 /*
- *FI modifiació <head> 
+ *FI modifiació <head>
  */
 
 ?>
@@ -154,15 +154,15 @@ drupal_add_html_head($element, 'facebook image');
 	</div>
 
 	<?php
-		$uri = ($node->field_optional_image_1['und'][0]['uri']) ? $node->field_optional_image_1['und'][0]['uri'] : $author->field_horizontal_photo['und'][0]['uri'] ;
+		$uri = ($node->field_horizontal_photo['und'][0]['uri']) ? $node->field_horizontal_photo['und'][0]['uri'] : $author->field_horizontal_photo['und'][0]['uri'] ;
 		$fileurl = image_style_url('tag-gran', $uri);
-		$alt = 'author photo'; 
+		$alt = 'author photo';
 	?>
 	<div class='image'>
 		<img src='<?php print $fileurl ?>' alt='<?php print $alt ?>'/>
 	</div>
 	<div id="sub-image-1">
-	
+
 		<div id="social-icons">
 			<a href="http://www.twitter.com/share?url=<?php print $GLOBALS['base_url'].$node_url ?>">
 				<img src="/<?php print path_to_theme()?>/images/pictos/social/twitter.png" alt="compartir a twitter" />

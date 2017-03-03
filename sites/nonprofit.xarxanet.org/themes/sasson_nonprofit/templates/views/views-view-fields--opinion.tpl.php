@@ -25,11 +25,11 @@
  */
 ?>
 <?php $actRow = $view->row_index; ?>
-<?php 
+<?php
 	if($actRow == 0){
-		$imatge = (strip_tags($fields['field_optional_image']->content, '<img>')) ? $fields['field_optional_image']->content : $fields['field_horizontal_photo']->content;
+		$imatge = (strip_tags($fields['field_horizontal_photo_1']->content, '<img>')) ? $fields['field_horizontal_photo_1']->content : $fields['field_horizontal_photo']->content;
 	}else{
-		$imatge = (strip_tags($fields['field_optional_image_1']->content, '<img>')) ? $fields['field_optional_image_1']->content : $fields['field_vertical_photo']->content;
+		$imatge = (strip_tags($fields['field_vertical_photo_1']->content, '<img>')) ? $fields['field_vertical_photo_1']->content : $fields['field_vertical_photo']->content;
 	}
 ?>
 <?php print $imatge; ?>
