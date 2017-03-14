@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * @file
 * Default theme implementation to display a node.
@@ -77,7 +77,59 @@
 * @see template_process()
 *
 * @ingroup themeable
-*/ 
+*/
+
+/**
+* Recuperem la foto horitzontal i quadrada dels autors
+* per la twitter card i la OG de Facebook
+*/
+if(!empty($node->field_autor_a['und'])):
+  foreach ($node->field_autor_a['und'] as $author):
+  	$author = node_load($author['nid']);
+	$original_dummy_file = _imagefield_crop_file_to_crop($author->field_autor_foto_horitzontal["und"][0]["fid"]);
+    // Assegurem que tenim un fid
+    if (!empty($original_dummy_file)) {
+    // extreiem la url de l'arxiu original
+    	$imatge = file_create_url($original_dummy_file->uri);
+	}
+	$imatge_quadrada = file_create_url($author->field_autor_foto_quadrada['und'][0]['uri']);
+  endforeach;
+endif;
+
+/**
+* Modificació <head> per incloure imatge per a twitter card
+*/
+
+// First, we must set up an array
+$element = array(
+  '#tag' => 'meta', // The #tag is the html tag - <link />
+  '#attributes' => array( // Set up an array of attributes inside the tag
+    'name' => 'twitter:image',
+    'content' => $imatge,
+  ),
+);
+drupal_add_html_head($element, 'twitter image');
+/*
+ *FI modifiació <head>
+ */
+
+/*
+ * Modificació <head> per incloure imatge per a facebook
+ */
+
+// First, we must set up an array
+$element = array(
+  '#tag' => 'meta', // The #tag is the html tag - <link />
+  '#attributes' => array( // Set up an array of attributes inside the tag
+    'property' => 'og:image',
+    'content' => $imatge_quadrada,
+  ),
+);
+drupal_add_html_head($element, 'facebook image');
+/*
+ *FI modifiació <head>
+ */
+ 
 ?>
 
 
@@ -100,15 +152,15 @@
 	                </div>
 	        	<?php endforeach; ?>
             <?php endif; ?>
-         
-        <?php 
+
+        <?php
         	if (views_get_view_result('opinion_by_author', 'block_2', $author->nid, $node->nid)) {
 	        	echo '<div class="node-opinion-author block"><h2 class="block-title">'.t('Més articles').'</h2>';
 	        	echo views_embed_view('opinion_by_author', 'block_2', $author->nid, $node->nid);
 	        	echo '</div>';
         	}
         ?>
-        
+
         <?php
             if(!empty($node->taxonomy_vocabulary_1['und'])): ?>
                 <div class="node-terms">
@@ -116,28 +168,28 @@
                     <ul class="links tags" role="navigation">
                     <?php
 						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						
-						} 
+						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';
+						}
                     ?>
                     </ul>
                 </div>
-       	<?php endif; ?>  
-                        
-		<?php 		
+       	<?php endif; ?>
+
+		<?php
 			if($node->print_html_display || $node->print_mail_display || $node->print_pdf_display) {
 				echo '
 	                <div class="node-links block">
 				    	<h2 class="block-title">'.t('Altres accions').'</h2>
 				    	<div class="block-content">
 						<ul class="links" role="navigation">';
-				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Imprimeix'), 'print/'.$node->nid).'</li>';		
+				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Imprimeix'), 'print/'.$node->nid).'</li>';
 				if ($node->print_mail_display) echo '<li class="print_mail">'.l(t('Envia a un amic'), 'printmail/'.$node->nid).'</li>';
 				if ($node->print_pdf_display) echo '<li class="print_pdf">'.l(t('Versió PDF'), 'printpdf/'.$node->nid).'</li>';
 				echo '</ul></div></div>';
 			}
 		?>
         </div>
-      
+
         <div class="node-content node-column-text">
             <?php if ($unpublished): ?>
                 <div class="unpublished"><?php print t('No publicat'); ?></div>
@@ -146,7 +198,7 @@
             <div class="node-intro">
                 <?php print $field_resum[0]['value'] ?>
             </div><!-- .e_intro -->
-                
+
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c67bc259a068b5"></script>
 			<!-- Afegim el text via @xarxanetorg quan es comparteix a twitter desde AddThis-->
@@ -163,7 +215,7 @@
 			<div class="node-social-links">
 				<div class="addthis_sharing_toolbox"></div>
 			</div>
-            
+
             <?php if ($submitted): ?>
                 <div class="node-submitted">
                     <p><?php print format_date($node->created, 'small'); ?></p>
@@ -171,7 +223,7 @@
             <?php endif; ?>
 
             <div class="node-body-text">
-                <?php 
+                <?php
                 print $node->body['und'][0]['value']; ?>
             </div>
         </div>
