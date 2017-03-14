@@ -33,7 +33,7 @@
 			$rawImatge = $fields['field_square_photo']->content;
 			if (strip_tags($fields['field_square_photo_1']->content, '<img>') != '') $rawImatge = $fields['field_square_photo_1']->content;
 		} else {
-			$rawImatge = $fields['field_agenda_imatge']->content;
+			$rawImatge = $fields['field_agenda_imatge_1']->content;
 		}
 		if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	} else {
