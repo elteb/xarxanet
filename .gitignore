@@ -1,5 +1,7 @@
 teb_scripts
 sites/default
+sites/nonprofit.xarxanet.org/files
+sites/nonprofit.xarxanet.org/settings.php
 xnt
 robots.txt
 .htpasswd
