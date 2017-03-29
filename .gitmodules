@@ -4,3 +4,6 @@
 [submodule "sites/all/modules/media_browser_plus"]
 	path = sites/all/modules/media_browser_plus
 	url = https://git.drupal.org/project/media_browser_plus.git
+[submodule "sites/all/modules/media"]
+	path = sites/all/modules/media
+	url = git://git.drupal.org/project/media.git
