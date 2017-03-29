@@ -1,6 +1,6 @@
 [submodule "git-deploy"]
 	path = git-deploy
 	url = https://github.com/elteb/Git-Deploy-PHP.git
-[submodule "sites/all/modules/media_browser_plus"]
-	path = sites/all/modules/media_browser_plus
-	url = https://git.drupal.org/project/media_browser_plus.git
+[submodule "sites/all/modules/media"]
+	path = sites/all/modules/media
+	url = https://github.com/elteb/media.git
