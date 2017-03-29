@@ -129,6 +129,9 @@
 						echo '<p><strong>Més informació </strong> '.$node->field_link['und'][0]['value'].'</p>';
 					}
 					break;
+				case 'opinio':
+					print $node->body['und'][0]['value'];
+					break;
 			}
 		?>
 	</div>
