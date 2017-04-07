@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * @file
 * Default theme implementation to display a node.
@@ -77,7 +77,7 @@
 * @see template_process()
 *
 * @ingroup themeable
-*/ 
+*/
 ?>
 
 
@@ -89,32 +89,33 @@
                     <ul class="items">
 						<?php foreach($node->field_imatges['und'] as $imatge): ?>
                             <li>
-							  <?php 
-							  echo '<a href="'.file_create_url($imatge['uri']).'" rel="lightbox" title="'.$imatge['alt'].'">'.
-								theme_image_style (array('style_name' => 'imatge-article', 'path' => $imatge['uri'], 'title' => $imatge['alt'], 'alt' => $imatge['alt'])).
-								'</a>';
-							  if ($imatge['alt']) {
-                                echo '<div class="legend"><p>'.$imatge['alt'].'</p></div>';
-                              } ?>
+                              <?php
+                                $peu = ($node->field_peu_de_foto['und'][$key]['value'] && ($node->field_peu_de_foto['und'][$key]['value']!='--Peu de foto--')) ? $node->field_peu_de_foto['und'][$key]['value'] : $imatge['field_file_image_alt_text']['und'][0]['value'];
+                                if($imatge['field_autoria']) $peu .= ' - Font: '.$imatge['field_autoria']['und'][0]['value'];
+                							  echo '<a href="'.file_create_url($imatge['uri']).'" rel="lightbox" title="'.$peu.'">'.
+                								theme_image_style (array('style_name' => 'imatge-article', 'path' => $imatge['uri'], 'title' => $peu, 'alt' => $imatge['alt'])).
+                								'</a>';
+                                echo '<div class="legend"><p>'.$peu.'</p></div>';
+                              ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
             <?php endif; ?>
-            
-            <?php            
+
+            <?php
             if(!empty($node->taxonomy_vocabulary_1['und'])): ?>
                 <div class="node-terms">
                     <h2>Tags</h2>
                     <ul class="links tags" role="navigation">
                     <?php
 						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {;
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						} 
+						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						}
                     ?>
                     </ul>
                 </div>
             <?php endif; ?>
-			
+
 			<?php if($field_links):?>
 				<?php if($field_links[0]['url'] != ''): ?>
 					<div class="node-terms">
@@ -127,23 +128,23 @@
 					</div>
 				<?php endif; ?>
 			<?php endif; ?>
-		
 
-		<?php 		
+
+		<?php
 			if($node->print_html_display || $node->print_mail_display || $node->print_pdf_display) {
 				echo '
 	                <div class="node-links block">
 				    	<h2 class="block-title">'.t('Other actions').'</h2>
 				    	<div class="block-content">
 						<ul class="links" role="navigation">';
-				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Versió per imprimir'), 'print/'.$node->nid).'</li>';		
+				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Versió per imprimir'), 'print/'.$node->nid).'</li>';
 				if ($node->print_mail_display) echo '<li class="print_mail">'.l(t('Envia a un amic'), 'printmail/'.$node->nid).'</li>';
 				if ($node->print_pdf_display) echo '<li class="print_pdf">'.l(t('Versió PDF'), 'printpdf/'.$node->nid).'</li>';
 				echo '</ul></div></div>';
 			}
 		?>
         </div>
-      
+
         <div class="node-content node-column-text">
             <?php if ($unpublished): ?>
                 <div class="unpublished"><?php print t('No publicat'); ?></div>
@@ -152,7 +153,7 @@
             <div class="node-intro">
                 <?php print $field_resum[0]['value'] ?>
             </div><!-- .e_intro -->
-                
+
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c67bc259a068b5"></script>
 			<!-- Afegim el text via @xarxanetorg quan es comparteix a twitter desde AddThis-->
@@ -170,11 +171,11 @@
 			<div class="node-social-links">
 				<div class="addthis_sharing_toolbox"></div>
 			</div>
-            
+
             <?php if ($submitted): ?>
                 <div class="node-submitted">
                     <p><?php print format_date($node->created, 'small'); ?></p>
-                    
+
                     <?php if(isset($node->field_autor['und'][0]['value'])): ?>
                         <p><strong>Autor/a: </strong><?php print $node->field_autor['und'][0]['value']; ?></p>
                     <?php endif; ?>
@@ -182,11 +183,11 @@
                     <?php if(isset($node->field_entitat['und'][0]['value']) && !empty($node->field_entitat['und'][0]['value'])): ?>
                         <p><strong>Entitat redactora: </strong><?php print $node->field_entitat['und'][0]['value']; ?></p>
                     <?php endif; ?>
-                    
+
                     <?php
-                    	print render($node->field_vote); 
+                    	print render($node->field_vote);
                     ?>
-                    
+
                     	<div style="display:none">
                     		<?php
 	                    		/* if (strpos(google_analytics_counter_display(), '></span>')  === FALSE)
@@ -199,14 +200,14 @@
             <?php endif; ?>
 
             <div class="node-body-text">
-                <?php 
+                <?php
                 print $node->body['und'][0]['value']; ?>
             </div>
-            
+
             <!-- preguntes -->
             <a name="tornar"></a>
             	<ol class="sections">
-            	<?php 
+            	<?php
             		$i=0;
             		foreach($node->field_subtitols['und'] as $titol) {
                 		if ($titol['value']!='') {
