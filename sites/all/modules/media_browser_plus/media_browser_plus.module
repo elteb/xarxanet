@@ -851,9 +851,14 @@ function media_browser_plus_form_file_entity_add_upload_alter(&$form, &$form_sta
   switch ($form['#step']) {
     // Add folder selection to the upload form.
     case 1:
+      /*******************************************************
+       * TEBPATCH (DEL) @fcasanellas 07/04/2017
+       * XN-MBP001 Elimina la selecció de directori en el primer pas
+       * OLDCODE *********************************************
       // By re-using the field form structure we can inject the value into the
       // next step.
       // @todo Check if we can replace this somehow by the real field widget.
+      /*
       $form['field_folder'] = array(
         '#type' => 'container',
         '#tree' => TRUE,
@@ -871,7 +876,8 @@ function media_browser_plus_form_file_entity_add_upload_alter(&$form, &$form_sta
         '#options' => taxonomy_allowed_values($field),
       );
       break;
-
+       *******************************************************
+       * END TEBPATCH ***************************************/
     // Nothing to do for now.
     case 2:
     case 3:
