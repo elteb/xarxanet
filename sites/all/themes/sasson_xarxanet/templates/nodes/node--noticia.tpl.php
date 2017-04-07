@@ -90,7 +90,7 @@
 						<?php foreach($node->field_imatges['und'] as $key => $imatge): ?>
                 <li>
 							  <?php
-                  $peu = ($node->field_peu_de_foto['und'][$key]['value']!='--Peu de foto--') ? $node->field_peu_de_foto['und'][$key]['value'] : $imatge['field_file_image_alt_text']['und'][0]['value'];
+                  $peu = ($node->field_peu_de_foto['und'][$key]['value'] && ($node->field_peu_de_foto['und'][$key]['value']!='--Peu de foto--')) ? $node->field_peu_de_foto['und'][$key]['value'] : $imatge['field_file_image_alt_text']['und'][0]['value'];
                   if($imatge['field_autoria']) $peu .= ' - Font: '.$imatge['field_autoria']['und'][0]['value'];
   							  echo '<a href="'.file_create_url($imatge['uri']).'" rel="lightbox" title="'.$peu.'">'.
   								theme_image_style (array('style_name' => 'imatge-article', 'path' => $imatge['uri'], 'title' => $peu, 'alt' => $imatge['alt'])).
