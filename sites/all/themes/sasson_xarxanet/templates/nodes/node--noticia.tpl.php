@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * @file
 * Default theme implementation to display a node.
@@ -77,7 +77,7 @@
 * @see template_process()
 *
 * @ingroup themeable
-*/ 
+*/
 ?>
 
 
@@ -87,66 +87,68 @@
             <?php if(!empty($node->field_imatges['und'])): ?>
                 <div class="node-image">
                     <ul class="items">
-						<?php foreach($node->field_imatges['und'] as $imatge): ?>
-                            <li>
-							  <?php 
-							  echo '<a href="'.file_create_url($imatge['uri']).'" rel="lightbox" title="'.$imatge['alt'].'">'.
-								theme_image_style (array('style_name' => 'imatge-article', 'path' => $imatge['uri'], 'title' => $imatge['alt'], 'alt' => $imatge['alt'])).
+						<?php foreach($node->field_imatges['und'] as $key => $imatge): ?>
+                <li>
+							  <?php
+                $peu = ($node->field_peu_de_foto['und'][$key]['value']!='--Peu de foto--') ? $node->field_peu_de_foto['und'][$key]['value'] : $imatge['alt'];
+                if($imatge['field_autoria']) $peu .= ' - Font: '.$imatge['field_autoria']['und'][0]['value'];
+							  echo '<a href="'.file_create_url($imatge['uri']).'" rel="lightbox" title="'.$peu.'">'.
+								theme_image_style (array('style_name' => 'imatge-article', 'path' => $imatge['uri'], 'title' => $peu, 'alt' => $imatge['alt'])).
 								'</a>';
 							  if ($imatge['alt']) {
-                                echo '<div class="legend"><p>'.$imatge['alt'].'</p></div>';
+                                echo '<div class="legend"><p>'.$peu.'</p></div>';
                               } ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
             <?php endif; ?>
-            
-            <?php            
+
+            <?php
             if(!empty($node->taxonomy_vocabulary_1['und'])): ?>
                 <div class="node-terms">
                     <h2>Tags</h2>
                     <ul class="links tags" role="navigation">
                     <?php
 						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						
-						} 
+						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';
+						}
                     ?>
                     </ul>
                 </div>
             <?php endif; ?>
-            
-            <?php 
+
+            <?php
 				if (!empty($node->field_file['und'])): ?>
 					<div class="node-files">
                     	<h2>Fitxers relacionats</h2>
                     	<ul class="links tags" role="navigation">
                     	<?php
 						foreach($node->field_file['und'] as $file) {
-						    echo '<li>'.l( $file['filename'], file_create_url($file['uri'])).'</li>';						
-						} 
+						    echo '<li>'.l( $file['filename'], file_create_url($file['uri'])).'</li>';
+						}
                     	?>
                     	</ul>
                     </div>
-				<?php 
+				<?php
 				endif;
            ?>
-            
-		<?php 		
+
+		<?php
 			if($node->print_html_display || $node->print_mail_display || $node->print_pdf_display) {
 				echo '
 	                <div class="node-links block">
 				    	<h2 class="block-title">'.t('Other actions').'</h2>
 				    	<div class="block-content">
 						<ul class="links" role="navigation">';
-				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Versió per imprimir'), 'print/'.$node->nid).'</li>';		
+				if ($node->print_html_display) echo '<li class="print_html">'.l(t('Versió per imprimir'), 'print/'.$node->nid).'</li>';
 				if ($node->print_mail_display) echo '<li class="print_mail">'.l(t('Envia a un amic'), 'printmail/'.$node->nid).'</li>';
 				if ($node->print_pdf_display) echo '<li class="print_pdf">'.l(t('Versió PDF'), 'printpdf/'.$node->nid).'</li>';
 				echo '</ul></div></div>';
 			}
 		?>
         </div>
-      
+
         <div class="node-content node-column-text">
             <?php if ($unpublished): ?>
                 <div class="unpublished"><?php print t('No publicat'); ?></div>
@@ -155,7 +157,7 @@
             <div class="node-intro">
                 <?php print $field_resum[0]['value'] ?>
             </div><!-- .e_intro -->
-                
+
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c67bc259a068b5"></script>
 			<!-- Afegim el text via @xarxanetorg quan es comparteix a twitter desde AddThis-->
@@ -172,7 +174,7 @@
 			<div class="node-social-links">
 				<div class="addthis_sharing_toolbox"></div>
 			</div>
-            
+
             <?php if ($submitted): ?>
                 <div class="node-submitted">
                     <p><?php print format_date($node->created, 'small'); ?></p>
@@ -202,7 +204,7 @@
             <?php endif; ?>
 
             <div class="node-body-text">
-                <?php 
+                <?php
                 print $node->body['und'][0]['value']; ?>
             </div>
         </div>
