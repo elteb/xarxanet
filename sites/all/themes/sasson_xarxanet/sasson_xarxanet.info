@@ -19,6 +19,9 @@ base theme = sasson
 ; styles[styles/filename.scss][options][recompile] = true
 
 styles[styles/sasson_xarxanet.scss][options][media] = all
+stylesheets[all][] = css/sasson.css
+stylesheets[all][] = css/sasson_xarxanet.css
+stylesheets[all][] = css/prova.css
 
 
 ; Theme Script Files ------------------------------------------------------
