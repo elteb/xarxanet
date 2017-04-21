@@ -30,9 +30,9 @@
     .views-row-even {
       margin-right: 0;
     }
-    
+
     /* ------- Headers ------ */
-    .header { 
+    .header {
       display: flex;
       h2.portada-titol {
         @include grid-width(2, $ninesixty-columns, $ninesixty-gutter-width+$space);
@@ -41,15 +41,15 @@
         padding: $space 0 $space $space;
         margin-bottom: 0;
       }
-      p { 
+      p {
         display: flex;
         @include grid-width(2, $ninesixty-columns, $ninesixty-gutter-width);
         margin-left: $ninesixty-gutter-width;
       }
-      a { 
+      a {
         width: 100%;
-        text-align: right; 
-      } 
+        text-align: right;
+      }
     }
   }
   .portada-superior-esquerra {
@@ -69,20 +69,20 @@
   .pane-content { margin-bottom: 15px; }
   #page-title-reg h1 { margin: $space 0; }
   #clear { clear: both; }
-  #third-row { 
+  #third-row {
     padding-bottom: 10px;
-    .item { 
+    .item {
       display: block;
       background: url('/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png') 5px 6px no-repeat;
       padding-left: 18px;
       line-height: 1.6em;
-    } 
+    }
   }
   /* .pane-custom .pane-content { padding: 10px; } */
   .pane-custom.no-padding .pane-content { padding: 0px; }
-  .breadcrumb { 
+  .breadcrumb {
      border-top: none;
-     margin-right: 0px; 
+     margin-right: 0px;
   }
   .region-content {
     margin-top: $ninesixty-gutter-width;
@@ -97,7 +97,7 @@
       font-size: 14pt;
       line-height: 1.4em;
       font-weight: normal;
-    } 
+    }
   }
   .pane-tags-especial-repositori {
     .views-row { margin-right: 12px; }
@@ -106,33 +106,33 @@
   }
   #especial-documents-pane {
     .row { padding-top: 10px; }
-    .doc_title { 
+    .doc_title {
       float: left;
-      width: 140px; 
+      width: 140px;
       padding: 0px 15px 0px 10px;
     }
     .doc_image { float: left;  }
-    .doc_image img { 
+    .doc_image img {
       width: 110px;
       border: 1px solid #CCCCCC;
-      margin-left: 5px 
+      margin-left: 5px
     }
     #third-row { padding: 10px 5px; }
   }
   #especial-4-continguts-pane {
-    .content { 
+    .content {
       float:left;
-      margin: 10px 3px; 
+      margin: 10px 3px;
     }
     .content-large { width: 377px; }
     .content-small { width: 179px; }
-    #third-row { padding: 0 5px 10px; } 
+    #third-row { padding: 0 5px 10px; }
   }
   #especial-1-contingut-pane {
     padding-bottom: $ninesixty-gutter-width;
-   .content_title, 
-   .content_teaser, 
-   #third-row { padding: 0 5px; } 
+   .content_title,
+   .content_teaser,
+   #third-row { padding: 0 5px; }
    .content-columna-esquerra img { width: 568px; }
    .content-columna-dreta img {@include grid-width(4, $ninesixty-columns, $ninesixty-gutter-width - $space);}
   }
@@ -148,7 +148,7 @@
       float: left;
       vertical-align: top;
     }
-    .image { 
+    .image {
       margin-right: $space;
     }
     .text {
@@ -169,22 +169,22 @@
     margin-bottom: $ninesixty-gutter-width;
     .form-item, .form-actions {
      display: inline;
-    } 
+    }
   }
-  .views-exposed-form { 
-    display: none;    
+  .views-exposed-form {
+    display: none;
   }
   .view-documents-filtrats{
-    .views-exposed-form { 
-      display: none;    
+    .views-exposed-form {
+      display: none;
     }
   }
   .pane-cercador-avancat-biblioteca-panel-pane-1,
   #views-exposed-form-cercador-avancat-biblioteca-panel-pane-1{
-    .views-exposed-form { 
-      display: inline; 
+    .views-exposed-form {
+      display: inline;
       select{
-        width:200px;      
+        width:200px;
       }
       .form-text{
         width:195px;
@@ -205,13 +205,13 @@
   .view-display-id-page_1{
     .view-content{
       display:inline;
-    } 
+    }
   }
   .pane-cercador-avancat-biblioteca-panel-pane-1{
       h2 {
         @include block-lat-title(3, $space, 0px);
-        background: $biblioteca; 
-      } 
+        background: $biblioteca;
+      }
       .pane-content {
         padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
         clear: both;
@@ -220,7 +220,7 @@
           margin-bottom: $ninesixty-gutter-width;
           padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
           list-style-type: square;
-        } 
+        }
         ul.subterm {
           padding: 0 $ninesixty-gutter-width*2;
           margin: 0;
@@ -231,10 +231,10 @@
   }
   .pane-cercador-avan-at-biblioteca-panel-pane-1,
   #views-exposed-form-cercador-avan-at-biblioteca-panel-pane-1{
-    .views-exposed-form { 
-      display: inline; 
+    .views-exposed-form {
+      display: inline;
       select{
-        width:200px;      
+        width:200px;
       }
       .form-text{
         width:195px;
@@ -255,13 +255,13 @@
   .view-display-id-page_1{
     .view-content{
       display:inline;
-    } 
+    }
   }
   .pane-cercador-avan-at-biblioteca-panel-pane-1{
       h2 {
         @include block-lat-title(3, $space, 0px);
-        background: $biblioteca; 
-      } 
+        background: $biblioteca;
+      }
       .pane-content {
         padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
         clear: both;
@@ -270,7 +270,7 @@
           margin-bottom: $ninesixty-gutter-width;
           padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
           list-style-type: square;
-        } 
+        }
         ul.subterm {
           padding: 0 $ninesixty-gutter-width*2;
           margin: 0;
@@ -283,12 +283,12 @@
     .views-row {
       border-bottom: 1px dotted $main-2;
       table { margin: $space 0; }
-      tbody { border: none; } 
+      tbody { border: none; }
     }
     .biblioteca-document {
       border-collapse: separate;
-      .text { 
-        padding: 0 $space; 
+      .text {
+        padding: 0 $space;
         .teaser{
           margin-top:0px;
         }
@@ -311,13 +311,13 @@
     a { margin: 0 $space; }
     a.currentsort { font-weight: bold; }
   }
-    
+
     /* ------- Blocks ------- */
     .pane-block-67, .pane-block-69, .pane-block-73 {
       h2 {
         @include block-lat-title(3, $space, 0px);
-        background: $biblioteca; 
-      } 
+        background: $biblioteca;
+      }
       .pane-content {
         clear: both;
         background-color: $main-3;
@@ -325,7 +325,7 @@
           margin-bottom: $ninesixty-gutter-width;
           padding: $ninesixty-gutter-width 0 $ninesixty-gutter-width $ninesixty-gutter-width*2;
           list-style-type: square;
-        } 
+        }
         ul.subterm {
           padding: 0 $ninesixty-gutter-width*2;
           margin: 0;
@@ -357,9 +357,9 @@
   		margin: $space;
   		padding: $space;
   		height: 160px;
-  		h2 { 
+  		h2 {
   			font-weight: bold;
-  			border-bottom: solid 1px; 
+  			border-bottom: solid 1px;
   		}
   		&#dades {
   			h2 { color: $social; }
@@ -388,9 +388,9 @@
   		&#recurs { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/recursos-taronja.png'); }
   		&#otrs { list-style-image: url('/sites/all/themes/sasson_xarxanet/images/pictos/otrs-verd.png'); }
   	}
-  	table.views-table { 
+  	table.views-table {
   		width: 100%;
-  		th, td { padding: $space; } 
+  		th, td { padding: $space; }
   	}
   	h2.pane-title {
   		color: $main-1;
@@ -406,13 +406,13 @@
   				label {
   					float: left;
   					font-weight: normal;
-  					margin-right: $space; 
+  					margin-right: $space;
   				}
   				.date-padding { float: left; }
   				input { width: 100px; }
   			}
   			.form-submit { margin-top: 1.3em; }
-  		}	
+  		}
   	}
   	#comentaris-entitat { margin-top: $ninesixty-gutter-width; }
 }
@@ -427,12 +427,12 @@
   }
   /*-------- Nomes a Prova------
   .panels-flexible-region-41-right_block-inside{
-    margin-left:15px; 
+    margin-left:15px;
   }
-  ------------------------------ 
+  ------------------------------
   */
   .panels-flexible-region-46-right_block-inside{
-    margin-left:15px; 
+    margin-left:15px;
   }
   #page-title-reg{
     width: $ninesixty-grid-width;
@@ -453,8 +453,8 @@
   }
   .publica-intro{
     h2{
-      margin-top:0px;     
-    } 
+      margin-top:0px;
+    }
   }
   .pane-title{
     @include title1;
@@ -519,7 +519,7 @@
     margin-right:3px;
   }
   .panels-flexible-region-46-right_block-inside{
-    margin-left:15px; 
+    margin-left:15px;
   }
   #page-title-reg{
     width: $ninesixty-grid-width;
@@ -538,8 +538,8 @@
   }
   .publica-intro{
     h2{
-      margin-top:0px;     
-    } 
+      margin-top:0px;
+    }
   }
   .pane-title{
     @include title1;
@@ -656,13 +656,13 @@
 /*------ Opinion -----*/
 .view-opinion{
   p { margin-bottom: 0px; }
-  .article-info { 
+  .article-info {
   	float: left;
-  	width: $column * 3 + $space; 
+  	width: $column * 3 + $space;
   }
-  .vertical-photo { 
+  .vertical-photo {
   	width: $column;
-  	float: left; 
+  	float: left;
   }
   .views-row-2, .views-row-3, .views-row-4, .views-row-5 {
   	clear: both;
@@ -673,10 +673,10 @@
     .views-row-clear-0 {
       background: $main-3;
       h2 a { font-size: 18pt; }
-      .article-info { 
+      .article-info {
       	padding: $space;
       	float: none;
-      	width: $column * 4; 
+      	width: $column * 4;
       }
     }
   }
@@ -685,7 +685,7 @@
 	  	padding: 4px 8px 4px 0px;
 	  	background-color: $main-3;
 	  	text-align: right;
-  	} 
+  	}
   	padding-right: $space;
   	padding-top: 2*$space;
     clear:both;
@@ -709,7 +709,7 @@
       padding: 4px 8px 4px 0px;
       background-color: $main-3;
       text-align: right;
-    } 
+    }
     padding-right: $space;
     padding-top: 2*$space;
     clear:both;
@@ -717,7 +717,7 @@
   h3{
       display:none;
     }
-}	
+}
 
 .all-authors {
 	clear: both;
@@ -731,7 +731,7 @@
 	   	margin-bottom: 0;
 	   	width: $column*3;
 	   	background-color: $opinio;
-	}   	
+	}
 }
 
 /* ------ Webinars ----- */
@@ -745,7 +745,10 @@
 	   	width: $column*2;
 	   	background-color: $general;
 	}
-	.views-row { margin-top: 2*$space; }   	
+	.views-row {
+    margin-top: 2*$space;
+    &.views-row-clear-4 { margin-right: 0px; } 
+  }
 }
 
 /* ------- Colors ------ */
@@ -765,4 +768,4 @@
 .section-juridic #portada-recurs, .section-juridic #portada-noticia { @include subportal-header($juridic); }
 .section-informatic #portada-recurs, .section-informatic #portada-noticia { @include subportal-header($informatic); }
 .section-formacio #portada-recurs, .section-formacio #portada-noticia { @include subportal-header($formacio); }
-.section-economic #portada-recurs, .section-economic #portada-noticia { @include subportal-header($economic); } 
+.section-economic #portada-recurs, .section-economic #portada-noticia { @include subportal-header($economic); }
