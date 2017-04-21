@@ -39,3 +39,13 @@
 .field-group-multiple-label-value tr td:first-child {
   width: 30%;
 }
+
+.field-group-multiple-table .field-multiple-drag {
+    width: 45px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.field-group-multiple-table .field-multiple-drag .handle {
+    padding-top: 4px;
+}

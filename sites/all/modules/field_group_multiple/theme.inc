@@ -132,10 +132,9 @@ function theme_field_group_multiple_table_form($variables) {
 
   drupal_add_css(drupal_get_path('module', 'field_group_multiple') . '/field_group_multiple.css');
   $element = $variables['elements'];
-
-  $items = $element['items'];
   $group = $element['#group'];
   $id = $group->identifier;
+  $table_id = drupal_html_id($id . '_values');
 
   $titles = (isset($group->format_settings['instance_settings']['row_titles'])) ? $group->format_settings['instance_settings']['row_titles'] : NULL;
   if ($titles) {
@@ -149,7 +148,10 @@ function theme_field_group_multiple_table_form($variables) {
   $rows = array();
 
   if ($titles) {
-    $header[] = '<div class="th-title">' . $row_titles[0] . '</div>';
+    $header[] = array(
+      'data' => $row_titles[0],
+      'class' => array('th-title')
+    );
   }
 
   $weights = array();
@@ -167,14 +169,36 @@ function theme_field_group_multiple_table_form($variables) {
 
     $weights[$field_name] = $weight;
     // Cache weights for rows
-    $header[$weight] = '<div class="th-title">' . $header_entry . '</div>';
+    $header[$weight] = array(
+      'data' => $header_entry,
+      'class' => array('th-title')
+    );
   }
 
+  // Header for ordering.
+  $header[] = 'Order';
   ksort($header);
 
-  foreach (element_children($items, TRUE) as $delta) {
-    $field_data = $items[$delta];
+  // Need to insert colspan on first column for the field-multiple-drag handle.
+  $header_keys = array_keys($header);
+  $first_header = reset($header_keys);
+  $header[$first_header]['colspan'] = 2;
+
+  $items = array();
+  foreach (element_children($element['items']) as $key) {
+    $items[] = &$element['items'][$key];
+  }
+
+  // Resort if form failed validation.
+  usort($items, '_field_sort_items_value_helper');
+
+  foreach ($items as $delta => $fields_row) {
     $row = array();
+
+    // Weight row item.
+    $order_class = $table_id . '-delta-order';
+    $fields_row['_weight']['#attributes']['class'] = array($order_class);
+    $delta_element = drupal_render($fields_row['_weight']);
 
     if ($titles) {
       $row_title = '';
@@ -184,23 +208,42 @@ function theme_field_group_multiple_table_form($variables) {
       $row[] = array('data' => $row_title, 'class' => '');
     }
 
-    foreach (element_children($field_data, TRUE) as $field_name) {
-      $data = $field_data[$field_name];
+    foreach (element_children($fields_row, TRUE) as $field_name) {
+      // This is taken care of elsewhere.
+      if ($field_name == '_weight') {
+        continue;
+      }
+      $data = $fields_row[$field_name];
       $weight = $weights[$field_name];
       $row[$weight] = array('data' => drupal_render($data), 'class' => '');
     }
+
+    // The _weight field.
+    $row[] = array(
+      'data' => $delta_element,
+      'class' => array('delta-order')
+    );
     ksort($row);
-    $rows[] = array('data' => $row, 'class' => array('row-delta-' . $delta));
+
+    // Inserting the handler in it's own td at the beginning.
+    array_unshift($row, array(
+      'data' => '',
+      'class' => array('field-multiple-drag'),
+    ));
+
+    $rows[] = array('data' => $row, 'class' => array('draggable row-delta-' . $delta));
   }
 
   $wrapper_id = drupal_html_id($id . '-add-more-wrapper');
-  $table_id = drupal_html_id($id . '_values');
 
   // TODO drag & drop and remove
   $output = '<div class="field-group-multiple-table"><div class="form-item">';
   $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-group-multiple-table'))));
   $output .= isset($element['#description']) ? '<div class="description">' . $element['#description'] . '</div>' : '';
   $output .= '</div></div>';
+
+  // Adding tabledrag.
+  drupal_add_tabledrag($table_id, 'order', 'sibling', $order_class);
 
   return $output;
 }
