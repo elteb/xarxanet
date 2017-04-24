@@ -13,7 +13,7 @@ a {
   font-family: Georgia;
   text-decoration: none;
   &:visited {
-    color: $link-color;  
+    color: $link-color;
   }
 }
 
@@ -64,28 +64,28 @@ blockquote {
 /* -------- Header --------*/
 #header {
   margin: $ninesixty-gutter-width 0;
-  
+
   #logo { margin: $space; }
-  
+
   #block-apachesolr-panels-search-form { margin: 0 $space; }
-  
+
   .menu-name-menu-men-de-cap-alera {
     @include menu-link;
     li {
      @include menu-element(right);
-     a { 
-      color: white;     
-     } 
+     a {
+      color: white;
+     }
     }
     .butlletins { @include menu-link-bg($main-1, $general, 'newsletters', 'newsletters'); }
     .accedeix { @include menu-link-bg($main-1, $general, 'login', 'login'); }
     .publica { @include menu-link-bg($main-1, $general, 'publica2', 'publica2'); }
     .surt-del-lloc { @include menu-link-bg($main-1, $general, 'logout', 'logout'); }
-    .panell-de-control { 
+    .panell-de-control {
     	@include menu-link-bg($main-1, $general, 'panell-control-menu', 'panell-control-menu');
     	body.page-panell-entitat & {
     		@include menu-link-bg($general, $general, 'panell-control-menu', 'panell-control-menu');
-    	} 
+    	}
     }
     .mbil {
       display: none;
@@ -95,32 +95,32 @@ blockquote {
 }
 
 /* -------- Menú --------*/
-#block-megamenu-main-menu {  
+#block-megamenu-main-menu {
   @include menu-link;
   li.megamenu-parent-0, li.megamenu-parent-1, li.megamenu-parent-2, li.megamenu-parent-3, li.megamenu-parent-4, li.megamenu-parent-5, {
-    @include menu-element(left); 
+    @include menu-element(left);
   }
   li.megamenu-parent-6, li.megamenu-parent-7, li.megamenu-parent-8, {
-    @include menu-element(right); 
+    @include menu-element(right);
   }
   li.megamenu-parent-0, li.megamenu-parent-2 { @include menu-link-bg( false, $general); }
-  li.megamenu-parent-1 { 
-    @include menu-link-bg( false, $opinio); 
+  li.megamenu-parent-1 {
+    @include menu-link-bg( false, $opinio);
     @include menu-submenu-1($opinio);
   }
-  li.megamenu-parent-3 { 
-    @include menu-link-bg( false, $financament); 
+  li.megamenu-parent-3 {
+    @include menu-link-bg( false, $financament);
     @include menu-submenu-1($financament);
   }
-  li.megamenu-parent-4 { 
+  li.megamenu-parent-4 {
     @include menu-link-bg( false, $agenda);
     @include menu-submenu-1($agenda);
   }
   li.megamenu-parent-5 { @include menu-link-bg( false, $biblioteca); }
-   
+
   li.megamenu-parent-6 { @include menu-link-bg( false, $general, 'fes-voluntariat', 'fes-voluntariat-hover'); }
   li.megamenu-parent-7 {@include menu-link-bg( false, $general, 'assessorat', 'assessorat-hover'); }
-  
+
   border-top: solid 2px $main-1;
   border-bottom: solid 1px $main-1;
 }
@@ -130,8 +130,8 @@ blockquote {
   li {
     padding: 0.75em 1em;
   }
-  li#ambits { 
-    @include menu-element(left); 
+  li#ambits {
+    @include menu-element(left);
   }
   li#millora {
     @include menu-element(right);
@@ -143,8 +143,8 @@ blockquote {
 
 #block-megamenu-menu-menu-ambits-entitats {
   @include menu-link;
-  li.half-1 { 
-    @include menu-element(left); 
+  li.half-1 {
+    @include menu-element(left);
   }
   li.half-2 {
     @include menu-element(right);
@@ -159,7 +159,7 @@ blockquote {
   li.megamenu-parent-7 { @include menu-submenu-2($informatic, $informatic-sec); }
   li.megamenu-parent-8 { @include menu-submenu-2($juridic, $juridic-sec); }
   li.megamenu-parent-9 { @include menu-submenu-2($projectes, $projectes-sec); }
-  
+
   border-top: solid 2px $main-1;
   background-color: $main-2;
 }
@@ -168,13 +168,13 @@ blockquote {
 h1.title { float: left; }
 
 /* -------- Breadcrumb -------- */
-.breadcrumb { 
+.breadcrumb {
   font-size: 9pt;
   padding: 5px 0 5px 10px;
   background-color: $main-3;
   margin-right: 8px;
   border-top: solid 10px $general;
-  clear: both;  
+  clear: both;
 }
 
 .section-financaments .breadcrumb,
@@ -211,7 +211,7 @@ ul.pager {
 .region-sidebar-second .block {
   h2 {
     @include block-lat-title;
-    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/info.png") $general 15px no-repeat; 
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/info.png") $general 15px no-repeat;
     float: none;
   }
   .content {
@@ -235,10 +235,10 @@ ul.pager {
 .pane-block-2, #block-block-2 {
   h2 {
     @include block-lat-title;
-    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/financaments.png") $financament 10px no-repeat; 
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/financaments.png") $financament 10px no-repeat;
   }
   .more {
-     @include more-title; 
+     @include more-title;
   }
   .content {
     background-color: $financament-sec;
@@ -259,13 +259,13 @@ ul.pager {
 
 .pane-block-2 { #more-others { display: none; }}
 #block-block-2 {
-  p { 
+  p {
     margin: 0px;
     padding-bottom: $space;
     background-color: $financament-sec;
     text-align: right;
     a.more { float: none; }
-  } 
+  }
   #more-frontpage { display: none; }
 }
 
@@ -273,10 +273,10 @@ ul.pager {
 .pane-block-3, #block-block-3 {
   h2 {
     @include block-lat-title;
-    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/actes.png") $actes 10px no-repeat; 
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/actes.png") $actes 10px no-repeat;
   }
   .more {
-     @include more-title; 
+     @include more-title;
   }
   .content {
     background-color: $actes-sec;
@@ -298,13 +298,13 @@ ul.pager {
 
 .pane-block-3 { #more-others { display: none; }}
 #block-block-3 {
-  p { 
+  p {
     margin: 0px;
     padding-bottom: $space;
     background-color: $actes-sec;
     text-align: right;
     a.more { float: none; }
-  } 
+  }
   #more-frontpage { display: none; }
 }
 
@@ -312,10 +312,10 @@ ul.pager {
 .pane-block-71 {
   h2 {
     @include block-lat-title;
-    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/cursos.png") $cursos 10px no-repeat; 
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/cursos.png") $cursos 10px no-repeat;
   }
   .more {
-     @include more-title; 
+     @include more-title;
   }
   .content {
     background-color: $cursos-sec;
@@ -338,10 +338,10 @@ ul.pager {
 .pane-block-72 {
   h2 {
     @include block-lat-title;
-    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/recursos.png") $recursos 10px no-repeat; 
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/recursos.png") $recursos 10px no-repeat;
   }
   .more {
-     @include more-title; 
+     @include more-title;
   }
   .content {
     background-color: $recursos-sec;
@@ -360,7 +360,7 @@ ul.pager {
 .pane-propers-webinars {
   h2 {
     @include block-lat-title(2, 50px, 10px);
-    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/globus.png") $general 10px no-repeat; 
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/globus.png") $general 10px no-repeat;
   }
   .pane-content {
     background-color: $general-sec;
@@ -381,11 +381,11 @@ ul.pager {
 .section-fes-voluntariat .region-content .pane-block-87 {
   h2 {
     @include block-lat-title;
-    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/crida.png") $crida 10px no-repeat; 
+    background: url("/sites/all/themes/sasson_xarxanet/images/pictos/crida.png") $crida 10px no-repeat;
     text-align: left;
   }
   .more {
-     @include more-title; 
+     @include more-title;
   }
   .content {
     background-color: $crida-sec;
@@ -455,7 +455,7 @@ ul.pager {
 /* ------- Continguts relacionats ------- */
 #block-views-5c23d6449d8a4d5fecd33b8ecec85495 {
   h2 { background: url("/sites/all/themes/sasson_xarxanet/images/pictos/relacionats.png") $general 10px no-repeat; }
-  .content { background-color: white; }  
+  .content { background-color: white; }
   .field-content{
     img { @include grid-width(2); }
     p { margin-bottom: $ninesixty-gutter-width; }
@@ -485,7 +485,7 @@ ul.pager {
    	background: image-url('pictos/opinio.png') $opinio 10px no-repeat;
   }
   .more {
-     @include more-title; 
+     @include more-title;
   }
   .content {
     background-color: $opinio-sec;
@@ -500,18 +500,18 @@ ul.pager {
   }
   #more-others { float: none; }
 }
-.pane-block-88 { 
+.pane-block-88 {
 	#more-others { display: none; }
 	p { margin: 0px; }
 }
 #block-block-88 {
-  p { 
+  p {
     margin: 0px;
     padding-bottom: $space;
     background-color: $opinio-sec;
     text-align: right;
     a.more { float: none; }
-  } 	
+  }
   #more-frontpage { display: none; }
 }
 #block-block-89 {
@@ -523,7 +523,7 @@ ul.pager {
 .node-opinion-author.block {
 	@include node-box;
     h2 { @include node-title('opinio'); }
-    .views-row { 
+    .views-row {
 	    display: list-item;
 	    margin: 0 10px 0 30px;
 	    padding: 4px 0;
@@ -536,13 +536,13 @@ ul.pager {
 
 /* ------- Content ------- */
 .region-content,
-.messages { clear: both; } 
+.messages { clear: both; }
 
 /* ------- Footer ------- */
 #block-block-84 {
   clear: both;
   background-color: $main-3;
-  
+
   .footer-row-1 {
     .footer-col {
       float: left;width: $ninesixty-grid-width/5;
@@ -557,20 +557,20 @@ ul.pager {
         margin-left: $space;
         list-style: none;
       }
-      li { 
+      li {
         padding-bottom: $space;
         img {
           margin-right: $space;
-        } 
+        }
       }
     }
     .footer-col-1 {
-      h2 { 
+      h2 {
         padding-left: $ninesixty-gutter-width;
-        padding-right: 0; 
-      }      
+        padding-right: 0;
+      }
       ul { margin-left: $ninesixty-gutter-width;}
-    }  
+    }
   }
   .footer-row-2 {
     clear: both;
@@ -584,20 +584,20 @@ ul.pager {
       list-style: none;
       padding: 0;
     }
-    ul.left-menu { 
+    ul.left-menu {
       float: left;
-      padding-left: $space; 
+      padding-left: $space;
     }
-    ul.right-menu { 
+    ul.right-menu {
       float: right;
-      padding-right: $space; 
+      padding-right: $space;
     }
-    li { 
+    li {
       display: inline-block;
-      margin: 0 $space; 
+      margin: 0 $space;
     }
     a { color: white; }
-  } 
+  }
 }
 /* ------- Formularis d'Administració ------- */
 .form-wrapper{
@@ -608,5 +608,10 @@ ul.pager {
   }
   .fieldset-wrapper{
     padding: 10px 0 0 10px;
-  } 
+  }
+}
+
+/* -------- Media Browser -------- */
+.media-list-thumbnails .media-item.selected  {
+  background-color: #058ac5;
 }
