@@ -304,6 +304,7 @@
   MBP.prototype.loadFiles = function(folder_id) {
     if ($(':input[name=mbp_current_folder]', this.element).length && $(':input[name=mbp_current_folder]', this.element).val() != folder_id) {
       $(':input[name=mbp_current_folder]', this.element).val(folder_id).trigger('change');
+      $('input[type="submit"]:visible', this.element).eq(0).trigger('click');
       $('li.active', this.element).removeClass('active');
       $('li:has(>.folder-id-' + folder_id + ')', this.element)
         .addClass('active')
@@ -373,7 +374,7 @@
 
   Drupal.behaviors.media_browser_plus_views = {
     attach: function (context) {
-      if (Drupal.settings.mbp.views) {
+      if (Drupal.settings.mbp && Drupal.settings.mbp.views) {
         for(var i in Drupal.settings.mbp.views) {
           var view_id = Drupal.settings.mbp.views[i].view_id;
           var view_display_id = Drupal.settings.mbp.views[i].view_display_id;
