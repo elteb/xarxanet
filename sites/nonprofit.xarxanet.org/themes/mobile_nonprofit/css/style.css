@@ -292,7 +292,7 @@ iframe { max-width: 100% !important; }
 .node-type-page .page-title,
 .node-type-webform .page-title,
 .section-mobile-opinion .page-title,
-.author-articles .section-title {
+.author-articles .section-title{
 	font-family: Georgia,Times New Roman,Times,serif;
 	font-size: 1.4rem;
 	color: #ffffff;

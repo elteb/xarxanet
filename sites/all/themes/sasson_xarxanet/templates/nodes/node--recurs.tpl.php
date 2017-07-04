@@ -129,6 +129,21 @@
 				<?php endif; ?>
 			<?php endif; ?>
 
+			<?php
+				if (!empty($node->field_file['und'])): ?>
+					<div class="node-files">
+                    	<h2>Fitxers relacionats</h2>
+                    	<ul class="links tags" role="navigation">
+                    	<?php
+						foreach($node->field_file['und'] as $file) {
+						    echo '<li>'.l( $file['filename'], file_create_url($file['uri'])).'</li>';
+						}
+                    	?>
+                    	</ul>
+                    </div>
+				<?php
+				endif;
+           ?>
 
 		<?php
 			if($node->print_html_display || $node->print_mail_display || $node->print_pdf_display) {
