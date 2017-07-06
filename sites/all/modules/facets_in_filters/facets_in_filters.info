@@ -1,0 +1,20 @@
+name = Facets in filters
+description = Exposes facets (facet_api) in views filters
+core = 7.x
+package = Views
+
+dependencies[] = views
+dependencies[] = facetapi
+
+files[] = handlers/ViewsHandlerFilterFacet.inc
+files[] = handlers/FacetapiUrlViews.inc
+files[] = widgets/FacetsInFiltersCheckbox.inc
+files[] = widgets/FacetsInFiltersFilterBase.inc
+files[] = widgets/FacetsInFiltersSelect.inc
+
+; Information added by Drupal.org packaging script on 2016-06-30
+version = "7.x-1.2"
+core = "7.x"
+project = "facets_in_filters"
+datestamp = "1467266645"
+
