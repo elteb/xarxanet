@@ -481,6 +481,22 @@ ul.pager {
   @include search-block($financament, $financament-sec);
 }
 
+/*-------- Cerca General -------*/
+#view-cercador-general{
+	.item-list ul li{
+		margin: 0 0 0.25em 0;
+		padding: 0;
+		list-style: none;	
+		.views-field-views-conditional-1 p{
+			margin:unset;
+			padding-left: 1.5em;
+		}
+		.views-field-views-conditional{
+			padding-left: 1.5em;
+		}		
+	}
+}
+
 /* -------- Opinions --------- */
 .opinion-articles,
 .region-sidebar-second #block-block-88 {
