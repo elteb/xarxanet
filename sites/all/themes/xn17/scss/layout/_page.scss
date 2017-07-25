@@ -1,0 +1,29 @@
+// Page Layout
+// -----------------------------------------------------------------------------
+// Header
+// -----------------------------------------------------------------------------
+header {
+  &#first-header {
+    background-color: $gray-darker;
+    border-bottom: solid 1px white;
+    color: white !important;
+    a { color: white !important; }
+    font-size: 13px;
+    .header-region {
+      position: relative;
+      height: 50px;
+    }
+    #site-slogan, #secondary-menu {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #secondary-menu { right: 0; }
+  }
+  &#second-header {
+    background-color: $gray-dark;
+    nav {  margin-top: $line-height-computed; }
+    .search-form { margin-bottom: 0px; }
+    .container { height: 70px; }
+  }
+}
