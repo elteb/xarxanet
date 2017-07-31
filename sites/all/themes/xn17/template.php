@@ -21,6 +21,5 @@ function xn17_preprocess_page(&$variables) {
 
   // Add secondary menu
   $variables['secondary_menu'] = _radix_dropdown_menu_tree(variable_get('menu_secondary_links_source', 'user-menu'));
-
   theme_get_setting('toggle_secondary_menu') ? menu_secondary_menu() : array();
 }

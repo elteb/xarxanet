@@ -10,15 +10,36 @@
  * @see html.tpl.php
  */
 ?>
+<header id="third-header-clone" class="header" role="header">
+  <div class="container">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="menu-icon">
+        <img src="/sites/all/themes/xn17/assets/images/icon/icon-menu-gray.svg" alt="menu icon"/>
+      </div>
+      <div class="main-selector main-resources">
+        <a><!--TODO-->recursos</a>
+      </div>
+      <div class="main-selector main-news">
+        <a><!--TODO-->notícies</a>
+      </div>
+      <div class="social-icons hidden-xs">
+        <!-- TODO -->
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="menu icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="menu icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="menu icon"/></a>
+      </div>
+    </div>
+  </div>
+</header>
 <header id="first-header" class="header" role="header">
   <div class="container">
     <?php if ($site_slogan): ?>
-      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12 first">
         <div id="site-slogan"><?php print $site_slogan; ?></div>
       </div>
     <?php endif; ?>
     <?php if ($secondary_menu): ?>
-      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12 second">
         <ul id="secondary-menu" class="menu nav navbar-nav">
           <?php print render($secondary_menu); ?>
         </ul>
@@ -28,40 +49,49 @@
 </header>
 <header id="second-header" class="header" role="header">
   <div class="container">
-    <nav class="navbar navbar-default" role="navigation">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-          <span class="sr-only"><?php print t('Toggle navigation'); ?></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <?php if ($site_name || $logo): ?>
+    <?php if ($logo): ?>
+      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div id="site-logo">
           <a href="<?php print $front_page; ?>" class="navbar-brand" rel="home" title="<?php print t('Home'); ?>">
-            <?php if ($logo): ?>
-              <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" id="logo" />
-            <?php endif; ?>
+            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" id="logo" />
           </a>
-        <?php endif; ?>
-      </div> <!-- /.navbar-header -->
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <!--
-        <?php if ($main_menu): ?>
-          <ul id="main-menu" class="menu nav navbar-nav">
-            <?php print render($main_menu); ?>
-          </ul>
-        <?php endif; ?>
-        -->
-        <?php if ($search_form): ?>
+        </div>
+      </div>
+    <?php endif; ?>
+    <?php if ($search_form): ?>
+      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div id="search-form">
           <?php print $search_form; ?>
-        <?php endif; ?>
-      </div><!-- /.navbar-collapse -->
-    </nav><!-- /.navbar -->
-  </div> <!-- /.container -->
+        </div>
+      </div>
+    <?php endif; ?>
+  </div>
 </header>
+<header id="third-header" class="header" role="header">
+  <div class="container">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="menu-icon">
+        <img src="/sites/all/themes/xn17/assets/images/icon/icon-menu-gray.svg" alt="menu icon"/>
+      </div>
+      <div class="main-selector main-resources">
+        <a><!--TODO-->recursos</a>
+      </div>
+      <div class="main-selector main-news">
+        <a><!--TODO-->notícies</a>
+      </div>
+      <div class="social-icons hidden-xs">
+        <!-- TODO -->
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="menu icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="menu icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="menu icon"/></a>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="main-menu">
+  <div class="container">
+  </div>
+</div>
 
 <div id="main-wrapper">
   <div id="main" class="main">
