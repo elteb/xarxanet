@@ -10,10 +10,13 @@
  * @see html.tpl.php
  */
 ?>
-<header id="third-header-clone" class="header" role="header">
+<header id="third-header-clone" class="header hidde" role="header">
   <div class="container">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="menu-icon">
+      <div class="sticky-logo hidden-xs">
+        <img src="/sites/all/themes/xn17/assets/images/logo/logo-30-white.svg" alt="menu icon"/>
+      </div>
+      <div id="menu-icon">
         <img src="/sites/all/themes/xn17/assets/images/icon/icon-menu-gray.svg" alt="menu icon"/>
       </div>
       <div class="main-selector main-resources">
@@ -22,11 +25,11 @@
       <div class="main-selector main-news">
         <a><!--TODO-->notícies</a>
       </div>
-      <div class="social-icons hidden-xs">
+      <div class="social-icons hidden-xs hidden-sm">
         <!-- TODO -->
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="menu icon"/></a>
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="menu icon"/></a>
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="menu icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="facebook icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="twitter icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="share icon"/></a>
       </div>
     </div>
   </div>
@@ -34,7 +37,7 @@
 <header id="first-header" class="header" role="header">
   <div class="container">
     <?php if ($site_slogan): ?>
-      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12 first">
+      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12 first hidden-sm hidden-xs">
         <div id="site-slogan"><?php print $site_slogan; ?></div>
       </div>
     <?php endif; ?>
@@ -42,12 +45,13 @@
       <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12 second">
         <ul id="secondary-menu" class="menu nav navbar-nav">
           <?php print render($secondary_menu); ?>
+          <li class="leaf active hidden-md hidden-lg"><img id="search-icon" src="/sites/all/themes/xn17/assets/images/icon/icon-search-white.svg" alt="search icon"/></li>
         </ul>
       </div>
     <?php endif; ?>
   </div>
 </header>
-<header id="second-header" class="header" role="header">
+<header id="second-header" class="header hidden-sm" role="header">
   <div class="container">
     <?php if ($logo): ?>
       <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -59,7 +63,7 @@
       </div>
     <?php endif; ?>
     <?php if ($search_form): ?>
-      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="header-region col-lg-6 col-md-6 col-sm-12 col-xs-12 hidden-xs">
         <div id="search-form">
           <?php print $search_form; ?>
         </div>
@@ -70,7 +74,10 @@
 <header id="third-header" class="header" role="header">
   <div class="container">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="menu-icon">
+      <div class="sticky-logo hidden-xs hidden-md hidden-lg">
+        <img src="/sites/all/themes/xn17/assets/images/logo/logo-30-white.svg" alt="menu icon"/>
+      </div>
+      <div id="menu-icon">
         <img src="/sites/all/themes/xn17/assets/images/icon/icon-menu-gray.svg" alt="menu icon"/>
       </div>
       <div class="main-selector main-resources">
@@ -79,17 +86,20 @@
       <div class="main-selector main-news">
         <a><!--TODO-->notícies</a>
       </div>
-      <div class="social-icons hidden-xs">
+      <div class="social-icons hidden-xs hidden-sm">
         <!-- TODO -->
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="menu icon"/></a>
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="menu icon"/></a>
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="menu icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="facebook icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="twitter icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="share icon"/></a>
       </div>
     </div>
   </div>
 </header>
 <div id="main-menu">
   <div class="container">
+    <?php
+      print render($main_menu);
+    ?>
   </div>
 </div>
 

@@ -24,17 +24,21 @@ header {
       transform: translateY(-50%);
     }
     #secondary-menu {
-      @media (min-width: $screen-md-min) { right: 0; }
-      @media (max-width: $screen-md-min) { left: 0; }
+      right: 0;
+      @media (max-width: $screen-xs-min) { left: 0px; }
       &.navbar-nav li {
-        float: left !important;
+        float: left;
         @media (min-width: $screen-md-min) { margin-left: 18px; }
-        @media (max-width: $screen-md-min) { a { padding-right: 5px; }}
+        @media (max-width: $screen-md-min) { a { padding-right: 5px;}}
       }
       .menu-link-segueix-nos, .menu-link-publica, .menu-link-butlletí {
         a {
           @media (min-width: $screen-md-min) { padding-left: 25px; }
-          @media (max-width: $screen-md-min) { font-size: 0px; padding-right: 18px !important; padding-left: 18px; }
+          @media (max-width: $screen-md-min) {
+            font-size: 0px;
+            padding-right: 18px !important;
+            padding-left: 18px;
+          }
         }
       }
       .menu-link-segueix-nos {
@@ -43,6 +47,7 @@ header {
       }
       .menu-link-publica { background: url('../images/icon/icon-publish-white.svg') no-repeat left 10px; }
       .menu-link-butlletí { background: url('../images/icon/icon-newsletter-white.svg') no-repeat left 10px; }
+      #search-icon{ margin: 10px 10px 10px 0px; }
     }
   }
   &#second-header {
@@ -73,11 +78,11 @@ header {
     background-color: $gray-dark;
     border-top: solid 3px $gray-darker;
     height: 50px;
-    .social-icons, .main-selector, .menu-icon {
+    .social-icons, .main-selector, #menu-icon {
       float: right;
       height: 46px;
     }
-    .menu-icon {
+    #menu-icon {
       padding-top: 12px;
       padding-left: 25px;
       @media (max-width: $screen-md-min) { padding-left: 20px; }
@@ -85,7 +90,7 @@ header {
     }
     .main-news a, .main-resources a{
       color: $gray-medium;
-      font-weight: bold;
+      font-weight: 600;
       font-size: 22px;
     }
     .main-selector {
@@ -112,5 +117,26 @@ header {
     position: fixed;
     width: 100%;
 
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Main menu
+// -----------------------------------------------------------------------------
+#main-menu {
+  a.depth-1 { font-weight: 600; font-size: 28px; }
+  .menu-link.depth-1 { border-bottom: solid 7px $gray; }
+  a.depth-2 { font-weight: 600; font-size: 18px; }
+  .menu-item.depth-2 { padding: 12px 10px; border-bottom: solid 2px $gray; }
+
+  @media (min-width: $screen-md-max) {
+    .menu-link.depth-2 { width: 30%; display: inline-block; }
+    .submenu.depth-3 { width: 70%; display: inline-block; }
+    .menu-item.depth-3 { display: inline-block; }
+  }
+
+  @media (max-width: $screen-md-max) {
+    a.depth-2::after { content: '>>'; float: right; pointer-events: none; cursor: default;}
+    .submenu.depth-3 { display: none; }
   }
 }

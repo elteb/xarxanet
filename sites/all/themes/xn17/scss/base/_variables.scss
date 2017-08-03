@@ -12,9 +12,9 @@ $bootstrap-sass-asset-helper: false !default;
 
 $gray-darker:            #231f20 !default;
 $gray-dark:              #2f3031 !default;
-$gray-medium:            #7b7979 !default;
-$gray:                   #ededed !default;
-$gray-light:             lighten(#000, 60%) !default;   // #999
+$gray-medium:            #878787 !default;
+$gray:                   #c6c6c6 !default;
+$gray-light:             #ededed !default;   // #999
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
 // Brand colors
@@ -29,7 +29,7 @@ $brand-info:            #5bc0de !default;
 // Scaffolding
 // -----------------------------------------------------------------------------
 
-$body-bg:               $gray !default;
+$body-bg:               $gray-light !default;
 $text-color:            $gray-dark !default;
 
 // Links
