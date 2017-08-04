@@ -5,22 +5,20 @@
  * Definition of the 'rounded_corners' panel style.
  */
 
-// Plugin definition
-$plugin = array (
-		'title' => t ( 'Rounded corners' ),
-		'description' => t ( 'Presents the panes or panels with a rounded corner box around them' ),
-		'render region' => 'panels_rounded_corners_style_render_region',
-		'render pane' => 'panels_rounded_corners_style_render_pane',
-		'settings form' => 'panels_rounded_corners_style_settings_form',
-		'hook theme' => array (
-				'panels_rounded_corners_box' => array (
-						'variables' => array (
-								'content' => NULL 
-						),
-						'path' => panels_get_path ( 'plugins/styles/corners' ),
-						'template' => 'panels-rounded-corners-box' 
-				) 
-		) 
+// Plugin definition.
+$plugin = array(
+  'title' => t('Rounded corners'),
+  'description' => t('Presents the panes or panels with a rounded corner box around them'),
+  'render region' => 'panels_rounded_corners_style_render_region',
+  'render pane' => 'panels_rounded_corners_style_render_pane',
+  'settings form' => 'panels_rounded_corners_style_settings_form',
+  'hook theme' => array(
+    'panels_rounded_corners_box' => array(
+      'variables' => array('content' => NULL),
+      'path' => panels_get_path('plugins/styles/corners'),
+      'template' => 'panels-rounded-corners-box',
+    ),
+  ),
 );
 
 /**
@@ -29,124 +27,114 @@ $plugin = array (
  * @ingroup themeable
  */
 function theme_panels_rounded_corners_style_render_region($vars) {
-	$display = $vars ['display'];
-	$region_id = $vars ['region_id'];
-	$panes = $vars ['panes'];
-	$settings = $vars ['settings'];
-	
-	$output = '';
-	
-	// Determine where to put the box. If empty or 'pane' around each pane. If
-	// 'panel' then just around the whole panel.
-	$where = empty ( $settings ['corner_location'] ) ? 'pane' : $settings ['corner_location'];
-	
-	$print_separator = FALSE;
-	foreach ( $panes as $pane_id => $pane ) {
-		// Add the separator if we've already displayed a pane.
-		if ($print_separator) {
-			$output .= '<div class="panel-separator">&nbsp;</div>';
-		}
-		
-		if ($where == 'pane') {
-			$output .= theme ( 'panels_rounded_corners_box', array (
-					'content' => $pane 
-			) );
-		} else {
-			$output .= $pane;
-			$print_separator = TRUE;
-		}
-	}
-	
-	if ($where == 'panel') {
-		$output = theme ( 'panels_rounded_corners_box', array (
-				'content' => $output 
-		) );
-	}
-	
-	panels_add_rounded_corners_css ( $display, $where );
-	
-	return $output;
+  $display = $vars['display'];
+  $region_id = $vars['region_id'];
+  $panes = $vars['panes'];
+  $settings = $vars['settings'];
+
+  $output = '';
+
+  // Determine where to put the box. If empty or 'pane' around each pane. If
+  // 'panel' then just around the whole panel.
+  $where = empty($settings['corner_location']) ? 'pane' : $settings['corner_location'];
+
+  $print_separator = FALSE;
+  foreach ($panes as $pane_id => $pane) {
+    // Add the separator if we've already displayed a pane.
+    if ($print_separator) {
+      $output .= '<div class="panel-separator">&nbsp;</div>';
+    }
+
+    if ($where == 'pane') {
+      $output .= theme('panels_rounded_corners_box', array('content' => $pane));
+    }
+    else {
+      $output .= $pane;
+      $print_separator = TRUE;
+    }
+  }
+
+  if ($where == 'panel') {
+    $output = theme('panels_rounded_corners_box', array('content' => $output));
+  }
+
+  panels_add_rounded_corners_css($display, $where);
+
+  return $output;
 }
+
 function panels_add_rounded_corners_css($display, $where) {
-	static $displays_used = array ();
-	if (empty ( $displays_used [$display->css_id] )) {
-		panels_rounded_corners_css ( $display, $where );
-		$displays_used [$display->css_id] = TRUE;
-	}
+  static $displays_used = array();
+  if (empty($displays_used[$display->css_id])) {
+    panels_rounded_corners_css($display, $where);
+    $displays_used[$display->css_id] = TRUE;
+  }
 }
 
 /**
  * Render callback for a single pane.
  */
 function theme_panels_rounded_corners_style_render_pane($vars) {
-	$content = $vars ['content'];
-	$pane = $vars ['pane'];
-	$display = $vars ['display'];
-	
-	if (empty ( $content->content )) {
-		return;
-	}
-	
-	$output = theme ( 'panels_pane', array (
-			'content' => $content,
-			'pane' => $pane,
-			'display' => $display 
-	) );
-	
-	// Just stick a box around the standard theme_panels_pane.
-	$output = theme ( 'panels_rounded_corners_box', array (
-			'content' => $output 
-	) );
-	panels_add_rounded_corners_css ( $display, 'pane' );
-	return $output;
+  $content = $vars['content'];
+  $pane = $vars['pane'];
+  $display = $vars['display'];
+
+  if (empty($content->content)) {
+    return;
+  }
+
+  $output = theme('panels_pane', array('content' => $content, 'pane' => $pane, 'display' => $display));
+
+  // Just stick a box around the standard theme_panels_pane.
+  $output = theme('panels_rounded_corners_box', array('content' => $output));
+  panels_add_rounded_corners_css($display, 'pane');
+  return $output;
 }
 
 /**
  * Settings form callback.
  */
 function panels_rounded_corners_style_settings_form($style_settings) {
-	$form ['corner_location'] = array (
-			'#type' => 'select',
-			'#title' => t ( 'Box around' ),
-			'#options' => array (
-					'pane' => t ( 'Each pane' ),
-					'panel' => t ( 'Each region' ) 
-			),
-			'#default_value' => (isset ( $style_settings ['corner_location'] )) ? $style_settings ['corner_location'] : 'ul',
-			'#description' => t ( 'Choose whether to include the box around each pane (piece of content) or region (each column or region)' ) 
-	);
-	
-	return $form;
+  $form['corner_location'] = array(
+    '#type' => 'select',
+    '#title' => t('Box around'),
+    '#options' => array(
+      'pane' => t('Each pane'),
+      'panel' => t('Each region'),
+    ),
+    '#default_value' => (isset($style_settings['corner_location'])) ? $style_settings['corner_location'] : 'ul',
+    '#description' => t('Choose whether to include the box around each pane (piece of content) or region (each column or region)'),
+  );
+
+  return $form;
 }
 
 /**
  * Generates the dynamic CSS.
  *
- * @param $display A
- *        	Panels display object.
+ * @param $display
+ *   A Panels display object.
  */
 function panels_rounded_corners_css($display) {
-	$idstr = empty ( $display->css_id ) ? '.rounded-corner' : "#$display->css_id";
-	$css_id = 'rounded-corner:' . $idstr;
-	
-	ctools_include ( 'css' );
-	$filename = ctools_css_retrieve ( $css_id );
-	if (! $filename) {
-		$filename = ctools_css_store ( $css_id, _panels_rounded_corners_css ( $idstr ), FALSE );
-	}
-	
-	drupal_add_css ( $filename, array (
-			'preprocess' => TRUE 
-	) );
+  $idstr = empty($display->css_id) ? '.rounded-corner' : "#$display->css_id";
+  $css_id = 'rounded-corner:' . $idstr;
+
+  ctools_include('css');
+  $filename = ctools_css_retrieve($css_id);
+  if (!$filename) {
+    $filename = ctools_css_store($css_id, _panels_rounded_corners_css($idstr), FALSE);
+  }
+
+  drupal_add_css($filename, array('preprocess' => TRUE));
 }
 
 /**
  * Generates the dynamic CSS.
  */
 function _panels_rounded_corners_css($idstr) {
-	$url = panels_get_path ( 'plugins/styles/corners', TRUE );
-	
-	$css = <<<EOF
+  $url = panels_get_path('plugins/styles/corners', TRUE);
+
+  $css = <<<EOF
 
 .t-edge, .b-edge, .l-edge, .r-edge, .wrap-corner {
   position: relative;
@@ -212,6 +200,6 @@ $idstr .rounded-corner {
 }
 
 EOF;
-	
-	return $css;
+
+  return $css;
 }

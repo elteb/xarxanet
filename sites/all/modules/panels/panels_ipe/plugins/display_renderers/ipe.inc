@@ -1,4 +1,9 @@
 <?php
-$plugin = array (
-		'renderer' => 'panels_renderer_ipe' 
+
+/**
+ * @file
+ */
+
+$plugin = array(
+  'renderer' => 'panels_renderer_ipe',
 );
