@@ -22,5 +22,5 @@
   p{
     padding-top:20px;
   }
-  z-index:-1000;
+  &::before{ content: ""; background-color:#000000;}
 }

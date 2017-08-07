@@ -8,6 +8,8 @@
  */
 ?>
 <?php
+$view = views_get_current_view();
+print "<div class='titol-regio'>" . check_plain($view->get_title()) . "</div>";
 $itRow = 1;
 foreach ($rows as $id => $row):  ?>
   <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12 pdng_mdl">
