@@ -1,13 +1,6 @@
 // Mixins
 // -----------------------------------------------------------------------------
 @mixin caixa_modul{
-  background-color : #EDEDED;
-  h3{
-    font: {
-      color:#aa0000;
-      weight: 600;
-      size: 40px;
-    }
-  }
-  line-height: 42px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }

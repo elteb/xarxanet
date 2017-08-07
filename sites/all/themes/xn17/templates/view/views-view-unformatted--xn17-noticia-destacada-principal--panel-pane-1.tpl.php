@@ -7,14 +7,10 @@
  * @ingroup views_templates
  */
 ?>
-<?php if (!empty($title)): ?>
-  <h3><?php print $title; ?></h3>
-<?php endif; ?>
-
 <?php
 $itRow = 1;
 foreach ($rows as $id => $row):  ?>
-  <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12">
+  <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12 pdng_mdl">
     <?php print $row; ?>
   </div>
 <?php

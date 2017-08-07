@@ -27,7 +27,7 @@
 <?php
 	$rawImatge = $fields['field_agenda_imatge']->content;
 	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-mig', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
-	if ((strip_tags($fields['field_imatge_emergent']->content) != '') || (strip_tags($fields['field_video_emergent']->content) != '')) {
+	/*if ((strip_tags($fields['field_imatge_emergent']->content) != '') || (strip_tags($fields['field_video_emergent']->content) != '')) {
 		if (strip_tags($fields['field_imatge_emergent']->content) != '') {
 			//Imatge emergent
 			$class = 'imatge';
@@ -48,11 +48,14 @@
  								<a rel="'.$rel.'" href="'.$newurl.'" class="info" title="'.$title.'"><img alt="icona '.$class.'" src="/sites/all/themes/sasson_xarxanet/images/pictos/emergent-'.$class.'.svg" /></a>
 						  	</div>
 			            </div>';
-	}
-
-	print '<div class="destacat_2x2">';
-	print '<h3>'.$fields['title']->content.'</h3>';
-	print $fields['field_resum']->content;
+	}*/
+	$view = views_get_current_view();
+	print '<div class="destacat_2x2" style="background:#220033 url(../sites/default/files/got_0.jpg)">';
+		print check_plain($view->get_title());
+		print '<h3>'.$fields['title']->content.'</h3>';
+		print $fields['field_resum']->content;
 	print '</div>';
+
+
 ?>
 </div>

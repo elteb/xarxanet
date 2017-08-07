@@ -1,5 +1,26 @@
 // Styles for panels and panes.
 // -----------------------------------------------------------------------------
-.destacat_2x2{
-  @include caixa_modul;
-}
+
+//------------------------------------------------------------------------------
+//Destacats
+//------------------------------------------------------------------------------
+  .destacat_2x2{
+    @include caixa_modul;
+  }
+  //Lina superior vermella
+  .panels-flexible-region-57-regio_2{
+    border-top: solid 3px #BE1622;
+    padding-bottom: 15px !important;
+    margin-left:15px;
+    margin-right:15px;
+  }
+  .pane-xn17-noticia-destacada-principal-panel-pane-1{
+      h2{
+        margin:0;
+        font-size:14px;
+        text-transform: uppercase;
+        position:relative;
+        z-index:4;
+        color:#FFFFFF;
+      }
+  }

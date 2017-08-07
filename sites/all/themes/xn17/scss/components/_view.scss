@@ -1,2 +1,26 @@
 // Styles for Views
 // -----------------------------------------------------------------------------
+.destacat_2x2{
+  @include caixa_modul;
+  h3{
+    font:{
+      family: Fira Sans SemiBold;
+      size:30px;
+      width:600;
+    }
+    a{
+      color:#FFFFFF;
+    }
+    margin:0px;
+  }
+  color:#FFFFFF;
+  height: 312px;
+  padding-left:40px;
+  padding-right: 150px;
+  padding-top: 70px;
+  padding-bottom: 50px;
+  p{
+    padding-top:20px;
+  }
+  z-index:-1000;
+}
