@@ -43,6 +43,7 @@ function xn17_menu_link__main($variables) {
   $depth = $element['#original_link']['depth'];
   $element['#attributes']['class'][] = 'depth-' . $depth;
   $element['#localized_options']['attributes']['class'][] = 'depth-' . $depth;
+  $element['#localized_options']['attributes']['class'][] = 'closed';
 
   //Columns
   if($depth == 1) $element['#attributes']['class'] = array_merge($element['#attributes']['class'],

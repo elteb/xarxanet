@@ -7,6 +7,9 @@
   Drupal.behaviors.radix_dropdown = {
     attach: function(context, setting) {
 
+      // -----------------------------------------------------------------------
+      // Scrolling
+      // -----------------------------------------------------------------------
       $(window).scroll(function() {
         var aTop = $('#third-header').offset().top;
         if ($(this).scrollTop() >= aTop) {
@@ -17,11 +20,32 @@
         }
       });
 
+      // -----------------------------------------------------------------------
+      // Scrolling
+      // -----------------------------------------------------------------------
       $(document).ready(function() {
-        $(".menu-link.depth-2").click(function(){
-          $(this).next(".submenu.depth-3").toggle();
-          //alert('ei');
+        $(".menu-icon").click(function(){
+          $("#main-menu").slideToggle("slow", function(){
+            $("#main-wrapper").fadeToggle();
+          });
         });
+        $("#close-button").click(function(){
+          $("#main-menu").slideToggle("slow", function(){
+            $("#main-wrapper").fadeToggle();
+          });
+        });
+        $(".menu-link.depth-2").click(function(){
+          $(this).next(".submenu.depth-3").slideToggle("slow");
+          $(this).children().toggleClass("opened");
+          $(this).children().toggleClass("closed");
+        });
+        if ($(window).width() < 768) {
+          $(".menu-link.depth-1").click(function(){
+            $(this).next(".submenu.depth-2").slideToggle("slow");
+            $(this).children().toggleClass("opened");
+            $(this).children().toggleClass("closed");
+          });
+        }
       });
     }
   };

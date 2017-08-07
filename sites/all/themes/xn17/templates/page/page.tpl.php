@@ -14,9 +14,9 @@
   <div class="container">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="sticky-logo hidden-xs">
-        <img src="/sites/all/themes/xn17/assets/images/logo/logo-30-white.svg" alt="menu icon"/>
+        <img src="/sites/all/themes/xn17/assets/images/logo/logo-30-white.svg" alt="logo"/>
       </div>
-      <div id="menu-icon">
+      <div class="menu-icon">
         <img src="/sites/all/themes/xn17/assets/images/icon/icon-menu-gray.svg" alt="menu icon"/>
       </div>
       <div class="main-selector main-resources">
@@ -77,7 +77,7 @@
       <div class="sticky-logo hidden-xs hidden-md hidden-lg">
         <img src="/sites/all/themes/xn17/assets/images/logo/logo-30-white.svg" alt="menu icon"/>
       </div>
-      <div id="menu-icon">
+      <div class="menu-icon">
         <img src="/sites/all/themes/xn17/assets/images/icon/icon-menu-gray.svg" alt="menu icon"/>
       </div>
       <div class="main-selector main-resources">
@@ -97,6 +97,17 @@
 </header>
 <div id="main-menu">
   <div class="container">
+    <div class="top-menu-region col-xs-10 first">
+      <div id="contact-form">
+        <!--TODO-->
+        <a href="#" title="formulari de contacte">Formulari de contacte</a>
+      </div>
+    </div>
+    <div class="top-menu-region col-xs-2 second">
+      <div id="close-button">
+        <img src="/sites/all/themes/xn17/assets/images/icon/icon-close-gray.svg" alt="close icon"/>
+      </div>
+    </div>
     <?php
       print render($main_menu);
     ?>
@@ -142,9 +153,23 @@
 
 <footer id="footer" class="footer" role="footer">
   <div class="container">
-    <?php if ($copyright): ?>
-      <small class="copyright pull-left"><?php print $copyright; ?></small>
-    <?php endif; ?>
-    <small class="pull-right"><a href="#"><?php print t('Back to Top'); ?></a></small>
+    <div class="footer-region col-lg-6 col-md-12 col-sm-12 col-xs-12 first">
+      <div id="footer-logo">
+        <img src="/sites/all/themes/xn17/assets/images/logo/logo-30-white.svg" alt="logo"/>
+      </div>
+    </div>
+    <div class="footer-region col-lg-4 col-md-5 col-sm-12 col-xs-12 second">
+      <?php if ($copyright): ?>
+        <div id="footer-links"><?php print $copyright; ?></div>
+      <?php endif; ?>
+    </div>
+    <div class="footer-region col-lg-2 col-md-7 col-sm-12 col-xs-12 third">
+      <div id="social-icons">
+        <!-- TODO -->
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="facebook icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="twitter icon"/></a>
+        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="share icon"/></a>
+      </div>
+    </div>
   </div>
 </footer>
