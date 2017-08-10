@@ -1,6 +1,41 @@
 // Mixins
 // -----------------------------------------------------------------------------
-@mixin caixa_modul{
+@mixin caixa_modul {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+@mixin block_index {
+  h1 {
+    color: red;
+    font-weight: 600;
+  }
+  a:active { color: red; }
+  margin: 0 -15px;
+  padding: 5px 15px;
+  -webkit-box-shadow: 0px 10px 10px -6px $gray-medium;
+  -moz-box-shadow: 0px 10px 10px -6px $gray-medium;
+  box-shadow: 0px 10px 10px -6px $gray-medium;
+}
+
+@mixin header_image($image, $name) {
+  margin: 0 -15px;
+  height: 260px;
+  display: block;
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: "";
+    background: url('../images/headers/'+$image+'.jpg');
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: inset 0 10px 10px -6px $gray-medium;
+    -moz-box-shadow: inset 0 10px 10px -6px $gray-medium;
+    box-shadow: inset 0 10px 10px -6px $gray-medium;
+  }
 }
