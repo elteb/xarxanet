@@ -49,10 +49,22 @@
 							  	</div>
 				            </div>';
 		}*/
-		print '<div class="destacat_2x2" style="background: linear-gradient(rgba(129, 129, 129, 0.45), rgba(129, 129, 129, 0.45)),url(' . strip_tags($rawImatge) . '); background-size:cover;">';
-			print '<div class="cont_titular_entradeta">';
-				print '<h3>'.$fields['title']->content.'</h3>';
-				print '<div class="hidden-xs">' . $fields['field_resum']->content . '</div>';
+		print '<div class="modul_2x1">';
+			print '<div>' . $rawImatge . '</div>';
+			print '<div class="titular">';
+				print '<h4>'. $fields['title']->content .'</h4>';
+				$type = $fields['type']->raw;
+				if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))){
+					$type = 'Recurs';
+					$ambit = strip_tags($fields['field_ambit_recurs']->content);
+				}
+				if (($type == 'noticia_general') && (isset($fields['field_ambit_noticia']))){
+					$type = 'Notícies';
+					$ambit = strip_tags($fields['field_ambit_noticia']->content);
+				}
+			print '</div>';
+			print '<div class="tipo-noticia">';
+				print $type . ' > ' . $fields['field_ambit_noticia']->content;
 			print '</div>';
 		print '</div>';
 	?>

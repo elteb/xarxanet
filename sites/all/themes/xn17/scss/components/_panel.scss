@@ -7,20 +7,30 @@
   .destacat_2x2{
     @include caixa_modul;
   }
+
   //Lina superior vermella
   .panels-flexible-region-57-regio_2{
-    border-top: solid 3px #BE1622;
+    border-top: solid 3px $xn17-vermell;
     padding-bottom: 15px !important;
     margin-left:15px;
     margin-right:15px;
+    position:relative;
+    .espaiblanc{
+      height: 3px;
+      margin-top: -3px;
+      position: absolute;
+      background-color: #fff;
+      width: 30px;
+      right: 0px;
+    }
   }
+  .titol-regio{
+    @include flag;
+  }
+
+  //ocultem el titol de la vista
   .pane-xn17-noticia-destacada-principal-panel-pane-1{
-      h2{
-        margin:0;
-        font-size:14px;
-        text-transform: uppercase;
-        position:relative;
-        z-index:4;
-        color:#FFFFFF;
-      }
+    .pane-title{
+        display: none;
+    }
   }

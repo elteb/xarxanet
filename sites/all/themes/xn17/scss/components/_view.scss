@@ -1,26 +1,64 @@
 // Styles for Views
 // -----------------------------------------------------------------------------
 .destacat_2x2{
-  @include caixa_modul;
   h3{
     font:{
       family: Fira Sans SemiBold;
-      size:30px;
       width:600;
     }
     a{
       color:#FFFFFF;
     }
-    margin:0px;
+    margin:0;
+  }
+  .cont_titular_entradeta{
+    position:absolute;
+    top:20%;
+    left:7%;
+    @include padding-dreta-destacat(584 150);
+    padding-bottom: 50px;
+    @media screen and (min-width: $screen-xs) {
+      left:10%;
+    }
+    p{
+      padding-top:20px;
+    }
   }
   color:#FFFFFF;
-  height: 312px;
-  padding-left:40px;
-  padding-right: 150px;
-  padding-top: 70px;
-  padding-bottom: 50px;
-  p{
-    padding-top:20px;
+  margin-bottom:25px;
+  @include aspect-ratio(584 342);
+}
+
+.modul_2x1{
+  @include caixa_modul;
+  padding-top: 0px;
+  @include aspect-ratio(277 342);
+  img{
+      width:100%;
   }
-  z-index:-1000;
+  .titular{
+    h4{
+      font:{
+        family: Fira Sans SemiBold;
+      }
+      a{
+        color:$gray-dark;
+      }
+      margin:0px;
+    }
+    @include aspect-ratio(277 136);
+    padding-left: 10px;
+    padding-top:20px;
+    padding-right:10px;
+  }
+  .tipo-noticia{
+    text-transform: uppercase;
+    font-family: Fira Sans Bold;
+    .field-content{
+      display:inline-block;
+      color:$xn17-vermell;
+    }
+    padding-left:10px;
+  }
+  margin-bottom:30px;
 }
