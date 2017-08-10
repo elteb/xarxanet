@@ -1,8 +1,8 @@
 // Mixins
 // -----------------------------------------------------------------------------
 @mixin caixa_modul{
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
+  background-color:$gray-light;
 }
 
 @mixin flag{
@@ -16,4 +16,14 @@
     color:#FFFFFF;
     text-transform:uppercase;
     &::after { content:url('../images/elements/punta.svg');position: absolute; right: -10px; top: -2px;}
+}
+
+@mixin aspect-ratio($ratio) {
+  width: 100%;
+  height:0;
+  padding-bottom: percentage( nth($ratio, 2) / nth($ratio, 1));
+}
+
+@mixin padding-dreta-destacat($ratio) {
+  padding-right: percentage( nth($ratio, 2) / nth($ratio, 1));
 }
