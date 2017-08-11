@@ -35,3 +35,19 @@
         display: none;
     }
   }
+ .pane-bundle-xn17-opinio-destacada-portada{
+   .titol{
+     font-family: 'Fira Sans SemiBold';
+     font-size: $font-size-h3;
+     color: $xn17-vermell;
+     padding-top:10px;
+     padding-left:10px;
+   }
+   .pie{
+      background-color: #BE1622;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: 'Fira Sans SemiBold';
+      padding: 5px 0 5px 10px;
+   }
+ }

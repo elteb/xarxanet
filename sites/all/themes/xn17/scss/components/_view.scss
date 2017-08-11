@@ -1,5 +1,9 @@
 // Styles for Views
 // -----------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// Notícies i recursos
+//------------------------------------------------------------------------------
 .destacat_2x2{
   h3{
     font:{
@@ -64,4 +68,43 @@
     padding-left:10px;
   }
   margin-bottom:30px;
+}
+
+
+//------------------------------------------------------------------------------
+// Agenda
+//------------------------------------------------------------------------------
+.agenda {
+  .views-row { padding: 15px; }
+  .views-field-field-agenda-imatge, .views-field-nothing {
+    float: left;
+    width: 50%;
+  }
+  .views-field-field-agenda-imatge img { width: 100%; height: auto; }
+  .views-field-nothing {
+    padding: 0 15px;
+    h4 { font-family: Fira Sans SemiBold; }
+    .breadcrumb-agenda {
+      a { font-family: Fira Sans SemiBold; }
+      #link-tipus { color: $xn17-vermell; }
+    }
+    .data-lloc {
+      color: $xn17-vermell;
+      bottom: 30px;
+      position: absolute;
+    }
+    @media (min-width: $screen-xs-max) { padding-top: 15px; }
+    @media (max-width: $screen-xs-max) {
+      h4 { font-size: 1.2em; margin-top: 0px; }
+      .breadcrumb-agenda {
+        @include flag;
+        left: 15px;
+        a { color: white; font-family: Fira Sans; }
+        #link-agenda { display: none; }
+        #link-tipus { color: white; }
+      }
+      .resum { display: none; }
+      .data-lloc { bottom: 15px; }
+    }
+  }
 }
