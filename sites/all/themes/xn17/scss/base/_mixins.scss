@@ -15,7 +15,7 @@
     padding-bottom: 3px;
     color:#FFFFFF;
     text-transform:uppercase;
-    &::after { content:url('../images/elements/punta.svg');position: absolute; right: -10px; top: -2px;}
+    &::after { content:url('../images/elements/punta.svg');position: absolute; right: -10px; top: -3px;}
 }
 
 @mixin aspect-ratio($ratio) {
