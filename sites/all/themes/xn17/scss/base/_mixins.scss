@@ -28,14 +28,27 @@
   padding-right: percentage( nth($ratio, 2) / nth($ratio, 1));
 }
 
-@mixin block_index {
-  h1 {
-    color: red;
-    font-weight: 600;
+@mixin block_menu {
+  h4 {
+    color: $xn17-vermell;
+    font-size: 2.5em;
+    font-family: 'Fira Sans SemiBold';
   }
-  a:active { color: red; }
-  margin: 0 -15px;
-  padding: 5px 15px;
+  @media (max-width: $screen-md-max) {
+    &.closed h4::after { content: url('../images/icon/icon-show-big.svg'); float: right; }
+    &.opened h4::after { content: url('../images/icon/icon-hide-big.svg'); float: right; }
+    .block__content { display: none; }
+  }
+  li {
+    display: inline-block;
+    a {
+      padding: 5px 0px;
+      &.active { color: $xn17-vermell; font-weight: 600; }
+      &::after { content: ' / '; color: black; font-weight: normal; }
+    }
+    &.last a::after { content: none; }
+  }
+  padding: 15px;
   -webkit-box-shadow: 0px 10px 10px -6px $gray-medium;
   -moz-box-shadow: 0px 10px 10px -6px $gray-medium;
   box-shadow: 0px 10px 10px -6px $gray-medium;
