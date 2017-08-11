@@ -15,6 +15,8 @@
     }
     margin:0;
   }
+  //----------------------------------------------------------------------------
+  //contenidor per al titular i l'entradeta del Destacat
   .cont_titular_entradeta{
     position:absolute;
     top:20%;
@@ -28,6 +30,7 @@
       padding-top:20px;
     }
   }
+  //----------------------------------------------------------------------------
   color:#FFFFFF;
   margin-bottom:25px;
   @include aspect-ratio(584 342);
@@ -58,7 +61,7 @@
   .tipo-noticia{
     text-transform: uppercase;
     font-family: Fira Sans Bold;
-    .field-content{
+    .field-content, a{
       display:inline-block;
       color:$xn17-vermell;
     }
