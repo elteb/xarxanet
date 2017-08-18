@@ -24,6 +24,7 @@ $nom_autor = $autor->title;
         <div class="hidden-xs">
         <?php
         print "<a href='" . $urlNode . "'>" . $node->field_resum['und'][0]['value'] . "</a>";
+        print "<div class='data'>" . format_date($node->field_data_calculada['und'][0]['value'], "custom", "d, M Y") . "</div>";
         ?>
         </div>
       </div>

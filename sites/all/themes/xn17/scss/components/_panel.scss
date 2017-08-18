@@ -147,7 +147,12 @@
     float:left;
     padding-left:15px;
     h4{
+      padding-top:20px;
       font-family: 'Fira Sans SemiBold';
+    }
+    .data{
+      color:$gray-medium;
+      font-size:0.85em;
     }
   }
   .pie{
