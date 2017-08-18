@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
-// Notícies i recursos
+// Moduls de portada
 //------------------------------------------------------------------------------
 .destacat_2x2{
   h3{
@@ -21,7 +21,7 @@
     position:absolute;
     top:20%;
     left:7%;
-    @include padding-dreta-destacat(584 150);
+    @include padding-dreta(584 150);
     padding-bottom: 50px;
     @media screen and (min-width: $screen-xs) {
       left:10%;
@@ -33,15 +33,16 @@
   //----------------------------------------------------------------------------
   color:#FFFFFF;
   margin-bottom:25px;
-  @include aspect-ratio(584 342);
+  @include aspect-ratio(690 409);
 }
 
 .modul_2x1{
   @include caixa_modul;
   padding-top: 0px;
-  @include aspect-ratio(277 342);
+  @include aspect-ratio(255 321);
   img{
       width:100%;
+      height:auto;
   }
   .titular{
     h4{
@@ -53,7 +54,7 @@
       }
       margin:0px;
     }
-    @include aspect-ratio(277 136);
+    @include aspect-ratio(255 123);
     padding-left: 10px;
     padding-top:20px;
     padding-right:10px;
