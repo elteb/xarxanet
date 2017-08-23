@@ -15,6 +15,7 @@
     height: 29px;
     color:#FFFFFF;
     text-transform:uppercase;
+    font-weight:bold;
     &::after { content:url('../images/elements/punta.svg');position: absolute; right: -10px; top: 0px;}
 }
 
@@ -24,7 +25,11 @@
   padding-bottom: percentage( nth($ratio, 2) / nth($ratio, 1));
 }
 
-@mixin padding-dreta-destacat($ratio) {
+@mixin aspect-ratio-img-cuadrada($ratio) {
+  width: percentage( nth($ratio, 2) / nth($ratio, 1));
+}
+
+@mixin padding-dreta($ratio) {
   padding-right: percentage( nth($ratio, 2) / nth($ratio, 1));
 }
 
@@ -129,4 +134,11 @@
     a { color: white; }
     padding: 10px 15px;
   }
+
+@mixin titol-modul{
+  font-family: 'Fira Sans SemiBold';
+  font-size: $font-size-h3;
+  color: $xn17-vermell;
+  padding-top:10px;
+  padding-left:5%;
 }
