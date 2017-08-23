@@ -71,20 +71,29 @@
 }
 
 
+
+
 //------------------------------------------------------------------------------
 // Agenda
 //------------------------------------------------------------------------------
-.agenda {
+//------------------------------------------------------------------------------
+// Finançament
+//------------------------------------------------------------------------------
+.agenda, .financament {
+  @include load-more;
+  .view-header { @include view-header; }
   .views-row { padding: 15px; }
-  .views-field-field-agenda-imatge, .views-field-nothing {
+  .views-field-field-agenda-imatge {
+    img { width: 100%; height: auto; }
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+  }
+  .views-field-nothing {
     float: left;
     width: 50%;
-  }
-  .views-field-field-agenda-imatge img { width: 100%; height: auto; }
-  .views-field-nothing {
-    padding: 0 15px;
     h4 { font-family: Fira Sans SemiBold; }
-    .breadcrumb-agenda {
+    .content-breadcrumb{
       a { font-family: Fira Sans SemiBold; }
       #link-tipus { color: $xn17-vermell; }
     }
@@ -93,18 +102,80 @@
       bottom: 30px;
       position: absolute;
     }
-    @media (min-width: $screen-xs-max) { padding-top: 15px; }
+    @media (min-width: $screen-xs-max) { padding-top: 15px; padding-left: 15px;}
     @media (max-width: $screen-xs-max) {
       h4 { font-size: 1.2em; margin-top: 0px; }
-      .breadcrumb-agenda {
+      .content-breadcrumb {
         @include flag;
         left: 15px;
         a { color: white; font-family: Fira Sans; }
-        #link-agenda { display: none; }
+        #first-link { display: none; }
         #link-tipus { color: white; }
       }
       .resum { display: none; }
       .data-lloc { bottom: 15px; }
+    }
+  }
+  @media (min-width: $screen-xs-max) {
+    .views-field-nothing, .views-field-field-agenda-imatge { border-top: solid 1px $gray; }
+  }
+}
+
+//------------------------------------------------------------------------------
+// Biblioteca
+//------------------------------------------------------------------------------
+.biblioteca {
+  @include load-more;
+  .view-header { @include view-header; padding-left: 0px; }
+  .views-row { padding: 15px 0; }
+  .views-field-field-doc-imatge {
+    .wrapper {
+      width: 100%;
+      display: inline-block;
+      position: relative;
+    }
+    .wrapper:after {
+      padding-top: 123.92%;
+      display: block;
+      content: '';
+    }
+    .main {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background-color: $gray-light;
+      color: white;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      img {
+        position: absolute;
+        max-width: 80%;
+        height: auto;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
+        box-shadow: 3px 3px 10px $gray-dark;
+      }
+    }
+  }
+  .views-field-nothing {
+    h4 { font-family: Fira Sans SemiBold; }
+    .sinopsi { padding: 15px 0; }
+    .autoria {
+      color: $gray-medium;
+      a { color: $gray-medium; }
+    }
+    @media (min-width: $screen-xs-max) {
+      .titol { padding-top: 15px; }
+    }
+    @media (max-width: $screen-xs-max) {
+      .sinopsi, .autoria { display: none; }
+      .field-content { padding-left: 0px; }
     }
   }
 }

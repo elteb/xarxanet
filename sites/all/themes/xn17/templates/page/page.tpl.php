@@ -141,7 +141,15 @@
       </div>
     </div>
     <div id="content" class="container">
-      <?php print render($page['content']); ?>
+      <?php print render($page['content-header']); ?>
+      <?php
+        if(!empty($page['content-sidebar'])) {
+          print '<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">'.render($page['content']).'</div>';
+          print '<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">'.render($page['content-sidebar']).'</div>';
+        } else {
+          print render($page['content']);
+        }
+      ?>
     </div>
   </div> <!-- /#main -->
 </div> <!-- /#main-wrapper -->

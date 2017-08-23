@@ -56,6 +56,15 @@
             $(this).parent(".block-menu").toggleClass("closed");
           });
         }
+      // -----------------------------------------------------------------------
+      // Filtre Bilbioteca
+      // -----------------------------------------------------------------------
+        $("#views-exposed-form-xn17-biblioteca-page #cerca-avancada").click( function(){
+          $("#edit-field-doc-tipologia-tid-wrapper").toggle();
+          $("#edit-field-doc-tematica-tid-wrapper").toggle();
+          $("#edit-field-doc-data-publi-value-wrapper").toggle();
+          $("#edit-field-doc-editorial-tid-wrapper").toggle();
+        });
       });
     }
   };
