@@ -1,7 +1,7 @@
 {
   "name": "xn17",
   "description": "A theme based on Radix.",
-  "browserSyncProxy" : "http://localhost",
+  "browserSyncProxy" : "xarxanet.local",
   "bowerDir": "./bower_components",
   "css": {
     "file" : "xn17.style.scss",

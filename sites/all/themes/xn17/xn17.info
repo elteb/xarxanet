@@ -11,6 +11,7 @@ base theme  = radix
 regions[content] = Content
 regions[content-header] = Content header
 regions[content-sidebar] = Content sidebar
+regions[main-footer] = Main footer
 
 ; Breakpoints
 breakpoints[xs] = (max-width: 767px)

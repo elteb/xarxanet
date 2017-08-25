@@ -151,6 +151,9 @@
         }
       ?>
     </div>
+    <div id="main-footer" class="container">
+      <?php print render($page['main-footer']); ?>
+    </div>
   </div> <!-- /#main -->
 </div> <!-- /#main-wrapper -->
 

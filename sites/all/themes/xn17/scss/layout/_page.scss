@@ -126,9 +126,7 @@ header {
 #main {
   margin-top: 45px;
   @media (max-width: $screen-md-max) { margin-top: 30px; }
-}
-#main-wrapper {
-  .container { background-color: white; }
+  #content { background-color: white; }
 }
 
 // -----------------------------------------------------------------------------

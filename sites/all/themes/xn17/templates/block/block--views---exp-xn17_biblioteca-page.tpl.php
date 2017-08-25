@@ -14,7 +14,7 @@
  *   CSS. It can be manipulated through the variable $classes_array from
  *   preprocess functions. The default values can be one or more of the
  *   following:
- *   - block: The current template type, i.e., "theming hook".
+ *   - block: The current template sortby, i.e., "theming hook".
  *   - block-[module]: The module generating the block. For example, the user
  *     module is responsible for handling the default user navigation block. In
  *     that case the class would be 'block-user'.
@@ -51,9 +51,37 @@
   <h2<?php print $title_attributes; ?>><?php print $block->subject ?></h2>
 <?php endif;?>
   <?php print render($title_suffix); ?>
+  <?php
+    $params = drupal_get_query_parameters();
+    $sortby = 'created';
+    if ($params['sort_by']) $sortby = $params['sort_by'];
+
+    function sortby($sortby) {
+      $params = drupal_get_query_parameters();
+      $params['sort_by'] = $sortby;
+      $query = array( 'query' => $params);
+      return $query;
+    }
+  ?>
   <div class="content"<?php print $content_attributes; ?>>
+    <div id="sortby-selectors">
+      <div class="sortby-selector <?php if ($sortby == 'created') echo 'active'; ?>" id="all-selctor">
+        <?php echo l('Últims', arg(), sortby('created'));?>
+      </div>
+      <div class="sortby-selector <?php if ($sortby == 'totalcount') echo 'active'; ?>" id="events-selctor">
+        <?php echo l('Populars', arg(), sortby('totalcount'));?>
+      </div>
+    </div>
+    <div id="sortby-arrows">
+      <div class="sortby-arrow <?php if ($sortby == 'created') echo 'active'; ?>" id="all-arrow">
+        <img src="/sites/all/themes/xn17/assets/images/elements/punta-avall.svg" />&nbsp;
+      </div>
+      <div class="sortby-arrow <?php if ($sortby == 'totalcount') echo 'active'; ?>" id="events-arrow">
+        <img src="/sites/all/themes/xn17/assets/images/elements/punta-avall.svg" />&nbsp;
+      </div>
+    </div>
     <?php
-      $advanced = '<div id="cerca-avancada">RECERCA AVANÇADA</div>';
+      $advanced = '<div id="cerca-avancada" class="showicon">CERCA AVANÇADA</div>';
       $newcontent = substr_replace($content, $advanced, strpos($content, '<div id="edit-field-doc-tematica-tid-wrapper"'), 0);
       print $newcontent
     ?>

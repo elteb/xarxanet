@@ -60,10 +60,14 @@
       // Filtre Bilbioteca
       // -----------------------------------------------------------------------
         $("#views-exposed-form-xn17-biblioteca-page #cerca-avancada").click( function(){
+          $(this).toggleClass("showicon");
+          $(this).toggleClass("hideicon");
+          $(this).closest(".content").toggleClass("advanced");
           $("#edit-field-doc-tipologia-tid-wrapper").toggle();
           $("#edit-field-doc-tematica-tid-wrapper").toggle();
           $("#edit-field-doc-data-publi-value-wrapper").toggle();
           $("#edit-field-doc-editorial-tid-wrapper").toggle();
+          $(".views-submit-button").toggle();
         });
       });
     }

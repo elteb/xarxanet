@@ -114,18 +114,73 @@
   }
   &.filtre-biblioteca {
     @include header_image('biblioteca');
+    z-index: 1;
+    .content {
+      background: rgba(198, 198, 198, 0.8);
+      &.advanced { transform: translateY(-21.5%); }
+    }
+    #sortby-selectors, #sortby-arrows {
+      float: left;
+      width: 100%;
+      .sortby-selector, .sortby-arrow {
+        width: 50%;
+        float: left;
+        text-align: center;
+      }
+      .sortby-selector {
+        font-family: Fira Sans SemiBold;
+        background-color: white;
+        padding: 12px 0;
+        a { color: $gray-medium;}
+        &.active {
+          background-color: $xn17-vermell;
+          a { color: white; }
+        }
+      }
+    }
+    #sortby-arrows { height: 0px; }
+    .sortby-arrow {
+      img { display: none; }
+      &.active img { display: inline; }
+      margin-top: -6px;
+    }
     form {
+      position: relative;
+      z-index: 3;
       .views-exposed-widget {
         width: 50%;
         input, select { width: 100%; }
+      }
+      #cerca-avancada {
+        float: left;
+        width: 100%;
+        padding-top: 15px;
+        padding-bottom: 5px;
+        text-align: center;
+        color: $gray-dark;
+        cursor: pointer;
+        &::after {
+          position: absolute;
+          left: 50%;
+          padding-top: 15px;
+        }
+        &.showicon::after { content: url('../images/icon/icon-show-small.svg'); }
+        &.hideicon::after { content: url('../images/icon/icon-hide-small.svg'); }
       }
       #edit-combine-wrapper {
         padding-right: 0px;
         width: 100%;
       }
       #edit-field-doc-tipologia-tid-wrapper, #edit-field-doc-tematica-tid-wrapper,
-      #edit-field-doc-data-publi-value-wrapper, #edit-field-doc-editorial-tid-wrapper {
+      #edit-field-doc-data-publi-value-wrapper, #edit-field-doc-editorial-tid-wrapper,
+      .views-submit-button, .views-widget-sort-by {
         display: none;
+      }
+      #edit-field-doc-tipologia-tid-wrapper, #edit-field-doc-tematica-tid-wrapper {
+        padding-top: 30px;
+      }
+      #edit-field-doc-tipologia-tid-wrapper, #edit-field-doc-editorial-tid-wrapper {
+        padding-right: 0px;
       }
       .views-submit-button {
         float: right;
@@ -140,10 +195,99 @@
 // Blocs recursos
 // -----------------------------------------------------------------------------
 .bloc-recursos {
-  &.projectes { @include bloc-recursos('projectes'); }
-  &.juridics { @include bloc-recursos('juridics'); }
-  &.informatics { @include bloc-recursos('informatics'); }
-  &.economics { @include bloc-recursos('economics'); }
-  &.formacio { @include bloc-recursos('formacio'); }
-  &.generals { @include bloc-recursos('assessorat'); }
+  &.projectes { @include bloc-banner('recurs_projectes'); }
+  &.juridics { @include bloc-banner('recurs_juridics'); }
+  &.informatics { @include bloc-banner('recurs_informatics'); }
+  &.economics { @include bloc-banner('recurs_economics'); }
+  &.formacio { @include bloc-banner('recurs_formacio'); }
+  &.generals { @include bloc-banner('recurs_assessorat'); }
+}
+
+// -----------------------------------------------------------------------------
+// Blocs banner
+// -----------------------------------------------------------------------------
+.bloc-banner {
+  .block__content { margin: 7.5px 15px; }
+  &.voluntariat { @include bloc-banner('lorem', 150px); }
+  &.festevoluntaria { @include bloc-banner('lorem', 150px); }
+  &.assessorament { @include bloc-banner('lorem', 150px); }
+  &.tajudem { @include bloc-banner('lorem', 150px); }
+}
+
+// -----------------------------------------------------------------------------
+// Blocs main footer
+// -----------------------------------------------------------------------------
+#main-footer {
+  padding-top: 50px;
+  .main-footer-title {
+    text-align: center;
+    margin-bottom: 15px;
+    background: $gray-light url("../images/elements/slim_line.svg") repeat-x center;
+    h4 {
+      font-weight: 600;
+      color: $gray-medium;
+          display: inline-block;
+          width: auto;
+          background-color: $gray-light;
+          padding: 0 15px;
+    }
+  }
+  .segueixnos {
+    margin-bottom: 50px;
+    .social {
+      display: inline-block;
+      width: auto;
+      padding-top: 5px;
+      margin-right: 25px;
+      margin-bottom: 10px;
+      &.facebook {
+        background: url('../images/icon/icon-fb.svg') no-repeat left;
+        padding-left: 18px;
+      }
+      &.twitter {
+        background: url('../images/icon/icon-tw.svg') no-repeat left;
+        padding-left: 27px;
+      }
+      &.instagram {
+        background: url('../images/icon/icon-ig.svg') no-repeat left;
+        padding-left: 30px;
+      }
+      &.youtube {
+        background: url('../images/icon/icon-yt.svg') no-repeat left;
+        padding-left: 30px;
+      }
+      &.rss {
+        background: url('../images/icon/icon-rss.svg') no-repeat left;
+        padding-left: 28px;
+      }
+      &.newsletter {
+        background: url('../images/icon/icon-mail.svg') no-repeat left;
+        padding-left: 30px;
+      }
+    }
+  }
+  .promotors {
+    margin-top: 50px;
+    clear: both;
+    float:left;
+    .logo-title {
+      margin: 0 15px;
+      border-top: solid 1px $gray-dark;
+      padding: 10px 0;
+    }
+  }
+  .unprojectede {
+    margin-top: 50px;
+    clear: both;
+    float:left;
+    width: 100%;
+    .main-footer-title {
+      text-align: left;
+    }
+    .logo-title {
+      margin: 0 15px;
+      border-top: solid 1px $gray-dark;
+      padding: 10px 0;
+    }
+  }
 }

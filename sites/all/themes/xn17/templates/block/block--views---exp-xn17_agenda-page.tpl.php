@@ -56,23 +56,23 @@
     $type = 'All';
     if ($params['field_event_type_value']) $type = $params['field_event_type_value'];
 
-    function newtype($type) {
+    function filtertype($type) {
       $params = drupal_get_query_parameters();
       $params['field_event_type_value'] = $type;
       $query = array( 'query' => $params);
       return $query;
     }
-    ?>
+  ?>
   <div class="content"<?php print $content_attributes; ?>>
     <div id="type-selectors">
       <div class="type-selector <?php if ($type == 'All') echo 'active'; ?>" id="all-selctor">
-        <?php echo l('Tots', arg(), newtype('All'));?>
+        <?php echo l('Tots', arg(), filtertype('All'));?>
       </div>
       <div class="type-selector <?php if ($type == 'Acte') echo 'active'; ?>" id="events-selctor">
-        <?php echo l('Actes', arg(), newtype('Acte'));?>
+        <?php echo l('Actes', arg(), filtertype('Acte'));?>
       </div>
       <div class="type-selector <?php if ($type == 'Curs') echo 'active'; ?>" id="courses-selctor">
-        <?php echo l('Cursos', arg(), newtype('Curs'));?>
+        <?php echo l('Cursos', arg(), filtertype('Curs'));?>
       </div>
     </div>
     <div id="type-arrows">

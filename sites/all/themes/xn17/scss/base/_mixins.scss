@@ -86,6 +86,8 @@
   opacity: 0.5;
   color: white;
   margin-top: -70px;
+  position:relative;
+  z-index: 1;
 }
 
 @mixin input-field {
@@ -122,18 +124,21 @@
   p { margin-bottom: 0px; }
 }
 
-@mixin bloc-recursos($tipus) {
+@mixin bloc-banner($img, $height:'auto') {
   padding: 10px 0;
   @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { padding: 10px; }
   .block__content {
-    background: url('../images/headers/recurs_'+$tipus+'.jpg');
+    height: $height;
+    background: url('../images/blocks/'+$img+'.jpg');
     background-size: auto 165px;
     background-repeat: no-repeat;
     background-position: center center;
     color: white;
     a { color: white; }
+    h4 { font-weight: 600; }
     padding: 10px 15px;
   }
+}
 
 @mixin titol-modul{
   font-family: 'Fira Sans SemiBold';
