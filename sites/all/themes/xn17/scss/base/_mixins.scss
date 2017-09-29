@@ -147,3 +147,37 @@
   padding-top:10px;
   padding-left:5%;
 }
+
+@mixin float-r{
+  float: right;
+}
+
+@mixin float-l{
+  float: left;
+}
+
+@mixin tipo-noticia-recurs{
+  text-transform: uppercase;
+  font-family: Fira Sans Bold;
+  .field-content, a{
+    display:inline-block;
+  }
+  padding-left:10px;
+}
+
+@mixin linia-vermella{
+  border-top: solid 3px $xn17-vermell;
+  padding-bottom: 15px !important;
+  margin-left:15px;
+  margin-right:15px;
+  width:100%;
+  position:relative;
+  .espaiblanc{
+    height: 3px;
+    margin-top: -3px;
+    position: absolute;
+    background-color: #fff;
+    width: 30px;
+    right: 0px;
+  }
+}

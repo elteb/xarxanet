@@ -16,7 +16,7 @@
     margin:0;
   }
   //----------------------------------------------------------------------------
-  //contenidor per al titular i l'entradeta del Destacat
+  //contenidor per albackground-repeat:no-repeat; titular i l'entradeta del Destacat
   .cont_titular_entradeta{
     position:absolute;
     top:20%;
@@ -36,12 +36,21 @@
   @include aspect-ratio(690 409);
 }
 
+.float-r{
+  @include float-r;
+}
+
+.float-l{
+  @include float-l;
+}
+
 .modul_2x1{
   @include caixa_modul;
   padding-top: 0px;
   @include aspect-ratio(255 321);
   img{
-      width:100%;
+      width:100%;//------------------------------------------------------------------------------
+
       height:auto;
   }
   .titular{
@@ -60,6 +69,51 @@
     padding-right:10px;
   }
   .tipo-noticia{
+    @include tipo-noticia-recurs;
+    .field-content, a{
+      color:$xn17-vermell;
+    }
+  }
+
+  .tipo-recurs{
+    @include tipo-noticia-recurs;
+    .tipo-recurs-Informàtic a{
+      color:$xn17-informatic !important;
+    }
+    .tipo-recurs-Projectes a{
+      color:$xn17-projectes !important;
+    }
+    .tipo-recurs-Jurídic a{
+      color:$xn17-juridic !important;
+    }
+    .tipo-recurs-Econòmic a{
+      color:$xn17-juridic !important;
+    }
+  }
+
+  margin-bottom:30px;
+}
+
+.modul_1x1{
+  @include caixa_modul;
+  padding-top: 0px;
+  @include aspect-ratio(255 156);
+  .titular{
+    h4{
+      font:{
+        family: Fira Sans SemiBold;
+      }
+      a{
+        color:$gray-dark;
+      }
+      margin:0px;
+    }
+    @include aspect-ratio(255 108);
+    padding-left: 10px;
+    padding-top:20px;
+    padding-right:10px;
+  }
+  .tipo-noticia{
     text-transform: uppercase;
     font-family: Fira Sans Bold;
     .field-content, a{
@@ -70,9 +124,6 @@
   }
   margin-bottom:30px;
 }
-
-
-
 
 //------------------------------------------------------------------------------
 // Agenda
@@ -179,4 +230,199 @@
       .field-content { padding-left: 0px; }
     }
   }
+}
+
+//------------------------------------------------------------------------------
+// Modul Biblioteca de la portada
+//------------------------------------------------------------------------------
+.pane-xn17-recull-documents{
+  padding-left:15px;
+  padding-right:15px;
+  .views-field-title{
+    margin-left:-15px;
+    margin-right:-15px;
+    border-bottom: solid 3px #C6C6C6;
+  }
+  h2{
+    padding-left:15px;
+    color:#BE1622;
+    font-family: Fira Sans SemiBold;
+  }
+  .bkgd-gris{
+    border-top: solid 8px #C6C6C6;
+    background-color: #f1f0ed;
+    padding-bottom:30px;
+    border-bottom: solid 8px #C6C6C6;
+  }
+  .document-biblioteca{
+    cursor:pointer;
+    width:237px;
+    margin-left:15px;
+    margin-right:15px;
+    margin-top: 30px;
+    position:relative;
+    float:left;
+    .imatge{
+      box-shadow: 5px 5px 10px 2px #666;
+    }
+    a{
+      font-family: Fira Sans;
+      color: #fff;
+    }
+    .sinopsi{
+      background: url('/sites/all/themes/xn17/assets/images/elements/mes_blanc.svg') $xn17-vermell no-repeat 50% 90%;
+      padding:15px;
+      width:100%;
+      height:100%;
+      position:absolute;
+      display:none;
+      top:0;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+// Modul Destacats de la portada
+//------------------------------------------------------------------------------
+.pane-destacats{
+  .view-header {
+    border-top: solid 8px #C6C6C6;
+    background-color: #ededed;
+    padding-bottom: 10px;
+    text-align:center;
+    h2{
+      font-family: Fira Sans SemiBold;
+      color: $xn17-vermell;
+    }
+  }
+  .views-slideshow-cycle-main-frame div{
+    h3{
+      font:{
+        family: Fira Sans SemiBold;
+        width:600;
+      }
+      a{
+        color:#FFFFFF;
+      }
+      margin:0;
+    }
+    //----------------------------------------------------------------------------
+    //contenidor per al titular i l'entradeta del Destacat
+    .cont_titular_entradeta{
+      position:absolute;
+      top:20%;
+      left:7%;
+      @include padding-dreta(690 305);
+      padding-bottom: 50px;
+      @media screen and (min-width: $screen-xs) {
+        left:10%;
+      }
+      p{
+        padding-top:20px;
+      }
+    }
+    @include aspect-ratio(690 305);
+    margin-top:-10px;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Modul Agenda de la portada
+//------------------------------------------------------------------------------
+.pane-xn17-agenda-portada{
+  h2{
+    border-top: solid 8px #C6C6C6;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-left:20px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    background-color: #ededed;
+    margin-left:0px;
+    font-family: Fira Sans SemiBold;
+    color: $xn17-vermell;
+    font-size:24px;
+  }
+
+  #botonera-capcalera{
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    .boto-capcelera{
+      background: url('/sites/all/themes/xn17/assets/images/elements/publica_blanc.svg') $xn17-vermell no-repeat 15%;
+      padding-left:50px;
+      padding-right:20px;
+      padding-top:4px;
+      padding-bottom:3px;
+      a{
+        color:#fff;
+        font-family:Fira Sans;
+        text-transform: uppercase;
+        font-size:0.9em;
+      }
+    }
+    .anar-agenda{
+      padding-top:5px;
+      padding-right:10px;
+      font-family: Fira Sans SemiBold;
+      a{
+        color:#878787;
+      }
+    }
+
+  }
+  .view-content{
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .view-footer{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 0px;
+  }
+
+  .pane-content{
+    @media (min-width: $screen-xs-max) {
+      min-height:265px;
+    }
+    border-bottom: solid 8px #C6C6C6;
+  }
+
+  .calendar-calendar{
+    width: 100%;
+    padding:0px;
+    .mini{
+      border:solid 2px #ededed;
+      thead tr th{
+        border:0px;
+        background-color:#ededed;
+        font-size:.7em;
+        padding-top: 5px;
+        padding-bottom:5px;
+      }
+      .mon, .tue, .wed, .thu, .fri, .sat, .sun{
+        border:0px !important;
+        text-align:center;
+        a{
+          text-decoration:none;
+        }
+      }
+      .today{
+        background-color:#ededed !important;
+      }
+    }
+  }
+
+  .view-id-xn17_agenda_portada .view-display-id-block_2{
+    li{
+      list-style: none;
+      border-bottom: solid 1px #C6C6C6;
+      font-size: 0.9em;
+      font-family: Fira Sans;
+    }
+  }
+  margin-bottom:30px;
 }

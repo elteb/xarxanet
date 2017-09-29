@@ -10,21 +10,8 @@
 
 //------------------------------------------------------------------------------
 //Lina superior vermella i flag
-.panels-flexible-region-57-regio_2{
-  border-top: solid 3px $xn17-vermell;
-  padding-bottom: 15px !important;
-  margin-left:15px;
-  margin-right:15px;
-  width:100%;
-  position:relative;
-  .espaiblanc{
-    height: 3px;
-    margin-top: -3px;
-    position: absolute;
-    background-color: #fff;
-    width: 30px;
-    right: 0px;
-  }
+.panels-flexible-region-57-regio_2-inside, .panels-flexible-region-57-regio_3-inside{
+  @include linia-vermella;
 }
 .titol-regio{
   @include flag;
@@ -33,7 +20,7 @@
 
 //------------------------------------------------------------------------------
 //ocultem el titol de la vista
-.pane-xn17-noticia-destacada-principal-panel-pane-1{
+.pane-xn17-noticia-destacada-principal-panel-pane-1, .pane-xn17-recursos-destacats-portada-panel-pane-2{
   .pane-title{
     display: none;
   }
@@ -45,6 +32,9 @@
 .pane-bundle-xn17-opinio-destacada-portada{
   .titol-modul{
     @include titol-modul;
+  }
+  .pdng_mdl{
+    margin-bottom: 30px;
   }
   .pie{
     background-color: #BE1622;
@@ -172,3 +162,104 @@
   background-color: $gray-light;
 }
 //------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+/* -------- Ranking de notícies --------- */
+//------------------------------------------------------------------------------
+.pane-ranking-noticies {
+  h2{
+    border-top: solid 8px #C6C6C6;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-left:20px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    background-color: #ededed;
+    margin-left:0px;
+    font-family: Fira Sans SemiBold;
+    color: $xn17-vermell;
+    font-size:24px;
+  }
+  .ui-tabs-nav {
+    position:absolute;
+    top:-45px;
+    right:10px;
+    li {
+      padding-bottom: 0px !important;
+    }
+    li a {
+       padding: 20px 0px 8px 8px;
+       font-size:0.8em;
+       font-family:Fira Sans SemiBold;
+       color:#878787;
+    }
+    li.ui-tabs-selected a {
+      color:#4A4A49;
+    }
+  }
+  .ui-corner-all{
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+  }
+  .ui-widget-header{
+    border:0px;
+    background: transparent;
+  }
+  .ui-widget-content{
+    border:0px;
+  }
+  .ui-corner-top{
+    background:transparent;
+    border:0px;
+  }
+  .ui-tabs{
+    padding:0px;
+  }
+  #mini-panel-ranking_noticies{
+    border-bottom: solid 8px #C6C6C6;
+    border-radius: 0px;
+  }
+  #tabs-ranking_noticies-middle-1,
+  #tabs-ranking_noticies-middle-2 {
+    padding: 15px 0px 15px 0;
+      @media (min-width: $screen-sm-max) {
+        height:257px;
+      }
+    ol {
+      font-family: Fira Sans;
+      font-size: 0.7em;
+      padding-left: 15px;
+      padding-right: 15px;
+      @media (min-width: $screen-xs-max) {
+        -moz-column-count: 2;
+        -moz-column-gap: 20px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 20px;
+        column-count: 2;
+        column-gap: 20px;
+      }
+      li {
+        width: 100%;
+        margin:0px;
+        list-style: none;
+        border-bottom: 1px #C6C6C6 solid;
+        -webkit-column-break-inside: avoid; /* Chrome, Safari */
+        page-break-inside: avoid;           /* Theoretically FF 20+ */
+        break-inside: avoid-column;         /* IE 11 */
+        display:table;                      /* Actually FF 20+ */
+        padding-bottom: 5px;
+        padding-top: 5px;
+        line-height:1.7 normalem;
+      }
+      li a {
+        color: #4A4A49;
+      }
+    }
+  }
+  .ui-corner-top{
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+  }
+  margin-bottom:30px;
+}

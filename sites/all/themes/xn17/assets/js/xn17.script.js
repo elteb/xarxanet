@@ -69,6 +69,15 @@
           $("#edit-field-doc-editorial-tid-wrapper").toggle();
           $(".views-submit-button").toggle();
         });
+      // -----------------------------------------------------------------------
+      // recull documents biblioteca portada
+      // -----------------------------------------------------------------------
+        $(".view-xn17-recull-documents .document-biblioteca").mouseover( function(){
+          $(".sinopsi",this).fadeIn("1500", function(){});
+        });
+        $(".view-xn17-recull-documents .document-biblioteca").mouseleave( function(){
+          $(".sinopsi",this).fadeOut("250", function(){});
+        });
       });
     }
   };
