@@ -146,7 +146,10 @@ header {
       padding-left: 0px;
       padding-right: 0px;
     }
-    .panels-flexible-row-57-main-row, .panels-flexible-row-57-1, .panels-flexible-row-57-3{
+    .panels-flexible-row-57-main-row{
+      background-color: white;
+    }
+    .panels-flexible-row-57-1, .panels-flexible-row-57-3{
       background-color: white;
       padding-left: 15px;
       padding-right: 15px;
@@ -156,6 +159,7 @@ header {
     }
     .pane-menu{
       @include block_menu;
+      margin-bottom: 50px;
     }
   }
 }
