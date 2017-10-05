@@ -10,9 +10,10 @@
 
 //------------------------------------------------------------------------------
 //Lina superior vermella i flag
-.panels-flexible-region-57-regio_2-inside, .panels-flexible-region-57-regio_3-inside{
+.regio{
   @include linia-vermella;
 }
+
 .titol-regio{
   @include flag;
 }
