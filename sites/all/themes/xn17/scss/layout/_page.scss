@@ -132,6 +132,10 @@ header {
 // -----------------------------------------------------------------------------
 // Main Wrapper per la portada, necessari per separar les seccions noticies
 // i recursos
+// =========================
+// NOTA  la class "page-xn17-portada" nomes serveix per a la instalació
+// en local ja que a producció el machine name de la pagina es "page-inici"
+// =========================
 // -----------------------------------------------------------------------------
 .page-xn17-portada, .page-inici {
   #main {
@@ -142,13 +146,16 @@ header {
       padding-left: 0px;
       padding-right: 0px;
     }
-    .panels-flexible-row-57-main-row, .panels-flexible-row-57-1, .panels-flexible-row-57-2{
+    .panels-flexible-row-57-main-row, .panels-flexible-row-57-1, .panels-flexible-row-57-3{
       background-color: white;
       padding-left: 15px;
       padding-right: 15px;
     }
-    .panels-flexible-row-57-1, .panels-flexible-row-57-2{
+    .panels-flexible-row-57-1, .panels-flexible-row-57-3{
       margin-bottom:90px;
+    }
+    .pane-menu{
+      @include block_menu;
     }
   }
 }
