@@ -126,16 +126,30 @@ header {
 #main {
   margin-top: 45px;
   @media (max-width: $screen-md-max) { margin-top: 30px; }
-  #content {
-    background-color: transparent;
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-  .regio{
-    background-color: white;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom:90px;
+  #content { background-color: white; }
+}
+
+// -----------------------------------------------------------------------------
+// Main Wrapper per la portada, necessari per separar les seccions noticies
+// i recursos
+// -----------------------------------------------------------------------------
+.page-xn17-portada, .page-inici {
+  #main {
+    margin-top: 45px;
+    @media (max-width: $screen-md-max) { margin-top: 30px; }
+    #content {
+      background-color: transparent;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .panels-flexible-row-57-main-row, .panels-flexible-row-57-1, .panels-flexible-row-57-2{
+      background-color: white;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .panels-flexible-row-57-1, .panels-flexible-row-57-2{
+      margin-bottom:90px;
+    }
   }
 }
 
