@@ -133,6 +133,7 @@ function teb_toolbox_form_submit($form, &$form_state) {
 					':type' => $content_type,
 					':nid' => $nid,
 			));
+		}
 		if ($result) {
 			$row0 = $result->fetchAssoc();
 			while ($row = $result->fetchAssoc()) {
