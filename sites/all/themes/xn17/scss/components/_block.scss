@@ -304,3 +304,35 @@
     }
   }
 }
+
+// -----------------------------------------------------------------------------
+// Bloc +xarxanet
+// -----------------------------------------------------------------------------
+.block--xarxanet{
+  h2{
+    border-top: solid 8px #C6C6C6;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-left:15px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    background-color: #ededed;
+    margin-left:0px;
+    font-family: Fira Sans SemiBold;
+    color: $xn17-vermell;
+    font-size:24px;
+  }
+  .content{
+    min-height:80px;
+    padding-left:15px;
+    background-color: #ededed;
+    border-bottom: solid 8px #C6C6C6;
+    margin-bottom:30px;
+  }
+  .btn{
+    background-color:white;
+    font-family: 'Fira Sans SemiBold';
+    color:#878787;
+    margin-top:20px;
+  }
+}
