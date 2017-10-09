@@ -451,6 +451,9 @@
   margin-bottom:30px;
 }
 
+//------------------------------------------------------------------------------
+// Modul Finançaments de la portada
+//------------------------------------------------------------------------------
 .pane-xn17-financament{
   h2{
     border-top: solid 8px #C6C6C6;
@@ -470,6 +473,7 @@
     font-family: Fira Sans;
     padding-left: 15px;
     height:280px;
+    font-size:0.9em;
     @media (min-width: $screen-xs-max) {
       -moz-column-count: 2;
       -moz-column-gap: 20px;
