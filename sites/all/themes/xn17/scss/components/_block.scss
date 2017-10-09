@@ -192,6 +192,19 @@
 }
 
 // -----------------------------------------------------------------------------
+// Bloc header recursos
+// -----------------------------------------------------------------------------
+.bloc-header-recursos {
+  .page-recursos & { @include header_image('recurs_assessorat');}
+  .page-recursos-projectes & { @include header_image('recurs_projectes');}
+  .page-recursos-juridics & { @include header_image('recurs_juridics');}
+  .page-recursos-informatics & { @include header_image('recurs_informatics');}
+  .page-recursos-formatius & { @include header_image('recurs_formacio');}
+  .page-recursos-economics & { @include header_image('recurs_economics');}
+  height: 180px !important;
+}
+
+// -----------------------------------------------------------------------------
 // Blocs recursos
 // -----------------------------------------------------------------------------
 .bloc-recursos {

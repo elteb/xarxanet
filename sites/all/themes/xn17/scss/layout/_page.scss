@@ -202,4 +202,6 @@ footer {
 // -----------------------------------------------------------------------------
 // Sidebar
 // -----------------------------------------------------------------------------
-@media (min-width: $screen-lg-min) { padding-top: 70px; }
+.region-content-sidebar {
+  @media (min-width: $screen-lg-min) { padding-top: 55px; }
+}
