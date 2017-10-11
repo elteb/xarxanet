@@ -329,6 +329,15 @@
     border-bottom: solid 8px #C6C6C6;
     margin-bottom:30px;
     vertical-align: text-bottom;
+    @media (max-width: $screen-sm-max){
+      font-size:0.9em;
+      a{
+        font-size:1em;
+      }
+    }
+    div{
+      margin-bottom:5px;
+    }
   }
   .btn{
     background-color:white;
