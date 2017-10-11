@@ -10,7 +10,7 @@
 <?php
 $itRow = 1;
 foreach ($rows as $id => $row):  ?>
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pdng_mdl bkgd-gris">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bkgd-gris">
     <?php print $row; ?>
   </div>
 <?php
