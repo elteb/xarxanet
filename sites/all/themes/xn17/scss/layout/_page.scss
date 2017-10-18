@@ -204,4 +204,5 @@ footer {
 // -----------------------------------------------------------------------------
 .region-content-sidebar {
   @media (min-width: $screen-lg-min) { padding-top: 55px; }
+  .agenda & { @media (min-width: $screen-lg-min) { padding-top: 90px; }}
 }
