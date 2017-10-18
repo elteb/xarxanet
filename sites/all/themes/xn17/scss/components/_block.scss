@@ -308,7 +308,7 @@
 // -----------------------------------------------------------------------------
 // Bloc +xarxanet
 // -----------------------------------------------------------------------------
-.block--xarxanet{
+.block--xarxanet, .block--voluntariat, .block--cursos{
   h2{
     border-top: solid 8px #C6C6C6;
     padding-bottom: 15px;
@@ -328,11 +328,33 @@
     background-color: #ededed;
     border-bottom: solid 8px #C6C6C6;
     margin-bottom:30px;
+    vertical-align: text-bottom;
+    @media (max-width: $screen-sm-max){
+      font-size:0.9em;
+      a{
+        font-size:1em;
+      }
+    }
+    div{
+      margin-bottom:5px;
+    }
   }
   .btn{
     background-color:white;
     font-family: 'Fira Sans SemiBold';
     color:#878787;
     margin-top:20px;
+    border-radius: 0px;
+  }
+  .publica{
+    padding-left:30px;
+    font-size:0.8em;
+    text-transform: uppercase;
+    background: $xn17-vermell url('../images/elements/publica_blanc.svg') no-repeat 7px 7px;
+    font-family: 'Fira Sans SemiBold';
+    color:#FFF !important;
+    margin-top:20px;
+    padding-top: 8px;
+    padding-bottom: 7px;
   }
 }

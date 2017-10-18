@@ -83,10 +83,13 @@
     .tipo-recurs-Projectes a{
       color:$xn17-projectes !important;
     }
-    .tipo-recurs-Jurídic a{
+    .tipo-recurs-Jurídics a{
       color:$xn17-juridic !important;
     }
     .tipo-recurs-Econòmic a{
+      color:$xn17-juridic !important;
+    }
+    .tipo-recurs-Formatius a{
       color:$xn17-juridic !important;
     }
   }
@@ -253,6 +256,7 @@
 // Modul Biblioteca de la portada
 //------------------------------------------------------------------------------
 .pane-xn17-recull-documents{
+  display: inline-block;
   padding-left:15px;
   padding-right:15px;
   .views-field-title{
@@ -271,6 +275,7 @@
     padding-bottom:30px;
     border-bottom: solid 8px #C6C6C6;
     margin-top: 60px;
+    margin-bottom: 30px;
   }
   .document-biblioteca{
     cursor:pointer;
@@ -376,11 +381,11 @@
       padding-bottom:3px;
       a{
         color:#fff;
-        font-family:Fira Sans;
+        fopane-xn17-financamentnt-family:Fira Sans;
         text-transform: uppercase;
         font-size:0.9em;
       }
-    }
+    }position:absolute;
     .anar-agenda{
       padding-top:5px;
       padding-right:10px;
@@ -391,7 +396,7 @@
       }
     }
 
-  }
+  }pane-xn17-financament
   .view-content{
     padding-top: 15px;
     padding-bottom: 15px;
@@ -447,4 +452,104 @@
     }
   }
   margin-bottom:30px;
+}
+
+//------------------------------------------------------------------------------
+// Modul Finançaments de la portada
+//------------------------------------------------------------------------------
+.pane-xn17-financament{
+  h2{
+    border-top: solid 8px #C6C6C6;
+    border-bottom: solid 3px #C6C6C6;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-left:20px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    background-color: #ededed;
+    margin-left:0px;
+    font-family: Fira Sans SemiBold;
+    color: $xn17-vermell;
+    font-size:24px;
+  }
+  .view-content{
+    height:246px;
+    margin-bottom: 30px;
+    padding-right: 0px;
+    @media (max-width: $screen-sm-max) {
+      border-bottom: solid 8px #C6C6C6;
+    }
+  }
+  ul {
+    font-family: Fira Sans;
+    @media (min-width: $screen-sm-max) {
+      -moz-column-count: 2;
+      -moz-column-gap: 20px;
+      -webkit-column-count: 2;
+      -webkit-column-gap: 20px;
+      column-count: 2;
+      column-gap: 20px;
+    }
+    li {
+      width: 100%;
+      margin:0px;
+      list-style: none;
+      border-bottom: 1px #C6C6C6 solid;
+      -webkit-column-break-inside: avoid; /* Chrome, Safari */
+      page-break-inside: avoid;           /* Theoretically FF 20+ */
+      break-inside: avoid-column;         /* IE 11 */
+      display:table;                      /* Actually FF 20+ */
+      padding-bottom: 5px;
+      padding-top: 5px;
+      line-height:1.7 normalem;
+    }
+    li a {
+      color: #4A4A49;
+    }
+  }
+  .views-row{
+    padding: 5px 0px 5px 0;
+    border-bottom: 1px #C6C6C6 solid;
+    font-size:0.8em;
+  }
+  .views-field-field-date{
+    color:$xn17-vermell;
+  }
+  @media (max-width: $screen-md-min) {
+    .views-row-5, .views-row-6, .views-row-7{
+      display: none;
+    }
+  }
+
+  #button{
+    float:right;
+    padding-left: 20px;
+    padding-right: 0px;
+    @media (min-width: $screen-md-min) {
+      margin-top: 25px;
+    }
+    border-bottom: 0px;
+    @media (min-width: $screen-md-min) {
+      .more-link{
+        background-color:#ededed;
+        font-family: Fira Sans SemiBold;
+        text-align: center !important;
+        padding:10px 10px;
+        a{
+          color:#4A4A49;
+        }
+      }
+    }
+    @media (max-width: $screen-sm-max) {
+      .more-link{
+        font-family: Fira Sans SemiBold;
+        text-align: right !important;
+        padding:10px 10px;
+        a{
+          color:#4A4A49;
+        }
+      }
+    }
+  }
+  font-family: Fira Sans;
 }

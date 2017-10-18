@@ -55,7 +55,7 @@
 				print '<h4>'. $fields['title']->content .'</h4>';
 				$type = $fields['type']->raw;
 				if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))){
-					$type = 'Recurs';
+					$type = 'Recursos';
 					$ambit = strip_tags($fields['field_ambit_recurs']->content);
 				}
 			print '</div>';
