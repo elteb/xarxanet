@@ -16,7 +16,7 @@
     margin:0;
   }
   //----------------------------------------------------------------------------
-  //contenidor per albackground-repeat:no-repeat; titular i l'entradeta del Destacat
+  //contenidor per al background-repeat:no-repeat; titular i l'entradeta del Destacat
   .cont_titular_entradeta{
     position:absolute;
     top:20%;
@@ -128,6 +128,188 @@
   margin-bottom:30px;
 }
 
+
+//------------------------------------------------------------------------------
+// Monografic portada
+//------------------------------------------------------------------------------
+
+.pane-xn17-monografics-portada{
+  border-top:solid 3px $xn17-vermell;
+  margin-left: 30px;
+  margin-right: 15px;
+  height:481px;
+  @media (max-width: $screen-md-max){
+    height:432px;
+  }
+  @media (max-width: $screen-sm-max){
+    height:481px;
+  }
+  @media (max-width: $screen-xs-max){
+    height:276px;
+  }
+  .pane-content, .view-xn17-monografics-portada, .view-content, .skin-default{
+    height:100%;
+  }
+  .skin-default{
+    background-color: $gray-light;
+    @media (max-width: $screen-md-max){
+      margin-right: 5px;
+    }
+    @media (max-width: $screen-sm-max){
+      margin-right: 7px;
+    }
+    @media (max-width: $screen-xs){
+      margin-right: 9px;
+    }
+  }
+  .pane-title{
+    display:none;
+  }
+  .imatge{
+    padding-right:0px;
+    margin-right:0px;
+    height: 478px;
+    width: 840px;
+    @media (max-width: $screen-md-max){
+      height:429px;
+      width: 690px;
+    }
+    @media (max-width: $screen-sm-max){
+      height:478px;
+      width: 705px;
+    }
+    @media (max-width: $screen-xs-max){
+      height:273px;
+      position: relative;
+      width: 100%;
+    }
+    overflow: hidden;
+  }
+  .modul-monografic-portada{
+    height:481px;
+    padding:30px;
+    background-size: 840px !important;
+    @media (max-width: $screen-md-max){
+        background-size: 690px !important;
+    }
+    @media (max-width: $screen-md-max){
+        background-size: auto 478px !important;
+    }
+    @media (max-width: $screen-xs-max){
+      height: 273px;
+      width: 100% !important;
+      background-size:cover !important;
+      background-position: 0% 100% !important;
+    }
+    .cont_titular_entradeta{
+      h2{
+        text-transform: uppercase;
+        font-family: Fira Sans SemiBold;
+        font-size:1.3em;
+        padding-top:15px;
+        padding-left:20px;
+        background: url('/sites/all/themes/xn17/assets/images/elements/fletxa_xn_blanc.svg') no-repeat 0% 91%;
+        background-size:14px 14px;
+      }
+      h3{
+        font:{
+          family: Fira Sans SemiBold;
+          width:600;
+        }
+        a{
+          color:#FFFFFF;
+        }
+        margin:0;
+      }
+      @include padding-dreta(481 250);
+      @media (max-width: $screen-md-max){
+        @include padding-dreta(432 200);
+      }
+      @media (max-width: $screen-sm-max){
+        @include padding-dreta(636 150);
+      }
+      @media (max-width: $screen-xs-max){
+        height:273px;
+        @include padding-dreta(276 0);
+        h2{
+          font-size:1.2em;
+        }
+        h3{
+          font-size:1.5em;
+        }
+      }
+      .resum{
+        padding-top:15px;
+        font-size:1.1em;
+      }
+    }
+    color:#FFFFFF;
+  }
+  .views-slideshow-controls-bottom{
+    position: relative;
+    #widget_pager_bottom_xn17_monografics_portada-default{
+      margin-bottom: 15px;
+    }
+    background-color: $gray-light;
+    height: 100%;
+    float:right;
+    margin-right:3px;
+    padding-left:30px;
+    padding-right:15px;
+    .titol-paginador{
+      text-transform: uppercase;
+      font-family: Fira Sans SemiBold;
+      font-size:1.3em;
+      padding-top:60px;
+      color: #4A4A49;
+      padding-left: 0px;
+    }
+    .paginador{
+      padding-left:0px;
+      position:absolute;
+      bottom: 0px;
+      @media (max-width: $screen-sm-max){
+        position: inherit;
+        float:right;
+      }
+    }
+    @media (max-width: $screen-md-max){
+      float: right;
+      margin-right:5px;
+    }
+    @media (max-width: $screen-sm-max){
+      height:155px;
+      margin-right: 0px;
+      .titol-paginador{
+        font-size:1.2em;
+        padding-top:15px;
+      }
+      .paginador{
+        padding-top: 10px;
+      }
+    }
+    .views_slideshow_pager_field_item{
+      font-size: 0.9em;
+      @media (max-width: $screen-md-max){
+        font-size: 0.8em;
+      }
+      padding-left:13px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      background: url('/sites/all/themes/xn17/assets/images/elements/fletxa_xn.svg') no-repeat 0 11px;
+      background-size:8px 8px;
+      border-bottom: solid 1px #fff;
+      padding-right: 25px;
+    }
+    .views-row-last{
+      border-bottom: 0px;
+    }
+    .active{
+      font-family: Fira Sans SemiBold;
+    }
+  }
+}
+
 //------------------------------------------------------------------------------
 // Agenda
 //------------------------------------------------------------------------------
@@ -220,7 +402,7 @@
   }
   .views-field-nothing {
     h4 { font-family: Fira Sans SemiBold; }
-    .sinopsi { padding: 15px 0; }
+  row   .sinopsi { padding: 15px 0; }
     .autoria {
       color: $gray-medium;
       a { color: $gray-medium; }
