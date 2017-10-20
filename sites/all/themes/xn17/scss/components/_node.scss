@@ -1,2 +1,74 @@
 // Styles for Nodes
 // -----------------------------------------------------------------------------
+.page-node {
+  #content { padding-bottom: 50px; }
+}
+
+//------------------------------------------------------------------------------
+//Esdeveniment
+//------------------------------------------------------------------------------
+.agenda {
+  h1, .xn17-standard-header {
+    font-size: 2.5em;
+    font-family: 'Fira Sans SemiBold';
+  }
+  h1 { margin-bottom: 20px; }
+  .xn17-standard-header {
+    .date-display-single { &::after { content: " >  "; }}
+    .field-name-ciutat {
+      color: $xn17-vermell;
+      padding-left: 10px;
+    }
+    .field-name-ciutat, .field-name-field-date-event {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      float: left;
+      width: auto;
+    }
+  }
+  .field-name-field-agenda-imatge img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .field-name-field-resum { font-weight: bold; }
+  .field-name-body, .field-name-adreca { margin-bottom: 20px; }
+  .field-name-data-esdevendiment, .field-name-hora-esdeveniment,
+  .field-name-field-organizer, .field-name-adreca {
+    p { margin: 0; }
+    padding: 5px 0;
+  }
+  .field-name-taxonomy-vocabulary-1 {
+    border-top: solid 1px $gray;
+    margin: 20px 0;
+    padding-top: 10px;
+    div { display: inline; float: none;}
+  }
+  .a2a_kit {
+    padding-top: 20px;
+    &::before {
+      display: block;
+      content: 'Comparteix i difon:';
+      font-weight: bold;
+
+    }
+    a { padding: 2px; }
+    span {
+      background-color: $gray-medium !important;
+      border-radius: 15px !important;
+      padding: 3px;
+    }
+  }
+  .field-name-print-icon, .field-name-print-pdf {
+    &.field-name-print-icon::before { content: url('../images/icon/icon-print.svg'); }
+    &.field-name-print-pdf::before { content: url('../images/icon/icon-print-pdf.svg'); }
+    font-weight: bold;
+    .field-items {
+      display: inline-block;
+      height: 35px;
+      position: absolute;
+      padding: 8px 8px;
+    }
+    p { margin: 0px; }
+  }
+}

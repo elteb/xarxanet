@@ -20,10 +20,10 @@
         <img src="/sites/all/themes/xn17/assets/images/icon/icon-menu-gray.svg" alt="menu icon"/>
       </div>
       <div class="main-selector main-resources">
-        <a><!--TODO-->recursos</a>
+        <a href="/recursos">recursos</a>
       </div>
       <div class="main-selector main-news">
-        <a><!--TODO-->notícies</a>
+        <a href="/noticies">notícies</a>
       </div>
       <div class="social-icons hidden-xs hidden-sm">
         <!-- TODO -->
@@ -81,10 +81,10 @@
         <img src="/sites/all/themes/xn17/assets/images/icon/icon-menu-gray.svg" alt="menu icon"/>
       </div>
       <div class="main-selector main-resources">
-        <a><!--TODO-->recursos</a>
+        <a href="/recursos">recursos</a>
       </div>
       <div class="main-selector main-news">
-        <a><!--TODO-->notícies</a>
+        <a href="/noticies">notícies</a>
       </div>
       <div class="social-icons hidden-xs hidden-sm">
         <!-- TODO -->
@@ -125,7 +125,7 @@
       <div id="page-header">
         <?php if ($title): ?>
           <div class="page-header">
-            <h1 class="title"><?php print $title; ?></h1>
+            <!-- <h1 class="title"><?php print $title; ?></h1> -->
           </div>
         <?php endif; ?>
         <?php if ($tabs): ?>
