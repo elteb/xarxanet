@@ -26,7 +26,12 @@
 ?>
 
 <?php
-  $rawImatge = $fields['field_agenda_imatge']->content;
+  if (strip_tags($fields['field_agenda_imatge']->content) != ''){
+    $rawImatge = strip_tags($fields['field_agenda_imatge']->content);
+  }else{
+    print strip_tags($fields['field_imatges']->content);
+    $rawImatge = strip_tags($fields['field_imatges']->content);
+  }
 
   /*if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-mig', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
   if ((strip_tags($fields['field_imatge_emergent']->content) != '') || (strip_tags($fields['field_video_emergent']->content) != '')) {
@@ -54,7 +59,7 @@
 
   $view = views_get_current_view();
   print "<div class='titol-regio'>" . check_plain($view->get_title()) . "</div>";
-  print '<div class="modul-monografic-portada" style="background: url(' . strip_tags($rawImatge) . ');">';
+  print '<div class="modul-monografic-portada" style="background: url(' . $rawImatge . ');">';
     print '<div class="cont_titular_entradeta">';
       print '<h2>'.$fields['title']->content.'</h2>';
       print '<h3>'.$fields['title_1']->content.'</h3>';
