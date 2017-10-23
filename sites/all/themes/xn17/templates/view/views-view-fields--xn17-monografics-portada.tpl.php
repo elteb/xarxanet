@@ -29,7 +29,6 @@
   if (strip_tags($fields['field_agenda_imatge']->content) != ''){
     $rawImatge = strip_tags($fields['field_agenda_imatge']->content);
   }else{
-    print strip_tags($fields['field_imatges']->content);
     $rawImatge = strip_tags($fields['field_imatges']->content);
   }
 
