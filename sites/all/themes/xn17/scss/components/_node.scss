@@ -6,9 +6,9 @@
 .field-name-simple-share-icons {
   margin: 30px 0;
   a { margin-right: 5px; }
-  .share-icon-fb { content: url('../images/icon/icon-fb-circle-dark.svg'); }
-  .share-icon-tw { content: url('../images/icon/icon-tw-circle-dark.svg'); }
-  .share-icon { content: url('../images/icon/icon-share-circle-dark.svg'); }
+  .share-icon-fb { content: url('/sites/all/themes/xn17/assets/images/icon/icon-fb-circle-dark.svg'); }
+  .share-icon-tw { content: url('/sites/all/themes/xn17/assets/images/icon/icon-tw-circle-dark.svg'); }
+  .share-icon { content: url('/sites/all/themes/xn17/assets/images/icon/icon-share-circle-dark.svg'); }
 }
 
 @media (max-width: $screen-md-min) {

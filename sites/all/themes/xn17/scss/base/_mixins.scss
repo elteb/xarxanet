@@ -16,7 +16,7 @@
     color:#FFFFFF;
     text-transform:uppercase;
     font-weight:bold;
-    &::after { content:url('../images/elements/punta.svg');position: absolute; right: -10px; top: 0px;}
+    &::after { content:url('/sites/all/themes/xn17/assets/images/elements/punta.svg');position: absolute; right: -10px; top: 0px;}
 }
 
 @mixin aspect-ratio($ratio) {
