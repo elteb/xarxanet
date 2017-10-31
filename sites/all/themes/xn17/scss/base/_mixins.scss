@@ -182,3 +182,30 @@
     right: 0px;
   }
 }
+
+@mixin node-comparteix {
+  .a2a_kit {
+    padding-top: 20px;
+    &::before {
+      display: block;
+      content: 'Comparteix i difon:';
+      font-weight: bold;
+
+    }
+    a { padding: 2px; }
+    span {
+      background-color: $gray-medium !important;
+      border-radius: 15px !important;
+      padding: 3px;
+    }
+  }
+}
+
+@mixin node-tags {
+  .field-name-taxonomy-vocabulary-1 {
+    border-top: solid 1px $gray;
+    margin: 20px 0;
+    padding-top: 10px;
+    div { display: inline; float: none;}
+  }
+}

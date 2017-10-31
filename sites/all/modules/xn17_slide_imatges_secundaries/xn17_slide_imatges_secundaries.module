@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * TODO: Enter file description here.
+ */
+
+/**
+ * Implements views_pre_render().
+ */
+function xn17_slide_imatges_secundaries_views_pre_render(&$view) {
+  // pair field contents
+  if ($view->name == 'xn17_slide_imatges_secundaries') {
+    foreach ($view->result as $key => $res) {
+      if ($res->field_data_field_imatges_delta != $res->field_data_field_peu_de_foto_delta) {
+        unset($view->result[$key]);
+      }
+    }
+  }
+}
