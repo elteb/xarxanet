@@ -214,7 +214,7 @@
   &.economics { @include bloc-banner('recurs_economics'); }
   &.formacio { @include bloc-banner('recurs_formacio'); }
   &.generals { @include bloc-banner('recurs_assessorat'); }
-  .sub-seccions{
+  .sub-seccions,.entradeta-recurs{
     display:none;
   }
 }
@@ -239,8 +239,11 @@
   .subtitol-recurs, .rteright{
     display: none;
   }
+  .entradeta-recurs{
+    width: 55%;
+  }
   @media (max-width: $screen-sm-max){
-    .sub-seccions{
+    .sub-seccions,.entradeta-recurs{
       display:none;
     }
     .subtitol-recurs, .rteright{
