@@ -214,7 +214,44 @@
   &.economics { @include bloc-banner('recurs_economics'); }
   &.formacio { @include bloc-banner('recurs_formacio'); }
   &.generals { @include bloc-banner('recurs_assessorat'); }
+  .sub-seccions,.entradeta-recurs{
+    display:none;
+  }
 }
+
+.bloc-recursos-portada {
+  &.projectes { @include bloc-banner-portada('recurs_home_projectes'); }
+  &.juridics { @include bloc-banner-portada('recurs_home_juridics'); }
+  &.informatics { @include bloc-banner-portada('recurs_home_informatics'); }
+  &.economics { @include bloc-banner-portada('recurs_home_economics'); }
+  &.formacio { @include bloc-banner-portada('recurs_home_formacio'); }
+  &.generals { @include bloc-banner-portada('recurs_home_assessorat'); }
+
+  h4{
+    width:40%;
+  }
+  .sub-seccions{
+    position: absolute;
+    right: 0px;
+    width: 40%;
+    top: 40px;
+  }
+  .subtitol-recurs, .rteright{
+    display: none;
+  }
+  .entradeta-recurs{
+    width: 60%;
+  }
+  @media (max-width: $screen-sm-max){
+    .sub-seccions,.entradeta-recurs{
+      display:none;
+    }
+    .subtitol-recurs, .rteright{
+      display: inherit;
+    }
+  }
+}
+
 
 // -----------------------------------------------------------------------------
 // Blocs banner
@@ -308,9 +345,69 @@
 // -----------------------------------------------------------------------------
 // Bloc +xarxanet
 // -----------------------------------------------------------------------------
-.block--xarxanet, .block--voluntariat, .block--cursos{
+.block--xarxanet{
   h2{
     border-top: solid 8px #C6C6C6;
+    padding-bottom: 15px;
+    @media (max-width: $screen-sm-max){
+      border-bottom: solid 3px #C6C6C6;
+      padding-bottom: 5px;
+    }
+    padding-top: 10px;
+    padding-left:15px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    background-color: #ededed;
+    margin-left:0px;
+    font-family: Fira Sans SemiBold;
+    color: $xn17-vermell;
+    font-size:24px;
+  }
+  .content{
+    height:80px;
+    padding-left:15px;
+    background-color: #ededed;
+    border-bottom: solid 8px #C6C6C6;
+    padding-top:5px;
+    margin-bottom:30px;
+    vertical-align: text-bottom;
+    @media (max-width: $screen-md-max){
+      font-size:0.9em;
+      a{
+        font-size:1em;
+      }
+      div{
+        padding-right: 0px;
+      }
+    }
+  }
+  .btn{
+    background-color:white;
+    font-family: 'Fira Sans SemiBold';
+    color:#878787;
+    margin-top:20px;
+    border-radius: 0px;
+  }
+  .publica{
+    padding-left:30px;
+    font-size:0.8em;
+    text-transform: uppercase;
+    background: $xn17-vermell url('../images/elements/publica_blanc.svg') no-repeat 7px 7px;
+    font-family: 'Fira Sans SemiBold';
+    color:#FFF !important;
+    margin-top:20px;
+    padding-top: 8px;
+    padding-bottom: 7px;
+  }
+}
+
+.block--voluntariat{
+  h2{
+    border-top: solid 8px #C6C6C6;
+    @media (max-width: $screen-sm-max){
+      border-bottom: solid 3px #C6C6C6;
+      padding-bottom: 5px;
+    }
     padding-bottom: 15px;
     padding-top: 10px;
     padding-left:15px;
@@ -327,6 +424,52 @@
     padding-left:15px;
     background-color: #ededed;
     border-bottom: solid 8px #C6C6C6;
+    padding-top:5px;
+    margin-bottom:30px;
+    vertical-align: text-bottom;
+    @media (max-width: $screen-sm-max){
+      font-size:0.9em;
+      a{
+        font-size:1em;
+      }
+    }
+    div{
+      margin-bottom:5px;
+    }
+  }
+  .btn{
+    background-color:white;
+    font-family: 'Fira Sans SemiBold';
+    color:#878787;
+    margin-top:20px;
+    border-radius: 0px;
+  }
+}
+
+.block--cursos{
+  h2{
+    border-top: solid 8px #C6C6C6;
+    @media (max-width: $screen-sm-max){
+      border-bottom: solid 3px #C6C6C6;
+      padding-bottom: 5px;
+    }
+    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-left:15px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    background-color: #ededed;
+    margin-left:0px;
+    font-family: Fira Sans SemiBold;
+    color: $xn17-vermell;
+    font-size:24px;
+  }
+  .content{
+    min-height:80px;
+    padding-left:15px;
+    background-color: #ededed;
+    border-bottom: solid 8px #C6C6C6;
+    padding-top:5px;
     margin-bottom:30px;
     vertical-align: text-bottom;
     @media (max-width: $screen-sm-max){
