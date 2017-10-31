@@ -6,9 +6,6 @@
 .field-name-simple-share-icons {
   margin: 30px 0;
   a { margin-right: 5px; }
-  .share-icon-fb { content: url('/sites/all/themes/xn17/assets/images/icon/icon-fb-circle-dark.svg'); }
-  .share-icon-tw { content: url('/sites/all/themes/xn17/assets/images/icon/icon-tw-circle-dark.svg'); }
-  .share-icon { content: url('/sites/all/themes/xn17/assets/images/icon/icon-share-circle-dark.svg'); }
 }
 
 @media (max-width: $screen-md-min) {
@@ -102,10 +99,11 @@
     @include flag;
     top: 0;
     a { color: white; }
-    z-index: 5;
+    z-index: 15;
   }
   .field-name-field-autor-noticies .field-label{ font-weight: normal; }
   .field-name-field-usuari-autor .field-item::before { font-weight: normal; content: 'Entitat redactora: '}
+  .field-name-simple-share-icons-copia- { margin-top: 10px; }
 
   .xn17-standard-column1 {
     @media (max-width: $screen-md-min) {
