@@ -214,6 +214,9 @@
   &.economics { @include bloc-banner('recurs_economics'); }
   &.formacio { @include bloc-banner('recurs_formacio'); }
   &.generals { @include bloc-banner('recurs_assessorat'); }
+  .sub-seccions{
+    display:none;
+  }
 }
 
 .bloc-recursos-portada {
@@ -223,6 +226,27 @@
   &.economics { @include bloc-banner-portada('recurs_home_economics'); }
   &.formacio { @include bloc-banner-portada('recurs_home_formacio'); }
   &.generals { @include bloc-banner-portada('recurs_home_assessorat'); }
+
+  h4{
+    width:40%;
+  }
+  .sub-seccions{
+    position: absolute;
+    right: 0px;
+    width: 40%;
+    top: 40px;
+  }
+  .subtitol-recurs, .rteright{
+    display: none;
+  }
+  @media (max-width: $screen-sm-max){
+    .sub-seccions{
+      display:none;
+    }
+    .subtitol-recurs, .rteright{
+      display: inherit;
+    }
+  }
 }
 
 

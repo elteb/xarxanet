@@ -140,11 +140,15 @@
     padding: 10px 15px;
   }
 }
+
 @mixin bloc-banner-portada($img, $height:321px) {
   padding: 10px 15px;
   @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { padding: 10px; }
   .block__content {
     height: $height;
+    @media (max-width: $screen-sm-max){
+      height: 165px;
+    }
     background: url('../images/blocks/'+$img+'.jpg');
     background-size: 555px 321px;
     background-repeat: no-repeat;

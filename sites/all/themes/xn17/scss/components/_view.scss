@@ -190,6 +190,8 @@
     height:481px;
     padding:30px;
     background-size: 840px !important;
+    position: relative;
+    z-index: -1;
     @media (max-width: $screen-md-max){
         background-size: 690px !important;
     }
@@ -204,6 +206,8 @@
     }
     .cont_titular_entradeta{
       h2{
+        position: relative;
+        z-index: 100;
         text-transform: uppercase;
         font-family: Fira Sans SemiBold;
         font-size:1.3em;
@@ -242,6 +246,10 @@
       .resum{
         padding-top:15px;
         font-size:1.1em;
+        a{
+          color:#fff;
+          text-decoration:underline;
+        }
       }
     }
     color:#FFFFFF;
@@ -657,7 +665,7 @@
   }
   .view-content{
     height:246px;
-    margin-bottom: 30px;
+    //margin-bottom: 30px;
     padding-right: 0px;
     @media (max-width: $screen-sm-max) {
       border-bottom: solid 8px #C6C6C6;
