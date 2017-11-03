@@ -25,16 +25,16 @@
 ?>
 
 <div class="
-<?php 
+<?php
 	print $fields['type']->raw;
 	if ($id % 5 == 0) {
 		print ' views-row-clear';
-	} 
+	}
 ?>
 ">
 
 <?php
-	$rawImatge = $fields['field_agenda_imatge']->content;
+	$rawImatge = ($fields['type']->raw == 'opinio') ? $fields['field_autor_foto_quadrada']->content : $fields['field_agenda_imatge']->content;
 	if (strip_tags($rawImatge, '<img>') == '') $rawImatge = "<a href='" . strip_tags($fields['path']->content) . "'>" . theme_image_style (array('style_name' => 'tag-petit', 'path' => 'public://no-image.jpg', 'title' => 'just a test image', 'alt' => 'test image')) . "</a>";
 	if ((strip_tags($fields['field_imatge_emergent']->content) != '') || (strip_tags($fields['field_video_emergent']->content) != '')) {
 		if (strip_tags($fields['field_imatge_emergent']->content) != '') {
@@ -58,15 +58,14 @@
 						  	</div>
 			            </div>';
 	}
-	
+
 	print $rawImatge;
 	$type = $fields['type']->raw;
 	if (($type == 'recurs_general') && (isset($fields['field_ambit_recurs']))) $type = 'Recurs '.strip_tags($fields['field_ambit_recurs']->content);
 	if (($type == 'noticia_general') && (isset($fields['field_ambit_noticia']))) $type = 'Notícia '.strip_tags($fields['field_ambit_noticia']->content);
 	print sasson_xarxanet_get_label($type);
 	print '<h3>'.$fields['title']->content.'</h3>';
-	print $fields['field_resum']->content; 
+	print $fields['field_resum']->content;
 ?>
 
 </div>
-
