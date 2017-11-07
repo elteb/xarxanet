@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * TODO: Enter file description here.
+ */
+
+/**
+ * Implements views_pre_render().
+ */
+function xn17_views_pre_render(&$view) {
+  // pair field contents
+  if ($view->name == 'xn17_slide_imatges_secundaries') {
+    foreach ($view->result as $key => $res) {
+      if ($res->field_data_field_imatges_delta != $res->field_data_field_peu_de_foto_delta) {
+        unset($view->result[$key]);
+      } else {
+        if($res->field_field_peu_de_foto[0]['raw']['value'] == '-- Peu de foto --') {
+          $view->result[$key]->field_field_peu_de_foto = null;
+        } else {
+          $view->result[$key]->field_field_imatges_1 = null;
+        }
+      }
+    }
+  }
+
+  if ($view->name == 'xn17_seccions_recurs') {
+    if($view->current_display == 'default') {
+      $i = 1;
+      foreach ($view->result as $key => $res) {
+        if ($res->field_data_field_subtitols_delta != $res->field_data_field_continguts_delta) {
+          unset($view->result[$key]);
+        } else {
+          $view->result[$key]->field_field_subtitols[0]['rendered']['#markup'] =
+            '<div id="rec'.$i.'">'.$view->result[$key]->field_field_subtitols[0]['rendered']['#markup'].'</div>';
+          $i++;
+        }
+      }
+    }
+  }
+}
