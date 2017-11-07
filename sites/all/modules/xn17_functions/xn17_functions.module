@@ -8,7 +8,7 @@
 /**
  * Implements views_pre_render().
  */
-function xn17_views_pre_render(&$view) {
+function xn17_functions_views_pre_render(&$view) {
   // pair field contents
   if ($view->name == 'xn17_slide_imatges_secundaries') {
     foreach ($view->result as $key => $res) {
