@@ -66,7 +66,7 @@
 //------------------------------------------------------------------------------
 //Notícia
 //------------------------------------------------------------------------------
-.noticia {
+.noticia, .recurs {
   @include node-comparteix;
   @include node-tags;
   h1 {
@@ -83,10 +83,13 @@
   .views_slideshow_cycle_slide {
     border-top: solid 2px $xn17-vermell;
   }
-  .views-field-field-peu-de-foto {
+  .views-field-field-peu-de-foto, .views-field-field-imatges-1 {
     font-size: $font-size-small;
     color: $gray-medium;
-    padding: 5px 0;
+  }
+  .views-field-field-imatges-1 { margin-top: 5px; }
+  .views-field-field-peu-de-foto {
+    padding-bottom: 5px;
     border-bottom: solid 2px $xn17-vermell;
   }
   .field-name-field-resum {
@@ -101,17 +104,52 @@
     a { color: white; }
     z-index: 15;
   }
-  .field-name-field-autor-noticies .field-label{ font-weight: normal; }
+  .field-name-field-autor-noticies .field-label,
+  .field-name-field-autor .field-label { font-weight: normal; }
   .field-name-field-usuari-autor .field-item::before { font-weight: normal; content: 'Entitat redactora: '}
   .field-name-simple-share-icons-copia- { margin-top: 10px; }
-
+  .field-name-seccions-recurs-index {
+    font-size: $font-size-small;
+    background-color: $gray-light;
+    padding: 20px;
+    .title {
+      font-weight: bold;
+      margin-bottom: 10px
+    }
+    .views-row {
+      margin-left: 30px;
+      margin-bottom: 5px
+    }
+    @media (min-width: $screen-md-min) {
+      float: left;
+      left: -80 px;
+      position: relative;
+      width: 280px;
+      left: -130px;
+      margin: 20px;
+    }
+  }
+  .field-name-seccions-recurs {
+    @media (min-width: $screen-md-min) {
+      .views-row-1 {
+        left: -120px;
+        padding-left: 120px;
+        position: relative;
+        width: 715px;
+        @media (min-width: $screen-lg-min) { width: 650px; }
+      }
+    }
+  }
+  .views-field-field-subtitols h2 {
+    font-size: $font-size-large;
+    font-weight: bold;
+  }
   .xn17-standard-column1 {
     @media (max-width: $screen-md-min) {
       h1, .field-name-simple-share-icons, .field-name-post-date,
       .field-name-field-autor-noticies, { display: none; }
     }
   }
-
   .xn17-standard-column2 {
     @media (min-width: $screen-md-min) {
       h1, .field-name-simple-share-icons-copia-, .field-name-post-date-copia-,
