@@ -104,11 +104,11 @@
         // recursos portada
         // -----------------------------------------------------------------------
         if(mesRecursosObert == false){
-          $(".regio .view-id-xn17_recursos .view-content").css("display","none");
+          $(".regio .view-id-bloc-mes-xn17-recursos .view-content").css("display","none");
           $(".pager__item a").click(function(){
             mesRecursosObert = true;
-            $(".regio .view-id-xn17_recursos .view-content").slideToggle("slow");
-            $(".regio .view-id-xn17_recursos .view-content").css("display","inherit");
+            $(".regio .view-id-bloc-mes-xn17-recursos .view-content").slideToggle("slow");
+            $(".regio .view-id-bloc-mes-xn17-recursos .view-content").css("display","inherit");
           });
         };
       });
