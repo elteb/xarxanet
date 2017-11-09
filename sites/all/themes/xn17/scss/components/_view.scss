@@ -437,6 +437,7 @@
   @include load-more;
   .resource-flag {
     text-transform: uppercase;
+    margin-top: 10px;
     border-top: solid 2px $xn17-vermell;
     margin-bottom: -15px;
     span { @include flag; }

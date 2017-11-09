@@ -15,7 +15,8 @@ function xn17_functions_views_pre_render(&$view) {
       if ($res->field_data_field_imatges_delta != $res->field_data_field_peu_de_foto_delta) {
         unset($view->result[$key]);
       } else {
-        if($res->field_field_peu_de_foto[0]['raw']['value'] == '-- Peu de foto --') {
+        if(($res->field_field_peu_de_foto[0]['raw']['value'] == '-- Peu de foto --') ||
+	   ($res->field_field_peu_de_foto[0]['raw']['value'] == '--Peu de foto--')) {
           $view->result[$key]->field_field_peu_de_foto = null;
         } else {
           $view->result[$key]->field_field_imatges_1 = null;
