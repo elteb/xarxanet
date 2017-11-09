@@ -230,6 +230,11 @@
   h4{
     width:40%;
   }
+  @media (max-width: $screen-sm-max){
+    h4{
+      width: 100%;
+    }
+  }
   .sub-seccions{
     position: absolute;
     right: 0px;
