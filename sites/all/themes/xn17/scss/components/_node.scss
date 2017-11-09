@@ -64,7 +64,7 @@
 }
 
 //------------------------------------------------------------------------------
-//Notícia
+//Notícia i Recurs
 //------------------------------------------------------------------------------
 .noticia, .recurs {
   @include node-comparteix;
@@ -80,7 +80,9 @@
     width: 100%;
     height: auto;
   }
+  .views-slideshow-cycle-main-frame { margin-bottom: 50px; }
   .views_slideshow_cycle_slide {
+    margin-top: 50px;
     border-top: solid 2px $xn17-vermell;
   }
   .views-field-field-peu-de-foto, .views-field-field-imatges-1 {
