@@ -205,13 +205,15 @@ footer {
 // Content
 // -----------------------------------------------------------------------------
 .region-content {
-  .noticia & { @media (min-width: $screen-lg-min) { padding-top: 90px; }}
+  .noticia & { @media (min-width: $screen-lg-min) { padding-top: 50px; }}
 }
 
 // -----------------------------------------------------------------------------
 // Sidebar
 // -----------------------------------------------------------------------------
 .region-content-sidebar {
-  @media (min-width: $screen-lg-min) { padding-top: 70px; }
+  @media (min-width: $screen-lg-min) { padding-top: 40px; }
+  .page-biblioteca &,
+  .page-recursos & { @media (min-width: $screen-lg-min) { padding-top: 70px; }}
   .agenda & { @media (min-width: $screen-lg-min) { padding-top: 90px; }}
 }

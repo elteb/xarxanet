@@ -81,10 +81,8 @@
     height: auto;
   }
   .views-slideshow-cycle-main-frame { margin-bottom: 50px; }
-  .views_slideshow_cycle_slide {
-    margin-top: 50px;
-    border-top: solid 2px $xn17-vermell;
-  }
+  .views_slideshow_cycle_slide { border-top: solid 2px $xn17-vermell; }
+  &.recurs .views_slideshow_cycle_slide { margin-top: 50px; }
   .views-field-field-peu-de-foto, .views-field-field-imatges-1 {
     font-size: $font-size-small;
     color: $gray-medium;
@@ -145,6 +143,7 @@
   .views-field-field-subtitols h2 {
     font-size: $font-size-large;
     font-weight: bold;
+    margin-top: 30px;
   }
   .xn17-standard-column1 {
     @media (max-width: $screen-md-min) {
