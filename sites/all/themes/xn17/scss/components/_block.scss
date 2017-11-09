@@ -195,7 +195,7 @@
 // Bloc header recursos
 // -----------------------------------------------------------------------------
 .bloc-header-recursos {
-  @include header_image('recurs_formacio');
+  @include header_image('recurs_economics');
   .page-recursos & { @include header_image('recurs_assessorat');}
   .page-recursos-projectes & { @include header_image('recurs_projectes');}
   .page-recursos-juridics & { @include header_image('recurs_juridics');}
