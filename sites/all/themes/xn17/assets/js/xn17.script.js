@@ -2,6 +2,17 @@
  * @file
  * Custom scripts for theme.
  */
+
+/**
+ * La variable obert, és uina variable global epr tal que a la portada s'oculti
+ * els llistat de recursoso en una primera instancia
+ */
+ var mesRecursosObert = false;
+ var mesNoticiesObert = false;
+/*
+*/
+
+
 (function ($, Drupal, window, document, undefined) {
   /* TODO - Behaviors!!! */
   Drupal.behaviors.radix_dropdown = {
@@ -69,15 +80,37 @@
           $("#edit-field-doc-editorial-tid-wrapper").toggle();
           $(".views-submit-button").toggle();
         });
-      // -----------------------------------------------------------------------
-      // recull documents biblioteca portada
-      // -----------------------------------------------------------------------
+        // -----------------------------------------------------------------------
+        // recull documents biblioteca portada
+        // -----------------------------------------------------------------------
         $(".view-xn17-recull-documents .document-biblioteca").mouseover( function(){
           $(".sinopsi",this).fadeIn("1500", function(){});
         });
         $(".view-xn17-recull-documents .document-biblioteca").mouseleave( function(){
           $(".sinopsi",this).fadeOut("250", function(){});
         });
+        // -----------------------------------------------------------------------
+        // noticies portada
+        // -----------------------------------------------------------------------
+        if(mesNoticiesObert == false){
+          $(".view-id-xn17_noticies .view-content").css("display","none");
+          $(".pager__item a").click(function(){
+            mesNoticiesObert = true;
+            $(".view-id-xn17_noticies .view-content").slideToggle("slow");
+            $(".view-id-xn17_noticies .view-content").css("display","inherit");
+          });
+        };
+        // -----------------------------------------------------------------------
+        // recursos portada
+        // -----------------------------------------------------------------------
+        if(mesRecursosObert == false){
+          $(".view-id-xn17_recursos .view-content").css("display","none");
+          $(".pager__item a").click(function(){
+            mesRecursosObert = true;
+            $(".view-id-xn17_recursos .view-content").slideToggle("slow");
+            $(".view-id-xn17_recursos .view-content").css("display","inherit");
+          });
+        };
       });
     }
   };
