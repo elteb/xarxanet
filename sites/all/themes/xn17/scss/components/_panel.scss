@@ -12,6 +12,7 @@
 //Lina superior vermella i flag
 .regio{
   @include linia-vermella;
+  @include load-more;
 }
 
 .titol-regio{
@@ -269,6 +270,11 @@
   h2{
     border-top: solid 8px #C6C6C6;
     padding-bottom: 15px;
+    padding-bottom: 15px;
+    @media (max-width: $screen-sm-max){
+      border-bottom: solid 3px #C6C6C6;
+      padding-bottom: 5px;
+    }
     padding-top: 10px;
     padding-left:15px;
     margin-top:0px;
@@ -279,11 +285,31 @@
     color: $xn17-vermell;
     font-size:24px;
   }
-  .pane-content{
-    height:80px;
+  .view-seccions-especials{
     padding-left:15px;
     background-color: #ededed;
     border-bottom: solid 8px #C6C6C6;
     margin-bottom: 30px;
+    padding-top:5px;
+    @media (max-width: $screen-md-max){
+      font-size:0.9em;
+      margin-bottom: 7px;
+    }
+    @media (max-width: $screen-sm-max){
+      font-size:0.8em;
+      margin-bottom: 7px;
+    }
+    @media (max-width: $screen-xs-max){
+      .view-header{
+        margin-bottom: 30px;
+      }
+      .view-content{
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-right: 0px;
+        margin-right: 0px;
+      }
+      font-size:0.8em;
+    }
   }
 }
