@@ -56,7 +56,7 @@
       border-radius: 0;
       padding: 8px 20px;
     }
-    .ckeditor_links, #edit-comment-body-und-0-format { display: none; }
+    .ckeditor_links, #edit-comment-body-und-0-format { display: none !important; }
   }
 
   &.closed {
