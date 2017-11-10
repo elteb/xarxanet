@@ -40,3 +40,10 @@ function xn17_functions_views_pre_render(&$view) {
     }
   }
 }
+
+/**
+ * Implements form_comment_form_alter().
+ */
+function xn17_functions_form_comment_form_alter(&$form) {
+  $form['author']['homepage']['#access'] = FALSE;
+}

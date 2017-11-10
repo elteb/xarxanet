@@ -111,6 +111,13 @@
             $(".regio .view-id-bloc-mes-xn17-recursos .view-content").css("display","inherit");
           });
         };
+        // -----------------------------------------------------------------------
+        // comentaris
+        // -----------------------------------------------------------------------
+        $("#comments-header").click( function(){
+          $("#comments-body").slideToggle("slow");
+          $("#comments").toggleClass('closed');
+        });
       });
     }
   };
