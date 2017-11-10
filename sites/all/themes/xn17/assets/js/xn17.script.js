@@ -93,22 +93,22 @@
         // noticies portada
         // -----------------------------------------------------------------------
         if(mesNoticiesObert == false){
-          $(".regio .view-id-xn17_noticies .view-content").css("display","none");
-          $(".pager__item a").click(function(){
+          $(".view-id-bloc-mes-xn17-noticies .view-content").css("display","none");
+          $(".view-id-bloc-mes-xn17-noticies .pager__item a").click(function(){
             mesNoticiesObert = true;
-            $(".regio .view-id-xn17_noticies .view-content").slideToggle("slow");
-            $(".regio .view-id-xn17_noticies .view-content").css("display","inherit");
+            $(".view-id-bloc-mes-xn17-noticies .view-content").slideToggle("slow");
+            $(".view-id-bloc-mes-xn17-noticies .view-content").css("display","inherit");
           });
         };
         // -----------------------------------------------------------------------
         // recursos portada
         // -----------------------------------------------------------------------
         if(mesRecursosObert == false){
-          $(".regio .view-id-bloc-mes-xn17-recursos .view-content").css("display","none");
-          $(".pager__item a").click(function(){
+          $(".view-id-bloc-mes-xn17-recursos .view-content").css("display","none");
+          $(".view-id-bloc-mes-xn17-recursos .pager__item a").click(function(){
             mesRecursosObert = true;
-            $(".regio .view-id-bloc-mes-xn17-recursos .view-content").slideToggle("slow");
-            $(".regio .view-id-bloc-mes-xn17-recursos .view-content").css("display","inherit");
+            $(".view-id-bloc-mes-xn17-recursos .view-content").slideToggle("slow");
+            $(".view-id-bloc-mes-xn17-recursos .view-content").css("display","inherit");
           });
         };
         // -----------------------------------------------------------------------
