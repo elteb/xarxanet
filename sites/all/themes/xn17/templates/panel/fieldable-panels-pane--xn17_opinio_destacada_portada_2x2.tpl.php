@@ -11,7 +11,7 @@ $nom_autor = $autor->title;
   <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
     <div class="destacat_2x2">
       <?php
-      $imatge = image_style_url('xn17_vertical',$autor->field_autor_foto_quadrada['und'][0]['uri']);
+      $imatge = image_style_url('xn17_vertical',$autor->field_autor_foto_vertical['und'][0]['uri']);
       ?>
       <div class="imatge-destacada-opinio">
         <img src="<?php print $imatge; ?>">
