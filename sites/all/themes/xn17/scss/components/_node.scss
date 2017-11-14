@@ -45,9 +45,23 @@
   .field-name-field-resum { font-weight: bold; }
   .field-name-body, .field-name-adreca { margin-bottom: 20px; }
   .field-name-data-esdevendiment, .field-name-hora-esdeveniment,
-  .field-name-field-organizer, .field-name-adreca {
+  .field-name-field-organizer, .field-name-adreca, .field-name-field-convocant,
+  .field-name-field-finfull-data-publicacio, .field-name-field-date,
+  .field-name-field-date, .field-name-field-finfull-ambit, .field-name-field-finfull-tipus,
+  .field-name-field-finfull-ambit-geo, .field-name-field-finfull-bases {
     p { margin: 0; }
     padding: 5px 0;
+  }
+  .field-name-field-finfull-bases {
+    .field-items { padding-left: 40px; }
+    .field-item { display: list-item; }
+  }
+  .field-name-body {
+    h1, h2, h3, h4, h5, h6 {
+      font-size: $font-size-large;
+      font-weight: 600;
+    }
+    .financament & { border-top: solid 1px $gray; }
   }
   .field-name-print-icon, .field-name-print-pdf {
     &.field-name-print-icon::before { content: url('../images/icon/icon-print.svg'); }
