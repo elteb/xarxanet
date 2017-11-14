@@ -14,9 +14,9 @@
 }
 
 //------------------------------------------------------------------------------
-//Esdeveniment
+//Esdeveniment i Finançament
 //------------------------------------------------------------------------------
-.agenda {
+.agenda, .financament {
   @include node-comparteix;
   @include node-tags;
   h1, .xn17-standard-header {
