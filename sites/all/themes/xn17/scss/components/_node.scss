@@ -62,9 +62,15 @@
       font-weight: 600;
     }
   }
-  &.financament .field-name-body {
-    border-top: solid 1px $gray;
-    margin-top: 20px;
+  &.financament {
+    .field-name-body {
+      border-top: solid 1px $gray;
+      margin-top: 20px;
+    }
+    .field-name-addtoany {
+      border-top: solid 1px $gray;
+      padding-top: 20px;
+    }
   }
   .field-name-print-icon, .field-name-print-pdf {
     &.field-name-print-icon::before { content: url('../images/icon/icon-print.svg'); }
