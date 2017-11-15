@@ -19,9 +19,9 @@
 }
 
 //------------------------------------------------------------------------------
-//Esdeveniment i Finançament
+//Esdeveniment, Finançament, Bilioteca
 //------------------------------------------------------------------------------
-.agenda, .financament {
+.agenda, .financament, .node-type-doc-biblioteca {
   @include node-comparteix;
   @include node-tags;
   h1, .xn17-standard-header {
@@ -71,7 +71,7 @@
     .field-name-body {
       border-top: solid 1px $gray;
       margin-top: 20px;
-      padding-top: 20px;  
+      padding-top: 20px;
     }
     .field-name-addtoany {
       border-top: solid 1px $gray;
@@ -89,6 +89,41 @@
       padding: 8px 8px;
     }
     p { margin: 0px; }
+  }
+  .views-field-field-doc-imatge {
+    .wrapper {
+      width: 100%;
+      display: inline-block;
+      position: relative;
+    }
+    .wrapper:after {
+      padding-top: 123.92%;
+      display: block;
+      content: '';
+    }
+    .main {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background-color: $gray-light;
+      color: white;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      img {
+        position: absolute;
+        max-width: 80%;
+        height: auto;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
+        box-shadow: 3px 3px 10px $gray-dark;
+      }
+    }
   }
 }
 
