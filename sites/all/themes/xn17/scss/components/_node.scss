@@ -53,7 +53,10 @@
   .field-name-field-organizer, .field-name-adreca, .field-name-field-convocant,
   .field-name-field-finfull-data-publicacio, .field-name-field-date,
   .field-name-field-date, .field-name-field-finfull-ambit, .field-name-field-finfull-tipus,
-  .field-name-field-finfull-ambit-geo, .field-name-field-finfull-bases {
+  .field-name-field-finfull-ambit-geo, .field-name-field-finfull-bases,
+  .field-name-data-esdeveniment, .field-name-taxonomy-vocabulary-5, .field-name-field-doc-lloc-publi,
+  .field-name-field-doc-data-publi, .field-name-field-doc-editorial, .field-name-field-doc-idioma,
+  .field-name-field-doc-tematica {
     p { margin: 0; }
     padding: 5px 0;
   }
@@ -67,12 +70,17 @@
       font-weight: 600;
     }
   }
+  .field-name-field-doc-sinopsi {
+    padding-bottom: 20px;
+  }
   &.financament {
     .field-name-body {
       border-top: solid 1px $gray;
       margin-top: 20px;
       padding-top: 20px;
     }
+  }
+  &.financament, &.node-type-doc-biblioteca {
     .field-name-addtoany {
       border-top: solid 1px $gray;
       padding-top: 20px;
