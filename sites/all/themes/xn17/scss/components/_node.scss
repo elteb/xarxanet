@@ -133,6 +133,16 @@
       }
     }
   }
+  .field-name-field-doc-descarrega, .field-name-field-doc-font {
+    background: $xn17-vermell url("../images/icon/icon-search-gray.svg") no-repeat left 15px center;
+    padding: 10px 0 10px 60px;
+    margin: 10px 0;
+    .file-icon, .file-size { display: none; }
+    a {
+      color: white;
+      font-weight: 600;
+    }
+  }
 }
 
 //------------------------------------------------------------------------------
