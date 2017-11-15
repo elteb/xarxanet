@@ -13,6 +13,11 @@
   .region-content-header { margin-bottom: 40px; }
 }
 
+.tipus_contingut {
+  @include header_title;
+  font-size: 2.1em;
+}
+
 //------------------------------------------------------------------------------
 //Esdeveniment i Finançament
 //------------------------------------------------------------------------------
