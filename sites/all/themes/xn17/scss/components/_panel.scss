@@ -9,9 +9,11 @@
 }
 
 //------------------------------------------------------------------------------
-//Lina superior vermella i flag
+//Lina superior vermella, flag i infinite scroll
 .regio{
   @include linia-vermella;
+}
+.regio, .page-opinio{
   @include load-more;
 }
 
