@@ -41,7 +41,6 @@
   .pie{
     background-color: #BE1622;
     padding: 5px 0 5px 5%;
-    bottom:30px;
     margin-top:-60px;
     a{
       color: #fff;
@@ -145,6 +144,9 @@
     .data{
       color:$gray-medium;
       font-size:0.85em;
+    }
+    p{
+      color:#2f3031;
     }
   }
   .pie{
