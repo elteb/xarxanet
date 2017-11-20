@@ -33,12 +33,15 @@
 
 //------------------------------------------------------------------------------
 //Opinio 2x1
-.pane-bundle-xn17-opinio-destacada-portada{
+.pane-bundle-xn17-opinio-destacada-portada, .view-xn17-relacionats{
   .titol-modul{
     @include titol-modul;
   }
   .pdng_mdl{
     margin-bottom: 30px;
+  }
+  .opinio-relacionada{
+    margin-top: -10px;
   }
   .pie{
     background-color: #BE1622;
