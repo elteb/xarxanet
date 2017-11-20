@@ -348,6 +348,41 @@
   }
 }
 
+//------------------------------------------------------------------------------
+// Bloc footer per opinio
+//------------------------------------------------------------------------------
+#content-footer{
+  background-color: #fff;
+  padding-bottom: 50px;
+  .block__title{
+    display: none;
+  }
+  .block--últimes-opinions, .block--articles-relacionats{
+    display: inline-block;
+  }
+  .view-xn17-opinio{
+    .view-header{
+      border-top: solid 3px #BE1622;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    .views-row h4{
+      padding-top:35px;
+    }
+  }
+  .view-xn17-relacionats{
+    .view-header{
+      border-top: solid 3px #BE1622;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    .views-row h4{
+      padding-top:35px;
+    }
+  }
+}
+
+
 // -----------------------------------------------------------------------------
 // Bloc +xarxanet
 // -----------------------------------------------------------------------------
