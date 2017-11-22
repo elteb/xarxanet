@@ -325,7 +325,6 @@
 // Subportal noticies
 //------------------------------------------------------------------------------
 .panels-flexible-row-subportal_noticies-main-row-inside::before {
-//.panels-flexible-row-subportal_noticies-main-row::after {
   border-top: solid 3px $xn17-vermell;
   content: "";
   display: block;
@@ -340,6 +339,7 @@
     height: auto;
   }
   .panels-flexible-region-subportal_noticies-center {
+    position: relative;
     margin-bottom: 15px;
     padding: 0 15px;
     color: white;
@@ -350,8 +350,9 @@
       z-index: 10;
       top: 20%;
       left: 10%;
+      width: 65%;
+      height: 90%;
       padding-bottom: 50px;
-      padding-right: 25.6849%;
       .field-name-title h4 {
         font-family: Fira Sans SemiBold;
         font-size: 2.15em;
