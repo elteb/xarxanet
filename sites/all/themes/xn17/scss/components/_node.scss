@@ -154,7 +154,7 @@
 //------------------------------------------------------------------------------
 //Notícia i Recurs
 //------------------------------------------------------------------------------
-.noticia, .recurs, .node-type-opinio{
+.node-type-noticia-general, .node-type-recurs-general, .node-type-opinio{
   @include node-comparteix;
   @include node-tags;
   h1 {

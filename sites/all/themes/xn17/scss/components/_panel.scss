@@ -324,19 +324,22 @@
 //------------------------------------------------------------------------------
 // Subportal noticies
 //------------------------------------------------------------------------------
-.panels-flexible-row-subportal_noticies-main-row-inside::before {
-  border-top: solid 3px $xn17-vermell;
-  content: "";
-  display: block;
-  width: calc(100% - 30px);
-  margin-left: 15px;
-}
 .panels-flexible-subportal_noticies {
   .row { padding: 0 15px; }
   .panels-flexible-region-inside { padding: 0px; }
   .field-name-field-agenda-imatge img {
     width: 100%;
     height: auto;
+  }
+  .panels-flexible-row-subportal_noticies-main-row-inside::before {
+    border-top: solid 3px $xn17-vermell;
+    content: "";
+    display: block;
+    width: calc(100% - 30px);
+    margin-left: 15px;
+  }
+  .panels-flexible-region {
+    width: 50%;
   }
   .panels-flexible-region-subportal_noticies-center {
     position: relative;
