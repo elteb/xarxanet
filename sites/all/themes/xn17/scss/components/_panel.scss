@@ -377,7 +377,12 @@
         z-index: 10;
         top: 0;
     }
-    .field-name-field-resum { display: none; }
+    .field-name-field-ambit-noticia {
+      @include flag;
+      top: 0;
+      a { color: white; }
+      z-index: 15;
+    }
   }
   .panels-flexible-region-subportal_noticies-destacada_principal {
     .node-noticia-general {
@@ -417,5 +422,6 @@
         a { color:$xn17-vermell; }
       }
     }
+    .field-name-field-resum { display: none; }
   }
 }
