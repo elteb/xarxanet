@@ -32,6 +32,9 @@
 @mixin padding-dreta($ratio) {
   padding-right: percentage( nth($ratio, 2) / nth($ratio, 1));
 }
+@mixin padding-top($ratio) {
+  padding-top: percentage( nth($ratio, 1) / nth($ratio, 2));
+}
 
 @mixin block_menu {
   h4 {

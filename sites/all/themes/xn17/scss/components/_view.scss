@@ -56,7 +56,7 @@
   .titular{
     h4{
       font:{
-        family: Fira Sans SemiBold;
+        family: 'Fira Sans SemiBold';
       }
       a{
         color:$gray-dark;
@@ -744,4 +744,184 @@
     }
   }
   font-family: Fira Sans;
+}
+
+//------------------------------------------------------------------------------
+// Opinio destacada 2x2
+.view-id-xn17-opinio-destacada{
+  margin-top: 30px;
+  width: 100%;
+  .view-header{
+    border-top: solid 3px $xn17-vermell;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .destacat_2x2{
+    margin-bottom: 0px;
+  }
+  .opinio-destacada-2x2{
+    padding-left: 15px;
+    margin-right: 15px;
+  }
+  h2, .pane-title{
+    display:none;
+  }
+  .imatge-destacada-opinio{
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+    margin-bottom:-30px;
+    img{
+      width: 100%;
+    }
+  }
+
+  //contenidor per al titular i l'entradeta del Destacat
+  .titular-entradeta{
+    width:50%;
+    float:left;
+    padding-left:15px;
+    h4{
+      padding-top:20px;
+      font-family: 'Fira Sans SemiBold';
+    }
+    .data{
+      color:$gray-medium;
+      font-size:0.85em;
+    }
+    p{
+      color:#2f3031;
+    }
+  }
+  .pie{
+    float: left;
+    position: relative;
+    top: 15px;
+    padding: 5px 30px 5px 5%;
+    width: 100%;
+    background-color: #BE1622;
+    a{
+      left: 0px;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: 'Fira Sans SemiBold';
+    }
+  }
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//Opinio 2x1
+.view-id-xn17-opinio-secundaries  {
+  .views-row{
+    margin-top: -10px;
+  }
+  .modul_2x1{
+  }
+  .pie{
+    background-color: $xn17-vermell;
+    padding: 5px 0 5px 10px;
+    margin-top:-50px;
+    margin-bottom: 30px;
+    a{
+      color: #fff;
+      text-transform: uppercase;
+      font-family: 'Fira Sans SemiBold';
+    }
+  }
+
+  //-----contenidor per al titular i l'entradeta del Destacat------
+  .cont_titular_entradeta{
+    h4{
+      font-family: 'Fira Sans SemiBold';
+      padding-top: 25px;
+    }
+    img{
+      @media screen and (max-width:$screen-xs-min){
+        width:110px;
+      }
+      @media screen and (min-width:$screen-sm-min){
+        width:130px;
+      }
+      @media screen and (min-width:$screen-md-min){
+        width:73px;
+      }
+      @media screen and (min-width:$screen-lg){
+        width:105px;
+      }
+      float:right;
+      clear:both;
+      margin: 0px -20px 0px 0px ;
+      border-radius: 50%;
+    }
+    .rightimage:before {
+      content: '' ;
+      display:block;
+      float: right;
+      position: relative;
+      @include padding-top(220 210);
+      @media screen and (max-width:$screen-xs){
+        height:70px;
+      }
+      @media screen and (min-width:$screen-sm-min){
+        height:100px;
+      }
+      @media screen and (min-width:$screen-md-min){
+        height:40px;
+      }
+      @media screen and (min-width:$screen-lg){
+        height:60px;
+      }
+    }
+    @include padding-dreta(277 40);
+    padding-bottom: 50px;
+    padding-left:5%;
+    margdisplay:block;in: 0 auto ;
+    p{
+      @media screen and (max-width:$screen-xs){
+        font-size:0.90em;
+      }
+      @media screen and (min-width:$screen-sm-min){
+        font-size:1.15em;
+      }
+      @media screen and (min-width:$screen-md-min){
+        font-size:0.85em;
+      }
+      @media screen and (min-width:$screen-lg){
+        font-size:1em;
+      }
+    }
+  }
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//Opinio autors 1x1
+.view-id-xn17-opinio-autors{
+  .view-header{
+    border-top: solid 3px $xn17-vermell;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  img{
+    width: 156px;
+    height: auto;
+    float: right;
+  }
+  .autor{
+    width: 99px;
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 45px;
+    padding-left: 10px;
+    a{
+      font-family: 'Fira Sans SemiBold';
+      text-transform: uppercase;
+      color: $xn17-vermell;
+      font-size: 0.85em !important;
+    }
+    .twitter{
+      font-family: 'Fira Sans SemiBold';
+      color: $gray-dark;
+      font-size: 0.85em;
+    }
+  }
 }
