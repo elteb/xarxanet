@@ -338,8 +338,11 @@
     width: calc(100% - 30px);
     margin-left: 15px;
   }
-  .panels-flexible-row-subportal_noticies-main-row .panels-flexible-region {
+  /*.panels-flexible-row-subportal_noticies-main-row .panels-flexible-region {
     width: 50%;
+  }*/
+  .panels-flexible-row-subportal_noticies-main-row {
+    padding: 0px;
   }
   .panels-flexible-region-subportal_noticies-center {
     position: relative;
@@ -414,10 +417,13 @@
         font-family: Fira Sans SemiBold;
         font-weight: normal;
         &::after { content: none; }
+        span {
+          padding-left: 10px;
+          text-transform: uppercase;
+        }
         span::before {
           content: "NOTÍCIA > ";
           color: $gray-dark;
-
         }
         a { color:$xn17-vermell; }
       }
