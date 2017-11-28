@@ -320,3 +320,114 @@
     }
   }
 }
+
+//------------------------------------------------------------------------------
+// Subportal noticies
+//------------------------------------------------------------------------------
+.panels-flexible-subportal_noticies {
+  .row { padding: 0 15px; }
+  .panels-flexible-region-inside { padding: 0px; }
+  .field-name-field-agenda-imatge img {
+    width: 100%;
+    height: auto;
+  }
+  .panels-flexible-row-subportal_noticies-main-row-inside::before {
+    border-top: solid 3px $xn17-vermell;
+    content: "";
+    display: block;
+    width: calc(100% - 30px);
+    margin-left: 15px;
+  }
+  /*.panels-flexible-row-subportal_noticies-main-row .panels-flexible-region {
+    width: 50%;
+  }*/
+  .panels-flexible-row-subportal_noticies-main-row {
+    padding: 0px;
+  }
+  .panels-flexible-region-subportal_noticies-center {
+    position: relative;
+    margin-bottom: 15px;
+    padding: 0 15px;
+    color: white;
+    font-weight: 400;
+    .node-noticia-general { padding-right: 0px; }
+    .group-titular-entradeta, {
+      position: absolute;
+      z-index: 10;
+      top: 20%;
+      left: 10%;
+      width: 65%;
+      height: 90%;
+      padding-bottom: 50px;
+      .field-name-title h4 {
+        font-family: Fira Sans SemiBold;
+        font-size: 2.15em;
+        a { color: white; }
+      }
+      .field-name-field-resum {
+        font-weight: normal;
+        font-size: $font-size-base;
+        @media (max-width: $screen-sm-min){ display: none; }
+      }
+    }
+    .field-name-field-agenda-imatge:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: calc(100% - 30px);
+        height: 100%;
+        background-image: linear-gradient(rgba(129, 129, 129, 0.45), rgba(129, 129, 129, 0.45));
+        z-index: 10;
+        top: 0;
+    }
+    .field-name-field-ambit-noticia {
+      @include flag;
+      top: 0;
+      a { color: white; }
+      z-index: 15;
+    }
+  }
+  .panels-flexible-region-subportal_noticies-destacada_principal {
+    .node-noticia-general {
+      @include caixa_modul;
+      padding-top: 0px;
+      @include aspect-ratio(255 321);
+      margin-bottom: 15px;
+      img{
+          width:100%;
+          height:auto;
+      }
+      .group-titular-entradeta h3 { display: none; }
+      .field-name-title {
+        @include aspect-ratio(255 123);
+        padding-left: 10px;
+        padding-top:20px;
+        padding-right:10px;
+        h4 {
+          margin: 0px;
+          a {
+            font-family: Fira Sans SemiBold;
+            color:$gray-dark;
+          }
+        }
+      }
+      .field-name-field-ambit-noticia {
+        background: none;
+        position: relative;
+        font-family: Fira Sans SemiBold;
+        font-weight: normal;
+        &::after { content: none; }
+        span {
+          padding-left: 10px;
+          text-transform: uppercase;
+        }
+        span::before {
+          content: "NOTÍCIA > ";
+          color: $gray-dark;
+        }
+        a { color:$xn17-vermell; }
+      }
+    }
+    .field-name-field-resum { display: none; }
+  }
+}
