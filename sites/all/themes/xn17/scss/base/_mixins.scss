@@ -29,6 +29,10 @@
   width: percentage( nth($ratio, 2) / nth($ratio, 1));
 }
 
+@mixin aspect-ratio-img($ratio) {
+  width: percentage( nth($ratio, 2) / nth($ratio, 1));
+}
+
 @mixin padding-dreta($ratio) {
   padding-right: percentage( nth($ratio, 2) / nth($ratio, 1));
 }

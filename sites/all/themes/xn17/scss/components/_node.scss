@@ -152,7 +152,7 @@
 }
 
 //------------------------------------------------------------------------------
-//Notícia i Recurs
+//Notícia, Recurs i opinio
 //------------------------------------------------------------------------------
 .noticia, .recurs, .node-type-opinio{
   @include node-comparteix;
@@ -334,5 +334,114 @@
     margin-top: 50px;
     border-top: solid 2px $xn17-vermell;
     border-bottom: solid 2px $xn17-vermell;
+  }
+}
+//------------------------------------------------------------------------------
+//Autor
+//------------------------------------------------------------------------------
+.node-autor-a{
+  margin-top: 40px;
+  .view-display-id-block_2{
+    .views-row{
+      margin-top: 0px;
+    }
+  }
+  .view-display-id-block_3, .view-display-id-block_5{
+    .views-row-first{
+      .cont_titular_entradeta{
+        h4{
+          padding-top: 30px;
+        }
+      }
+    }
+  }
+  .view-header{
+    border-top: solid 3px #BE1622;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top:20px;
+  }
+  .fitxa-autor{
+    @include aspect-ratio(825 340);
+    background-color: $gray-light;
+    margin-bottom: 15px;
+    .imatge-destacada-opinio{
+      width: 33%;
+      float: left;
+      padding-right: 15px;
+      margin-bottom:-30px;
+      @media screen and (max-width:$screen-xs-min){
+        width: 100% !important;
+        padding-right: 0px;
+        margin-bottom: 15px;
+      }
+      img{
+        width: 100%;
+        height: inherit;
+      }
+    }
+    .presentacio{
+      float: left;
+      h4{
+        font-family: 'Fira Sans SemiBold';
+        padding-top: 25px;
+        color: $xn17-vermell;
+        margin-bottom: 0px;
+      }
+      @media screen and (max-width:$screen-xs-min){
+        float: none;
+        position: absolute;
+        bottom: 0px;
+        width:100%;
+        color: #FFF;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        padding-right: 30px;
+        h4{
+          font-family: 'Fira Sans SemiBold';
+          padding-top: 0px;
+          color: $xn17-vermell;
+          margin-bottom: 0px;
+        }
+      }
+      @media screen and (min-width:$screen-sm-min){
+        width: 50%;
+        padding-left: 15px;
+      }
+      @media screen and (min-width:$screen-md-min){
+        width: 33%;
+        padding-left: 15px;
+      }
+      @media screen and (min-width:$screen-lg){
+        width: 33%;
+        padding-left: 15px;
+      }
+      .twitter{
+        a{
+          font-family: 'Fira Sans SemiBold';
+          font-size: 1.3em;
+          @media screen and (max-width:$screen-xs-min){
+            color: #FFF;
+          }
+        }
+      }
+      p{
+        margin-top: 10px;
+      }
+    }
+    .pie{
+      width: 100%;
+      display: inline-block;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: 'Fira Sans SemiBold';
+      margin-top: 30px;
+      @media screen and (max-width:$screen-xs-max){
+        display:none;
+      }
+    }
+  }
+  .field-name-articles-autor-a{
+    display: inline-block;
   }
 }
