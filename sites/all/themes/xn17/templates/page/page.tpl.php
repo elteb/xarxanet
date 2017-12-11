@@ -125,7 +125,7 @@
       <div id="page-header">
         <?php if ($title): ?>
           <div class="page-header">
-            <!-- <h1 class="title"><?php print $title; ?></h1> -->
+            <h1 class="title"><?php print $title; ?></h1>
           </div>
         <?php endif; ?>
         <?php if ($tabs): ?>

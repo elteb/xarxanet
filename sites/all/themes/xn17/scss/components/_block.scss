@@ -206,6 +206,24 @@
 }
 
 // -----------------------------------------------------------------------------
+// Bloc header especials
+// -----------------------------------------------------------------------------
+.bloc-header-especials {
+  .page-especials & { @include header_image('monografics');}
+  .page-node-81691 & { @include header_image('mon_cabecera_pnav');}
+  .page-node-78394 & { @include header_image('monografics');}
+  .page-node-86632 & { @include header_image('mono_cabecera_transparencia');}
+  .page-node-86631 & { @include header_image('mono_cabecera_impost');}
+  .page-node-78410 & { @include header_image('mono_cabecera_educacio');}
+  .page-node-78409 & { @include header_image('mono_cabecera_comerciojusto');}
+  .page-node-78397 & { @include header_image('mon_cabecera_pnav');}
+  .page-node-78396 & { @include header_image('mono_cabecera_avaluacio');}
+  .page-node-78395 & { @include header_image('mono_cabecera_participacio');}
+  .page-node-78393 & { @include header_image('mono_cabecera_captacio-fons');}
+  height: 180px !important;
+}
+
+// -----------------------------------------------------------------------------
 // Blocs recursos
 // -----------------------------------------------------------------------------
 .bloc-recursos {

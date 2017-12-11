@@ -217,3 +217,71 @@ footer {
   .page-recursos & { @media (min-width: $screen-lg-min) { padding-top: 70px; }}
   .agenda & { @media (min-width: $screen-lg-min) { padding-top: 90px; }}
 }
+
+// -----------------------------------------------------------------------------
+// Panell de Control
+// -----------------------------------------------------------------------------
+.page-panell-entitat{
+  .panels-flexible-row-42-2{
+    margin-top: 15px;
+  }
+  .panels-flexible-region-42-publica{
+    @include blocs-panell-entitat;
+    #noticia{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/noticies.svg');
+    }
+    #acte{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/actes.svg');
+    }
+    #recurs{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/recursos.svg');
+    }
+  }
+  .panels-flexible-region-42-dades_de_l_entitat{
+    @include blocs-panell-entitat;
+    #mostra{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/mostra.svg');
+    }
+    #edita{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/edita.svg');
+    }
+    #document{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/transparencia.svg');
+    }
+  }
+  .panels-flexible-region-42-ajuda{
+    @include blocs-panell-entitat;
+    #intranet{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/intranet.svg');
+    }
+    #otrs{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/otrs.svg');
+    }
+    #analytics{
+      list-style-image: url('/sites/all/themes/xn17/assets/images/icon/analytics.svg');
+    }
+  }
+  #edit-date-filter-min-wrapper,#edit-date-filter-max-wrapper{
+    display: inline-block !important;
+    .form-type-date-popup{
+      display: inline-flex !important;
+      label{
+        margin-right:5px;
+      }
+    }
+  }
+  .view-content{
+    th{
+      background-color: $gray-dark;
+      color: #fff;
+      a{
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+    th.active{
+        background-color: $gray-dark;
+        color: #fff;
+    }
+  }
+}

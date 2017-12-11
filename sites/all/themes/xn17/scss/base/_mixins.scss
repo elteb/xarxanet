@@ -239,3 +239,27 @@
     div { display: inline; float: none;}
   }
 }
+
+@mixin blocs-panell-entitat{
+  height: 100%;
+  padding: 15px;
+  background-color:$gray-light;
+  h2{
+    font-family: 'Fira Sans SemiBold';
+    color:$gray-dark;
+    border-bottom: solid 2px $gray-dark;
+  }
+  ul{
+    margin-left: 30px;
+    li{
+      padding-bottom: 10px;
+      font-family: 'Fira Sans SemiBold';
+      a{
+        color: $gray-dark;
+      }
+      a:hover{
+        color: $xn17-vermell;
+      }
+    }
+  }
+}
