@@ -109,7 +109,7 @@
       </div>
     </div>
     <?php
-      print render($main_menu);
+      print $main_menu_rendered;
     ?>
   </div>
 </div>

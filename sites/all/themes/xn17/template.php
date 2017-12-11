@@ -20,7 +20,7 @@ function xn17_preprocess_page(&$variables) {
   }
 
   //Main menu
-  $variables['main_menu'] = _xn17_main_menu_tree(variable_get('menu_main_links_source', 'main-menu'));
+  $variables['main_menu_rendered'] = render(_xn17_main_menu_tree(variable_get('menu_main_links_source', 'main-menu')));
 
   // Add secondary menu
   $variables['secondary_menu'] = _radix_dropdown_menu_tree(variable_get('menu_secondary_links_source', 'user-menu'));
