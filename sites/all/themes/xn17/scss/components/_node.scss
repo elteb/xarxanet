@@ -157,6 +157,9 @@
 .node-type-noticia-general, .node-type-recurs-general, .node-type-opinio{
   @include node-comparteix;
   @include node-tags;
+  .page-header{
+    display: none;
+  }
   h1 {
     font-size: 2.5em;
     font-family: 'Fira Sans SemiBold';
