@@ -985,7 +985,7 @@
 //------------------------------------------------------------------------------
 .page-etiquetes {
   @include load-more;
-  .container {
+  .main .container {
     background-color: white;
     padding: 40px 30px 0px 30px;
     h1 {
