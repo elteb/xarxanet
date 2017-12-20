@@ -315,9 +315,9 @@ footer {
       border: none !important;
       border-radius: 0px;
     }
-    .panel-heading a {
+    .panel-heading {
       background-color: $gray-light;
-      font-family: 'Fira Sans SemiBold';
+      a { font-family: 'Fira Sans SemiBold'; }
     }
   }
 }
