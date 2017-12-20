@@ -312,10 +312,10 @@ footer {
   }
   .panel-group {
     .panel, .panel-body {
-      border: none;
+      border: none !important;
       border-radius: 0px;
     }
-    .panel-heading {
+    .panel-heading a {
       background-color: $gray-light;
       font-family: 'Fira Sans SemiBold';
     }
