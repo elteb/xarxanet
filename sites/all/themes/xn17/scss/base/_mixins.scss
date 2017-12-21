@@ -73,9 +73,9 @@
     top: 50px;
     width: 100%;
     left: 0;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    .block__title, .block__content {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    .block__title, .block__content, .pane-title, .pane-content {
       @media (min-width: $screen-sm-min) { width: $container-sm; }
       @media (min-width: $screen-md-min) { width: $container-md; }
       @media (min-width: $screen-lg-min) { width: $container-lg; }
