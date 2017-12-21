@@ -25,9 +25,11 @@
         var aTop = $('#third-header').offset().top;
         if ($(this).scrollTop() >= aTop) {
           $('#third-header-clone').show();
+          $('.block-menu').addClass('sticky');
         }
         if ($(this).scrollTop() < aTop) {
           $('#third-header-clone').hide();
+          $('.block-menu').removeClass('sticky');
         }
       });
 
