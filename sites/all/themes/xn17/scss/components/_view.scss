@@ -224,7 +224,9 @@
           color:#FFFFFF;
         }
         margin:0;
-      }
+      }.pane-content, .view-xn17-monografics-portada, .view-content, .skin-default{
+    height:100%;
+  }
       @include padding-dreta(481 250);
       @media (max-width: $screen-md-max){
         @include padding-dreta(432 200);
@@ -978,4 +980,180 @@
         }
       }
     }
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//Monografic seccións especials
+.pane-xn17-especial-un-contingut{
+  .pane-title{
+    @include flag;
+    margin-left: 15px;
+  }
+  height: 100%;
+}
+.view-id-xn17-especial-un-contingut-destacat{
+  border-top:solid 3px $xn17-vermell;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 30px;
+  margin-top: 60px;
+  background-color: $gray-light;
+  height:481px;
+  @media (max-width: $screen-md-max){
+    height:432px;
+  }
+  @media (max-width: $screen-sm-max){
+    height:481px;
+  }
+  @media (max-width: $screen-xs-max){
+    height:276px;
+  }
+  position: relative;
+  .destacat-principal{
+    padding-left: 30px;
+    height:478px;
+    @media (max-width: $screen-md-max){
+      height:429px;
+    }
+    @media (max-width: $screen-sm-max){
+      height:478px;
+    }
+    @media (max-width: $screen-xs-max){
+      height:273px;
+    }
+  }
+  .cont_titular_entradeta{
+    overflow-x: hidden;
+    h2{
+      position: relative;
+      z-index: 100;
+      text-transform: uppercase;
+      font-family: Fira Sans SemiBold;
+      font-size:1.3em;
+      padding-top:60px;
+      padding-left:20px;
+      background: url('/sites/all/themes/xn17/assets/images/elements/fletxa_xn_blanc.svg') no-repeat 0% 62px;
+      background-size:14px 14px;
+      margin-top: 0px;
+      color: #FFF;
+    }
+    h3{
+      font:{
+        family: Fira Sans SemiBold;
+        width:600;
+      }
+      a{
+        color:#FFFFFF;
+      }
+      margin:0;
+    }
+    @include padding-dreta(481 150);
+    @media (max-width: $screen-md-max){
+      @include padding-dreta(432 200);
+    }
+    @media (max-width: $screen-sm-max){
+      @include padding-dreta(636 150);
+    }
+    @media (max-width: $screen-xs-max){
+      height:273px;
+      @include padding-dreta(276 0);
+      h2{
+        font-size:1.2em;
+      }
+      h3{
+        font-size:1.5em;
+      }
+    }
+    .resum{
+      padding-top:15px;
+      font-size:1.4em;
+      color:#fff;
+    }
+  }
+  .altres-continguts{
+    padding-top: 60px;
+    position: relative;
+    height:478px;
+    @media (max-width: $screen-md-max){
+      height:429px;
+    }
+    @media (max-width: $screen-sm-max){
+      height:478px;
+    }
+    @media (max-width: $screen-xs-max){
+      height:273px;
+    }
+    .titol-more{
+      text-transform: uppercase;
+      font-family: Fira Sans SemiBold;
+      font-size:1.3em;
+      color: #4A4A49;
+      padding-left: 0px;
+    }
+    .cont-relacionats{
+      padding-left:0px;
+      position:absolute;
+      bottompane-xn17-tags-especial-panel-pane-1: 0px;
+      padding-right: 15px;
+      @media (max-width: $screen-sm-max){
+        position: inherit;
+        float:right;
+      }
+      ul{
+        list-style-image: url('/sites/all/themes/xn17/assets/images/elements/fletxa_xn_list.svg');
+        padding-bottom: 10px;
+        li{
+          border-bottom: solid 1px #fff;
+          padding-bottom: 5px !important;
+          padding-top: 5px !important;
+          a:hover{
+            font-family: 'Fira Sans SemiBold'
+          }
+        }
+      }
+    }
+  }
+}
+
+.view-id-xn17-especial-un-contingut-secundari{
+  border-top:solid 3px $xn17-vermell;
+  margin-left: 15px;
+  height:354px;
+  .destacat_2x2{
+    margin-bottom: 0px;
+  }
+  .pdng-mdl{
+    margin-left: -15px;
+    margin-right: 15px;
+    padding-right: 0px;
+  }
+
+  .cont_titular_entradeta{
+    position: inherit !important;
+    padding-left:30px;
+    padding-right: 30px;
+    h3{
+      padding-top:30px;
+    }
+  }
+}
+
+.pane-xn17-tags-especial-panel-pane-1{
+  .pane-title{
+    display: none;
+  }
+}
+
+.view-id-xn17_tags_especial{
+  border-top:solid 3px $xn17-vermell;
+  position: relative;
+  margin-left: 15px;
+  .espaiblanc{
+    height: 3px;
+    margin-top: -3px;
+    position: absolute;
+    background-color: #fff;
+    width: 30px;
+    right: 0px;
+  }
 }
