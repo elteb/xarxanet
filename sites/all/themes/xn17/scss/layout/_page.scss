@@ -285,3 +285,39 @@ footer {
     }
   }
 }
+
+.page-faq {
+  #banner_xn img {
+    width: 100%;
+    height: auto;
+  }
+  .page-header {
+    background-color: white;
+    padding: 40px 30px 20px 30px;
+    margin: 0px -15px;
+    h1 {
+      color: $xn17-vermell;
+      font-size: 2.5em;
+      font-family: 'Fira Sans SemiBold';
+      text-transform: capitalize;
+      padding-bottom: 10px;
+    }
+  }
+  .region-content-header {
+    margin: 0 -15px;
+    overflow: hidden;
+  }
+  .panels-flexible-column-inside {
+    padding: 30px 15px;
+  }
+  .panel-group {
+    .panel, .panel-body {
+      border: none !important;
+      border-radius: 0px;
+    }
+    .panel-heading {
+      background-color: $gray-light;
+      a { font-family: 'Fira Sans SemiBold'; }
+    }
+  }
+}
