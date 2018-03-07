@@ -32,7 +32,7 @@ header {
         @media (max-width: $screen-md-min) { a { padding-right: 5px;}}
       }
       .leaf a { &:hover, &:focus { background-color: transparent; }}
-      .menu-link-segueix-nos, .menu-link-publica, .menu-link-butlletí {
+      .menu-link-segueix-nos, .menu-link-publica, .menu-link-butlletí, .menu-link-publica, .menu-link-panell {
         a {
           @media (min-width: $screen-md-min) { padding-left: 25px; }
           @media (max-width: $screen-md-min) {
