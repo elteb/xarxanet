@@ -31,6 +31,7 @@ header {
         @media (min-width: $screen-md-min) { margin-left: 18px; }
         @media (max-width: $screen-md-min) { a { padding-right: 5px;}}
       }
+      .leaf a { &:hover, &:focus { background-color: transparent; }}
       .menu-link-segueix-nos, .menu-link-publica, .menu-link-butlletí {
         a {
           @media (min-width: $screen-md-min) { padding-left: 25px; }
@@ -45,7 +46,8 @@ header {
         background: url('../images/icon/icon-share-white.svg') no-repeat left 10px;
         @media (max-width: $screen-md-min) { margin-left: 10px; }
       }
-      .menu-link-publica { background: url('../images/icon/icon-publish-white.svg') no-repeat left 10px; }
+      .menu-link-publica, .menu-link-panell { background: url('../images/icon/icon-publish-white.svg') no-repeat left 10px; }
+      .menu-link-surt { background: url('../images/icon/icon-logout-white.svg') no-repeat left 10px; }
       .menu-link-butlletí { background: url('../images/icon/icon-newsletter-white.svg') no-repeat left 10px; }
       #search-icon{ margin: 10px 10px 10px 0px; }
     }
