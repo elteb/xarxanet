@@ -26,10 +26,10 @@
         <a href="/noticies">notícies</a>
       </div>
       <div class="social-icons hidden-xs hidden-sm">
-        <!-- TODO -->
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="facebook icon"/></a>
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="twitter icon"/></a>
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="share icon"/></a>
+        <a href="https://www.facebook.com/xarxanet" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="facebook icon"/></a>
+        <a href="https://twitter.com/xarxanetorg" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="twitter icon"/></a>
+        <a href="https://www.instagram.com/xarxanetorg" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-ig-circle.svg" alt="instagram icon"/></a>
+        <a href="/segueix-nos"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="share icon"/></a>
       </div>
     </div>
   </div>
@@ -87,10 +87,10 @@
         <a href="/noticies">notícies</a>
       </div>
       <div class="social-icons hidden-xs hidden-sm">
-        <!-- TODO -->
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="facebook icon"/></a>
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="twitter icon"/></a>
-        <a href="#"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="share icon"/></a>
+        <a href="https://www.facebook.com/xarxanet" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="facebook icon"/></a>
+        <a href="https://twitter.com/xarxanetorg" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="twitter icon"/></a>
+        <a href="https://www.instagram.com/xarxanetorg" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-ig-circle.svg" alt="instagram icon"/></a>
+        <a href="/segueix-nos"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="share icon"/></a>
       </div>
     </div>
   </div>
@@ -169,8 +169,8 @@
     </div>
     <div class="footer-region col-lg-4 col-md-5 col-sm-12 col-xs-12 second">
       <div id="footer-links">
-	<a href="/contacte">CONTACTE</a>  / 
-	<a href="/avis-legal">AVÍS LEGAL</a>  /  
+	<a href="/contacte">CONTACTE</a>  /
+	<a href="/avis-legal">AVÍS LEGAL</a>  /
 	<a href="/politica_cookies">POLÍTICA DE COOKIES</a>
       </div>
     </div>
@@ -178,6 +178,7 @@
       <div id="social-icons">
         <a href="https://www.facebook.com/xarxanet" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-fb-circle.svg" alt="facebook icon"/></a>
         <a href="https://twitter.com/xarxanetorg" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-tw-circle.svg" alt="twitter icon"/></a>
+        <a href="https://www.instagram.com/xarxanetorg" target="_blank"><img src="/sites/all/themes/xn17/assets/images/icon/icon-ig-circle.svg" alt="instagram icon"/></a>
         <a href="/segueix-nos"><img src="/sites/all/themes/xn17/assets/images/icon/icon-share-circle.svg" alt="share icon"/></a>
       </div>
     </div>
