@@ -106,7 +106,7 @@ header {
     .social-icons {
       padding-top: 7px;
       padding-right: 10px;
-      a { margin: 0px 10px; }
+      a { margin: 0px 8px; }
     }
     .sticky-logo {
       height: 30px;
@@ -193,7 +193,7 @@ footer {
     }
     #social-icons {
       @media (min-width: $screen-lg-min) { right: 15px; }
-      a { margin: 0px 10px; }
+      a { margin: 0px 2px; }
     }
     #footer-links {
       @media (min-width: $screen-lg-min) {
