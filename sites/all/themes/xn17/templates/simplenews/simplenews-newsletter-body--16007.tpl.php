@@ -39,7 +39,7 @@ $node = $build['#node'];
 	</td></tr>
 	<tr style="background-color:#2f3031;"><td>
 		<a href="http://www.xarxanet.org" style="text-decoration:none">
-			<img src="/sites/default/files/logo_0.png" alt="logotip xarxanet" style="margin-left:5px; margin-top:20px"/>
+			<img src="http://www.xarxanet.org/sites/all/themes/xn17/logo.png" alt="logotip xarxanet" style="margin-left:5px; margin-top:20px"/>
 		</a>
 	</td><td>
 		<p style="font-size:38px; color:#FFFFFF; text-align:right; font-weight:bold; margin:10px 5px">Actualitat</p>
