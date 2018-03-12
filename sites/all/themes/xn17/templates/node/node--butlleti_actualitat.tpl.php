@@ -109,13 +109,13 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 		<a href="http://www.xarxanet.org/hemeroteca_actualitat" style=" color:#878787">Butlletins anteriors</a>
 	</td></tr>
 
-	<tr><td style="vertical-align: top; padding-left: 20px">
+	<tr class='body'><td style="vertical-align: top; padding-left: 20px">
 	<!-- DESTACAT PRINCIPAL -->
-	 <table class="butlleti" style='background-color: #ECEFF0; width: 580px;'>
+	 <table class="butlleti" style='background-color: #ededed; width: 580px;'>
 		<?php
 		if (($node->field_actualitat_dest_prin_noti['und'][0]['nid'] != '') || ($node->field_actualitat_dest_prin_ext['und'][0]['title'] != '')) {
 			if ($node->field_actualitat_dest_prin_epigr['und'][0]['value'] !=  '') {?>
-				<tr><td style="background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; text-align: center; padding: 0px; height: 28px;"><?php echo $node->field_actualitat_dest_prin_epigr['und'][0]['value']; ?></td></tr>
+				<tr class='body'><td style="background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; text-align: center; padding: 0px; height: 28px;"><?php echo $node->field_actualitat_dest_prin_epigr['und'][0]['value']; ?></td></tr>
 			<?php }
 			$title = '';
 			$url = '';
@@ -131,11 +131,11 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				$teaser = strip_tags($node->field_actualitat_dest_ext_teaser['und'][0]['value']);
 			}
 			$image = file_create_url($node->field_actualitat_dest_prin_foto['und'][0]['uri']);
-			echo "	<tr><td style='padding: 0px !important;'>
+			echo "	<tr class='body'><td style='padding: 0px !important;'>
 						<a href='{$url}' style='text-decoration:none'>
 							<img src='{$image}' alt='imatge destacat principal'/>
 						</a>
-					</td></tr><tr><td style='padding-bottom: 10px'>
+					</td></tr><tr class='body'><td style='padding-bottom: 10px'>
 						<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 18pt; font-weight: lighter; line-height: 24px; text-decoration: none;'>
 							{$title}
 						</a>
@@ -150,11 +150,11 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 					if ($type == 'opinio'){
 						$autor = $news_node->field_autor_a['und'][0]['nid'];
 						$autor = node_load($autor);
-						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+						echo "<tr class='body'><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 							<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>Opinió - {$autor->title}: {$news_node->title}</a></td>
 							</tr>";
 					}else{
-						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+						echo "<tr class='body'><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 							<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 							</tr>";
 					}
@@ -163,7 +163,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 					$title = $rel['title'];
 					$url = $rel['url'];
 					if ($url != ''){
-						echo "<tr><td style='vertical-align: top;'><img style='vertical-align: top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+						echo "<tr class='body'><td style='vertical-align: top;'><img style='vertical-align: top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 						<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$title}</a></td>
 						</tr>";
 					}
@@ -175,7 +175,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	</table>
 
 	<!-- NOTÍCIES DESTACADES -->
-	 <table class="butlleti" style='width: 580px; margin-top: 20px'><tr>
+	 <table class="butlleti" style='width: 580px; margin-top: 20px'><tr class='body'>
 		<?php
 		$i = 1;
 		while ($i < 4) {
@@ -210,7 +210,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	</tr></table>
 
 	<!-- CURSOS I ACTES -->
-	 <table class="butlleti" style='width: 580px; margin-top: 20px'><tr>
+	 <table class="butlleti" style='width: 580px; margin-top: 20px'><tr class='body'>
 		<td style="background-color: #aeb22a; padding: 0px; height: 28px; width: 55px;">
 			<img style='margin-top: 2px; margin-left: 10px;' src='<?php echo $pathroot;?>/sites/default/files/butlletins/actualitat/cursos.png' />
 		</td>
@@ -230,7 +230,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 		<td style="width: 160px; text-align: right;">
 			<a href='<?php echo $pathroot; ?>/agenda/acte' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'>Tots els actes</a>
 		</td>
-		</tr><tr>
+		</tr><tr class='body'>
 		<td colspan="3" style="background-color: #f6f5e3; vertical-align: top;">
 			<table class="butlleti">
 			<?php
@@ -242,10 +242,10 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 					$end = date('j',strtotime($date['value2'])).' '.$mesos[date('n', strtotime($date['value2']))-1];
 					$date = ($start == $end) ? $start : 'Del '.$start.' al '.$end;
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-					echo "	<tr>
+					echo "	<tr class='body'>
 							<td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_cursos.jpg' /></td>
 							<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
-							</tr><tr>
+							</tr><tr class='body'>
 							<td></td>
 							<td style='padding: 2px 5px 10px 0; width: 10px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/clock_cursos.png' /></td>
 							<td style='padding: 2px 2px 10px 2px;'>{$date}</td>
@@ -266,10 +266,10 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 					$end = date('j',strtotime($date['value2'])).' '.$mesos[date('n', strtotime($date['value2']))-1];
 					$date = ($start == $end) ? $start : 'Del '.$start.' al '.$end;
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-					echo "	<tr>
+					echo "	<tr class='body'>
 							<td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_actes.jpg' /></td>
 							<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
-							</tr><tr>
+							</tr><tr class='body'>
 							<td></td>
 							<td style='padding: 2px 5px 10px 0; width: 10px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/clock_actes.png' /></td>
 							<td style='padding: 2px 2px 10px 2px;'>{$date}</td>
@@ -282,10 +282,10 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 
 	<!-- RECULL DE NOTÍCIES DESTACAT -->
 	<?php if ($node->field_actualitat_recull_epigraf['und'][0]['value'] != '') { ?>
-	 <table class="butlleti" style='width: 580px; margin-top: 20px'><tr>
+	 <table class="butlleti" style='width: 580px; margin-top: 20px'><tr class='body'>
 		<td style="background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 0 8px; height: 28px; width: <?php echo (strlen(strip_tags($node->field_actualitat_recull_epigraf['und'][0]['value'])))*3;?>px"><?php echo $node->field_actualitat_recull_epigraf['und'][0]['value'];?></td>
-		<td style="width: 160px; text-align: right;"><a href='<?php echo $node->field_actualitat_recull_enllac['und'][0]['url']; ?>' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'><?php echo $node->field_actualitat_recull_enllac['und'][0]['title']; ?></a></td></tr><tr>
-		<td style="background-color: #eceff0;" colspan="2">
+		<td style="width: 160px; text-align: right;"><a href='<?php echo $node->field_actualitat_recull_enllac['und'][0]['url']; ?>' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'><?php echo $node->field_actualitat_recull_enllac['und'][0]['title']; ?></a></td></tr><tr class='body'>
+		<td style="background-color: #ededed;" colspan="2">
 			<table class="butlleti">
 			<?php
 			foreach ($node->field_actualitat_recull_noticia['und'] as $elem) {
@@ -293,19 +293,19 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 					$news_node = node_load($elem['nid']);
 					$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-					echo "	<tr>
-						<td style='padding: 5px 5px 0 5px; vertical-align: top; width: 10px'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_g.jpg' /></td>
+					echo "	<tr class='body'>
+						<td style='padding: 5px 5px 0 5px; vertical-align: top; width: 10px'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 						<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$news_node->title}</a></td>
-						</tr><tr><td colspan='2' style='padding: 0 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
+						</tr><tr class='body'><td colspan='2' style='padding: 0 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
 					}
 			}
 			foreach ($node->field_actualitat_recull_ext['und'] as $i => $elem) {
 				if (!empty($node->field_actualitat_recull_ext_entr['und'][$i]['value'])) {
 					$teaser = strip_tags($node->field_actualitat_recull_ext_entr['und'][$i]['value']);
-					echo "	<tr>
-					<td style='padding: 5px 5px 0 5px; vertical-align: top; width: 10px'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_g.jpg' /></td>
+					echo "	<tr class='body'>
+					<td style='padding: 5px 5px 0 5px; vertical-align: top; width: 10px'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 					<td style='padding: 2px;'><a href='{$elem['url']}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$elem['title']}</a></td>
-					</tr><tr><td colspan='2' style='padding: 0 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
+					</tr><tr class='body'><td colspan='2' style='padding: 0 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
 				}
 			}
 			?>
@@ -323,17 +323,17 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 		$news_node = node_load($node->field_actualitat_enquesta['und'][0]['nid']);
 		$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 	?>
-		 <table class="butlleti" style='width: 265px; margin-bottom: 20px;'><tr>
+		 <table class="butlleti" style='width: 265px; margin-bottom: 20px;'><tr class='body'>
 			<td style="background-color: #7b7b79; padding: 0px; height: 28px; width: 35px;" ><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/actualitat/enquesta.png" alt="icona_enquesta" style="margin-top: 2px; margin-left: 10px;"/></td>
 			<td style="background-color: #7b7b79; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 0px; height: 28px; padding-left: 5px">Enquesta</td>
-			</tr><tr><td colspan="2">
+			</tr><tr class='body'><td colspan="2">
 				<a href='<?php echo $url; ?>' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 12pt; line-height: 21px;'><?php echo $news_node->title;?></a>
-			</td></tr><tr><td colspan="2" style="padding-top:0px">
+			</td></tr><tr class='body'><td colspan="2" style="padding-top:0px">
 			<table class="butlleti">
 				<?php
 				foreach ($news_node->choice as $choice) {
-					echo "<tr>
-						<td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+					echo "<tr class='body'>
+						<td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 						<td style='padding: 2px;' colspan='2'>{$choice['chtext']}</td>
 						</tr>";
 				}
@@ -369,16 +369,16 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				$img = file_create_url($node->field_actualitat_lat_sup_img_e['und'][0]['uri']);
 				$alt = $node->field_actualitat_lat_sup_img_e['und'][0]['alt'];
 			}
-			echo "<table class='butlleti' style='width: 265px; margin-bottom: 20px; background-color: #ECEFF0;'><tr>";
+			echo "<table class='butlleti' style='width: 265px; margin-bottom: 20px; background-color: #ededed;'><tr class='body'>";
 
 			if ($node->field_actualitat_lat_sup_epigraf['und'][0]['value'] != '') {
 				echo "<td style='background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 0px 10px; height: 28px;'>{$node->field_actualitat_lat_sup_epigraf['und'][0]['value']}</td>";
 			}
-			echo "</tr><tr><td style='padding: 0;'>
+			echo "</tr><tr class='body'><td style='padding: 0;'>
 				<a href='{$url}' style='text-decoration:none'>
 					<img src='{$img}' alt='{$alt}'/>
 				</a>
-				</td></tr><tr><td style='padding-bottom: 10px'>
+				</td></tr><tr class='body'><td style='padding-bottom: 10px'>
 				<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 12pt; line-height: 21px; text-decoration: none;'>
 					{$title}
 				</a>
@@ -390,14 +390,14 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				foreach ($node->field_actualitat_lat_sup_rel_ex['und'] as $rel) {
 					$title = $rel['title'];
 					$url = $rel['url'];
-					echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+					echo "<tr class='body'><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 					<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$title}</a></td>
 					</tr>";
 				}
 				foreach ($node->field_actualitat_lat_sup_rel['und'] as $rel) {
 					$news_node = node_load($rel['nid']);
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-					echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+					echo "<tr class='body'><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 					<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 					</tr>";
 				}
@@ -409,10 +409,10 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 
 
 	<!-- FINANÇAMENTS -->
-	<table class="butlleti" style='width: 265px; margin-bottom: 20px; background-color: #fef1e8'><tr>
+	<table class="butlleti" style='width: 265px; margin-bottom: 20px; background-color: #fef1e8'><tr class='body'>
 		<td style="background-color: #f37310; padding: 0px; height: 28px; width: 35px;" ><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/actualitat/financaments.png" alt="icona_finançaments" style="margin-top: 2px; margin-left: 10px;"/></td>
 		<td style="background-color: #f37310; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 0px; height: 28px; padding-left: 5px">Finançaments</td>
-		</tr><tr><td colspan="2">
+		</tr><tr class='body'><td colspan="2">
 		<table class="butlleti">
 			<?php
 			$view = views_get_view_result('ultims_financaments');
@@ -423,10 +423,10 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				$end = date('j',strtotime($date['value2'])).' '.$mesos[date('n', strtotime($date['value2']))-1];
 				$date = ($start == $end) ? $start : 'Del '.$start.' al '.$end;
 				$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-				echo "	<tr>
+				echo "	<tr class='body'>
 						<td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_financaments.jpg' /></td>
 						<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
-						</tr><tr>
+						</tr><tr class='body'>
 						<td></td>
 						<td style='padding: 2px 5px 10px 0; width: 10px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/clock_financaments.png' /></td>
 						<td style='padding: 2px 2px 10px 2px;'>{$date}</td>
@@ -435,15 +435,15 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 			?>
 		</table>
 		</td></tr>
-		<tr><td style='text-align: right; padding-bottom: 10px' colspan="2"><a href='<?php echo $pathroot; ?>/financaments' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'>Tots els finançaments</a></td></tr>
+		<tr class='body'><td style='text-align: right; padding-bottom: 10px' colspan="2"><a href='<?php echo $pathroot; ?>/financaments' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'>Tots els finançaments</a></td></tr>
 	</table>
 
 	<!-- BANNERS -->
-	 <table class="butlleti" style='width: 265px; margin-bottom: 20px;'><tr>
+	 <table class="butlleti" style='width: 265px; margin-bottom: 20px;'><tr class='body'>
 	<td style='padding: 10px 0 0 0'>
 	<a href="http://voluntariat.org/" style='text-decoration:none'>
 		<img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_voluntariat.jpg" alt="banner voluntariat" />
-	</a></td></tr><tr>
+	</a></td></tr><tr class='body'>
 	<td style='padding: 10px 0 0 0'>
 	<a href="http://www.xarxanet.org/formulari-dassessorament" style='text-decoration:none'>
 		<img src="<?php echo $pathroot; ?>/sites/default/files/butlletins/actualitat/banner_assessorament.jpg" alt="banner voluntariat" style='border: 0 none;'/>
@@ -455,7 +455,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	<?php
 	foreach ($node->field_actualitat_banner['und'] as $banner) {
 		$image = file_create_url($banner['uri']);
-		echo "<tr>
+		echo "<tr class='body'>
 			<td style='padding: 10px 0 0 0'><a href='{$banner['url']}' style='text-decoration:none'>
 			<img src='{$image}' alt='{$banner['alt']}' />
 			</a></td></tr>";
@@ -488,16 +488,16 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				$img = file_create_url($node->field_actualitat_lat_inf_img_e['und'][0]['uri']);
 				$alt = $node->field_actualitat_lat_inf_img_e['und'][0]['alt'];
 			}
-			echo "<table class='butlleti' style='width: 265px; margin-bottom: 20px;'><tr>";
+			echo "<table class='butlleti' style='width: 265px; margin-bottom: 20px;'><tr class='body'>";
 
 			if ($node->field_actualitat_lat_inf_epigraf['und'][0]['value'] != '') {
 				echo "<td style='background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 0px 10px; height: 28px;'>{$node->field_actualitat_lat_inf_epigraf['und'][0]['value']}</td>";
 			}
-			echo "</tr><tr><td style='padding: 0;'>
+			echo "</tr><tr class='body'><td style='padding: 0;'>
 				<a href='{$url}' style='text-decoration:none'>
 					<img src='{$img}' alt='{$alt}'/>
 				</a>
-				</td></tr><tr><td style='padding-bottom: 10px'>
+				</td></tr><tr class='body'><td style='padding-bottom: 10px'>
 				<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 12pt; line-height: 21px; text-decoration: none;'>
 					{$title}
 				</a>
@@ -508,20 +508,20 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 
 	</td></tr>
 	<!-- PEU -->
-	<tr style="background-color:#CCCCCC; border-top:3px solid #53544F;">
+	<tr style="background-color:#2f3031; border-top:3px solid #231f20;">
 	<td colspan="2" style="border-top: 3px solid #53544F; padding: 4px;">
-		 <table class="butlleti"  style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; color:#53544F;">
-			<tr><td colspan="2" style="padding-left:10px;">
+		 <table class="butlleti"  style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; color:white;">
+			<tr class='body'><td colspan="2" style="padding-left:10px;">
 				<b>Xarxanet.org és un projecte de</b>
 			</td><td colspan="2" style="padding-left:50px;">
 				<b>Entitats promotores</b>
 			</td></tr>
-			<tr><td style="vertical-align:top; padding-left:10px; padding-top:15px">
-				<table class="butlleti"><tr><td>
+			<tr class='body'><td style="vertical-align:top; padding-left:10px; padding-top:15px">
+				<table class="butlleti"><tr class='body'><td>
 					<a href="http://benestar.gencat.cat" style="text-decoration:none">
 						<img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png">
 					</a>
-				</td></tr><tr><td style="height: 55px; vertical-align: bottom;">
+				</td></tr><tr class='body'><td style="height: 55px; vertical-align: bottom;">
 					<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca" rel="license">
 						<img style="border:0 none;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/80x15.png" alt="Licencia de Creative Commons">
 					</a>
@@ -532,24 +532,24 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				</a> -->
 			</td><td style="padding-left:50px;">
 				<p>
-					<a href="http://www.suport.org" style="color:#53544F;  font-weight:normal">Suport Associatiu Centre d'Estudis</a><br />
-					<a href="http://www.esplai.org" style="color:#53544F;  font-weight:normal">Fundació Catalana de l'Esplai</a><br />
-					<a href="http://www.peretarres.org" style="color:#53544F;  font-weight:normal">Fundació Pere Tarrés</a><br />
-					<a href="http://www.ateneus.cat" style="color:#53544F;  font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
-					<a href="http://www.xvac.cat" style="color:#53544F;  font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
-					<a href="http://www.iwith.org/ca/" style="color:#53544F;  font-weight:normal">I-with.org</a><br />
+					<a href="http://www.suport.org" style="color:white;  font-weight:normal">Suport Associatiu Centre d'Estudis</a><br />
+					<a href="http://www.esplai.org" style="color:white;  font-weight:normal">Fundació Catalana de l'Esplai</a><br />
+					<a href="http://www.peretarres.org" style="color:white;  font-weight:normal">Fundació Pere Tarrés</a><br />
+					<a href="http://www.ateneus.cat" style="color:white;  font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
+					<a href="http://www.xvac.cat" style="color:white;  font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
+					<a href="http://www.iwith.org/ca/" style="color:white;  font-weight:normal">I-with.org</a><br />
 				</p>
 			</td><td style="padding-left:15px">
 				<p>
-					<a href="http://jovesteb.org" style="color:#53544F;  font-weight:normal">Associació per a joves Teb</a><br />
-					<a href="http://www.ravalnet.org" style="color:#53544F;  font-weight:normal">Associació ciutadana Ravalnet</a><br />
-					<a href="http://www.federacio.net/ca" style="color:#53544F;  font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
-					<a href="http://magno.uab.es/fas" style="color:#53544F;  font-weight:normal">Fundació Autònoma Solidària</a><br />
-					<a href="http://www.escoltesiguies.cat" style="color:#53544F;  font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
+					<a href="http://colectic.coop" style="color:white;  font-weight:normal">Colectic</a><br />
+					<a href="http://www.ravalnet.org" style="color:white;  font-weight:normal">Associació ciutadana Ravalnet</a><br />
+					<a href="http://www.federacio.net/ca" style="color:white;  font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
+					<a href="http://magno.uab.es/fas" style="color:white;  font-weight:normal">Fundació Autònoma Solidària</a><br />
+					<a href="http://www.escoltesiguies.cat" style="color:white;  font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
 				</p>
 			</td></tr>
 		</table>
-	<tr><td colspan="2" style="background-color:black; color:white; text-align:right; padding:5px 10px;">
+	<tr class='body'><td colspan="2" style="background-color:#231f20; color:white; text-align:right; padding:5px 10px;">
 		<a style=" color:white" href="http://www.xarxanet.org/alta_actualitat">Alta</a> |
 		<a style=" color:white;" href="http://www.xarxanet.org/baixa_actualitat">Baixa</a> |
 		<a style=" color:white;" href="mailto:butlleti@xarxanet.org?Subject=Consulta%20butlletí%20Finançament">Contacte</a> |

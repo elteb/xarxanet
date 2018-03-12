@@ -55,7 +55,7 @@ $node = $build['#node'];
 
 	<tr><td style="vertical-align: top; padding-left: 20px;">
 	<!-- DESTACAT PRINCIPAL -->
-	<table cellspacing='0px' style='background-color: #ECEFF0; width: 580px; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'>
+	<table cellspacing='0px' style='background-color: #ededed; width: 580px; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'>
 		<?php
 		if (($node->field_actualitat_dest_prin_noti['und'][0]['nid'] != '') || ($node->field_actualitat_dest_prin_ext['und'][0]['title'] != '')) {
 			if ($node->field_actualitat_dest_prin_epigr['und'][0]['value'] !=  '') {?>
@@ -90,11 +90,11 @@ $node = $build['#node'];
 					if ($type == 'opinio'){
 						$autor = $news_node->field_autor_a['und'][0]['nid'];
 						$autor = node_load($autor);
-						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 							<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>Opinió - {$autor->title}: {$news_node->title}</a></td>
 							</tr>";
 					}else{
-						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 							<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 							</tr>";
 					}
@@ -103,7 +103,7 @@ $node = $build['#node'];
 					$title = $rel['title'];
 					$url = $rel['url'];
 					if ($url != ''){
-						echo "<tr><td style='vertical-align: top;'><img style='vertical-align: top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+						echo "<tr><td style='vertical-align: top;'><img style='vertical-align: top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 						<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$title}</a></td>
 						</tr>";
 					}
@@ -221,7 +221,7 @@ $node = $build['#node'];
 	<table cellspacing='0px' style='width: 580px; margin-top: 20px; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px;'><tr>
 		<td style="background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 4px 8px; height: 28px; width: <?php echo (strlen(strip_tags($node->field_actualitat_recull_epigraf['und'][0]['value'])))*3;?>px; border-collapse: collapse;"><?php echo $node->field_actualitat_recull_epigraf['und'][0]['value'];?></td>
 		<td style="width: 160px; text-align: right;"><a href='<?php echo $node->field_actualitat_recull_enllac['und'][0]['url']; ?>' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'><?php echo $node->field_actualitat_recull_enllac['und'][0]['title']; ?></a></td></tr><tr>
-		<td style="background-color: #eceff0;" colspan="2" style="padding: 10px 5px;">
+		<td style="background-color: #ededed;" colspan="2" style="padding: 10px 5px;">
 			<table cellspacing='0px' style='font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'>
 			<?php
 			foreach ($node->field_actualitat_recull_noticia['und'] as $elem) {
@@ -230,7 +230,7 @@ $node = $build['#node'];
 					$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 					echo "	<tr>
-						<td style='padding: 0 5px; vertical-align: top; width: 10px'><img style='vertical-align: top; margin-top: 8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_g.jpg' /></td>
+						<td style='padding: 0 5px; vertical-align: top; width: 10px'><img style='vertical-align: top; margin-top: 8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 						<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$news_node->title}</a></td>
 						</tr><tr><td colspan='2' style='padding: 0 5px 5px 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
 				}
@@ -239,7 +239,7 @@ $node = $build['#node'];
 				if (!empty($node->field_actualitat_recull_ext_entr['und'][$i]['value'])) {
 					$teaser = strip_tags($node->field_actualitat_recull_ext_entr['und'][$i]['value']);
 					echo "	<tr>
-					<td style='padding: 5px 5px 0 5px; vertical-align: top; width: 10px'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_g.jpg' /></td>
+					<td style='padding: 5px 5px 0 5px; vertical-align: top; width: 10px'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 					<td style='padding: 2px;'><a href='{$elem['url']}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$elem['title']}</a></td>
 					</tr><tr><td colspan='2' style='padding: 0 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
 				}
@@ -270,7 +270,7 @@ $node = $build['#node'];
 				<?php
 				foreach ($news_node->choice as $choice) {
 					echo "<tr>
-						<td style='padding: 0 5px; vertical-align: top;'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+						<td style='padding: 0 5px; vertical-align: top;'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 						<td style='padding: 2px;' colspan='2'>{$choice['chtext']}</td>
 						</tr>";
 				}
@@ -306,7 +306,7 @@ $node = $build['#node'];
 				$img = file_create_url($node->field_actualitat_lat_sup_img_e['und'][0]['uri']);
 				$alt = $node->field_actualitat_lat_sup_img_e['und'][0]['alt'];
 			}
-			echo "<table cellspacing='0px' style='width: 265px; margin-top: 20px; background-color: #ECEFF0; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'><tr>";
+			echo "<table cellspacing='0px' style='width: 265px; margin-top: 20px; background-color: #ededed; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'><tr>";
 
 			if ($node->field_actualitat_lat_sup_epigraf['und'][0]['value'] != '') {
 				echo "<td style='background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_sup_epigraf['und'][0]['value']}</td>";
@@ -322,14 +322,14 @@ $node = $build['#node'];
 				foreach ($node->field_actualitat_lat_sup_rel_ex['und'] as $rel) {
 					$title = $rel['title'];
 					$url = $rel['url'];
-					echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+					echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 					<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$title}</a></td>
 					</tr>";
 				}
 				foreach ($node->field_actualitat_lat_sup_rel['und'] as $rel) {
 					$news_node = node_load($rel['nid']);
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-					echo "<tr><td style='padding: 0 5px; vertical-align: top;'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet.jpg' /></td>
+					echo "<tr><td style='padding: 0 5px; vertical-align: top;'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
 					<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 					</tr>";
 				}
@@ -433,47 +433,51 @@ $node = $build['#node'];
 
 	</td></tr>
 	<!-- PEU -->
-	<tr style="background-color:#CCCCCC; border-top:3px solid #53544F;">
+	<tr style="background-color:#2f3031; border-top:3px solid #231f20;">
 	<td colspan="2" style="border-top: 3px solid #53544F; padding: 4px;">
-		<table style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; color:#53544F; border-collapse: collapse;">
-			<tr><td colspan="2" style="padding-left:10px;">
+		 <table class="butlleti"  style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; color:white;">
+			<tr class='body'><td colspan="2" style="padding-left:10px;">
 				<b>Xarxanet.org és un projecte de</b>
 			</td><td colspan="2" style="padding-left:50px;">
 				<b>Entitats promotores</b>
 			</td></tr>
-			<tr><td style="vertical-align:top; padding-left:10px; padding-top:15px">
-				<table style="border-collapse: collapse;"><tr><td>
-					<a href="http://benestar.gencat.cat" style="text-decoration:none"><img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png" style="border: 0 none"></a>
-				</td></tr><tr><td style="padding-top: 45px;">
-					<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca" rel="license"><img style="border:0 none;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/80x15.png" alt="Licencia de Creative Commons"></a>
+			<tr class='body'><td style="vertical-align:top; padding-left:10px; padding-top:15px">
+				<table class="butlleti"><tr class='body'><td>
+					<a href="http://benestar.gencat.cat" style="text-decoration:none">
+						<img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png">
+					</a>
+				</td></tr><tr class='body'><td style="height: 55px; vertical-align: bottom;">
+					<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca" rel="license">
+						<img style="border:0 none;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/80x15.png" alt="Licencia de Creative Commons">
+					</a>
 				</td></tr></table>
 			</td><td style="vertical-align:top; padding-top:15px">
 				<!-- <a href="http://www.voluntariat.org" style="text-decoration:none">
-					<img alt="logo voluntariat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_scv.png" style="border: 0 none">
+					<img alt="logo voluntariat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_scv.png">
 				</a> -->
 			</td><td style="padding-left:50px;">
 				<p>
-					<a href="http://www.suport.org" style="color:#53544F; text-decoration:none; font-weight:normal">Suport Associatiu Centre d'Estudis</a><br />
-					<a href="http://www.esplai.org" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Catalana de l'Esplai</a><br />
-					<a href="http://www.peretarres.org" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Pere Tarrés</a><br />
-					<a href="http://www.ateneus.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
-					<a href="http://www.xvac.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
-					<a href="http://www.iwith.org/ca/" style="color:#53544F; text-decoration:none; font-weight:normal">I-with.org</a><br />
+					<a href="http://www.suport.org" style="color:white;  font-weight:normal">Suport Associatiu Centre d'Estudis</a><br />
+					<a href="http://www.esplai.org" style="color:white;  font-weight:normal">Fundació Catalana de l'Esplai</a><br />
+					<a href="http://www.peretarres.org" style="color:white;  font-weight:normal">Fundació Pere Tarrés</a><br />
+					<a href="http://www.ateneus.cat" style="color:white;  font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
+					<a href="http://www.xvac.cat" style="color:white;  font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
+					<a href="http://www.iwith.org/ca/" style="color:white;  font-weight:normal">I-with.org</a><br />
 				</p>
 			</td><td style="padding-left:15px">
 				<p>
-					<a href="http://jovesteb.org" style="color:#53544F; text-decoration:none; font-weight:normal">Associació per a joves Teb</a><br />
-					<a href="http://www.ravalnet.org" style="color:#53544F; text-decoration:none; font-weight:normal">Associació ciutadana Ravalnet</a><br />
-					<a href="http://www.federacio.net/ca" style="color:#53544F; text-decoration:none; font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
-					<a href="http://magno.uab.es/fas" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Autònoma Solidària</a><br />
-					<a href="http://www.escoltesiguies.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
+					<a href="http://colectic.coop" style="color:white;  font-weight:normal">Colectic</a><br />
+					<a href="http://www.ravalnet.org" style="color:white;  font-weight:normal">Associació ciutadana Ravalnet</a><br />
+					<a href="http://www.federacio.net/ca" style="color:white;  font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
+					<a href="http://magno.uab.es/fas" style="color:white;  font-weight:normal">Fundació Autònoma Solidària</a><br />
+					<a href="http://www.escoltesiguies.cat" style="color:white;  font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
 				</p>
 			</td></tr>
 		</table>
-	<tr><td colspan="2" style="background-color:black; color:white; text-align:right; padding:5px 10px;">
-		<a style="text-decoration: none; color:white" href="http://www.xarxanet.org/alta_actualitat">Alta</a> |
-		<a style="text-decoration: none; color:white;" href="http://www.xarxanet.org/baixa_actualitat">Baixa</a> |
-		<a style="text-decoration: none; color:white;" href="mailto:butlleti@xarxanet.org?Subject=Consulta%20butlletí">Contacte</a> |
-		<a style="text-decoration: none; color:white;" href="http://www.xarxanet.org/avis-legal">Avís legal</a>
+	<tr class='body'><td colspan="2" style="background-color:#231f20; color:white; text-align:right; padding:5px 10px;">
+		<a style=" color:white" href="http://www.xarxanet.org/alta_actualitat">Alta</a> |
+		<a style=" color:white;" href="http://www.xarxanet.org/baixa_actualitat">Baixa</a> |
+		<a style=" color:white;" href="mailto:butlleti@xarxanet.org?Subject=Consulta%20butlletí%20Finançament">Contacte</a> |
+		<a style=" color:white;" href="http://www.xarxanet.org/avis-legal">Avís legal</a>
 	</td></tr>
 </table>
