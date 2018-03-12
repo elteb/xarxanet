@@ -34,8 +34,8 @@ $node = $build['#node'];
 ?>
 <table style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: separate;" width="910px" style="margin:auto" cellspacing="0px">
 	<!-- CAPÇALERA -->
-	<tr><td colspan="2" style="border: 1px solid; border-bottom: none; padding-right: 10px">
-		<p style="padding: 2px; font-size: 11px; text-align:right"> Si no visualitzes correctament el butlletí clica aquest <a href="<?php echo $pathroot.'/node/'.$node->nid?>" style="text-decoration:none; color: #B2290C; font-weight: bold;">enllaç	</p>
+	<tr style="background-color:#2f3031; color:white;"><td colspan="2" style="border: 1px solid; border-bottom: none; padding-right: 10px">
+		<p style="padding: 2px; font-size: 11px; text-align:right"> Si no visualitzes correctament el butlletí clica aquest <a href="<?php echo $pathroot.'/node/'.$node->nid?>" style="text-decoration:none; color: white; font-weight: bold;">enllaç	</p>
 	</td></tr>
 	<tr style="background-color:#2f3031;"><td>
 		<a href="http://www.xarxanet.org" style="text-decoration:none">

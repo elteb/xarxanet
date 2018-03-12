@@ -457,7 +457,8 @@
 //------------------------------------------------------------------------------
 // Butlletins
 //------------------------------------------------------------------------------
-.node-type-butlleti-actualitat {
+.node-type-butlleti-actualitat,
+.node-type-butlleti-financament {
   table, tbody, tr.body, tr.body td { border: 0px !important; }
   tr.body td { padding-top: 3px !important; }
 }

@@ -77,7 +77,7 @@
 * @see template_process()
 *
 * @ingroup themeable
-*/ 
+*/
 
 $pathroot = 'http://www.xarxanet.org';
 
@@ -167,7 +167,7 @@ for ($i = 1; $i <= 4; $i++){
 				$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_agenda_imatge['und'][0]['uri']);
 				$noticia_secundaria[$i]['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
 			}else{
-				$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_imatges['und'][0]['uri']); 
+				$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_imatges['und'][0]['uri']);
 				$noticia_secundaria[$i]['alt'] = $node_->field_imatges['und'][0]['alt'];
 			}
 		}
@@ -200,7 +200,7 @@ $financ_nodes = array();
 foreach ($nodes as $row) {
 	$financ_node = node_load($row->nid);
 	$financ_end = strtotime($financ_node->field_date['und'][0][value2]);
-	if (($financ_end > $now) && ($financ_node->created < $now)){	
+	if (($financ_end > $now) && ($financ_node->created < $now)){
 		if (($financ_node->created > $lastweek) || (count($financ_nodes) < 15)){
 			$financ_start = strtotime($financ_node->field_date['und'][0][value]);
 			$key = $financ_end;
@@ -218,29 +218,29 @@ foreach ($nodes as $row) {
 ksort($financ_nodes);
 ?>
 
-<table class="butlleti" style="font-family: Arial, Helvetica; font-size: 13px; border:1px solid #53544F; border-bottom: 0px" width="910px" cellspacing="0px">
+<table class="butlleti" style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border:1px solid #53544F; border-bottom: 0px" width="910px" cellspacing="0px">
 	<!-- CAPÇALERA -->
-	<!-- 
+	<!--
 	<tr><td colspan="2">
 		<p style="padding: 2px; font-size: 11px; text-align:right"> Si no visualitzes correctament el butlletí clica aquest <a href="<?php echo $pathroot.'/node/'.$node->nid?>" style=" color: #B2290C; font-weight: bold;">enllaç</a></p>
 	</td></tr>
 	-->
-	<tr><td>
+	<tr style="background-color:#2f3031;"><td>
 		<a href="http://www.xarxanet.org" style="text-decoration:none">
-			<img src="http://www.xarxanet.org/sites/all/themes/sasson_xarxanet/logo_h.png" alt="logotip xarxanet" style="margin-left:5px"/>
+			<img src="/sites/all/themes/xn17/logo.png" alt="logotip xarxanet" style="margin-left:5px; margin-top:20px"/>
 		</a>
 	</td><td>
-		<p style="font-size:38px; color:#B2290C; text-align:right; font-weight:bold; margin:10px 5px">Finançament</p>
+		<p style="font-size:38px; color:#FFFFFF; text-align:right; font-weight:bold; margin:10px 5px">Finançament</p>
 	</td></tr>
-	<tr style="background-color:#CCCCCC; color:#53544F; font-weight:bold;"><td style="padding: 5px 10px; border-top:3px solid #53544F; border-bottom: 15px solid white;">
+	<tr style="background-color:#2f3031; color:#878787; font-weight:bold;"><td style="padding: 5px 10px; border-top:3px solid #231f20; border-bottom: 15px solid white;">
 		<?php
-			$created = $node->created; 
-			echo $dies[date('N', $created)-1].', '.date('j', $created).' '.$mesos[date('n', $created)-1].' de '.date('Y', $created).' - Num. '.$title;
+		$created = $node->created;
+		echo $dies[date('N', $created)-1].', '.date('j', $created).' '.$mesos[date('n', $created)-1].' de '.date('Y', $created).' - Num. '.$title;
 		?>
-	</td><td style="text-align: right; padding: 5px 10px; border-top:3px solid #53544F; border-bottom: 15px solid white;">
-		<a href="http://www.xarxanet.org/hemeroteca_financament" style=" color:#53544F">Butlletins anteriors</a>
+	</td><td style="text-align: right; padding: 5px 10px; border-top:3px solid #231f20; border-bottom: 15px solid white;">
+		<a href="http://www.xarxanet.org/hemeroteca_financament" style=" color:#878787">Butlletins anteriors</a>
 	</td></tr>
-	
+
 	<!-- NOTÍCIES PRINCIPALS -->
 	<tr><td>
 		<a href="<?php echo $noticia_prin_esq['link']?>" style="text-decoration:none">
@@ -252,11 +252,11 @@ ksort($financ_nodes);
 		</a>
 	</td></tr>
 	<tr><td>
-		<a href="<?php echo $noticia_prin_esq['link']?>" style=" color:#53544F; font-family:Verdana; font-size:15pt; line-height: 1.3em">
+		<a href="<?php echo $noticia_prin_esq['link']?>" style=" color:#53544F; font-family:Fira Sans Semibold,Helvetica,Arial,sans-serif; font-size:15pt; line-height: 1.3em">
 			<?php echo $noticia_prin_esq['title']?>
 		</a>
 	</td><td style="padding-left: 10px;">
-		<a href="<?php echo $noticia_prin_dreta['link']?>" style=" color:#53544F; font-family:Verdana; font-size:15pt; line-height: 1.3em">
+		<a href="<?php echo $noticia_prin_dreta['link']?>" style=" color:#53544F; font-family:Fira Sans Semibold,Helvetica,Arial,sans-serif; font-size:15pt; line-height: 1.3em">
 			<?php echo $noticia_prin_dreta['title']?>
 		</a>
 	</td></tr>
@@ -267,11 +267,11 @@ ksort($financ_nodes);
 	</td></tr>
 </table>
 
-<table class="butlleti" style="font-family: Arial, Helvetica; font-size: 13px; padding-top:15px; border:1px solid #53544F; border-top: 0px" width="910px" cellspacing="0px">
+<table class="butlleti" style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; padding-top:15px; border:1px solid #53544F; border-top: 0px" width="910px" cellspacing="0px">
 	<tr><td style="vertical-align:top;">
-		
+
 		<!-- ÚLTIMES CONVOCATÒRIES -->
-		<table class="butlleti" cellspacing="0px" style="margin-right: 15px; font-family: Arial, Helvetica; font-size: 13px;" width="627px">
+		<table class="butlleti" cellspacing="0px" style="margin-right: 15px; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px;" width="627px">
 			<tr style="background-color:#B2290C; color:#FFFFFF; font-weight:bold">
 				<td colspan="2" style="padding: 4px">Últimes convocatòries</td>
 			</tr>
@@ -279,7 +279,7 @@ ksort($financ_nodes);
 				<tr><td style="padding-top: 10px; width: 18px; vertical-align:top">
 					<img src="<?php echo $pathroot;?>/sites/default/files/butlletins/financament/red_box.png" alt="punt vermell" width="18px"/>
 				</td><td style="padding: 10px 0 5px 5px;">
-					<a style=" color:#53544F; font-family:Verdana; font-size:12pt; line-height: 1.3em" href="<?php echo $financ_node['link']?>">
+					<a style=" color:#53544F; font-family:Fira Sans Semibold,Helvetica,Arial,sans-serif; font-size:12pt; line-height: 1.3em" href="<?php echo $financ_node['link']?>">
 						<?php echo $financ_node['title']?>
 					</a>
 				</td></tr>
@@ -289,15 +289,15 @@ ksort($financ_nodes);
 					<br/><b>Termini: </b><?php echo $financ_node['termini']?></p>
 					<p style="margin-top:0px; text-align: right;"><a style=" font-weight:bold; color:#B2290C;" href="<?php echo $financ_node['link']?>">Més informació</a></p>
 				</td></tr>
-			
+
 			<?php }?>
 		</table>
 	</td><td style="vertical-align:top; padding-right: 10px; padding-left: 6px">
-		<table class="butlleti" cellspacing="0px" style="font-family: Arial, Helvetica; font-size: 13px;">
-		
+		<table class="butlleti" cellspacing="0px" style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px;">
+
 			<!-- MENÚ DRETA -->
 			<tr style="background-color:#CCCCCC; height: 35px;"><td style="padding: 0px 3px; border-bottom:solid white">
-				<table class="butlleti" style="font-family: Arial, Helvetica; font-size: 13px;"><tr><td>
+				<table class="butlleti" style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px;"><tr><td>
 					<a href="http://www.xarxanet.org/financaments" style="color:#53544F;  font-weight:bold;">
 						Cerca el teu finançament
 					</a>
@@ -317,7 +317,7 @@ ksort($financ_nodes);
 				<a href="http://www.xarxanet.org/financaments/beques" style="color:#FFFFFF;">Més beques</a>
 			</td></tr>
 			<tr><td style="border-top: 15px solid white; padding: 0px;">
-			
+
 			<!-- BANNERS -->
 			<?php
 				foreach ($node->field_financ_banner['und'] as $banner) {
@@ -325,8 +325,8 @@ ksort($financ_nodes);
 					$url = file_create_url($banner['uri']);?>
 					<a style="text-decoration:none" href="<?php echo $banner['url']?>">
 						<img src="<?php echo $url; ?>" alt="<?php echo $banner['alt']?>" width="265px" style="margin:2px 0; border: solid 1px #000;"/>
-					</a>	
-			<?php } 
+					</a>
+			<?php }
 			}?>
 			<!-- BANNER FIXE -->
 			<a style="text-decoration:none" href="http://xarxanet.org/projectes/noticies/calendari-de-convocatories-de-financament-anuals">
@@ -337,11 +337,11 @@ ksort($financ_nodes);
 			</a>
 			<a style="text-decoration:none" href="http://www.twitter.com/ajuts_entitats">
 				<img src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/banner_twitter.jpg" alt="Banner Twitter" width="265px" style="margin:2px 0; border: solid 1px #000;"/>
-			</a>	
+			</a>
 			<a style="text-decoration:none" href="http://nonprofit.xarxanet.org">
 				<img src="<?php echo $pathroot?>/sites/default/files/butlletins/actualitat/banner_nonprofit.png" alt="Banner nonprofit" width="265px" style="margin:2px 0; border: solid 1px #000;"/>
-			</a>				
-			
+			</a>
+
 			<!-- NOTICIA SECUNDARIA -->
 			<?php foreach ($noticia_secundaria as $secundaria) { ?>
 				<tr><td style="padding: 0px">
@@ -349,8 +349,8 @@ ksort($financ_nodes);
 					<img alt="<?php echo $secundaria['alt']?>" src="<?php echo $secundaria['imatge']?>" style="margin-top: 15px; border: 0 none">
 				</a></td style="padding: 0px"></tr>
 				<tr><td style="padding: 0px">
-					<a style=" font-family:Verdana; font-size:12pt; line-height: 1.3em; color: #53544F;" href="<?php echo $secundaria['link']?>">
-					<?php echo $secundaria['title']?>			
+					<a style=" font-family:Fira Sans Semibold,Helvetica,Arial,sans-serif; font-size:12pt; line-height: 1.3em; color: #53544F;" href="<?php echo $secundaria['link']?>">
+					<?php echo $secundaria['title']?>
 				</a></td></tr>
 				<tr><td style="padding: 0px">
 					<p style="margin-top: 5px;"><?php echo $secundaria['teaser']?></p>
@@ -358,22 +358,22 @@ ksort($financ_nodes);
 			<?php }?>
 		</table>
 	</td></tr>
-	
+
 	<!-- PEU -->
-	<tr style="background-color:#CCCCCC; border-top:3px solid #53544F;">
+	<tr style="background-color:#2f3031; border-top:3px solid #231f20;">
 	<td colspan="2" style="border-top: 3px solid #53544F; padding: 4px;">
-		<table class="butlleti" style="font-family: Arial, Helvetica; font-size: 13px; color:#53544F;">
-			<tr><td colspan="2" style="padding-left:10px;">
+		 <table class="butlleti"  style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; color:white;">
+			<tr class='body'><td colspan="2" style="padding-left:10px;">
 				<b>Xarxanet.org és un projecte de</b>
 			</td><td colspan="2" style="padding-left:50px;">
 				<b>Entitats promotores</b>
 			</td></tr>
-			<tr><td style="vertical-align:top; padding-left:10px; padding-top:15px">
-				<table><tr><td>
+			<tr class='body'><td style="vertical-align:top; padding-left:10px; padding-top:15px">
+				<table class="butlleti"><tr class='body'><td>
 					<a href="http://benestar.gencat.cat" style="text-decoration:none">
 						<img alt="logo generalitat" src="<?php echo $pathroot?>/sites/default/files/butlletins/financament/logo_generalitat.png">
 					</a>
-				</td></tr><tr><td style="height: 55px; vertical-align: bottom;">
+				</td></tr><tr class='body'><td style="height: 55px; vertical-align: bottom;">
 					<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca" rel="license">
 						<img style="border:0 none;" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/80x15.png" alt="Licencia de Creative Commons">
 					</a>
@@ -384,27 +384,27 @@ ksort($financ_nodes);
 				</a> -->
 			</td><td style="padding-left:50px;">
 				<p>
-					<a href="http://www.suport.org" style="color:#53544F;  font-weight:normal">Suport Associatiu Centre d'Estudis</a><br />
-					<a href="http://www.esplai.org" style="color:#53544F;  font-weight:normal">Fundació Catalana de l'Esplai</a><br />
-					<a href="http://www.peretarres.org" style="color:#53544F;  font-weight:normal">Fundació Pere Tarrés</a><br />
-					<a href="http://www.ateneus.cat" style="color:#53544F;  font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
-					<a href="http://www.xvac.cat" style="color:#53544F;  font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
-					<a href="http://www.iwith.org/ca/" style="color:#53544F;  font-weight:normal">I-with.org</a><br />
+					<a href="http://www.suport.org" style="color:white;  font-weight:normal">Suport Associatiu Centre d'Estudis</a><br />
+					<a href="http://www.esplai.org" style="color:white;  font-weight:normal">Fundació Catalana de l'Esplai</a><br />
+					<a href="http://www.peretarres.org" style="color:white;  font-weight:normal">Fundació Pere Tarrés</a><br />
+					<a href="http://www.ateneus.cat" style="color:white;  font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
+					<a href="http://www.xvac.cat" style="color:white;  font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
+					<a href="http://www.iwith.org/ca/" style="color:white;  font-weight:normal">I-with.org</a><br />
 				</p>
 			</td><td style="padding-left:15px">
 				<p>
-					<a href="http://jovesteb.org" style="color:#53544F;  font-weight:normal">Associació per a joves Teb</a><br />
-					<a href="http://www.ravalnet.org" style="color:#53544F;  font-weight:normal">Associació ciutadana Ravalnet</a><br />
-					<a href="http://www.federacio.net/ca" style="color:#53544F;  font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
-					<a href="http://magno.uab.es/fas" style="color:#53544F;  font-weight:normal">Fundació Autònoma Solidària</a><br />
-					<a href="http://www.escoltesiguies.cat" style="color:#53544F;  font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
+					<a href="http://colectic.coop" style="color:white;  font-weight:normal">Colectic</a><br />
+					<a href="http://www.ravalnet.org" style="color:white;  font-weight:normal">Associació ciutadana Ravalnet</a><br />
+					<a href="http://www.federacio.net/ca" style="color:white;  font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
+					<a href="http://magno.uab.es/fas" style="color:white;  font-weight:normal">Fundació Autònoma Solidària</a><br />
+					<a href="http://www.escoltesiguies.cat" style="color:white;  font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
 				</p>
 			</td></tr>
 		</table>
-	<tr><td colspan="2" style="background-color:black; color:white; text-align:right; padding:5px 10px;">
-		<a style=" color:white" href="http://www.xarxanet.org/alta_financament">Alta</a> | 
-		<a style=" color:white;" href="http://www.xarxanet.org/baixa_financament">Baixa</a> | 
-		<a style=" color:white;" href="mailto:financament@xarxanet.org?Subject=Consulta%20butlletí%20Finançament">Contacte</a> | 
+	<tr class='body'><td colspan="2" style="background-color:#231f20; color:white; text-align:right; padding:5px 10px;">
+		<a style=" color:white" href="http://www.xarxanet.org/alta_actualitat">Alta</a> |
+		<a style=" color:white;" href="http://www.xarxanet.org/baixa_actualitat">Baixa</a> |
+		<a style=" color:white;" href="mailto:butlleti@xarxanet.org?Subject=Consulta%20butlletí%20Finançament">Contacte</a> |
 		<a style=" color:white;" href="http://www.xarxanet.org/avis-legal">Avís legal</a>
-	</td></tr> 
+	</td></tr>
 </table>
