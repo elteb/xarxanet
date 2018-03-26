@@ -29,8 +29,8 @@ function mobile_xarxanet_preprocess_html(&$vars) {
  * Add a "Comments" heading above comments except on forum pages.
  */
 function mobile_xarxanet_preprocess_comment_wrapper(&$vars) {
-	if ($vars['content'] && $vars['node']->type != 'forum') {
-		$vars['content'] = '<h2 id="comments-title">'. t('Comments') .'</h2>'.  $vars['content'];
+	if ($vars['content']) {
+		$vars['content']['node'] = $vars['node']->type;
 	}
 }
 
