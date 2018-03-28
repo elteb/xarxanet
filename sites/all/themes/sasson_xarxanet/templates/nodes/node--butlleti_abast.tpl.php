@@ -204,7 +204,7 @@ ksort($noticies);
 					?>
 				</td>
 				<td style="text-align: right; font-weight:bold">
-					<a style="color:#4D4D4D; text-decoration:none" href="http://www.voluntariat.org/abast.aspx">Butlletins anteriors</a>
+					<a style="color:#4D4D4D; text-decoration:none" href="http://xarxanet.org/hemeroteca-butlleti-labast">Butlletins anteriors</a>
 				</td></tr>
 			</table>
 		</td>
@@ -641,10 +641,10 @@ ksort($noticies);
 </tr><tr>
 	<td colspan="2">
 		<p style="font-size: 11px; margin: 0"> 
-			<a style="color: #800000; text-decoration: none" href="http://www.voluntariat.org/abast/formularialta.aspx">alta</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://www.voluntariat.org/abast/formularibaixa.aspx">baixa</a> ::   
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/alta.html">alta</a> ::  
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/baixa.html">baixa</a> ::   
 			<a style="color: #800000; text-decoration: none" href="mailto:alabast@voluntariat.org?Subject=Consulta%20butlletí">contacte</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://www.voluntariat.org/abast.aspx">butlletins anteriors</a>
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/hemeroteca-butlleti-labast">butlletins anteriors</a>
 		</p>
 	</td>
 </tr>
