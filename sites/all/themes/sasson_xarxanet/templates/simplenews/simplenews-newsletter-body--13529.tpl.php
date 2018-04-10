@@ -62,7 +62,7 @@ $node = $build['#node'];
 $banners_fixes = array(	'Banner PNAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_pnav.jpg', 
 													'http://pnav.voluntariat.org/'),
 						'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
-													'http://www.voluntariat.org/AgendadecursosdelPFVC.aspx'),
+													'https://voluntariat.gencat.cat/persones-voluntaries/format-com-a-voluntari/pla-de-formacio/'),
 						'Banner opinió' => 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_opinio.png', 
 													'http://bloc.xarxanet.org/'),
 						'Banner nonprofit' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_nonprofit.png', 
@@ -194,7 +194,13 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			<img src="http://www.gencat.cat/img/logo.gif" alt="logo Generalitat" style="border:0 none;"/>
 		</a>
 		<p style="text-align:right; vertical-align:bottom; margin-bottom:0px; margin-top:-10px">
-		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="http://www.voluntariat.org/Portals/0/Abast/documents/ultim_butlleti.html">aquí</a></p>	
+		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="
+		<?php 
+		if (is_numeric($title))	{
+			echo 'http://xarxanet.org/'.$title;
+		}	
+		?>
+		">aquí</a></p>	
 		<table cellspacing="0" cellpadding="0" style="border-top: solid 3px #800000; width:100%">
 			<tr><?php 
 				if (is_numeric($title))	{
@@ -228,7 +234,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 					?>
 				</td>
 				<td style="text-align: right; font-weight:bold">
-					<a style="color:#4D4D4D; text-decoration:none" href="http://www.voluntariat.org/abast.aspx">Butlletins anteriors</a>
+					<a style="color:#4D4D4D; text-decoration:none" href="http://xarxanet.org/hemeroteca-butlleti-labast">Butlletins anteriors</a>
 				</td></tr>
 			</table>
 		</td>
@@ -677,7 +683,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 				<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca"><img alt="Licencia de Creative Commons" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/88x31.png" style="border:0 none;"/></a>
 			</td></tr>
 		</table>	
-		<p style="font-size: 10px; text-align: justify; margin: 0"><a href="http://web.gencat.cat/ca/menu-ajuda/ajuda/avis_legal/">Avís legal</a>: D’acord amb l’article 17.1 de la Llei 19/2014, la &copy;Generalitat de Catalunya permet la reutilització dels continguts i de les dades sempre que se'n citi la font i la data d'actualització i que no es desnaturalitzi la informació (article 8 de la Llei 37/2007) i també que no es contradigui amb una llicència específica. 
+		<p style="font-size: 10px; text-align: justify; margin: 0"><a href="http://web.gencat.cat/ca/menu-ajuda/ajuda/avis_legal/">Avís legal</a>: D’acord amb l’article 17.1 de la Llei 19/2014, la &copy;Generalitat de Catalunya permet la reutilització dels continguts i de les dades sempre que se'n citi la font i la data d'actualització i que no es desnaturalitzi la informació (article 8 de la Llei 37/2007) i també que no es contradigui amb una llicència específica. Si l'adreça de correu que informeu al donar-vos d'alta deixa d'estar activa us donarem de baixa a la base de dades.
 		<br/>Aquest butlletí és una iniciativa del Departament de Treball, Afers Socials i Famílies de la Generalitat de Catalunya, coeditat amb la Fundació Pere Tarrés. ISSN: 2385-4146</p> 
 	</td>
 </tr><tr>
@@ -685,10 +691,10 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 </tr><tr>
 	<td colspan="2">
 		<p style="font-size: 11px; margin: 0"> 
-			<a style="color: #800000; text-decoration: none" href="http://www.voluntariat.org/abast/formularialta.aspx">alta</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://www.voluntariat.org/abast/formularibaixa.aspx">baixa</a> ::   
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/alta.html">alta</a> ::  
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/baixa.html">baixa</a> ::   
 			<a style="color: #800000; text-decoration: none" href="mailto:alabast@voluntariat.org?Subject=Consulta%20butlletí">contacte</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://www.voluntariat.org/abast.aspx">butlletins anteriors</a>
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/hemeroteca-butlleti-labast">butlletins anteriors</a>
 		</p>
 	</td>
 </tr>

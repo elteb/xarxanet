@@ -62,7 +62,7 @@ $banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/def
 						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
 													'http://www.xarxanet.org/especial/barcelona-ecv'),
 						'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
-													'http://www.voluntariat.org/AgendadecursosdelPFVC.aspx'),
+													'https://voluntariat.gencat.cat/persones-voluntaries/format-com-a-voluntari/pla-de-formacio/'),
 						'Banner opinió' => 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_opinio.png', 
 													'http://bloc.xarxanet.org/'),
 						'Banner subs. butlletí' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subsButlleti.png', 
@@ -80,7 +80,7 @@ $banners_fixes = array(	'Banner Subscribre me' => 	array  ($pathroot.'/sites/def
 						'Banner verso' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_verso.gif', 
 													'http://www20.gencat.cat/portal/site/bsf/menuitem.ce32baba3744d8fa172a63a7b0c0e1a0/?vgnextoid=cbc7b0b331fc6310VgnVCM2000009b0c1e0aRCRD&vgnextchannel=cbc7b0b331fc6310VgnVCM2000009b0c1e0aRCRD&vgnextfmt=default'),
 						'Banner masclisme' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_masclisme.gif', 
-														'http://www20.gencat.cat/portal/site/icdones/menuitem.351404635dde900639a72641b0c0e1a0/?vgnextoid=704754f598c9b110VgnVCM1000000b0c1e0aRCRD&vgnextchannel=704754f598c9b110VgnVCM1000000b0c1e0aRCRD&vgnextfmt=default&newLang=ca_ES'),
+														'http://dones.gencat.cat/ca/ambits/violencia_masclista/recursos_atencio/telefon_900/'),
 						'Banner blocs xarxanet' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_blocs.gif', 
 															'http://blocs.xarxanet.org/'),
 						'Banner omnia' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_omnia.gif', 
@@ -646,10 +646,10 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 </tr><tr>
 	<td colspan="2">
 		<p style="font-size: 11px; margin: 0"> 
-			<a style="color: #800000; text-decoration: none" href="http://www.xarxanet.org/especial/barcelona-ecv/subscribe">subscribe</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://www.xarxanet.org/especial/barcelona-ecv/unsubscribe">unsubscribe</a> ::   
-			<a style="color: #800000; text-decoration: none" href="mailto:alabast@voluntariat.org?Subject=Newsletter%20question">contact us</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://www.xarxanet.org/especial/barcelona-ecv">previous newsletters</a>
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/alta.html">alta</a> ::  
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/baixa.html">baixa</a> ::   
+			<a style="color: #800000; text-decoration: none" href="mailto:alabast@voluntariat.org?Subject=Consulta%20butlletí">contacte</a> ::  
+			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/hemeroteca-butlleti-labast">butlletins anteriors</a>
 		</p>
 	</td>
 </tr>

@@ -407,4 +407,7 @@ ksort($financ_nodes);
 		<a style=" color:white;" href="mailto:financament@xarxanet.org?Subject=Consulta%20butlletí%20Finançament">Contacte</a> | 
 		<a style=" color:white;" href="http://www.xarxanet.org/avis-legal">Avís legal</a>
 	</td></tr> 
+	<tr><td colspan="2" style="background-color:black; color:white; text-align:right; padding:5px 10px; font-size: 0.75em;">
+	 	<p>Avís legal: D'acord amb la Llei orgànica 15/1999, de protecció de dades de caràcter personal, les vostres dades seran incorporades al fitxer "Entitats de voluntariat", del qual és responsable la Direcció General d'Acció Cívica i Comunitària. La finalitat és integrar les dades a un banc de dades de les entitats sense afany de lucre de voluntariat de Catalunya i gestionar l'enviament de comunicacions als/a les voluntaris/àries. Podeu exercir els drets d'accés, rectificació, cancel·lació i oposició mitjançant un escrit adreçat al Servei de Promoció de l'Associacionisme i el Voluntariat: Passeig del Taulat, 266-270, 08019, Barcelona. Si l'adreça de correu que informeu al donar-vos d'alta deixa d'estar activa us donarem de baixa a la base de dades.</p>
+	 </td></tr>
 </table>

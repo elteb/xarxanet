@@ -65,7 +65,7 @@ $banners_fixes = array(	'Banner PNAV' => 	array  ($pathroot.'/sites/default/file
 						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
 													'http://www.xarxanet.org/especial/barcelona-ecv'),
 						'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
-													'http://www.voluntariat.org/AgendadecursosdelPFVC.aspx'),
+													'https://voluntariat.gencat.cat/persones-voluntaries/format-com-a-voluntari/pla-de-formacio/'),
 						'Banner opinió' => 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_opinio.png', 
 													'http://bloc.xarxanet.org/'),
 						'Banner nonprofit' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_nonprofit.png', 
@@ -193,7 +193,16 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			<img src="http://www.gencat.cat/img/logo.gif" alt="logo Generalitat" style="border:0 none;"/>
 		</a>
 		<p style="text-align:right; vertical-align:bottom; margin-bottom:0px; margin-top:-10px">
-		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="http://www.voluntariat.org/Portals/0/Abast/documents/ultim_butlleti.html">aquí</a></p>	
+		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="
+		<?php 
+		if (is_numeric($title))	{
+			echo 'http://xarxanet.org/'.$title;
+		}	
+		?>
+		">aquí</a>
+		</p>
+
+
 		<table class="butlleti" cellspacing="0" cellpadding="0" style="border-top: solid 3px #800000; width:100%">
 			<tr><?php
 				if (is_numeric($title))	{
@@ -677,7 +686,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 				<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca"><img alt="Licencia de Creative Commons" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/88x31.png" style="border:0 none;"/></a>
 			</td></tr>
 		</table>	
-		<p style="font-size: 10px; text-align: justify; margin: 0">D'acord amb l’article 5.2 de la Llei orgànica 15/1999, de protecció de dades de caràcter personal, us informem que les dades personals han estat recollides, incorporades i tractades en un fitxer automatitzat les vostres , anomenat "Entitats de voluntariat", la finalitat del qual és trametre les comunicacions que el/la ciutadà/ana o l’entitat ha requerit . L'òrgan responsable del fitxer és la Direcció General d'Acció Cívica i Comunitària i l'adreça on la persona o entitat interessada pot exercir els drets d'accés, rectificació, cancel·lació i oposició és el Servei de Promoció de l’Associacionisme i el Voluntariat (Passeig del Taulat, 266-270, 08019, Barcelona) 
+		<p style="font-size: 10px; text-align: justify; margin: 0">D'acord amb l’article 5.2 de la Llei orgànica 15/1999, de protecció de dades de caràcter personal, us informem que les dades personals han estat recollides, incorporades i tractades en un fitxer automatitzat les vostres , anomenat "Entitats de voluntariat", la finalitat del qual és trametre les comunicacions que el/la ciutadà/ana o l’entitat ha requerit . L'òrgan responsable del fitxer és la Direcció General d'Acció Cívica i Comunitària i l'adreça on la persona o entitat interessada pot exercir els drets d'accés, rectificació, cancel·lació i oposició és el Servei de Promoció de l’Associacionisme i el Voluntariat (Passeig del Taulat, 266-270, 08019, Barcelona) Si l'adreça de correu que informeu al donar-vos d'alta deixa d'estar activa us donarem de baixa a la base de dades.
 		<br/>Aquest butlletí és una iniciativa del Departament de Treball, Afers Socials i Famílies de la Generalitat de Catalunya, coeditat amb la Fundació Pere Tarrés. ISSN: 2385-4146</p> 
 	</td>
 </tr><tr>
