@@ -85,7 +85,7 @@ $banners_fixes = array(	'Banner PNAV' => 	array  ($pathroot.'/sites/default/file
 						'Banner verso' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_verso.gif', 
 													'http://benestar.gencat.cat/ca/ambits_tematics/accio_comunitaria_i_voluntariat/voluntariat/verso'),
 						'Banner masclisme' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_masclisme.gif', 
-														'http://dones.gencat.cat/ca/temes/violencia_masclista/recursos_atencio/telefon_900'),
+														'http://dones.gencat.cat/ca/ambits/violencia_masclista/recursos_atencio/telefon_900/'),
 						'Banner blocs xarxanet' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_blocs.gif', 
 															'http://blocs.xarxanet.org/'),
 						'Banner omnia' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_omnia.gif', 
