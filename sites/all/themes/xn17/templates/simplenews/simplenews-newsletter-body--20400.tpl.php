@@ -646,10 +646,10 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 </tr><tr>
 	<td colspan="2">
 		<p style="font-size: 11px; margin: 0"> 
-			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/alta.html">alta</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/baixa.html">baixa</a> ::   
-			<a style="color: #800000; text-decoration: none" href="mailto:alabast@voluntariat.org?Subject=Consulta%20butlletí">contacte</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/hemeroteca-butlleti-labast">butlletins anteriors</a>
+			<a style="color: #800000; text-decoration: none" href="http://www.xarxanet.org/especial/barcelona-ecv/subscribe">subscribe</a> ::  
+			<a style="color: #800000; text-decoration: none" href="http://www.xarxanet.org/especial/barcelona-ecv/unsubscribe">unsubscribe</a> ::   
+			<a style="color: #800000; text-decoration: none" href="mailto:alabast@voluntariat.org?Subject=Newsletter%20question">contact us</a> ::  
+			<a style="color: #800000; text-decoration: none" href="http://www.xarxanet.org/especial/barcelona-ecv">previous newsletters</a>
 		</p>
 	</td>
 </tr>

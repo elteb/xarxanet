@@ -552,7 +552,11 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 	<tr class='body'><td colspan="2" style="background-color:#231f20; color:white; text-align:right; padding:5px 10px;">
 		<a style=" color:white" href="http://www.xarxanet.org/alta_actualitat">Alta</a> |
 		<a style=" color:white;" href="http://www.xarxanet.org/baixa_actualitat">Baixa</a> |
-		<a style=" color:white;" href="mailto:butlleti@xarxanet.org?Subject=Consulta%20butlletí%20Finançament">Contacte</a> |
-		<a style=" color:white;" href="http://www.xarxanet.org/avis-legal">Avís legal</a>
+		<a style=" color:white;" href="mailto:butlleti@xarxanet.org?Subject=Consulta%20butlletí">Contacte</a> |
+		<a style=" color:white;" href="http://web.gencat.cat/ca/menu-ajuda/ajuda/avis_legal/">Avís legal</a>
 	</td></tr>
+	<tr><td colspan="2" style="background-color:black; color:white; text-align:right; padding:5px 10px; font-size: 0.75em;">
+	 	<p><a style="text-decoration: underline; color:white;" href="http://web.gencat.cat/ca/menu-ajuda/ajuda/avis_legal/">Avís legal</a>: D’acord amb l’article 17.1 de la Llei 19/2014, la &copy;Generalitat de Catalunya permet la reutilització dels continguts i de les dades sempre que se'n citi la font i la data d'actualització i que no es desnaturalitzi la informació (article 8 de la Llei 37/2007) i també que no es contradigui amb una llicència específica. Si l'adreça de correu que informeu al donar-vos d'alta deixa d'estar activa us donarem de baixa a la base de dades.
+		<br/>Aquest butlletí és una iniciativa del Departament de Treball, Afers Socials i Famílies de la Generalitat de Catalunya, coeditat amb la Fundació Pere Tarrés.</p> 
+	 </td></tr>
 </table>
