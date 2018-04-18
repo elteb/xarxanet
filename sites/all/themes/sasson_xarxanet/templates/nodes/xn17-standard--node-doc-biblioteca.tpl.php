@@ -87,11 +87,11 @@
 		<table class='biblioteca-document top'><tr><td>
 			<p class="top"><?php echo $node->field_doc_autoria['und'][0]['value']?></p>
 			<p>	<?php
-					$tem1 = $node->field_doc_tematica['und'][0]['hs_lineages'][0]->name;
+					$tem1 = $node->field_doc_tematica['und'][0]['hs_lineages'][0]->label;
 					$tid1 = $node->field_doc_tematica['und'][0]['hs_lineages'][0]->tid;
-					$tem2 = $node->field_doc_tematica['und'][1]['hs_lineages'][0]->name;
+					$tem2 = $node->field_doc_tematica['und'][1]['hs_lineages'][0]->label;
 					$tid2 = $node->field_doc_tematica['und'][1]['hs_lineages'][0]->tid;
-					$tipo = $node->field_doc_tipologia['und'][0]['hs_lineages'][0]->name;
+					$tipo = $node->field_doc_tipologia['und'][0]['hs_lineages'][0]->label;
 					$tid3 = $node->field_doc_tipologia['und'][0]['hs_lineages'][0]->tid;
 				?>
 				<?php echo '<a href="/biblioteca_filtre?field_doc_tematica_value='.$tid1.'">'.$tem1.'</a>
@@ -144,7 +144,7 @@
 				<b>Informació de publicació</b><br/>
 				Lloc: <?php echo $node->field_doc_lloc_publi['und'][0]['value'];?><br/>
 				Any: <?php echo $node->field_doc_data_publi['und'][0]['value'];?><br/>
-				Editorial: <?php echo $node->field_doc_editorial['und'][0]['hs_lineages'][0]->name;?><br/>
+				Editorial: <?php echo $node->field_doc_editorial['und'][0]['hs_lineages'][0]->label;?><br/>
 				<?php
 					$collect = '';
 					if ($node->field_doc_colleccio['und'][0]['value'] != '') {
@@ -152,11 +152,11 @@
 						$collect = $node->field_doc_colleccio['und'][0]['value'].'. ';
 					}
 				?>
-				Idioma: <?php echo $node->field_doc_idioma['und'][0]['hs_lineages'][0]->name;?>
+				Idioma: <?php echo $node->field_doc_idioma['und'][0]['hs_lineages'][0]->label;?>
 			</p>
 			<p>
 				<b>Referència bibliogràfica</b><br/>
-				<?php echo $node->field_doc_autoria['und'][0]['value'].'. ('.$node->field_doc_data_publi['und'][0]['value'].'). <i>'.$title.'</i>. '.$collect.$node->field_doc_lloc_publi['und'][0]['value'].': '.$node->field_doc_editorial['und'][0]['hs_lineages'][0]->name;?>
+				<?php echo $node->field_doc_autoria['und'][0]['value'].'. ('.$node->field_doc_data_publi['und'][0]['value'].'). <i>'.$title.'</i>. '.$collect.$node->field_doc_lloc_publi['und'][0]['value'].': '.$node->field_doc_editorial['und'][0]['hs_lineages'][0]->label;?>
 			</p>
 			<p><b>Visites</b>:
 				<?php
