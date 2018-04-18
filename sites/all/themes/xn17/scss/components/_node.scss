@@ -24,6 +24,9 @@
 .agenda, .financament, .node-type-doc-biblioteca {
   @include node-comparteix;
   @include node-tags;
+  .page-header{
+    display: none;
+  }
   h1, .xn17-standard-header {
     font-size: 2.5em;
     font-family: 'Fira Sans SemiBold';
