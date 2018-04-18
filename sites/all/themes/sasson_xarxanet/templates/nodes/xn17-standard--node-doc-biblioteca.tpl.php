@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * @file
 * Default theme implementation to display a node.
@@ -82,17 +82,17 @@
 ?>
 <div id="biblioteca-panel">
 	<div class="panel-col-first biblioteca-fitxa">
-		
+
 		<!-- CAPÇALERA -->
 		<table class='biblioteca-document top'><tr><td>
 			<p class="top"><?php echo $node->field_doc_autoria['und'][0]['value']?></p>
-			<p>	<?php 
-					$tem1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->name;
-					$tid1 = $node->field_doc_tematica['und'][0]['taxonomy_term']->tid;
-					$tem2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->name;
-					$tid2 = $node->field_doc_tematica['und'][1]['taxonomy_term']->tid;
-					$tipo = $node->field_doc_tipologia['und'][0]['taxonomy_term']->name;
-					$tid3 = $node->field_doc_tipologia['und'][0]['taxonomy_term']->tid;
+			<p>	<?php
+					$tem1 = $node->field_doc_tematica['und'][0]['hs_lineages'][0]->name;
+					$tid1 = $node->field_doc_tematica['und'][0]['hs_lineages'][0]->tid;
+					$tem2 = $node->field_doc_tematica['und'][1]['hs_lineages'][0]->name;
+					$tid2 = $node->field_doc_tematica['und'][1]['hs_lineages'][0]->tid;
+					$tipo = $node->field_doc_tipologia['und'][0]['hs_lineages'][0]->name;
+					$tid3 = $node->field_doc_tipologia['und'][0]['hs_lineages'][0]->tid;
 				?>
 				<?php echo '<a href="/biblioteca_filtre?field_doc_tematica_value='.$tid1.'">'.$tem1.'</a>
  				 			> <a href="/biblioteca_filtre?field_doc_tematica_value='.$tid2.'">'.$tem2.'</a>';?>
@@ -118,7 +118,7 @@
               <div class="addthis_sharing_toolbox"></div>
             </div>
 		</td></tr></table>
-		
+
 		<!-- COS -->
 		<table class='biblioteca-document'><tr><td class="big_image">
 			<?php
@@ -127,15 +127,15 @@
 			?>
 			<img src="<?php echo $imagepath;?>" alt="Portada de <?php echo $title;?>" width="215" />
 			<?php print $node->content['fivestar_widget']['#value']; ?>
-			
+
 		</td><td class="text">
 			<p class="teaser"><?php echo strip_tags($node->field_doc_sinopsi['und'][0]['value']); ?></p>
-			 <?php 
+			 <?php
 			 	if(!empty($node->taxonomy_vocabulary_5['und'])) {
                 	echo '<p><b>Paraules clau: </b>';
                 	$tag_str = '';
                    	foreach($node->taxonomy_vocabulary_5['und'] as $tag) {
-						$tag_str .= ucfirst($tag['taxonomy_term']->name).', '; 
+						$tag_str .= ucfirst($tag['hs_lineages'][0]->name).', ';
 					}
 					echo substr($tag_str, 0, -2).'</p>';
             	}
@@ -144,21 +144,21 @@
 				<b>Informació de publicació</b><br/>
 				Lloc: <?php echo $node->field_doc_lloc_publi['und'][0]['value'];?><br/>
 				Any: <?php echo $node->field_doc_data_publi['und'][0]['value'];?><br/>
-				Editorial: <?php echo $node->field_doc_editorial['und'][0]['taxonomy_term']->name;?><br/>
+				Editorial: <?php echo $node->field_doc_editorial['und'][0]['hs_lineages'][0]->name;?><br/>
 				<?php
-					$collect = ''; 
-					if ($node->field_doc_colleccio['und'][0]['value'] != '') { 
+					$collect = '';
+					if ($node->field_doc_colleccio['und'][0]['value'] != '') {
 						echo 'Col·lecció o obra general: '.$node->field_doc_colleccio['und'][0]['value'].'<br/>';
 						$collect = $node->field_doc_colleccio['und'][0]['value'].'. ';
 					}
 				?>
-				Idioma: <?php echo $node->field_doc_idioma['und'][0]['taxonomy_term']->name;?>
+				Idioma: <?php echo $node->field_doc_idioma['und'][0]['hs_lineages'][0]->name;?>
 			</p>
 			<p>
 				<b>Referència bibliogràfica</b><br/>
-				<?php echo $node->field_doc_autoria['und'][0]['value'].'. ('.$node->field_doc_data_publi['und'][0]['value'].'). <i>'.$title.'</i>. '.$collect.$node->field_doc_lloc_publi['und'][0]['value'].': '.$node->field_doc_editorial['und'][0]['taxonomy_term']->name;?>
+				<?php echo $node->field_doc_autoria['und'][0]['value'].'. ('.$node->field_doc_data_publi['und'][0]['value'].'). <i>'.$title.'</i>. '.$collect.$node->field_doc_lloc_publi['und'][0]['value'].': '.$node->field_doc_editorial['und'][0]['hs_lineages'][0]->name;?>
 			</p>
-			<p><b>Visites</b>: 
+			<p><b>Visites</b>:
 				<?php
 				 if (strpos(google_analytics_counter_display(), '></span>')  === FALSE)
 					echo google_analytics_counter_display();
@@ -167,7 +167,7 @@
 				?>
 			</p>
 		</td></tr></table>
-		
+
 		<!-- PEU -->
 		<table class='biblioteca-document' id="bilioteca-document-peu"><tr><td class="document">
 			<b>Descàrrega directa</b><br/>
@@ -177,7 +177,7 @@
 				<img src="/sites/default/files/biblioteca/download_bn.png" alt="Icona de descàrrega" width="50">
 			<?php } ?>
 		</td><td class="link">
-			<?php 
+			<?php
 				$fonts = ($node->field_doc_font['und'][0]['url'] != '') ? '<a href="'.$node->field_doc_font['und'][0]['url'].'">'.$node->field_doc_font['und'][0]['title'].'</a>' : 'No disponible';
 				echo '<b>Descàrrega externa</b><br/>'.$fonts;
 			?>
@@ -187,10 +187,10 @@
 				echo '<b>Disponibilitat en paper</b><br/>'.$fisic;
 			?>
 		</td></tr></table>
-		
+
 	</div>
 	<div class="panel-col-last">
-		<?php   		
+		<?php
 		$display = panels_load_display(5);
 		print(panels_render_display($display));
 		?>
