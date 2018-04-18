@@ -4,3 +4,6 @@
 [submodule "sites/all/modules/media"]
 	path = sites/all/modules/media
 	url = https://github.com/elteb/media.git
+[submodule "sites/all/themes/xn17"]
+	path = sites/all/themes/xn17
+	url = https://github.com/colectic/xn17.git
