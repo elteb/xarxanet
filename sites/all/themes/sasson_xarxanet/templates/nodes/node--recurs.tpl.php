@@ -109,8 +109,9 @@
                     <h2>Tags</h2>
                     <ul class="links tags" role="navigation">
                     <?php
-						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {;
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';						}
+			foreach($node->taxonomy_vocabulary_1['und'] as $tag) {
+			    $term = taxonomy_term_load($tag['tid']);
+			    echo '<li>'.l( ucfirst($term->name), 'etiquetes/general/'.str_replace(' ', '-', $term->name)).'</li>';			}
                     ?>
                     </ul>
                 </div>
@@ -166,7 +167,7 @@
             <?php endif; ?>
 
             <div class="node-intro">
-                <?php print $field_resum[0]['value'] ?>
+                <?php print $field_resum['und'][0]['value'] ?>
             </div><!-- .e_intro -->
 
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
