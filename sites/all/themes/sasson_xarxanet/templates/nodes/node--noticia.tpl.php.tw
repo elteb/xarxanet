@@ -102,9 +102,9 @@
                     </ul>
                 </div>
             <?php endif; ?>
-            
+
             <?php
-            if(!empty($node->taxonomy_vocabulary_1['und']) && !empty($node->taxonomy_vocabulary_1['und'][0]['taxonomy_term'])): ?>
+            if(!empty($node->taxonomy_vocabulary_1['und'])): ?>
                 <div class="node-terms">
                     <h2>Tags</h2>
                     <ul class="links tags" role="navigation">
@@ -154,7 +154,7 @@
             <?php endif; ?>
 
             <div class="node-intro">
-                <?php print $field_resum['und'][0]['value'] ?>
+                <?php print $field_resum[0]['value'] ?>
             </div><!-- .e_intro -->
 
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
