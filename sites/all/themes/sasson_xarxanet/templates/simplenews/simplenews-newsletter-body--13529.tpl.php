@@ -82,7 +82,7 @@ $banners_fixes = array(	'Banner PNAV' => 	array  ($pathroot.'/sites/default/file
 						'Banner verso' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_verso.gif', 
 													'http://benestar.gencat.cat/ca/ambits_tematics/accio_comunitaria_i_voluntariat/voluntariat/verso'),
 						'Banner masclisme' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_masclisme.gif', 
-														'http://dones.gencat.cat/ca/temes/violencia_masclista/recursos_atencio/telefon_900'),
+														'http://dones.gencat.cat/ca/ambits/violencia_masclista/recursos_atencio/telefon_900/'),
 						'Banner blocs xarxanet' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_blocs.gif', 
 															'http://blocs.xarxanet.org/'),
 						'Banner omnia' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_omnia.gif', 
@@ -194,6 +194,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			<img src="http://www.gencat.cat/img/logo.gif" alt="logo Generalitat" style="border:0 none;"/>
 		</a>
 		<p style="text-align:right; vertical-align:bottom; margin-bottom:0px; margin-top:-10px">
+<<<<<<< HEAD
 		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="
 		<?php 
 		if (is_numeric($title))	{
@@ -201,6 +202,10 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 		}	
 		?>
 		">aquí</a></p>	
+=======
+		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="<?php echo url('node/' . $node->nid, array('absolute' => TRUE));?>">aquí</a>
+		</p>	
+>>>>>>> 8220c8f4b9a5f584385d4172a667fc724ca75db1
 		<table cellspacing="0" cellpadding="0" style="border-top: solid 3px #800000; width:100%">
 			<tr><?php 
 				if (is_numeric($title))	{
