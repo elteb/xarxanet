@@ -135,7 +135,8 @@
                 	echo '<p><b>Paraules clau: </b>';
                 	$tag_str = '';
                    	foreach($node->taxonomy_vocabulary_5['und'] as $tag) {
-						$tag_str .= ucfirst($tag['hs_lineages'][0]['label']).', ';
+													$term = taxonomy_term_load($tag['tid']);
+													$tag_str .= ucfirst($term->name).', ';
 					}
 					echo substr($tag_str, 0, -2).'</p>';
             	}
