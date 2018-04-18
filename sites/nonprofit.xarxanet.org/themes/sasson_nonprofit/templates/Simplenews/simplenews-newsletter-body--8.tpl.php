@@ -899,6 +899,10 @@ if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 					</table>
 				</td>
 			</tr>
+			<tr><td class="sub-peu">
+			 	<p style="color:#FFFFFF;font-size: 0.75em;padding: 10px 15px;text-align: justify;;"><a style="color:#FFFFFF; text-decoration: underline;" href="/legal-terms">Legal notice</a>: In accordance with article 17.1 of Law 19/2014, the "Generalitat de Catalunya" allows the reuse of the contents and data provided that: the source and update date are quoted, the information therein is not altered (article 8 of Law 37/2007) and it is not contradicted with a specific license. If the email address used in the sign up process ceases to be active, you will be unsubscribed from the database.
+				<br/>This newsletter is an initiative of the Department of Work, Social Affairs and Families of the Generalitat de Catalunya, and a joint publication with Pere Tarres Foundation</p>
+			</td></tr>
 		</table>
 	</div>
 </center>
