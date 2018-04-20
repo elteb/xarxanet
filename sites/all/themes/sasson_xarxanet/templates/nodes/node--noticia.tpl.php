@@ -155,6 +155,7 @@
 
             <div class="node-intro">
                 <?php print $field_resum['und'][0]['value'] ?>
+                <?php print $field_resum[0]['value'] ?>
             </div><!-- .e_intro -->
 
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
