@@ -193,17 +193,7 @@ foreach ($wrapper->field_abast_noticies as $noticia){
 			<img src="http://www.gencat.cat/img/logo.gif" alt="logo Generalitat" style="border:0 none;"/>
 		</a>
 		<p style="text-align:right; vertical-align:bottom; margin-bottom:0px; margin-top:-10px">
-<<<<<<< HEAD
-		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="
-		<?php 
-		if (is_numeric($title))	{
-			echo 'http://xarxanet.org/'.$title;
-		}	
-		?>
-		">aquí</a>
-=======
 		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="<?php echo url('node/' . $node->nid, array('absolute' => TRUE));?>">aquí</a>
->>>>>>> 8220c8f4b9a5f584385d4172a667fc724ca75db1
 		</p>
 
 
