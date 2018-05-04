@@ -354,8 +354,7 @@ ksort($financ_nodes);
 				</a> -->
 			</td><td style="padding-left:50px;">
 				<p>
-					<a href="http://www.suport.org" style="color:#53544F; text-decoration:none; font-weight:normal">Suport Associatiu Centre d'Estudis</a><br />
-					<a href="http://www.esplai.org" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Catalana de l'Esplai</a><br />
+					<a href="https://fundesplai.org" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Catalana de l'Esplai</a><br />
 					<a href="http://www.peretarres.org" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Pere Tarrés</a><br />
 					<a href="http://www.ateneus.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
 					<a href="http://www.xvac.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
@@ -363,11 +362,11 @@ ksort($financ_nodes);
 				</p>
 			</td><td style="padding-left:15px">
 				<p>
-					<a href="http://jovesteb.org" style="color:#53544F; text-decoration:none; font-weight:normal">Associació per a joves Teb</a><br />
-					<a href="http://www.ravalnet.org" style="color:#53544F; text-decoration:none; font-weight:normal">Associació ciutadana Ravalnet</a><br />
+					<a href="https://colectic.coop/" style="color:#53544F;  font-weight:normal">Colectic</a><br />
 					<a href="http://www.federacio.net/ca" style="color:#53544F; text-decoration:none; font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
 					<a href="http://magno.uab.es/fas" style="color:#53544F; text-decoration:none; font-weight:normal">Fundació Autònoma Solidària</a><br />
 					<a href="http://www.escoltesiguies.cat" style="color:#53544F; text-decoration:none; font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
+					<a href="http://www.tothomweb.com" style="color:#53544F;  font-weight:normal">TOTHOMweb</a><br />
 				</p>
 			</td></tr>
 		</table>
