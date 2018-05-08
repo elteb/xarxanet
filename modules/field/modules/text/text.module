@@ -116,12 +116,29 @@ function text_field_instance_settings_form($field, $instance) {
  * - 'text_summary_max_length': The summary exceeds the maximum length.
  */
 function text_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+  /*********************************************************
+   * TEBPATCH (ADD) @fcasanellas 26/11/14
+   * #XN-TXT002 Limitació de caràcters no afecta a Entitats Administradores
+   * NEWCODE ***********************************************/
+   global $user;
+   if (!in_array('Entitat administradora', $user->roles)) {
+  /*********************************************************
+     * END TEBPATCH ******************************************/
   foreach ($items as $delta => $item) {
     // @todo Length is counted separately for summary and value, so the maximum
     //   length can be exceeded very easily.
     foreach (array('value', 'summary') as $column) {
       if (!empty($item[$column])) {
+        /*********************************************************
+        * TEBPATCH (MDF) @fcasanellas 10/11/14
+        * #XN-TXT001 Comptabilitza la llargada dels camps de text sense etiquetes HTML
+        * OLDCODE ***********************************************
         if (!empty($field['settings']['max_length']) && drupal_strlen($item[$column]) > $field['settings']['max_length']) {
+        * *******************************************************
+        * NEWCODE ***********************************************/
+        if (! empty ( $field ['settings'] ['max_length'] ) && drupal_strlen ( strip_tags($item [$column]) ) > $field ['settings'] ['max_length']) {
+        /*********************************************************
+        * END TEBPATCH ******************************************/
           switch ($column) {
             case 'value':
               $message = t('%name: the text may not be longer than %max characters.', array('%name' => $instance['label'], '%max' => $field['settings']['max_length']));
@@ -139,6 +156,13 @@ function text_field_validate($entity_type, $entity, $field, $instance, $langcode
       }
     }
   }
+  /*********************************************************
+   * TEBPATCH (ADD) @fcasanellas 26/11/14
+   * #XN-TXT002 Limitació de caràcters no afecta a Entitats Administradores
+   * NEWCODE ***********************************************/
+   }
+  /*********************************************************
+   * END TEBPATCH ******************************************/
 }
 
 /**
