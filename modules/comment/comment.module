@@ -1388,7 +1388,16 @@ function comment_node_search_result($node) {
     $comments = db_query('SELECT comment_count FROM {node_comment_statistics} WHERE nid = :nid', array('nid' => $node->nid))->fetchField();
     // Do not make a string if comments are closed and there are currently
     // zero comments.
+    /*******************************************************
+     * TEBPATCH (MDF) @fcasanellas 03/08/2015
+     * XN-CM001 No retorna cap cadena quan no hi ha comentaris
+     * OLDCODE *********************************************
     if ($node->comment != COMMENT_NODE_CLOSED || $comments > 0) {
+    /*******************************************************
+     * NEWCODE ********************************************/
+    if ($node->comment != COMMENT_NODE_CLOSED && $comments > 0) {
+    /*******************************************************
+     * END TEBPATCH ***************************************/
       return array('comment' => format_plural($comments, '1 comment', '@count comments'));
     }
   }
