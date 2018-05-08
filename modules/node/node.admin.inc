@@ -73,6 +73,9 @@ function node_node_operations() {
 /**
  * List node administration filters that can be applied.
  *
+ * Modules can add or modify filters by implementing hook_node_admin_filters()
+ * or hook_node_admin_filters_alter().
+ *
  * @return
  *   An associative array of filters.
  */
@@ -105,6 +108,10 @@ function node_filters() {
     ) + node_type_get_names(),
   );
 
+  /******************************************
+   * TEBPATCH (DEL) @fcasanellas 07/01/2015
+   * #XN-ND002 Oculta el filtratge per idioma ja que de moment només s'utilitza el català (TMP)
+   * OLDCODE ********************************
   // Language filter if there is a list of languages
   if ($languages = module_invoke('locale', 'language_list')) {
     $languages = array(LANGUAGE_NONE => t('Language neutral')) + $languages;
@@ -115,11 +122,21 @@ function node_filters() {
       ) + $languages,
     );
   }
+   ******************************************
+   *  END TEBPATCH *************************/
+
+  $filters += module_invoke_all('node_admin_filters');
+  drupal_alter('node_admin_filters', $filters);
+
   return $filters;
 }
 
 /**
  * Applies filters for node administration filters based on session.
+ *
+ * Modules may further modify the query (for instance, when adding custom
+ * filters via hook_node_admin_filters()) by implementing
+ * hook_node_admin_filter_query_alter().
  *
  * @param $query
  *   A SelectQuery to which the filters should be applied.
@@ -139,10 +156,15 @@ function node_build_filter_query(SelectQueryInterface $query) {
         break;
     }
   }
+  drupal_alter('node_admin_filter_query', $query, $filter_data);  
 }
 
 /**
  * Returns the node administration filters form array to node_admin_content().
+ *
+ * Modules that implement hook_node_admin_filters() should specify a
+ * "single_value" flag on any filter that allows only one value.  Otherwise,
+ * the filter will not be hidden after a user selects a value.
  *
  * @see node_admin_nodes()
  * @see node_admin_nodes_submit()
@@ -174,7 +196,16 @@ function node_filter_form() {
       $value = $value == LANGUAGE_NONE ? t('Language neutral') : module_invoke('locale', 'language_name', $value);
     }
     else {
+    /******************************************
+     * TEBPATCH (MDF) @fcasanellas 05/01/2015
+     * #XN-ND001 Permet definir el tipus de camp en els filtres
+     * OLDCODE ********************************
       $value = $filters[$type]['options'][$value];
+     *******************************************
+     * NEWCODE ********************************/
+      $value = ($filters[$type]['options'][$value]) ? $filters[$type]['options'][$value] : $value;
+    /******************************************
+     *  END TEBPATCH *************************/
     }
     $t_args = array('%property' => $filters[$type]['title'], '%value' => $value);
     if ($i++) {
@@ -183,7 +214,8 @@ function node_filter_form() {
     else {
       $form['filters']['current'][] = array('#markup' => t('where %property is %value', $t_args));
     }
-    if (in_array($type, array('type', 'language'))) {
+
+    if (in_array($type, array('type', 'language')) || !empty($filters[$type]['single_value'])) {
       // Remove the option if it is already being filtered on.
       unset($filters[$type]);
     }
@@ -199,12 +231,26 @@ function node_filter_form() {
     '#attributes' => array('class' => array('filters')),
   );
   foreach ($filters as $key => $filter) {
+    /******************************************
+     * TEBPATCH (MDF) @fcasanellas 05/01/2015
+     * #XN-ND001 Permet definir el tipus de camp en els filtres
+     * OLDCODE ********************************
     $form['filters']['status']['filters'][$key] = array(
       '#type' => 'select',
       '#options' => $filter['options'],
       '#title' => $filter['title'],
       '#default_value' => '[any]',
     );
+    *******************************************
+    * NEWCODE ********************************/
+    $settings = array(
+      'type' => 'select',
+      'default_value' => '[any]',
+    );
+    foreach ($filter as $field => $value) $settings[$field] = $value;
+    foreach ($settings as $setting => $value) $form['filters']['status']['filters'][$key]['#'.$setting] = $value;
+    /******************************************
+     *  END TEBPATCH *************************/
   }
 
   $form['filters']['status']['actions'] = array(
@@ -219,6 +265,15 @@ function node_filter_form() {
     $form['filters']['status']['actions']['undo'] = array('#type' => 'submit', '#value' => t('Undo'));
     $form['filters']['status']['actions']['reset'] = array('#type' => 'submit', '#value' => t('Reset'));
   }
+  /******************************************
+   * TEBPATCH (ADD) @fcasanellas 09/01/2015
+   * #XN-ND003 Permet exportar a CSV els continguts filtrats
+   * NEWCODE *******************************/
+  $form['filters']['status']['actions']['export'] = array('#type' => 'submit', '#value' => t('Export to CSV'));
+  /******************************************
+   *  END TEBPATCH *************************/
+   
+   
 
   drupal_add_js('misc/form.js');
 
@@ -239,10 +294,21 @@ function node_filter_form() {
 function node_filter_form_submit($form, &$form_state) {
   $filters = node_filters();
   switch ($form_state['values']['op']) {
+    /******************************************
+     * TEBPATCH (ADD) @fcasanellas 09/01/2015
+     * #XN-ND003 Permet exportar a CSV els continguts filtrats
+     * NEWCODE *******************************/
+    case t('Export to CSV'):
+    /******************************************
+     *  END TEBPATCH *************************/
     case t('Filter'):
     case t('Refine'):
       // Apply every filter that has a choice selected other than 'any'.
       foreach ($filters as $filter => $options) {
+        /******************************************
+         * TEBPATCH (MDF) @fcasanellas 05/01/2015
+         * #XN-ND001 Permet definir el tipus de camp en els filtres
+         * OLDCODE ********************************
         if (isset($form_state['values'][$filter]) && $form_state['values'][$filter] != '[any]') {
           // Flatten the options array to accommodate hierarchical/nested options.
           $flat_options = form_options_flatten($filters[$filter]['options']);
@@ -251,7 +317,26 @@ function node_filter_form_submit($form, &$form_state) {
             $_SESSION['node_overview_filter'][] = array($filter, $form_state['values'][$filter]);
           }
         }
+        /*******************************************
+         * NEWCODE ********************************/
+        if (isset($form_state['values'][$filter]) && ($form_state['values'][$filter] != '[any]') && ($form_state['values'][$filter] != '')) {
+          // Flatten the options array to accommodate hierarchical/nested options.
+          $flat_options = form_options_flatten($filters[$filter]['options']);
+          // Only accept valid selections offered on the dropdown, block bad input.
+          if ((isset($flat_options[$form_state['values'][$filter]])) || (!isset($flat_options))) {
+            $_SESSION['node_overview_filter'][] = array($filter, $form_state['values'][$filter]); 
+          }
+        }
+        /*******************************************
+         * END TEBPATCH ********************************/
       }
+      /******************************************
+       * TEBPATCH (ADD) @fcasanellas 09/01/2015
+       * #XN-ND003 Permet exportar a CSV els continguts filtrats
+       * NEWCODE *******************************/
+      if ($form_state['values']['op'] == t('Export to CSV')) node_export_to_csv();
+      /******************************************
+       *  END TEBPATCH *************************/
       break;
     case t('Undo'):
       array_pop($_SESSION['node_overview_filter']);
@@ -467,7 +552,16 @@ function node_admin_nodes() {
     'type' => array('data' => t('Type'), 'field' => 'n.type'),
     'author' => t('Author'),
     'status' => array('data' => t('Status'), 'field' => 'n.status'),
+    /****************************************************
+     * TEBPATCH (MDF) @fcasanellas 28/05/2015
+     * XN-ND004 Ordena per creació enlloc de per actualització
+     * OLDCODE ******************************************
     'changed' => array('data' => t('Updated'), 'field' => 'n.changed', 'sort' => 'desc')
+    /****************************************************
+     * NEWCODE *****************************************/
+    'created' => array('data' => t('Created'), 'field' => 'n.created', 'sort' => 'desc')
+    /****************************************************
+     * END TEBPATCH ************************************/
   );
   if ($multilanguage) {
     $header['language'] = array('data' => t('Language'), 'field' => 'n.language');
@@ -525,7 +619,16 @@ function node_admin_nodes() {
       'type' => check_plain(node_type_get_name($node)),
       'author' => theme('username', array('account' => $node)),
       'status' => $node->status ? t('published') : t('not published'),
+    /****************************************************
+     * TEBPATCH (MDF) @fcasanellas 28/05/2015
+     * XN-ND004 Ordena per creació enlloc de per actualització
+     * OLDCODE ******************************************
       'changed' => format_date($node->changed, 'short'),
+     /***************************************************
+     * NEWCODE *****************************************/
+      'created' => format_date($node->created, 'short'),
+    /****************************************************
+     * END TEBPATCH ************************************/
     );
     if ($multilanguage) {
       if ($langcode == LANGUAGE_NONE || isset($languages[$langcode])) {
@@ -595,8 +698,25 @@ function node_admin_nodes() {
       '#empty' => t('No content available.'),
     );
   }
-
-  $form['pager'] = array('#markup' => theme('pager'));
+  
+  /********************************************
+   * TEBPATCH (MDF) @fcasanellas 16/09/2016
+   * #XN-ND006 Paginació lleugera   
+   * OLDCODE **********************************
+   * $form['pager'] = array('#markup' => theme('pager'));
+   ********************************************
+   * NEWCODE *********************************/
+  $current_page = ($_GET['page']) ? $_GET['page'] : 0;
+  $next = $current_page + 1;
+  $prev = $current_page - 1;
+  $pager = "  Pàgina {$next}  ";
+  if ($current_page > 0) $pager = "<a href='/admin/content?page=".$prev."'>‹‹</a> ".$pager;
+  if (count($nodes) >= 49) $pager .= "<a href='/admin/content?page=".$next."'>››</a>";
+  $pager = '<div class="pager" style="text-align:center;">'.$pager.'</div>';  
+  $form['pager'] = array('#markup' => $pager);
+  /**********************************************
+   * END TEBPATCH ******************************/
+  
   return $form;
 }
 
@@ -710,3 +830,72 @@ function node_multiple_delete_confirm_submit($form, &$form_state) {
   }
   $form_state['redirect'] = 'admin/content';
 }
+
+/******************************************
+ * TEBPATCH (ADD) @fcasanellas 09/01/2015
+ * #XN-ND003 Permet exportar a CSV els continguts filtrats
+ * NEWCODE *******************************/
+/**
+ * Export to CSV filtered nodes
+ */
+function node_export_to_csv() {
+  $query = db_select('node', 'n')->extend('PagerDefault');
+  $query->addTag('node_admin_filter');
+  node_build_filter_query($query);
+
+  if (!user_access('bypass node access')) {
+      // If the user is able to view their own unpublished nodes, allow them
+      // to see these in addition to published nodes. Check that they actually
+      // have some unpublished nodes to view before adding the condition.
+    if (user_access('view own unpublished content') && $own_unpublished = db_query('SELECT nid FROM {node} WHERE uid = :uid AND status = :status', array(':uid' => $GLOBALS['user']->uid, ':status' => 0))->fetchCol()) {
+          $query->condition(db_or()
+          ->condition('n.status', 1)
+          ->condition('n.nid', $own_unpublished, 'IN')
+        );
+      }
+    else {
+    // If not, restrict the query to published nodes.
+      $query->condition('n.status', 1);
+    }
+  }     
+    $nids = $query
+      ->fields('n',array('nid'))
+      ->limit(5000)
+      ->addTag('node_access')
+      ->orderBy('n.created', 'DESC')
+      ->execute()
+      ->fetchCol();
+    $nodes = node_load_multiple($nids);
+
+  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
+  drupal_add_http_header('Content-Disposition', 'attachment; filename = nodes.csv');
+  
+  // Instead of writing to a file, we write to the output stream.
+  $fh = fopen('php://output', 'w');
+  
+  // Add a header row
+  fputcsv($fh, array(t('NID'), t('Title'), t('Type'), t('Author'), t('Status'), t('Created'), t('Changed')));
+  
+  // Loop through our nodes and write the csv data.
+  foreach($nodes as $node) {
+    $status = $node->status ? t('published') : t('not published');
+    $user = user_load($node->uid);
+    $node_fields =  array (
+              $node->nid,
+              $node->title,
+              check_plain(node_type_get_name($node)),
+              $user->name,
+              $status,
+              format_date($node->created, 'short'),
+              format_date($node->changed, 'short'),
+            );
+    fputcsv($fh, $node_fields);
+  }
+  
+  // Close the output stream.
+  fclose($fh);
+  
+  drupal_exit();
+}
+/******************************************
+ *  END TEBPATCH *************************/
