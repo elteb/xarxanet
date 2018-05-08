@@ -3,7 +3,7 @@
 /**
  * Implementation of hook_menu().
  */
-function webform_custom_simplenews_menu($may_cache) {
+function webform_custom_simplenews_menu() {
 	$items ['admin/settings/webform_custom_simplenews'] = array (
 			'title' => 'Webform Custom Simplenews settings',
 			'page callback' => 'drupal_get_form',
