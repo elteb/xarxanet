@@ -39,6 +39,20 @@ function xn17_functions_views_pre_render(&$view) {
       }
     }
   }
+  if ($view->name == 'xn17_opinio') {
+    if($view->current_display == 'block_4') {
+      $authors = array();
+      $i = 0;
+      foreach ($view->result as $key => $res) {
+	if (in_array($res->node_field_data_field_autor_a_nid, $authors) || $i>=12) {
+	  unset($view->result[$key]);
+	} else {
+	  $authors[] = $res->node_field_data_field_autor_a_nid;
+	  $i++;
+	}
+      }
+    }
+  }
 }
 
 /**
