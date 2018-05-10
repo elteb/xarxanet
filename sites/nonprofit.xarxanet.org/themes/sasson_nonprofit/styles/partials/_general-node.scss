@@ -22,6 +22,7 @@
   .node-opinion-author {
   	@include node-box;
     h2 { @include node-title('opinion'); } 
+    .tags li a { text-transform: lowercase; }
     line-height: 1.8em;
     .views-row {
 	  @include list-display($opinion);
