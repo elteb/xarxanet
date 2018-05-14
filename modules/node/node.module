@@ -3351,15 +3351,16 @@ function _node_query_node_access_alter($query, $type) {
   }
 
   /**************************************************
-    * TEBPATCH Reaplyed 10/05/15  ********************** 
-    * Commit be068ebd
-    * OLDCODE ****************************************
+   * TEBPATCH Original: 16/02/2015.  Reaplyed: 10/05/15
+   * XN-ND006 Node_access breaks any query that has node table appearing twice with a left join
+   * Commit be068ebd
+   * OLDCODE ****************************************  
     $tables = $query->getTables();
-    * NEWCODE ****************************************
-    **/
+  /************************************************** 
+   * NEWCODE ***************************************/
   $tables = &$query->getTables();
   /**************************************************
-     * END TEBPATCH **********************************/
+   * END TEBPATCH **********************************/
   $base_table = $query->getMetaData('base_table');
   // If no base table is specified explicitly, search for one.
   if (!$base_table) {
@@ -3444,19 +3445,20 @@ function _node_query_node_access_alter($query, $type) {
       // If any grant exists for the specified user, then user has access
       // to the node for the specified operation.
       /**************************************************
-      * TEBPATCH Reaplyed 10/05/15  ********************** 
-      * Commit be068ebd
-      * OLDCODE ****************************************
-      foreach ($grants as $realm => $gids) {
-        foreach ($gids as $gid) {
-          $grant_conditions->condition(db_and()
-            ->condition('na.gid', $gid)
-            ->condition('na.realm', $realm)
-          );
-        }
-      }
-      * NEWCODE ****************************************
-      **/
+       * TEBPATCH Original: 16/02/2015.  Reaplyed: 10/05/15
+       * XN-ND006 Node_access breaks any query that has node table appearing twice with a left join
+       * Commit be068ebd
+       * OLDCODE ****************************************  
+          foreach ($grants as $realm => $gids) {
+            foreach ($gids as $gid) {
+              $grant_conditions->condition(db_and()
+                ->condition('na.gid', $gid)
+                ->condition('na.realm', $realm)
+              );
+            }
+          }
+      /************************************************** 
+       * NEWCODE ***************************************/
       $counter = 0;
       foreach ($grants as $realm => $gids) {
         foreach ($gids as $gid) {
@@ -3476,12 +3478,13 @@ function _node_query_node_access_alter($query, $type) {
         $subquery->condition($grant_conditions);
       }
       /**************************************************
-      * TEBPATCH Reaplyed 10/05/15  ********************** 
-      * Commit be068ebd
-      * OLDCODE ****************************************
+       * TEBPATCH Original: 16/02/2015.  Reaplyed: 10/05/15
+       * XN-ND006 Node_access breaks any query that has node table appearing twice with a left join
+       * Commit be068ebd
+       * OLDCODE ****************************************  
       $subquery->condition('na.grant_' . $op, 1, '>=');
-      * NEWCODE ****************************************
-      **/
+      /************************************************** 
+       * NEWCODE ***************************************/
       $subquery->where('na.grant_' . $op . ' >= 1');
       /**************************************************
       * END TEBPATCH **********************************/
@@ -3502,12 +3505,13 @@ function _node_query_node_access_alter($query, $type) {
       // Otherwise attach it to the node query itself.
       else {
       /**************************************************
-      * TEBPATCH Reaplyed 10/05/15  ********************** 
-      * Commit be068ebd
-      * OLDCODE ****************************************
+       * TEBPATCH Original: 16/02/2015.  Reaplyed: 10/05/15
+       * XN-ND006 Node_access breaks any query that has node table appearing twice with a left join
+       * Commit be068ebd
+       * OLDCODE ****************************************        
       $query->exists($subquery);
-      * NEWCODE ****************************************
-      **/
+      /************************************************** 
+       * NEWCODE ***************************************/
       if (empty($tableinfo['join type'])) {
         // If we are looking at the main table of the query, apply the
         // subquery directly.
