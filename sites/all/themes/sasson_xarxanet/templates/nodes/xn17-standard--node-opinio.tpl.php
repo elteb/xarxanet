@@ -167,8 +167,9 @@ drupal_add_html_head($element, 'facebook image');
                     <h2>Tags</h2>
                     <ul class="links tags" role="navigation">
                     <?php
-						foreach($node->taxonomy_vocabulary_1['und'] as $tag) {
-						    echo '<li>'.l( ucfirst($tag['taxonomy_term']->name), 'etiquetes/general/'.str_replace(' ', '-', $tag['taxonomy_term']->name)).'</li>';
+						foreach($node->taxonomy_vocabulary_1['und'] as $tid) {
+                            $term = taxonomy_term_load($tid['tid']);
+						    echo '<li>'.l( ucfirst($term->name), 'etiquetes/general/'.str_replace(' ', '-', $term->name)).'</li>';
 						}
                     ?>
                     </ul>
