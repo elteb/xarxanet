@@ -22,6 +22,7 @@
   .node-terms {
     @include node-box;
     h2 { @include node-title('etiquetes'); } 
+    .tags li a { text-transform: lowercase; }
     list-style-image: url("/sites/all/themes/sasson_xarxanet/images/bullets/news-list-style.png");
     line-height: 1.8em;
   }
@@ -144,6 +145,11 @@
  .section-financament {
   .node-column-images {
     .node-image { margin: $ninesixty-gutter-width 0; }
+  }
+ }
+ .financament {
+  ul.inline li.addtoany {
+    padding: 0;
   }
  }
  
