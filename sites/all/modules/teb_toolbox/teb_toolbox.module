@@ -124,12 +124,12 @@ function teb_toolbox_form_submit($form, &$form_state) {
 	if ($form['field_dsp']['und']['#value']) {
 		//Neteja el valor de tots els predecesors excepte el darrer
 		if(strpos($content_type, 'noticia_') !== false) {
-			$result = db_query("SELECT entity_id FROM {field_data_field_dsp} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid WHERE dsp.field_dsp_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid ORDER BY n.changed DESC LIMIT 10 OFFSET 10", array(
+			$result = db_query("SELECT entity_id FROM {field_data_field_dsp} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid WHERE dsp.field_dsp_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid ORDER BY n.changed DESC OFFSET 4", array(
 					':type' => $content_type,
 					':nid' => $nid,
 			));
 		}elseif(strpos($content_type, 'recurs_') !== false) {
-			$result = db_query("SELECT entity_id FROM {field_data_field_dsp} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid WHERE dsp.field_dsp_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid ORDER BY n.changed DESC LIMIT 5 OFFSET 5", array(
+			$result = db_query("SELECT entity_id FROM {field_data_field_dsp} AS dsp INNER JOIN {node} AS n ON dsp.entity_id=n.nid WHERE dsp.field_dsp_value=1 AND dsp.bundle = :type AND dsp.entity_id != :nid ORDER BY n.changed DESC OFFSET 5", array(
 					':type' => $content_type,
 					':nid' => $nid,
 			));
