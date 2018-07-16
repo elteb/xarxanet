@@ -1,0 +1,11 @@
+<?php
+/**
+ * Implementation of hook_views_api().
+ */
+function xarxanet_agenda_views_api() { 
+  return array(
+    'api' => 2,
+    // might not need the line below, but in any case, the last arg is the name of your module
+    'path' => drupal_get_path('module', 'xarxanet_agenda'),
+  );
+}
