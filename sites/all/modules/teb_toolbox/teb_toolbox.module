@@ -147,6 +147,100 @@ function teb_toolbox_form_submit($form, &$form_state) {
 }
 
 /**
+* Implements hook_panels_pane_update => Gestiona els destacats dels subportals
+**/
+
+function teb_toolbox_panels_pane_update($pane) {
+	if ($pane->type == "fieldable_panels_pane") {
+		//Posem tots els xn17_noticia_destacada_principal a 0 excepte els que s'han seleccionat en els panels que els posem a 1
+		$principalIds = [];
+		$result = db_query('SELECT field_noticia_nid FROM {field_data_field_noticia} AS fdfn
+			WHERE fdfn.bundle = :bundle', array(
+				':bundle' => "xn17_noticia_destacada_principal_2x2",
+			));
+		if ($result) {
+			while ($row = $result->fetchAssoc()) {
+				$principalIds[] = $row['field_noticia_nid'];
+				$node = node_load($row['field_noticia_nid']);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				if ($node_wrapper->field_dpp_portal->value() != 1) {
+					$node_wrapper->field_dpp_portal->set(1);
+					$node_wrapper->save();
+				}
+			}
+		}
+		$query = new EntityFieldQuery();
+		$query->entityCondition('entity_type', 'node')
+		  ->entityCondition('bundle', 'noticia_general')
+		  ->propertyCondition('nid', $principalIds, "NOT IN")
+		  ->fieldCondition('field_dpp_portal', 'value', 1, '=');
+
+		$result = $query->execute();
+		if (isset($result['node'])) {
+		  	$noticies_nids = array_keys($result['node']);
+		  	foreach($noticies_nids as $noticia_nid) {
+				$node = node_load($noticia_nid);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				$node_wrapper->field_dpp_portal->set(0);
+				$node_wrapper->save();
+		  	}
+		} 
+
+
+		//Posem tots els xn17_noticies_destacades_secundaries_2x2 a 0 excepte els que s'han seleccionat en els panels que els posem a 1
+		$secundarisIds = [];
+		$result = db_query('SELECT field_noticia_nid FROM {field_data_field_noticia} AS fdfn
+			WHERE fdfn.bundle = :bundle', array(
+				':bundle' => "xn17_noticies_destacades_secundaries_2x2",
+			));
+		if ($result) {
+			while ($row = $result->fetchAssoc()) {
+				$secundarisIds[] = $row['field_noticia_nid'];
+				$node = node_load($row['field_noticia_nid']);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				if ($node_wrapper->field_dsp_portal->value() != 1) {
+					$node_wrapper->field_dsp_portal->set(1);
+					$node_wrapper->save();
+				}
+			}
+		}
+		$result = db_query('SELECT field_noticia_ii_nid FROM {field_data_field_noticia_ii} AS fdfn
+			WHERE fdfn.bundle = :bundle', array(
+				':bundle' => "xn17_noticies_destacades_secundaries_2x2",
+			));
+		if ($result) {
+			while ($row = $result->fetchAssoc()) {
+				$secundarisIds[] = $row['field_noticia_ii_nid'];
+				$node = node_load($row['field_noticia_ii_nid']);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				if ($node_wrapper->field_dsp_portal->value() != 1) {
+					$node_wrapper->field_dsp_portal->set(1);
+					$node_wrapper->save();
+				}
+			}
+		}
+
+		$query = new EntityFieldQuery();
+		$query->entityCondition('entity_type', 'node')
+		  ->entityCondition('bundle', 'noticia_general')
+		  ->propertyCondition('nid', $secundarisIds, "NOT IN")
+		  ->fieldCondition('field_dsp_portal', 'value', 1, '=');
+
+		$result = $query->execute();
+		if (isset($result['node'])) {
+		  	$noticies_nids = array_keys($result['node']);
+		  	foreach($noticies_nids as $noticia_nid) {
+				$node = node_load($noticia_nid);
+				$node_wrapper = entity_metadata_wrapper('node', $node);
+				$node_wrapper->field_dsp_portal->set(0);
+				$node_wrapper->save();
+		  	}
+		} 
+
+	}
+}
+
+/**
  * Implements hook_filter_info().
  */
 function teb_toolbox_filter_info() {
