@@ -7,5 +7,4 @@ robots.txt
 .htpasswd
 .htaccess
 sites/all/modules/adminimal_admin_menu
-sites/all/modules/module_filter
 icon.png
