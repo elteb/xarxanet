@@ -156,15 +156,10 @@ function node_build_filter_query(SelectQueryInterface $query) {
         break;
     }
   }
-  drupal_alter('node_admin_filter_query', $query, $filter_data);  
 }
 
 /**
  * Returns the node administration filters form array to node_admin_content().
- *
- * Modules that implement hook_node_admin_filters() should specify a
- * "single_value" flag on any filter that allows only one value.  Otherwise,
- * the filter will not be hidden after a user selects a value.
  *
  * @see node_admin_nodes()
  * @see node_admin_nodes_submit()
