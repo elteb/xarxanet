@@ -1,0 +1,5 @@
+name = Custom search
+description = Custom module that  overrides default Search results behavior, sorting the results by date.
+core = 7.x
+version = 7.x-1.0
+package = Custom

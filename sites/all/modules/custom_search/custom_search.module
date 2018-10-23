@@ -1,0 +1,38 @@
+<?php
+/**
+ * Implement hook_preprocess_search_results()
+ * 
+ * @see   https://goo.gl/HSox6f
+ */
+function custom_search_preprocess_search_results() {
+  $results = $vars['results'];// via dsm (Devel module), we can see node creation time is available under the 'results' array
+  usort($results, function($v1, $v2) {
+    return $v2['node']->created - $v1['node']->created; // sort by created time, DESC order
+  });
+  $value = '';
+  $output = '';
+  $output_results = array();
+  foreach($results as $item) {
+    $value .= theme('search_result', array('result' => $item, 'module' => $vars['module']));
+    $output_results[] = $value;
+    $value = '';
+  } // store all results into an array
+  #dsm($output_results);
+  $output = implode(" ", $output_results)."<br>";
+  $vars['search_results'] = $output;
+  #dsm($vars);
+}
+
+/**
+ * Implement hook_ranking()
+ * 
+ * @see   https://goo.gl/HSox6f
+ */
+function custom_search_ranking() {
+  return array(
+    'node_created_date' => array(
+      'title' => t('Node Creation Date'),
+      'score' => 'n.created',
+    ),
+  );
+}

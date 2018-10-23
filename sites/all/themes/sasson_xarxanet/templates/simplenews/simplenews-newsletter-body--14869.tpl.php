@@ -217,10 +217,9 @@ foreach ($nodes as $row) {
 }
 ksort($financ_nodes);
 ?>
-
 <table style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px;" width="910px" style="margin:auto" cellspacing="0px">
 	<!-- CAPÇALERA -->
-	<tr style="background-color:#2f3031; color:white;"><td colspan="2" style="border: 1px solid; border-bottom: none; padding-right: 10px">
+	<tr style="background-color:#2f3031; color:white;"><td colspan="2" style="border: 1px solid #2f3031;; border-bottom: none; padding-right: 10px">
 		<p style="padding: 2px; font-size: 11px; text-align:right"> Si no visualitzes correctament el butlletí clica aquest <a href="<?php echo $pathroot.'/node/'.$node->nid?>" style="text-decoration:none; color: white; font-weight: bold;">enllaç	</p>
 	</td></tr>
 	<tr style="background-color:#2f3031;"><td>
@@ -246,9 +245,9 @@ ksort($financ_nodes);
 		<a href="<?php echo $noticia_prin_dreta['link']?>" style="text-decoration:none"><img src="<?php echo $noticia_prin_dreta['imatge']?>" alt="<?php echo $noticia_prin_dreta['alt']?>" style="border: 0 none; margin-left: 10px;"/></a>
 	</td></tr>
 	<tr><td>
-		<a href="<?php echo $noticia_prin_esq['link']?>" style="text-decoration:none; color:#53544F; font-family:Verdana; font-size:15pt; line-height: 1.3em"><?php echo $noticia_prin_esq['title']?></a>
+		<a href="<?php echo $noticia_prin_esq['link']?>" style="text-decoration:none; color:#53544F; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-weight:bold; font-size:15pt; line-height: 1.3em"><?php echo $noticia_prin_esq['title']?></a>
 	</td><td style="padding-left: 10px;">
-		<a href="<?php echo $noticia_prin_dreta['link']?>" style="text-decoration:none; color:#53544F; font-family:Verdana; font-size:15pt; line-height: 1.3em"><?php echo $noticia_prin_dreta['title']?></a>
+		<a href="<?php echo $noticia_prin_dreta['link']?>" style="text-decoration:none; color:#53544F; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-weight:bold; font-size:15pt; line-height: 1.3em"><?php echo $noticia_prin_dreta['title']?></a>
 	</td></tr>
 	<tr><td style="vertical-align: top">
 		<p style="margin: 2px 0;"><?php echo $noticia_prin_esq['teaser']?></p>
@@ -270,10 +269,10 @@ ksort($financ_nodes);
 				<tr><td style="padding-top: 10px; width: 18px; vertical-align:top">
 					<img src="<?php echo $pathroot;?>/sites/default/files/butlletins/financament/red_box.png" alt="punt vermell" width="18px"/>
 				</td><td style="padding: 10px 0 5px 5px;">
-					<a style="text-decoration:none; color:#53544F; font-family:Verdana; font-size:12pt; line-height: 1.3em" href="<?php echo $financ_node['link']?>"><?php echo $financ_node['title']?></a>
+					<a style="text-decoration:none; color:#53544F; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-weight:bold; font-size:12pt; line-height: 1.3em" href="<?php echo $financ_node['link']?>"><?php echo $financ_node['title']?></a>
 				</td></tr>
 				<tr><td colspan="2">
-					<p style="margin: 0px;"><?php echo $financ_node['teaser']?><br/><b>Convocant: </b><?php echo $financ_node['convocant']?><br/><b>Termini: </b><?php echo $financ_node['termini']?></p>
+					<p style="margin: 0px; margin-top: 8px; display:block"><?php echo $financ_node['teaser']?><br/><b>Convocant: </b><?php echo $financ_node['convocant']?><br/><b>Termini: </b><?php echo $financ_node['termini']?></p>
 					<p style="margin-top:0px; text-align: right;"><a style="text-decoration:none; font-weight:bold; color:#B2290C;" href="<?php echo $financ_node['link']?>">Més informació</a></p>
 				</td></tr>
 
@@ -323,7 +322,7 @@ ksort($financ_nodes);
 			<?php foreach ($noticia_secundaria as $secundaria) {?>
 				<a style="text-decoration:none" href="<?php echo $secundaria['link']?>"><img alt="<?php echo $secundaria['alt']?>" src="<?php echo $secundaria['imatge']?>" style="margin-top: 15px; border: 0 none"></a></td></tr>
 				<tr><td>
-					<a style="text-decoration:none; font-family:Verdana; font-size:12pt; line-height: 1.3em; color: #53544F;" href="<?php echo $secundaria['link']?>"><?php echo $secundaria['title']?></a></td></tr>
+					<a style="text-decoration:none; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-weight:bold; font-size:12pt; line-height: 1.3em; color: #53544F;" href="<?php echo $secundaria['link']?>"><?php echo $secundaria['title']?></a></td></tr>
 				<tr><td>
 					<p style="margin-top: 5px;"><?php echo $secundaria['teaser']?></p>
 				</td></tr><tr><td>
@@ -369,7 +368,6 @@ ksort($financ_nodes);
 				</p>
 			</td><td style="padding-left:15px">
 				<p>
-					<a href="http://colectic.coop" style="color:white;  font-weight:normal">Colectic</a><br />
 					<a href="http://www.ravalnet.org" style="color:white;  font-weight:normal">Associació ciutadana Ravalnet</a><br />
 					<a href="http://www.federacio.net/ca" style="color:white;  font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
 					<a href="http://magno.uab.es/fas" style="color:white;  font-weight:normal">Fundació Autònoma Solidària</a><br />

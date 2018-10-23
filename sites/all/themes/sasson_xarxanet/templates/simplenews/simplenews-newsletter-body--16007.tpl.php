@@ -32,9 +32,9 @@ $mesos = array('de gener', 'de febrer', 'de març', 'd\'abril', 'de maig', 'de j
 $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte', 'Diumenge');
 $node = $build['#node'];
 ?>
-<table style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: separate;" width="910px" style="margin:auto" cellspacing="0px">
+<table style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: separate; border: 1px solid #2f3031;" width="910px" style="margin:auto" cellspacing="0px">
 	<!-- CAPÇALERA -->
-	<tr style="background-color:#2f3031; color:white;"><td colspan="2" style="border: 1px solid; border-bottom: none; padding-right: 10px">
+	<tr style="background-color:#2f3031; color:white;"><td colspan="2" style="border: 1px solid #2f3031; border-bottom: none; padding-right: 10px">
 		<p style="padding: 2px; font-size: 11px; text-align:right"> Si no visualitzes correctament el butlletí clica aquest <a href="<?php echo $pathroot.'/node/'.$node->nid?>" style="text-decoration:none; color: white; font-weight: bold;">enllaç	</p>
 	</td></tr>
 	<tr style="background-color:#2f3031;"><td>
@@ -59,7 +59,7 @@ $node = $build['#node'];
 		<?php
 		if (($node->field_actualitat_dest_prin_noti['und'][0]['nid'] != '') || ($node->field_actualitat_dest_prin_ext['und'][0]['title'] != '')) {
 			if ($node->field_actualitat_dest_prin_epigr['und'][0]['value'] !=  '') {?>
-				<tr><td style="background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; text-align: center; padding: 4px 0px; height: 28px;"><?php echo $node->field_actualitat_dest_prin_epigr['und'][0]['value']; ?></td></tr>
+				<tr><td style="background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-weight: bold; font-size: 12pt; text-align: center; padding: 4px 0px; height: 28px;"><?php echo $node->field_actualitat_dest_prin_epigr['und'][0]['value']; ?></td></tr>
 			<?php }
 			$title = '';
 			$url = '';
@@ -78,10 +78,10 @@ $node = $build['#node'];
 			echo "	<tr><td style='padding: 0px !important;'>
 						<a href='{$url}' style='text-decoration:none'><img src='{$image}' alt='imatge destacat principal' style='border: 0 none;'/></a>
 					</td></tr><tr><td style='padding: 10px 5px;'>
-						<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 18pt; font-weight: lighter; line-height: 24px; text-decoration: none;'>{$title}</a>
+						<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 18pt; font-weight: bold; line-height: 24px; text-decoration: none;'>{$title}</a>
 						<p style='padding-top: 5px; margin: 2px 0; padding-bottom: 10px;'>{$teaser}</p>";
 			if ($node->field_actualitat_dest_prin_rel['und'][0]['nid'] != '') {
-				echo '<b>Altres informacions relacionades</b>
+				echo '<b style="margin-bottom: 10px; display: block;">Altres informacions relacionades</b>
 						<table style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;">';
 				foreach ($node->field_actualitat_dest_prin_rel['und'] as $rel) {
 					$news_node = node_load($rel['nid']);
@@ -91,11 +91,11 @@ $node = $build['#node'];
 						$autor = $news_node->field_autor_a['und'][0]['nid'];
 						$autor = node_load($autor);
 						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
-							<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>Opinió - {$autor->title}: {$news_node->title}</a></td>
+							<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 11pt'>Opinió - {$autor->title}: {$news_node->title}</a></td>
 							</tr>";
 					}else{
 						echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
-							<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
+							<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 							</tr>";
 					}
 				}
@@ -104,7 +104,7 @@ $node = $build['#node'];
 					$url = $rel['url'];
 					if ($url != ''){
 						echo "<tr><td style='vertical-align: top;'><img style='vertical-align: top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
-						<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$title}</a></td>
+						<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 11pt'>{$title}</a></td>
 						</tr>";
 					}
 				}
@@ -137,7 +137,7 @@ $node = $build['#node'];
 			$paddingright = ($i < 3) ? 20 : 0;
 			echo "<td style='vertical-align: top; padding: 0px; padding-right: {$paddingright}px'>
 				<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
-				<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$news_node->title}</a>
+				<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 12pt; line-height: 21px; text-decoration: none; font-weight: bold; margin-top: 8px;'>{$news_node->title}</a>
 				<p style='padding-top: 5px; margin: 2px 0;'>{$teaser}</p>
 			</td>";
 			$i++;
@@ -150,21 +150,21 @@ $node = $build['#node'];
 		<td style="background-color: #aeb22a; padding: 0px; height: 28px; width: 55px;">
 			<img style='margin-top: 2px; margin-left: 10px;' src='<?php echo $pathroot;?>/sites/default/files/butlletins/actualitat/cursos.png' />
 		</td>
-		<td style="background-color: #aeb22a; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 4px; height: 28px; width: 65px;">
+		<td style="background-color: #aeb22a; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-weight: bold; font-size: 12pt; padding: 4px; height: 28px; width: 65px;">
 			Cursos
 		</td>
 		<td style="width: 160px; text-align: right;">
-			<a href='<?php echo $pathroot; ?>/agenda/curs' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'>Tots els cursos</a>
+			<a href='<?php echo $pathroot; ?>/agenda/curs' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-weight: bold; color: #2f3031; font-size: 11pt; text-decoration: none;'>Tots els cursos</a>
 		</td>
 		<td style="width: 20px; padding:0px"></td>
 		<td style="background-color: #a7a74d; padding: 0px; height: 28px; width: 60px;">
 			<img style='margin-top: 2px; margin-left: 10px;' src='<?php echo $pathroot;?>/sites/default/files/butlletins/actualitat/actes.png' />
 		</td>
-		<td style="background-color: #a7a74d; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 4px; height: 28px; width: 60px; padding-left: 5px">
+		<td style="background-color: #a7a74d; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-weight: bold; font-size: 12pt; padding: 4px; height: 28px; width: 60px; padding-left: 5px">
 			Actes
 		</td>
 		<td style="width: 160px; text-align: right;">
-			<a href='<?php echo $pathroot; ?>/agenda/acte' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'>Tots els actes</a>
+			<a href='<?php echo $pathroot; ?>/agenda/acte' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; font-size: 11pt; text-decoration: none;'>Tots els actes</a>
 		</td>
 		</tr><tr>
 		<td colspan="3" style="background-color: #f6f5e3; vertical-align: top; padding: 10px 5px;">
@@ -180,7 +180,7 @@ $node = $build['#node'];
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 					echo "	<tr>
 							<td style='vertical-align:top'><img style='vertical-align:top; margin-top: 8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_cursos.jpg' /></td>
-							<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
+							<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 							</tr><tr>
 							<td></td>
 							<td style='width: 10px; vertical-align:top'><img style='vertical-align:top; margin: 3px 0 0 5px' src='{$pathroot}/sites/default/files/butlletins/actualitat/clock_cursos.png' /></td>
@@ -204,7 +204,7 @@ $node = $build['#node'];
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 					echo "	<tr>
 							<td style='vertical-align:top'><img style='vertical-align:top; margin-top: 8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_actes.jpg' /></td>
-							<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
+							<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 							</tr><tr>
 							<td></td>
 							<td style='width: 10px; vertical-align:top'><img style='vertical-align:top; margin: 3px 0 0 5px' src='{$pathroot}/sites/default/files/butlletins/actualitat/clock_actes.png' /></td>
@@ -219,7 +219,7 @@ $node = $build['#node'];
 	<!-- RECULL DE NOTÍCIES DESTACAT -->
 	<?php if ($node->field_actualitat_recull_epigraf['und'][0]['value'] != '') { ?>
 	<table cellspacing='0px' style='width: 580px; margin-top: 20px; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px;'><tr>
-		<td style="background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 4px 8px; height: 28px; width: <?php echo (strlen(strip_tags($node->field_actualitat_recull_epigraf['und'][0]['value'])))*3;?>px; border-collapse: collapse;"><?php echo $node->field_actualitat_recull_epigraf['und'][0]['value'];?></td>
+		<td style="background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-weight: bold; font-size: 12pt; padding: 4px 8px; height: 28px; width: <?php echo (strlen(strip_tags($node->field_actualitat_recull_epigraf['und'][0]['value'])))*3;?>px; border-collapse: collapse;"><?php echo $node->field_actualitat_recull_epigraf['und'][0]['value'];?></td>
 		<td style="width: 160px; text-align: right;"><a href='<?php echo $node->field_actualitat_recull_enllac['und'][0]['url']; ?>' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'><?php echo $node->field_actualitat_recull_enllac['und'][0]['title']; ?></a></td></tr><tr>
 		<td style="background-color: #ededed;" colspan="2" style="padding: 10px 5px;">
 			<table cellspacing='0px' style='font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'>
@@ -229,18 +229,18 @@ $node = $build['#node'];
 					$news_node = node_load($elem['nid']);
 					$teaser = strip_tags($news_node->field_resum['und'][0]['value']);
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
-					echo "	<tr>
+					echo "	<tr style='padding-top: 10px;'>
 						<td style='padding: 0 5px; vertical-align: top; width: 10px'><img style='vertical-align: top; margin-top: 8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
-						<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$news_node->title}</a></td>
+						<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; font-weight: bold; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$news_node->title}</a></td>
 						</tr><tr><td colspan='2' style='padding: 0 5px 5px 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
 				}
 			}
 			foreach ($node->field_actualitat_recull_ext['und'] as $i => $elem) {
 				if (!empty($node->field_actualitat_recull_ext_entr['und'][$i]['value'])) {
 					$teaser = strip_tags($node->field_actualitat_recull_ext_entr['und'][$i]['value']);
-					echo "	<tr>
+					echo "	<tr style='padding-top: 10px;'>
 					<td style='padding: 5px 5px 0 5px; vertical-align: top; width: 10px'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
-					<td style='padding: 2px;'><a href='{$elem['url']}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$elem['title']}</a></td>
+					<td style='padding: 2px;'><a href='{$elem['url']}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 12pt; line-height: 21px;'>{$elem['title']}</a></td>
 					</tr><tr><td colspan='2' style='padding: 0 5px;'><p style='margin: 2px 0;'>{$teaser}</p></td></tr>";
 				}
 			}
@@ -306,31 +306,31 @@ $node = $build['#node'];
 				$img = file_create_url($node->field_actualitat_lat_sup_img_e['und'][0]['uri']);
 				$alt = $node->field_actualitat_lat_sup_img_e['und'][0]['alt'];
 			}
-			echo "<table cellspacing='0px' style='width: 265px; margin-top: 20px; background-color: #ededed; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'><tr>";
+			echo "<table cellspacing='0px' style='width: 265px; margin-top: 0px; background-color: #ededed; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'><tr>";
 
 			if ($node->field_actualitat_lat_sup_epigraf['und'][0]['value'] != '') {
-				echo "<td style='background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_sup_epigraf['und'][0]['value']}</td>";
+				echo "<td style='background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-weight: bold; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_sup_epigraf['und'][0]['value']}</td>";
 			}
 			echo "</tr><tr><td style='padding: 0;'>
 				<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
 				</td></tr><tr><td style='padding: 10px 5px;'>
-				<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$title}</a>
+				<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 12pt; line-height: 21px; text-decoration: none; font-weight: bold;'>{$title}</a>
 				<p style='padding-top: 5px; margin: 2px 0; padding-bottom: 10px;'>{$teaser}</p>";
 			if (($node->field_actualitat_lat_sup_rel['und'][0]['nid'] != '') || ($node->field_actualitat_lat_sup_rel_ex['und'][0]['url'] != '')) {
-				echo '<b>Altres informacions relacionades</b>
+				echo '<b style="margin-bottom: 10px; display: block;">Altres informacions relacionades</b>
 				<table style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;">';
 				foreach ($node->field_actualitat_lat_sup_rel_ex['und'] as $rel) {
 					$title = $rel['title'];
 					$url = $rel['url'];
 					echo "<tr><td style='padding: 1px 5px 0 5px; vertical-align: top;'><img src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
-					<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$title}</a></td>
+					<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 11pt'>{$title}</a></td>
 					</tr>";
 				}
 				foreach ($node->field_actualitat_lat_sup_rel['und'] as $rel) {
 					$news_node = node_load($rel['nid']);
 					$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 					echo "<tr><td style='padding: 0 5px; vertical-align: top;'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_r.jpg' /></td>
-					<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
+					<td style='padding: 2px;'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 					</tr>";
 				}
 				echo '</table>';
@@ -343,7 +343,7 @@ $node = $build['#node'];
 	<!-- FINANÇAMENTS -->
 	<table cellspacing='0px' style='width: 265px; margin-top: 20px; background-color: #fef1e8; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'><tr>
 		<td style="background-color: #f37310; padding: 0px; height: 28px; width: 35px;" ><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/actualitat/financaments.png" alt="icona_finançaments" style="margin-top: 2px; margin-left: 10px;"/></td>
-		<td style="background-color: #f37310; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 4px; height: 28px; padding-left: 5px">Finançaments</td>
+		<td style="background-color: #f37310; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-weight: bold; font-size: 12pt; padding: 4px; height: 28px; padding-left: 5px">Finançaments</td>
 		</tr><tr><td colspan="2" style="padding: 10px 5px;">
 		<table style="font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;">
 			<?php
@@ -357,7 +357,7 @@ $node = $build['#node'];
 				$url = url('node/' . $news_node->nid, array('absolute' => TRUE));
 				echo "	<tr>
 						<td style='padding: 0 5px; vertical-align: top;'><img style='vertical-align:top; margin-top:8px' src='{$pathroot}/sites/default/files/butlletins/actualitat/bullet_financaments.jpg' /></td>
-						<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: lighter; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
+						<td style='padding: 2px;' colspan='2'><a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; text-decoration: none; font-size: 11pt'>{$news_node->title}</a></td>
 						</tr><tr>
 						<td></td>
 						<td style='padding: 2px 5px 10px 0; width: 10px; vertical-align: top;'><img style='vertical-align:top; margin: 3px 0 0 5px' src='{$pathroot}/sites/default/files/butlletins/actualitat/clock_financaments.png' /></td>
@@ -367,7 +367,7 @@ $node = $build['#node'];
 			?>
 		</table>
 		</td></tr>
-		<tr><td style='text-align: right; padding-bottom: 10px' colspan="2"><a href='<?php echo $pathroot; ?>/financaments' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 11pt; text-decoration: none;'>Tots els finançaments</a></td></tr>
+		<tr><td style='text-align: right; padding-bottom: 10px' colspan="2"><a href='<?php echo $pathroot; ?>/financaments' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; font-size: 11pt; text-decoration: none;'>Tots els finançaments</a></td></tr>
 	</table>
 
 	<!-- BANNERS -->
@@ -420,12 +420,12 @@ $node = $build['#node'];
 			echo "<table cellspacing='0px' style='width: 265px; margin-top: 20px; font-family: Fira Sans,Helvetica,Arial,sans-serif; font-size: 13px; border-collapse: collapse;'><tr>";
 
 			if ($node->field_actualitat_lat_inf_epigraf['und'][0]['value'] != '') {
-				echo "<td style='background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_inf_epigraf['und'][0]['value']}</td>";
+				echo "<td style='background-color: #BE1622; color: white; font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; font-weight: bold; font-size: 12pt; padding: 4px 10px; height: 28px;'>{$node->field_actualitat_lat_inf_epigraf['und'][0]['value']}</td>";
 			}
 			echo "</tr><tr><td style='padding: 0;'>
 				<a href='{$url}' style='text-decoration:none'><img src='{$img}' alt='{$alt}' style='border: 0 none;'/></a>
 				</td></tr><tr><td style='padding: 10px 5px;'>
-				<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$title}</a>
+				<a href='{$url}' style='font-family: Fira Sans SemiBold,Helvetica,Arial,sans-serif; color: #2f3031; font-weight: bold; font-size: 12pt; line-height: 21px; text-decoration: none;'>{$title}</a>
 				<p style='padding-top: 5px; margin: 2px 0;'>{$teaser}</p>";
 			echo "</td></tr></table>";
 	 	}
@@ -468,11 +468,11 @@ $node = $build['#node'];
 				</p>
 			</td><td style="padding-left:15px">
 				<p>
-					<a href="http://colectic.coop" style="color:white;  font-weight:normal">Colectic</a><br />
 					<a href="http://www.ravalnet.org" style="color:white;  font-weight:normal">Associació ciutadana Ravalnet</a><br />
 					<a href="http://www.federacio.net/ca" style="color:white;  font-weight:normal">Federació Catalana del Voluntariat Social</a><br />
 					<a href="http://magno.uab.es/fas" style="color:white;  font-weight:normal">Fundació Autònoma Solidària</a><br />
 					<a href="http://www.escoltesiguies.cat" style="color:white;  font-weight:normal">Minyons Escoltes i Guies de Catalunya (MEG)</a><br />
+					<a href="http://www.tothomweb.com" style="color:white;  font-weight:normal">TOTHOMweb</a><br />
 				</p>
 			</td></tr>
 		</table>
