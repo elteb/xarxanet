@@ -1,0 +1,61 @@
+/* CSS Styles */
+
+.page-node-webform-mailing pre {
+	margin-bottom: 120px;
+}
+
+.page-node-webform-mailing #console .messages {
+	margin: 0.70711em auto;
+	display: table;
+	width: 100%;
+	max-width: 768px;
+}
+
+#webform-mailing-form {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom: 2px solid #ddd;
+	padding: 15px;
+	border-radius: 3px;
+	display: table;
+	width: 100%;
+	max-width: 768px;
+	margin: 0 auto 30px;
+	box-sizing: border-box;
+}
+
+#webform-mailing-form .header h1 {
+	font-size: 20px;
+}
+
+#webform-mailing-form .header p {
+	margin-bottom: 30px;
+}
+
+#webform-mailing-form label {
+	margin-top: 15px;
+	display: block;
+}
+
+#webform-mailing-form .form-radios {
+	margin: 15px 0;
+}
+
+#webform-mailing-form .form-type-radio {
+	margin-bottom: 5px;
+}
+
+#webform-mailing-form .form-type-radio label.option {
+	display: inline;
+	cursor: pointer;
+}
+
+#webform-mailing-form .form-type-textfield input {
+	width: 100%;
+}
+
+#webform-mailing-form .fieldset-wrapper ul {
+	background-color: #f6f6f6;
+	border-radius: 3px;
+	padding: 15px 15px 15px 35px;
+}
