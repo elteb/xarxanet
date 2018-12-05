@@ -1,0 +1,7 @@
+name = Christmas
+description = Simply adds extra CSS & Javascript for a Christmas decoration of the website.
+package = Custom
+core = 7.x
+
+stylesheets[all][] = css/christmas.css
+scripts[] = js/christmas.js
