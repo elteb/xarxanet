@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_preprocess_html()
+ * 
+ * This hook will allow to add some CSS & JS files to the header,
+ * in order to add some Christmas decorations & behaviors to the website
+ * without having to modify or override the default theme styles or javascript
+ */
+
+function christmas_preprocess_html(&$vars) {
+
+  // Adding CSS to the website's header
+
+  drupal_add_css(drupal_get_path('module', 'christmas') . '/css/christmas.css',
+    array(
+      'group' => CSS_THEME, 
+      'weight' => '100', 
+      'every_page' => TRUE
+    )
+  );
+
+  // Adding JS to the website's header
+  
+  drupal_add_js(drupal_get_path('module', 'christmas') . '/js/christmas.js', 
+    array(
+      'group' => JS_THEME, 
+      'weight' => '100', 
+      'every_page' => TRUE
+    )
+  );
+}
