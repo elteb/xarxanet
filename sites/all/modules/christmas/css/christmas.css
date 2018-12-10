@@ -1,3 +1,59 @@
 /**
  * Christmas CSS Styles 
  */
+
+.christmas {
+  background-image: url(../img/christmas_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  background-attachment: fixed;
+}
+
+.christmas #third-header:after {
+  content: "";
+  width: 100%;
+  height: 64px;
+  display: block;
+  background-image: url(../img/garland_medium.png);
+  background-repeat: repeat-x;
+  position: relative;
+  bottom: 6px;
+  background-size: 8%;
+}
+
+.christmas #site-logo .navbar-brand {
+  position: relative;
+}
+
+.christmas #site-logo .navbar-brand:before {
+  content: "";
+  width: 43px;
+  height: 41px;
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: -15px;
+  z-index: 2;
+  background-image: url(../img/hat.png);
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+
+.christmas #site-logo .navbar-brand:after {
+  content: "";
+  width: 83px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: -55px;
+  z-index: 2;
+  background-image: url(../img/balls.png);
+  background-repeat: no-repeat;
+  background-size: 75%;
+}
+
+.christmas #main-footer {
+  background-color: #ededed;
+}

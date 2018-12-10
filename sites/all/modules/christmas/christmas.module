@@ -29,4 +29,8 @@ function christmas_preprocess_html(&$vars) {
       'every_page' => TRUE
     )
   );
+
+  // Adding a custom class to the body tag
+  
+  $vars['classes_array'][] = 'christmas';
 }
