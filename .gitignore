@@ -8,3 +8,4 @@ robots.txt
 .htaccess
 sites/all/modules/adminimal_admin_menu
 icon.png
+sites/all/modules/webinar_mails/*
