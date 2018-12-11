@@ -156,6 +156,13 @@ function node_build_filter_query(SelectQueryInterface $query) {
         break;
     }
   }
+  /*********************************************************
+   * TEBPATCH (ADD) @fcasanellas 26/11/14
+   * #XN-TXT007 Recupera codi per a afegir filters a la filtra de contingut via hook_node_admin_filter_query_alter
+   * NEWCODE ***********************************************/
+  drupal_alter('node_admin_filter_query', $query, $filter_data);  
+  /*********************************************************
+   * END TEBPATCH ******************************************/
 }
 
 /**

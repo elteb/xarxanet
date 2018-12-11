@@ -1,0 +1,151 @@
+/**
+ * Christmas CSS Styles 
+ */
+
+.christmas {
+  background-image: url(../img/xmas_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  background-attachment: fixed;
+}
+
+/* Centered garland in the footer */
+
+@media (min-width: 768px) {
+
+  .christmas #third-header:after {
+    content: "";
+    width: 200px;
+    height: 45px;
+    display: block;
+    background-image: url(../img/xmas_header_garland.png);
+    background-repeat: no-repeat;
+    top: 22px;
+    background-position: 50% 0%;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    background-size: 100%;
+  }
+
+  .logged-in.christmas #third-header:after {
+    top: 68px;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .christmas #third-header:after {
+    top: 31px;
+  }
+
+  .logged-in.christmas #third-header:after {
+    top: 60px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .christmas #third-header:after {
+    width: 300px;
+    height: 70px;
+    top: 22px;
+    margin-left: -150px;
+  }
+
+  .logged-in.christmas #third-header:after {
+    top: 51px;
+  }
+}
+
+/* Website's regular logo */
+
+.christmas #site-logo .navbar-brand {
+  position: relative;
+}
+
+.christmas #site-logo .navbar-brand:before {
+  content: "";
+  width: 43px;
+  height: 41px;
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: -15px;
+  z-index: 2;
+  background-image: url(../img/xmas_hat.png);
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+
+.christmas #site-logo .navbar-brand:after {
+  content: "";
+  width: 83px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: -55px;
+  z-index: 2;
+  background-image: url(../img/xmas_xmas_balls.png);
+  background-repeat: no-repeat;
+  background-size: 75%;
+}
+
+/* Website's sticky logo */
+
+.christmas .sticky-logo {
+  position: relative;
+}
+
+.christmas .sticky-logo:before {
+  content: "";
+  width: 43px;
+  height: 41px;
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: -15px;
+  z-index: 2;
+  background-image: url(../img/xmas_hat.png);
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+
+.christmas .sticky-logo:after {
+  content: "";
+  width: 83px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: -55px;
+  z-index: 2;
+  background-image: url(../img/xmas_balls.png);
+  background-repeat: no-repeat;
+  background-size: 75%;
+}
+
+/* Website's footer */
+
+.christmas #footer {
+  padding-bottom: 30px;
+}
+
+.christmas #main-footer {
+  background-color: #ededed;
+}
+
+body.christmas:after {
+  content: "";
+  width: 100%;
+  height: 50px;
+  display: block;
+  background-image: url(../img/xmas_footer_garland.png);
+  background-repeat: repeat-x;
+  position: fixed;
+  left: 0;
+  bottom: -15px;
+  z-index: 9998;
+}

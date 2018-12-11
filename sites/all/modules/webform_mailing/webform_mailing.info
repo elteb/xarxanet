@@ -1,0 +1,8 @@
+name = Webform mailing
+description = Adds a mailing feature to the webform module
+core = 7.x
+dependencies[] = webform
+version = 7.x-1.0
+package = Custom
+
+stylesheets[all][] = css/webform_mailing.admin.css
