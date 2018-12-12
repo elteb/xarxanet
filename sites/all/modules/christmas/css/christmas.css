@@ -88,7 +88,7 @@
   top: 8px;
   right: -55px;
   z-index: 2;
-  background-image: url(../img/xmas_xmas_balls.png);
+  background-image: url(../img/xmas_balls.png);
   background-repeat: no-repeat;
   background-size: 75%;
 }
@@ -120,7 +120,7 @@
   display: block;
   position: absolute;
   top: 8px;
-  right: -55px;
+  right: -70px;
   z-index: 2;
   background-image: url(../img/xmas_balls.png);
   background-repeat: no-repeat;
