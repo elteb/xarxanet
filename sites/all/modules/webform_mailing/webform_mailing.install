@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_enable() 
+ */
+
+function webform_mailing_enable() {
+  $current = variable_get('mail_system', array('default-system' => 'DefaultMailSystem'));
+  $addition = array('webform_mailing' => 'WebformMailingMailSystem');
+  variable_set('mail_system', array_merge($current, $addition));
+}
+
+/**
+ * Implements hook_disable() 
+ */
+function webform_mailing_disable() {
+  $mail_system = variable_get('mail_system', array('default-system' => 'DefaultMailSystem'));
+  unset($mail_system['webform_mailing']);
+  variable_set('mail_system', $mail_system);
+}
