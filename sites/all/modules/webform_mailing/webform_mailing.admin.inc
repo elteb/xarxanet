@@ -102,6 +102,7 @@ function webform_mailing_form($form, &$form_state, $arguments) {
 
     $form['test_mail'] = array(
       '#title' => t('Test recipient'),
+      '#attributes' => array('placeholder' => t('somebody@example.com')),
       '#description' => t('Set an e-mail address to test this mailing.'),
       '#type' => 'textfield',
       '#maxlength' => 120,
@@ -139,6 +140,7 @@ function webform_mailing_form($form, &$form_state, $arguments) {
   	$form['subject'] = array(
       '#title' => t('E-mail subject'),
       '#description' => t('Only plain text is allowed for this field.'),
+      '#attributes' => array('placeholder' => t('Your subject')),
       '#type' => 'textfield',
       '#maxlength' => 60,
       '#required' => FALSE,
@@ -155,7 +157,7 @@ function webform_mailing_form($form, &$form_state, $arguments) {
 
     $form['message'] = array(
       '#title' => t('E-mail body'),
-      '#description' => t('Only plain text is allowed for this field.'),
+      '#description' => t('You can use HTML tags for this field.'),
       '#type' => 'textarea',
       '#required' => FALSE,
       '#default_value' => $message_value,
