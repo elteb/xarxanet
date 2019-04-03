@@ -1,7 +1,10 @@
 teb_scripts
 sites/default
 sites/nonprofit.xarxanet.org/files
+sites/nonprofit.xarxanet.local
+sites/nonprofit.xarxanet.local/*
 sites/nonprofit.xarxanet.org/settings.php
+sites/nonprofit.xarxanet.org/themes/xn19_nonprofit/node_modules
 xnt
 robots.txt
 .htpasswd
@@ -9,3 +12,4 @@ robots.txt
 sites/all/modules/adminimal_admin_menu
 icon.png
 sites/all/modules/webinar_mails/*
+.DS_Store
