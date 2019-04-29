@@ -4962,3 +4962,7 @@ label {
   font-size: 12px;
   cursor: pointer;
 }
+
+.theme-info .theme-description {
+  max-width: 295px;
+}
