@@ -1,0 +1,46 @@
+<?php
+
+/**
+* Implements hook_schema().
+*/
+
+function addtoany_counter_schema() {
+
+  $schema = array();
+  
+  $schema['addtoany_counter'] = array(
+    'description' => 'The base table where to store the counter of shares of each page.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary key of the record.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'node_id' => array(
+        'description' => 'The id of the node being shared.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'count' => array(
+        'description' => 'The count of sharings for this page.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+
+/**
+* Implements hook_uninstall().
+*/
+
+function addtoany_counter_uninstall() {
+  if (db_table_exists('addtoany_counter')) {
+    db_drop_table('addtoany_counter');
+  }
+}
