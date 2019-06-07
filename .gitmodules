@@ -9,4 +9,4 @@
 	url = https://github.com/colectic/xn17.git
 [submodule "sites/nonprofit.xarxanet.org/themes/xn19_nonprofit"]
 	path = sites/nonprofit.xarxanet.org/themes/xn19_nonprofit
-	url = https://github.com/tothomweb/xn19_nonprofit.git
+	url = ../../tothomweb/xn19_nonprofit.git
