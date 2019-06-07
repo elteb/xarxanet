@@ -102,6 +102,7 @@ function webform_mailing_form($form, &$form_state, $arguments) {
 
     $form['test_mail'] = array(
       '#title' => t('Test recipient'),
+      '#attributes' => array('placeholder' => t('somebody@example.com')),
       '#description' => t('Set an e-mail address to test this mailing.'),
       '#type' => 'textfield',
       '#maxlength' => 120,
@@ -139,6 +140,7 @@ function webform_mailing_form($form, &$form_state, $arguments) {
   	$form['subject'] = array(
       '#title' => t('E-mail subject'),
       '#description' => t('Only plain text is allowed for this field.'),
+      '#attributes' => array('placeholder' => t('Your subject')),
       '#type' => 'textfield',
       '#maxlength' => 60,
       '#required' => FALSE,
@@ -155,7 +157,7 @@ function webform_mailing_form($form, &$form_state, $arguments) {
 
     $form['message'] = array(
       '#title' => t('E-mail body'),
-      '#description' => t('Only plain text is allowed for this field.'),
+      '#description' => t('You can use HTML tags for this field.'),
       '#type' => 'textarea',
       '#required' => FALSE,
       '#default_value' => $message_value,
@@ -236,15 +238,13 @@ function webform_mailing_form_submit($form, &$form_state) {
 	$form_state['storage']['mode'] = $form_state['values']['mode'];
 	$form_state['storage']['test_mail'] = $form_state['values']['test_mail'];
 	$form_state['storage']['subject'] = $form_state['values']['subject'];
-	$form_state['storage']['message'] = strip_tags($form_state['values']['message']);
-	$form_state['storage']['message'] = str_replace("\r\n", '<br>', $form_state['storage']['message']);
+	$form_state['storage']['message'] = $form_state['values']['message'];
 
   // Preparing the e-mail
 
+  $from = 'no-reply@xarxanet.org';
   $subject = $form_state['storage']['subject'];
   $msg = $form_state['storage']['message'];
-  $headers  = "From: Xarxanet <no-reply@xarxanet.org> \r\n";
-  $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 
   // Set the mode (for real or test)
   
@@ -268,9 +268,29 @@ function webform_mailing_form_submit($form, &$form_state) {
     // For real
     
     if ($form_state['storage']['mode'] == 'real') {
+      $message = '<html>
+      <head>
+      <meta charset="UTF-8">
+      <title>Webinars Xarxanet</title>
+      <style>
+      h1{color:#333333;}
+      strong{color:#333333;}
+      a{color:#BE1622;}
+      body{font-family:Helvetica;}
+      </style>
+      </head>
+      <body>' . $msg . '</body>
+      </html>'; 
+      $headers  = 'MIME-Version: 1.0' . "\r\n";
+      $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+      $headers .= 'From: XARXANET <no-reply@xarxanet.org>' . "\r\n";
+
       foreach ($recipients as $recipient) {
         $to = $recipient;
-  	    mail($to, $subject, $msg, $headers);
+        
+        // Send the e-mail
+
+        mail($to, $subject, $message, $headers);
   	    $count++;
   	  }
       drupal_set_message(t('Mailing sent successfully to @count recipients.', array('@count' => $count)), 'status');
@@ -281,7 +301,26 @@ function webform_mailing_form_submit($form, &$form_state) {
     else {
       $to = $form_state['storage']['test_mail'];
       $subject = '[TEST E-MAIL] ' . $subject;
-      mail($to, $subject, $msg, $headers);
+      $message = '<html>
+      <head>
+      <meta charset="UTF-8">
+      <title>Webinars Xarxanet</title>
+      <style>
+      h1{color:#333333;}
+      strong{color:#333333;}
+      a{color:#BE1622;}
+      body{font-family:Helvetica;}
+      </style>
+      </head>
+      <body>' . $msg . '</body>
+      </html>'; 
+      $headers  = 'MIME-Version: 1.0' . "\r\n";
+      $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+      $headers .= 'From: XARXANET <no-reply@xarxanet.org>' . "\r\n";
+
+      // Send the e-mail
+
+      mail($to, $subject, $message, $headers);
       $count++;
       drupal_set_message('Test mailing sent successfully!', 'status');
     }

@@ -1,0 +1,93 @@
+<?php
+
+/**
+* Implements hook_init
+*/
+
+function addtoany_counter_init() {
+  
+  drupal_add_js(array('addtoany_counter' => array('url' => url('ajax/addtoany_counter/update'))), 'setting');
+  drupal_add_js(drupal_get_path('module', 'addtoany_counter') . '/js/addtoany_counter.js');
+}
+
+/**
+* Implements hook_menu
+*/
+
+function addtoany_counter_menu() {
+  
+  $items['ajax/addtoany_counter/update'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'addtoany_counter_callback',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+* Implements hook_menu
+*/
+
+function addtoany_counter_views_api() {
+  
+  return array(
+    'api' => '3',
+    'path' => drupal_get_path('module', 'addtoany_counter') . '/includes/views',
+  );
+}
+
+/**
+* Implements a callback
+*/
+
+function addtoany_counter_callback() {
+
+  if (isset($_GET['action']) && $_GET['action'] == 'get' && isset($_GET['nid']) &&  is_numeric($_GET['nid'])) {
+    
+    $nid = $_GET['nid'];
+    $data = NULL;
+    
+    try {
+      $query = db_select('addtoany_counter', 't');
+      $query->addField('t', 'count', 'count');
+      $query->condition('t.node_id', $nid);
+      $results = $query->execute();
+      
+      foreach ($results as $row) {
+        $data = $row->count;
+      }
+
+      if (empty($data)) {
+        try {
+          $query = db_insert('addtoany_counter')
+          ->fields(array(
+            'node_id' => $nid,
+            'count' => 1,
+          ))
+          ->execute();
+        }
+        catch (Exception $e) {
+          watchdog_exception('type', $e);
+        }
+      }
+      else {
+        try {
+          $count = $data + 1;
+          $query = db_update('addtoany_counter')
+          ->fields(array(
+            'count' => $count,
+          ))
+          ->condition('node_id', $nid)
+          ->execute();
+        }
+        catch (Exception $e) {
+          watchdog_exception('type', $e);
+        }
+      }
+    }
+    catch (Exception $e) {
+      watchdog_exception('type', $e);
+    }
+  }
+}

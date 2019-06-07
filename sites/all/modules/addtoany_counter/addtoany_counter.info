@@ -1,0 +1,8 @@
+name = AddToAny Counter
+description = This custom module extends the original AddToAny module, registering a counter of sharings for each page.
+core = 7.x
+version = 7.x-1.0
+package = Custom
+dependencies[] = views
+dependencies[] = addtoany
+scripts[] = js/addtoany_counter.js
