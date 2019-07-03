@@ -1,0 +1,36 @@
+<?php
+/**
+ * Implements hook_field_widget_form_alter()
+ * The following overrides the title and description of the fields of type image
+ * 
+ * @see   https://drupal.stackexchange.com/a/54911
+ */
+function custom_image_attributes_field_widget_form_alter(&$element, &$form_state, $context) {
+  if ($context['field']['type'] == 'image' && $context['instance']['widget']['type'] == 'image_image' && !empty($context['instance']['settings']['alt_field'])) {
+    foreach (element_children($element) as $delta) {
+      $element[$delta]['#process'][] = 'custom_image_attributes_field_widget_process';
+    }
+  }
+}
+
+/**
+ * Callback function
+ */
+function custom_image_attributes_field_widget_process($element, &$form_state, $form) {
+  // Verify the element is accessible to the currently logged-in user.
+  // Differently, it will not be visible to the user, and it is useless to alter the description, or the title.
+  if ($element['alt']['#access']) {
+    $element['alt']['#title'] = t('Alternate text and image caption');
+    $element['alt']['#description']  = t('The source is appended to the text of the caption.');
+    $element['alt']['#description'] .= '<br>';
+    $element['alt']['#description'] .= t('In addition, it also will be used as the image\'s caption text.');
+  }
+  if ($element['title']['#access']) {
+    $element['title']['#title'] = t('Source of the image');
+    $element['title']['#description']  = t('This text will be used as the source of the image, and will be appended to the text of the caption.');
+    $element['title']['#description'] .= '<br>';
+    $element['title']['#description'] .= t('The pattern is "Source: [Value]"');
+  }
+
+  return $element;
+}

@@ -1,0 +1,16 @@
+name = FlexSlider
+description = Integrate the FlexSlider 2 library with Drupal (modified by TOTHOMweb)
+core = 7.x
+package = Custom
+
+; Dependencies
+dependencies[] = libraries (>=2.x)
+dependencies[] = ctools
+dependencies[] = image
+
+; Files
+files[] = theme/flexslider.theme.inc
+files[] = flexslider.test
+
+; Configuration link
+configure = admin/config/media/flexslider
