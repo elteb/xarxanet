@@ -1,0 +1,4 @@
+name = Custom Image Attributes
+description = This custom module overrides the standard attribute fields of all the images
+core = 7.x
+package = Custom
