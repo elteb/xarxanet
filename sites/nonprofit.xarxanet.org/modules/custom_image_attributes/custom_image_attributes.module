@@ -6,9 +6,11 @@
  * @see   https://drupal.stackexchange.com/a/54911
  */
 function custom_image_attributes_field_widget_form_alter(&$element, &$form_state, $context) {
-  if ($context['field']['type'] == 'image' && $context['instance']['widget']['type'] == 'image_image' && !empty($context['instance']['settings']['alt_field'])) {
-    foreach (element_children($element) as $delta) {
-      $element[$delta]['#process'][] = 'custom_image_attributes_field_widget_process';
+  if (isset($context['form']['#node']->type) && ($context['form']['#node']->type == 'article' || $context['form']['#node']->type == 'opinion')) {
+    if ($context['field']['type'] == 'image' && $context['instance']['widget']['type'] == 'image_image' && !empty($context['instance']['settings']['alt_field'])) {
+      foreach (element_children($element) as $delta) {
+        $element[$delta]['#process'][] = 'custom_image_attributes_field_widget_process';
+      }
     }
   }
 }
@@ -21,15 +23,17 @@ function custom_image_attributes_field_widget_process($element, &$form_state, $f
   // Differently, it will not be visible to the user, and it is useless to alter the description, or the title.
   if ($element['alt']['#access']) {
     $element['alt']['#title'] = t('Alternate text and image caption');
-    $element['alt']['#description']  = t('The source is appended to the text of the caption.');
+    $element['alt']['#description']  = t('This text will be used by screen readers, search engines, or when the image cannot be loaded.');
     $element['alt']['#description'] .= '<br>';
-    $element['alt']['#description'] .= t('In addition, it also will be used as the image\'s caption text.');
+    $element['alt']['#description'] .= t('In addition, it also will be used as the caption text of the image.');
+    $element['alt']['#description'] .= '<br>';
+    $element['alt']['#description'] .= t('Don\'t add an ending period (.) in this field. Drupal will do it for you, if needed.');
   }
   if ($element['title']['#access']) {
     $element['title']['#title'] = t('Source of the image');
-    $element['title']['#description']  = t('This text will be used as the source of the image, and will be appended to the text of the caption.');
+    $element['title']['#description']  = t('This text will be used as the source of the image, and will be appended at the end of the image caption.');
     $element['title']['#description'] .= '<br>';
-    $element['title']['#description'] .= t('The pattern is "Source: [Value]"');
+    $element['title']['#description'] .= t('The resulting string will be: <i>Source: [value]</i>.');
   }
 
   return $element;

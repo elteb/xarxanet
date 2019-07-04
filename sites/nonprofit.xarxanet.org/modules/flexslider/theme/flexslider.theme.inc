@@ -23,22 +23,29 @@ function theme_flexslider_list(&$variables) {
     $output .= "<$type" . drupal_attributes($attributes) . '>';
     foreach ($items as $item) {
 
-      // @start Overriden by TOTHOMweb
+      // @start Overrides by TOTHOMweb
       
+      // First at all, let's remove ending periods on both strings, if any.
+      // This snippet will manage the ending periods in all cases.
+      $alternate_text = rtrim($item['item']['alt'], '.');
+      $source = t('Source: ') . rtrim($item['item']['title'], '.');
+      // Build the custom caption text
       if (!empty($item['item']['alt']) && !empty($item['item']['title'])) {
-        $item['caption'] = $item['item']['alt'] . '. ' . t('Source: ') . $item['item']['title'];
+        $item['caption'] = $alternate_text . '. ' . $source . '.';
       }
       elseif (empty($item['item']['alt']) && !empty($item['item']['title'])) {
-        $item['caption'] = t('Source: ') . $item['item']['title'];
+        $item['caption'] = $source . '.';
       }
       elseif (!empty($item['item']['alt']) && empty($item['item']['title'])) {
-        $item['caption'] = $item['item']['alt'];
+        $item['caption'] = $alternate_text . '.';
       }
-      // Once the title has been concatenated to the "Alternate text" attribute, 
-      // I'm removing it, to avoid render it as a real tooltip
+      // Once the title has been used to build the caption, 
+      // let's going to remove it, to avoid render it as a real tooltip.
       $item['item']['title'] = NULL;
+      // Override the Alternate text, removing the ending period, if any.
+      $item['item']['alt'] = $alternate_text;
       
-      // @end Overriden by TOTHOMweb
+      // @end Overrides by TOTHOMweb
 
       $caption = '';
       if (!empty($item['caption'])) {
