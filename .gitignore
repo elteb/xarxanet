@@ -13,3 +13,4 @@ icon.png
 sites/all/modules/webinar_mails/*
 .DS_Store
 sites/nonprofit.xarxanet.local
+.vscode
