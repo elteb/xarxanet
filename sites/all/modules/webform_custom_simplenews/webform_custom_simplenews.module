@@ -141,8 +141,23 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			$contents = explode(',', $contents->custom_content);
 			$lapse = variable_get ('webform_custom_simplenews_lapse', '7');
 			$created = time() - $lapse * 86400;
+			
+			/**
+			 * @begin XARXANET-261
+			 *
+			 * Ensure that the newsletter will get all the articles from the 
+			 * first moment of the day defined in "$created", in order to compose
+			 * all the automated content of the second half of the newsletter
+			 */
+			
+			$created = strtotime(date('d-m-Y 00:00:00', $created));
+			
+			/**
+			 * @end XARXANET-261
+			 */
+			
 			foreach ( $contents as $content ) {
-				if ($content) {				
+				if ($content) {
 					$section_nodes = array();
 					$query = "SELECT n.nid FROM field_data_{$field} AS f INNER JOIN node as n ON f.entity_id=n.nid WHERE f.{$field}_tid={$content} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
 					//$query = "SELECT nid FROM node WHERE type = '{$content}' AND created >= {$created} AND status = 1 ORDER BY created DESC";
