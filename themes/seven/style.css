@@ -988,3 +988,40 @@ div.add-or-remove-shortcuts {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+
+/**
+ * @BEGIN - XARXANET-267
+ *
+ * Adding some custom CSS styles to "/admin/content" page
+ */
+
+.view-admin-views-node .form-item {
+  padding: 0;
+}
+
+.view-admin-views-node .form-item input {
+  border-radius: 5px;
+  height: 21px;
+}
+
+.view-admin-views-node .form-item input#edit-title {
+  min-width: 200px;
+}
+
+.view-admin-views-node .form-item select {
+  border-radius: 5px;
+  height: 27px;
+}
+
+.view-admin-views-node #edit-created-wrapper .views-operator,
+.view-admin-views-node #edit-created-wrapper .views-widget {
+  display: inline-block;
+}
+
+.view-admin-views-node td.views-field-created,
+.view-admin-views-node td.views-field-changed {
+  font-size: 11px;
+  min-width: 130px;
+}
+
+/* @END - XARXANET-267 */
