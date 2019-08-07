@@ -147,7 +147,10 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			 *
 			 * Ensure that the newsletter will get all the articles from the 
 			 * first moment of the day defined in "$created", in order to compose
-			 * all the automated content of the second half of the newsletter
+			 * all the automated content of the second half of the newsletter.
+			 * 
+			 * IMPORTANT: Notice that the following only will work properly if the 
+			 * user is in the same timezone of the webserver (in our case, it is true).
 			 */
 			
 			$created = strtotime(date('d-m-Y 00:00:00', $created));
