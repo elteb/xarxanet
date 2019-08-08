@@ -1,5 +1,5 @@
-name = Link
-description = Defines simple link field types.
+name = Link (Modified module)
+description = Defines simple link field types. (This module has been modified by TOTHOMweb. Don't update it).
 core = 7.x
 package = Fields
 
@@ -18,10 +18,3 @@ files[] = tests/link.validate.test
 ; Views Handlers
 files[] = views/link_views_handler_argument_target.inc
 files[] = views/link_views_handler_filter_protocol.inc
-
-; Information added by Drupal.org packaging script on 2017-07-03
-version = "7.x-1.4+21-dev"
-core = "7.x"
-project = "link"
-datestamp = "1499094845"
-
