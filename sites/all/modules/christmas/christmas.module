@@ -42,7 +42,7 @@ function christmas_preprocess_html(&$vars) {
 
       // Adding a custom class to the body tag
       //selector skin
-      $vars['classes_array'][] = 'christmas';
+      $vars['classes_array'][] = 'christmas2019';
   }
 }
 }
