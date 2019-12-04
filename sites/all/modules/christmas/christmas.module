@@ -10,30 +10,56 @@
 
 function christmas_preprocess_html(&$vars) {
 
+
   if (!path_is_admin(current_path())) {
+
+    $t = time();
+    $actual = date("d-m-Y",$t);
+    $inici_christmas = variable_get('data_inici_christmas');
+    $fi_christmas = variable_get('data_final_christmas');
+
+    if($actual >= $inici_christmas && $actual < $fi_christmas) {
 
     // Adding CSS to the website's header
 
-    drupal_add_css(drupal_get_path('module', 'christmas') . '/css/christmas.css',
-      array(
-        'group' => CSS_THEME, 
-        'weight' => '100', 
-        'every_page' => TRUE
-      )
-    );
+      drupal_add_css(drupal_get_path('module', 'christmas') . '/css/christmas.css',
+        array(
+          'group' => CSS_THEME, 
+          'weight' => '100', 
+          'every_page' => TRUE
+        )
+      );
 
-    // Adding JS to the website's header
-    
-    drupal_add_js(drupal_get_path('module', 'christmas') . '/js/christmas.js', 
-      array(
-        'group' => JS_THEME, 
-        'weight' => '100', 
-        'every_page' => TRUE
-      )
-    );
+      // Adding JS to the website's header
+      
+      drupal_add_js(drupal_get_path('module', 'christmas') . '/js/christmas.js', 
+        array(
+          'group' => JS_THEME, 
+          'weight' => '100', 
+          'every_page' => TRUE
+        )
+      );
 
-    // Adding a custom class to the body tag
-    
-    $vars['classes_array'][] = 'christmas';
+      // Adding a custom class to the body tag
+      //selector skin
+      $vars['classes_array'][] = 'christmas2019';
   }
+}
+}
+
+
+function christmas_menu() {
+
+  $items['admin/config/system/christmas'] = array(
+    'title' => t('Aspecte de Nadal'),
+    'description' => t('Configuració de la decoració de Nadal'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('christmas_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'christmas.admin.inc',
+    'file path' => drupal_get_path('module', 'christmas'),
+  );
+
+  return $items;
+
 }

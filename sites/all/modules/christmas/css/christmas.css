@@ -1,5 +1,5 @@
 /**
- * Christmas CSS Styles 
+ * christmas2019 CSS Styles 
  */
 
 .christmas {
@@ -148,4 +148,163 @@ body.christmas:after {
   left: 0;
   bottom: -15px;
   z-index: 9998;
+}
+
+
+/*------------------------------- TEMA 2019 ----------------------*/
+
+/**
+ * Christmas CSS Styles 
+ */
+
+ .christmas2019 {
+  background-image: url(../img/xmas_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  background-attachment: fixed;
+}
+
+/* Centered garland in the footer */
+
+@media (min-width: 768px) {
+
+  .christmas2019 #third-header:after {
+    content: "";
+    width: 200px;
+    height: 45px;
+    display: block;
+    background-image: url(../img/xmas_header_garland.png);
+    background-repeat: no-repeat;
+    top: 22px;
+    background-position: 50% 0%;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    background-size: 100%;
+  }
+
+  .logged-in.christmas2019 #third-header:after {
+    top: 68px;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .christmas2019 #third-header:after {
+    top: 31px;
+  }
+
+  .logged-in.christmas2019 #third-header:after {
+    top: 60px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .christmas2019 #third-header:after {
+    width: 300px;
+    height: 70px;
+    top: 22px;
+    margin-left: -150px;
+  }
+
+  .logged-in.christmas2019 #third-header:after {
+    top: 51px;
+  }
+}
+
+@media (max-width: 768px) {
+  .christmas2019 #site-logo .navbar-brand:after {
+    top: -14px;
+  }
+}
+
+@media (max-width: 900px) {
+  body.christmas2019:after {
+    display: none;
+  }
+}
+
+/* Website's regular logo */
+
+.christmas2019 #site-logo .navbar-brand {
+  position: relative;
+}
+
+.christmas2019 #site-logo .navbar-brand:before {
+  content: "";
+  width: 43px;
+  height: 41px;
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: -15px;
+  z-index: 2;
+  background-image: url(../img/xmas_hat.png);
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+
+/* Website's sticky logo */
+
+.christmas2019 .sticky-logo {
+  position: relative;
+}
+
+.christmas2019 .sticky-logo:before {
+  content: "";
+  width: 43px;
+  height: 41px;
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: -15px;
+  z-index: 2;
+  background-image: url(../img/xmas_hat.png);
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+
+/* Website's footer */
+
+.christmas2019 #footer {
+  padding-bottom: 30px;
+}
+
+.christmas2019 #footer-logo::after {
+  content: "";
+  width: 72px;
+  height: 84px;
+  display: block;
+  position: absolute;
+  top: -43px;
+  right: -80px;
+  z-index: 2;
+  background-image: url(../img/arbre.png);
+  background-repeat: no-repeat;
+  background-size: 75%;
+}
+
+.christmas2019 #main-footer {
+  background-color: #ededed;
+}
+
+body.christmas2019:after {
+  content: "";
+  width: 120px;
+  height: 126px;
+  display: block;
+  background-image: url(../img/ninot-neu.png);
+  background-repeat: no-repeat;
+  background-size: 75%;
+  position: fixed;
+  right: 0px;
+  bottom: 5px;
+  z-index: 9998;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
