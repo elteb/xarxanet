@@ -18,7 +18,7 @@ function christmas_preprocess_html(&$vars) {
     $inici_christmas = variable_get('data_inici_christmas');
     $fi_christmas = variable_get('data_final_christmas');
 
-    if($actual >= $inici_christmas && $actual < $fi_christmas) {
+    if($actual >= $inici_christmas && $actual < $fi_christmas && inici_christmas != NULL) {
 
     // Adding CSS to the website's header
 
