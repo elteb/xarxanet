@@ -8,17 +8,22 @@
  * without having to modify or override the default theme styles or javascript
  */
 
-function christmas_preprocess_html(&$vars) {
-
+function christmas_preprocess_html(&$vars) { 
+  global $user;
+  $current_user = user_load($user->uid);
+  $isAdministrator = false;
+  
 
   if (!path_is_admin(current_path())) {
+
+    if ($current_user->uid == 11 || $current_user->uid == 1) $isAdministrator = TRUE;  //if is admin
 
     $t = time();
     $actual = date("d-m-Y",$t);
     $inici_christmas = variable_get('data_inici_christmas');
     $fi_christmas = variable_get('data_final_christmas');
 
-    if($actual >= $inici_christmas && $actual < $fi_christmas && inici_christmas != NULL) {
+    if(($actual >= $inici_christmas && $actual < $fi_christmas && inici_christmas != NULL) || $isAdministrator) {
 
     // Adding CSS to the website's header
 
