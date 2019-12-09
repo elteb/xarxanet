@@ -41,7 +41,7 @@ function christmas_settings_form($form, &$form_state) {
         '#type' => 'textfield', 
         '#title' => t('dataFinal'),  
         '#size' => 60, 
-        '#default_value' => variable_get('data_final_christmas'),
+        '#default_value' => (null !== variable_get('data_final_christmas') ) ? variable_get('data_final_christmas') : '',
         '#maxlength' => 128, 
         '#required' => TRUE,
     );
@@ -71,10 +71,10 @@ function christmas_settings_form_validate($form, &$form_state) {
     $dataI=$values['dataInici'];
     $dataf=$values['dataFinal'];
     if (!validateDate($dataI)) {
-        form_set_error('view_feeds_table][tbody][' . $i . '][dataInici', t('Data inici incorrecte'));
+        form_set_error('dataInici', t('Data inici incorrecte'));
     }
     if (!validateDate($dataf)) {
-        form_set_error('view_feeds_table][tbody][' . $i . '][dataFinal', t('Data de fi incorrecte'));
+        form_set_error('dataFinal', t('Data de fi incorrecte'));
     }
   }
 }
