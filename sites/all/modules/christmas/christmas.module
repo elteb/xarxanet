@@ -22,6 +22,9 @@ function christmas_preprocess_html(&$vars) {
     $actual = date("d-m-Y",$t);
     $inici_christmas = variable_get('data_inici_christmas');
     $fi_christmas = variable_get('data_final_christmas');
+    $actual = strtotime($actual); 
+    $inici_christmas = strtotime($inici_christmas); 
+    $fi_christmas = strtotime($fi_christmas); 
 
     if(($actual >= $inici_christmas && $actual < $fi_christmas && inici_christmas != NULL) || $isAdministrator) {
 
