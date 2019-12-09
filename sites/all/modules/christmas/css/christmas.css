@@ -220,12 +220,6 @@ body.christmas:after {
   }
 }
 
-@media (max-width: 900px) {
-  body.christmas2019:after {
-    display: none;
-  }
-}
-
 /* Website's regular logo */
 
 .christmas2019 #site-logo .navbar-brand {
@@ -307,4 +301,10 @@ body.christmas2019:after {
   transform: scaleX(-1);
   filter: FlipH;
   -ms-filter: "FlipH";
+}
+
+@media (max-width: 900px) {
+  body.christmas2019:after {
+    display: none;
+  }
 }
