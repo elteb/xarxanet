@@ -93,10 +93,10 @@ $noticia_prin_esq = array();
 if ($node_ =  node_load($node->field_prin_xarxanet_esq['und'][0]['nid'])) {
 	//Noticia Xarxanet
 	if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-		$noticia_prin_esq['imatge'] = image_style_url('tag-mig',$node_->field_agenda_imatge['und'][0]['uri']);
+		$noticia_prin_esq['imatge'] = image_style_url('xn19_responsive_image',$node_->field_agenda_imatge['und'][0]['uri']);
 		$noticia_prin_esq['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
 	}else{
-		$noticia_prin_esq['imatge'] = image_style_url('tag-mig', $node_->field_imatges['und'][0]['uri']);
+		$noticia_prin_esq['imatge'] = image_style_url('xn19_responsive_image', $node_->field_imatges['und'][0]['uri']);
 		$noticia_prin_esq['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$noticia_prin_esq['title'] = $node_->title;
@@ -120,10 +120,10 @@ $noticia_prin_dreta = array();
 if ($node_ =  node_load($node->field_prin_xarxanet_dreta['und'][0]['nid'])) {
 	//Noticia Xarxanet
 	if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-		$noticia_prin_dreta['imatge'] = image_style_url('tag-mig',$node_->field_agenda_imatge['und'][0]['uri']);
+		$noticia_prin_dreta['imatge'] = image_style_url('xn19_responsive_image',$node_->field_agenda_imatge['und'][0]['uri']);
 		$noticia_prin_dreta['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
 	}else{
-		$noticia_prin_dreta['imatge'] = image_style_url('tag-mig', $node_->field_imatges['und'][0]['uri']);
+		$noticia_prin_dreta['imatge'] = image_style_url('xn19_responsive_image', $node_->field_imatges['und'][0]['uri']);
 		$noticia_prin_dreta['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$noticia_prin_dreta['title'] = $node_->title;
@@ -148,10 +148,10 @@ $noticia_secundaria_esq = array();
 if ($node_ =  node_load($node->field_sec_xarxanet_esq['und'][0]['nid'])) {
 	//Noticia Xarxanet
 	if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-		$noticia_secundaria_esq['imatge'] = image_style_url('tag-mig',$node_->field_agenda_imatge['und'][0]['uri']);
+		$noticia_secundaria_esq['imatge'] = image_style_url('xn19_responsive_image',$node_->field_agenda_imatge['und'][0]['uri']);
 		$noticia_secundaria_esq['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
 	}else{
-		$noticia_secundaria_esq['imatge'] = image_style_url('tag-mig', $node_->field_imatges['und'][0]['uri']);
+		$noticia_secundaria_esq['imatge'] = image_style_url('xn19_responsive_image', $node_->field_imatges['und'][0]['uri']);
 		$noticia_secundaria_esq['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$noticia_secundaria_esq['title'] = $node_->title;
@@ -175,10 +175,10 @@ $noticia_secundaria_dreta = array();
 if ($node_ =  node_load($node->field_sec_xarxanet_dreta['und'][0]['nid'])) {
 	//Noticia Xarxanet
 	if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-		$noticia_secundaria_dreta['imatge'] = image_style_url('tag-mig',$node_->field_agenda_imatge['und'][0]['uri']);
+		$noticia_secundaria_dreta['imatge'] = image_style_url('xn19_responsive_image',$node_->field_agenda_imatge['und'][0]['uri']);
 		$noticia_secundaria_dreta['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
 	}else{
-		$noticia_secundaria_dreta['imatge'] = image_style_url('tag-mig', $node_->field_imatges['und'][0]['uri']);
+		$noticia_secundaria_dreta['imatge'] = image_style_url('xn19_responsive_image', $node_->field_imatges['und'][0]['uri']);
 		$noticia_secundaria_dreta['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$noticia_secundaria_dreta['title'] = $node_->title;
@@ -202,10 +202,10 @@ $noticia_terciaria_esq = array();
 if ($node_ =  node_load($node->field_ter_xarxanet_esq['und'][0]['nid'])) {
 	//Noticia Xarxanet
 	if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-		$noticia_terciaria_esq['imatge'] = image_style_url('tag-mig',$node_->field_agenda_imatge['und'][0]['uri']);
+		$noticia_terciaria_esq['imatge'] = image_style_url('xn19_responsive_image',$node_->field_agenda_imatge['und'][0]['uri']);
 		$noticia_terciaria_esq['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
 	}else{
-		$noticia_terciaria_esq['imatge'] = image_style_url('tag-mig', $node_->field_imatges['und'][0]['uri']);
+		$noticia_terciaria_esq['imatge'] = image_style_url('xn19_responsive_image', $node_->field_imatges['und'][0]['uri']);
 		$noticia_terciaria_esq['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$noticia_terciaria_esq['title'] = $node_->title;
@@ -229,10 +229,10 @@ $noticia_terciaria_dreta = array();
 if ($node_ =  node_load($node->field_ter_xarxanet_dreta['und'][0]['nid'])) {
 	//Noticia Xarxanet
 	if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
-		$noticia_terciaria_dreta['imatge'] = image_style_url('tag-mig',$node_->field_agenda_imatge['und'][0]['uri']);
+		$noticia_terciaria_dreta['imatge'] = image_style_url('xn19_responsive_image',$node_->field_agenda_imatge['und'][0]['uri']);
 		$noticia_terciaria_dreta['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
 	}else{
-		$noticia_terciaria_dreta['imatge'] = image_style_url('tag-mig', $node_->field_imatges['und'][0]['uri']);
+		$noticia_terciaria_dreta['imatge'] = image_style_url('xn19_responsive_image', $node_->field_imatges['und'][0]['uri']);
 		$noticia_terciaria_dreta['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 	}
 	$noticia_terciaria_dreta['title'] = $node_->title;
@@ -256,11 +256,11 @@ $opinion_primera = array();
 if ($node_ =  node_load($node->field_opinio_primer_xarxanet['und'][0]['nid'])) {
 	//Opinion Xarxanet
 	if ($node_->field_square_photo){
-		$opinion_primera['imatge'] = image_style_url('tag-petit', $node_->field_square_photo['und'][0]['uri']);
+		$opinion_primera['imatge'] = image_style_url('xn19_squared_image', $node_->field_square_photo['und'][0]['uri']);
 		$opinion_primera['alt'] = $node_->field_square_photo['und'][0]['data']['alt'];
 	} else {
 		$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
-		$opinion_primera['imatge'] = image_style_url('tag-petit',$node_autor->field_square_photo['und'][0]['uri']);
+		$opinion_primera['imatge'] = image_style_url('xn19_squared_image',$node_autor->field_square_photo['und'][0]['uri']);
 		$opinion_primera['alt'] = $node_autor->field_square_photo['und'][0]['alt'];
 	}
 	$opinion_primera['title'] = $node_->title;
@@ -277,11 +277,11 @@ $opinion_segona = array();
 if ($node_ =  node_load($node->field_opinio_segon_xarxanet['und'][0]['nid'])) {
 	//Opinion Xarxanet
 	if ($node_->field_square_photo){
-		$opinion_segona['imatge'] = image_style_url('tag-petit', $node_->field_square_photo['und'][0]['uri']);
+		$opinion_segona['imatge'] = image_style_url('xn19_squared_image', $node_->field_square_photo['und'][0]['uri']);
 		$opinion_segona['alt'] = $node_->field_square_photo['und'][0]['data']['alt'];
 	} else {
 		$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
-		$opinion_segona['imatge'] = image_style_url('tag-petit',$node_autor->field_square_photo['und'][0]['uri']);
+		$opinion_segona['imatge'] = image_style_url('xn19_squared_image',$node_autor->field_square_photo['und'][0]['uri']);
 		$opinion_segona['alt'] = $node_autor->field_square_photo['und'][0]['alt'];
 	}
 	$opinion_segona['title'] = $node_->title;
@@ -298,11 +298,11 @@ $opinion_tercera = array();
 if ($node_ =  node_load($node->field_opinio_tercer_xarxanet['und'][0]['nid'])) {
 	//Opinion Xarxanet
 	if ($node_->field_square_photo){
-		$opinion_tercera['imatge'] = image_style_url('tag-petit', $node_->field_square_photo['und'][0]['uri']);
+		$opinion_tercera['imatge'] = image_style_url('xn19_squared_image', $node_->field_square_photo['und'][0]['uri']);
 		$opinion_tercera['alt'] = $node_->field_square_photo['und'][0]['data']['alt'];
 	} else {
 		$node_autor =  node_load($node_->field_opinion_author['und'][0]['nid']);
-		$opinion_tercera['imatge'] = image_style_url('tag-petit',$node_autor->field_square_photo['und'][0]['uri']);
+		$opinion_tercera['imatge'] = image_style_url('xn19_squared_image',$node_autor->field_square_photo['und'][0]['uri']);
 		$opinion_tercera['alt'] = $node_autor->field_square_photo['und'][0]['alt'];
 	}
 	$opinion_tercera['title'] = $node_->title;
