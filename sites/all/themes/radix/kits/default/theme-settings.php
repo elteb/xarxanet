@@ -7,19 +7,19 @@
 /**
  * Implements theme_settings().
  */
-function {{machine_name}}_form_system_theme_settings_alter(&$form, &$form_state) {
+function radix_form_system_theme_settings_alter(&$form, &$form_state) {
   // Ensure this include file is loaded when the form is rebuilt from the cache.
-  $form_state['build_info']['files']['form'] = drupal_get_path('theme', '{{machine_name}}') . '/theme-settings.php';
+  $form_state['build_info']['files']['form'] = drupal_get_path('theme', 'radix') . '/theme-settings.php';
 
   // Add theme settings here.
-  $form['{{machine_name}}_theme_settings'] = array(
+  $form['radix_theme_settings'] = array(
     '#title' => t('Theme Settings'),
     '#type' => 'fieldset',
   );
 
   // Copyright.
   $copyright = theme_get_setting('copyright');
-  $form['{{machine_name}}_theme_settings']['copyright'] = array(
+  $form['radix_theme_settings']['copyright'] = array(
     '#title' => t('Copyright'),
     '#type' => 'text_format',
     '#format' => $copyright['format'],
