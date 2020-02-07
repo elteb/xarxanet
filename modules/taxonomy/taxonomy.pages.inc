@@ -161,7 +161,13 @@ function taxonomy_autocomplete($field_name = '', $tags_typed = '') {
       ->fields('t', array('tid', 'name'))
       ->condition('t.vid', $vids)
       ->condition('t.name', '%' . db_like($tag_last) . '%', 'LIKE')
-      ->range(0, 10)
+      /**
+       * @Start XARXANET-303
+       * Increasing the default number of results in the suggestions' dropdown
+       */
+      // ->range(0, 10) // This was the Drupal's default value
+      ->range(0, 25) // The new value
+      // @End XARXANET-303
       ->execute()
       ->fetchAllKeyed();
 
