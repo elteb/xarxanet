@@ -166,7 +166,7 @@ function taxonomy_autocomplete($field_name = '', $tags_typed = '') {
        * Increasing the default number of results in the suggestions' dropdown
        */
       // ->range(0, 10) // This was the Drupal's default value
-      ->range(0, 25) // The new value
+      ->range(0, 100) // The new value, suggested by the Customer
       // @End XARXANET-303
       ->execute()
       ->fetchAllKeyed();
