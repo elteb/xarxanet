@@ -24,6 +24,115 @@ function tothomweb_agenda_menu() {
 function tothomweb_agenda_form($form, &$form_state) {
 	$form = array();
 
+	// Filter's Area
+
+	$form['filters_area'] = array(
+		'#type' => 'container',
+		'#attributes' => array(
+			'class' => array('row'),
+		),
+		'#prefix' => '<div class="container agenda-header">',
+		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['filters_box'] = array(
+		'#type' => 'container',
+		'#attributes' => array(
+			'id' => 'filters-box',
+			'class' => array('filters-box'),
+		),
+		'#prefix' => '<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">',
+		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['filters_box']['filters_header'] = array(
+		'#type' => 'markup',
+		'#markup' => tothomweb_agenda_build_type_filters_markup(),
+	);
+
+	$form['filters_area']['filters_box']['filters_body'] = array(
+		'#type' => 'container',
+		'#attributes' => array(
+			'class' => array('row'),
+		),
+		'#prefix' => '<div class="filters-body">',
+		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['filters_box']['filters_body']['search'] = array(
+		'#type' => 'textfield', 
+		'#title' => '<span class="sr-only">' . t('Cercar per paraula o paraules clau') . '</span>',
+		'#attributes' => array(
+			'placeholder' => t('Cercar per paraula clau'),
+		),
+		'#default_value' => (isset($_GET['search'])) ? $_GET['search'] : '', 
+		'#size' => 60, 
+		'#maxlength' => 128,
+		'#prefix' => '<div class="col-xs-12 col-sm-4">',
+		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['filters_box']['filters_body']['date'] = array(
+		'#type' => 'textfield', 
+		'#title' => '<span class="sr-only">' . t('Cercar per data') . '</span>',
+		'#attributes' => array(
+			'placeholder' => t('Cercar per data'),
+		),
+		'#default_value' => (isset($_GET['date'])) ? $_GET['date'] : date('d/m/Y', time()), 
+		'#size' => 60, 
+		'#maxlength' => 128,
+		'#prefix' => '<div class="col-xs-12 col-sm-4">',
+		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['filters_box']['filters_body']['location'] = array(
+		'#type' => 'textfield', 
+		'#title' => '<span class="sr-only">' . t('Cercar per municipi') . '</span>',
+		'#attributes' => array(
+			'placeholder' => t('Cercar per municipi'),
+		),
+		'#default_value' => (isset($_GET['location'])) ? $_GET['location'] : '', 
+		'#size' => 60, 
+		'#maxlength' => 128,
+		'#prefix' => '<div class="col-xs-12 col-sm-4">',
+		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['filters_box']['filters_footer'] = array(
+		'#type' => 'container',
+		'#attributes' => array(
+			'class' => array('row'),
+		),
+		'#prefix' => '<div class="filters-footer">',
+		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['filters_box']['filters_footer']['mode'] = array(
+		'#type' => 'radios',
+		'#title' => '<span class="sr-only">' . t('Selecciona la') . ' </span>' . t('Modalitat') . ' <span class="sr-only">' . t('de l\'esdeveniment') . '</span>',
+		'#default_value' => (isset($_GET['mode'])) ? $_GET['mode'] : 'all',
+		'#options' => tothomweb_agenda_build_mode_options(),
+		'#prefix' => '<div class="col-xs-12 col-sm-8">',
+		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['filters_box']['filters_footer']['mode']['new'] = array(
+		'#type' => 'markup',
+		'#markup' => '<a class="add-event" href="/node/add/event">' . t('Publica un nou esdeveniment') . '</a>',
+		'#weight' => 11, // Drupal's default value is 10
+	);
+
+	$form['filters_area']['filters_box']['filters_footer']['submit'] = array(
+		'#type' => 'submit',
+		'#value' => t('Cercar'),
+		'#prefix' => '<div class="col-xs-12 col-sm-4">',
+		'#suffix' => '</div>',
+	);
+
+	// Results' Area
+
+	$form['results_area'] = array();
+
 	return $form;
 }
 
@@ -39,4 +148,34 @@ function tothomweb_agenda_form_validate($form, &$form_state) {
  */
 function tothomweb_agenda_form_submit($form, &$form_state) {
 
+}
+
+/**
+ * Helper function that builds a small markup with the links
+ * of the filters' header.
+ */
+function tothomweb_agenda_build_type_filters_markup() {
+	// Set filter status by checking url parameters
+	$all_status = (!isset($_GET['type']) || $_GET['type'] == 'all') ? ' active' : '';
+	$events_status = (isset($_GET['type']) && $_GET['type'] == 'events') ? ' active' : '';
+	$courses_status = (isset($_GET['type']) && $_GET['type'] == 'courses') ? ' active' : '';
+	// Build the markup, including filters statuses
+	$output  = '<div class="filters-header">';
+	$output .= '<a class="type-filter' . $all_status . '" href="/agenda-dev?type=all">Tots</a>';
+	$output .= '<a class="type-filter' . $events_status . '" href="/agenda-dev?type=events">Actes</a>';
+	$output .= '<a class="type-filter' . $courses_status . '" href="/agenda-dev?type=courses">Cursos</a>';
+	$output .= '</div>';
+	return $output;
+}
+
+/**
+ * Helper function that builds an array of options for
+ * the 'Modalitat' radios.
+ */
+function tothomweb_agenda_build_mode_options() {
+	$options  = array(
+		'all' => t('Qualsevol'),
+		'online' => t('En línia'),
+	);
+	return $options;
 }
