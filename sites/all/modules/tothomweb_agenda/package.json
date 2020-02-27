@@ -1,0 +1,12 @@
+{
+  "name": "agenda",
+  "version": "1.0.0",
+  "author": "TOTHOMweb",
+  "homepage": "http://xarxanet.org/agenda",
+  "dependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-compass": "~1.0.1",
+    "grunt-contrib-watch": "^1.1.0"
+  },
+  "devDependencies": {}
+}

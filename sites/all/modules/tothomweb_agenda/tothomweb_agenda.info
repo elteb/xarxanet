@@ -2,3 +2,6 @@ name = Pàgina amb cercador d'actes d'Agenda
 description = Mòdul personalitzat que crea i controla la pàgina amb el cercador d'actes d'Agenda.
 core = 7.x
 package = XARXANET
+
+stylesheets[all][] = css/tothomweb_agenda.css
+scripts[] = js/tothomweb_agenda.js
