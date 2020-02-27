@@ -88,14 +88,14 @@
   clear: both;
   margin-bottom: 0;
   position: relative;
-  top: -5px; }
+  top: -3px; }
 /* line 128, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode > label[for=edit-mode] {
   font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif;
   margin: 0 15px 0 0;
   float: left;
   min-height: 32px;
-  line-height: 20px; }
+  line-height: 25px; }
 /* line 136, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode .form-radios {
   display: flex;
@@ -149,7 +149,7 @@
 @media (min-width: 768px) {
   /* line 185, ../sass/tothomweb_agenda.scss */
   #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .add-event {
-    margin-top: -20px; } }
+    margin-top: -19px; } }
 /* line 199, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .add-event img {
   position: relative;

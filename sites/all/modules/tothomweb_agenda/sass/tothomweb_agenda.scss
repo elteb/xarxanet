@@ -123,14 +123,14 @@ $regular:     'Fira Sans', Helvetica, Arial, sans-serif;
           clear: both;
           margin-bottom: 0;
           position: relative;
-          top: -5px;
+          top: -3px;
 
           > label[for=edit-mode] {
             font-family: $semibold;
             margin: 0 15px 0 0;
             float: left;
             min-height: 32px;
-            line-height: 20px;
+            line-height: 25px;
           }
 
           .form-radios {
@@ -193,7 +193,7 @@ $regular:     'Fira Sans', Helvetica, Arial, sans-serif;
           margin-top: 30px;
 
           @media (min-width: 768px) {
-            margin-top: -20px;
+            margin-top: -19px;
           }
 
           img {
@@ -205,6 +205,8 @@ $regular:     'Fira Sans', Helvetica, Arial, sans-serif;
       }
     }
   }
+
+
 
   // Results Area
 
