@@ -7,3 +7,207 @@
  * @copyright    2020
  */
 
+//  Variables
+
+$white:     #ffffff;
+$red:       #be1622;
+$gray:      #878787;
+
+$semibold:    'Fira Sans SemiBold', Helvetica, Arial, sans-serif;
+$regular:     'Fira Sans', Helvetica, Arial, sans-serif;
+
+// Mixins
+
+@mixin transition($property) {
+  transition: $property 0.2s ease-in-out;
+  -webkit-transition: $property 0.2s ease-in-out;
+  -moz-transition: $property 0.2s ease-in-out;
+  -ms-transition: $property 0.2s ease-in-out;
+  -o-transition: $property 0.2s ease-in-out;
+}
+
+// Styles
+
+#tothomweb-agenda-form {
+  font-family: $regular;
+
+  // Filters Area
+
+  .agenda-header {
+    background-image: url(//xarxanet.org/sites/all/themes/xn17/assets/images/headers/agenda.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    min-height: 260px;
+
+    .filters-box {
+      background-color: rgba($white, 0.75);
+      margin: 30px 0;
+
+      .filters-header {
+        width: 100%;
+        display: inline-block;
+
+        a {
+          width: 33.3333%;
+          text-align: center;
+          padding: 12px 0;
+          display: inline-block;
+          background-color: $white;
+          position: relative;
+          color: $gray;
+          font-family: $semibold;
+
+          &.active {
+            background-color: $red;
+            color: $white;
+
+            &:after {
+              content: "";
+              background-image: url(//xarxanet.org/sites/all/themes/xn17/assets/images/elements/punta-avall.svg);
+              background-repeat: no-repeat;
+              background-position: 50% 50%;
+              background-size: cover;
+              width: 24px;
+              height: 12px;
+              display: block;
+              position: absolute;
+              bottom: -12px;
+              left: 50%;
+              margin-left: -12px;
+              z-index: 1;
+            }
+          }
+        }
+      }
+
+      .filters-body {
+        padding: 15px;
+
+        .form-wrapper {
+          padding: 0 7.5px;
+
+          > div {
+            padding-left: 7.5px;
+            padding-right: 7.5px;
+          }
+
+          .form-item {
+
+            @media (min-width: 768px) {
+              margin-bottom: 0;
+            }
+            
+            label {
+              display: block;
+              margin: 0;
+            }
+            
+            .form-text {
+              border: none;
+              border-radius: 0;
+              height: 45px;
+            }
+          }
+        }
+      }
+
+      .filters-footer {
+        margin-top: -15px;
+        padding: 15px;
+
+        .form-item-mode {
+          display: inline-block;
+          width: 100%;
+          float: none;
+          clear: both;
+          margin-bottom: 0;
+          position: relative;
+          top: -5px;
+
+          > label[for=edit-mode] {
+            font-family: $semibold;
+            margin: 0 15px 0 0;
+            float: left;
+            min-height: 32px;
+            line-height: 20px;
+          }
+
+          .form-radios {
+            display: flex;
+            justify-content: space-around;
+            float: left;
+            min-height: 32px;
+
+            .form-item {
+              
+              label {
+
+                &:hover,
+                &:focus,
+                &:active {
+                  color: $red;
+                  text-decoration: underline;
+                  @include transition(all);
+                }
+              }
+              
+              .form-radio {
+                top: -2px;
+              }
+            }
+
+            .radio + .radio, .checkbox + .checkbox {
+              margin-top: 0.4em;
+              margin-bottom: 0.4em;
+              margin-left: 15px;
+            }
+          }
+        }
+
+        .form-submit {
+          width: 100%;
+          background-color: $gray;
+          color: $white;
+          font-family: $semibold;
+          border: none;
+          border-radius: 0;
+          padding: 12px 0;
+          @include transition(all);
+
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: $red;
+          }
+        }
+
+        .add-event {
+          display: inline-block;
+          width: auto;
+          float: left;
+          clear: both;
+          margin-left: 15px;
+          text-transform: uppercase;
+          color: $red;
+          margin-top: 30px;
+
+          @media (min-width: 768px) {
+            margin-top: -20px;
+          }
+
+          img {
+            position: relative;
+            top: -3px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  // Results Area
+
+
+
+}

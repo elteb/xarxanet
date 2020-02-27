@@ -22,7 +22,10 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['sass/**/*.scss'],
-        tasks: ['compass:dev']
+        tasks: ['compass:dev'],
+        options: {
+          livereload: true,
+        }
       }
     }
   });
