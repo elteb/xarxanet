@@ -239,27 +239,34 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
 
     #results {
 
-      ul {
+      ul.row {
         list-style-type: none;
         padding: 0;
         margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
 
         li {
-          margin: 0;
+          margin: 15px 0;
           padding: 0 15px;
 
           .event {
-            margin: 15px 0;
+            background-color: $lightgray;
+            height: 100%;
+            margin: 0;
 
             .last {
-              background-color: $lightgray;
               padding: 15px;
 
               .event-dates {
                 color: $red;
-                font-size: 12px;
+                font-size: 14px;
                 font-family: $semibold;
-                margin-bottom: 5px;
+                margin-top: 5px;
+                min-height: 35px;
+                display: flex;
+                align-items: flex-end;
               }
 
               .event-title {
@@ -269,14 +276,14 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                 margin: 0;
 
                 @media (min-width: 768px) {
-                  min-height: 120px;
+                  min-height: 135px;
                 }
               }
 
               .event-category {
                 font-family: $bold;
                 text-transform: uppercase;
-                margin-top: 10px;
+                margin-bottom: 10px;
 
                 .taxonomy-link {
                   color: $red;

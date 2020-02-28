@@ -212,6 +212,11 @@ function tothomweb_agenda_query_results() {
 	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? $_GET['date'] : null;
 	$location = (isset($_GET['location']) && !empty($_GET['location'])) ? $_GET['location'] : null;
 	$mode = (isset($_GET['mode']) && !empty($_GET['mode'])) ? $_GET['mode'] : 'all';
+	// Get the default image for the field 'field_agenda_imatge'
+	$fields_info = field_info_fields();
+	$default_image_src = file_load($fields_info['field_agenda_imatge']['settings']['default_image'])->uri;
+	$default_image_src = image_style_url('xn17_horitzontal', $default_image_src);
+	$default_image_src = str_replace('xarxanet.local/', 'xarxanet.org/', $default_image_src);
 	// Buid the query
 	$query = db_select('node', 'n')->extend('PagerDefault');
 	$query->leftJoin('field_data_field_agenda_imatge', 'f1', 'f1.entity_id = n.nid');
@@ -229,16 +234,22 @@ function tothomweb_agenda_query_results() {
 	$query->addField('f4', 'field_event_type_value', 'type');
 	$query->condition('n.type', 'event');
 	$query->condition('n.status', 1);
+	$query->limit(12);
 	$results = $query->execute();
 	// Manage the query results
 	$items = array();
 	foreach ($results as $row) {
 		// Prepare data
 		$node_alias = url(drupal_get_path_alias('node/' . $row->nid));
-		$image_src = image_style_url('xn17_horitzontal', $row->image_src);
 		$date_start = date('d-m-Y', strtotime($row->date_start));
 		$date_end = date('d-m-Y', strtotime($row->date_end));
 		$event_date = tothomweb_agenda_build_human_readable_date($row->date_start, $row->date_end);
+		if ($row->image_src != null) {
+			$image_src = image_style_url('xn17_horitzontal', $row->image_src);
+		}
+		else {
+			$image_src = $default_image_src;
+		}
 		if ($row->type == 'Acte') {
 			$taxonomy_link = AGENDA_URL . '?type=events';
 		}
@@ -259,18 +270,18 @@ function tothomweb_agenda_query_results() {
 		$output .= '</figure>';
 		$output .= '</div>';
 		$output .= '<div class="last">';
-		$output .= '<div class="event-dates">';
-		$output .= $event_date;
+		$output .= '<div class="event-category">';
+		$output .= '<a class="page-link" href="' . AGENDA_URL . '">Agenda</a> ';
+		$output .= '<span class="link-separator">&gt;</span> ';
+		$output .= '<a class="taxonomy-link" href="' . $taxonomy_link . '">' . $row->type . '</a>';
 		$output .= '</div>';
 		$output .= '<header>';
 		$output .= '<a href="' . $node_alias . '">';
 		$output .= '<h2 class="event-title">' . $row->title . '</h2>';
 		$output .= '</a>';
 		$output .= '</header>';
-		$output .= '<div class="event-category">';
-		$output .= '<a class="page-link" href="' . AGENDA_URL . '">Agenda</a> ';
-		$output .= '<span class="link-separator">&gt;</span> ';
-		$output .= '<a class="taxonomy-link" href="' . $taxonomy_link . '">' . $row->type . '</a>';
+		$output .= '<div class="event-dates">';
+		$output .= $event_date;
 		$output .= '</div>';
 		$output .= '</div>';
 		$output .= '</article>';
@@ -425,12 +436,6 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 	// Case #3: Same day, month & year
 	else if ((date('j', $date_start) == date('j', $date_end)) && (date('F', $date_start) == date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
 		$result_date = '';
-		if (in_array(date('j', $date_start), [1, 11])) {
-			$result_date .= 'L\'';
-		}
-		else {
-			$result_date .= 'El ';
-		}
 		$result_date .= date('j', $date_start);
 		if (in_array(date('n', $date_start), [4, 8, 10])) {
 			$result_date .= ' d\'';
