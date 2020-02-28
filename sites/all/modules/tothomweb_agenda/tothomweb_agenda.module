@@ -1,11 +1,13 @@
 <?php
 
+// Set some helper constants
 if ($_SERVER['HTTP_HOST'] == 'xarxanet.local') {
 	define('AGENDA_URL', 'agenda-dev');
 }
 else {
 	define('AGENDA_URL', 'agenda');
 }
+define('AGENDA_GRID_CLASSES', 'col-xs-12 col-sm-6 col-md-4 col-lg-3');
 
 /**
  * Implements hook_menu().
@@ -180,7 +182,7 @@ function tothomweb_agenda_form($form, &$form_state) {
 			'#markup' => '<script src="//xarxanet.local:35729/livereload.js"></script>',
 		);
 	}
-	
+
 	return $form;
 }
 
@@ -188,14 +190,101 @@ function tothomweb_agenda_form($form, &$form_state) {
  * Implements hook_form_validate().
  */
 function tothomweb_agenda_form_validate($form, &$form_state) {
-
+	// Append validation clauses here...
 }
 
 /**
  * Helper function that build the query, given a set of url parameters.
  */
-function tothomweb_agenda_query_results($form, &$form_state) {
-	return 'Results here...';
+function tothomweb_agenda_query_results() {
+	// Get parameters from the url
+	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : 'all';
+	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? $_GET['search'] : null;
+	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? $_GET['date'] : null;
+	$location = (isset($_GET['location']) && !empty($_GET['location'])) ? $_GET['location'] : null;
+	$mode = (isset($_GET['mode']) && !empty($_GET['mode'])) ? $_GET['mode'] : 'all';
+	// Buid the query
+	$query = db_select('node', 'n')->extend('PagerDefault');
+	$query->leftJoin('field_data_field_agenda_imatge', 'f1', 'f1.entity_id = n.nid');
+	$query->leftJoin('file_managed', 'fm', 'fm.fid = f1.field_agenda_imatge_fid');
+	$query->leftJoin('field_data_field_resum', 'f2', 'f2.entity_id = n.nid');
+	$query->leftJoin('field_data_field_date_event', 'f3', 'f3.entity_id = n.nid');
+	$query->leftJoin('field_data_field_event_type', 'f4', 'f4.entity_id = n.nid');
+	$query->addField('n', 'nid', 'nid');
+	$query->addField('n', 'title', 'title');
+	$query->addField('fm', 'uri', 'image_src');
+	$query->addField('f1', 'field_agenda_imatge_alt', 'image_alt');
+	$query->addField('f2', 'field_resum_value', 'summary');
+	$query->addField('f3', 'field_date_event_value', 'date_start');
+	$query->addField('f3', 'field_date_event_value2', 'date_end');
+	$query->addField('f4', 'field_event_type_value', 'type');
+	$query->condition('n.type', 'event');
+	$query->condition('n.status', 1);
+	$results = $query->execute();
+	// Manage the query results
+	$items = array();
+	foreach ($results as $row) {
+		// Prepare data
+		$node_alias = url(drupal_get_path_alias('node/' . $row->nid));
+		$image_src = image_style_url('xn17_horitzontal', $row->image_src);
+		$date_start = date('d-m-Y', strtotime($row->date_start));
+		$date_end = date('d-m-Y', strtotime($row->date_end));
+		$event_date = tothomweb_agenda_build_human_readable_date($row->date_start, $row->date_end);
+		if ($row->type == 'Acte') {
+			$taxonomy_link = AGENDA_URL . '?type=events';
+		}
+		else if ($row->type == 'Acte') {
+			$taxonomy_link = AGENDA_URL . '?type=courses';
+		}
+		else {
+			$taxonomy_link = '#';
+		}
+		// Build the output
+		$output  = '<div class="event" data-node="node-' . $row->nid . '">';
+		$output .= '<article>';
+		$output .= '<div class="first">';
+		$output .= '<figure>';
+		$output .= '<a href="' . $node_alias . '">';
+		$output .= '<img class="img-responsive" src="' . $image_src . '" alt="' . $row->image_alt . '" />';
+		$output .= '</a>';
+		$output .= '</figure>';
+		$output .= '</div>';
+		$output .= '<div class="last">';
+		$output .= '<div class="event-dates">';
+		$output .= $event_date;
+		$output .= '</div>';
+		$output .= '<header>';
+		$output .= '<a href="' . $node_alias . '">';
+		$output .= '<h2 class="event-title">' . $row->title . '</h2>';
+		$output .= '</a>';
+		$output .= '</header>';
+		$output .= '<div class="event-category">';
+		$output .= '<a class="page-link" href="' . AGENDA_URL . '">Agenda</a> ';
+		$output .= '<span class="link-separator">&gt;</span> ';
+		$output .= '<a class="taxonomy-link" href="' . $taxonomy_link . '">' . $row->type . '</a>';
+		$output .= '</div>';
+		$output .= '</div>';
+		$output .= '</article>';
+		$output .= '</div>';
+		// Append output in a pre-renderable array
+		$items[] = array(
+			'data' => $output,
+			'class' => array('bootstrap' => AGENDA_GRID_CLASSES),
+		);
+	}
+	// Build the renderable array of the results
+	$render_array['results'] = array(
+		'#theme' => 'item_list',
+		'#type' => 'ul',
+		'#title' => '<span class="sr-only">' . t('Resultats de la cerca') . '</span>',
+		'#items' => $items,
+		'#attributes' => array('class' => 'row'),
+	);
+	// Build the renderable array of the pager
+	$render_array['pager'] = array(
+		'#theme' => 'pager'
+	);
+	return drupal_render($render_array);
 }
 
 /**
@@ -210,7 +299,6 @@ function tothomweb_agenda_query_results($form, &$form_state) {
  * 
  * @return  object  $form
  */
-
 function tothomweb_agenda_form_alter($form) {
 	unset($form['form_token']);
 	unset($form['form_build_id']);
@@ -246,4 +334,140 @@ function tothomweb_agenda_build_mode_options() {
 		'online' => t('En línia'),
 	);
 	return $options;
+}
+
+/**
+ * Helper function that builds a date string in human-readable format,
+ * given a start & end dates, passed as arguments.
+ * 
+ * @param 	$date_start
+ * 					The initial date.
+ * 
+ * @param		$date_end
+ * 					The end date.
+ * 
+ * @return	string 
+ * 					A date in a human-readable format. 
+ */
+function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
+	$date_start = strtotime($date_start);
+	$date_end = strtotime($date_end);
+	// Case #1: Different day, same month & same year
+	if ((date('j', $date_start) != date('j', $date_end)) && (date('F', $date_start) == date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
+		$result_date = '';
+		if (in_array(date('j', $date_start), [1, 11])) {
+			$result_date .= 'De l\'';
+		}
+		else {
+			$result_date .= 'Del ';
+		}
+		$result_date .= date('j', $date_start);
+		if (in_array(date('j', $date_end), [1, 11])) {
+			$result_date .= ' a l\'';
+		}
+		else {
+			$result_date .= ' al ';
+		}
+		$result_date .= date('j', $date_end);
+		if (in_array(date('n', $date_start), [4, 8, 10])) {
+			$result_date .= ' d\'';
+		}
+		else {
+			$result_date .= ' de ';
+		}
+		$result_date .= strtolower(t(date('F', $date_start)));
+		$result_date .= ' de ';
+		$result_date .= date('Y', $date_end);
+	}
+	// Case #2: Different months & same year
+	else if ((date('F', $date_start) != date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
+		$result_date = '';
+		if (in_array(date('j', $date_start), [1, 11])) {
+			$result_date .= 'De l\'';
+		}
+		else {
+			$result_date .= 'Del ';
+		}
+		$result_date .= date('j', $date_start);
+		if (in_array(date('n', $date_start), [4, 8, 10])) {
+			$result_date .= ' d\'';
+		}
+		else {
+			$result_date .= ' de ';
+		}
+		$result_date .= strtolower(t(date('F', $date_start)));
+		if (in_array(date('j', $date_end), [1, 11])) {
+			$result_date .= ' a l\'';
+		}
+		else {
+			$result_date .= ' al ';
+		}
+		$result_date .= date('j', $date_end);
+		if (in_array(date('n', $date_end), [4, 8, 10])) {
+			$result_date .= ' d\'';
+		}
+		else {
+			$result_date .= ' de ';
+		}
+		$result_date .= strtolower(t(date('F', $date_end)));
+		$result_date .= ' de ';
+		$result_date .= date('Y', $date_end);
+	}
+	// Case #3: Same day, month & year
+	else if ((date('j', $date_start) == date('j', $date_end)) && (date('F', $date_start) == date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
+		$result_date = '';
+		if (in_array(date('j', $date_start), [1, 11])) {
+			$result_date .= 'L\'';
+		}
+		else {
+			$result_date .= 'El ';
+		}
+		$result_date .= date('j', $date_start);
+		if (in_array(date('n', $date_start), [4, 8, 10])) {
+			$result_date .= ' d\'';
+		}
+		else {
+			$result_date .= ' de ';
+		}
+		$result_date .= strtolower(t(date('F', $date_start)));
+		$result_date .= ' de ';
+		$result_date .= date('Y', $date_end);
+	}
+	// Case #4: Different day, month & year (date format by default)
+	else {
+		$result_date = '';
+		if (in_array(date('j', $date_start), [1, 11])) {
+			$result_date .= 'De l\'';
+		}
+		else {
+			$result_date .= 'Del ';
+		}
+		$result_date .= date('j', $date_start);
+		if (in_array(date('n', $date_start), [4, 8, 10])) {
+			$result_date .= ' d\'';
+		}
+		else {
+			$result_date .= ' de ';
+		}
+		$result_date .= strtolower(t(date('F', $date_start)));
+		$result_date .= ' de ';
+		$result_date .= date('Y', $date_start);
+		if (in_array(date('j', $date_end), [1, 11])) {
+			$result_date .= ' a l\'';
+		}
+		else {
+			$result_date .= ' al ';
+		}
+		$result_date .= date('j', $date_end);
+		if (in_array(date('n', $date_end), [4, 8, 10])) {
+			$result_date .= ' d\'';
+		}
+		else {
+			$result_date .= ' de ';
+		}
+		$result_date .= strtolower(t(date('F', $date_end)));
+		$result_date .= ' de ';
+		$result_date .= date('Y', $date_end);
+	}
+	return $result_date;
 }

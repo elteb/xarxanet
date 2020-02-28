@@ -9,12 +9,15 @@
 
 //  Variables
 
-$white:     #ffffff;
-$red:       #be1622;
-$gray:      #878787;
+$white:       #ffffff;
+$red:         #be1622;
+$gray:        #878787;
+$lightgray:   #ededed;
+$black:       #2f3031;
 
-$semibold:    'Fira Sans SemiBold', Helvetica, Arial, sans-serif;
-$regular:     'Fira Sans', Helvetica, Arial, sans-serif;
+$bold:          'Fira Sans Bold', Helvetica, Arial, sans-serif;
+$semibold:      'Fira Sans SemiBold', Helvetica, Arial, sans-serif;
+$regular:       'Fira Sans', Helvetica, Arial, sans-serif;
 
 // Mixins
 
@@ -30,8 +33,9 @@ $regular:     'Fira Sans', Helvetica, Arial, sans-serif;
 
 #tothomweb-agenda-form {
   font-family: $regular;
+  color: $black;
 
-  // Filters Area
+  // Styles of the Filters Area
 
   .agenda-header {
     background-image: url(//xarxanet.org/sites/all/themes/xn17/assets/images/headers/agenda.jpg);
@@ -183,7 +187,6 @@ $regular:     'Fira Sans', Helvetica, Arial, sans-serif;
         }
 
         .add-event {
-          display: inline-block;
           width: auto;
           float: left;
           clear: both;
@@ -206,10 +209,60 @@ $regular:     'Fira Sans', Helvetica, Arial, sans-serif;
     }
   }
 
+  // Styles of the Results Area
 
+  .agenda-body {
 
-  // Results Area
+    #results {
 
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
 
+        li {
+          margin: 0;
+          padding: 0 15px;
+
+          .event {
+            margin: 15px 0;
+
+            .last {
+              background-color: $lightgray;
+              padding: 15px;
+
+              .event-dates {
+                color: $red;
+                font-size: 12px;
+                font-family: $semibold;
+                margin-bottom: 5px;
+              }
+
+              .event-title {
+                color: $black;
+                font-family: $semibold;
+                font-size: 1.42em;
+                margin: 0;
+
+                @media (min-width: 768px) {
+                  min-height: 120px;
+                }
+              }
+
+              .event-category {
+                font-family: $bold;
+                text-transform: uppercase;
+                margin-top: 10px;
+
+                .taxonomy-link {
+                  color: $red;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
 }
