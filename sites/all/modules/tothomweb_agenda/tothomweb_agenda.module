@@ -37,6 +37,10 @@ function tothomweb_agenda_menu() {
  * @return  $form
  */
 function tothomweb_agenda_form($form, &$form_state) {
+
+	// Remove the default <h1>, as this page uses a custom one
+	drupal_set_title('');
+
 	/**
 	 * Set the method of the form to 'GET', so the hook_form_submit() is not
 	 * required in this form. 
@@ -63,6 +67,11 @@ function tothomweb_agenda_form($form, &$form_state) {
 		),
 		'#prefix' => '<div class="container agenda-header">',
 		'#suffix' => '</div>',
+	);
+
+	$form['filters_area']['custom_title'] = array(
+		'#type' => 'markup',
+		'#markup' => '<h1 class="custom-title">' . t('Agenda') . '</h1>',
 	);
 
 	$form['filters_area']['filters_box'] = array(
