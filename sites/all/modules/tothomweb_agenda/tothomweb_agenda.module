@@ -372,7 +372,9 @@ function tothomweb_agenda_build_mode_options() {
 function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 	$date_start = strtotime($date_start);
 	$date_end = strtotime($date_end);
+	
 	// Case #1: Different day, same month & same year
+	
 	if ((date('j', $date_start) != date('j', $date_end)) && (date('F', $date_start) == date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
 		$result_date = '';
 		if (in_array(date('j', $date_start), [1, 11])) {
@@ -389,6 +391,7 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 			$result_date .= ' al ';
 		}
 		$result_date .= date('j', $date_end);
+		$result_date .= '<br/>';
 		if (in_array(date('n', $date_start), [4, 8, 10])) {
 			$result_date .= ' d\'';
 		}
@@ -399,7 +402,9 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 		$result_date .= ' de ';
 		$result_date .= date('Y', $date_end);
 	}
+	
 	// Case #2: Different months & same year
+	
 	else if ((date('F', $date_start) != date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
 		$result_date = '';
 		if (in_array(date('j', $date_start), [1, 11])) {
@@ -416,6 +421,7 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 			$result_date .= ' de ';
 		}
 		$result_date .= strtolower(t(date('F', $date_start)));
+		$result_date .= '<br/>';
 		if (in_array(date('j', $date_end), [1, 11])) {
 			$result_date .= ' a l\'';
 		}
@@ -433,7 +439,9 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 		$result_date .= ' de ';
 		$result_date .= date('Y', $date_end);
 	}
+	
 	// Case #3: Same day, month & year
+	
 	else if ((date('j', $date_start) == date('j', $date_end)) && (date('F', $date_start) == date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
 		$result_date = '';
 		$result_date .= date('j', $date_start);
@@ -447,7 +455,9 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 		$result_date .= ' de ';
 		$result_date .= date('Y', $date_end);
 	}
+	
 	// Case #4: Different day, month & year (date format by default)
+	
 	else {
 		$result_date = '';
 		if (in_array(date('j', $date_start), [1, 11])) {
@@ -466,6 +476,7 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 		$result_date .= strtolower(t(date('F', $date_start)));
 		$result_date .= ' de ';
 		$result_date .= date('Y', $date_start);
+		$result_date .= '4<br/>';
 		if (in_array(date('j', $date_end), [1, 11])) {
 			$result_date .= ' a l\'';
 		}

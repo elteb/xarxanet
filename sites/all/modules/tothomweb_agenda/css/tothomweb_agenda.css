@@ -206,22 +206,23 @@
   margin-top: 5px;
   min-height: 35px;
   display: flex;
-  align-items: flex-end; }
-/* line 272, ../sass/tothomweb_agenda.scss */
+  align-items: flex-end;
+  text-transform: uppercase; }
+/* line 273, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-title {
   color: #2f3031;
   font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif;
   font-size: 1.42em;
   margin: 0; }
 @media (min-width: 768px) {
-  /* line 272, ../sass/tothomweb_agenda.scss */
+  /* line 273, ../sass/tothomweb_agenda.scss */
   #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-title {
     min-height: 135px; } }
-/* line 283, ../sass/tothomweb_agenda.scss */
+/* line 284, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-category {
   font-family: "Fira Sans Bold", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   margin-bottom: 10px; }
-/* line 288, ../sass/tothomweb_agenda.scss */
+/* line 289, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-category .taxonomy-link {
   color: #be1622; }
