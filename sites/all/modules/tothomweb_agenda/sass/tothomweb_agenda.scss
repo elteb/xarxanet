@@ -44,7 +44,9 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
     background-size: cover;
     min-height: 260px;
     position: relative;
-    margin-bottom: 20px;
+    overflow: hidden;
+    display: block;
+    margin-bottom: 15px;
 
     .custom-title {
       font-family: $semibold;
@@ -239,6 +241,10 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
 
     #results {
 
+      h3 {
+        margin: 0;
+      }
+
       ul.row {
         list-style-type: none;
         padding: 0;
@@ -259,6 +265,14 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
             .last {
               padding: 15px;
 
+              .event-location {
+                color: $black;
+                font-size: 14px;
+                font-family: $semibold;
+                margin-top: 5px;
+                text-transform: uppercase;
+              }
+
               .event-dates {
                 color: $red;
                 font-size: 14px;
@@ -266,7 +280,7 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                 margin-top: 5px;
                 min-height: 35px;
                 display: flex;
-                align-items: flex-end;
+                align-items: flex-start;
                 text-transform: uppercase;
               }
 

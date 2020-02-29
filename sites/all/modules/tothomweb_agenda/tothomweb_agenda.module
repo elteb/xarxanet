@@ -206,6 +206,7 @@ function tothomweb_agenda_form_validate($form, &$form_state) {
  * Helper function that build the query, given a set of url parameters.
  */
 function tothomweb_agenda_query_results() {
+	$now = date('Y-m-d H:i:s', time());
 	// Get parameters from the url
 	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : 'all';
 	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? $_GET['search'] : null;
@@ -224,6 +225,8 @@ function tothomweb_agenda_query_results() {
 	$query->leftJoin('field_data_field_resum', 'f2', 'f2.entity_id = n.nid');
 	$query->leftJoin('field_data_field_date_event', 'f3', 'f3.entity_id = n.nid');
 	$query->leftJoin('field_data_field_event_type', 'f4', 'f4.entity_id = n.nid');
+	$query->leftJoin('location_instance', 'f5', 'f5.nid = n.nid');
+	$query->leftJoin('location', 'f6', 'f6.lid = f5.lid');
 	$query->addField('n', 'nid', 'nid');
 	$query->addField('n', 'title', 'title');
 	$query->addField('fm', 'uri', 'image_src');
@@ -232,8 +235,48 @@ function tothomweb_agenda_query_results() {
 	$query->addField('f3', 'field_date_event_value', 'date_start');
 	$query->addField('f3', 'field_date_event_value2', 'date_end');
 	$query->addField('f4', 'field_event_type_value', 'type');
+	$query->addField('f6', 'city', 'location');
 	$query->condition('n.type', 'event');
 	$query->condition('n.status', 1);
+	if ($search) {
+		$query->condition('n.title', '%' . db_like($search) . '%', 'LIKE');
+	}
+	if ($location) {
+		$query->condition('f6.city', '%' . db_like($location) . '%', 'LIKE');
+	}
+
+	if ($type == 'events') {
+		$query->condition('f4.field_event_type_value', 'Acte');
+		$db_or1 = db_or();
+		// Events that already begun
+		$db_or1->condition('f3.field_date_event_value', $now, '>='); 
+		// Or Events that have not yet started...
+		$db_or1->condition('f3.field_date_event_value', $now, '<=');
+		$query->condition($db_or1);
+		// ...but both should have not yet finished
+		$query->condition('f3.field_date_event_value2', $now, '>=');
+		// The events that are about to expire first, will be shown before
+		$query->orderBy('f3.field_date_event_value2', 'ASC');
+	}
+	else if ($type == 'courses') {
+		$query->condition('f4.field_event_type_value', 'Curs');
+		// Courses that have not yet started
+		$query->condition('f3.field_date_event_value', $now, '>=');
+		// The events that are about to expire first, will be shown before
+		$query->orderBy('f3.field_date_event_value', 'ASC');
+	}
+	else {
+		// $query->condition('f3.field_date_event_value2', $now, '>=');
+		// $query->orderBy('f3.field_date_event_value2', 'ASC');
+		$query->orderBy('f3.field_date_event_value2', 'DESC');
+	}
+	
+	// *********************************************************************************************************************
+	
+	// #TODO: FALTA AFEGIR ELS CAMPS DE MODALITAT A LA QUERY I EL FILTRE CORRESPONENT!!!
+	
+	// *********************************************************************************************************************
+
 	$query->limit(12);
 	$results = $query->execute();
 	// Manage the query results
@@ -253,7 +296,7 @@ function tothomweb_agenda_query_results() {
 		if ($row->type == 'Acte') {
 			$taxonomy_link = AGENDA_URL . '?type=events';
 		}
-		else if ($row->type == 'Acte') {
+		else if ($row->type == 'Curs') {
 			$taxonomy_link = AGENDA_URL . '?type=courses';
 		}
 		else {
@@ -280,6 +323,9 @@ function tothomweb_agenda_query_results() {
 		$output .= '<h2 class="event-title">' . $row->title . '</h2>';
 		$output .= '</a>';
 		$output .= '</header>';
+		$output .= '<div class="event-location">';
+		$output .= $row->location;
+		$output .= '</div>';
 		$output .= '<div class="event-dates">';
 		$output .= $event_date;
 		$output .= '</div>';
@@ -476,7 +522,7 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 		$result_date .= strtolower(t(date('F', $date_start)));
 		$result_date .= ' de ';
 		$result_date .= date('Y', $date_start);
-		$result_date .= '4<br/>';
+		$result_date .= '<br/>';
 		if (in_array(date('j', $date_end), [1, 11])) {
 			$result_date .= ' a l\'';
 		}
