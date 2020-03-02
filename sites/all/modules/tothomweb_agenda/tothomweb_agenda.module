@@ -220,7 +220,7 @@ function tothomweb_agenda_form_validate($form, &$form_state) {
  * Helper function that build the query, given a set of url parameters.
  */
 function tothomweb_agenda_query_results() {
-	$now = date('Y-m-d H:i:s', time());
+	$now = date('Y-m-d\TH:i:s', time());
 	// Get parameters from the url
 	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : null;
 	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? $_GET['search'] : null;
@@ -267,6 +267,7 @@ function tothomweb_agenda_query_results() {
 		$query->condition('f3.field_date_event_value', $date, '>=');
 	}
 	if ($type == 'events') {
+		$now = ($date != null) ? $date : $now;
 		$query->condition('f4.field_event_type_value', 'Acte');
 		$db_or1 = db_or();
 		// Events that already begun
@@ -280,6 +281,7 @@ function tothomweb_agenda_query_results() {
 		$query->orderBy('f3.field_date_event_value2', 'ASC');
 	}
 	else if ($type == 'courses') {
+		$now = ($date != null) ? $date : $now;
 		$query->condition('f4.field_event_type_value', 'Curs');
 		// Courses that have not yet started
 		$query->condition('f3.field_date_event_value', $now, '>=');

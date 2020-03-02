@@ -11,7 +11,8 @@
 
   $(function() {
     $('#tothomweb-agenda-form #edit-date').datepicker({
-      language: 'ca-ES'
+      language: 'ca-ES',
+      format: 'dd-mm-yyyy'
     });
   });
 
