@@ -217,11 +217,12 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
           &:hover,
           &:focus,
           &:active {
-            background-color: $red;
+            background-color: darken($gray, 5%);
           }
         }
 
         .add-event {
+          font-size: 12px;
           width: auto;
           float: left;
           clear: both;
@@ -231,7 +232,7 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
           margin-top: 30px;
 
           @media (min-width: 768px) {
-            margin-top: -19px;
+            margin-top: -17px;
           }
 
           img {

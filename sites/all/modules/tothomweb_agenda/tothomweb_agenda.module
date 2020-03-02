@@ -92,6 +92,16 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#markup' => tothomweb_agenda_build_type_filters_markup(),
 	);
 
+	$form['filters_area']['filters_box']['type'] = array(
+		'#type' => 'textfield', 
+		'#title' => '',
+		'#default_value' => (isset($_GET['type'])) ? $_GET['type'] : '', 
+		'#size' => 60, 
+		'#maxlength' => 30,
+		'#prefix' => '<div class="hidden">',
+		'#suffix' => '</div>',
+	);
+
 	$form['filters_area']['filters_box']['filters_body'] = array(
 		'#type' => 'container',
 		'#attributes' => array(
@@ -166,6 +176,7 @@ function tothomweb_agenda_form($form, &$form_state) {
 
 	$form['filters_area']['filters_box']['filters_footer']['submit'] = array(
 		'#type' => 'submit',
+		'#name' => '',
 		'#value' => t('Cercar'),
 		'#prefix' => '<div class="col-xs-12 col-sm-4">',
 		'#suffix' => '</div>',
