@@ -208,33 +208,35 @@
   color: #2f3031;
   font-size: 14px;
   font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif;
-  margin-top: 5px;
-  text-transform: uppercase; }
-/* line 276, ../sass/tothomweb_agenda.scss */
+  margin-top: 10px;
+  text-transform: uppercase;
+  min-height: 19px;
+  display: block; }
+/* line 278, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-dates {
   color: #be1622;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif;
   margin-top: 5px;
   min-height: 35px;
   display: flex;
   align-items: flex-start;
   text-transform: uppercase; }
-/* line 287, ../sass/tothomweb_agenda.scss */
+/* line 289, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-title {
   color: #2f3031;
   font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif;
   font-size: 1.42em;
   margin: 0; }
 @media (min-width: 768px) {
-  /* line 287, ../sass/tothomweb_agenda.scss */
+  /* line 289, ../sass/tothomweb_agenda.scss */
   #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-title {
     min-height: 135px; } }
-/* line 298, ../sass/tothomweb_agenda.scss */
+/* line 300, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-category {
   font-family: "Fira Sans Bold", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   margin-bottom: 10px; }
-/* line 303, ../sass/tothomweb_agenda.scss */
+/* line 305, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-category .taxonomy-link {
   color: #be1622; }

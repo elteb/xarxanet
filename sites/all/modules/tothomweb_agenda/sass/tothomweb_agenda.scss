@@ -269,13 +269,15 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                 color: $black;
                 font-size: 14px;
                 font-family: $semibold;
-                margin-top: 5px;
+                margin-top: 10px;
                 text-transform: uppercase;
+                min-height: 19px;
+                display: block;
               }
 
               .event-dates {
                 color: $red;
-                font-size: 14px;
+                font-size: 12px;
                 font-family: $semibold;
                 margin-top: 5px;
                 min-height: 35px;
