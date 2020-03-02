@@ -1,5 +1,8 @@
 <?php
 
+// HOW TO DISABLE VIEWS PROGRAMMATICALLY:
+// @see https://tinyurl.com/wjpfapx
+
 // Set some helper constants
 if ($_SERVER['HTTP_HOST'] == 'xarxanet.local') {
 	define('AGENDA_URL', 'agenda-dev');
@@ -208,11 +211,11 @@ function tothomweb_agenda_form_validate($form, &$form_state) {
 function tothomweb_agenda_query_results() {
 	$now = date('Y-m-d H:i:s', time());
 	// Get parameters from the url
-	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : 'all';
+	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : null;
 	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? $_GET['search'] : null;
 	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? $_GET['date'] : null;
 	$location = (isset($_GET['location']) && !empty($_GET['location'])) ? $_GET['location'] : null;
-	$mode = (isset($_GET['mode']) && !empty($_GET['mode'])) ? $_GET['mode'] : 'all';
+	$mode = (isset($_GET['mode']) && $_GET['mode'] == 'online') ? $_GET['mode'] : null;
 	// Get the default image for the field 'field_agenda_imatge'
 	$fields_info = field_info_fields();
 	$default_image_src = file_load($fields_info['field_agenda_imatge']['settings']['default_image'])->uri;
@@ -227,6 +230,7 @@ function tothomweb_agenda_query_results() {
 	$query->leftJoin('field_data_field_event_type', 'f4', 'f4.entity_id = n.nid');
 	$query->leftJoin('location_instance', 'f5', 'f5.nid = n.nid');
 	$query->leftJoin('location', 'f6', 'f6.lid = f5.lid');
+	$query->leftJoin('field_data_field_esdeveniment_en_linia', 'f7', 'f7.entity_id = n.nid');
 	$query->addField('n', 'nid', 'nid');
 	$query->addField('n', 'title', 'title');
 	$query->addField('fm', 'uri', 'image_src');
@@ -236,6 +240,7 @@ function tothomweb_agenda_query_results() {
 	$query->addField('f3', 'field_date_event_value2', 'date_end');
 	$query->addField('f4', 'field_event_type_value', 'type');
 	$query->addField('f6', 'city', 'location');
+	$query->addField('f7', 'field_esdeveniment_en_linia_value', 'mode');
 	$query->condition('n.type', 'event');
 	$query->condition('n.status', 1);
 	if ($search) {
@@ -244,7 +249,9 @@ function tothomweb_agenda_query_results() {
 	if ($location) {
 		$query->condition('f6.city', '%' . db_like($location) . '%', 'LIKE');
 	}
-
+	if ($mode) {
+		$query->condition('f7.field_esdeveniment_en_linia_value', 1);
+	}
 	if ($type == 'events') {
 		$query->condition('f4.field_event_type_value', 'Acte');
 		$db_or1 = db_or();
@@ -266,16 +273,8 @@ function tothomweb_agenda_query_results() {
 		$query->orderBy('f3.field_date_event_value', 'ASC');
 	}
 	else {
-		// $query->condition('f3.field_date_event_value2', $now, '>=');
-		// $query->orderBy('f3.field_date_event_value2', 'ASC');
 		$query->orderBy('f3.field_date_event_value2', 'DESC');
 	}
-	
-	// *********************************************************************************************************************
-	
-	// #TODO: FALTA AFEGIR ELS CAMPS DE MODALITAT A LA QUERY I EL FILTRE CORRESPONENT!!!
-	
-	// *********************************************************************************************************************
 
 	$query->limit(12);
 	$results = $query->execute();
@@ -287,6 +286,12 @@ function tothomweb_agenda_query_results() {
 		$date_start = date('d-m-Y', strtotime($row->date_start));
 		$date_end = date('d-m-Y', strtotime($row->date_end));
 		$event_date = tothomweb_agenda_build_human_readable_date($row->date_start, $row->date_end);
+		if ($row->mode == 1) {
+			$mode = '<i class="fa fa-laptop" aria-hidden="true"></i><span class="sr-only">' . t('Esdeveniment online') . '</span>';
+		}
+		else {
+			$mode = null;
+		}
 		if ($row->image_src != null) {
 			$image_src = image_style_url('xn17_horitzontal', $row->image_src);
 		}
@@ -323,6 +328,11 @@ function tothomweb_agenda_query_results() {
 		$output .= '<h2 class="event-title">' . $row->title . '</h2>';
 		$output .= '</a>';
 		$output .= '</header>';
+		if ($mode) {
+			$output .= '<div class="event-mode" title="' . t('Esdeveniment online') . '">';
+			$output .= $mode;
+			$output .= '</div>';
+		}
 		$output .= '<div class="event-location">';
 		$output .= $row->location;
 		$output .= '</div>';
