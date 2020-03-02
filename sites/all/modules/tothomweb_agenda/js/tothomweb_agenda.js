@@ -6,3 +6,13 @@
  * @author       TOTHOMweb
  * @copyright    2020
  */
+
+(function($) {
+
+  $(function() {
+    $('#tothomweb-agenda-form #edit-date').datepicker({
+      language: 'ca-ES'
+    });
+  });
+
+})(jQuery);

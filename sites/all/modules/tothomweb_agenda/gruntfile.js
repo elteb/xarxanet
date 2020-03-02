@@ -4,7 +4,54 @@ os.tmpDir = os.tmpdir;
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-css-import');
   grunt.initConfig({
+    css_import: {
+      your_target: {
+        options: {
+        },
+        files: {
+          'css/tothomweb_libraries.css': [
+            'node_modules/@chenfengyuan/datepicker/dist/datepicker.css'
+          ]
+        }
+      }
+    },
+    uglify: {
+      js_dev: {
+        options: {
+          preserveComments: 'all',
+          compress: false,
+          beautify: {
+            width: 80,
+            beautify: true
+          }
+        },
+        files: {
+          'js/tothomweb_libraries.js': [
+            'node_modules/@chenfengyuan/datepicker/dist/datepicker.js',
+            'node_modules/@chenfengyuan/datepicker/i18n/datepicker.ca-ES.js'
+          ]
+        }
+      },
+      js_prod: {
+        options: {
+          preserveComments: false,
+          compress: true,
+          beautify: {
+            width: 80,
+            beautify: false
+          }
+        },
+        files: {
+          'js/tothomweb_libraries.js': [
+            'node_modules/@chenfengyuan/datepicker/dist/datepicker.js',
+            'node_modules/@chenfengyuan/datepicker/i18n/datepicker.ca-ES.js'
+          ]
+        }
+      }
+    },
     compass: {
       prod: {
         options: {
@@ -26,10 +73,18 @@ module.exports = function (grunt) {
         options: {
           livereload: true,
         }
+      },
+      css: {
+        files: ['sass/**/*.scss'],
+        tasks: ['css_import']
+      },
+      javascripts: {
+        files: ['js/tothomweb_agenda.js'], // Watch for changes on js files 
+        tasks: ['uglify:js_dev']
       }
     }
   });
   grunt.registerTask('default', 'watch');
-  grunt.registerTask('dev', ['compass:dev']);
-  grunt.registerTask('prod', ['compass:prod']);
+  grunt.registerTask('dev', ['uglify:js_dev', 'compass:dev']);
+  grunt.registerTask('prod', ['uglify:js_prod', 'compass:prod']);
 }

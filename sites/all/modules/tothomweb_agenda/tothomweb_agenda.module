@@ -224,7 +224,7 @@ function tothomweb_agenda_query_results() {
 	// Get parameters from the url
 	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : null;
 	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? $_GET['search'] : null;
-	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? $_GET['date'] : null;
+	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? date('Y-m-d\TH:i:s', strtotime($_GET['date'])) : null; // Date format must be "ISO 8601"
 	$location = (isset($_GET['location']) && !empty($_GET['location'])) ? $_GET['location'] : null;
 	$mode = (isset($_GET['mode']) && $_GET['mode'] == 'online') ? $_GET['mode'] : null;
 	// Get the default image for the field 'field_agenda_imatge'
@@ -263,6 +263,9 @@ function tothomweb_agenda_query_results() {
 	if ($mode) {
 		$query->condition('f7.field_esdeveniment_en_linia_value', 1);
 	}
+	if ($date) {
+		$query->condition('f3.field_date_event_value', $date, '>=');
+	}
 	if ($type == 'events') {
 		$query->condition('f4.field_event_type_value', 'Acte');
 		$db_or1 = db_or();
@@ -286,7 +289,6 @@ function tothomweb_agenda_query_results() {
 	else {
 		$query->orderBy('f3.field_date_event_value2', 'DESC');
 	}
-
 	$query->limit(12);
 	$results = $query->execute();
 	// Manage the query results

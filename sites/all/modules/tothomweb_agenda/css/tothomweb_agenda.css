@@ -285,3 +285,28 @@
 /* line 355, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-category .taxonomy-link {
   color: #be1622; }
+
+/* line 370, ../sass/tothomweb_agenda.scss */
+.datepicker-dropdown {
+  border-top-color: #be1622;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif; }
+/* line 376, ../sass/tothomweb_agenda.scss */
+.datepicker-dropdown:before {
+  border-bottom-color: #be1622; }
+/* line 380, ../sass/tothomweb_agenda.scss */
+.datepicker-dropdown .datepicker-panel > ul > li {
+  text-transform: uppercase; }
+/* line 383, ../sass/tothomweb_agenda.scss */
+.datepicker-dropdown .datepicker-panel > ul > li.month, .datepicker-dropdown .datepicker-panel > ul > li.week {
+  font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif; }
+/* line 389, ../sass/tothomweb_agenda.scss */
+.datepicker-dropdown .datepicker-panel > ul > li:hover {
+  background-color: rgba(190, 22, 34, 0.15); }
+/* line 393, ../sass/tothomweb_agenda.scss */
+.datepicker-dropdown .datepicker-panel > ul > li.highlighted {
+  background-color: rgba(190, 22, 34, 0.25); }
+/* line 397, ../sass/tothomweb_agenda.scss */
+.datepicker-dropdown .datepicker-panel > ul > li.picked, .datepicker-dropdown .datepicker-panel > ul > li.picked:hover {
+  color: #be1622; }

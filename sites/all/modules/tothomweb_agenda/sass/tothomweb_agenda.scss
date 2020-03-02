@@ -364,3 +364,37 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
   }
 
 }
+
+// DatePicker styles
+
+.datepicker-dropdown {
+  border-top-color: $red;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  font-family: $regular;
+
+  &:before {
+    border-bottom-color: $red;
+  }
+
+  .datepicker-panel > ul > li {
+    text-transform: uppercase;
+
+    &.month,
+    &.week {
+      font-family: $semibold;
+    }
+  }
+
+  .datepicker-panel > ul > li:hover {
+    background-color: rgba($red, 0.15);
+  }
+  
+  .datepicker-panel > ul > li.highlighted {
+    background-color: rgba($red, 0.25);
+  }
+
+  .datepicker-panel > ul > li.picked, .datepicker-panel > ul > li.picked:hover {
+    color: $red;
+  }
+}
