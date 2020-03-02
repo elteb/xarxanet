@@ -105,7 +105,7 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#type' => 'textfield', 
 		'#title' => '<span class="sr-only">' . t('Cercar per paraula o paraules clau') . '</span>',
 		'#attributes' => array(
-			'placeholder' => t('Cercar per paraula clau'),
+			'placeholder' => t('Paraula clau'),
 		),
 		'#default_value' => (isset($_GET['search'])) ? $_GET['search'] : '', 
 		'#size' => 60, 
@@ -118,7 +118,7 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#type' => 'textfield', 
 		'#title' => '<span class="sr-only">' . t('Cercar per data') . '</span>',
 		'#attributes' => array(
-			'placeholder' => t('Cercar per data'),
+			'placeholder' => t('Data'),
 		),
 		'#default_value' => (isset($_GET['date'])) ? $_GET['date'] : date('d/m/Y', time()), 
 		'#size' => 60, 
@@ -131,7 +131,7 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#type' => 'textfield', 
 		'#title' => '<span class="sr-only">' . t('Cercar per municipi') . '</span>',
 		'#attributes' => array(
-			'placeholder' => t('Cercar per municipi'),
+			'placeholder' => t('Municipi'),
 		),
 		'#default_value' => (isset($_GET['location'])) ? $_GET['location'] : '', 
 		'#size' => 60, 

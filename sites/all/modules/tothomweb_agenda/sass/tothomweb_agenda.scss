@@ -137,6 +137,15 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
               border: none;
               border-radius: 0;
               height: 45px;
+              padding-right: 45px;
+
+              &#edit-search {
+                background: white url(//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-search-gray.svg) no-repeat right 15px center;
+              }
+
+              &#edit-location {
+                background: white url(//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-map-gray.svg) no-repeat right 15px center;
+              }
             }
           }
         }

@@ -101,12 +101,19 @@
 #tothomweb-agenda-form .agenda-header .filters-box .filters-body .form-wrapper .form-item .form-text {
   border: none;
   border-radius: 0;
-  height: 45px; }
-/* line 145, ../sass/tothomweb_agenda.scss */
+  height: 45px;
+  padding-right: 45px; }
+/* line 142, ../sass/tothomweb_agenda.scss */
+#tothomweb-agenda-form .agenda-header .filters-box .filters-body .form-wrapper .form-item .form-text#edit-search {
+  background: white url(//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-search-gray.svg) no-repeat right 15px center; }
+/* line 146, ../sass/tothomweb_agenda.scss */
+#tothomweb-agenda-form .agenda-header .filters-box .filters-body .form-wrapper .form-item .form-text#edit-location {
+  background: white url(//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-map-gray.svg) no-repeat right 15px center; }
+/* line 154, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer {
   margin-top: -15px;
   padding: 15px; }
-/* line 149, ../sass/tothomweb_agenda.scss */
+/* line 158, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode {
   display: inline-block;
   width: 100%;
@@ -115,20 +122,20 @@
   margin-bottom: 0;
   position: relative;
   top: -3px; }
-/* line 158, ../sass/tothomweb_agenda.scss */
+/* line 167, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode > label[for=edit-mode] {
   font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif;
   margin: 0 15px 0 0;
   float: left;
   min-height: 32px;
   line-height: 25px; }
-/* line 166, ../sass/tothomweb_agenda.scss */
+/* line 175, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode .form-radios {
   display: flex;
   justify-content: space-around;
   float: left;
   min-height: 32px; }
-/* line 176, ../sass/tothomweb_agenda.scss */
+/* line 185, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode .form-radios .form-item label:hover, #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode .form-radios .form-item label:focus, #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode .form-radios .form-item label:active {
   color: #be1622;
   text-decoration: underline;
@@ -137,15 +144,15 @@
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out; }
-/* line 185, ../sass/tothomweb_agenda.scss */
+/* line 194, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode .form-radios .form-item .form-radio {
   top: -2px; }
-/* line 190, ../sass/tothomweb_agenda.scss */
+/* line 199, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode .form-radios .radio + .radio, #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-item-mode .form-radios .checkbox + .checkbox {
   margin-top: 0.4em;
   margin-bottom: 0.4em;
   margin-left: 15px; }
-/* line 198, ../sass/tothomweb_agenda.scss */
+/* line 207, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-submit {
   width: 100%;
   background-color: #878787;
@@ -159,10 +166,10 @@
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out; }
-/* line 208, ../sass/tothomweb_agenda.scss */
+/* line 217, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-submit:hover, #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-submit:focus, #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .form-submit:active {
   background-color: #be1622; }
-/* line 215, ../sass/tothomweb_agenda.scss */
+/* line 224, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .add-event {
   width: auto;
   float: left;
@@ -172,18 +179,18 @@
   color: #be1622;
   margin-top: 30px; }
 @media (min-width: 768px) {
-  /* line 215, ../sass/tothomweb_agenda.scss */
+  /* line 224, ../sass/tothomweb_agenda.scss */
   #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .add-event {
     margin-top: -19px; } }
-/* line 228, ../sass/tothomweb_agenda.scss */
+/* line 237, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-header .filters-box .filters-footer .add-event img {
   position: relative;
   top: -3px;
   margin-right: 5px; }
-/* line 244, ../sass/tothomweb_agenda.scss */
+/* line 253, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results h3 {
   margin: 0; }
-/* line 248, ../sass/tothomweb_agenda.scss */
+/* line 257, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row {
   list-style-type: none;
   padding: 0;
@@ -191,20 +198,20 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch; }
-/* line 256, ../sass/tothomweb_agenda.scss */
+/* line 265, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li {
   margin: 15px 0;
   padding: 0 15px; }
-/* line 260, ../sass/tothomweb_agenda.scss */
+/* line 269, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event {
   background-color: #ededed;
   height: 100%;
   margin: 0; }
-/* line 265, ../sass/tothomweb_agenda.scss */
+/* line 274, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last {
   padding: 15px;
   position: relative; }
-/* line 269, ../sass/tothomweb_agenda.scss */
+/* line 278, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-mode {
   position: absolute;
   top: 0px;
@@ -216,7 +223,7 @@
   text-align: center;
   background: #be1622;
   color: #ffffff; }
-/* line 281, ../sass/tothomweb_agenda.scss */
+/* line 290, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-mode:before {
   content: "";
   width: 0;
@@ -228,7 +235,7 @@
   top: 0;
   right: 24px;
   z-index: 1; }
-/* line 294, ../sass/tothomweb_agenda.scss */
+/* line 303, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-mode:after {
   content: "";
   width: 0;
@@ -240,7 +247,7 @@
   top: 24px;
   right: 0;
   z-index: 1; }
-/* line 308, ../sass/tothomweb_agenda.scss */
+/* line 317, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-location {
   color: #2f3031;
   font-size: 14px;
@@ -249,7 +256,7 @@
   text-transform: uppercase;
   min-height: 19px;
   display: block; }
-/* line 318, ../sass/tothomweb_agenda.scss */
+/* line 327, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-dates {
   color: #be1622;
   font-size: 12px;
@@ -259,21 +266,21 @@
   display: flex;
   align-items: flex-start;
   text-transform: uppercase; }
-/* line 329, ../sass/tothomweb_agenda.scss */
+/* line 338, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-title {
   color: #2f3031;
   font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif;
   font-size: 1.42em;
   margin: 0; }
 @media (min-width: 768px) {
-  /* line 329, ../sass/tothomweb_agenda.scss */
+  /* line 338, ../sass/tothomweb_agenda.scss */
   #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-title {
     min-height: 135px; } }
-/* line 340, ../sass/tothomweb_agenda.scss */
+/* line 349, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-category {
   font-family: "Fira Sans Bold", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   margin-bottom: 10px; }
-/* line 345, ../sass/tothomweb_agenda.scss */
+/* line 354, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results ul.row li .event .last .event-category .taxonomy-link {
   color: #be1622; }
