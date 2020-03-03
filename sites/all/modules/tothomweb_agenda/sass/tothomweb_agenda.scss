@@ -255,111 +255,150 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
         margin: 0;
       }
 
-      ul.row {
-        list-style-type: none;
-        padding: 0;
+      .top-summary {
+        padding: 30px 30px 15px;
         margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
+      }
 
-        li {
-          margin: 15px 0;
-          padding: 0 15px;
+      .item-list {
+        width: 100%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
 
-          .event {
-            background-color: $lightgray;
-            height: 100%;
-            margin: 0;
+        ul.row {
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          // display: flex;
+          // flex-wrap: wrap;
+          // align-items: stretch;
 
-            .last {
-              padding: 15px;
-              position: relative;
+          li {
+            margin: 15px 0;
+            padding: 0 15px;
 
-              .event-mode {
-                position: absolute;
-                top: 0px;
-                right: 0;
-                z-index: 1;
-                width: 24px;
-                height: 24px;
-                line-height: 24px;
-                text-align: center;
-                background: $red;
-                color: $white;
+            .event {
+              background-color: $lightgray;
+              height: 100%;
+              margin: 0;
 
-                &:before {
-                  content: "";
-                  width: 0;
-                  height: 0;
-                  border-style: solid;
-                  border-width: 0 24px 24px 0;
-                  border-color: transparent $red transparent transparent;
+              .last {
+                padding: 15px;
+                position: relative;
+
+                .event-mode {
                   position: absolute;
-                  top: 0;
-                  right: 24px;
-                  z-index: 1;
-                }
-
-                &:after {
-                  content: "";
-                  width: 0;
-                  height: 0;
-                  border-style: solid;
-                  border-width: 0 24px 24px 0;
-                  border-color: transparent $red transparent transparent;
-                  position: absolute;
-                  top: 24px;
+                  top: 0px;
                   right: 0;
                   z-index: 1;
+                  width: 24px;
+                  height: 24px;
+                  line-height: 24px;
+                  text-align: center;
+                  background: $red;
+                  color: $white;
+
+                  &:before {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 24px 24px 0;
+                    border-color: transparent $red transparent transparent;
+                    position: absolute;
+                    top: 0;
+                    right: 24px;
+                    z-index: 1;
+                  }
+
+                  &:after {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 24px 24px 0;
+                    border-color: transparent $red transparent transparent;
+                    position: absolute;
+                    top: 24px;
+                    right: 0;
+                    z-index: 1;
+                  }
                 }
-              }
 
-              .event-location {
-                color: $black;
-                font-size: 14px;
-                font-family: $semibold;
-                margin-top: 10px;
-                text-transform: uppercase;
-                min-height: 19px;
-                display: block;
-              }
-
-              .event-dates {
-                color: $red;
-                font-size: 12px;
-                font-family: $semibold;
-                margin-top: 5px;
-                min-height: 35px;
-                display: flex;
-                align-items: flex-start;
-                text-transform: uppercase;
-              }
-
-              .event-title {
-                color: $black;
-                font-family: $semibold;
-                font-size: 1.42em;
-                margin: 0;
-
-                @media (min-width: 768px) {
-                  min-height: 135px;
+                .event-location {
+                  color: $black;
+                  font-size: 14px;
+                  font-family: $semibold;
+                  margin-top: 10px;
+                  text-transform: uppercase;
+                  min-height: 19px;
+                  display: block;
                 }
-              }
 
-              .event-category {
-                font-family: $bold;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-
-                .taxonomy-link {
+                .event-dates {
                   color: $red;
+                  font-size: 12px;
+                  font-family: $semibold;
+                  margin-top: 5px;
+                  min-height: 35px;
+                  display: flex;
+                  align-items: flex-start;
+                  text-transform: uppercase;
+                }
+
+                .event-title {
+                  color: $black;
+                  font-family: $semibold;
+                  font-size: 1.42em;
+                  line-height: 1.250em;
+                  margin: 0;
+                  overflow: hidden;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 3;
+                  -webkit-box-orient: vertical;
+
+                  @media (min-width: 768px) {
+                    min-height: 72px;
+                    margin-bottom: 30px;
+                  }
+                }
+
+                .event-category {
+                  font-family: $bold;
+                  text-transform: uppercase;
+                  margin-bottom: 10px;
+
+                  .taxonomy-link {
+                    color: $red;
+                  }
                 }
               }
             }
           }
         }
       }
+    }
+  }
+
+  // "More" button styles
+
+  #more-wrapper {
+    display: inline-block;
+    width: 100%;
+    background: $white url(//xarxanet.local/sites/all/themes/xn17/assets/images/elements/line.svg) repeat-x center;
+    margin-top: 20px;
+
+    #more {
+      display: table;
+      margin: 0 auto;
+      width: auto;
+      background: $white url(//xarxanet.local/sites/all/themes/xn17/assets/images/elements/mes.svg) no-repeat center top;
+      padding: 25px 15px 0;
+      border: none;
+      text-transform: lowercase;
     }
   }
 

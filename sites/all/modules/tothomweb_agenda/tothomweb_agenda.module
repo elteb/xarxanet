@@ -1,15 +1,7 @@
 <?php
 
-// HOW TO DISABLE VIEWS PROGRAMMATICALLY:
-// @see https://tinyurl.com/wjpfapx
-
-// Set some helper constants
-if ($_SERVER['HTTP_HOST'] == 'xarxanet.local') {
-	define('AGENDA_URL', 'agenda-dev');
-}
-else {
-	define('AGENDA_URL', 'agenda');
-}
+// Set some helper constants.
+define('AGENDA_URL', 'agenda-dev');
 define('AGENDA_GRID_CLASSES', 'col-xs-12 col-sm-6 col-md-4 col-lg-3');
 define('AGENDA_ITEMS_PER_ROW', 12);
 
@@ -32,7 +24,7 @@ function tothomweb_agenda_menu() {
 		'title' => 'Agenda',
 		'page callback' => 'drupal_get_form', 
 		'page arguments' => array('tothomweb_agenda_form'), 
-		'access arguments' => array(), 
+		'access arguments' => array('access content'),
 		'type' => MENU_NORMAL_ITEM,
 	);
 	$items['ajax/agenda'] = array(
@@ -55,8 +47,7 @@ function tothomweb_agenda_menu() {
  * @return  $form
  */
 function tothomweb_agenda_form($form, &$form_state) {
-
-	// Remove the default <h1>, as this page uses a custom one
+	// First of all, remove the default <h1>, as this page uses a custom one.
 	drupal_set_title('');
 
 	/**
@@ -72,12 +63,9 @@ function tothomweb_agenda_form($form, &$form_state) {
 	 * 
 	 * @see https://drupal.stackexchange.com/a/192381
 	 */
-
 	$form['#method'] = 'GET';
 	$form['#after_build'][] = 'tothomweb_agenda_form_alter';
-
 	// Filter's Area
-
 	$form['filters_area'] = array(
 		'#type' => 'container',
 		'#attributes' => array(
@@ -86,12 +74,10 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="container agenda-header">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['custom_title'] = array(
 		'#type' => 'markup',
 		'#markup' => '<h1 class="custom-title">' . t('Agenda') . '</h1>',
 	);
-
 	$form['filters_area']['filters_box'] = array(
 		'#type' => 'container',
 		'#attributes' => array(
@@ -101,12 +87,10 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['filters_box']['filters_header'] = array(
 		'#type' => 'markup',
 		'#markup' => tothomweb_agenda_build_type_filters_markup(),
 	);
-
 	$form['filters_area']['filters_box']['type'] = array(
 		'#type' => 'textfield', 
 		'#title' => '',
@@ -116,7 +100,6 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="hidden">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['filters_box']['filters_body'] = array(
 		'#type' => 'container',
 		'#attributes' => array(
@@ -125,7 +108,6 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="filters-body">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['filters_box']['filters_body']['search'] = array(
 		'#type' => 'textfield', 
 		'#title' => '<span class="sr-only">' . t('Cercar per paraula o paraules clau') . '</span>',
@@ -138,7 +120,6 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="col-xs-12 col-sm-4">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['filters_box']['filters_body']['date'] = array(
 		'#type' => 'textfield', 
 		'#title' => '<span class="sr-only">' . t('Cercar per data') . '</span>',
@@ -151,7 +132,6 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="col-xs-12 col-sm-4">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['filters_box']['filters_body']['location'] = array(
 		'#type' => 'textfield', 
 		'#title' => '<span class="sr-only">' . t('Cercar per municipi') . '</span>',
@@ -164,7 +144,6 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="col-xs-12 col-sm-4">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['filters_box']['filters_footer'] = array(
 		'#type' => 'container',
 		'#attributes' => array(
@@ -173,7 +152,6 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="filters-footer">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['filters_box']['filters_footer']['mode'] = array(
 		'#type' => 'radios',
 		'#title' => '<span class="sr-only">' . t('Selecciona la') . ' </span>' . t('Modalitat:') . ' <span class="sr-only">' . t('de l\'esdeveniment') . '</span>',
@@ -182,13 +160,11 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="col-xs-12 col-sm-8">',
 		'#suffix' => '</div>',
 	);
-
 	$form['filters_area']['filters_box']['filters_footer']['add_event'] = array(
 		'#type' => 'markup',
 		'#markup' => '<a class="add-event" href="/node/add/event"><img src="//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-publish-red.svg">' . t('Publica un nou esdeveniment') . '</a>',
-		'#weight' => 11, // Drupal's default value is 10
+		'#weight' => 11, // Drupal's default value is 10.
 	);
-
 	$form['filters_area']['filters_box']['filters_footer']['submit'] = array(
 		'#type' => 'submit',
 		'#name' => '',
@@ -196,9 +172,7 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="col-xs-12 col-sm-4">',
 		'#suffix' => '</div>',
 	);
-
 	// Results' Area
-
 	$form['results_area'] = array(
 		'#type' => 'container',
 		'#attributes' => array(
@@ -208,38 +182,39 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="container agenda-body">',
 		'#suffix' => '</div>',
 	);
-
+	$form['results_area']['summary'] = array(
+		'#type' => 'markup',
+		'#markup' => '<p class="top-summary">Recull detallat i actualitzat d’actes i de cursos de formació relacionats<br>amb el món de l’associacionisme i el voluntariat a tot Catalunya</p>',
+	);
 	$form['results_area']['grid'] = array(
 		'#type' => 'markup',
 		'#markup' => tothomweb_agenda_query_results(),
 	);
-
+	// The "More results" button.
 	$now = date('Y-m-d\TH:i:s', time());
 	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : null;
 	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? $_GET['search'] : null;
-	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? date('Y-m-d\TH:i:s', strtotime($_GET['date'])) : null; // Date format must be "ISO 8601"
+	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? date('Y-m-d\TH:i:s', strtotime($_GET['date'])) : null; // Date format must be "ISO 8601".
 	$location = (isset($_GET['location']) && !empty($_GET['location'])) ? $_GET['location'] : null;
 	$mode = (isset($_GET['mode']) && $_GET['mode'] == 'online') ? $_GET['mode'] : null;
-
+	// Build it's attributes.
 	$attributes  = '';
 	$attributes .= ($type) ? ' data-type="' . $type . '"' : '';
 	$attributes .= ($search) ? ' data-search="' . $search . '"' : '';
 	$attributes .= ($date) ? ' data-date="' . $date . '"' : '';
 	$attributes .= ($location) ? ' data-location="' . $location . '"' : '';
 	$attributes .= ($mode) ? ' data-mode="' . $mode . '"' : '';
-
+	// Compose the button's markup.
+	$markup  = '<div class="col-xs-12">';
+	$markup .= '<div id="more-wrapper" data-items-per-row="' . AGENDA_ITEMS_PER_ROW . '">';
+	$markup .= '<button id="more"' . $attributes . ' data-page="2">' . t('Més agendes') . '</button>';
+	$markup .= '</div>';
+	$markup .= '</div>';
+	// Set the button.
 	$form['results_area']['more'] = array(
 		'#type' => 'markup',
-		'#markup' => '<button id="more"' . $attributes . ' data-page="2">' . t('Més agendes') . '</button>',
+		'#markup' => $markup,
 	);
-
-	if (AGENDA_URL == 'agenda-dev') {
-		$form['livereload'] = array(
-			'#type' => 'markup',
-			'#markup' => '<script src="//xarxanet.local:35729/livereload.js"></script>',
-		);
-	}
-
 	return $form;
 }
 
@@ -250,10 +225,13 @@ function tothomweb_agenda_form($form, &$form_state) {
  * In addition, it also handles AJAX calls triggered by the "Més agendes" button.
  * In this case, it returns the new results, taking care of the pagination, and sends
  * the markup to the client-side, which will append it to the current item-list wrapper.
+ * 
+ * In summary, this function is used both by PHP and AJAX processes, 
+ * please refer to the $trigger flag to see the differences between them.
  */
 function tothomweb_agenda_query_results() {
 	$now = date('Y-m-d\TH:i:s', time());
-	// Get parameters from the url
+	// Get parameters from the url.
 	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : false;
 	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? $_GET['search'] : false;
 	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? date('Y-m-d\TH:i:s', strtotime($_GET['date'])) : false; // Date format must be "ISO 8601"
@@ -261,13 +239,12 @@ function tothomweb_agenda_query_results() {
 	$mode = (isset($_GET['mode']) && $_GET['mode'] == 'online') ? $_GET['mode'] : false;
 	$page = (isset($_GET['page']) && !empty($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : false;
 	$trigger = (isset($_GET['trigger']) && $_GET['trigger'] == 'AJAX') ? true : false;
-
-	// Get the default image for the field 'field_agenda_imatge'
+	// Get the default image for the field 'field_agenda_imatge'.
 	$fields_info = field_info_fields();
 	$default_image_src = file_load($fields_info['field_agenda_imatge']['settings']['default_image'])->uri;
 	$default_image_src = image_style_url('xn17_horitzontal', $default_image_src);
 	$default_image_src = str_replace('xarxanet.local/', 'xarxanet.org/', $default_image_src);
-	// Buid the query
+	// Buid the query.
 	$query = db_select('node', 'n');
 	$query->leftJoin('field_data_field_agenda_imatge', 'f1', 'f1.entity_id = n.nid');
 	$query->leftJoin('file_managed', 'fm', 'fm.fid = f1.field_agenda_imatge_fid');
@@ -305,41 +282,43 @@ function tothomweb_agenda_query_results() {
 		$now = ($date != null) ? $date : $now;
 		$query->condition('f4.field_event_type_value', 'Acte');
 		$db_or1 = db_or();
-		// Events that already begun
+		// Events that already begun.
 		$db_or1->condition('f3.field_date_event_value', $now, '>='); 
 		// Or Events that have not yet started...
 		$db_or1->condition('f3.field_date_event_value', $now, '<=');
 		$query->condition($db_or1);
-		// ...but both should have not yet finished
+		// ...but both should have not yet finished.
 		$query->condition('f3.field_date_event_value2', $now, '>=');
-		// The events that are about to expire first, will be shown before
+		// The events that are about to expire first, will be shown before.
 		$query->orderBy('f3.field_date_event_value2', 'ASC');
 	}
 	else if ($type == 'courses') {
 		$now = ($date != null) ? $date : $now;
 		$query->condition('f4.field_event_type_value', 'Curs');
-		// Courses that have not yet started
+		// Courses that have not yet started.
 		$query->condition('f3.field_date_event_value', $now, '>=');
-		// The events that are about to expire first, will be shown before
+		// The events that are about to expire first, will be shown before.
 		$query->orderBy('f3.field_date_event_value', 'ASC');
 	}
 	else {
 		$query->orderBy('f3.field_date_event_value2', 'DESC');
 	}
 	if (!$page) {
+		// Set ranges by default, on the first page load.
 		$query->range(0, AGENDA_ITEMS_PER_ROW);
 	}
 	else {
+		// Set ranges on a AJAX call.
 		$items_per_row = AGENDA_ITEMS_PER_ROW;
 		$offset = $items_per_row * ($page - 1);
 		$limit = $items_per_row * $page;
 		$query->range($offset, $limit);
 	}
 	$results = $query->execute();
-	// Manage the query results
+	// Manage the query results.
 	$items = array();
 	foreach ($results as $row) {
-		// Prepare data
+		// Prepare data.
 		$node_alias = url(drupal_get_path_alias('node/' . $row->nid));
 		$date_start = date('d-m-Y', strtotime($row->date_start));
 		$date_end = date('d-m-Y', strtotime($row->date_end));
@@ -351,14 +330,14 @@ function tothomweb_agenda_query_results() {
 		else {
 			$mode = null;
 		}
-		// Set the image with preset or a default image
+		// Set the image with preset or a default image.
 		if ($row->image_src != null) {
 			$image_src = image_style_url('xn17_horitzontal', $row->image_src);
 		}
 		else {
 			$image_src = $default_image_src;
 		}
-		// Set the taxonomy link
+		// Set the taxonomy link.
 		if ($row->type == 'Acte') {
 			$taxonomy_link = AGENDA_URL . '?type=events';
 		}
@@ -368,12 +347,12 @@ function tothomweb_agenda_query_results() {
 		else {
 			$taxonomy_link = '#';
 		}
-		// Build the output
+		// Build the output.
 		$output  = '<div class="event" data-node="node-' . $row->nid . '">';
 		$output .= '<article>';
 		$output .= '<div class="first">';
 		$output .= '<figure>';
-		$output .= '<a href="' . $node_alias . '">';
+		$output .= '<a href="' . $node_alias . '" title="' . $row->title . '">';
 		$output .= '<img class="img-responsive" src="' . $image_src . '" alt="' . $row->image_alt . '" />';
 		$output .= '</a>';
 		$output .= '</figure>';
@@ -385,7 +364,7 @@ function tothomweb_agenda_query_results() {
 		$output .= '<a class="taxonomy-link" href="' . $taxonomy_link . '">' . $row->type . '</a>';
 		$output .= '</div>';
 		$output .= '<header>';
-		$output .= '<a href="' . $node_alias . '">';
+		$output .= '<a href="' . $node_alias . '" title="' . $row->title . '">';
 		$output .= '<h2 class="event-title">' . $row->title . '</h2>';
 		$output .= '</a>';
 		$output .= '</header>';
@@ -403,13 +382,13 @@ function tothomweb_agenda_query_results() {
 		$output .= '</div>';
 		$output .= '</article>';
 		$output .= '</div>';
-		// Append output in a pre-renderable array
+		// Append output in a pre-renderable array.
 		$items[] = array(
 			'data' => $output,
 			'class' => array('bootstrap' => AGENDA_GRID_CLASSES),
 		);
 	}
-	// Build the renderable array of the results
+	// Build the renderable array of the results.
 	$render_array['results'] = array(
 		'#theme' => 'item_list',
 		'#type' => 'ul',
@@ -417,7 +396,7 @@ function tothomweb_agenda_query_results() {
 		'#items' => $items,
 		'#attributes' => array('class' => 'row'),
 	);
-	
+	// Render or return the markup, according to the trigger.
 	if ($trigger && $trigger == 'AJAX') {
 		print drupal_render($render_array);
 	}
@@ -425,26 +404,6 @@ function tothomweb_agenda_query_results() {
 		return drupal_render($render_array);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * Implements hook_form_alter().
