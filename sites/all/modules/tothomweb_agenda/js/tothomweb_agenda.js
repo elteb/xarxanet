@@ -41,22 +41,24 @@
 
         $.ajax({
           url: Drupal.settings.tothomweb_agenda.url,
-          method: 'POST',
+          method: 'GET',
+          dataType: 'html',
           data: {
             'type': type,
             'search': search,
             'date': date,
             'location': location,
             'mode': mode,
-            'page': page
+            'page': page,
+            'trigger': 'DEFAULT'
           },
           success: function(response) {
-            // console.log(response);
-            var $output = $($.parseHTML(response));
+            console.log(response);
+            // var $output = $($.parseHTML(response));
             // $output = $output.find('#tothomweb-agenda-form #results');
-            console.log($output);
-            $('#tothomweb-agenda-form #results').empty();
-            $output.appendTo($('#tothomweb-agenda-form #results'));
+            // console.log($output);
+            // $('#tothomweb-agenda-form #results').empty();
+            // $output.appendTo($('#tothomweb-agenda-form #results'));
           }
         });
       });
