@@ -99,6 +99,15 @@
     itemsCounterFlag: function() {
       var itemsCount = $('#tothomweb-agenda-form #results .item-list li').length;
       $('#tothomweb-agenda-form #more-wrapper').attr('data-count', itemsCount);
+    },
+
+    /**
+     * Helper function that remove the "More" button if there isn't any result to show (DEPRECATED)
+     */
+    hideMoreButtonIfNoResults: function() {
+      if ($('#tothomweb-agenda-form .empty-results').length > 0) {
+        $('#tothomweb-agenda-form #more-wrapper').remove();
+      }
     }
   }
   // Launch the functions.
