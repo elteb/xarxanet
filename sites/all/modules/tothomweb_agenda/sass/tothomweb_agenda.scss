@@ -283,9 +283,15 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
           list-style-type: none;
           padding: 0;
           margin: 0;
-          // display: flex;
-          // flex-wrap: wrap;
-          // align-items: stretch;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: stretch;
+
+          &:before,
+          &:after {
+            display: inline-block;
+          }
 
           li {
             margin: 15px 0;
@@ -299,6 +305,11 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
               .last {
                 padding: 15px;
                 position: relative;
+                display: block;
+
+                @media (min-width: 768px) {
+                  min-height: 215px;
+                }
 
                 .event-mode {
                   position: absolute;
@@ -347,6 +358,12 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                   text-transform: uppercase;
                   min-height: 19px;
                   display: block;
+                  @media (min-width: 768px) {
+                    position: absolute;
+                    bottom: 50px;
+                    left: 15px;
+                    z-index: 1;
+                  }
                 }
 
                 .event-dates {
@@ -358,6 +375,13 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                   display: flex;
                   align-items: flex-start;
                   text-transform: uppercase;
+
+                  @media (min-width: 768) {
+                    position: absolute;
+                    bottom: 15px;
+                    left: 15px;
+                    z-index: 1;
+                  }
                 }
 
                 .event-title {
@@ -372,7 +396,7 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                   -webkit-box-orient: vertical;
 
                   @media (min-width: 768px) {
-                    min-height: 3.75em;
+                    // min-height: 3.75em;
                     margin-bottom: 30px;
                   }
                 }
