@@ -24,13 +24,13 @@ function tothomweb_agenda_menu() {
 		'title' => 'Agenda',
 		'page callback' => 'drupal_get_form', 
 		'page arguments' => array('tothomweb_agenda_form'), 
-		'access arguments' => array('access content'),
+		'access callback' => TRUE,
 		'type' => MENU_NORMAL_ITEM,
 	);
 	$items['ajax/agenda'] = array(
 		'type' => MENU_CALLBACK,
 		'page callback' => 'tothomweb_agenda_query_results',
-		'access arguments' => array('access content'),
+		'access callback' => TRUE,
 	);
 	return $items;
 }
