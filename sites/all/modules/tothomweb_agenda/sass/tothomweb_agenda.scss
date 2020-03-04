@@ -1,0 +1,450 @@
+/**
+ * @file         tothomweb_agenda.css
+ *
+ * @project      xarxanet.org/agenda
+ * @version      1.0
+ * @author       TOTHOMweb
+ * @copyright    2020
+ */
+
+//  Variables
+
+$white:       #ffffff;
+$red:         #be1622;
+$gray:        #878787;
+$lightgray:   #ededed;
+$black:       #2f3031;
+
+$bold:          'Fira Sans Bold', Helvetica, Arial, sans-serif;
+$semibold:      'Fira Sans SemiBold', Helvetica, Arial, sans-serif;
+$regular:       'Fira Sans', Helvetica, Arial, sans-serif;
+
+// Mixins
+
+@mixin transition($property) {
+  transition: $property 0.2s ease-in-out;
+  -webkit-transition: $property 0.2s ease-in-out;
+  -moz-transition: $property 0.2s ease-in-out;
+  -ms-transition: $property 0.2s ease-in-out;
+  -o-transition: $property 0.2s ease-in-out;
+}
+
+// Styles
+
+#tothomweb-agenda-form {
+  font-family: $regular;
+  color: $black;
+
+  // Styles of the Filters Area
+
+  .agenda-header {
+    background-image: url(//xarxanet.org/sites/all/themes/xn17/assets/images/headers/agenda.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin-bottom: 15px;
+
+    .custom-title {
+      font-family: $semibold;
+      color: $white;
+      text-transform: lowercase;
+      font-size: 5em;
+      opacity: 0.5;
+      margin: 0;
+      padding: 0 15px;
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      z-index: 1;
+    }
+
+    .filters-box {
+      background-color: rgba($white, 0.75);
+      margin: 30px 0 90px;
+      
+      @media (min-width: 768px) {
+        margin: 30px 0 75px;
+      }
+      
+      @media (min-width: 992px) {
+        margin: 30px 0 75px;
+      }
+
+      .filters-header {
+        width: 100%;
+        display: inline-block;
+
+        a {
+          width: 33.3333%;
+          text-align: center;
+          padding: 12px 0;
+          display: inline-block;
+          background-color: $white;
+          position: relative;
+          color: $gray;
+          font-family: $semibold;
+
+          &.active {
+            background-color: $red;
+            color: $white;
+
+            &:after {
+              content: "";
+              background-image: url(//xarxanet.org/sites/all/themes/xn17/assets/images/elements/punta-avall.svg);
+              background-repeat: no-repeat;
+              background-position: 50% 50%;
+              background-size: cover;
+              width: 24px;
+              height: 12px;
+              display: block;
+              position: absolute;
+              bottom: -12px;
+              left: 50%;
+              margin-left: -12px;
+              z-index: 1;
+            }
+          }
+        }
+      }
+
+      .filters-body {
+        padding: 15px;
+
+        .form-wrapper {
+          padding: 0 7.5px;
+
+          > div {
+            padding-left: 7.5px;
+            padding-right: 7.5px;
+          }
+
+          .form-item {
+
+            @media (min-width: 768px) {
+              margin-bottom: 0;
+            }
+            
+            label {
+              display: block;
+              margin: 0;
+            }
+            
+            .form-text {
+              border: none;
+              border-radius: 0;
+              height: 45px;
+              padding-right: 45px;
+
+              &#edit-search {
+                background: white url(//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-search-gray.svg) no-repeat right 15px center;
+              }
+
+              &#edit-location {
+                background: white url(//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-map-gray.svg) no-repeat right 15px center;
+              }
+            }
+          }
+        }
+      }
+
+      .filters-footer {
+        margin-top: -15px;
+        padding: 15px;
+
+        .form-item-mode {
+          display: inline-block;
+          width: 100%;
+          float: none;
+          clear: both;
+          margin-bottom: 0;
+          position: relative;
+          top: -3px;
+
+          > label[for=edit-mode] {
+            font-family: $semibold;
+            margin: 0 15px 0 0;
+            float: left;
+            min-height: 32px;
+            line-height: 25px;
+          }
+
+          .form-radios {
+            display: flex;
+            justify-content: space-around;
+            float: left;
+            min-height: 32px;
+
+            .form-item {
+              
+              label {
+
+                &:hover,
+                &:focus,
+                &:active {
+                  color: $red;
+                  text-decoration: underline;
+                  @include transition(all);
+                }
+              }
+              
+              .form-radio {
+                top: -2px;
+              }
+            }
+
+            .radio + .radio, .checkbox + .checkbox {
+              margin-top: 0.4em;
+              margin-bottom: 0.4em;
+              margin-left: 15px;
+            }
+          }
+        }
+
+        .form-submit {
+          width: 100%;
+          background-color: $gray;
+          color: $white;
+          font-family: $semibold;
+          border: none;
+          border-radius: 0;
+          padding: 12px 0;
+          @include transition(all);
+
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: darken($gray, 5%);
+          }
+        }
+
+        .add-event {
+          font-size: 12px;
+          width: auto;
+          float: left;
+          clear: both;
+          margin-left: 15px;
+          text-transform: uppercase;
+          color: $red;
+          margin-top: 30px;
+
+          @media (min-width: 768px) {
+            margin-top: -17px;
+          }
+
+          img {
+            position: relative;
+            top: -3px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  // Styles of the Results Area
+
+  .agenda-body {
+
+    #results {
+
+      h3 {
+        margin: 0;
+      }
+
+      .top-summary {
+        padding: 30px 30px 15px;
+        margin: 0;
+      }
+
+      .empty-results {
+        border: 4px solid $gray;
+        padding: 15px;
+        font-family: $semibold;
+        display: table;
+        width: 100%;
+        max-width: 768px;
+        margin: 90px auto;
+        text-align: center;
+      }
+
+      .item-list {
+        width: 100%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        ul.row {
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          // display: flex;
+          // flex-wrap: wrap;
+          // align-items: stretch;
+
+          li {
+            margin: 15px 0;
+            padding: 0 15px;
+
+            .event {
+              background-color: $lightgray;
+              height: 100%;
+              margin: 0;
+
+              .last {
+                padding: 15px;
+                position: relative;
+
+                .event-mode {
+                  position: absolute;
+                  top: 0px;
+                  right: 0;
+                  z-index: 1;
+                  width: 24px;
+                  height: 24px;
+                  line-height: 24px;
+                  text-align: center;
+                  background: $red;
+                  color: $white;
+
+                  &:before {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 24px 24px 0;
+                    border-color: transparent $red transparent transparent;
+                    position: absolute;
+                    top: 0;
+                    right: 24px;
+                    z-index: 1;
+                  }
+
+                  &:after {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 24px 24px 0;
+                    border-color: transparent $red transparent transparent;
+                    position: absolute;
+                    top: 24px;
+                    right: 0;
+                    z-index: 1;
+                  }
+                }
+
+                .event-location {
+                  color: $black;
+                  font-size: 14px;
+                  font-family: $semibold;
+                  margin-top: 10px;
+                  text-transform: uppercase;
+                  min-height: 19px;
+                  display: block;
+                }
+
+                .event-dates {
+                  color: $red;
+                  font-size: 12px;
+                  font-family: $semibold;
+                  margin-top: 5px;
+                  min-height: 35px;
+                  display: flex;
+                  align-items: flex-start;
+                  text-transform: uppercase;
+                }
+
+                .event-title {
+                  color: $black;
+                  font-family: $semibold;
+                  font-size: 1.42em;
+                  line-height: 1.250em;
+                  margin: 0;
+                  overflow: hidden;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 3;
+                  -webkit-box-orient: vertical;
+
+                  @media (min-width: 768px) {
+                    min-height: 3.75em;
+                    margin-bottom: 30px;
+                  }
+                }
+
+                .event-category {
+                  font-family: $bold;
+                  text-transform: uppercase;
+                  margin-bottom: 10px;
+
+                  .taxonomy-link {
+                    color: $red;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // "More" button styles
+
+  #more-wrapper {
+    display: inline-block;
+    width: 100%;
+    background: $white url(//xarxanet.local/sites/all/themes/xn17/assets/images/elements/line.svg) repeat-x center;
+    margin-top: 20px;
+
+    #more {
+      display: table;
+      margin: 0 auto;
+      width: auto;
+      background: $white url(//xarxanet.local/sites/all/themes/xn17/assets/images/elements/mes.svg) no-repeat center top;
+      padding: 25px 15px 0;
+      border: none;
+      text-transform: lowercase;
+    }
+  }
+
+}
+
+// DatePicker styles
+
+.datepicker-dropdown {
+  border-top-color: $red;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  font-family: $regular;
+
+  &:before {
+    border-bottom-color: $red;
+  }
+
+  .datepicker-panel > ul > li {
+    text-transform: uppercase;
+
+    &.month,
+    &.week {
+      font-family: $semibold;
+    }
+  }
+
+  .datepicker-panel > ul > li:hover {
+    background-color: rgba($red, 0.15);
+  }
+  
+  .datepicker-panel > ul > li.highlighted {
+    background-color: rgba($red, 0.25);
+  }
+
+  .datepicker-panel > ul > li.picked, .datepicker-panel > ul > li.picked:hover {
+    color: $red;
+  }
+}
