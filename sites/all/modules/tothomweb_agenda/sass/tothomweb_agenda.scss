@@ -283,9 +283,15 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
           list-style-type: none;
           padding: 0;
           margin: 0;
-          // display: flex;
-          // flex-wrap: wrap;
-          // align-items: stretch;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: stretch;
+
+          &:before,
+          &:after {
+            display: inline-block;
+          }
 
           li {
             margin: 15px 0;
@@ -299,6 +305,12 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
               .last {
                 padding: 15px;
                 position: relative;
+                display: block;
+
+                @media (min-width: 768px) {
+                  
+                  min-height: 15em;
+                }
 
                 .event-mode {
                   position: absolute;
@@ -343,10 +355,19 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                   color: $black;
                   font-size: 14px;
                   font-family: $semibold;
-                  margin-top: 10px;
+                  margin-top: 30px;
                   text-transform: uppercase;
                   min-height: 19px;
                   display: block;
+                  
+                  @media (min-width: 768px) {
+                    
+                    margin-top: 10px;
+                    position: absolute;
+                    bottom: 3.5em;
+                    left: 15px;
+                    z-index: 1;
+                  }
                 }
 
                 .event-dates {
@@ -358,6 +379,16 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                   display: flex;
                   align-items: flex-start;
                   text-transform: uppercase;
+
+                  @media (min-width: 768px) {
+                    
+                    min-height: 3em;
+                    align-items: flex-start;
+                    position: absolute;
+                    bottom: 1em;
+                    left: 15px;
+                    z-index: 1;
+                  }
                 }
 
                 .event-title {
@@ -372,7 +403,7 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
                   -webkit-box-orient: vertical;
 
                   @media (min-width: 768px) {
-                    min-height: 3.75em;
+                    // min-height: 3.75em;
                     margin-bottom: 30px;
                   }
                 }
