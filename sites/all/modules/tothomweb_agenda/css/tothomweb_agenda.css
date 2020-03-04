@@ -290,7 +290,7 @@
 @media (min-width: 768px) {
   /* line 352, ../sass/tothomweb_agenda.scss */
   #tothomweb-agenda-form .agenda-body #results .item-list ul.row li .event .last .event-title {
-    min-height: 72px;
+    min-height: 3.75em;
     margin-bottom: 30px; } }
 /* line 369, ../sass/tothomweb_agenda.scss */
 #tothomweb-agenda-form .agenda-body #results .item-list ul.row li .event .last .event-category {
