@@ -207,7 +207,7 @@ function tothomweb_agenda_form($form, &$form_state) {
 	// Compose the button's markup.
 	$markup  = '<div class="col-xs-12">';
 	$markup .= '<div id="more-wrapper" data-items-per-row="' . AGENDA_ITEMS_PER_ROW . '">';
-	$markup .= '<button id="more"' . $attributes . ' data-page="2">' . t('Més agendes') . '</button>';
+	$markup .= '<button id="more"' . $attributes . ' data-page="1">' . t('Més agendes') . '</button>';
 	$markup .= '</div>';
 	$markup .= '</div>';
 	// Set the button.
@@ -310,8 +310,8 @@ function tothomweb_agenda_query_results() {
 	else {
 		// Set ranges on a AJAX call.
 		$items_per_row = AGENDA_ITEMS_PER_ROW;
-		$offset = $items_per_row * ($page - 1);
-		$limit = $items_per_row * $page;
+		$offset = $items_per_row * $page;
+		$limit = AGENDA_ITEMS_PER_ROW;
 		$query->range($offset, $limit);
 	}
 	$results = $query->execute();
@@ -470,9 +470,7 @@ function tothomweb_agenda_build_mode_options() {
 function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 	$date_start = strtotime($date_start);
 	$date_end = strtotime($date_end);
-	
-	// Case #1: Different day, same month & same year
-	
+	// Case #1: Different day, same month & same year.
 	if ((date('j', $date_start) != date('j', $date_end)) && (date('F', $date_start) == date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
 		$result_date = '';
 		if (in_array(date('j', $date_start), [1, 11])) {
@@ -500,9 +498,7 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 		$result_date .= ' de ';
 		$result_date .= date('Y', $date_end);
 	}
-	
-	// Case #2: Different months & same year
-	
+	// Case #2: Different months & same year.
 	else if ((date('F', $date_start) != date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
 		$result_date = '';
 		if (in_array(date('j', $date_start), [1, 11])) {
@@ -537,9 +533,7 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 		$result_date .= ' de ';
 		$result_date .= date('Y', $date_end);
 	}
-	
-	// Case #3: Same day, month & year
-	
+	// Case #3: Same day, month & year.
 	else if ((date('j', $date_start) == date('j', $date_end)) && (date('F', $date_start) == date('F', $date_end)) && (date('Y', $date_start) == date('Y', $date_end))) {
 		$result_date = '';
 		$result_date .= date('j', $date_start);
@@ -553,9 +547,7 @@ function tothomweb_agenda_build_human_readable_date($date_start, $date_end) {
 		$result_date .= ' de ';
 		$result_date .= date('Y', $date_end);
 	}
-	
-	// Case #4: Different day, month & year (date format by default)
-	
+	// Case #4: Different day, month & year (date format by default).
 	else {
 		$result_date = '';
 		if (in_array(date('j', $date_start), [1, 11])) {
