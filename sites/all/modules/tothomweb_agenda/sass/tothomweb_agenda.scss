@@ -230,6 +230,8 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
           text-transform: uppercase;
           color: $red;
           margin-top: 30px;
+          position: relative;
+          z-index: 2;
 
           @media (min-width: 768px) {
             margin-top: -17px;
@@ -430,14 +432,14 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
   #more-wrapper {
     display: inline-block;
     width: 100%;
-    background: $white url(//xarxanet.local/sites/all/themes/xn17/assets/images/elements/line.svg) repeat-x center;
+    background: $white url(//xarxanet.org/sites/all/themes/xn17/assets/images/elements/line.svg) repeat-x center;
     margin-top: 20px;
 
     #more {
       display: table;
       margin: 0 auto;
       width: auto;
-      background: $white url(//xarxanet.local/sites/all/themes/xn17/assets/images/elements/mes.svg) no-repeat center top;
+      background: $white url(//xarxanet.org/sites/all/themes/xn17/assets/images/elements/mes.svg) no-repeat center top;
       padding: 25px 15px 0;
       border: none;
       text-transform: lowercase;

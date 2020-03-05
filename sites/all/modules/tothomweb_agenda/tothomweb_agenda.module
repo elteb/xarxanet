@@ -182,10 +182,6 @@ function tothomweb_agenda_form($form, &$form_state) {
 		'#prefix' => '<div class="container agenda-body">',
 		'#suffix' => '</div>',
 	);
-	$form['results_area']['summary'] = array(
-		'#type' => 'markup',
-		'#markup' => '<p class="top-summary">Recull detallat i actualitzat d’actes i de cursos de formació relacionats<br>amb el món de l’associacionisme i el voluntariat a tot Catalunya</p>',
-	);
 	$form['results_area']['grid'] = array(
 		'#type' => 'markup',
 		'#markup' => tothomweb_agenda_query_results(),
