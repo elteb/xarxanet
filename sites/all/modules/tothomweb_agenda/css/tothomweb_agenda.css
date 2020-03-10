@@ -380,3 +380,7 @@
 /* line 480, ../sass/tothomweb_agenda.scss */
 .datepicker-dropdown .datepicker-panel > ul > li.picked, .datepicker-dropdown .datepicker-panel > ul > li.picked:hover {
   color: #be1622; }
+
+/* line 487, ../sass/tothomweb_agenda.scss */
+.page-node-add-event .field-name-taxonomy-vocabulary-1, .page-node-edit.node-type-event .field-name-taxonomy-vocabulary-1 {
+  display: none !important; }

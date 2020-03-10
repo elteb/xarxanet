@@ -481,3 +481,10 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
     color: $red;
   }
 }
+
+// CSS overrides in Administration pages
+
+.page-node-add-event .field-name-taxonomy-vocabulary-1,
+.page-node-edit.node-type-event .field-name-taxonomy-vocabulary-1 {
+  display: none !important;
+}
