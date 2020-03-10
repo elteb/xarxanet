@@ -1,7 +1,7 @@
 <?php
 
 // Set some helper constants.
-define('AGENDA_URL', 'agenda-dev');
+define('AGENDA_URL', 'agenda');
 define('AGENDA_GRID_CLASSES', 'col-xs-12 col-sm-6 col-md-4 col-lg-3');
 define('AGENDA_ITEMS_PER_ROW', 12);
 
