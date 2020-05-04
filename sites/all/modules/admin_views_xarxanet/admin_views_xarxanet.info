@@ -1,0 +1,9 @@
+name = Administration views for Xarxanet
+description = Custom module that adds some extra functionality to the Administration views module.
+package = Administration
+core = 7.x
+dependencies[] = views
+dependencies[] = views_bulk_operations (>=7.x-3.2)
+dependencies[] = admin_views
+
+scripts[] = js/admin_views_xarxanet.js

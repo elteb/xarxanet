@@ -532,7 +532,7 @@ $dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte
 				</a> -->
 			</td><td style="padding-left:50px;">
 				<p>
-					<a href="https://fundesplai.org" style="color:#53544F;  font-weight:normal">Fundació Catalana de l'Esplai</a><br />
+					<a href="https://suport.fundesplai.org/" style="color:#53544F;  font-weight:normal">Suport Tercer Sector – Fundesplai</a><br />
 					<a href="http://www.peretarres.org" style="color:#53544F;  font-weight:normal">Fundació Pere Tarrés</a><br />
 					<a href="http://www.ateneus.cat" style="color:#53544F;  font-weight:normal">Federació d'Ateneus de Catalunya</a><br />
 					<a href="http://www.xvac.cat" style="color:#53544F;  font-weight:normal">Xarxa de Voluntariat Ambiental de Catalunya</a><br />
