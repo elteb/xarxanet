@@ -1,0 +1,7 @@
+name = Xarxanet Titles
+description = Modifica la llargada del camp títol en alguns formularis.
+core = 7.x
+package = XARXANET
+
+scripts[] = xarxanet_titles.js
+stylesheets[all][] = xarxanet_titles.css
