@@ -188,11 +188,11 @@ function tothomweb_agenda_form($form, &$form_state) {
 	);
 	// The "More results" button.
 	$now = date('Y-m-d\TH:i:s', time());
-	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : null;
-	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? $_GET['search'] : null;
+	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? htmlspecialchars($_GET['type']) : null;
+	$search = (isset($_GET['search']) && !empty($_GET['search'])) ? htmlspecialchars($_GET['search']) : null;
 	$date = (isset($_GET['date']) && !empty($_GET['date'])) ? date('Y-m-d\TH:i:s', strtotime($_GET['date'])) : null; // Date format must be "ISO 8601".
-	$location = (isset($_GET['location']) && !empty($_GET['location'])) ? $_GET['location'] : null;
-	$mode = (isset($_GET['mode']) && $_GET['mode'] == 'online') ? $_GET['mode'] : null;
+	$location = (isset($_GET['location']) && !empty($_GET['location'])) ? htmlspecialchars($_GET['location']) : null;
+	$mode = (isset($_GET['mode']) && $_GET['mode'] == 'online') ? htmlspecialchars($_GET['mode']) : null;
 	// Build it's attributes.
 	$attributes  = '';
 	$attributes .= ($type) ? ' data-type="' . $type . '"' : '';
