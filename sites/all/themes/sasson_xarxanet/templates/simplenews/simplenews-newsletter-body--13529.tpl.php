@@ -52,650 +52,2232 @@
  * 
  */
 
-// Data
-$mesos = array('de gener', 'de febrer', 'de març', 'd\'abril', 'de maig', 'de juny', 'de juliol', 'd\'agost', 'de setembre', 'd\'octubre', 'de novembre', 'de desembre');
-$dies = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte', 'Diumenge');
-$pathroot = 'http://www.xarxanet.org';
-$node = $build['#node'];
-
-// Banners fixes
-$banners_fixes = array(	'Banner PNAV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_pnav.jpg', 
-													'http://pnav.voluntariat.org/'),
-						'Banner PFVC' 	=> 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_PFVC.gif', 
-													'https://voluntariat.gencat.cat/persones-voluntaries/format-com-a-voluntari/pla-de-formacio/'),
-						'Banner opinió' => 	array (	$pathroot.'/sites/default/files/butlletins/abast/banner_opinio.png', 
-													'http://bloc.xarxanet.org/'),
-						'Banner nonprofit' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_nonprofit.png', 
-													'http://nonprofit.xarxanet.org/'),
-						'Banner subs. butlletí' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subsButlleti.png', 
-															$pathroot.'/user/register'),
-						'Banner fes-te voluntari' => array ($pathroot.'/sites/default/files/butlletins/abast/banner_festeVoluntari.gif', 
-															$pathroot.'/fes-voluntariat'),
-						'Banner assessorament' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_assessorament.gif', 
-															$pathroot.'/formulari-dassessorament'),
-						'Banner xarxes socials' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_xarxes.gif', 
-															$pathroot.'/segueix-nos'),
-						'Banner voluntariat' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_voluntariat.gif', 
-															'http://www.voluntariat.org/'),
-						'Banner xarxanet' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_xarxanet.gif', 
-														'http://www.xarxanet.org/'),
-						'Banner verso' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_verso.gif', 
-													'http://benestar.gencat.cat/ca/ambits_tematics/accio_comunitaria_i_voluntariat/voluntariat/verso'),
-						'Banner masclisme' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_masclisme.gif', 
-														'http://dones.gencat.cat/ca/ambits/violencia_masclista/recursos_atencio/telefon_900/'),
-						'Banner blocs xarxanet' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_blocs.gif', 
-															'http://blocs.xarxanet.org/'),
-						'Banner omnia' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_omnia.gif', 
-													'http://xarxa-omnia.org/'),
-						'Banner dixit' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_dixit.gif', 
-													'http://dixit.gencat.cat/ca/'),
-						'Banner butlletins' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_butlletins.gif', 
-													'http://benestar.gencat.cat/ca/actualitat/butlletins_electronics'),
-						'Banner INTERREG IVC' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_interreg.gif', 
-													'http://verso.au.dk'),
-						'Banner CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_evc2014.jpg', 
-											'http://www.cev.be'),
-						'Banner Subscribre me' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_subscribe.jpg', 
-													'http://www.xarxanet.org/especial/barcelona-ecv/subscribe'),						
-						'Banner Barcelona CEV' => 	array  ($pathroot.'/sites/default/files/butlletins/abast/banner_bcev.png', 
-													'http://www.xarxanet.org/especial/barcelona-ecv'));
-
-// Notícies destacades
-$num_destacades = 3;
-$destacades = array();
-$wrapper = entity_metadata_wrapper('node', $node);
-foreach ($wrapper->field_abast_destacades as $destacada){
-	$noticia = $destacada->field_abast_destacades_xarxanet->value();
-	$titular = $destacada->field_abast_destacades_titular->value();
-	$img = $destacada->field_abast_crop->value();
-	$type = $noticia->type;
-	
-	if ($num_destacades != 0 && (($noticia) || ($titular))){
-		if ($img){
-			$imatge = file_create_url($img[0]['uri']);
-			$alt = $img[0]['alt'];
-		}elseif($type == 'opinio'){
-			//extreure autor de la opinio i imatge
-			$autor = $noticia->field_autor_a['und'][0]['nid'];
-			$autor = node_load($autor);
-			$imatge = image_style_url('abast-gran',$autor->field_autor_foto_horitzontal['und'][0]['uri']);
-			$alt = $autor->field_autor_foto_horitzontal['und'][0]['alt'];
-		}elseif (!empty($noticia->field_agenda_imatge['und'])){
-			$imatge = image_style_url('abast-gran',$noticia->field_agenda_imatge['und'][0]['uri']);
-			$alt = $noticia->field_agenda_imatge['und'][0]['alt'];
-		}else{
-			$imatge = image_style_url('abast-gran',$noticia->field_imatges['und'][0]['uri']);
-			$alt = $noticia->field_imatges['und'][0]['alt'];
-		}
-		if ($titular) {
-			$tit = $titular['title'];
-			$link = $titular['display_url'];
-		} elseif ($noticia) {
-			$tit = $noticia->title;
-			$link = url('node/' . $noticia->nid, array('absolute' => TRUE));
-		}
-		$destacades[] = array(	
-				'titular' => $tit,
-				'link' => $link,
-				'imatge' => $imatge,
-				'alt' => $alt);
-		$num_destacades--;
-	}
-}
-
-// Notícies
-$noticia_curta = 130; //Caràcters
-$noticia_llarga = 900; //Caràcters
-$noticies = array();
-foreach ($wrapper->field_abast_noticies as $noticia){
-	$noti_xn = $noticia->field_abast_noticies_xarxanet->value();
-	
-	if($noti_xn->nid) {
-		$tit = $noti_xn->title;
-		$link = url('node/' . $noti_xn->nid, array('absolute' => TRUE));
-		$resum = $noti_xn->field_resum['und'][0]['value'];
-		$type = $noti_xn->type;
-		if ($type == 'opinio'){
-			//extreure autor de la opinio i imatge
-			$autor = $noti_xn->field_autor_a['und'][0]['nid'];
-			$autor = node_load($autor);
-			$imatge = image_style_url('abast-gran',$autor->field_autor_foto_horitzontal['und'][0]['uri']);
-			$alt = $autor->field_autor_foto_horitzontal['und'][0]['alt'];
-		}elseif (!empty($noti_xn->field_agenda_imatge['und'])){
-			$imatge = image_style_url('abast-gran',$noti_xn->field_agenda_imatge['und'][0]['uri']);
-			$alt = $noti_xn->field_agenda_imatge['und'][0]['alt'];
-		}else{
-			$imatge = image_style_url('abast-gran',$noti_xn->field_imatges['und'][0]['uri']);
-			$alt = $noti_xn->field_imatges['und'][0]['alt'];
-		}
-	} else {
-		$titular = $noticia->field_abast_noticies_titular->value();
-		$tit = $titular['title'];
-		$link = $titular['display_url'];
-		$resum = $noticia->field_abast_noticies_resum->value();
-		$img = $noticia->field_abast_crop1->value();
-		$imatge = file_create_url($img['uri']);
-		$alt = $img['alt'];
-	}
-	
-	$noticies[] = array('titular' => $tit,
-						'link' => $link,
-						'imatge' => $imatge,
-						'alt' => $alt,
-						'teaser' => strip_tags($resum));
-}
 ?>
 
-<table style="font-family: Verdana; font-size: 11px;" width="970px" style="margin:auto" cellspacing="8px">
+<?php
 
-	<!-- CAPÇALERA -->	
-	<tr><td colspan="2">		
-		<a href="http://www.gencat.cat" style="text-decoration:none">
-			<img src="http://www.gencat.cat/img/logo.gif" alt="logo Generalitat" style="border:0 none;"/>
-		</a>
-		<p style="text-align:right; vertical-align:bottom; margin-bottom:0px; margin-top:-10px">
-		Si no veieu correctament aquest butlletí, cliqueu <a style="font-weight:bold; color:#7b1b1c; text-decoration:none" href="<?php echo url('node/' . $node->nid, array('absolute' => TRUE));?>">aquí</a>
-		</p>	
-		<table cellspacing="0" cellpadding="0" style="border-top: solid 3px #800000; width:100%">
-			<tr><?php 
-				if (is_numeric($title))	{
-					echo '<td width="57" style="background-color: black; color: white; font-weight: bold; vertical-align: top; padding: 5px; font-size: 16px">#'.$title.'</td>';
-				}	
-				?>
-			<td style="background-color: #7b1b1c" width="100%">
-				<table style="width:100%">
-					<tr><td style="font-family:Arial; font-weight:bold; color:white; vertical-align:top;">
-						<?php if (empty($node->field_abast_titol_monografic['und'][0]['value'])) {
-							echo '<p style="font-size:30px; margin:5px">Butlletí</p>';	
-						} else {
-							echo '<p style="font-size:30px; margin:5px">'.$node->field_abast_titol_monografic['und'][0]['value'].'</p>';
-							echo '<p style="font-size:18px; margin:5px">Monogràfic del Butlletí A l’Abast</p>';
-						}?>
-						<p style="font-size:16px; margin:5px">El butlletí del voluntariat català</p>
-					</td>
-					<td style="text-align:right"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/capçalera_blanc_sol.png" alt="Capçalera butlleti Abast" style="margin:10px"/></td></tr>				
-				</table>
-			</td></tr>
-		</table>		
-	</tr></td>
-	<tr>	
-		<td colspan="2">
-			<a name="inici"></a>
-			<table style="width:100%; font-size:11px;">
-				<tr><td style="font-weight:bold">
-					<?php
-					$created = time(); 
-					echo $dies[date('N', $created)-1].', '.date('j', $created).' '.$mesos[date('n', $created)-1].' de '.date('Y', $created);
-					?>
-				</td>
-				<td style="text-align: right; font-weight:bold">
-					<a style="color:#4D4D4D; text-decoration:none" href="http://xarxanet.org/hemeroteca-butlleti-labast">Butlletins anteriors</a>
-				</td></tr>
-			</table>
-		</td>
-	</tr>
-	<tr><td colspan="2" height="3px" style="background-color: #800000;"></td></tr>
-	<tr><td colspan="2" height="3px" style="background-color: #CCCCCC; padding: 4px; font-weight: bold">
-	<?php
-		$array_flex = array('', '_2', '_3');
-		if (!empty($destacades)){ echo '<a style="color:#000001; text-decoration:none" href="#destacats">Destacats</a>';}
-		if (!empty($noticies)){ echo ' | <a style="color:#000001; text-decoration:none" href="#noticies">Notícies</a>';} 
-		if ($wrapper->field_voluntariat->count()){ echo ' | <a style="color:#000001; text-decoration:none" href="#voluntariat">Crides de voluntariat</a>';}
-		if ($wrapper->field_abast_pfvc->count()){ echo ' | <a style="color:#000001; text-decoration:none" href="#pfvc">Cursos PFVC</a>';}
-		if ($wrapper->field_abast_formacions_xn->count()){echo ' | <a style="color:#000001; text-decoration:none" href="#formacio">Altres formacions</a>';}
-		if ($wrapper->field_abast_activitats->count()){echo ' | <a style="color:#000001; text-decoration:none" href="#activitats">Agenda</a>';}
-		if ($wrapper->field_abast_financament->count()){echo ' | <a style="color:#000001; text-decoration:none" href="#financaments">Finançaments</a>';}
-		foreach ($wrapper->field_abast_flexible as $flex) {
-			$titol = $flex->field_abast_flexible_titol->value();
-			if ($titol)	echo ' | <a style="color:#000001; text-decoration:none" href="#flexible">'.$titol.'</a>';
-		}
-		foreach ($wrapper->field_abast_lliure as $lliure) {
-			$titol = $lliure->field_monografic_titol_1->value();
-			if($titol) echo ' | <a style="color:#000001; text-decoration:none" href="#bloc_lliure_'.$i.'">'.$titol.'</a>';
-		}
-		if (!empty($node->field_abast_entrevista_titol[0]['value']) || !empty($node->field_abast_entrevista_externa[0]['title'])){echo ' | <a style="color:#000001; text-decoration:none" href="#entrevista">'.$node->field_abast_entrevista_titol_sec[0]['value'].'</a>';}
-		if ($node->field_abast_activat['und'][0]["value"] !== '0'){ echo ' | <a style="color:#000001; text-decoration:none" href="#activat">Activa\'t</a>';}
-	?>
-	</td></tr>
+	// Variable declarations
 
+	$path_root = 'https://xarxanet.org';
+	$months = array('de gener', 'de febrer', 'de març', 'd\'abril', 'de maig', 'de juny', 'de juliol', 'd\'agost', 'de setembre', 'd\'octubre', 'de novembre', 'de desembre');
+	$days = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte', 'Diumenge');
+	$node = $build['#node'];
 
-	<!-- NOTÍCIES DESTACADES -->
-	<?php if (!empty($destacades)){?>
-		<tr><td colspan="2"><a name="destacats"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Destacats</h1></td></tr>
-		<tr><td colspan="2" style="border: 1px dashed #4C0000;">
-			<table cellspacing="8">
-				<?php
-				$titulars = '<tr>';
-				$imatges = '<tr>';
-				foreach ($destacades as $destacada){
-					$alt = empty($destacada['alt']) ? 'Imatge de la notícia '.$destacada['titular'] : $destacada['alt'];
-					$titulars .= '<td width="33%" style="vertical-align: top;">';
-					$titulars .= '<a href="'.$destacada['link'].'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$destacada['titular'].'</a></td>';
-					$imatges .= '<td><a href="'.$destacada['link'].'" style="text-decoration: none"><img src="'.$destacada['imatge'].'" alt="'.$alt.'" height="194px" width="300px" style="border:0 none;"/></a></td>';
-				}
-				$titulars .= '</tr>';
-				$imatges .= '</tr>';
-				echo $titulars;
-				echo $imatges;
-				?>
-			</table>
-		</td></tr>
-		<tr><td colspan="2" style="text-align: right;"><a href="#inici" style="text-decoration: none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></td></tr>
-	<?php }?>
+	/**
+	* Destacats - data preprocessing
+	*/
+
+	$highlights_to_show = 3;
+	$highlights = array();
+	$wrapper = entity_metadata_wrapper('node', $node);
+
+	foreach ($wrapper->field_abast_destacades as $item) {
+		$referenced_node = $item->field_abast_destacades_xarxanet->value();
+		$custom_title = $item->field_abast_destacades_titular->value();
+		$picture = $item->field_abast_crop->value();
+		$type = $referenced_node->type;
 		
-		
-	<!-- NOTÍCIES -->
-	<?php if (!empty($noticies)){?>
-		<tr><td colspan="2"><a name="noticies"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Notícies</h1></td></tr>
-		<?php
-		$curta = true;
-		foreach ($noticies as $noticia){
-			$alt = empty($destacada['alt']) ? 'Imatge de la notícia '.$noticia['titular'] : $noticia['alt'];
-			$cont = '<table cellspacing="5" width="100%"><tr><td colspan="2" height="40px" style="vertical-align: top"><a href="'.$noticia['link'].'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$noticia['titular'].'</a></td></tr>';
-			$cont .= '<tr><td style="vertical-align: top; width: 130px"><a href="'.$noticia['link'].'" style="text-decoration: none"><img src="'.$noticia['imatge'].'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a>';
-			$cont .= '</td><td style="vertical-align: top"><p style="font-size: 12px; text-align: justify; margin: 0">';
-			if ($curta){			
-				$cont .= substr($noticia['teaser'], 0, strrpos(substr($noticia['teaser'], 0, $noticia_curta)," ")).' ...</p></td></tr></table></td>';
-				echo '<tr><td width="33%" style="vertical-align: top">'.$cont.'</td>';
-			}else{
-				if (strlen($noticia['teaser'])>$noticia_llarga){
-					$cont .= substr($noticia['teaser'], 0, strrpos(substr($noticia['teaser'], 0, $noticia_llarga)," ")).' ...</p></td></tr></table></td>';
-				}else{
-					$cont .= $noticia['teaser'].'</p></td></tr></table></td>';
-				}
-				echo '<td width="67%" style="vertical-align: top">'.$cont.'</td></tr>';			
-			}
-			$curta = !$curta;
-		}
-		if (!$curta) echo '<td width="67%" style="vertical-align: top"></td></tr>';	
-		?>
-		<tr><td colspan="2" style="text-align: right;">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="<?php echo $node->field_abast_noticies_enllac['und'][0]['url']; ?>">
-				<?php echo $node->field_abast_noticies_enllac['und'][0]['title']; ?>
-			</a>
-			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
-		</td></tr>
-	<?php } ?>
-	
-	
-	<tr><td style="vertical-align: top">	
-	<!-- VÍDEO -->
-		<?php
-			if ($node->field_abast_video['und'][0]['fid']){
-				$video_title = (isset($node->field_abast_video_titol['und'][0]['value'])) ? $node->field_abast_video_titol['und'][0]['value'] : "El vídeo de la quinzena";
-				echo '<div style="border: 1px dashed #818181; margin-right: 8px; padding: 0 15px;">';
-				echo '<p style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-align:center">'.$video_title.'</p>';
-				echo '<a href="'.$node->field_abast_video['und'][0]['url'].'" style="text-decoration: none">';
-				$img = file_create_url($node->field_abast_video['und'][0]['uri']);
-				echo '<img src="'.$img.'" alt="'.$node->field_abast_video['und'][0]['alt'].'" width="268" style="margin-bottom: 15px; border:0 none;"/></a>';
-				echo '</div>';
-			}
-		?>
+		if ($highlights_to_show != 0 && (($referenced_node) || ($custom_title))) {
+			
+			// Build the image
 
-
-	<!-- BANNERS -->
-		<!-- BANNERS FIXES -->
-		<?php
-			foreach ($node->field_abast_banner_fixe['und'] as $banner){
-				echo '<br/><a href="'.$banners_fixes[$banner['value']][1].'" style="text-decoration:none">';
-				echo '<img src="'.$banners_fixes[$banner['value']][0].'" alt="'.$banner['value'].'" style="margin: 10px 0; border:0 none;"/></a>';
+			if ($picture) {
+				$image = file_create_url($picture[0]['uri']);
+				$image = str_replace('xarxanet.local', 'xarxanet.org', $image);
+				$alt_attribute = $picture[0]['alt'];
 			}
-		?>
-		
-		<!-- BANNERS NOUS -->
-		<?php
-			foreach ($node->field_abast_banner_nou['und'] as $banner){
-				if(isset($banner['uri'])){
-					$img = file_create_url($banner['uri']);
-					echo '<br/><a href="'.$banner['url'].'" style="text-decoration:none">';
-					echo '<img src="'.$img.'" alt="'.$banner['alt'].'" style="margin: 10px 0; border:0 none;"/></a>';
-				}
+			else if ($type == 'opinio') {
+				// Let's get the author and his/her image
+				$author = $referenced_node->field_autor_a['und'][0]['nid'];
+				$author = node_load($author);
+				$image = image_style_url('abast-gran', $author->field_autor_foto_horitzontal['und'][0]['uri']);
+				$image = str_replace('xarxanet.local', 'xarxanet.org', $image);
+				$alt_attribute = $author->field_autor_foto_horitzontal['und'][0]['alt'];
+			}
+			else if (!empty($referenced_node->field_agenda_imatge['und'])) {
+				$image = image_style_url('abast-gran', $referenced_node->field_agenda_imatge['und'][0]['uri']);
+				$image = str_replace('xarxanet.local', 'xarxanet.org', $image);
+				$alt_attribute = $referenced_node->field_agenda_imatge['und'][0]['alt'];
+			}
+			else {
+				$image = image_style_url('abast-gran', $referenced_node->field_imatges['und'][0]['uri']);
+				$image = str_replace('xarxanet.local', 'xarxanet.org', $image);
+				$alt_attribute = $referenced_node->field_imatges['und'][0]['alt'];
+			}
+
+			// Build the title & the link pointing to the content
+
+			if ($custom_title) {
+				$custom_title_anchor = $custom_title['title'];
+				$custom_title_link = $custom_title['display_url'];
 			} 
-		?>
+			else if ($referenced_node) {
+				$custom_title_anchor = $referenced_node->title;
+				$custom_title_link = url('node/' . $referenced_node->nid, array('absolute' => TRUE));
+			}
 			
-	</td><td style="vertical-align:top">
+			// Store the resulting data in an object, and add it to the array
 
+			$highlight = new stdClass();
+			$highlight->title = $custom_title_anchor;
+			$highlight->link = $custom_title_link;
+			$highlight->image = $image;
+			$highlight->alt = $alt_attribute;
+			$highlights[] = $highlight;
 
-	<!-- VOLUNTARIAT -->
-	<?php 
-		if($wrapper->field_voluntariat->count()){?>
-		<a name="voluntariat"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Crides de voluntariat</h1>
-		<?php 
-		foreach ($wrapper->field_voluntariat as $voluntariat) {
-			$vol_xn = $voluntariat->field_abast_voluntariat_xarxanet->value();
-			if ($vol_xn->nid) {
-				$title = $vol_xn->title;
-				$url = url('node/' . $vol_xn->nid, array('absolute' => TRUE));
-			} else {
-				$ext = $voluntariat->field_abast_voluntariat_titol->value();
-				$title = $ext['title'];
-				$url = $ext['url'];
-			}
-			echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
-			echo '<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
-			<b>Entitat: </b>'.$voluntariat->field_abast_voluntariat_entitat->value().'<br/>
-			<b>Lloc: </b>'.$voluntariat->field_abast_voluntariat_lloc->value().'<br/>
-			<b>Dedicació: </b>'.$voluntariat->field_abast_voluntariat_dedicaci->value().'<br/>
-			<b>Perfil: </b>'.str_replace(array('<p>', '</p>'), '', $voluntariat->field_abast_voluntariat_perfil->value()).'
-			</p>';
+			$highlights_to_show--;
 		}
-		?>	
-		<p style="text-align: right">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="https://connectat.voluntariat.gencat.cat/propostes">
-				Més crides a voluntariat
-			</a>
-			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
-		</p>
-	<?php }?>
+	}
 
+	/**
+	* Notícies - data preprocessing
+	*/
+	
+	$articles = array();
+	
+	foreach ($wrapper->field_abast_noticies as $item) {
+		$referenced_node = $item->field_abast_noticies_xarxanet->value();
+		
+		if ($referenced_node->nid) {
+			$article_title = $referenced_node->title;
+			$article_link = url('node/' . $referenced_node->nid, array('absolute' => TRUE));
+			$article_teaser = $referenced_node->field_resum['und'][0]['value'];
+			$article_type = $referenced_node->type;
+			
+			// Build the image
 
-	<!-- FORMACIÓ PFVC -->
-	<?php if($wrapper->field_abast_pfvc->count()){?>
-		<a name="pfvc"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Cursos del Pla de Formació del voluntariat de Catalunya (PFVC)</h1>
-		<?php
-		foreach ($wrapper->field_abast_pfvc as $pfvc){
-			if ($title = $pfvc->field_abast_pfvc_titol->value()){
-				echo '<a href="'.$title['url'].'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title['title'].'</a>';
-				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
-						<b>Data d\'inici: </b>'.$pfvc->field_abast_pfvc_dates->value().'<br/>
-						<b>Lloc: </b>'.$pfvc->field_abast_pfvc_lloc->value().'<br/>
-						<b>Entitat: </b>'.$pfvc->field_abast_pfvc_entitat->value().'</p>';
+			if ($article_type == 'opinio') {
+				// Let's get the author and his/her image
+				$author = $referenced_node->field_autor_a['und'][0]['nid'];
+				$author = node_load($author);
+				$article_image = image_style_url('abast-gran', $author->field_autor_foto_horitzontal['und'][0]['uri']);
+				$article_image = str_replace('xarxanet.local', 'xarxanet.org', $article_image);
+				$article_alt_attribute = $author->field_autor_foto_horitzontal['und'][0]['alt'];
 			}
+			else if (!empty($referenced_node->field_agenda_imatge['und'])) {
+				$article_image = image_style_url('abast-gran', $referenced_node->field_agenda_imatge['und'][0]['uri']);
+				$article_image = str_replace('xarxanet.local', 'xarxanet.org', $article_image);
+				$article_alt_attribute = $referenced_node->field_agenda_imatge['und'][0]['alt'];
+			}
+			else {
+				$article_image = image_style_url('abast-gran', $referenced_node->field_imatges['und'][0]['uri']);
+				$article_image = str_replace('xarxanet.local', 'xarxanet.org', $article_image);
+				$article_alt_attribute = $referenced_node->field_imatges['und'][0]['alt'];
+			}
+		} 
+		else {
+			$custom_title = $item->field_abast_noticies_titular->value();
+			$article_title = $custom_title['title'];
+			$article_link = $custom_title['display_url'];
+			$article_teaser = $item->field_abast_noticies_resum->value();
+			$img = $item->field_abast_crop1->value();
+			$article_image = file_create_url($img['uri']);
+			$article_image = str_replace('xarxanet.local', 'xarxanet.org', $article_image);
+			$article_alt_attribute = $img['alt'];
 		}
-		?>
-		<p style="text-align: right">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="https://voluntariat.gencat.cat/convocatoria/">
-				Més formacions
-			</a>
-			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
-		</p>
-	<?php }?>
-	
-	
-	<!-- ALTRES FORMACIONS -->
-	<?php if($wrapper->field_abast_formacions_xn->count()){?>
-		<a name="formacio"><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Altres formacions</h1>
-		<?php
-		foreach ($wrapper->field_abast_formacions_xn as $form){
-			$form_xn = $form->field_abast_formacions_xarxanet->value();
-			$location = '';
-			if ($form_xn->nid){
-				$title = $form_xn->title;
-				$url = url('node/' . $form_xn->nid, array('absolute' => TRUE));
-				if($form->field_abast_formacions_dates->value()){
-					$data = $form->field_abast_formacions_dates->value();
-				}else{
-					$data = strtotime($form_xn->field_date_event['und'][0]['value']);
-					$data = $dies[date('N', $data)-1].', '.date('j', $data).' '.$mesos[date('n', $data)-1].' de '.date('Y', $data);
-				}
-				if ($form_xn->location['name'] || $form_xn->location['street'] || $form_xn->location['city']) {
-					if ($form_xn->location['name']) $location .= $form_xn->location['name'].'. ';
-					if ($form_xn->location['street']) $location .= $form_xn->location['street'].'. ';
-					if ($form_xn->location['city']) $location .= $form_xn->location['city'];
-				} 							
-				$lloc = $form->field_abast_formacions_lloc->value();
-				if (!$lloc && $location) $lloc = $location;
-				if (!$lloc && $form_xn->field_esdeveniment_en_linia['und'][0]['value']) $lloc='Esdeveniment en línia';
-				$entitat = ($form->field_abast_formacions_entitat->value()) ? $form->field_abast_formacions_entitat->value() : $form_xn->field_organizer['und'][0]['value'];				
-				echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
-				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
-						<b>Data d\'inici: </b>'.$data.'<br/>
-						<b>Lloc: </b>'.$lloc.'<br/>
-						<b>Entitat: </b>'.$entitat.'</p>';
-			}
-		}
-		?>
-		<p style="text-align: right">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="<?php echo $pathroot;?>/agenda/curs">
-				Més formacions
-			</a>
-			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
-		</p>
-	<?php }?>
 
+		// Store the resulting data in an object, and add it to the array
 
-	<!-- ACTIVITATS -->
-	<?php if($wrapper->field_abast_activitats->count()){?>
-		<a name="activitats"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Agenda d'activitats</h1>
-		<?php
-		/*foreach ($node->field_abast_activitats_xarxanet as $key => $activitat){
-			if (!empty($activitat['safe']['nid'])){
-				$node_ = node_load($activitat['safe']['nid']);
-				$data = (isset($node->field_abast_activitats_dates[$key]['value'])) ? $node->field_abast_activitats_dates[$key]['value'] : date('d/m/y', strtotime($node_->field_date_event[0]['value']));
-				echo '<p><a href="'.$pathroot.'/'.$node_->path.'" style="color: #000001; font-size: 12px; text-decoration: none">'.$node_->title.'</a>';
-				echo ' - '.$data.'</p>';
-			}
-		}*/		
-		foreach ($wrapper->field_abast_activitats as $activitat){
-			$act_xn = $activitat->field_abast_activitats_xarxanet->value();
-			if ($act_xn->nid){
-				$title = $act_xn->title;
-				$url = url('node/' . $act_xn->nid, array('absolute' => TRUE));
-				if($activitat->field_abast_activitats_dates->value()){
-					$data = $activitat->field_abast_activitats_dates->value();
-				}else{
-					$data = strtotime($act_xn->field_date_event['und'][0]['value']);
-					$data = $dies[date('N', $data)-1].', '.date('j', $data).' '.$mesos[date('n', $data)-1].' de '.date('Y', $data);
-				}
-				$location = $act_xn->location['city'];
-				if ($act_xn->location['name']) $location = $act_xn->location['name'].', '.$location;
-				$lloc = ($activitat->field_abast_activitats_lloc->value()) ? $activitat->field_abast_activitats_lloc->value() : $location;
-				$entitat = ($activitat->field_abast_activitats_entitat->value()) ? $activitat->field_abast_activitats_entitat->value() : $act_xn->field_organizer['und'][0]['value'];				
-				echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
-				echo '	<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;">
-						<b>Data d\'inici: </b>'.$data.'<br/>
-						<b>Lloc: </b>'.$lloc.'<br/>
-						<b>Entitat: </b>'.$entitat.'</p>';
-			}
+		$article = new stdClass();
+		$article->title = $article_title;
+		$article->link = $article_link;
+		$article->image = $article_image;
+		$article->alt = $article_alt_attribute;
+		$articles[] = $article;
+	}
+
+	/**
+	* Crides de voluntariat - data preprocessing
+	*/
+
+	$volunteerings = array();
+	
+	foreach ($wrapper->field_voluntariat as $item) {
+		$referenced_node = $item->field_abast_voluntariat_xarxanet->value();
+		
+		if ($referenced_node->nid) {
+			$volunteering_title = $referenced_node->title;
+			$volunteering_link = url('node/' . $referenced_node->nid, array('absolute' => TRUE));
+		} 
+		else {
+			$custom_title = $item->field_abast_voluntariat_titol->value();
+			$volunteering_title = $custom_title['title'];
+			$volunteering_link = $custom_title['url'];
 		}
-		?>
-		<p style="text-align: right">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="<?php echo $pathroot;?>/agenda">
-				Més agenda
-			</a>
-			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
-		</p>
-	<?php }?>
-	
-	
-	<!-- FINANÇAMENTS -->
-	<?php if($wrapper->field_abast_financament->count()){?>
-		<a name="financaments"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: Finançaments</h1>
-		<?php
-		foreach ($wrapper->field_abast_financament as $financament){
-			$fin_xn = $financament->field_abast_financament_xarxanet->value();
-			if ($fin_xn->nid) {
-				$title = $fin_xn->title;
-				$url = url('node/' . $fin_xn->nid, array('absolute' => TRUE));
+
+		$volunteering_entity = $item->field_abast_voluntariat_entitat->value();
+		$volunteering_place = $item->field_abast_voluntariat_lloc->value();
+		$volunteering_sector = $item->field_abast_voluntariat_dedicaci->value();
+		$volunteering_profile = str_replace(array('<p>', '</p>'), '', $item->field_abast_voluntariat_perfil->value());
+
+		// Store the resulting data in an object, and add it to the array
+
+		$volunteering = new stdClass();
+		$volunteering->title = $volunteering_title;
+		$volunteering->link = $volunteering_link;
+		$volunteering->entity = $volunteering_entity;
+		$volunteering->place = $volunteering_place;
+		$volunteering->sector = $volunteering_sector;
+		$volunteering->profile = $volunteering_profile;
+		$volunteerings[] = $volunteering;
+	}
+
+	/**
+	* Formació PFVC - data preprocessing
+	*/
+
+	$pfvcs = array();
+
+	foreach ($wrapper->field_abast_pfvc as $item) {
+		
+		if ($custom_title = $item->field_abast_pfvc_titol->value()) {
+
+			// Store the resulting data in an object, and add it to the array
+
+			$pfvc = new stdClass();
+			$pfvc->title = $custom_title['title'];
+			$pfvc->link = $custom_title['url'];
+			$pfvc->dates = $item->field_abast_pfvc_dates->value();
+			$pfvc->place = $item->field_abast_pfvc_lloc->value();
+			$pfvc->entity = $item->field_abast_pfvc_entitat->value();
+			$pfvcs[] = $pfvc;
+		}
+	}
+
+	/**
+	* Altres formacions (Formacions Xarxanet) - data preprocessing
+	*/
+
+	$trainings = array();
+
+	foreach ($wrapper->field_abast_formacions_xn as $item) {
+		$custom_training_place = '';
+		$referenced_node = $item->field_abast_formacions_xarxanet->value();
+		
+		if ($referenced_node->nid) {
+			$training_title = $referenced_node->title;
+			$training_url = url('node/' . $referenced_node->nid, array('absolute' => TRUE));
+			
+			// Build the date of the training
+
+			if ($item->field_abast_formacions_dates->value()) {
+				$training_date = $item->field_abast_formacions_dates->value();
+			}
+			else {
+				$timestamp = strtotime($referenced_node->field_date_event['und'][0]['value']);
+				$training_date = $days[date('N', $timestamp) - 1] . ', ' . date('j', $timestamp) . ' ' . $months[date('n', $timestamp) - 1] . ' de ' . date('Y', $timestamp);
+			}
+
+			// Build the place of the training
+			
+			if ($referenced_node->location['name'] || $referenced_node->location['street'] || $referenced_node->location['city']) {
 				
-				if ($financament->field_abast_financament_termini->value()){
-					$termini = $financament->field_abast_financament_termini->value();
-				}else{
-					$time1 = strtotime($fin_xn->field_date['und'][0]['value']);
-					$time2 = strtotime($fin_xn->field_date['und'][0]['value2']);
-					$termini =	'Del '.date('j', $time1).' '.$mesos[date('n', $time1)-1].' de '.date('Y', $time1).' al '.date('j', $time2).' '.$mesos[date('n', $time2)-1].' de '.date('Y', $time2);
+				if ($referenced_node->location['name']) {
+					$custom_training_place .= $referenced_node->location['name'] . '. ';
 				}
-				$convocant = ($financament->field_abast_financament_convocan->value()) ? $financament->field_abast_financament_convocan->value() : strip_tags($fin_xn->field_convocant['und'][0]['value']);
-				echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
-				echo '<p style="font-size: 12px; margin: 0; vertical-align: top; margin: 5px 0 10px;"><b>Termini: </b>'.$termini.'<br/><b>Convocant: </b>'.$convocant.'</p>';
+				if ($referenced_node->location['street']) {
+					$custom_training_place .= $referenced_node->location['street'] . '. ';
+				}
+				if ($referenced_node->location['city']) {
+					$custom_training_place .= $referenced_node->location['city'];
+				}
 			}
-		}
-		?>
-		<p style="text-align: right">
-			<a style="font-weight: bold; color: #000001; text-decoration: none" href="<?php echo $pathroot;?>/financaments">
-				Més finançaments
-			</a>
-			<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
-		</p>
-	<?php }?>
-	
-	
-	<!-- BLOC FLEXIBLE -->
-		<?php
-		foreach ($wrapper->field_abast_flexible as $flex) {
-			$titol = $flex->field_abast_flexible_titol->value();
-			$cont_xn = $flex->field_abast_flexible_contingut->value();
-			$cont_ex = $flex->field_abast_extern->value();
 			
-			if ($titol){
-				echo '<a name="flexible"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$titol.'</h1>';
-				//Continguts Xarxanet
-				foreach ($cont_xn as $xn){
-					if ($xn->nid){
-						$title = $xn->title;
-						$url = url('node/' . $xn->nid, array('absolute' => TRUE));
-						$type = $xn->type;
-						if($type == 'opinio'){
-							//extreure autor de la opinio i imatge
-							$autor = $xn->field_autor_a['und'][0]['nid'];
-							$autor = node_load($autor);
-							$imatge = image_style_url('abast-petit',$autor->field_autor_foto_horitzontal['und'][0]['uri']);
-							$alt = $autor->field_autor_foto_horitzontal['und'][0]['alt'];
-						}elseif (isset($xn->field_agenda_imatge['und'][0]['uri'])){
-							$imatge = image_style_url('abast-petit',$xn->field_agenda_imatge['und'][0]['uri']);
-							$alt = $xn->field_agenda_imatge['und'][0]['alt'];
-						}else{
-							$imatge = image_style_url('abast-petit',$xn->field_imatges['und'][0]['uri']);
-							$alt = $xn->field_imatges['und'][0]['alt'];
-						}
-						echo '<a href="'.$url.'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title.'</a>';
-						echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
-						echo '<a href="'.$url.'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
-						echo '<p style="font-size: 12px; text-align: justify; margin: 0; vertical-align: top">'.strip_tags($xn->field_resum['und'][0]['value']).'</p></td></tr></table>';
+			$training_place = $item->field_abast_formacions_lloc->value();
+			
+			if (!$training_place && $custom_training_place) {
+				$training_place = $custom_training_place;
+			}
+			if (!$training_place && $referenced_node->field_esdeveniment_en_linia['und'][0]['value']) {
+				$training_place = 'Esdeveniment en línia';
+			}
+
+			// Build the entity
+			
+			if ($item->field_abast_formacions_entitat->value()) {
+				$training_entity = $item->field_abast_formacions_entitat->value();
+			}
+			else {
+				$training_entity = $referenced_node->field_organizer['und'][0]['value'];				
+			}
+			
+			// Store the resulting data in an object, and add it to the array
+
+			$training = new stdClass();
+			$training->title = $training_title;
+			$training->link = $training_url;
+			$training->date = $training_date;
+			$training->place = $training_place;
+			$training->entity = $training_entity;
+			$trainings[] = $training;
+		}
+	}
+
+	/**
+	* Agenda d'activitats - data preprocessing
+	*/
+
+	$activities = array();
+
+	foreach ($wrapper->field_abast_activitats as $item) {
+		$referenced_node = $item->field_abast_activitats_xarxanet->value();
+		
+		if ($referenced_node->nid) {
+			$activity_title = $referenced_node->title;
+			$activity_url = url('node/' . $referenced_node->nid, array('absolute' => TRUE));
+			
+			// Build the date
+
+			if ($item->field_abast_activitats_dates->value()) {
+				$activity_date = $item->field_abast_activitats_dates->value();
+			}
+			else {
+				$timestamp = strtotime($referenced_node->field_date_event['und'][0]['value']);
+				$activity_date = $days[date('N', $timestamp) - 1] . ', ' . date('j', $timestamp) . ' ' . $months[date('n', $timestamp) - 1] . ' de ' . date('Y', $timestamp);
+			}
+
+			// Build the place
+
+			$activity_location = $referenced_node->location['city'];
+			
+			if ($referenced_node->location['name']) {
+				$activity_location = $referenced_node->location['name'] . ', ' . $activity_location;
+			}
+			
+			if ($item->field_abast_activitats_lloc->value()) {
+				$activity_place = $item->field_abast_activitats_lloc->value();
+			}
+			else {
+				$activity_place = $activity_location;
+			}
+			
+			// Build the entity
+
+			if ($item->field_abast_activitats_entitat->value()) {
+				$activity_entity = $item->field_abast_activitats_entitat->value();
+			}
+			else {
+				$activity_entity = $referenced_node->field_organizer['und'][0]['value'];
+			}
+			
+			// Store the resulting data in an object, and add it to the array
+
+			$activity = new stdClass();
+			$activity->title = $activity_title;
+			$activity->link = $activity_url;
+			$activity->date = $activity_date;
+			$activity->place = $activity_place;
+			$activity->entity = $activity_entity;
+			$activities[] = $activity;
+		}
+	}
+
+	/**
+	* Finançaments - data preprocessing
+	*/
+
+	$finances = array();
+
+	foreach ($wrapper->field_abast_financament as $item) {
+		$referenced_node = $item->field_abast_financament_xarxanet->value();
+		
+		if ($referenced_node->nid) {
+			$finance_title = $referenced_node->title;
+			$finance_url = url('node/' . $referenced_node->nid, array('absolute' => TRUE));
+					
+			if ($item->field_abast_financament_termini->value()) {
+				$finance_period = $item->field_abast_financament_termini->value();
+			}
+			else {
+				$begin_timestamp = strtotime($referenced_node->field_date['und'][0]['value']);
+				$end_timestamp	 = strtotime($referenced_node->field_date['und'][0]['value2']);
+				$finance_period  =	'Del ';
+				$finance_period .=	lcfirst($days[date('N', $begin_timestamp) - 1]) . ', ' . date('j', $begin_timestamp) . ' ' . $months[date('n', $begin_timestamp) - 1] . ' de ' . date('Y', $begin_timestamp);
+				$finance_period .=	' al ';
+				$finance_period .=	lcfirst($days[date('N', $end_timestamp) - 1]) . ', ' . date('j', $end_timestamp) . ' ' . $months[date('n', $end_timestamp) - 1] . ' de ' . date('Y', $end_timestamp);
+			}
+			
+			if ($item->field_abast_financament_convocan->value()) {
+				$finance_entity = $item->field_abast_financament_convocan->value();
+			}
+			else {
+				$finance_entity = strip_tags($referenced_node->field_convocant['und'][0]['value']);
+			}
+
+			// Store the resulting data in an object, and add it to the array
+
+			$finance = new stdClass();
+			$finance->title = $finance_title;
+			$finance->link = $finance_url;
+			$finance->date = $finance_period;
+			$finance->entity = $finance_entity;
+			$finances[] = $finance;
+		}
+	}
+
+	/**
+	* Flexible block - data preprocessing
+	*/
+
+	$flexibles = array();
+
+	$i = 0;
+	foreach ($wrapper->field_abast_flexible as $item) {
+		$flexible_section_title 		= $item->field_abast_flexible_titol->value();
+		$internal_flexible_content 	= $item->field_abast_flexible_contingut->value();
+		$external_flexible_content 	= $item->field_abast_extern->value();
+				
+		if ($flexible_section_title) {
+			$flexibles[$i]['section_title'] = $flexible_section_title;
+			
+			// Build the internal contents (From xarxanet.org)
+			
+			foreach ($internal_flexible_content as $internal_content) {
+				
+				if ($internal_content->nid) {
+					$internal_content_title = $internal_content->title;
+					$internal_content_url = url('node/' . $internal_content->nid, array('absolute' => TRUE));
+					$internal_content_type = $internal_content->type;
+					
+					if ($internal_content_type == 'opinio') {
+						// Let's get the author and his/her image
+						$author = $internal_content->field_autor_a['und'][0]['nid'];
+						$author = node_load($author);
+						$internal_content_image = image_style_url('abast-petit', $author->field_autor_foto_horitzontal['und'][0]['uri']);
+						$internal_content_image = str_replace('xarxanet.local', 'xarxanet.org', $internal_content_image);
+						$internal_content_alt_attribute = $author->field_autor_foto_horitzontal['und'][0]['alt'];
 					}
+					else if (isset($internal_content->field_agenda_imatge['und'][0]['uri'])) {
+						$internal_content_image = image_style_url('abast-petit', $internal_content->field_agenda_imatge['und'][0]['uri']);
+						$internal_content_image = str_replace('xarxanet.local', 'xarxanet.org', $internal_content_image);
+						$internal_content_alt_attribute = $internal_content->field_agenda_imatge['und'][0]['alt'];
+					}
+					else {
+						$internal_content_image = image_style_url('abast-petit', $internal_content->field_imatges['und'][0]['uri']);
+						$internal_content_image = str_replace('xarxanet.local', 'xarxanet.org', $internal_content_image);
+						$internal_content_alt_attribute = $internal_content->field_imatges['und'][0]['alt'];
+					}
+
+					// Store the resulting data in an object, and add it to the array
+
+					$flexible = new stdClass();
+					$flexible->title = $internal_content_title;
+					$flexible->link = $internal_content_url;
+					$flexible->image = $internal_content_image;
+					$flexible->alt = $internal_content_alt_attribute;
+					$flexible->teaser = strip_tags($internal_content->field_resum['und'][0]['value']);
+					$flexibles[$i]['section_contents'][] = $flexible;
 				}
-				
-				//Continguts externs
-				$externs = $flex->field_abast_extern->value();
-				foreach ($externs as $extern) {
-					$title = $extern->field_abast_flexible_extern;
-					$imatge = file_create_url($extern->field_abast_flexible_imatge['und'][0]['uri']);
-					$alt = $extern->field_abast_flexible_imatge['und'][0]['alt'];
-					echo '<a href="'.$title['und'][0]['url'].'" style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none">'.$title['und'][0]['title'].'</a>';
-					echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
-					echo '<a href="'.$title['und'][0]['url'].'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
-					echo '<p style="font-size: 12px; text-align: justify; margin: 0; vertical-align: top">'.strip_tags($extern->field_abast_flexible_resum['und'][0]['value'],'<a>').'</p></td></tr></table>';
-				}				
-				
-				echo '<p style="text-align: right">';
-				$enllac = $flex->field_abast_flexible_enllac->value();
-				if (!empty($enllac['title'])){
-					echo '<a href="'.$enllac['url'].'" style="font-weight: bold; color: #000001; text-decoration: none">'.$enllac['title'].'</a>';
-				}	
-				echo '<a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
+			}
+
+			// Build the external contents (From other sources)
+
+			foreach ($external_flexible_content as $external_content) {
+				$external_content_title = $external_content->field_abast_flexible_extern['und'][0]['title'];
+				$external_content_url = $external_content->field_abast_flexible_extern['und'][0]['url'];
+				$external_content_image = file_create_url($external_content->field_abast_flexible_imatge['und'][0]['uri']);
+				$external_content_image = str_replace('xarxanet.local', 'xarxanet.org', $external_content_image);
+				$external_content_alt_attribute = $external_content->field_abast_flexible_imatge['und'][0]['alt'];
+				$external_content_teaser = strip_tags($external_content->field_abast_flexible_resum['und'][0]['value']);
+
+				// Store the resulting data in an object, and add it to the array
+
+				$flexible = new stdClass();
+				$flexible->title = $external_content_title;
+				$flexible->link = $external_content_url;
+				$flexible->image = $external_content_image;
+				$flexible->alt = $external_content_alt_attribute;
+				$flexible->teaser = $external_content_teaser;
+				$flexibles[$i]['section_contents'][] = $flexible;
+			}
+
+			// Build the bottom link of each section
+			
+			$link = $item->field_abast_flexible_enllac->value();
+
+			if (!empty($link['title']) && !empty($link['url'])) {
+				$flexible_bottom_link = new stdClass();
+				$flexible_bottom_link->title = $link['title'];
+				$flexible_bottom_link->url = $link['url'];
+				$flexibles[$i]['bottom_link'] = $flexible_bottom_link;
 			}
 		}
-		?>
-	
-	<!-- BLOC LLIURE -->
-		<?php
-		$i = 0;
-		foreach ($wrapper->field_abast_lliure as $lliure) {
-			$titol = $lliure->field_monografic_titol_1->value();
-			$cos = $lliure->field_monografic_cos_1->value();
-			if($titol) echo '<a name="bloc_lliure_'.$i.'"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$titol.'</h1>';
-			if($cos) echo $cos['value'];
-			if($cos) echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
-			$i++;
+		$i++;
+	}
+
+	/**
+	* Free block - data preprocessing
+	*/
+
+	$free_contents = array();
+
+	foreach ($wrapper->field_abast_lliure as $item) {
+		$free_content_title = $item->field_monografic_titol_1->value();
+		$free_content_body = $item->field_monografic_cos_1->value();
+
+		$free_content = new stdClass();
+
+		if ($free_content_title) {
+			$free_content->title = $free_content_title;
 		}
-		?>
-	
-	<!-- ENTREVISTA -->
-		<?php
-		$i = 0;
-		if ($wrapper->field_abast_entrevista_coll->count()) {
-			echo '<a name="entrevista"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 10px 0 5px;">:: '.$node->field_abast_entrevista_titol_sec['und'][0]['value'].'</h1>';
+		if ($free_content_body) {
+			$free_content->body = $free_content_body['value'];
+		}
+
+		$free_contents[] = $free_content;
+	}
+
+	/**
+	* Interviews - data preprocessing
+	*/
+
+	$interviews = array();
+
+	if ($wrapper->field_abast_entrevista_coll->count()) {
+		$interview_section_title = $node->field_abast_entrevista_titol_sec['und'][0]['value'];
+	}
+			
+	foreach ($wrapper->field_abast_entrevista_coll as $item) {
+		$referenced_node = $item->field_abast_entrevista->value();
+		
+		if ($referenced_node->nid) {
+			if (isset($referenced_node->field_agenda_imatge['und'][0]['uri'])) {
+				$interview_image = image_style_url('abast-petit', $referenced_node->field_agenda_imatge['und'][0]['uri']);
+				$interview_image = str_replace('xarxanet.local', 'xarxanet.org', $interview_image);
+				$interview_image_alt_attribute = $referenced_node->field_agenda_imatge['und'][0]['alt'];
+			}
+			else{
+				$interview_image = image_style_url('abast-petit', $referenced_node->field_imatges['und'][0]['uri']);
+				$interview_image = str_replace('xarxanet.local', 'xarxanet.org', $interview_image);
+				$interview_image_alt_attribute = $referenced_node->field_imatges['und'][0]['alt'];
+			}
+			$interview_title = ($item->field_abast_entrevista_titol->value()) ? $item->field_abast_entrevista_titol->value() : $referenced_node->title;
+			$interview_link = url('node/' . $referenced_node->nid, array('absolute' => TRUE));
+		} 
+		else {
+			$external_interview = $item->field_abast_entrevista_externa->value();
+			$interview_title = $external_interview['title'];
+			$interview_link = $external_interview['url'];
+			$external_image = $item->field_abast_entrevista_imatge->value();
+			$interview_image_alt_attribute = $external_image['alt'];
+			$interview_image = file_create_url($external_image['uri']);
+			$interview_image = str_replace('xarxanet.local', 'xarxanet.org', $interview_image);
 		}
 		
-		foreach ($wrapper->field_abast_entrevista_coll as $entr) {
-			$entr_xn = $entr->field_abast_entrevista->value();
-			if ($entr_xn->nid) {
-				if (isset($entr_xn->field_agenda_imatge['und'][0]['uri'])){
-					$imatge = image_style_url('abast-petit',$entr_xn->field_agenda_imatge['und'][0]['uri']);
-					$alt = $entr_xn->field_agenda_imatge['und'][0]['alt'];
-				}else{
-					$imatge = image_style_url('abast-petit',$entr_xn->field_imatges['und'][0]['uri']);
-					$alt = $entr_xn->field_imatges['und'][0]['alt'];
-				}
-				$titol = ($entr->field_abast_entrevista_titol->value()) ? $entr->field_abast_entrevista_titol->value() : $entr_xn->title;
-				$link = url('node/' . $entr_xn->nid, array('absolute' => TRUE));
-			} else {
-				$url = $entr->field_abast_entrevista_externa->value();
-				$titol = $url['title'];
-				$link = $url['url'];
-				$img = $entr->field_abast_entrevista_imatge->value();
-				$alt = $img['alt'];
-				$imatge = file_create_url($img['uri']);;
-			}			
-			echo '<table cellspacing="5" style="margin-bottom: 10px"><tr><td style="vertical-align: top">';
-			echo '<a href="'.$link.'" style="text-decoration: none"><img src="'.$imatge.'" alt="'.$alt.'" height="115" width="185" style="border:0 none;"/></a></td><td style="vertical-align: top">';
-			echo '<a href="'.$link.'" style="font-weight: bold; color: #800000; font-size: 15px; text-decoration: none; font-family:Arial">'.$titol.'</a>';
-			echo '	<table style="margin-left:85px; margin-top:5px; width:auto"><tr><td style="vertical-align:top"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes1.gif" alt="cometes" width="15px"/></td>
-					<td style="font-size: 12px; text-align:center; padding:5px 0; width:180px">'.strip_tags($entr->field_abast_entrevista_cita->value()).'</td>
-					<td style="vertical-align:bottom"><img src="'.$pathroot.'/sites/default/files/butlletins/abast/cometes2.gif" alt="cometes" width="15px"/></td></tr></table>';	
-			echo '</td></tr></table>';			
-			$i++;
-		}
-		if ($wrapper->field_abast_entrevista_coll->count()) {
-			echo '<p style="text-align:right"><a href="#inici" style="text-decoration: none">  <img src="'.$pathroot.'/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a></p>';
-		}
-		?>
-	
+		// Store the resulting data in an object, and add it to the array
+
+		$interview = new stdClass();
+		$interview->title = $interview_title;
+		$interview->link = $interview_link;
+		$interview->image = $interview_image;
+		$interview->alt = $interview_image_alt_attribute;
+		$interview->quote = strip_tags($item->field_abast_entrevista_cita->value());
+		$interviews[] = $interview;
+	}
+
+	/**
+	* Video - data preprocessing
+	*/
+
+	if ($node->field_abast_video['und'][0]['fid']) {
 		
-	<!-- ACTIVA'T -->
-	<?php if ($node->field_abast_activat['und'][0]["value"] !== '0') { ?>
-		<a name="activat"></a><h1 style="font-family:Arial; font-size:17px; font-weight:bold; color:#818181; margin: 15px 0 5px;">:: Activa't</h1>
-		<a style="font-weight: bold; color: #800000; font-size: 14px; font-family:Arial; text-decoration: none" href="<?php echo $pathroot;?>/noticies/he-danar-informar-me-i-fer-voluntariat">
-			On he d'anar per informar-me i fer voluntariat?
-		</a>
-		<table cellspacing="5">
-			<tr><td>
-				<a href="<?php echo $pathroot;?>/noticies/he-danar-informar-me-i-fer-voluntariat" style="text-decoration:none">
-					<img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/mapa_activat_2.jpg" alt="mapa dels centres de voluntariat a Catalunya" style="border:0 none;"/>
-				</a>
-			</td><td>
-				<p style="font-size: 12px; text-align: justify; margin: 0;">
-					No saps a on has d’anar per informar-te sobre el voluntariat? T’oferim un mapa de les principals oficines de voluntariat municipal arreu de Catalunya. També queden recollides les principals entitats de referència en l’àmbit del voluntariat als diferents pobles i ciutats. 
-				</p>
-				<p style="text-align: right">
-					<a href="#inici" style="text-decoration: none">  <img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/fletxeta.gif" alt="torna a dalt" style="border:0 none;"/></a>
-				</p>
-			</td></tr>
+		// Build the title
+
+		if (isset($node->field_abast_video_titol['und'][0]['value'])) {
+			$video_title = $node->field_abast_video_titol['und'][0]['value'];
+		}
+		else {
+			$video_title = 'El vídeo de la quinzena';
+		}
+
+		// Build the link
+
+		if (isset($node->field_abast_video['und'][0]['url'])) {
+			$video_link = $node->field_abast_video['und'][0]['url'];
+		}
+		else {
+			$video_link = null;
+		}
+
+		// Build the cover
+
+		if (isset($node->field_abast_video['und'][0]['uri'])) {
+			$video_cover = file_create_url($node->field_abast_video['und'][0]['uri']);
+			$video_cover = str_replace('xarxanet.local', 'xarxanet.org', $video_cover);
+		}
+		else {
+			$video_cover = null;
+		}
+
+		// Build the alt attribute
+
+		if (isset($node->field_abast_video['und'][0]['alt'])) {
+			$video_alt_attribute = $node->field_abast_video['und'][0]['alt'];
+		}
+		else {
+			$video_alt_attribute = null;
+		}
+
+		// Store the resulting data in an object
+
+		$video = new stdClass();
+		$video->title = $video_title;
+		$video->link = $video_link;
+		$video->image = $video_cover;
+		$video->alt = $video_alt_attribute;
+	}
+?>
+
+
+<style>
+	/* Basics */
+	body {
+		margin: 0 !important;
+		padding: 0;
+		/* background-color: #ffffff; */
+	}
+	table {
+		border-spacing: 0;
+		font-family: sans-serif;
+		color: #333333;
+	}
+	td {
+		padding: 0;
+	}
+	img {
+		border: 0;
+	}
+	div[style*="margin: 16px 0"] { 
+		margin:0 !important;
+	}
+	.wrapper {
+		width: 100%;
+		table-layout: fixed;
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%;
+	}
+	.webkit {
+		max-width: 602px;
+		margin: 0 auto;
+	}
+	.outer {
+		Margin: 0 auto;
+		width: 100%;
+		max-width: 602px;
+	}
+	.inner {
+		padding: 20px;
+	}
+	.contents {
+		width: 100%;
+	}
+	p {
+		Margin: 0;
+	}
+	a {
+		color: #671013;
+		text-decoration: underline;
+	}
+	.h1 {
+		Margin-bottom: 20px;
+	}
+	.h2 {
+		Margin-bottom: 15px;
+	}
+	.full-width-image img {
+		width: 100%;
+		max-width: 600px;
+		height: auto;
+	}
+
+	/* One column layout */
+
+	.one-column .contents {
+		text-align: left;
+	}
+	.one-column p {
+		font-size: 14px;
+		Margin-bottom: 10px;
+	}
+  
+	/* Two column layout */
+
+	.two-column {
+		text-align: center;
+		font-size: 0;
+	}
+	.two-column .column {
+		width: 100%;
+		max-width: 279px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.two-column .contents {
+		font-size: 14px;
+		text-align: left;
+	}
+	.two-column img {
+		width: 100%;
+		max-width: 279px;
+		height: auto;
+	}
+	.two-column .text {
+		padding-top: 10px;
+	}
+
+	/* Three column layout */
+
+	.three-column {
+		text-align: center;
+		font-size: 0;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.three-column .column {
+		width: 100%;
+		max-width: 180px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.three-column img {
+		width: 100%;
+		max-width: 160px;
+		height: auto;
+	}
+	.three-column .contents {
+		font-size: 14px;
+		text-align: center;
+	}
+	.three-column .text {
+		padding-top: 10px;
+	}
+
+	/* Left sidebar layout */
+
+	.left-sidebar {
+		text-align: center;
+		font-size: 0;
+	}
+	.left-sidebar .column {
+		width: 100%;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.left-sidebar .left {
+		max-width: 140px;
+	}
+	.left-sidebar .right {
+		max-width: 460px;
+	}
+	.left-sidebar .img {
+		width: 100%;
+		max-width: 60px;
+		height: auto;
+	}
+	.left-sidebar .contents {
+		font-size: 14px;
+		text-align: center;
+	}
+	.left-sidebar a {
+		color: #85ab70;
+	}
+
+	/* Right sidebar layout */
+
+	.right-sidebar {
+		text-align: center;
+		font-size: 0;
+	}
+	.right-sidebar .column {
+		width: 100%;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.right-sidebar .left {
+		max-width: 100px;
+	}
+	.right-sidebar .right {
+		max-width: 500px;
+	}
+	.right-sidebar .img {
+		width: 100%;
+		max-width: 60px;
+		height: auto;
+	}
+	.right-sidebar .contents {
+		font-size: 14px;
+		text-align: center;
+	}
+	.right-sidebar a {
+		color: #70bbd9;
+	}
+
+	/* Media Queries */
+
+	@media screen and (max-width: 400px) {
+		.two-column .column,
+		.three-column .column {
+			max-width: 100% !important;
+		}
+		.two-column img {
+			max-width: 100% !important;
+		}
+		.three-column img {
+			max-width: 50% !important;
+		}
+	}
+
+	@media screen and (min-width: 401px) and (max-width: 620px) {
+		.three-column .column {
+			max-width: 33% !important;
+		}
+		.two-column .column {
+			max-width: 50% !important;
+		}
+	}
+</style>
+
+<!-- Custom styles  -->
+
+<style>
+	@font-face {
+		font-family: 'Open Sans';
+		src:  url(https://xarxanet.org/sites/all/themes/xn17/assets/fonts/butlleti_a_labast/opensans-regular-webfont.eot);
+		src:  url(https://xarxanet.org/sites/all/themes/xn17/assets/fonts/butlleti_a_labast/opensans-regular-webfont.eot?#iefix) format('embedded-opentype'),
+					url(https://xarxanet.org/sites/all/themes/xn17/assets/fonts/butlleti_a_labast/opensans-regular-webfont.woff2) format('woff2'),
+					url(https://xarxanet.org/sites/all/themes/xn17/assets/fonts/butlleti_a_labast/opensans-regular-webfont.woff) format('woff'),
+					url(https://xarxanet.org/sites/all/themes/xn17/assets/fonts/butlleti_a_labast/opensans-regular-webfont.ttf) format('truetype'),
+					url(https://xarxanet.org/sites/all/themes/xn17/assets/fonts/butlleti_a_labast/opensans-regular-webfont.svg#open_sansregular) format('svg');
+		font-display: swap;
+		font-style: normal;
+		font-weight: 400;
+		mso-font-alt: 'Arial';
+	}
+	body {
+		background-color: #fafafa;
+		background: #fafafa;
+	}
+	.outer {
+		border: 1px solid #dddddd;
+	}
+	.outer * {
+		font-family: 'Open sans' !important;
+	}
+	.background-red {
+		background: #671013;
+	}
+	.background-gray {
+		background: #eeeeee;
+	}
+	.background-white {
+		background: #ffffff;
+	}
+	.section-title {
+		font-weight: 800;
+		font-size: 22px !important;
+		Margin: 0px;
+		color: #333333;
+	}
+	.post-title {
+		color: #333333;
+		font-weight: 800;
+		text-decoration: none;
+	}
+	.thin {
+		font-weight: 400;
+	}
+	.regular {
+		font-weight: 600;
+	}
+	.bold {
+		font-weight: 800;
+	}
+	.text-xxs {
+		font-size: 10px !important;
+	}
+	.text-xs {
+		font-size: 12px !important;
+	}
+	.text-sm {
+		font-size: 14px !important;
+	}
+	.text-md {
+		font-size: 16px !important;
+	}
+	.text-lg {
+		font-size: 18px !important;
+	}
+	.text-xl {
+		font-size: 20px !important;
+	}
+	.text-xxl {
+		font-size: 22px !important;
+	}
+	.text-white {
+		color: #ffffff;
+	}
+	.text-black {
+		color: #333333;
+	}
+	.text-black {
+		color: #333333;
+	}
+	.text-red {
+		color: #671013 !important;
+	}
+	.text-center {
+		text-align: center;
+	}
+	.text-left {
+		text-align: left;
+	}
+	.inner-top {
+		padding-top: 20px;
+	}
+	.inner-left {
+		padding-left: 20px;
+	}
+	.inner-right {
+		padding-right: 20px;
+	}
+	.inner-bottom {
+		padding-bottom: 20px;
+	}
+	.lh-0 {
+		line-height: 0px;
+	}
+	.bordered {
+		border: 1px solid #dddddd !important;
+	}
+	.box-shadow {
+		background: #eeeeee;
+	}
+	.box-shadow img {
+		width: 100% !important;
+		max-width: none !important;
+	}
+	.button {
+		padding: 4px 10px;
+	}
+	.button a {
+		font-weight: 200;
+	}
+	.no-decoration {
+		text-decoration: none;
+	}
+	.list {
+		padding-left: 20px;
+		Margin: 0px 0px 20px 0px;
+	}
+	.list h3 {
+		Margin: 0 0 15px 0;
+	}
+	.list h3 a {
+		color: #671013;
+		text-decoration: none;
+	}
+	.list li {
+		color: #671013;
+		Margin-left: 0px;
+		Margin-bottom: 20px;
+	}
+	.list p {
+		color: #333333;
+	}
+	.quote-begin {
+		vertical-align: top;
+	}
+	.quote {
+		vertical-align: center;
+		font-style: italic;
+		color: #333333;
+		text-align: center;
+	}
+	.quote-end {
+		vertical-align: bottom;
+	}
+	img.one-column-image  {
+		width: 100%;
+		max-width: 558px;
+		height: auto;
+	}
+	.inline-links {
+		display: inline-block;
+		Margin: 0 5px;
+		width: auto;
+	}
+
+	/* Media Queries */
+
+	@media screen and (max-width: 400px) {
+		.box-shadow img {
+			Margin-bottom: 10px;
+		}
+		.inline-links {
+			display: block;
+			Margin: 3px 20px;
+			width: 100%;
+		}
+	}
+</style>
+
+<center class="wrapper" style="width:100%;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+	<div class="webkit" style="max-width:602px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;">
+		<!--[if (gte mso 9)|(IE)]>
+		<table width="600" align="center" style="border-spacing:0;font-family:sans-serif;color:#333333;">
+		<tr>
+		<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
+		<![endif]-->
+		<table class="outer" align="center" style="border-spacing:0;font-family:sans-serif;color:#333333;Margin:0 auto;width:100%;max-width:602px;border-width:1px;border-style:solid;border-color:#dddddd;">
+			
+			<!-- Header -->
+
+			<tr>
+				<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+					<table width="100%" class="background-red" bgcolor="#671013" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#671013;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+						<tr>
+							<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+								<img id="logo-gencat" src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/logotip_generalitat_catalunya_header.png?token=<?php print time(); ?>" width="120" alt="" style="border-width:0;font-family:'Open sans' !important;" />
+							</td>
+							<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+								<img id="logo-abast" src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/logotip_a_labast.png?token=<?php print time(); ?>" width="180" alt="" style="border-width:0;font-family:'Open sans' !important;" />
+							</td>
+						</tr>
+						<tr>
+							<td class="inner contents" colspan="2" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+								<p class="h1 text-xxl text-white bold" style="Margin:0;font-family:'Open sans' !important;font-weight:800;color:#ffffff;font-size:22px !important;Margin-bottom:10px;">Butlletí del voluntariat català</p>
+								<p class="text-xxl text-white regular" style="Margin:0;font-family:'Open sans' !important;font-weight:600;color:#ffffff;font-size:22px !important;Margin-bottom:10px;">A l'abast</p>
+								<p class="text-lg text-white thin" style="Margin:0;font-family:'Open sans' !important;font-weight:400;color:#ffffff;font-size:18px !important;Margin-bottom:10px;"><?php print t(date('F', $node->created)); ?> <?php print t(date('Y', $node->created)); ?> #<?php print $title; ?></p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<!-- Section: "Destacats" -->
+
+			<?php if (!empty($highlights)): ?>
+				<tr>
+					<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+									<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+										<tr>
+											<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+												<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;">Destacats</h2>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<?php $i = 1; ?>
+				<?php foreach ($highlights as $highlight): ?>
+					<?php if ($i % 2 != 0): ?>
+
+						<!-- Model A (image to the left) -->
+
+						<tr>
+							<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+									<tr summary="two-columns" style="font-family:'Open sans' !important;">
+										<td class="inner-left inner-right" style="padding-top:0;padding-bottom:0;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;">
+											<table width="100%" bgcolor="#ffffff" class="background-white bordered" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;border-width:1px !important;border-style:solid !important;border-color:#dddddd !important;">
+												<tr>
+													<td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;font-family:'Open sans' !important;">
+														<!--[if (gte mso 9)|(IE)]>
+														<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+														<tr>
+														<td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="lh-0" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;line-height:0px;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+																					<a href="<?php print $highlight->link; ?>">
+																						<img src="<?php print $highlight->image; ?>" width="279" alt="" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																					</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td><td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td class="text" style="padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;padding-top:10px;">
+																					<a class="post-title text-md" href="<?php print $highlight->link; ?>" style="font-family:'Open sans' !important;color:#333333;font-weight:800;text-decoration:none;font-size:16px !important;"><?php print $highlight->title; ?></a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr>
+																	<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																		<table bgcolor="#671013" class="background-red" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#671013;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+																			<tr>
+																				<td class="button" style="font-family:'Open sans' !important;padding-top:4px;padding-bottom:4px;padding-right:10px;padding-left:10px;">
+																					<a class="text-sm no-decoration text-white" href="<?php print $highlight->link; ?>" style="font-family:'Open sans' !important;font-size:14px !important;color:#ffffff;text-decoration:none;font-weight:200;">Llegiu-ne més</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td>
+														</tr>
+														</table>
+														<![endif]-->
+													</td>
+												</tr>
+											</table>
+											<table width="100%" class="box-shadow" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+												<tr>
+													<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/shadow_bottom.jpg?token=<?php print time(); ?>" border="0" alt="" width="558" style="border-width:0;font-family:'Open sans' !important;width:100% !important;max-width:none !important;" />
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					<?php else: ?>
+
+						<!-- Model B (image to the right) -->
+
+						<tr>
+							<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+									<tr summary="two-columns" style="font-family:'Open sans' !important;">
+										<td class="inner-left inner-right" style="padding-top:0;padding-bottom:0;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;">
+											<table width="100%" bgcolor="#ffffff" class="background-white bordered" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;border-width:1px !important;border-style:solid !important;border-color:#dddddd !important;">
+												<tr>
+													<td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;font-family:'Open sans' !important;">
+														<!--[if (gte mso 9)|(IE)]>
+														<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+														<tr>
+														<td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td class="text" style="padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;padding-top:10px;">
+																					<a class="post-title text-md" href="<?php print $highlight->link; ?>" style="font-family:'Open sans' !important;color:#333333;font-weight:800;text-decoration:none;font-size:16px !important;"><?php print $highlight->title; ?></a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr>
+																	<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																		<table bgcolor="#671013" class="background-red" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#671013;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+																			<tr>
+																				<td class="button" style="font-family:'Open sans' !important;padding-top:4px;padding-bottom:4px;padding-right:10px;padding-left:10px;">
+																					<a class="text-sm no-decoration text-white" href="<?php print $highlight->link; ?>" style="font-family:'Open sans' !important;font-size:14px !important;color:#ffffff;text-decoration:none;font-weight:200;">Llegiu-ne més</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td><td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="lh-0" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;line-height:0px;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+																					<a href="<?php print $highlight->link; ?>">
+																						<img src="<?php print $highlight->image; ?>" width="279" alt="" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																					</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td>
+														</tr>
+														</table>
+														<![endif]-->
+													</td>
+												</tr>
+											</table>
+											<table width="100%" class="box-shadow" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+												<tr>
+													<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/shadow_bottom.jpg?token=<?php print time(); ?>" border="0" alt="" width="558" style="border-width:0;font-family:'Open sans' !important;width:100% !important;max-width:none !important;" />
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					<?php endif; ?>
+					<?php $i++; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+
+			<!-- Section: "Notícies" -->
+			
+			<?php if (!empty($articles)): ?>
+				<tr>
+					<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+									<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+										<tr>
+											<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+												<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;">Notícies</h2>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<?php $i = 1; ?>
+				<?php foreach ($articles as $article): ?>
+					<?php if ($i % 2 != 0): ?>
+
+						<!-- Model A (image to the left) -->
+
+						<tr>
+							<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+									<tr summary="two-columns" style="font-family:'Open sans' !important;">
+										<td class="inner-left inner-right" style="padding-top:0;padding-bottom:0;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;">
+											<table width="100%" bgcolor="#ffffff" class="background-white bordered" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;border-width:1px !important;border-style:solid !important;border-color:#dddddd !important;">
+												<tr>
+													<td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;font-family:'Open sans' !important;">
+														<!--[if (gte mso 9)|(IE)]>
+														<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+														<tr>
+														<td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="lh-0" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;line-height:0px;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+																					<a href="<?php print $article->link; ?>">
+																						<img src="<?php print $article->image; ?>" width="279" alt="" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																						</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td><td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td class="text" style="padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;padding-top:10px;">
+																					<a class="post-title text-md" href="<?php print $article->link; ?>" style="font-family:'Open sans' !important;color:#333333;font-weight:800;text-decoration:none;font-size:16px !important;"><?php print $article->title; ?></a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr>
+																	<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																		<table bgcolor="#671013" class="background-red" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#671013;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+																			<tr>
+																				<td class="button" style="font-family:'Open sans' !important;padding-top:4px;padding-bottom:4px;padding-right:10px;padding-left:10px;">
+																					<a class="text-sm no-decoration text-white" href="<?php print $article->link; ?>" style="font-family:'Open sans' !important;font-size:14px !important;color:#ffffff;text-decoration:none;font-weight:200;">Llegiu-ne més</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td>
+														</tr>
+														</table>
+														<![endif]-->
+													</td>
+												</tr>
+											</table>
+											<table width="100%" bgcolor="#eeeeee" class="box-shadow" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+												<tr>
+													<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/shadow_bottom.jpg?token=<?php print time(); ?>" border="0" alt="" width="558" style="border-width:0;font-family:'Open sans' !important;width:100% !important;max-width:none !important;" />
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					<?php else: ?>
+
+						<!-- Model B (image to the right) -->
+
+						<tr>
+							<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+									<tr summary="two-columns" style="font-family:'Open sans' !important;">
+										<td class="inner-left inner-right" style="padding-top:0;padding-bottom:0;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;">
+											<table width="100%" bgcolor="#ffffff" class="background-white bordered" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;border-width:1px !important;border-style:solid !important;border-color:#dddddd !important;">
+												<tr>
+													<td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;font-family:'Open sans' !important;">
+														<!--[if (gte mso 9)|(IE)]>
+														<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+														<tr>
+														<td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td class="text" style="padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;padding-top:10px;">
+																					<a class="post-title text-md" href="<?php print $article->link; ?>" style="font-family:'Open sans' !important;color:#333333;font-weight:800;text-decoration:none;font-size:16px !important;"><?php print $article->title; ?></a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr>
+																	<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																		<table bgcolor="#671013" class="background-red" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#671013;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+																			<tr>
+																				<td class="button" style="font-family:'Open sans' !important;padding-top:4px;padding-bottom:4px;padding-right:10px;padding-left:10px;">
+																					<a class="text-sm no-decoration text-white" href="<?php print $article->link; ?>" style="font-family:'Open sans' !important;font-size:14px !important;color:#ffffff;text-decoration:none;font-weight:200;">Llegiu-ne més</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td><td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="lh-0" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;line-height:0px;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+																					<a href="<?php print $article->link; ?>">
+																						<img src="<?php print $article->image; ?>" width="279" alt="" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																					</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td>
+														</tr>
+														</table>
+														<![endif]-->
+													</td>
+												</tr>
+											</table>
+											<table width="100%" class="box-shadow" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+												<tr>
+													<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/shadow_bottom.jpg?token=<?php print time(); ?>" border="0" alt="" width="558" style="border-width:0;font-family:'Open sans' !important;width:100% !important;max-width:none !important;" />
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					<?php endif; ?>
+					<?php $i++; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+
+			<!-- Section: Crides de voluntariat -->
+
+			<?php if (!empty($volunteerings)): ?>
+				<tr>
+					<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+									<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+										<tr>
+										<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+												<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;">Crides de voluntariat</h2>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;text-align:left;">
+									<ul class="list" style="font-family:'Open sans' !important;padding-left:20px;Margin:0px 0px 20px 0px;">
+										<?php foreach ($volunteerings as $volunteering): ?>
+											<li style="font-family:'Open sans' !important;color:#671013;Margin-left:0px;Margin-bottom:20px;">
+												<h3 class="text-md" style="font-family:'Open sans' !important;font-size:16px !important;Margin:0 0 15px 0;">
+													<a href="<?php print $volunteering->link; ?>" style="font-family:'Open sans' !important;color:#671013;text-decoration:none;"><?php print $volunteering->title; ?></a>
+												</h3>
+												<?php if ($volunteering->entity): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Entitat:</b> <?php print $volunteering->entity; ?></p>
+												<?php endif; ?>
+												<?php if ($volunteering->place): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Lloc:</b> <?php print $volunteering->place; ?></p>
+												<?php endif; ?>
+												<?php if ($volunteering->sector): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Dedicació:</b> <?php print $volunteering->sector; ?></p>
+												<?php endif; ?>
+												<?php if ($volunteering->profile): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Perfil:</b> <?php print $volunteering->profile; ?></p>
+												<?php endif; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			<?php endif; ?>
+
+			<!-- Section: Pla de Formació del voluntariat de Catalunya -->
+
+			<?php if (!empty($pfvcs)): ?>
+				<tr>
+					<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+									<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+										<tr>
+											<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+												<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;">Pla de Formació del voluntariat de Catalunya</h2>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;text-align:left;">
+									<ul class="list" style="font-family:'Open sans' !important;padding-left:20px;Margin:0px 0px 20px 0px;">
+										<?php foreach ($pfvcs as $pfvc): ?>
+											<li style="font-family:'Open sans' !important;color:#671013;Margin-left:0px;Margin-bottom:20px;">
+												<h3 class="text-md" style="font-family:'Open sans' !important;font-size:16px !important;Margin:0 0 15px 0;">
+													<a href="<?php print $pfvc->link; ?>" style="font-family:'Open sans' !important;color:#671013;text-decoration:none;"><?php print $pfvc->title; ?></a>
+												</h3>
+												<?php if ($pfvc->dates): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Data d'inici:</b> <?php print $pfvc->dates; ?></p>
+												<?php endif; ?>
+												<?php if ($pfvc->place): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Lloc:</b> <?php print $pfvc->place; ?></p>
+												<?php endif; ?>
+												<?php if ($pfvc->entity): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Entitat:</b> <?php print $pfvc->entity; ?></p>
+												<?php endif; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			<?php endif; ?>
+
+			<!-- Section: "Altres formacions (Formacions Xarxanet)" -->
+
+			<?php if (!empty($trainings)): ?>
+				<tr>
+					<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+									<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+										<tr>
+											<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+												<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;">Altres formacions</h2>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;text-align:left;">
+									<ul class="list" style="font-family:'Open sans' !important;padding-left:20px;Margin:0px 0px 20px 0px;">
+										<?php foreach ($trainings as $training): ?>
+											<li style="font-family:'Open sans' !important;color:#671013;Margin-left:0px;Margin-bottom:20px;">
+												<h3 class="text-md" style="font-family:'Open sans' !important;font-size:16px !important;Margin:0 0 15px 0;">
+													<a href="<?php print $training->link; ?>" style="font-family:'Open sans' !important;color:#671013;text-decoration:none;"><?php print $training->title; ?></a>
+												</h3>
+												<?php if ($training->date): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Data d'inici:</b> <?php print $training->date; ?></p>
+												<?php endif; ?>
+												<?php if ($training->place): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Lloc:</b> <?php print $training->place; ?></p>
+												<?php endif; ?>
+												<?php if ($training->entity): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Entitat:</b> <?php print $training->entity; ?></p>
+												<?php endif; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			<?php endif; ?>
+
+			<!-- Section: "Agenda d'activitats" -->
+
+			<?php if (!empty($activities)): ?>
+				<tr>
+					<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+									<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+										<tr>
+											<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+												<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;">Agenda d'activitats</h2>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;text-align:left;">
+									<ul class="list" style="font-family:'Open sans' !important;padding-left:20px;Margin:0px 0px 20px 0px;">
+										<?php foreach ($activities as $activity): ?>
+											<li style="font-family:'Open sans' !important;color:#671013;Margin-left:0px;Margin-bottom:20px;">
+												<h3 class="text-md" style="font-family:'Open sans' !important;font-size:16px !important;Margin:0 0 15px 0;">
+													<a href="<?php print $activity->link; ?>" style="font-family:'Open sans' !important;color:#671013;text-decoration:none;"><?php print $activity->title; ?></a>
+												</h3>
+												<?php if ($activity->date): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Data d'inici:</b> <?php print $activity->date; ?></p>
+												<?php endif; ?>
+												<?php if ($activity->place): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Lloc:</b> <?php print $activity->place; ?></p>
+												<?php endif; ?>
+												<?php if ($activity->entity): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Entitat:</b> <?php print $activity->entity; ?></p>
+												<?php endif; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			<?php endif; ?>
+
+			<!-- Section: Finançaments -->
+
+			<?php if (!empty($finances)): ?>
+				<tr>
+					<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+									<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+										<tr>
+										<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+												<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;">Finançaments</h2>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;text-align:left;">
+									<ul class="list" style="font-family:'Open sans' !important;padding-left:20px;Margin:0px 0px 20px 0px;">
+										<?php foreach ($finances as $finance): ?>
+											<li style="font-family:'Open sans' !important;color:#671013;Margin-left:0px;Margin-bottom:20px;">
+												<h3 class="text-md" style="font-family:'Open sans' !important;font-size:16px !important;Margin:0 0 15px 0;">
+													<a href="<?php print $finance->link; ?>" style="font-family:'Open sans' !important;color:#671013;text-decoration:none;"><?php print $finance->title; ?></a>
+												</h3>
+												<?php if ($finance->date): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Termini:</b> <?php print $finance->date; ?></p>
+												<?php endif; ?>
+												<?php if ($finance->entity): ?>
+													<p class="text-sm" style="Margin:0;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><b>Convocant:</b> <?php print $finance->entity; ?></p>
+												<?php endif; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			<?php endif; ?>
+
+			<!-- Section: "Flexible block" -->
+
+			<?php if (!empty($flexibles)): ?>
+				<?php foreach ($flexibles as $flexible): ?>
+					<tr>
+						<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+							<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+								<tr>
+									<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+										<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+											<tr>
+											<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+													<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;"><?php print $flexible['section_title']; ?></h2>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+							<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+								<tr>
+									<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;text-align:left;">
+										<ul class="list" style="font-family:'Open sans' !important;padding-left:20px;Margin:0px 0px 20px 0px;">
+											<?php foreach ($flexible['section_contents'] as $flexible_content): ?>
+												<li style="font-family:'Open sans' !important;color:#671013;Margin-left:0px;Margin-bottom:20px;">
+													<h3 class="text-md" style="font-family:'Open sans' !important;font-size:16px !important;Margin:0 0 15px 0;">
+														<a href="<?php print $flexible_content->link; ?>" style="font-family:'Open sans' !important;color:#671013;text-decoration:none;"><?php print $flexible_content->title; ?></a>
+													</h3>
+													<?php if ($flexible_content->teaser): ?>
+														<p class="text-sm" style="Margin:15px 0px 0px 0px;font-family:'Open sans' !important;font-size:14px !important;Margin-bottom:10px;color:#333333;"><?php print $flexible_content->teaser; ?></p>
+													<?php endif; ?>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<table align="center" bgcolor="#671013" border="0" cellspacing="0" cellpadding="0" style="display: table; margin: 15px auto 20px; width: auto; background-color: #671013; padding: 0px;">
+											<tr style="padding: 0px;">
+												<td align="center" style="padding: 10px; font-family: 'Open sans' !important; text-align: center; font-size: 14px; vertical-align: middle;">
+													<a style="font-family:'Open sans' !important; color: #ffffff; text-decoration: none;" href="<?php print $flexible['bottom_link']->url; ?>" alt="<?php print $flexible['bottom_link']->title; ?>" target="_blank">
+														<?php print $flexible['bottom_link']->title; ?>
+													</a>
+												</td>
+											</tr>
+										</table>
+										<br />
+										<br />
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			<?php endif; ?>
+
+			<!-- Section: "Free block" -->
+
+			<?php if (!empty($free_contents)): ?>
+				<?php foreach ($free_contents as $free_content): ?>
+					<?php if ($free_content->title): ?>
+						<tr>
+							<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+									<tr>
+										<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+											<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+												<tr>
+												<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+														<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;"><?php print $free_content->title; ?></h2>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					<?php endif; ?>
+
+					<?php if ($free_content->body): ?>
+						<tr>
+							<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<table width="100%" bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+									<tr>
+										<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;text-align:left;">
+											<?php print $free_content->body; ?>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+
+			<!-- Section: Vídeo -->
+
+			<?php if (!empty($video)): ?>
+				<tr>
+					<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+							<tr>
+								<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+									<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+										<tr>
+										<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+												<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;">Vídeo</h2>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+						<table width="100%" bgcolor="#ffffff" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+						<tr>
+								<td class="inner-left inner-right contents" style="padding-top:0;padding-bottom:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;text-align:left;">
+									<a href="<?php print $video->link; ?>" target="_blank" style="color:#ee6a56;text-decoration:underline;font-family:'Open sans' !important;">
+										<img class="one-column-image" src="<?php print $video->image; ?>" alt="Vídeo - <?php print $video->title; ?>" width="558" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:558px;height:auto;" />
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;text-align:left;">
+									<p class="text-md regular text-center text-red" style="Margin:10px 0px 0px 0px;font-family:'Open sans' !important;font-weight:600;color:#671013 !important;text-align:center;font-size:16px !important;Margin-bottom:10px;">Vídeo - <?php print $video->title; ?></p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			<?php endif; ?>
+
+			<!-- Section: "L'entrevista" -->
+
+			<?php if (!empty($interviews)): ?>
+				<?php if ($interview_section_title): ?>
+					<tr>
+						<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+							<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+								<tr>
+									<td class="one-column" summary="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+										<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+											<tr>
+												<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;text-align:left;">
+													<h2 class="section-title" style="font-family:'Open sans' !important;font-weight:800;font-size:22px !important;Margin:0px;color:#333333;"><?php print $interview_section_title; ?></h2>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				<?php endif; ?>
+
+				<?php $i = 1; ?>
+				<?php foreach ($interviews as $interview): ?>
+					<?php if ($i % 2 != 0): ?>
+						<tr>
+							<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+									<tr summary="two-columns" style="font-family:'Open sans' !important;">
+										<td class="inner-left inner-right" style="padding-top:0;padding-bottom:0;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;">
+											<table width="100%" bgcolor="#ffffff" class="background-white bordered" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;border-width:1px !important;border-style:solid !important;border-color:#dddddd !important;">
+												<tr>
+													<td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;font-family:'Open sans' !important;">
+														<!--[if (gte mso 9)|(IE)]>
+														<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+														<tr>
+														<td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="lh-0" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;line-height:0px;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+																					<img src="<?php print $interview->image; ?>" width="279" alt="" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td><td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="inner-top inner-left inner-right" style="padding-bottom:0;font-family:'Open sans' !important;padding-top:20px;padding-left:20px;padding-right:20px;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td class="text" style="padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;padding-top:10px;">
+																					<a class="post-title text-red text-md" href="<?php print $interview->link; ?>" style="font-family:'Open sans' !important;font-weight:800;text-decoration:none;font-size:16px !important;color:#671013 !important;"><?php print $interview->title; ?></a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<?php if ($interview->quote): ?>
+																	<tr>
+																		<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																			<table bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+																				<tr>
+																					<td class="quote-begin" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;vertical-align:top;">
+																						<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/quote_begin.gif?token=<?php print time(); ?>" alt="cometes" width="20px" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																					</td>
+																					<td class="quote text-sm" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;font-size:14px !important;vertical-align:center;font-style:italic;color:#333333;text-align:center;">
+																						<?php print $interview->quote; ?>  
+																					</td>
+																					<td class="quote-end" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;vertical-align:bottom;">
+																						<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/quote_end.gif?token=<?php print time(); ?>" alt="cometes" width="20px" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																	<?php endif; ?>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td>
+														</tr>
+														</table>
+														<![endif]-->
+													</td>
+												</tr>
+											</table>
+											<table width="100%" class="box-shadow" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+												<tr>
+													<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/shadow_bottom.jpg" border="0" alt="" width="558" style="border-width:0;font-family:'Open sans' !important;width:100% !important;max-width:none !important;" />
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					<?php else: ?>
+						<tr>
+							<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+									<tr summary="two-columns" style="font-family:'Open sans' !important;">
+										<td class="inner-left inner-right" style="padding-top:0;padding-bottom:0;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;">
+											<table width="100%" bgcolor="#ffffff" class="background-white bordered" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;border-width:1px !important;border-style:solid !important;border-color:#dddddd !important;">
+												<tr>
+													<td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;font-family:'Open sans' !important;">
+														<!--[if (gte mso 9)|(IE)]>
+														<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+														<tr>
+														<td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="inner-top inner-left inner-right" style="padding-bottom:0;font-family:'Open sans' !important;padding-top:20px;padding-left:20px;padding-right:20px;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td class="text" style="padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;padding-top:10px;">
+																					<a class="post-title text-red text-md" href="<?php print $interview->link; ?>" style="font-family:'Open sans' !important;font-weight:800;text-decoration:none;font-size:16px !important;color:#671013 !important;"><?php print $interview->title; ?></a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<?php if ($interview->quote): ?>
+																	<tr>
+																		<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+																			<table bgcolor="#ffffff" class="background-white" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#ffffff;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+																				<tr>
+																					<td class="quote-begin" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;vertical-align:top;">
+																						<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/quote_begin.gif?token=<?php print time(); ?>" alt="cometes" width="20px" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																					</td>
+																					<td class="quote text-sm" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;font-size:14px !important;vertical-align:center;font-style:italic;color:#333333;text-align:center;">
+																						<?php print $interview->quote; ?>  
+																					</td>
+																					<td class="quote-end" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;vertical-align:bottom;">
+																						<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/quote_end.gif?token=<?php print time(); ?>" alt="cometes" width="20px" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																	<?php endif; ?>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td><td width="50%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<![endif]-->
+														<div class="column" summary="column" style="font-family:'Open sans' !important;width:100%;max-width:279px;display:inline-block;vertical-align:top;">
+															<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+																<tr>
+																	<td class="lh-0" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;line-height:0px;">
+																		<table class="contents" style="border-spacing:0;color:#333333;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:left;">
+																			<tr>
+																				<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+																					<img src="<?php print $interview->image; ?>" width="279" alt="" style="border-width:0;font-family:'Open sans' !important;width:100%;max-width:279px;height:auto;" />
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</div>
+														<!--[if (gte mso 9)|(IE)]>
+														</td>
+														</tr>
+														</table>
+														<![endif]-->
+													</td>
+												</tr>
+											</table>
+											<table width="100%" class="box-shadow" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+												<tr>
+													<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/shadow_bottom.jpg?token=<?php print time(); ?>" border="0" alt="" width="558" style="border-width:0;font-family:'Open sans' !important;width:100% !important;max-width:none !important;" />
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					<?php endif; ?>
+					<?php $i++; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+
+			<!-- Section: "Directe a" -->
+
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="content-news-text">
+						<tbody>
+							<tr>
+								<td>
+									<table width="100%" border="0" cellpadding="0" cellspacing="0">
+										<tbody>
+											<tr>
+												<td class="content-text">
+													<table border="0" cellspacing="0" cellpadding="0">
+														<tbody>
+															<tr>
+																<td vspace="0" style="padding: 20px 0px 0px 20px;">
+																	<h2 style="font-family: Open Sans, sans-serif; color: #333; font-size: 20px; text-decoration: none; font-weight: 600; padding-bottom: 0; margin-bottom: 0;">Directe a </h2>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<table>
+																		<tbody>
+																			<tr>
+																				<td>
+																					<ul style="padding-left: 50px; padding-bottom: 15px;" class="download_pdf">
+																						<li style="color: #671013; margin-top: 15px">
+																							<!-- Auditoria Accesibilidad - Se inserta un "span" oculto en los enlaces que abren en una ventana nueva para que quede indicado -->
+																							<a style="font-family: Open Sans, sans-serif; font-size: 16px; color: #671013; font-weight: 600; text-decoration: none;" href="https://voluntariat.gencat.cat" target="_blank">El nostre web</a>
+																							<br>
+																							<span style="font-family: Open Sans, sans-serif; font-size: 14px; color: #333; font-weight: 400">
+																								<p>voluntariat.gencat.cat</p>
+																							</span>
+																						</li>
+																						<li style="color: #671013; margin-top: 15px">
+																							<!-- Auditoria Accesibilidad - Se inserta un "span" oculto en los enlaces que abren en una ventana nueva para que quede indicado -->
+																							<a style="font-family: Open Sans, sans-serif; font-size: 16px; color: #671013; font-weight: 600; text-decoration: none;" href="https://voluntariat.gencat.cat/persones-voluntaries/" target="_blank">Persones voluntàries</a>
+																							<br>
+																							<span style="font-family: Open Sans, sans-serif; font-size: 14px; color: #333; font-weight: 400">
+																								<p>Coneix els teus drets i deures</p>
+																							</span>
+																						</li>
+																						<li style="color: #671013; margin-top: 15px">
+																							<!-- Auditoria Accesibilidad - Se inserta un "span" oculto en los enlaces que abren en una ventana nueva para que quede indicado -->
+																							<a style="font-family: Open Sans, sans-serif; font-size: 16px; color: #671013; font-weight: 600; text-decoration: none;" href="https://voluntariat.gencat.cat/entitats/" target="_blank">Entitats</a>
+																							<br>
+																							<span style="font-family: Open Sans, sans-serif; font-size: 14px; color: #333; font-weight: 400">
+																								<p>Registra't al Cens d'entitats de voluntariat</p>
+																							</span>
+																						</li>
+																						<li style="color: #671013; margin-top: 15px">
+																							<!-- Auditoria Accesibilidad - Se inserta un "span" oculto en los enlaces que abren en una ventana nueva para que quede indicado -->
+																							<a style="font-family: Open Sans, sans-serif; font-size: 16px; color: #671013; font-weight: 600; text-decoration: none;" href="https://voluntariat.gencat.cat/administracions-publiques/" target="_blank">Administracions</a>
+																							<br>
+																							<span style="font-family: Open Sans, sans-serif; font-size: 14px; color: #333; font-weight: 400">
+																								<p>Suport i assessorament</p>
+																							</span>
+																						</li>
+																						<li style="color: #671013; margin-top: 15px">
+																							<!-- Auditoria Accesibilidad - Se inserta un "span" oculto en los enlaces que abren en una ventana nueva para que quede indicado -->
+																							<a style="font-family: Open Sans, sans-serif; font-size: 16px; color: #671013; font-weight: 600; text-decoration: none;" href="https://voluntariat.gencat.cat/recursos-i-serveis/" target="_blank">Recursos i serveis</a>
+																							<br>
+																							<span style="font-family: Open Sans, sans-serif; font-size: 14px; color: #333; font-weight: 400">
+																								<p>Serveis d'assessorament i acompanyament</p>
+																							</span>
+																						</li>
+																					</ul>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+
+			<!-- Bottom content (3 columns) -->
+			
+			<tr>
+				<td class="inner-left inner-right" style="padding-top:0; padding-bottom:0; font-family:'Open sans' !important; padding-left:20px; padding-right:20px;">
+					<table width="100%" bgcolor="#fff" border="0" cellspacing="0" cellpadding="0" style="padding-bottom: 20px; background-color: #fff; margin-bottom: 45px; margin-top: 45px;">
+						<tbody>
+							<tr style="vertical-align: top">
+								<td class="images-bottom" align="top" style="margin-left: 10px" width="33%">
+									<div style="position: relative; text-align:center">
+											<a style="text-decoration: none;" href="https://connectat.voluntariat.gencat.cat/inici">
+												<img style="max-width:100%" width="186" src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/bottom_banner_1.jpg">
+												<div class="text-banners" style="font-family:'Open sans' !important; font-weight:800; line-height: 12px; color: #671013; font-size: 12px; text-decoration: none;">
+													<p style="margin-bottom: 0.2em; vertical-align: top; text-align: center" class="titol-banners">Connecta't al voluntariat</p>
+												</div>
+											</a>
+									</div>
+								</td>
+								<td class="images-bottom" align="top" style="margin-left: 10px" width="33%">
+									<div style="position: relative; text-align:center">
+										<a style="text-decoration: none;" href="https://voluntariat.gencat.cat/persones-voluntaries/format-com-a-voluntari/pla-de-formacio/">
+											<img style="max-width:100%" width="186" src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/bottom_banner_2.jpg">
+											<div class="text-banners" style="font-family:'Open sans' !important; font-weight:800; line-height: 12px; color: #671013; font-size: 12px; text-decoration: none;">
+												<p style="margin-bottom: 0.2em; vertical-align: top; text-align: center" class="titol-banners">Pla de Formació</p>
+											</div>
+										</a>
+									</div>
+								</td>
+								<td class="images-bottom" align="top" style="margin-left: 10px" width="33%">
+									<div style="position: relative; text-align:center">
+										<a style="text-decoration: none;" href="https://voluntariat.gencat.cat/administracions-publiques/punts-de-voluntariat-local/">
+											<img style="max-width:100%" width="186" src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/bottom_banner_3.jpg">
+											<div class="text-banners" style="font-family:'Open sans' !important; font-weight:800; line-height: 12px; color: #671013; font-size: 12px; text-decoration: none;">
+												<p style="margin-bottom: 0.2em; vertical-align: top; text-align: center" class="titol-banners">Punts de voluntariat local de Catalunya</p>
+											</div>
+										</a>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+
+			<!-- Footer -->
+
+			<tr>
+				<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+					<table width="100%" bgcolor="#eeeeee" class="background-gray" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;background-color:#eeeeee;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;">
+						<tr>
+							<td class="left-sidebar" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;font-family:'Open sans' !important;">
+								<!--[if (gte mso 9)|(IE)]>
+								<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+								<tr>
+								<td width="100" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<![endif]-->
+								<table class="column left" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;width:100%;display:inline-block;vertical-align:middle;max-width:140px;">
+									<tr>
+										<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+											<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+												<tr>
+													<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<a class="inline-icons" href="https://es-es.facebook.com/treballiaferssocialscat/" style="text-decoration:none;font-family:'Open sans' !important;color:#85ab70;">
+															<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/facebook_icon.png?token=<?php print time(); ?>" width="32" alt="Visita la nostra pàgina a Facebook" style="border-width:0;font-family:'Open sans' !important;" />
+														</a>
+													</td>
+													<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+														<a class="inline-icons" href="https://twitter.com/BDgacc" style="text-decoration:none;font-family:'Open sans' !important;color:#85ab70;">
+															<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/twitter_icon.png?token=<?php print time(); ?>" width="32" alt="Segueix-nos a Twitter" style="border-width:0;font-family:'Open sans' !important;" />
+														</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+								<!--[if (gte mso 9)|(IE)]>
+								</td><td width="500" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<![endif]-->
+								<table class="column right" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;width:100%;display:inline-block;vertical-align:middle;max-width:460px;">
+									<tr>
+										<td class="inner contents" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;width:100%;font-family:'Open sans' !important;font-size:14px;text-align:center;">
+											<span class="inline-links" style="font-family:'Open sans' !important;display:inline-block;Margin:0 5px;width:auto;">
+												<a class="text-red no-decoration regular text-xs" href="<?php print $path_root; ?>/sites/default/files/subscripcions_abast/alta.html" style="font-family:'Open sans' !important;font-weight:600;font-size:12px !important;text-decoration:none;color:#671013 !important;">Alta butlletí</a>
+											</span>
+											<span class="inline-links" style="font-family:'Open sans' !important;display:inline-block;Margin:0 5px;width:auto;">
+												<a class="text-red no-decoration regular text-xs" href="<?php print $path_root; ?>/sites/default/files/subscripcions_abast/baixa.html" style="font-family:'Open sans' !important;font-weight:600;font-size:12px !important;text-decoration:none;color:#671013 !important;">Baixa butlletí</a>
+											</span>
+											<span class="inline-links" style="font-family:'Open sans' !important;display:inline-block;Margin:0 5px;width:auto;">
+												<a class="text-red no-decoration regular text-xs" href="<?php print $path_root; ?>/hemeroteca-butlleti-labast" style="font-family:'Open sans' !important;font-weight:600;font-size:12px !important;text-decoration:none;color:#671013 !important;">Butlletins anteriors</a>
+											</span>
+											<span class="inline-links" style="font-family:'Open sans' !important;display:inline-block;Margin:0 5px;width:auto;">
+												<a class="text-red no-decoration regular text-xs" href="https://voluntariat.gencat.cat/contacte/" style="font-family:'Open sans' !important;font-weight:600;font-size:12px !important;text-decoration:none;color:#671013 !important;">Contacte</a>
+											</span>
+										</td>
+									</tr>
+								</table>
+								<!--[if (gte mso 9)|(IE)]>
+								</td>
+								</tr>
+								</table>
+								<![endif]-->
+							</td>
+						</tr>
+      
+						<tr>
+							<td class="left-sidebar" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;font-family:'Open sans' !important;">
+								<!--[if (gte mso 9)|(IE)]>
+								<table width="100%" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;">
+								<tr>
+								<td width="100" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<![endif]-->
+								<table class="column left" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;width:100%;display:inline-block;vertical-align:middle;max-width:140px;">
+									<tr>
+										<td class="inner" style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;font-family:'Open sans' !important;">
+											<a href="https://www.facebook.com/xarxanet" style="text-decoration:underline;font-family:'Open sans' !important;color:#85ab70;">
+												<img src="<?php print $path_root; ?>/sites/all/themes/xn17/assets/images/butlleti_a_labast/logotip_generalitat_catalunya_footer.png?token=<?php print time(); ?>" width="101" alt="" style="border-width:0;font-family:'Open sans' !important;" />
+											</a>
+										</td>
+									</tr>
+								</table>
+								<!--[if (gte mso 9)|(IE)]>
+								</td><td width="500" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Open sans' !important;">
+								<![endif]-->
+								<table class="column right" style="border-spacing:0;color:#333333;font-family:'Open sans' !important;width:100%;display:inline-block;vertical-align:middle;max-width:460px;">
+									<tr>
+										<td class="inner-left inner-right inner-bottom contents" style="padding-top:0;width:100%;font-family:'Open sans' !important;padding-left:20px;padding-right:20px;padding-bottom:20px;font-size:14px;text-align:center;">
+											<div class="text-xxs text-left" style="font-family:'Open sans' !important;font-size:10px !important;text-align:left;">
+												<b><u>Avís legal</u></b>: D’acord amb l’article 17.1 de la Llei 19/2014, la Generalitat de Catalunya permet la reutilització dels continguts i de les dades sempre que se'n citi la font i la data d'actualització i que no es desnaturalitzi la informació (article 8 de la Llei 37/2007) i també que no es contradigui amb una llicència específica. Si l'adreça de correu que informeu al donar-vos d'alta deixa d'estar activa us donarem de baixa a la base de dades.
+												Aquest butlletí és una iniciativa del Departament de Treball, Afers Socials i Famílies de la Generalitat de Catalunya, coeditat amb la Fundació Pere Tarrés. ISSN: 2385-4146.
+											</div>
+										</td>
+									</tr>
+								</table>
+								<!--[if (gte mso 9)|(IE)]>
+								</td>
+								</tr>
+								</table>
+								<![endif]-->
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
 		</table>
-	<?php } ?>
-	</td>
-</tr><tr>	
-	<!-- PEU -->	
-	<td colspan="2" style="border-top: dotted 2px #800000; border-bottom: dotted 2px #800000; font-size:1px">&nbsp;</td>
-</tr><tr>
-	<td td colspan="2">
-		<table cellspacing="10">
-			<tr><td>	
-				<a href="http://benestar.gencat.cat" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_benestarSocial.jpg" alt="logo benestar i familia" height="32" style="display: inline; border:0 none;"/></a>
-			</td><td>
-				<a href="http://www.peretarres.org" style="text-decoration:none"><img src="<?php echo $pathroot;?>/sites/default/files/butlletins/abast/logo_FPT.jpg" alt="logo fundacio pere tarres" height="32" style="display: inline; border:0 none;"/></a>
-			</td><td>
-				<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca"><img alt="Licencia de Creative Commons" src="http://i.creativecommons.org/l/by-nc-sa/3.0/es/88x31.png" style="border:0 none;"/></a>
-			</td></tr>
-		</table>	
-		<p style="font-size: 10px; text-align: justify; margin: 0"><a href="http://web.gencat.cat/ca/menu-ajuda/ajuda/avis_legal/">Avís legal</a>: D’acord amb l’article 17.1 de la Llei 19/2014, la &copy;Generalitat de Catalunya permet la reutilització dels continguts i de les dades sempre que se'n citi la font i la data d'actualització i que no es desnaturalitzi la informació (article 8 de la Llei 37/2007) i també que no es contradigui amb una llicència específica. Si l'adreça de correu que informeu al donar-vos d'alta deixa d'estar activa us donarem de baixa a la base de dades.
-		<br/>Aquest butlletí és una iniciativa del Departament de Treball, Afers Socials i Famílies de la Generalitat de Catalunya, coeditat amb la Fundació Pere Tarrés. ISSN: 2385-4146</p> 
-	</td>
-</tr><tr>
-	<td colspan="2" style="border-top: dotted 2px #800000; border-bottom: dotted 2px #800000; font-size:1px">&nbsp;</td>
-</tr><tr>
-	<td colspan="2">
-		<p style="font-size: 11px; margin: 0"> 
-			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/alta.html">alta</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/sites/default/files/subscripcions_abast/baixa.html">baixa</a> ::   
-			<a style="color: #800000; text-decoration: none" href="mailto:alabast@voluntariat.org?Subject=Consulta%20butlletí">contacte</a> ::  
-			<a style="color: #800000; text-decoration: none" href="http://xarxanet.org/hemeroteca-butlleti-labast">butlletins anteriors</a>
-		</p>
-	</td>
-</tr>
-<tr>
-	<td colspan="2" style="text-align:right; font-size 11px;">
-		<a style="text-decoration:none; color:#4D4D4D;" href="http://www.gencat.cat/web/cat/copyright.htm">© Generalitat de Catalunya</a>  
-	</td>
-</tr>
-</table>
+		<!--[if (gte mso 9)|(IE)]>
+		</td>
+		</tr>
+		</table>
+		<![endif]-->
+	</div>
+</center>
