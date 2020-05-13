@@ -25,8 +25,6 @@
 
         // On page's load event
 
-        console.log('PageLoad Event: ' + typeDropdown.val());
-
         if (typeDropdown.val() != 'noticia_general') {
           subTypeDropdown.hide().find('select').val('All');
         }
@@ -37,9 +35,6 @@
         // On typeDropdown's change event
 
         typeDropdown.change(function() {
-          
-          console.log('Change Event: ' + typeDropdown.val());
-          
           if (typeDropdown.val() != 'noticia_general') {
             subTypeDropdown.hide().find('select').val('All');
           }
