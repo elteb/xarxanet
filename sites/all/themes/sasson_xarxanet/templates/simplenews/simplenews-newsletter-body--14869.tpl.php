@@ -79,7 +79,7 @@
 * @ingroup themeable
 */
 
-$pathroot = 'http://www.xarxanet.org';
+$pathroot = 'https://www.xarxanet.org';
 
 // Data
 $mesos = array('de gener', 'de febrer', 'de març', 'd\'abril', 'de maig', 'de juny', 'de juliol', 'd\'agost', 'de setembre', 'd\'octubre', 'de novembre', 'de desembre');
@@ -97,11 +97,13 @@ if ($node_ =  node_load($node->field_financ_prin_xarxanet_esq['und'][0]['nid']))
 		$autor = node_load($autor);
 		$noticia_prin_esq['imatge'] = image_style_url('financ-gran',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
 		$noticia_prin_esq['alt'] = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
-	}else{
+	}
+	else {
 		if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
 			$noticia_prin_esq['imatge'] = image_style_url('financ-gran',$node_->field_agenda_imatge['und'][0]['uri']);
 			$noticia_prin_esq['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
-		}else{
+		}
+		else {
 			$noticia_prin_esq['imatge'] = image_style_url('financ-gran', $node_->field_imatges['und'][0]['uri']);
 			$noticia_prin_esq['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 		}
@@ -109,7 +111,16 @@ if ($node_ =  node_load($node->field_financ_prin_xarxanet_esq['und'][0]['nid']))
 	$noticia_prin_esq['title'] = $node_->title;
 	$noticia_prin_esq['teaser'] = strip_tags($node_->field_resum['und'][0]['value']);
 	$noticia_prin_esq['link'] = url('node/' . $node_->nid, array('absolute' => TRUE));
-} else {
+
+	if ($type == 'doc_biblioteca') {
+		$noticia_prin_esq['title'] = $node_->title;
+		$noticia_prin_esq['link'] = url('node/' . $node_->nid, array('absolute' => TRUE));
+		$noticia_prin_esq['teaser'] = strip_tags($node_->field_doc_sinopsi['und'][0]['value']);
+		$noticia_prin_esq['imatge'] = image_style_url('financ-gran', $node_->field_doc_imatge['und'][0]['uri']);
+		$noticia_prin_esq['alt'] = "";
+	}
+} 
+else {
 	//Noticia externa
 	$noticia_prin_esq['title'] = $node->field_financ_prin_ext_esq['und'][0]['title'];
 	$noticia_prin_esq['link'] = $node->field_financ_prin_ext_esq['und'][0]['url'];
@@ -128,11 +139,13 @@ if ($node_ =  node_load($node->field_financ_prin_xarxanet_dreta['und'][0]['nid']
 		$autor = node_load($autor);
 		$noticia_prin_dreta['imatge'] = image_style_url('financ-gran',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
 		$noticia_prin_dreta['alt'] = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
-	}else{
+	}
+	else {
 		if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
 			$noticia_prin_dreta['imatge'] = image_style_url('financ-gran',$node_->field_agenda_imatge['und'][0]['uri']);
 			$noticia_prin_dreta['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
-		}else{
+		}
+		else {
 			$noticia_prin_dreta['imatge'] = image_style_url('financ-gran', $node_->field_imatges['und'][0]['uri']);
 			$noticia_prin_dreta['alt'] = $node_->field_imatges['und'][0]['data']['alt'];
 		}
@@ -140,7 +153,16 @@ if ($node_ =  node_load($node->field_financ_prin_xarxanet_dreta['und'][0]['nid']
 	$noticia_prin_dreta['title'] = $node_->title;
 	$noticia_prin_dreta['teaser'] = strip_tags($node_->field_resum['und'][0]['value']);
 	$noticia_prin_dreta['link'] = url('node/' . $node_->nid, array('absolute' => TRUE));
-} else {
+
+	if ($type == 'doc_biblioteca') {
+		$noticia_prin_dreta['title'] = $node_->title;
+		$noticia_prin_dreta['link'] = url('node/' . $node_->nid, array('absolute' => TRUE));
+		$noticia_prin_dreta['teaser'] = strip_tags($node_->field_doc_sinopsi['und'][0]['value']);
+		$noticia_prin_dreta['imatge'] = image_style_url('financ-gran', $node_->field_doc_imatge['und'][0]['uri']);
+		$noticia_prin_dreta['alt'] = "";
+	} 
+} 
+else {
 	//Noticia Externa
 	$noticia_prin_dreta['title'] = $node->field_financ_prin_ext_dreta['und'][0]['title'];
 	$noticia_prin_dreta['link'] = $node->field_financ_prin_ext_dreta['und'][0]['url'];
@@ -162,11 +184,13 @@ for ($i = 1; $i <= 4; $i++){
 			$autor = node_load($autor);
 			$noticia_secundaria[$i]['imatge'] = image_style_url('financ-gran',$autor->field_autor_foto_horitzontal["und"][0]["uri"]);
 			$noticia_secundaria[$i]['alt'] = $autor->field_autor_foto_horitzontal["und"][0]["uri"];
-		}else{
+		}
+		else {
 			if (isset($node_->field_agenda_imatge['und'][0]['uri'])){
 				$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_agenda_imatge['und'][0]['uri']);
 				$noticia_secundaria[$i]['alt'] = $node_->field_agenda_imatge['und'][0]['alt'];
-			}else{
+			}
+			else {
 				$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_imatges['und'][0]['uri']);
 				$noticia_secundaria[$i]['alt'] = $node_->field_imatges['und'][0]['alt'];
 			}
@@ -174,7 +198,16 @@ for ($i = 1; $i <= 4; $i++){
 		$noticia_secundaria[$i]['title'] = $node_->title;
 		$noticia_secundaria[$i]['teaser'] = strip_tags($node_->field_resum['und'][0]['value']);
 		$noticia_secundaria[$i]['link'] = url('node/' . $node_->nid, array('absolute' => TRUE));
-	} else {
+
+		if ($type == 'doc_biblioteca') {
+			$noticia_secundaria[$i]['title'] = $node_->title;
+			$noticia_secundaria[$i]['link'] = url('node/' . $node_->nid, array('absolute' => TRUE));
+			$noticia_secundaria[$i]['teaser'] = strip_tags($node_->field_doc_sinopsi['und'][0]['value']);
+			$noticia_secundaria[$i]['imatge'] = image_style_url('financ-petit', $node_->field_doc_imatge['und'][0]['uri']);
+			$noticia_secundaria[$i]['alt'] = "";
+		}
+	} 
+	else {
 		//Noticia externa
 		$foto = 'field_financ_secund_foto_'.$i;
 		$foto = $node->$foto;
@@ -210,7 +243,8 @@ foreach ($nodes as $row) {
 										'teaser' => strip_tags($financ_node->field_resum['und'][0]['value']),
 										'convocant' => strip_tags($financ_node->field_convocant['und'][0]['value']),
 										'termini' => date('d/m/Y', $financ_start).' - '.date('d/m/Y', $financ_end));
-		} else {
+		} 
+		else {
 			break;
 		}
 	}
