@@ -58,7 +58,7 @@
 
 	// Variable declarations
 
-	$path_root = 'https://xarxanet.org';
+	$path_root = 'http://xarxanet.org';
 	$months = array('de gener', 'de febrer', 'de març', 'd\'abril', 'de maig', 'de juny', 'de juliol', 'd\'agost', 'de setembre', 'd\'octubre', 'de novembre', 'de desembre');
 	$days = array('Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte', 'Diumenge');
 	$node = $build['#node'];
