@@ -84,6 +84,15 @@
               // If no items were appended, then remove the button immediately.
               $('#tothomweb-agenda-form #more-wrapper').remove();
             }
+            /**
+             * Add Lazy-load support for images.
+             * The following will check if Lazy libraries exists and trigger it.
+             * 
+             * @see https://www.drupal.org/project/lazy
+             */ 
+            if (typeof(Blazy) == 'function') {
+              var blazy = new Blazy();
+            }
           }
         });
       });
