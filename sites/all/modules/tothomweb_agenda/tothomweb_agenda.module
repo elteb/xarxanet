@@ -353,13 +353,32 @@ function tothomweb_agenda_query_results() {
 		else {
 			$taxonomy_link = '#';
 		}
+		/**
+		 * Add Lazy-load support for images
+		 * 
+		 * @see https://www.drupal.org/project/lazy
+		 */ 
+		if (module_exists('lazy') && variable_get('lazy_library_installed')) {
+			$lazy_placeholder = variable_get('lazy_filter_placeholderSrc');
+			$lazy_data_attribute = (variable_get('lazy_filter_src') !== 'src') ? variable_get('lazy_filter_src') : 'data-filterlazy-src';
+			$lazy_selector = ltrim(variable_get('lazy_filter_selector'), '.');
+			$image_classes = 'img-responsive ' . $lazy_selector;
+		}
+		else {
+			$image_classes = 'img-responsive';
+		}
 		// Build the output.
 		$output  = '<div class="event" data-node="node-' . $row->nid . '">';
 		$output .= '<article>';
 		$output .= '<div class="first">';
 		$output .= '<figure>';
 		$output .= '<a href="' . $node_alias . '" title="' . $row->title . '">';
-		$output .= '<img class="img-responsive" src="' . $image_src . '" alt="' . $row->image_alt . '" />';
+		if (module_exists('lazy') && variable_get('lazy_library_installed')) {
+			$output .= '<img src="' . $lazy_placeholder . '" class="' . $image_classes . '" ' . $lazy_data_attribute . '="' . $image_src . '" alt="' . $row->image_alt . '" />';
+		}
+		else {
+			$output .= '<img class="' . $image_classes . '" src="' . $image_src . '" alt="' . $row->image_alt . '" />';
+		}
 		$output .= '</a>';
 		$output .= '</figure>';
 		$output .= '</div>';
