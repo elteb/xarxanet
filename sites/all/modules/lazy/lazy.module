@@ -213,6 +213,20 @@ function lazy_is_library_installed() {
 }
 
 /**
+ * Implements hook_preprocess_page().
+ * 
+ * This is a module override done by TOTHOMweb, due to both libraries weren't loaded.
+ * The following code ensures both js files are loaded, in the proper order.
+ */
+function lazy_preprocess_page(&$vars) {
+  $library_installed = variable_get('lazy_library_installed');
+  if ($library_installed) {
+    drupal_add_js(libraries_get_path('blazy') . '/blazy.js', array('group' => JS_THEME, 'every_page' => TRUE, 'weight' => 1));
+    drupal_add_js(drupal_get_path('module', 'lazy') . '/lazy.js', array('group' => JS_THEME, 'every_page' => TRUE, 'weight' => 2));
+  }
+}
+
+/**
  * Implements hook_page_build().
  */
 function lazy_page_build(&$page) {
