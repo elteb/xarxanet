@@ -73,6 +73,7 @@ jQuery(document).ready(function($) {
       $.colorbox({
         transition:'elastic',
         iframe:true,
+        className:'splashify',
         href:url,
         width:Drupal.settings.splashify.js_mode_settings.size_width,
         height:Drupal.settings.splashify.js_mode_settings.size_height

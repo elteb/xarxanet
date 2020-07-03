@@ -5,9 +5,5 @@ configure = admin/config/system/splashify
 
 dependencies[] = libraries (2.x)
 
-; Information added by Drupal.org packaging script on 2014-04-30
-version = "7.x-1.3"
-core = "7.x"
-project = "splashify"
-datestamp = "1398895728"
-
+; This module has been modified on May 15, 2020, by TOTHOMweb. 
+; You shouldn't update it, to avoid loose changes done.

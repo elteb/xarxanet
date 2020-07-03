@@ -1,0 +1,67 @@
+/**
+ * @file
+ * xarxanet_titles styles.
+ */
+
+form#noticia-general-node-form .form-item-title {
+  display: inline-block;
+  clear: both;
+  float: none;
+  position: relative;
+}
+
+form#noticia-general-node-form .form-item-title #edit-title {
+  width: 100%;
+  font-size: 13px;
+  padding: 5px;
+}
+
+form#noticia-general-node-form .form-item-title #char-counter {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  z-index: 2;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  color: #fff;
+  border-radius: 4px;
+  padding: 3px 4px;
+  line-height: 1em;
+  background-color: rgba(107, 107, 107, 0.85);
+}
+
+form#noticia-general-node-form .form-item-title #char-counter.success {
+  background-color: rgba(8, 148, 8, 0.85);
+}
+
+form#noticia-general-node-form .form-item-title #char-counter.attention {
+  background-color: rgba(214, 118, 0, 0.85);
+}
+
+form#noticia-general-node-form .form-item-title #char-counter.danger {
+  background-color: rgba(212, 0, 0, 0.85);
+}
+
+form#noticia-general-node-form .form-item-title #char-message {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  line-height: 1.25em;
+}
+
+form#noticia-general-node-form #edit-actions {
+  position: relative;
+  display: block;
+}
+
+form#noticia-general-node-form #edit-actions #disable-submit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 70px;
+  height: 38px;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
