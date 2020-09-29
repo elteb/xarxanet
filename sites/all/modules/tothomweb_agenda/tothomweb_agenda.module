@@ -162,7 +162,7 @@ function tothomweb_agenda_form($form, &$form_state) {
 	);
 	$form['filters_area']['filters_box']['filters_footer']['add_event'] = array(
 		'#type' => 'markup',
-		'#markup' => '<a class="add-event" href="/node/add/event"><img src="//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-publish-red.svg">' . t('Publica un nou esdeveniment') . '</a>',
+		'#markup' => '<a class="add-event" href="/node/add/event"><img src="//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-publish-red.svg" alt="Icona d\'un llapis escrivint una ratlla horitzontal vermella">' . t('Publica un nou esdeveniment') . '</a>',
 		'#weight' => 11, // Drupal's default value is 10.
 	);
 	$form['filters_area']['filters_box']['filters_footer']['submit'] = array(
