@@ -130,27 +130,39 @@ function webform_custom_simplenews_token_info() {
  * Implementation of hook_tokens().
  */
 function webform_custom_simplenews_tokens($type, $tokens, array $data = array(), array $options = array()) {
-	$values = array(
-		'[simplenews-custom-webform:newsletter-custom-content]' => ''
-	);
+	
 	if ($type == 'simplenews-custom-webform') {
+		
 		if ($snid = $data['simplenews_subscriber']->snid) {
+			
+			// Set variables.
+			$field_news = 'field_ambit_noticia';	
+			$field_resources = 'field_ambit_recurs';			
+			$nodes = array();
+			$section_nodes = array();
+			$values = array(
+				'[simplenews-custom-webform:newsletter-custom-content]' => ''
+			);
+			
+			// Get the taxonomy id of the newsletter being processed.
 			$tid = $data['category']->tid;
-			$contents = db_query("SELECT field, custom_content FROM {webform_custom_simplenews} WHERE snid = :snid AND tid = :tid", 
+			
+			/** 
+			 * Get the taxonomy ids of the categories to which the user is susbcribed.
+			 * This is defined in a set of checkboxes on each newsletter's subscription form.
+			 */
+			$news = db_query("SELECT custom_content FROM {webform_custom_simplenews} WHERE snid = :snid AND tid = :tid", 
 				array(
 					':snid' => $snid, 
 					':tid' => $tid
 				)
 			)->fetchObject();
-			$field = $contents->field;			
-			$contents = explode(',', $contents->custom_content);
-			$lapse = variable_get ('webform_custom_simplenews_lapse', '7');
-			$created = time() - $lapse * 86400;
-			
+			$news_categories = explode(',', $news->custom_content);
+
 			/**
 			 * @begin XARXANET-367
 			 * 
-			 * Helper table with the mapping between taxonomy terms
+			 * Helper table with the relationship between taxonomy terms
 			 * of 'ambit_noticia' and 'ambit_recurs' vocabularies.
 			 * 
 			 * Etiqueta       Notícia    Recurs
@@ -166,37 +178,50 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			 * Jurídic        25379      25105
 			 * Projectes      25378      25100
 			 * Social         25376      -----
+			 *
+			 * As the user only selects 'News' categories in the newsletter's subscription form,
+			 * we must map the taxonomy id's of these 'News' categories in order to also get
+			 * the 'Resources' for each of them.
 			 */
-			$resources_to_add = array();
-			foreach ($contents as $news) {
-				switch ($news) {
+			$resources_categories = array();
+			foreach ($news_categories as $news_tid) {
+				switch ($news_tid) {
 					case '25382':
-						$resources_to_add[] = '25108';
+						$resources_categories[] = '25108';
 						break;
 					case '25381':
-						$resources_to_add[] = '25107';
+						$resources_categories[] = '25107';
 						break;					
 					case '25372':
-						$resources_to_add[] = '25101';
+						$resources_categories[] = '25101';
 						break;
 					case '25380':
-						$resources_to_add[] = '25106';
+						$resources_categories[] = '25106';
 						break;
 					case '25379':
-						$resources_to_add[] = '25105';
+						$resources_categories[] = '25105';
 						break;
 					case '25378':
-						$resources_to_add[] = '25100';
+						$resources_categories[] = '25100';
 						break;
 				}
 			}
-			// Add resources to the $contents array
-			foreach ($resources_to_add as $resource) {
-				array_push($contents, $resource);
-			}
+
 			/**
-			 * @end XARXANET-367
+			 * The $map array sets the tid relationship (shown above) 
+			 * between same terms of different vocaluaries.
+			 * 
+			 * In this case, the keys are the 'ambit_recursos' term id's, 
+			 * and the values are the 'ambit_noticies' term id's.
 			 */
+			$map = array(
+				'25108' => '25382',
+				'25107' => '25381',
+				'25101' => '25372',
+				'25106' => '25380',
+				'25105' => '25379',
+				'25100' => '25378',
+			);
 
 			/**
 			 * @begin XARXANET-261
@@ -206,29 +231,74 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			 * all the automated content of the second half of the newsletter.
 			 * 
 			 * IMPORTANT: Notice that the following only will work properly if the 
-			 * user is in the same timezone of the webserver (in our case, it is true).
+			 * user is in the same timezone of the webserver (in this case, it's true).
 			 */
-			
+			$lapse = variable_get ('webform_custom_simplenews_lapse', '7');
+			$created = time() - $lapse * 86400;
 			$created = strtotime(date('d-m-Y 00:00:00', $created));
 			
 			/**
-			 * @end XARXANET-261
+			 * Get the latest News nodes (within the lapse defined by $created) and store its nid's
+			 * in the array $nodes.
+			 * 
+			 * Notice that they're classified by $news_tid, in order to ease the merge with 
+			 * Resources nodes afterwards using the $map array.
 			 */
-			
-			foreach ($contents as $content) {
-				if ($content) {
-					$section_nodes = array();
-					// Get a set of nodes IDs which are tagged with $content
-					$query = "SELECT n.nid FROM field_data_{$field} AS f INNER JOIN node as n ON f.entity_id = n.nid WHERE f.{$field}_tid = {$content} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
-					$result = db_query($query);
-					while ($obj = $result->fetchObject()) {
-						$section_nodes[] = $obj->nid;
+			foreach ($news_categories as $news_tid) {
+				if ($news_tid) {
+					// Get a set of nodes id's which are tagged with $news_tid.
+					$news_query = "SELECT n.nid FROM field_data_{$field_news} AS f INNER JOIN node as n ON f.entity_id = n.nid WHERE f.{$field_news}_tid = {$news_tid} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
+					$news_results = db_query($news_query);
+					
+					while ($news_item = $news_results->fetchObject()) {
+						$nodes['news'][$news_tid][] = $news_item->nid;
 					}
-					if (!empty($section_nodes)) {
-						$term = taxonomy_term_load($content);
-						$html = theme('custom_content_section', array('section_nodes' => $section_nodes, 'section_name' => $term->name));
-						$values['[simplenews-custom-webform:newsletter-custom-content]'] .= $html;
+				}
+			}
+
+			/**
+			 * Get the latest Resources nodes (within the lapse defined by $created) and store its nid's
+			 * in the array $nodes.
+			 * 
+			 * Notice that they're classified by $resources_tid, in order to ease the merge with 
+			 * News nodes afterwards.
+			 */
+			foreach ($resources_categories as $resources_tid) {
+				if ($resources_tid) {
+					// Get a set of nodes id's which are tagged with $resources_tid.
+					$resources_query = "SELECT n.nid FROM field_data_{$field_resources} AS f INNER JOIN node as n ON f.entity_id = n.nid WHERE f.{$field_resources}_tid = {$resources_tid} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
+					$resources_results = db_query($resources_query);
+					
+					while ($resource_item = $resources_results->fetchObject()) {
+						$nodes['resources'][$resources_tid][] = $resource_item->nid;
 					}
+				}
+			}
+
+			/**
+			 * Merge $nodes array, using the $map array to group News & Resources together,
+			 * and putting them in $section_nodes array.
+			 */
+
+			// Add News to $section_nodes.
+			foreach ($nodes['news'] as $news_key => $news_nodes) {
+				$section_nodes[$news_key] = $news_nodes;
+			}
+
+			// Add Resources to $section_nodes.
+			foreach ($nodes['resources'] as $resources_key => $resources_nodes) {
+				foreach ($resources_nodes as $resource_key => $resource_node) {
+					$section_nodes[$map[$resources_key]][] = $resource_node;
+				}
+			}
+
+			// Build each section with its regarding nodes and attach the HTML to the token
+
+			if (!empty($section_nodes)) {
+				foreach ($section_nodes as $category_id => $category_nodes) {
+					$category_term = taxonomy_term_load($category_id);
+					$html = theme('custom_content_section', array('section_nodes' => $category_nodes, 'section_name' => $category_term->name));
+					$values['[simplenews-custom-webform:newsletter-custom-content]'] .= $html;
 				}
 			}
 		}
