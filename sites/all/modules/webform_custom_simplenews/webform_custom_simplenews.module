@@ -148,6 +148,57 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			$created = time() - $lapse * 86400;
 			
 			/**
+			 * @begin XARXANET-367
+			 * 
+			 * Helper table with the mapping between taxonomy terms
+			 * of 'ambit_noticia' and 'ambit_recurs' vocabularies.
+			 * 
+			 * Etiqueta       Notícia    Recurs
+			 * ================================
+			 * Ambiental      25373      -----
+			 * Comunitari     25374      -----
+			 * Cultural       25375      -----
+			 * Econòmic       25382      25108
+			 * Formació       25381      25107
+			 * General        25372      25101
+			 * Informàtic     25380      25106
+			 * Internacional  25377      -----
+			 * Jurídic        25379      25105
+			 * Projectes      25378      25100
+			 * Social         25376      -----
+			 */
+			$resources_to_add = array();
+			foreach ($contents as $news) {
+				switch ($news) {
+					case '25382':
+						$resources_to_add[] = '25108';
+						break;
+					case '25381':
+						$resources_to_add[] = '25107';
+						break;					
+					case '25372':
+						$resources_to_add[] = '25101';
+						break;
+					case '25380':
+						$resources_to_add[] = '25106';
+						break;
+					case '25379':
+						$resources_to_add[] = '25105';
+						break;
+					case '25378':
+						$resources_to_add[] = '25100';
+						break;
+				}
+			}
+			// Add resources to the $contents array
+			foreach ($resources_to_add as $resource) {
+				array_push($contents, $resource);
+			}
+			/**
+			 * @end XARXANET-367
+			 */
+
+			/**
 			 * @begin XARXANET-261
 			 *
 			 * Ensure that the newsletter will get all the articles from the 
