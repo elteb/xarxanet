@@ -266,7 +266,9 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			foreach ($resources_categories as $resources_tid) {
 				if ($resources_tid) {
 					// Get a set of nodes id's which are tagged with $resources_tid.
-					$resources_query = "SELECT n.nid FROM field_data_{$field_resources} AS f INNER JOIN node as n ON f.entity_id = n.nid WHERE f.{$field_resources}_tid = {$resources_tid} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
+					// This query is deliberately sorted by date in ASC order, because the values will be
+					// Afterwards added to $section_nodes with array_unshift, resulting in a sort order from newest to older.
+					$resources_query = "SELECT n.nid FROM field_data_{$field_resources} AS f INNER JOIN node as n ON f.entity_id = n.nid WHERE f.{$field_resources}_tid = {$resources_tid} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created ASC"; 
 					$resources_results = db_query($resources_query);
 					
 					while ($resource_item = $resources_results->fetchObject()) {
@@ -288,11 +290,11 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			// Add Resources to $section_nodes.
 			foreach ($nodes['resources'] as $resources_key => $resources_nodes) {
 				foreach ($resources_nodes as $resource_key => $resource_node) {
-					$section_nodes[$map[$resources_key]][] = $resource_node;
+					array_unshift($section_nodes[$map[$resources_key]], $resource_node);
 				}
 			}
 
-			// Build each section with its regarding nodes and attach the HTML to the token
+			// Build each section with its regarding nodes and attach the HTML to the token.
 
 			if (!empty($section_nodes)) {
 				foreach ($section_nodes as $category_id => $category_nodes) {
