@@ -33,7 +33,7 @@ function webform_custom_simplenews_admin() {
 		'#required' => TRUE 
 	);
 	
-	return system_settings_form ( $form );
+	return system_settings_form ($form);
 }
 
 /**
@@ -74,12 +74,12 @@ function webform_custom_simplenews_webform_component_info() {
  * Implementation of hook_theme()
  */
 function webform_custom_simplenews_theme() {
-	$path = drupal_get_path ( 'module', 'webform_custom_simplenews' );
+	$path = drupal_get_path ('module', 'webform_custom_simplenews');
 	return array(
 		'custom_content_section' => array(
 			'variables' => array(
-				'section_nodes' => Null,
-				'section_name' => Null 
+				'section_nodes' => null,
+				'section_name' => null 
 			),
 			'template' => 'custom-content-section',
 			'path' => $path . '/templates' 
@@ -128,11 +128,13 @@ function webform_custom_simplenews_token_info() {
 
 /**
  * Implementation of hook_tokens().
+ * 
+ * @see XARXANET-261.
+ * @see XARXANET-367.
  */
 function webform_custom_simplenews_tokens($type, $tokens, array $data = array(), array $options = array()) {
 	
 	if ($type == 'simplenews-custom-webform') {
-		
 		if ($snid = $data['simplenews_subscriber']->snid) {
 			
 			// Set variables.
@@ -160,8 +162,6 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			$news_categories = explode(',', $news->custom_content);
 
 			/**
-			 * @begin XARXANET-367
-			 * 
 			 * Helper table with the relationship between taxonomy terms
 			 * of 'ambit_noticia' and 'ambit_recurs' vocabularies.
 			 * 
@@ -208,8 +208,8 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			}
 
 			/**
-			 * The $map array sets the tid relationship (shown above) 
-			 * between same terms of different vocaluaries.
+			 * The $map array sets the relationship (shown above) 
+			 * between same terms id of different vocaluaries.
 			 * 
 			 * In this case, the keys are the 'ambit_recursos' term id's, 
 			 * and the values are the 'ambit_noticies' term id's.
@@ -246,6 +246,7 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			 */
 			foreach ($news_categories as $news_tid) {
 				if ($news_tid) {
+					
 					// Get a set of nodes id's which are tagged with $news_tid.
 					$news_query = "SELECT n.nid FROM field_data_{$field_news} AS f INNER JOIN node as n ON f.entity_id = n.nid WHERE f.{$field_news}_tid = {$news_tid} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
 					$news_results = db_query($news_query);
@@ -265,9 +266,10 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			 */
 			foreach ($resources_categories as $resources_tid) {
 				if ($resources_tid) {
+					
 					// Get a set of nodes id's which are tagged with $resources_tid.
 					// This query is deliberately sorted by date in ASC order, because the values will be
-					// Afterwards added to $section_nodes with array_unshift, resulting in a sort order from newest to older.
+					// added afterwards to $section_nodes with array_unshift, resulting in a sort order from newest to older (DESC).
 					$resources_query = "SELECT n.nid FROM field_data_{$field_resources} AS f INNER JOIN node as n ON f.entity_id = n.nid WHERE f.{$field_resources}_tid = {$resources_tid} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created ASC"; 
 					$resources_results = db_query($resources_query);
 					
@@ -295,7 +297,6 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			}
 
 			// Build each section with its regarding nodes and attach the HTML to the token.
-
 			if (!empty($section_nodes)) {
 				foreach ($section_nodes as $category_id => $category_nodes) {
 					$category_term = taxonomy_term_load($category_id);
