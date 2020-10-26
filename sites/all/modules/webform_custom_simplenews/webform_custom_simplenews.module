@@ -246,7 +246,7 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			 */
 			foreach ($news_categories as $news_tid) {
 				if ($news_tid) {
-					
+					$nodes['news'][$news_tid] = array();
 					// Get a set of nodes id's which are tagged with $news_tid.
 					$news_query = "SELECT n.nid FROM field_data_{$field_news} AS f INNER JOIN node as n ON f.entity_id = n.nid WHERE f.{$field_news}_tid = {$news_tid} AND n.created >= {$created} AND n.status = 1 ORDER BY n.created DESC";
 					$news_results = db_query($news_query);
@@ -266,7 +266,7 @@ function webform_custom_simplenews_tokens($type, $tokens, array $data = array(),
 			 */
 			foreach ($resources_categories as $resources_tid) {
 				if ($resources_tid) {
-					
+					$nodes['resources'][$resources_tid] = array();
 					// Get a set of nodes id's which are tagged with $resources_tid.
 					// This query is deliberately sorted by date in ASC order, because the values will be
 					// added afterwards to $section_nodes with array_unshift, resulting in a sort order from newest to older (DESC).
