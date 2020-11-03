@@ -14,6 +14,12 @@ function tothomweb_agenda_init() {
 	drupal_add_js(drupal_get_path('module', 'tothomweb_agenda') . '/js/tothomweb_agenda.js');
 }
 
+function tothomweb_agenda_preprocess_html(&$vars) {
+	if (current_path() == 'agenda') {
+		$vars['head_title'] = 'Agenda';
+	}
+}
+
 /**
  * Implements hook_menu().
  *
