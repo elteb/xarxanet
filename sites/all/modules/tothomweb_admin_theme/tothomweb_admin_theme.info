@@ -1,0 +1,7 @@
+name = TothomWeb Admin theme Accessibility
+description = Mòdul personalitzat que afegeix funcionalitats i estils CSS que corregeixen l'accessibilitat del theme d'administració.
+core = 7.x
+package = XARXANET
+
+stylesheets[all][] = css/tothomweb_admin_theme.css
+scripts[] = js/tothomweb_admin_theme.js
