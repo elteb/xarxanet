@@ -6,5 +6,76 @@
  * @author       TOTHOMweb
  * @copyright    2020
  */
-
-
+/* line 42, ../sass/tothomweb_admin_theme.scss */
+.page-node-add input::-webkit-input-placeholder, .page-node-add textarea::-webkit-input-placeholder, .page-node-edit input::-webkit-input-placeholder, .page-node-edit textarea::-webkit-input-placeholder {
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #595959 !important; }
+/* line 48, ../sass/tothomweb_admin_theme.scss */
+.page-node-add input::-moz-placeholder, .page-node-add textarea::-moz-placeholder, .page-node-edit input::-moz-placeholder, .page-node-edit textarea::-moz-placeholder {
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #595959 !important; }
+/* line 54, ../sass/tothomweb_admin_theme.scss */
+.page-node-add input:-ms-input-placeholder, .page-node-add textarea:-ms-input-placeholder, .page-node-edit input:-ms-input-placeholder, .page-node-edit textarea:-ms-input-placeholder {
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #595959 !important; }
+/* line 60, ../sass/tothomweb_admin_theme.scss */
+.page-node-add input:-moz-placeholder, .page-node-add textarea:-moz-placeholder, .page-node-edit input:-moz-placeholder, .page-node-edit textarea:-moz-placeholder {
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #595959 !important; }
+/* line 69, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .form-submit.btn-default, .page-node-add .button.browse, .page-node-edit .form-submit.btn-default, .page-node-edit .button.browse {
+  background-color: #fff;
+  color: #231f20;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #878787;
+  border-radius: 0; }
+/* line 79, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .form-submit.btn-default:hover, .page-node-add .form-submit.btn-default:focus, .page-node-add .form-submit.btn-default:active, .page-node-add .button.browse:hover, .page-node-add .button.browse:focus, .page-node-add .button.browse:active, .page-node-edit .form-submit.btn-default:hover, .page-node-edit .form-submit.btn-default:focus, .page-node-edit .form-submit.btn-default:active, .page-node-edit .button.browse:hover, .page-node-edit .button.browse:focus, .page-node-edit .button.browse:active {
+  border: 1px solid #878787;
+  background-color: #ededed;
+  border-radius: 0; }
+/* line 88, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .form-submit.btn-primary, .page-node-edit .form-submit.btn-primary {
+  background-color: #BE1622;
+  color: #ffffff;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #BE1622;
+  border-radius: 0; }
+/* line 97, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .form-submit.btn-primary:hover, .page-node-add .form-submit.btn-primary:focus, .page-node-add .form-submit.btn-primary:active, .page-node-edit .form-submit.btn-primary:hover, .page-node-edit .form-submit.btn-primary:focus, .page-node-edit .form-submit.btn-primary:active {
+  border: 1px solid #a7131e;
+  background-color: #a7131e;
+  border-radius: 0; }
+/* line 106, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .description, .page-node-add .help-block, .page-node-edit .description, .page-node-edit .help-block {
+  color: #231f20;
+  font-style: italic; }
+/* line 114, ../sass/tothomweb_admin_theme.scss */
+.page-node-add.node-type-noticia-general .field-name-field-agenda-imatge, .page-node-edit.node-type-noticia-general .field-name-field-agenda-imatge {
+  margin-top: 2rem;
+  border-top: 0; }
+/* line 119, ../sass/tothomweb_admin_theme.scss */
+.page-node-add.node-type-noticia-general .field-name-field-resum, .page-node-edit.node-type-noticia-general .field-name-field-resum {
+  border-top: 0;
+  border-bottom: 0; }
+/* line 124, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .field-type-file, .page-node-edit .field-type-file {
+  margin-top: 3rem; }
+/* line 128, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .field-group-multiple-table, .page-node-edit .field-group-multiple-table {
+  margin-bottom: 0; }
+/* line 132, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .ckeditor_links, .page-node-add .filter-help a, .page-node-add .filter-guidelines, .page-node-edit .ckeditor_links, .page-node-edit .filter-help a, .page-node-edit .filter-guidelines {
+  font-size: 14px; }
+/* line 138, ../sass/tothomweb_admin_theme.scss */
+.page-node-add .cke_editable, .page-node-edit .cke_editable {
+  background-color: #fff;
+  background: red; }
