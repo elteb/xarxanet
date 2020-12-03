@@ -1,0 +1,142 @@
+/**
+ * @file         tothomweb_admin_theme.css
+ *
+ * @project      xarxanet.org/tothomweb_admin_theme
+ * @version      1.0
+ * @author       TOTHOMweb
+ * @copyright    2020
+ */
+
+//  Variables
+
+$base:                   #231f20 !default;
+$gray-dark:              #2f3031 !default;
+$gray-medium:            #878787 !default;
+$gray:                   #c6c6c6 !default;
+$gray-light:             #ededed !default;   // #999
+$gray-lighter:           lighten(#000, 93.5%) !default; // #eee
+$brand-primary:         #428bca !default;
+$brand-success:         #5cb85c !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+$brand-info:            #5bc0de !default;
+$xn17-vermell:          #BE1622 !default;
+$xn17-informatic:       #0081B7 !default;
+$xn17-projectes:        #E4152B !default;
+$xn17-juridic:          #559734 !default;
+$xn17-economic:         #0081B7 !default;
+$xn17-formacio:         #8B4A97 !default;
+$body-bg:               $gray-light !default;
+$text-color:            $gray-dark !default;
+$font-family-sans-serif:  'Fira Sans', Helvetica, Arial, sans-serif !default;
+
+
+.page-node-add,
+.page-node-edit {
+  
+  // Placeholders
+
+  input,
+  textarea {
+
+    &::-webkit-input-placeholder {
+      font-style: italic !important;
+      font-weight: 400 !important;
+      color: #595959 !important;
+    }
+  
+    &::-moz-placeholder {
+      font-style: italic !important;
+      font-weight: 400 !important;
+      color: #595959 !important;
+    }
+  
+    &:-ms-input-placeholder {
+      font-style: italic !important;
+      font-weight: 400 !important;
+      color: #595959 !important;
+    }
+  
+    &:-moz-placeholder {
+      font-style: italic !important;
+      font-weight: 400 !important;
+      color: #595959 !important;
+    }
+  }
+
+  // Submit buttons
+
+  .form-submit.btn-default,
+  .button.browse {
+    background-color: #fff;
+    color: $base;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid $gray-medium;
+    border-radius: 0;
+      
+    &:hover,
+    &:focus,
+    &:active {
+      border: 1px solid $gray-medium;
+      background-color: $gray-light;
+      border-radius: 0;
+    }
+  }
+
+  .form-submit.btn-primary {
+    background-color: $xn17-vermell;
+    color: #ffffff;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid $xn17-vermell;
+    border-radius: 0;
+      
+    &:hover,
+    &:focus,
+    &:active {
+      border: 1px solid darken($xn17-vermell, 5%);
+      background-color: darken($xn17-vermell, 5%);
+      border-radius: 0;
+    }
+  }
+
+  .description,
+  .help-block {
+    color: $base;
+    font-style: italic;
+  }
+
+  // Fixes
+
+  &.node-type-noticia-general .field-name-field-agenda-imatge {
+    margin-top: 2rem;
+    border-top: 0;
+  }
+
+  &.node-type-noticia-general .field-name-field-resum {
+    border-top: 0;
+    border-bottom: 0;
+  }
+
+  .field-type-file {
+    margin-top: 3rem;
+  }
+
+  .field-group-multiple-table {
+    margin-bottom: 0;
+  }
+
+  .ckeditor_links,
+  .filter-help a,
+  .filter-guidelines {
+    font-size: 14px;
+  }
+
+  .cke_editable {
+    background-color: #fff;
+    background: red;
+  }
+}
