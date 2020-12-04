@@ -155,28 +155,77 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
         margin-top: -15px;
         padding: 15px;
 
-        .form-item-mode {
-          display: inline-block;
-          width: 100%;
-          float: none;
-          clear: both;
-          margin-bottom: 0;
+        > .form-wrapper {
+          display: grid;
+          grid-gap: 0 15px;
+          grid-template-columns: 3fr 1fr;
+          grid-template-rows: 1fr 1fr;
+        }
+
+        .form-mode-wrapper {
+          border: none;
+          border-radius: 0;
+          box-shadow: none;
+          background: none;
+          margin: 0;
+
+          grid-column: 1/2;
+          grid-row: 1/2;
+
+          .panel-heading {
+            background: none;
+            border: none;
+            padding: 0;
+            border-radius: 0;
+            float: none;
+            line-height: 0;
+          }
+
+          .panel-body {
+            padding: 0;
+          }
+        }
+
+        .form-add-event-wrapper {
+          grid-column: 1/2;
+          grid-row: 2/3;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: $red;
+          display: flex;
+          align-items: baseline;
+
+          img {
+            position: relative;
+            top: 3px;
+            margin-right: 5px;
+          }
+        }
+
+        .form-submit-wrapper {
+          grid-column: 2/3;
+          grid-row: 1/3;
+          display: flex;
+          align-items: stretch;
+        }
+
+        .mode-fieldset {
           position: relative;
-          top: -3px;
+        }
+
+        .form-item-mode {
+          display: grid;
+          grid-gap: 15px;
+          grid-template-columns: auto 1fr;
+          margin: 0;
 
           > label[for=edit-mode] {
             font-family: $semibold;
-            margin: 0 15px 0 0;
-            float: left;
-            min-height: 32px;
-            line-height: 25px;
           }
 
           .form-radios {
             display: flex;
-            justify-content: space-around;
-            float: left;
-            min-height: 32px;
+            justify-content: flex-start;
 
             .form-item {
               
@@ -192,14 +241,8 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
               }
               
               .form-radio {
-                top: -2px;
+                top: -1px;
               }
-            }
-
-            .radio + .radio, .checkbox + .checkbox {
-              margin-top: 0.4em;
-              margin-bottom: 0.4em;
-              margin-left: 15px;
             }
           }
         }
@@ -220,31 +263,49 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
             background-color: darken($gray, 5%);
           }
         }
+      }
+    }
 
-        .add-event {
-          font-size: 12px;
-          width: auto;
-          float: left;
-          clear: both;
-          margin-left: 15px;
-          text-transform: uppercase;
-          color: $red;
-          margin-top: 30px;
-          position: relative;
-          z-index: 2;
+    // Mobile styles 
+    
+    @media (max-width: 768px) {
+      
+      .filters-footer {
 
-          @media (min-width: 768px) {
-            margin-top: -17px;
+        > .form-wrapper {
+          grid-gap: 15px 0 !important;
+          grid-template-columns: 1fr !important;
+          grid-template-rows: auto auto auto !important;
+
+          .form-mode-wrapper {
+            grid-column: 1/-1;
+            grid-row: 1/2;
           }
 
-          img {
-            position: relative;
-            top: -3px;
-            margin-right: 5px;
+          .form-submit-wrapper {
+            grid-column: 1/3;
+            grid-row: 2/3;
+          }
+
+          .form-add-event-wrapper {
+            grid-column: 1/2;
+            grid-row: 3/4;
           }
         }
       }
     }
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   // Styles of the Results Area

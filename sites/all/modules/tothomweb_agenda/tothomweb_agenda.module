@@ -153,29 +153,39 @@ function tothomweb_agenda_form($form, &$form_state) {
 	$form['filters_area']['filters_box']['filters_footer'] = array(
 		'#type' => 'container',
 		'#attributes' => array(
-			'class' => array('row'),
+			'class' => array(),
 		),
 		'#prefix' => '<div class="filters-footer">',
 		'#suffix' => '</div>',
 	);
-	$form['filters_area']['filters_box']['filters_footer']['mode'] = array(
+
+	$form['filters_area']['filters_box']['filters_footer']['fieldset'] = array(
+		'#type' => 'fieldset',
+		'#title' => '<span class="sr-only">' . t('Selecciona la modalitat de cerca') . '</span>',
+		'#attributes' => array(
+			'class' => array('form-mode-wrapper'),
+		),
+	);
+
+	$form['filters_area']['filters_box']['filters_footer']['fieldset']['mode'] = array(
 		'#type' => 'radios',
 		'#title' => '<span class="sr-only">' . t('Selecciona la') . ' </span>' . t('Modalitat:') . ' <span class="sr-only">' . t('de l\'esdeveniment') . '</span>',
 		'#default_value' => (isset($_GET['mode'])) ? $_GET['mode'] : 'all',
 		'#options' => tothomweb_agenda_build_mode_options(),
-		'#prefix' => '<div class="col-xs-12 col-sm-8">',
+		'#prefix' => '<div class="form-mode">',
 		'#suffix' => '</div>',
 	);
 	$form['filters_area']['filters_box']['filters_footer']['add_event'] = array(
 		'#type' => 'markup',
-		'#markup' => '<a class="add-event" href="/node/add/event"><img src="//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-publish-red.svg" alt="Icona d\'un llapis escrivint una ratlla horitzontal vermella">' . t('Publica un nou esdeveniment') . '</a>',
+		'#markup' => '<a class="form-add-event-wrapper" href="/node/add/event"><img src="//xarxanet.org/sites/all/themes/xn17/assets/images/icon/icon-publish-red.svg" alt="Icona d\'un llapis escrivint una ratlla horitzontal vermella">' . t('Publica un nou esdeveniment') . '</a>',
 		'#weight' => 11, // Drupal's default value is 10.
 	);
+
 	$form['filters_area']['filters_box']['filters_footer']['submit'] = array(
 		'#type' => 'submit',
 		'#name' => '',
 		'#value' => t('Cercar'),
-		'#prefix' => '<div class="col-xs-12 col-sm-4">',
+		'#prefix' => '<div class="form-submit-wrapper">',
 		'#suffix' => '</div>',
 	);
 	// Results' Area
