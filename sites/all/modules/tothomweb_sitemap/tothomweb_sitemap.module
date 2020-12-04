@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function tothomweb_sitemap_block_info() {    
+  $blocks['tothomweb_sitemap'] = array(
+    'info' => t('Mapa del web'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tothomweb_sitemap_block_view($delta = '') {
+  switch ($delta) {
+    case 'tothomweb_sitemap':
+      $options = array(
+        // 'min-depth' => 1,
+        // 'max-depth' => 5,
+      );
+      $menu_name = variable_get('menu_main_links_source', 'main-menu');
+      $block_content = _tothomweb_sitemap_menu_tree($menu_name, $options);
+      $block['content']  = render($block_content);
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Returns a menu built for rendering as a dropdown menu.
+ */
+function _tothomweb_sitemap_menu_tree($menu_name, $options = array()) {
+  $menu_tree = menu_build_tree($menu_name, $options);
+  $element = menu_tree_output($menu_tree);
+  $element['#theme_wrappers'] = array();
+  foreach (element_children($element) as $mlid) {
+    _tothomweb_sitemap_main_menu_link_process($element[$mlid]);
+  }
+  return $element;
+}
+
+/**
+ * Suggest the the menu link to render with a dropdown.
+ */
+function _tothomweb_sitemap_main_menu_link_process(&$element) {
+  //$element['theme_hook_suggestion'] = 'menu_link__dropdown';
+  $element['#theme'] = 'menu_link__main';
+  if (!empty($element['#below'])) {
+    foreach (element_children($element['#below']) as $mlid) {
+      _tothomweb_sitemap_main_menu_link_process($element['#below'][$mlid]);
+    }
+  }
+}
