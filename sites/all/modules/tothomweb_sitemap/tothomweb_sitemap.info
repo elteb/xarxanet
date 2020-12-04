@@ -1,0 +1,4 @@
+name = TothomWeb Sitemap (Mapa web)
+description = Mòdul personalitzat que construeix una pàgina amb el mapa del lloc web.
+core = 7.x
+package = XARXANET

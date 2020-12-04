@@ -1,0 +1,141 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function tothomweb_sitemap_menu() {
+  $title = variable_get('tothomweb_sitemap_h1', 'Mapa web');
+  $url = variable_get('tothomweb_sitemap_url', 'mapa-web');
+
+  $items['admin/config/content/mapa-web'] = array(
+    'title' => 'Mapa web',
+    'description' => 'Configuració del mapa web',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tothomweb_sitemap_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items[$url] = array(
+    'title' => $title,
+    'page callback' => 'tothomweb_sitemap_preprocess_page', 
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Page callback: Tothomweb sitemaps settings
+ *
+ * @see tothomweb_sitemap_menu()
+ */
+function tothomweb_sitemap_form($form, &$form_state) {
+  $form['tothomweb_sitemap_h1'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Títol de la pàgina'),
+    '#default_value' => variable_get('tothomweb_sitemap_h1', 'Mapa web'),
+    '#maxlength' => 255,
+    '#description' => t('Introdueix el títol de la pàgina.'),
+    '#required' => true,
+  );
+
+  $form['tothomweb_sitemap_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Url del mapa web'),
+    '#default_value' => variable_get('tothomweb_sitemap_url', 'mapa-web'),
+    '#maxlength' => 255,
+    '#attributes' => array(
+      'placeholder' => 'https://xarxanet.org/...'
+    ),
+    '#description' => t('Introdueix només el <em>path</em> de la url del mapa web (sense la barra inicial "/").<br>Exemple: https://xarxanet.org/<b>mapa-web</b>.'),
+    '#required' => true,
+  );
+
+  $form['tothomweb_sitemap_meta_description'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Meta descripcion'),
+    '#default_value' => variable_get('tothomweb_sitemap_meta_description', ''),
+    '#maxlength' => 160,
+    '#description' => t('Introdueix el text que es farà servir com a meta descripció de la pàgina (màxim 160 caràcters).'),
+    '#required' => false,
+  );
+
+  $form['tothomweb_sitemap_markup'] = array(
+    '#markup' => t('No oblidis netejar la memòria cau del Drupal cada vegada que facis canvis.'),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function tothomweb_sitemap_preprocess_html(&$vars) {
+  $url = variable_get('tothomweb_sitemap_url', 'mapa-web');
+  $meta_description = variable_get('tothomweb_sitemap_meta_description', '');
+  if (current_path() == $url) {
+    // Adding a custom class to the body element
+    $vars['classes_array'][] = 'page-mapa-web';
+    // Adding a meta description for SEO purposes
+    if ($meta_description != '') {
+      $metatag = array(
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'description',
+          'content' => variable_get('tothomweb_sitemap_meta_description', ''),
+        ),
+      );
+      drupal_add_html_head($metatag, 'meta_description');
+    }
+  }
+}
+
+/**
+ * 
+ * Implements hook_preprocess_page().
+ */
+function tothomweb_sitemap_preprocess_page(&$vars) {
+  $h1 = variable_get('tothomweb_sitemap_h1', 'Mapa web');
+  $url = variable_get('tothomweb_sitemap_url', 'mapa-web');
+  if (current_path() == $url) {
+    $menu_name = 'menu_main_links_source';
+    $params = 'main-menu';
+    $menu = variable_get($menu_name, $params);
+    $content = render(tothomweb_sitemap_menu_tree($menu));
+    // Set the page title
+    drupal_set_title($h1);
+    // Set the page main heading
+    $vars['title'] = $h1;
+    // Set the page content
+    $vars['page']['content'] = $content;
+    return $vars;
+  }
+}
+
+/**
+ * Helper function that returns a menu built for 
+ * rendering as a dropdown menu.
+ */
+function tothomweb_sitemap_menu_tree($menu_name, $options = array()) {
+  $menu_tree = menu_build_tree($menu_name, $options);
+  $element = menu_tree_output($menu_tree);
+  $element['#theme_wrappers'] = array();
+  foreach (element_children($element) as $mlid) {
+    tothomweb_sitemap_main_menu_link_process($element[$mlid]);
+  }
+  return $element;
+}
+
+/**
+ * Helper function that suggests the the menu link 
+ * to render with a dropdown.
+ */
+function tothomweb_sitemap_main_menu_link_process(&$element) {
+  $element['#theme'] = 'menu_link__main';
+  if (!empty($element['#below'])) {
+    foreach (element_children($element['#below']) as $mlid) {
+      tothomweb_sitemap_main_menu_link_process($element['#below'][$mlid]);
+    }
+  }
+}
