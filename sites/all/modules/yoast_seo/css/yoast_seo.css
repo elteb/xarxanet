@@ -423,3 +423,28 @@ div.form-item-yoast-seo-und-focus-keyword {
   border: 1px solid #dfdfdf;
   animation: animatedBackground 5s linear infinite;
 }
+
+/**
+ * @Start XARXANET-380
+ * Modifications done by TOTHOMweb on 10.12.2020
+ * Hide the Yoast SEO Preview's Slug field
+ */
+#snippet_citeBase {
+  /* display: none !important; */
+}
+
+#snippet_cite {
+  /* display: none !important; */
+}
+
+label[for="snippet-editor-slug"],
+#snippet-editor-slug {
+  display: none !important;
+}
+
+.snippet-editor__button {
+  font-size: 12px;
+}
+/**
+ * @End XARXANET-380
+ */

@@ -259,10 +259,18 @@ function yoast_seo_configuration_form_after_build($form, &$form_state) {
   $overallscore_target_id = drupal_html_id('yoast-overallscore');
   $snippet_target_id = drupal_html_id('yoast-snippet');
   $score = !empty($form['yoast_seo'][$langcode]['seo_status']['#value']) ? yoast_seo_score_rating($form['yoast_seo'][$langcode]['seo_status']['#value']) : yoast_seo_score_rating(0);
-
+  
   // Add the Yoast SEO title before the wrapper.
-  $form['yoast_seo'][$langcode]['focus_keyword']['#prefix'] = '<h3 class="wrapper-title">' . t('Real-time SEO for Drupal') . '</h3>';
-
+  /**
+   * @Start XARXANET-380
+   * Modifications done by TOTHOMweb on 10.12.2020
+   * Removing the wrong <h3> heading to improve a11y
+   */
+  // $form['yoast_seo'][$langcode]['focus_keyword']['#prefix'] = '<h3 class="wrapper-title">' . t('Real-time SEO for Drupal') . '</h3>';
+  $form['yoast_seo'][$langcode]['focus_keyword']['#prefix'] = '<p class="wrapper-title"><strong>' . t('Yoast SEO for Drupal') . '</strong></p>';
+  /**
+   * @End XARXANET-380
+   */ 
   // Output the overall score next to the focus keyword.
   $form['yoast_seo'][$langcode]['focus_keyword']['#suffix'] = '<div id="yoast-overallscore" class="overallScore ' . $score . '">
   <div class="score_circle"></div>
@@ -424,6 +432,41 @@ function yoast_seo_field_attach_form($entity_type, $entity, &$form, &$form_state
 }
 
 /**
+ * @Start XARXANET-380
+ * We're also hidding the automatic Path Alias generation checkbox & label for those
+ * users that don't have a 'Entitat Adinistradora' role.
+ * 
+ * It should be done in a '#after_build' callback, cause' this item is added
+ * after the main form is built.
+ */
+
+/**
+ * Implements a custom form '#after_build' callback.
+ */
+function yoast_seo_custom_after_build($form, &$form_state) {
+  // Despite of it's hidden, the Automatic Path alias generation would be always enabled
+  $form['path']['pathauto']['#default_value'] = true;
+  $form['path']['pathauto']['#checked'] = true;
+  // Hidding the checkbox and label of Automatic Path Alias generation
+  $form['path']['pathauto']['#prefix'] = '<div class="element-invisible">';
+  $form['path']['pathauto']['#suffix'] = '</div>';
+  return $form;
+}
+
+/**
+ * Implements a custom form '#after_build' callback for admins.
+ */
+function yoast_seo_admins_custom_after_build($form, &$form_state) {
+  // The Automatic Path alias generation would be always enabled
+  $form['path']['pathauto']['#default_value'] = true;
+  $form['path']['pathauto']['#checked'] = true;
+  return $form;
+}
+/**
+ * @End XARXANET-380
+ */
+
+/**
  * Implements hook_form_alter().
  *
  * @todo Remove this when https://www.drupal.org/node/1284642 is fixed in core.
@@ -434,6 +477,26 @@ function yoast_seo_form_alter(&$form, $form_state, $form_id) {
     yoast_seo_configuration_form($form, $instance, $options);
     unset($form['#yoast_seo']);
   }
+  /**
+   * @Start XARXANET-380
+   * We're hidding the field for custom URL path alias to all users that don't
+   * have the 'Entitat Administradora' role.
+   */
+  global $user;
+  $current_user = user_load($user->uid);
+  if (!in_array('Entitat administradora', $current_user->roles)) {
+    $form['path']['alias']['#attributes']['class'][] = 'element-invisible';
+    $form['path']['alias']['#description'] .= '<br><br><em>' . t('You don\'t have the needed permissions to edit this field.') . '</em>';
+    // Automatic Path Alias generation is added to the form after it's built.
+    // So, let's modify it in a after_build callback
+    $form['#after_build'][] = 'yoast_seo_custom_after_build';
+  }
+  else {
+    $form['#after_build'][] = 'yoast_seo_admins_custom_after_build';
+  }
+  /**
+   * @End XARXANET-380
+   */
 }
 
 /**
