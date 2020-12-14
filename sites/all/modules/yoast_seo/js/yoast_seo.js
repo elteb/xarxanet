@@ -74,8 +74,22 @@
 
             // Parse the input from snippet preview fields to their corresponding metatag and path fields
             DrupalSource.parseSnippetData( YoastSEO.analyzerArgs.snippetFields.title, YoastSEO.analyzerArgs.fields.title );
-            DrupalSource.parseSnippetData( YoastSEO.analyzerArgs.snippetFields.url, YoastSEO.analyzerArgs.fields.url );
-            DrupalSource.parseSnippetData( YoastSEO.analyzerArgs.snippetFields.meta, YoastSEO.analyzerArgs.fields.meta );
+            /**
+             * @Start XARXANET-380
+             * Modifications done by TOTHOMweb on 10.12.2020
+             * We disable the data injection from the Yoast SEO Preview's Slug field to the Drupal's default URL Path alias field.
+             * Instead of this, we invert the behavior: Now it's the Drupal default URL Path alias which provides the Slug to Yoast SEO,
+             * by changing the order of the parameters.
+             * 
+             * In addition, on the meta description, we ensure to strip all html tags that sometimes appears on both fields.
+             */
+              // DrupalSource.parseSnippetData( YoastSEO.analyzerArgs.snippetFields.url, YoastSEO.analyzerArgs.fields.url );
+              DrupalSource.parseSnippetData( YoastSEO.analyzerArgs.fields.url, YoastSEO.analyzerArgs.snippetFields.url );
+            /**
+             * @End XARXANET-380
+             */ 
+            
+            DrupalSource.parseSnippetData( YoastSEO.analyzerArgs.snippetFields.meta.replace(/<[^>]*>?/gm, ''), YoastSEO.analyzerArgs.fields.meta.replace(/<[^>]*>?/gm, '') );
 
             // No enter on contenteditable fields.
             $("#snippet_title, #snippet_cite, #snippet_meta").keypress(function(e) {

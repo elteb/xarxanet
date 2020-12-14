@@ -1,5 +1,5 @@
-name = Real-time SEO for Drupal
-description = "Adds Real-time SEO page analysis and configuration"
+name = Real-time SEO for Drupal [Modified]
+description = "<span style='color:#ed541d'>This module was modified by TothomWeb on 10/12/2020 to improve its functionality.<br><strong>Please, do not update it!</strong> Check the .info file for further information.</span> <br> Adds Real-time SEO page analysis and configuration."
 package = SEO
 core = 7.x
 
@@ -16,9 +16,6 @@ configure = admin/config/search/yoast
 ; Views Handlers.
 files[] = views/yoast_seo_handler_rating.inc
 
-; Information added by Drupal.org packaging script on 2017-04-05
-version = "7.x-1.2"
-core = "7.x"
-project = "yoast_seo"
-datestamp = "1491409085"
-
+; IMPORTANT!
+; You'll easily find all modifications done by TothomWeb in this module, by searching "Tothomweb" or "XARXANET" in the code.
+; Of course, this file has been also modified to prevent you to update this module.
