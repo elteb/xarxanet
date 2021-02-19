@@ -79,3 +79,37 @@
 .page-node-add .cke_editable, .page-node-edit .cke_editable {
   background-color: #fff;
   background: red; }
+
+/* line 146, ../sass/tothomweb_admin_theme.scss */
+.page-admin {
+  background: none;
+  background-image: url(/sites/all/modules/tothomweb_admin_theme/img/bg-pattern.png) !important;
+  background-repeat: repeat;
+  background-position: 0 0; }
+/* line 152, ../sass/tothomweb_admin_theme.scss */
+.page-admin .action-item-primary, .page-admin .action-item-primary[type="reset"], .page-admin .action-item-primary[type="submit"], .page-admin .action-item-primary[type="button"], .page-admin .action-item-small-primary, .page-admin .action-item-small-primary[type="reset"], .page-admin .action-item-small-primary[type="submit"], .page-admin .action-item-small-primary[type="button"], .page-admin .action-item-large-primary, .page-admin .action-item-large-primary[type="reset"], .page-admin .action-item-large-primary[type="submit"], .page-admin .action-item-large-primary[type="button"], .page-admin input[id^="edit-submit"], .page-admin input[id^="edit-next"], .page-admin .fake-submit, .page-admin .ctools-auto-submit-click {
+  background: #BE1622;
+  transition: 0.2s ease-in-out background; }
+/* line 156, ../sass/tothomweb_admin_theme.scss */
+.page-admin .action-item-primary:hover, .page-admin .action-item-primary:focus, .page-admin .action-item-primary:active, .page-admin .action-item-primary[type="reset"]:hover, .page-admin .action-item-primary[type="reset"]:focus, .page-admin .action-item-primary[type="reset"]:active, .page-admin .action-item-primary[type="submit"]:hover, .page-admin .action-item-primary[type="submit"]:focus, .page-admin .action-item-primary[type="submit"]:active, .page-admin .action-item-primary[type="button"]:hover, .page-admin .action-item-primary[type="button"]:focus, .page-admin .action-item-primary[type="button"]:active, .page-admin .action-item-small-primary:hover, .page-admin .action-item-small-primary:focus, .page-admin .action-item-small-primary:active, .page-admin .action-item-small-primary[type="reset"]:hover, .page-admin .action-item-small-primary[type="reset"]:focus, .page-admin .action-item-small-primary[type="reset"]:active, .page-admin .action-item-small-primary[type="submit"]:hover, .page-admin .action-item-small-primary[type="submit"]:focus, .page-admin .action-item-small-primary[type="submit"]:active, .page-admin .action-item-small-primary[type="button"]:hover, .page-admin .action-item-small-primary[type="button"]:focus, .page-admin .action-item-small-primary[type="button"]:active, .page-admin .action-item-large-primary:hover, .page-admin .action-item-large-primary:focus, .page-admin .action-item-large-primary:active, .page-admin .action-item-large-primary[type="reset"]:hover, .page-admin .action-item-large-primary[type="reset"]:focus, .page-admin .action-item-large-primary[type="reset"]:active, .page-admin .action-item-large-primary[type="submit"]:hover, .page-admin .action-item-large-primary[type="submit"]:focus, .page-admin .action-item-large-primary[type="submit"]:active, .page-admin .action-item-large-primary[type="button"]:hover, .page-admin .action-item-large-primary[type="button"]:focus, .page-admin .action-item-large-primary[type="button"]:active, .page-admin input[id^="edit-submit"]:hover, .page-admin input[id^="edit-submit"]:focus, .page-admin input[id^="edit-submit"]:active, .page-admin input[id^="edit-next"]:hover, .page-admin input[id^="edit-next"]:focus, .page-admin input[id^="edit-next"]:active, .page-admin .fake-submit:hover, .page-admin .fake-submit:focus, .page-admin .fake-submit:active, .page-admin .ctools-auto-submit-click:hover, .page-admin .ctools-auto-submit-click:focus, .page-admin .ctools-auto-submit-click:active {
+  background: #a7131e; }
+/* line 164, ../sass/tothomweb_admin_theme.scss */
+.page-admin .primary > [class*="active"], .page-admin .primary > :hover {
+  border-color: #BE1622; }
+/* line 168, ../sass/tothomweb_admin_theme.scss */
+.page-admin div#branding ul.secondary a:hover, .page-admin div#branding ul.secondary a:active, .page-admin div#branding ul.secondary a.active {
+  color: #BE1622; }
+/* line 174, ../sass/tothomweb_admin_theme.scss */
+.page-admin #page .action-links li:before {
+  color: #BE1622; }
+/* line 178, ../sass/tothomweb_admin_theme.scss */
+.page-admin #page a {
+  color: #BE1622; }
+/* line 182, ../sass/tothomweb_admin_theme.scss */
+.page-admin #page #edit-created-wrapper {
+  min-width: 370px; }
+/* line 185, ../sass/tothomweb_admin_theme.scss */
+.page-admin #page #edit-created-wrapper .views-operator {
+  width: auto;
+  float: left;
+  margin-right: 3px; }

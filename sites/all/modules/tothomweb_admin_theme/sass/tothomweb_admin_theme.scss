@@ -33,7 +33,7 @@ $font-family-sans-serif:  'Fira Sans', Helvetica, Arial, sans-serif !default;
 
 .page-node-add,
 .page-node-edit {
-  
+
   // Placeholders
 
   input,
@@ -44,19 +44,19 @@ $font-family-sans-serif:  'Fira Sans', Helvetica, Arial, sans-serif !default;
       font-weight: 400 !important;
       color: #595959 !important;
     }
-  
+
     &::-moz-placeholder {
       font-style: italic !important;
       font-weight: 400 !important;
       color: #595959 !important;
     }
-  
+
     &:-ms-input-placeholder {
       font-style: italic !important;
       font-weight: 400 !important;
       color: #595959 !important;
     }
-  
+
     &:-moz-placeholder {
       font-style: italic !important;
       font-weight: 400 !important;
@@ -75,7 +75,7 @@ $font-family-sans-serif:  'Fira Sans', Helvetica, Arial, sans-serif !default;
     font-weight: 600;
     border: 1px solid $gray-medium;
     border-radius: 0;
-      
+
     &:hover,
     &:focus,
     &:active {
@@ -93,7 +93,7 @@ $font-family-sans-serif:  'Fira Sans', Helvetica, Arial, sans-serif !default;
     font-weight: 600;
     border: 1px solid $xn17-vermell;
     border-radius: 0;
-      
+
     &:hover,
     &:focus,
     &:active {
@@ -138,5 +138,55 @@ $font-family-sans-serif:  'Fira Sans', Helvetica, Arial, sans-serif !default;
   .cke_editable {
     background-color: #fff;
     background: red;
+  }
+}
+
+// Custom CSS styles for Ember theme
+
+.page-admin {
+  background: none;
+  background-image: url(/sites/all/modules/tothomweb_admin_theme/img/bg-pattern.png) !important;
+  background-repeat: repeat;
+  background-position: 0 0;
+
+  .action-item-primary, .action-item-primary[type="reset"], .action-item-primary[type="submit"], .action-item-primary[type="button"], .action-item-small-primary, .action-item-small-primary[type="reset"], .action-item-small-primary[type="submit"], .action-item-small-primary[type="button"], .action-item-large-primary, .action-item-large-primary[type="reset"], .action-item-large-primary[type="submit"], .action-item-large-primary[type="button"], input[id^="edit-submit"], input[id^="edit-next"], .fake-submit, .ctools-auto-submit-click {
+    background: $xn17-vermell;
+    transition: 0.2s ease-in-out background;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: darken($xn17-vermell, 5%);
+
+    }
+  }
+
+  .primary > [class*="active"], .primary > :hover {
+    border-color: $xn17-vermell;
+  }
+
+  div#branding ul.secondary a:hover, div#branding ul.secondary a:active, div#branding ul.secondary a.active {
+    color: $xn17-vermell;
+  }
+
+  #page {
+
+    .action-links li:before {
+      color: $xn17-vermell;
+    }
+
+    a {
+      color: $xn17-vermell;
+    }
+
+    #edit-created-wrapper {
+      min-width: 370px;
+
+      .views-operator {
+        width: auto;
+        float: left;
+        margin-right: 3px;
+      }
+    }
   }
 }
