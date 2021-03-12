@@ -1,0 +1,97 @@
+/**
+ * @file         tothomweb_job_offer.css
+ *
+ * @project      xarxanet.org/job_offer
+ * @version      1.0
+ * @author       TOTHOMweb
+ * @copyright    2021
+ */
+
+//  Variables
+
+$white:       #ffffff;
+$red:         #be1622;
+$gray:        #878787;
+$lightgray:   #ededed;
+$black:       #2f3031;
+
+$bold:          'Fira Sans Bold', Helvetica, Arial, sans-serif;
+$semibold:      'Fira Sans SemiBold', Helvetica, Arial, sans-serif;
+$regular:       'Fira Sans', Helvetica, Arial, sans-serif;
+
+// Mixins
+
+@mixin transition($property) {
+  transition: $property 0.2s ease-in-out;
+  -webkit-transition: $property 0.2s ease-in-out;
+  -moz-transition: $property 0.2s ease-in-out;
+  -ms-transition: $property 0.2s ease-in-out;
+  -o-transition: $property 0.2s ease-in-out;
+}
+
+// Styles
+
+.page-add-job-offer {
+
+  #tothomweb-jobs-form {
+    margin-top: 3rem;
+
+    .mandatory {
+      display: block;
+      padding: 0 15px;
+      text-align: right;
+      margin-bottom: 1.5rem;
+
+      span {
+        color: $red;
+      }
+    }
+
+    .form-item-job-offer-attached {
+      margin: 2rem 0 3rem;
+
+      .form-managed-file {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+    }
+
+    .text-format-wrapper {
+      margin-bottom: 2rem;
+
+      .filter-wrapper,
+      .ckeditor_links {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+    }
+
+    #edit-job-offer-submit {
+      text-transform: uppercase;
+      font-family: $regular;
+      font-size: 1em;
+      background-color: $red;
+      color: $white;
+      padding: 0.75rem 2.5rem;
+      border: none;
+      border-radius: 0;
+      margin-top: 2rem;
+      @include transition(all);
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: darken($red, 5%);
+        text-decoration: underline;
+      }
+    }
+  }
+}

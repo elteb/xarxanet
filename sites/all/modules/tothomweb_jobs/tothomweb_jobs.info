@@ -1,0 +1,9 @@
+name = Ofertes de treball
+description = Mòdul personalitzat que crea el formulari de publicació d'ofertes de treball.
+core = 7.x
+package = XARXANET
+
+stylesheets[all][] = css/tothomweb_jobs_libraries.css
+stylesheets[all][] = css/tothomweb_jobs.css
+scripts[] = js/tothomweb_jobs_libraries.js
+scripts[] = js/tothomweb_jobs.js
