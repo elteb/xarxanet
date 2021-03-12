@@ -1,0 +1,294 @@
+<?php
+
+// Set some helper constants.
+define('JOB_OFFER_URL', 'add/oferta-treball');
+
+/**
+ * Implements hook_init().
+ */
+
+function tothomweb_jobs_init() {
+	drupal_add_js(drupal_get_path('module', 'tothomweb_jobs') . '/js/tothomweb_jobs.js');
+}
+
+function tothomweb_jobs_preprocess_html(&$vars) {
+	if (current_path() == JOB_OFFER_URL) {
+		$vars['head_title'] = 'Publica la teva oferta';
+		$vars['classes_array'][] = 'page-add-job-offer';
+	}
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * @return  $items
+ */
+function tothomweb_jobs_menu() {
+	$items[JOB_OFFER_URL] = array(
+		'title' => 'Publica la teva oferta',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('tothomweb_jobs_form'),
+		'access callback' => TRUE,
+		'type' => MENU_NORMAL_ITEM,
+	);
+	return $items;
+}
+
+/**
+ * Implements hook_form().
+ */
+function tothomweb_jobs_form($form, &$form_state) {
+
+  $form['container'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('container'),
+    ),
+  );
+
+  $form['row'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('row'),
+    ),
+  );
+
+  $form['container']['row']['mandatory'] = array(
+    '#type' => 'markup',
+    '#markup' => '<p class="mandatory">El camps amb un asterisc (<span>*</span>) son obligatoris.</p>',
+  );
+
+  $form['container']['row']['job_offer_title'] = array(
+    '#title' => 'Títol de l\'oferta de treball',
+    '#type' => 'textfield',
+    '#maxlength' => '255',
+    '#default_value' => '',
+    '#required' => true,
+    '#prefix' => '<div class="col-xs-12">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['job_offer_entity'] = array(
+    '#title' => 'Nom de l\'entitat',
+    '#type' => 'textfield',
+    '#maxlength' => '255',
+    '#default_value' => '',
+    '#required' => true,
+    '#prefix' => '<div class="col-sm-6">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['job_offer_mail'] = array(
+    '#title' => 'Correu electrònic',
+    '#type' => 'textfield',
+    '#maxlength' => '127',
+    '#default_value' => '',
+    '#required' => true,
+    '#prefix' => '<div class="col-sm-6">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['job_offer_phone'] = array(
+    '#title' => 'Telèfon',
+    '#type' => 'textfield',
+    '#maxlength' => '16',
+    '#default_value' => '',
+    '#prefix' => '<div class="col-sm-6">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['job_offer_location'] = array(
+    '#title' => 'Població',
+    '#type' => 'textfield',
+    '#maxlength' => '127',
+    '#default_value' => '',
+    '#required' => true,
+    '#prefix' => '<div class="col-sm-6">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['job_offer_date'] = array(
+    '#title' => 'Termini',
+    '#type' => 'textfield',
+    '#maxlength' => '16',
+    '#default_value' => '',
+    '#required' => true,
+    '#prefix' => '<div class="col-sm-6">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['managed_file'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('col-xs-12'),
+    ),
+  );
+
+  $job_offer_attached_description  = "<p>Es pot afegir un document amb informació addicional sobre l'oferta de treball.<br/>";
+  $job_offer_attached_description .= "Només es permeten arxius en format PDF de 3 MB com a màxim.</p>";
+
+  $form['container']['row']['managed_file']['job_offer_attached'] = array(
+    '#title' => 'Informació addicional adjunta',
+    '#type' => 'managed_file',
+    '#default_value' => '',
+    '#description' => $job_offer_attached_description,
+    '#upload_location' => 'public://job_offers/',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array('pdf'),
+      'file_validate_size' => array(3 * 1024 * 1024) // 3 MB
+    ),
+  );
+
+  $form['container']['row']['job_offer_description'] = array(
+    '#title' => 'Descripció del lloc de treball',
+    '#type' => 'text_format',
+    '#format' => '1',
+    '#default_value' => '',
+    '#prefix' => '<div class="col-xs-12">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['job_offer_requirements'] = array(
+    '#title' => 'Requisits',
+    '#type' => 'text_format',
+    '#format' => '1',
+    '#default_value' => '',
+    '#prefix' => '<div class="col-xs-12">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['job_offer_conditions'] = array(
+    '#title' => 'Condicions',
+    '#type' => 'text_format',
+    '#format' => '1',
+    '#default_value' => '',
+    '#prefix' => '<div class="col-xs-12">',
+    '#suffix' => '</div>',
+  );
+
+  $form['container']['row']['job_offer_submit'] = array(
+    '#value' => 'Publicar la oferta',
+    '#type' => 'submit',
+    '#prefix' => '<div class="col-xs-12">',
+    '#suffix' => '</div>',
+  );
+
+	return $form;
+}
+
+/**
+ * Implements hook_form_validate().
+ */
+function tothomweb_jobs_form_validate($form, &$form_state) {
+  $values = $form_state['values'];
+  // Title
+  if ($values['job_offer_title'] === '') {
+    form_set_error('job_offer_title', "El títol de l'oferta de treball és obligatòri.");
+  }
+  // Entity name
+  if ($values['job_offer_entity'] === '') {
+    form_set_error('job_offer_entity', "El nom de l'entitat és obligatòri.");
+  }
+  // Mail
+  if ($values['job_offer_mail'] === '') {
+    form_set_error('job_offer_mail', "L'adreça electrònica és obligatòria.");
+  }
+  else {
+    if (!filter_var($values['job_offer_mail'], FILTER_VALIDATE_EMAIL)) {
+      form_set_error('job_offer_mail', "El format de L'adreça electrònica no és vàlid.");
+    }
+  }
+  // Phone
+  if (!is_numeric($values['job_offer_phone'])) {
+    form_set_error('job_offer_phone', "El telèfon només pot contenir números, sense espais, guions o altres símbols.");
+  }
+  // Location
+  if ($values['job_offer_location'] === '') {
+    form_set_error('job_offer_location', "La població és obligatòria.");
+  }
+  // Date
+  if ($values['job_offer_date'] === '') {
+    form_set_error('job_offer_date', "La data del termini és obligatòria.");
+  }
+  else {
+    if (!preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-[0-9]{4}$/", $values['job_offer_date'])) {
+      form_set_error('job_offer_date', "La data del termini ha de tenir el format 'DD-MM-AAAA'.");
+    }
+  }
+}
+
+/**
+ * Implements hook_form_submit().
+ */
+function tothomweb_jobs_form_submit($form, &$form_state) {
+  global $user;
+  $author = user_load($user->uid);
+  $values = $form_state['values'];
+  // Set the roles that can publish job offers without approval
+  $skip_moderation_roles = array(
+    '3' => 'Entitat promotora ambiental',
+    '5' => 'Entitat promotora projectes',
+    '6' => 'Entitat promotora events',
+    '9' => 'Entitat promotora social',
+    '11' => 'Entitat promotora comunitari',
+    '13' => 'Entitat promotora cultural',
+    '15' => 'Entitat promotora internacional',
+    '17' => 'Entitat promotora formacio',
+    '18' => 'Entitat promotora juridic',
+    '19' => 'Entitat promotora economic',
+    '20' => 'Entitat promotora informatic',
+    '22' => 'Entitat administradora',
+  );
+  // Set the node status value depending on the current user role
+  $status = (user_has_roles($skip_moderation_roles)) ? 1 : 0;
+  // Format 'job_offer_date' as datetime
+  $timestamp = strtotime($values['job_offer_date']);
+  $job_offer_datetime = date('Y-m-d H:i:s');
+  // Create the new node
+  $node = new stdClass();
+  $node->uid = $author->uid;
+  $node->type = 'job_offer';
+  node_object_prepare($node);
+  $node->title = $values['job_offer_title'];
+  $node->status = $status;
+  $node->promote = 0;
+  $node->sticky = 0;
+  $node->language = 'ca';
+  $node->created  = time();
+  $node->changed  = time();
+  $node->field_job_offer_entity['und'][0]['value'] = $values['job_offer_entity'];
+  $node->field_job_offer_mail['und'][0]['value'] = $values['job_offer_mail'];
+  $node->field_job_offer_phone['und'][0]['value'] = $values['job_offer_phone'];
+  $node->field_job_offer_location['und'][0]['value'] = $values['job_offer_location'];
+  $node->field_job_offer_date['und'][0]['value'] = $job_offer_datetime;
+  $node->field_job_offer_attached['und'][0]['display'] = 0;
+  $node->field_job_offer_attached['und'][0]['fid'] = $values['job_offer_attached'];
+  $node->field_job_offer_description['und'][0]['value'] = $values['job_offer_description']['value'];
+  $node->field_job_offer_description['und'][0]['format'] = $values['job_offer_description']['format'];
+  $node->field_job_offer_requirements['und'][0]['value'] = $values['job_offer_requirements']['value'];
+  $node->field_job_offer_requirements['und'][0]['format'] = $values['job_offer_requirements']['format'];
+  $node->field_job_offer_conditions['und'][0]['value'] = $values['job_offer_conditions']['value'];
+  $node->field_job_offer_conditions['und'][0]['format'] = $values['job_offer_conditions']['format'];
+  node_save($node);
+  // Show a message to the user
+  if ($status) {
+    drupal_set_message('La teva oferta de treball ha estat publicada correctament.', 'status');
+  }
+  else {
+    drupal_set_message('La teva oferta de treball ha estat desada correctament i està pendent d\'aprovació per part dels administradors de Xarexanet.', 'status');
+  }
+}
+
+/**
+ * Helper function to determine if current user has role/roles
+ *
+ * @see     https://tinyurl.com/yfeqhaoa
+ *
+ * @param   array  $roles
+ *          An array of roles to compare against.
+ *
+ * @return  boolean
+ */
+function user_has_roles($roles) {
+  return !!count(array_intersect(is_array($roles) ? $roles : array($roles), array_values($GLOBALS['user']->roles)));
+};
