@@ -1,1 +1,209 @@
-.page-add-job-offer #tothomweb-jobs-form{margin-top:3rem}.page-add-job-offer #tothomweb-jobs-form .mandatory{display:block;padding:0 15px;text-align:right;margin-bottom:1.5rem}.page-add-job-offer #tothomweb-jobs-form .mandatory span{color:#be1622}.page-add-job-offer #tothomweb-jobs-form .form-item-job-offer-attached{margin:2rem 0 3rem}.page-add-job-offer #tothomweb-jobs-form .form-item-job-offer-attached .form-managed-file{border:1px solid #ccc;border-radius:4px;padding:1rem;margin:1rem 0}.page-add-job-offer #tothomweb-jobs-form .text-format-wrapper{margin-bottom:2rem}.page-add-job-offer #tothomweb-jobs-form .text-format-wrapper .filter-wrapper,.page-add-job-offer #tothomweb-jobs-form .text-format-wrapper .ckeditor_links{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);border:0}.page-add-job-offer #tothomweb-jobs-form #edit-job-offer-submit{text-transform:uppercase;font-family:"Fira Sans",Helvetica,Arial,sans-serif;font-size:1em;background-color:#be1622;color:#fff;padding:0.75rem 2.5rem;border:none;border-radius:0;margin-top:2rem;transition:all 0.2s ease-in-out;-webkit-transition:all 0.2s ease-in-out;-moz-transition:all 0.2s ease-in-out;-ms-transition:all 0.2s ease-in-out;-o-transition:all 0.2s ease-in-out}.page-add-job-offer #tothomweb-jobs-form #edit-job-offer-submit:hover,.page-add-job-offer #tothomweb-jobs-form #edit-job-offer-submit:focus,.page-add-job-offer #tothomweb-jobs-form #edit-job-offer-submit:active{background-color:#a7131e;text-decoration:underline}
+/**
+ * @file         tothomweb_job_offer.css
+ *
+ * @project      xarxanet.org/job_offer
+ * @version      1.0
+ * @author       TOTHOMweb
+ * @copyright    2021
+ */
+/* line 36, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form {
+  margin-top: 3rem; }
+/* line 39, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form .mandatory {
+  display: block;
+  padding: 0 15px;
+  text-align: right;
+  margin-bottom: 1.5rem; }
+/* line 45, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form .mandatory span {
+  color: #be1622; }
+/* line 50, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form .form-item-job-offer-attached {
+  margin: 2rem 0 3rem; }
+/* line 53, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form .form-item-job-offer-attached .form-managed-file {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0; }
+/* line 61, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form .text-format-wrapper {
+  margin-bottom: 2rem; }
+/* line 64, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form .text-format-wrapper .filter-wrapper, .page-add-job-offer #tothomweb-jobs-form .text-format-wrapper .ckeditor_links {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
+/* line 77, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form #edit-job-offer-submit {
+  text-transform: uppercase;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  background-color: #be1622;
+  color: #ffffff;
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: 2px;
+  margin-top: 2rem;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out; }
+/* line 89, ../sass/tothomweb_jobs.scss */
+.page-add-job-offer #tothomweb-jobs-form #edit-job-offer-submit:hover, .page-add-job-offer #tothomweb-jobs-form #edit-job-offer-submit:focus, .page-add-job-offer #tothomweb-jobs-form #edit-job-offer-submit:active {
+  background-color: #a7131e;
+  text-decoration: underline; }
+
+/* line 101, ../sass/tothomweb_jobs.scss */
+.job-offers-view {
+  padding: 0 15px;
+  margin: 30px 0 30px; }
+@media (min-width: 768px) {
+  /* line 105, ../sass/tothomweb_jobs.scss */
+  .job-offers-view .view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; } }
+/* line 114, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__new {
+  background-color: #be1622;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-family: 'Fira sans semibold';
+  border-radius: 2px;
+  min-width: 230px; }
+/* line 123, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__new:before {
+  content: "";
+  background-image: url(/sites/all/themes/xn17/assets/images/elements/publica_blanc.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  display: inline-block;
+  width: 18px;
+  height: 17px;
+  margin-right: 1rem;
+  position: relative;
+  top: 2px; }
+/* line 137, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer--not-empty {
+  display: table;
+  margin-top: 2rem; }
+@media (min-width: 768px) {
+  /* line 137, ../sass/tothomweb_jobs.scss */
+  .job-offers-view .job-offer--not-empty {
+    margin-top: 0; } }
+/* line 146, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__empty {
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  padding: 5rem 30px;
+  text-align: center;
+  margin: 3rem 0; }
+/* line 154, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer--empty {
+  display: table;
+  margin: 3rem auto 0; }
+/* line 159, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer {
+  margin: 2rem 0;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  padding: 30px; }
+/* line 166, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__title {
+  margin: 0 0 1.5rem;
+  font-size: 1.25em;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ededed; }
+/* line 172, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__title a {
+  font-family: 'Fira sans semibold';
+  color: #be1622; }
+/* line 176, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__title a:hover, .job-offers-view .job-offer__title a:focus, .job-offers-view .job-offer__title a:active {
+  text-decoration: underline; }
+/* line 184, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__info {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: 1fr; }
+@media (min-width: 1200px) {
+  /* line 184, ../sass/tothomweb_jobs.scss */
+  .job-offers-view .job-offer__info {
+    grid-template-columns: 2fr 2fr 1fr auto; } }
+/* line 193, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__info strong {
+  font-family: 'Fira sans semibold';
+  margin-left: 0.5rem; }
+/* line 199, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__entity {
+  display: flex;
+  align-items: center; }
+/* line 204, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__mail {
+  display: flex;
+  align-items: center; }
+/* line 208, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__mail a {
+  color: #be1622; }
+/* line 211, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__mail a:hover, .job-offers-view .job-offer__mail a:focus, .job-offers-view .job-offer__mail a:active {
+  text-decoration: underline; }
+/* line 219, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__date {
+  display: flex;
+  align-items: center; }
+/* line 224, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; }
+/* line 230, ../sass/tothomweb_jobs.scss */
+.job-offers-view .job-offer__link--button {
+  background-color: #ededed;
+  font-family: 'Fira Sans SemiBold';
+  color: #4A4A49;
+  padding: 0.75rem 1rem;
+  border-radius: 2px; }
+/* line 238, ../sass/tothomweb_jobs.scss */
+.job-offers-view .pager {
+  padding-left: 0;
+  margin: 20px 0;
+  text-align: center;
+  list-style: none; }
+/* line 244, ../sass/tothomweb_jobs.scss */
+.job-offers-view .pager .pager__item {
+  display: inline-block;
+  width: 100%;
+  background: white url(/sites/all/themes/xn17/assets/images/elements/line.svg) repeat-x center;
+  margin-top: 20px; }
+/* line 250, ../sass/tothomweb_jobs.scss */
+.job-offers-view .pager .pager__item a, .job-offers-view .pager .pager__item span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px; }
+/* line 258, ../sass/tothomweb_jobs.scss */
+.job-offers-view .pager .pager__item a {
+  background: white url(/sites/all/themes/xn17/assets/images/elements/mes.svg) no-repeat center top;
+  padding-top: 25px;
+  border: none; }
+/* line 266, ../sass/tothomweb_jobs.scss */
+.job-offers-view .ajax-progress-throbber {
+  display: none; }
+/* line 269, ../sass/tothomweb_jobs.scss */
+.job-offers-view .ajax-progress-throbber .throbber {
+  display: none; }
+
+/* line 278, ../sass/tothomweb_jobs.scss */
+.field-name-field-job-offer-approval {
+  margin-bottom: 2rem; }
