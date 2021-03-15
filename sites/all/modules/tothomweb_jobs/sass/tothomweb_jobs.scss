@@ -29,7 +29,7 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
   -o-transition: $property 0.2s ease-in-out;
 }
 
-// Styles
+// Styles (Form)
 
 .page-add-job-offer {
 
@@ -82,7 +82,7 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
       color: $white;
       padding: 0.75rem 2.5rem;
       border: none;
-      border-radius: 0;
+      border-radius: 2px;
       margin-top: 2rem;
       @include transition(all);
 
@@ -94,4 +94,259 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
       }
     }
   }
+}
+
+// Styles (View)
+
+.job-offers-view {
+  padding: 0 15px;
+  margin: 30px 0 30px;
+
+  .view-header {
+
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .job-offer__new {
+    background-color: $red;
+    color: $white;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-family: 'Fira sans semibold';
+    border-radius: 2px;
+    min-width: 230px;
+
+    &:before {
+      content: "";
+      background-image: url(/sites/all/themes/xn17/assets/images/elements/publica_blanc.svg);
+      background-repeat: no-repeat;
+      background-position: left center;
+      display: inline-block;
+      width: 18px;
+      height: 17px;
+      margin-right: 1rem;
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  .job-offer--not-empty {
+    display: table;
+    margin-top: 2rem;
+
+    @media (min-width: 768px) {
+      margin-top: 0;
+    }
+  }
+
+  .job-offer__empty {
+    border: 1px solid $lightgray;
+    border-radius: 4px;
+    padding: 5rem 30px;
+    text-align: center;
+    margin: 3rem 0;
+  }
+
+  .job-offer--empty {
+    display: table;
+    margin: 3rem auto 0;
+  }
+
+  .job-offer {
+    margin: 2rem 0;
+    border: 1px solid $lightgray;
+    border-radius: 4px;
+    padding: 30px;
+  }
+
+  .job-offer__title {
+    margin: 0 0 1.5rem;
+    font-size: 1.25em;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $lightgray;
+
+    a {
+      font-family: 'Fira sans semibold';
+      color: $red;
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .job-offer__info {
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: 2fr 2fr 1fr auto;
+    }
+
+    strong {
+      font-family: 'Fira sans semibold';
+      margin-left: 0.5rem;
+    }
+  }
+
+  .job-offer__entity {
+    display: flex;
+    align-items: center;
+  }
+
+  .job-offer__mail {
+    display: flex;
+    align-items: center;
+
+    a {
+      color: $red;
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .job-offer__date {
+    display: flex;
+    align-items: center;
+  }
+
+  .job-offer__link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .job-offer__link--button {
+    background-color: $lightgray;
+    font-family: 'Fira Sans SemiBold';
+    color: #4A4A49;
+    padding: 0.75rem 1rem;
+    border-radius: 2px;
+  }
+
+  .pager {
+    padding-left: 0;
+    margin: 20px 0;
+    text-align: center;
+    list-style: none;
+
+    .pager__item {
+      display: inline-block;
+      width: 100%;
+      background: white url(/sites/all/themes/xn17/assets/images/elements/line.svg) repeat-x center;
+      margin-top: 20px;
+
+      a, span {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+      }
+
+      a {
+        background: white url(/sites/all/themes/xn17/assets/images/elements/mes.svg) no-repeat center top;
+        padding-top: 25px;
+        border: none;
+      }
+    }
+  }
+
+  .ajax-progress-throbber {
+    display: none;
+
+    .throbber {
+      display: none;
+    }
+  }
+}
+
+// Styles (Single Job offer)
+
+.node-type-job-offer {
+
+  .nav-tabs.primary {
+    padding: 0 30px;
+  }
+
+  .node-job-offer {
+    padding: 0 15px;
+    margin-bottom: 0;
+
+    .content {
+
+      .field {
+        border-bottom: 1px solid $lightgray;
+        padding: 1.5rem 0;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        .field-label {
+          font-family: 'Fira Sans SemiBold';
+        }
+
+        &.field-label-above {
+
+          .field-label {
+            margin-bottom: 1.5rem;
+          }
+        }
+
+        &.field-label-inline {
+
+          .field-label {
+            margin-right: 1rem;
+
+            @media (min-width: 992px) {
+              min-width: 150px;
+            }
+          }
+        }
+
+        &.field-type-file {
+
+          img {
+            display: none;
+          }
+
+          a {
+            display: table;
+            background-color: $red;
+            color: $white;
+            font-family: 'Fira Sans SemiBold';
+            border-radius: 2px;
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+          }
+
+          .file-size {
+            display: block;
+            color: #666;
+            margin-top: 1rem;
+            font-size: 0.875em;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Styles (Admin page)
+
+.field-name-field-job-offer-approval {
+  margin-bottom: 2rem;
 }
