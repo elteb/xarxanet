@@ -204,6 +204,52 @@
 .job-offers-view .ajax-progress-throbber .throbber {
   display: none; }
 
-/* line 278, ../sass/tothomweb_jobs.scss */
+/* line 279, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .nav-tabs.primary {
+  padding: 0 30px; }
+/* line 283, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer {
+  padding: 0 15px;
+  margin-bottom: 0; }
+/* line 289, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content .field {
+  border-bottom: 1px solid #ededed;
+  padding: 1.5rem 0; }
+/* line 293, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content .field:last-child {
+  border-bottom: 0; }
+/* line 297, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content .field .field-label {
+  font-family: 'Fira Sans SemiBold'; }
+/* line 303, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content .field.field-label-above .field-label {
+  margin-bottom: 1.5rem; }
+/* line 310, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content .field.field-label-inline .field-label {
+  margin-right: 1rem; }
+@media (min-width: 992px) {
+  /* line 310, ../sass/tothomweb_jobs.scss */
+  .node-type-job-offer .node-job-offer .content .field.field-label-inline .field-label {
+    min-width: 150px; } }
+/* line 321, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content .field.field-type-file img {
+  display: none; }
+/* line 325, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content .field.field-type-file a {
+  display: table;
+  background-color: #be1622;
+  color: #ffffff;
+  font-family: 'Fira Sans SemiBold';
+  border-radius: 2px;
+  padding: 1rem 2rem;
+  margin-top: 1rem; }
+/* line 335, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content .field.field-type-file .file-size {
+  display: block;
+  color: #666;
+  margin-top: 1rem;
+  font-size: 0.875em; }
+
+/* line 350, ../sass/tothomweb_jobs.scss */
 .field-name-field-job-offer-approval {
   margin-bottom: 2rem; }
