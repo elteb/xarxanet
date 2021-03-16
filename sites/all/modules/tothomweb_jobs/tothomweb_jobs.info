@@ -1,5 +1,5 @@
-name = Ofertes de treball
-description = Mòdul personalitzat que crea el formulari de publicació d'ofertes de treball.
+name = Ofertes de feina
+description = Mòdul personalitzat que crea el formulari de publicació d'ofertes de feina.
 core = 7.x
 package = XARXANET
 

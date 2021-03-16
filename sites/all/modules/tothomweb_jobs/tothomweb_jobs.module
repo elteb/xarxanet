@@ -1,7 +1,7 @@
 <?php
 
 // Set some helper constants.
-define('JOB_OFFER_URL', 'add/oferta-treball');
+define('JOB_OFFER_URL', 'add/oferta-feina');
 
 /**
  * Implements hook_init().
@@ -46,88 +46,93 @@ function tothomweb_jobs_form($form, &$form_state) {
     ),
   );
 
-  $form['row'] = array(
+  $form['container']['grid'] = array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('row'),
+      'class' => array('jobs_offer_form_grid'),
     ),
   );
 
-  $form['container']['row']['mandatory'] = array(
+  $form['container']['grid']['mandatory'] = array(
     '#type' => 'markup',
     '#markup' => '<p class="mandatory">El camps amb un asterisc (<span>*</span>) son obligatoris.</p>',
+    '#prefix' => '<div class="job_offer_item job_offer_mandatory">',
+    '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_title'] = array(
-    '#title' => 'Títol de l\'oferta de treball',
+  $form['container']['grid']['job_offer_title'] = array(
+    '#title' => 'Títol de l\'oferta de feina',
     '#type' => 'textfield',
     '#maxlength' => '255',
     '#default_value' => '',
     '#required' => true,
-    '#prefix' => '<div class="col-xs-12">',
+    '#prefix' => '<div class="job_offer_item job_offer_title">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_entity'] = array(
+  $form['container']['grid']['job_offer_entity'] = array(
     '#title' => 'Nom de l\'entitat',
     '#type' => 'textfield',
     '#maxlength' => '255',
     '#default_value' => '',
+    '#description' => "Indica el nom de l'entitat que ofereix aquesta oferta de feina.",
     '#required' => true,
-    '#prefix' => '<div class="col-sm-6">',
+    '#prefix' => '<div class="job_offer_item job_offer_entity">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_mail'] = array(
+  $form['container']['grid']['job_offer_mail'] = array(
     '#title' => 'Correu electrònic',
     '#type' => 'textfield',
     '#maxlength' => '127',
     '#default_value' => '',
     '#required' => true,
-    '#prefix' => '<div class="col-sm-6">',
+    '#prefix' => '<div class="job_offer_item job_offer_mail">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_phone'] = array(
+  $form['container']['grid']['job_offer_phone'] = array(
     '#title' => 'Telèfon',
     '#type' => 'textfield',
     '#maxlength' => '16',
     '#default_value' => '',
-    '#prefix' => '<div class="col-sm-6">',
+    '#description' => "Indica un telèfon de contacte, sense espais ni símbols.",
+    '#prefix' => '<div class="job_offer_item job_offer_phone">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_location'] = array(
+  $form['container']['grid']['job_offer_location'] = array(
     '#title' => 'Població',
     '#type' => 'textfield',
     '#maxlength' => '127',
     '#default_value' => '',
     '#required' => true,
-    '#prefix' => '<div class="col-sm-6">',
+    '#prefix' => '<div class="job_offer_item job_offer_location">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_date'] = array(
+  $form['container']['grid']['job_offer_date'] = array(
     '#title' => 'Termini',
     '#type' => 'textfield',
     '#maxlength' => '16',
     '#default_value' => '',
+    '#description' => "Indica la data límit de convocatòria d'aquesta oferta.",
     '#required' => true,
-    '#prefix' => '<div class="col-sm-6">',
+    '#prefix' => '<div class="job_offer_item job_offer_date">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['managed_file'] = array(
+  $form['container']['grid']['managed_file'] = array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('col-xs-12'),
+      'class' => array('job_offer_item job_offer_attached'),
     ),
   );
 
-  $job_offer_attached_description  = "<p>Es pot afegir un document amb informació addicional sobre l'oferta de treball.<br/>";
-  $job_offer_attached_description .= "Només es permeten arxius en format PDF de 3 MB com a màxim.</p>";
+  $job_offer_attached_description  = "<p>Afegeix un document amb informació addicional sobre l'oferta de feina.<br/>";
+  $job_offer_attached_description .= "Només es permeten arxius en format PDF, de 3 MB com a màxim.</p>";
 
-  $form['container']['row']['managed_file']['job_offer_attached'] = array(
+  $form['container']['grid']['managed_file']['job_offer_attached'] = array(
     '#title' => 'Informació addicional adjunta',
     '#type' => 'managed_file',
     '#default_value' => '',
@@ -139,37 +144,41 @@ function tothomweb_jobs_form($form, &$form_state) {
     ),
   );
 
-  $form['container']['row']['job_offer_description'] = array(
-    '#title' => 'Descripció del lloc de treball',
+  $form['container']['grid']['job_offer_description'] = array(
+    '#title' => 'Descripció del lloc de feina',
     '#type' => 'text_format',
     '#format' => '1',
     '#default_value' => '',
-    '#prefix' => '<div class="col-xs-12">',
+    '#description' => "Indica els aspectes relacionats amb el lloc de feina, com les tasques a fer, horaris, etc.",
+    '#prefix' => '<div class="job_offer_item job_offer_description">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_requirements'] = array(
+  $form['container']['grid']['job_offer_requirements'] = array(
     '#title' => 'Requisits',
     '#type' => 'text_format',
     '#format' => '1',
     '#default_value' => '',
-    '#prefix' => '<div class="col-xs-12">',
+    '#description' => "Indica els requisits mínims que ha de complir el candidat que opti a aquesta oferta de feina.",
+
+    '#prefix' => '<div class="job_offer_item job_offer_requirements">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_conditions'] = array(
+  $form['container']['grid']['job_offer_conditions'] = array(
     '#title' => 'Condicions',
     '#type' => 'text_format',
     '#format' => '1',
     '#default_value' => '',
-    '#prefix' => '<div class="col-xs-12">',
+    '#description' => "Indica les condicions per optar a aquesta oferta de feina, com la forma de contacte, terminis, documentació a aportar, etc.",
+    '#prefix' => '<div class="job_offer_item job_offer_conditions">',
     '#suffix' => '</div>',
   );
 
-  $form['container']['row']['job_offer_submit'] = array(
+  $form['container']['grid']['job_offer_submit'] = array(
     '#value' => 'Publicar la oferta',
     '#type' => 'submit',
-    '#prefix' => '<div class="col-xs-12">',
+    '#prefix' => '<div class="job_offer_item job_offer_submit">',
     '#suffix' => '</div>',
   );
 
@@ -183,7 +192,7 @@ function tothomweb_jobs_form_validate($form, &$form_state) {
   $values = $form_state['values'];
   // Title
   if ($values['job_offer_title'] === '') {
-    form_set_error('job_offer_title', "El títol de l'oferta de treball és obligatòri.");
+    form_set_error('job_offer_title', "El títol de l'oferta de feina és obligatòri.");
   }
   // Entity name
   if ($values['job_offer_entity'] === '') {
@@ -272,13 +281,13 @@ function tothomweb_jobs_form_submit($form, &$form_state) {
   node_save($node);
   // Show a message to the user
   if ($status) {
-    drupal_set_message('La teva oferta de treball ha estat publicada correctament.', 'status');
+    drupal_set_message('La teva oferta de feina ha estat publicada correctament.', 'status');
   }
   else {
-    drupal_set_message('La teva oferta de treball ha estat desada correctament i està pendent d\'aprovació per part dels administradors de Xarxanet.', 'status');
+    drupal_set_message('La teva oferta de feina ha estat desada correctament i està pendent d\'aprovació per part dels administradors de Xarxanet.', 'status');
   }
   // Redirect the user to the View
-  $form_state['redirect'] = '/ofertes-treball';
+  $form_state['redirect'] = '/ofertes-feina';
 }
 
 /**
