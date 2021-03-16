@@ -31,50 +31,133 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
 
 // Styles (Form)
 
-.page-add-job-offer {
+.job_offer_banner {
 
-  #tothomweb-jobs-form {
-    margin-top: 3rem;
+  .banner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 180px;
+    background-image: url(https://xarxanet.org/sites/default/files/job_offers/job_offers_banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
 
-    .mandatory {
-      display: block;
-      padding: 0 15px;
-      text-align: right;
-      margin-bottom: 1.5rem;
-
-      span {
-        color: $red;
-      }
+    &:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      z-index: 2;
+      background-color: rgba($red, 0.25);
     }
 
-    .form-item-job-offer-attached {
-      margin: 2rem 0 3rem;
+    p {
+      display: none;
 
-      .form-managed-file {
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        padding: 1rem;
-        margin: 1rem 0;
+      @media (min-width: 768px) {
+        display: inline-block;
+        width: 100%;
+        font-family: 'Fira Sans SemiBold';
+        font-size: 4em;
+        opacity: 0.4;
+        color: $white;
+        position: relative;
+        z-index: 3;
+        text-transform: lowercase;
+        padding: 0 30px;
+        margin: 0;
+        top: 15px;
+        line-height: 1em;
+      }
+
+      @media (min-width: 992px) {
+        font-size: 5em;
       }
     }
+  }
+}
 
-    .text-format-wrapper {
-      margin-bottom: 2rem;
+.jobs_offer_form_grid {
+  padding: 30px 15px;
 
-      .filter-wrapper,
-      .ckeditor_links {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-      }
+
+  .job_offer_item {
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-gap: 1.5rem 30px;
+    grid-template-columns: repeat(2, 1fr);
+
+    .job_offer_item {
+      margin-bottom: 0;
+    }
+  }
+
+  .job_offer_mandatory {
+    color: #6d7072;
+    text-align: right;
+
+    @media (min-width: 768px) {
+      grid-column: 2/3;
     }
 
-    #edit-job-offer-submit {
+    span {
+      color: $red;
+    }
+  }
+
+  .job_offer_title {
+
+    @media (min-width: 768px) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  .job_offer_attached {
+
+    @media (min-width: 768px) {
+      grid-column: 1 / span 2;
+    }
+
+    .form-managed-file {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+  }
+
+  .job_offer_description {
+
+    @media (min-width: 768px) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  .job_offer_requirements {
+
+    @media (min-width: 768px) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  .job_offer_conditions {
+
+    @media (min-width: 768px) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  .job_offer_submit {
+
+    .form-submit {
       text-transform: uppercase;
       font-family: $regular;
       font-size: 1em;
@@ -94,7 +177,36 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
       }
     }
   }
+
+
+
+  .text-format-wrapper {
+    margin-bottom: 2rem;
+
+    .filter-wrapper,
+    .ckeditor_links {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  }
+
+  .description {
+    color: #6d7072;
+  }
 }
+
+
+
+
+
+
+
 
 // Styles (View)
 
