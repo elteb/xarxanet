@@ -129,8 +129,41 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
     .form-managed-file {
       border: 1px solid #ccc;
       border-radius: 4px;
-      padding: 1rem;
+      padding: 2rem 2rem 1.5rem 2rem;
       margin: 1rem 0;
+
+      @media (min-width: 992px) {
+
+        a {
+          min-width: 40%;
+          display: inline-block;
+        }
+
+        .form-file {
+          min-width: 40%;
+        }
+      }
+
+      .form-submit {
+        background-color: $lightgray;
+        font-family: 'Fira Sans SemiBold';
+        color: #4A4A49;
+        padding: 0.75rem 1rem;
+        border: none;
+        border-radius: 2px;
+        margin-top: 3rem;
+
+        &:hover,
+        &:focus,
+        &:active {
+          text-decoration: underline;
+        }
+
+        @media (min-width: 768px) {
+          margin-top: 0;
+          margin-left: 1%;
+        }
+      }
     }
   }
 
@@ -155,7 +188,24 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
     }
   }
 
+  .form-type-textarea.has-error {
+
+    .form-textarea-wrapper {
+      border: 2px solid red;
+    }
+  }
+
+  .captcha.panel {
+    grid-column: 1 / span 2;
+    margin: 0;
+
+    .panel-body {
+      padding: 0;
+    }
+  }
+
   .job_offer_submit {
+    grid-column: 1 / span 2;
 
     .form-submit {
       text-transform: uppercase;
@@ -178,8 +228,6 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
     }
   }
 
-
-
   .text-format-wrapper {
     margin-bottom: 2rem;
 
@@ -200,13 +248,6 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
     color: #6d7072;
   }
 }
-
-
-
-
-
-
-
 
 // Styles (View)
 
