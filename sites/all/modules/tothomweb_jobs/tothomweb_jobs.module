@@ -220,7 +220,7 @@ function tothomweb_jobs_form_validate($form, &$form_state) {
     }
   }
   // Phone
-  if (!is_numeric($values['job_offer_phone'])) {
+  if ($values['job_offer_phone'] != '' & !is_numeric($values['job_offer_phone'])) {
     form_set_error('job_offer_phone', t("El telèfon només pot contenir números, sense espais, guions o altres símbols."));
   }
   // Location
