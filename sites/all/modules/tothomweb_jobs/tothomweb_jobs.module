@@ -55,13 +55,13 @@ function tothomweb_jobs_form($form, &$form_state) {
 
   $form['container']['grid']['mandatory'] = array(
     '#type' => 'markup',
-    '#markup' => '<p class="mandatory">El camps amb un asterisc (<span>*</span>) son obligatoris.</p>',
+    '#markup' => '<p class="mandatory">' . t("El camps amb un asterisc (<span>*</span>) son obligatoris."). '</p>',
     '#prefix' => '<div class="job_offer_item job_offer_mandatory">',
     '#suffix' => '</div>',
   );
 
   $form['container']['grid']['job_offer_title'] = array(
-    '#title' => 'Títol de l\'oferta de feina',
+    '#title' => t("Títol de l'oferta de feina"),
     '#type' => 'textfield',
     '#maxlength' => '255',
     '#default_value' => '',
@@ -71,18 +71,18 @@ function tothomweb_jobs_form($form, &$form_state) {
   );
 
   $form['container']['grid']['job_offer_entity'] = array(
-    '#title' => 'Nom de l\'entitat',
+    '#title' => t("Nom de l'entitat"),
     '#type' => 'textfield',
     '#maxlength' => '255',
     '#default_value' => '',
-    '#description' => "Indica el nom de l'entitat que ofereix aquesta oferta de feina.",
+    '#description' => t("Indica el nom de l'entitat que ofereix aquesta oferta de feina."),
     '#required' => true,
     '#prefix' => '<div class="job_offer_item job_offer_entity">',
     '#suffix' => '</div>',
   );
 
   $form['container']['grid']['job_offer_mail'] = array(
-    '#title' => 'Correu electrònic',
+    '#title' => t('Correu electrònic'),
     '#type' => 'textfield',
     '#maxlength' => '127',
     '#default_value' => '',
@@ -92,17 +92,17 @@ function tothomweb_jobs_form($form, &$form_state) {
   );
 
   $form['container']['grid']['job_offer_phone'] = array(
-    '#title' => 'Telèfon',
+    '#title' => t('Telèfon'),
     '#type' => 'textfield',
     '#maxlength' => '16',
     '#default_value' => '',
-    '#description' => "Indica un telèfon de contacte, sense espais ni símbols.",
+    '#description' => t("Indica un telèfon de contacte, sense espais ni símbols."),
     '#prefix' => '<div class="job_offer_item job_offer_phone">',
     '#suffix' => '</div>',
   );
 
   $form['container']['grid']['job_offer_location'] = array(
-    '#title' => 'Població',
+    '#title' => t('Població'),
     '#type' => 'textfield',
     '#maxlength' => '127',
     '#default_value' => '',
@@ -112,11 +112,11 @@ function tothomweb_jobs_form($form, &$form_state) {
   );
 
   $form['container']['grid']['job_offer_date'] = array(
-    '#title' => 'Termini',
+    '#title' => t('Termini'),
     '#type' => 'textfield',
     '#maxlength' => '16',
     '#default_value' => '',
-    '#description' => "Indica la data límit de convocatòria d'aquesta oferta.",
+    '#description' => t("Indica la data límit de convocatòria d'aquesta oferta."),
     '#required' => true,
     '#prefix' => '<div class="job_offer_item job_offer_date">',
     '#suffix' => '</div>',
@@ -129,11 +129,14 @@ function tothomweb_jobs_form($form, &$form_state) {
     ),
   );
 
-  $job_offer_attached_description  = "<p>Afegeix un document amb informació addicional sobre l'oferta de feina.<br/>";
-  $job_offer_attached_description .= "Només es permeten arxius en format PDF, de 3 MB com a màxim.</p>";
+  $job_offer_attached_description  = "<p>";
+  $job_offer_attached_description .= t("Afegeix un document amb informació addicional sobre l'oferta de feina.");
+  $job_offer_attached_description .= "<br/>";
+  $job_offer_attached_description .= t("Només es permeten arxius en format PDF, de 3 MB com a màxim.");
+  $job_offer_attached_description .= "</p>";
 
   $form['container']['grid']['managed_file']['job_offer_attached'] = array(
-    '#title' => 'Informació addicional adjunta',
+    '#title' => t('Informació addicional adjunta'),
     '#type' => 'managed_file',
     '#default_value' => '',
     '#description' => $job_offer_attached_description,
@@ -145,38 +148,40 @@ function tothomweb_jobs_form($form, &$form_state) {
   );
 
   $form['container']['grid']['job_offer_description'] = array(
-    '#title' => 'Descripció del lloc de feina',
+    '#title' => t('Descripció del lloc de feina'),
     '#type' => 'text_format',
     '#format' => '1',
     '#default_value' => '',
-    '#description' => "Indica els aspectes relacionats amb el lloc de feina, com les tasques a fer, horaris, etc.",
+    '#description' => t("Indica els aspectes relacionats amb el lloc de feina."),
+    '#required' => true,
     '#prefix' => '<div class="job_offer_item job_offer_description">',
     '#suffix' => '</div>',
   );
 
   $form['container']['grid']['job_offer_requirements'] = array(
-    '#title' => 'Requisits',
+    '#title' => t('Requisits'),
     '#type' => 'text_format',
     '#format' => '1',
     '#default_value' => '',
-    '#description' => "Indica els requisits mínims que ha de complir el candidat que opti a aquesta oferta de feina.",
-
+    '#description' => t("Indica els requisits mínims que ha de complir el candidat que opti a aquesta oferta de feina."),
+    '#required' => true,
     '#prefix' => '<div class="job_offer_item job_offer_requirements">',
     '#suffix' => '</div>',
   );
 
   $form['container']['grid']['job_offer_conditions'] = array(
-    '#title' => 'Condicions',
+    '#title' => t('Condicions'),
     '#type' => 'text_format',
     '#format' => '1',
     '#default_value' => '',
-    '#description' => "Indica les condicions per optar a aquesta oferta de feina, com la forma de contacte, terminis, documentació a aportar, etc.",
+    '#description' => t("Indica les condicions d'aquesta oferta de feina com la jornada laboral oferida, el salari, etc."),
+    '#required' => true,
     '#prefix' => '<div class="job_offer_item job_offer_conditions">',
     '#suffix' => '</div>',
   );
 
   $form['container']['grid']['job_offer_submit'] = array(
-    '#value' => 'Publicar la oferta',
+    '#value' => t('Publicar la oferta'),
     '#type' => 'submit',
     '#prefix' => '<div class="job_offer_item job_offer_submit">',
     '#suffix' => '</div>',
@@ -192,37 +197,49 @@ function tothomweb_jobs_form_validate($form, &$form_state) {
   $values = $form_state['values'];
   // Title
   if ($values['job_offer_title'] === '') {
-    form_set_error('job_offer_title', "El títol de l'oferta de feina és obligatòri.");
+    form_set_error('job_offer_title', t("El títol de l'oferta de feina és obligatori."));
   }
   // Entity name
   if ($values['job_offer_entity'] === '') {
-    form_set_error('job_offer_entity', "El nom de l'entitat és obligatòri.");
+    form_set_error('job_offer_entity', t("El nom de l'entitat és obligatori."));
   }
   // Mail
   if ($values['job_offer_mail'] === '') {
-    form_set_error('job_offer_mail', "L'adreça electrònica és obligatòria.");
+    form_set_error('job_offer_mail', t("L'adreça electrònica és obligatòria."));
   }
   else {
     if (!filter_var($values['job_offer_mail'], FILTER_VALIDATE_EMAIL)) {
-      form_set_error('job_offer_mail', "El format de L'adreça electrònica no és vàlid.");
+      form_set_error('job_offer_mail', t("El format de l'adreça electrònica no és vàlid."));
     }
   }
   // Phone
   if (!is_numeric($values['job_offer_phone'])) {
-    form_set_error('job_offer_phone', "El telèfon només pot contenir números, sense espais, guions o altres símbols.");
+    form_set_error('job_offer_phone', t("El telèfon només pot contenir números, sense espais, guions o altres símbols."));
   }
   // Location
   if ($values['job_offer_location'] === '') {
-    form_set_error('job_offer_location', "La població és obligatòria.");
+    form_set_error('job_offer_location', t("La població és obligatòria."));
   }
   // Date
   if ($values['job_offer_date'] === '') {
-    form_set_error('job_offer_date', "La data del termini és obligatòria.");
+    form_set_error('job_offer_date', t("La data del termini és obligatòria."));
   }
   else {
     if (!preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-[0-9]{4}$/", $values['job_offer_date'])) {
-      form_set_error('job_offer_date', "La data del termini ha de tenir el format 'DD-MM-AAAA'.");
+      form_set_error('job_offer_date', t("La data del termini ha de tenir el format 'DD-MM-AAAA'."));
     }
+  }
+  // Description
+  if ($values['job_offer_description'] === '') {
+    form_set_error('job_offer_description', t("El camp descripció del lloc de feina és obligatori."));
+  }
+  // Requirements
+  if ($values['job_offer_requirements'] === '') {
+    form_set_error('job_offer_requirements', t("El camp requisits és obligatori."));
+  }
+  // Conditions
+  if ($values['job_offer_conditions'] === '') {
+    form_set_error('job_offer_conditions', t("El camp condicions del lloc de feina és obligatori."));
   }
 }
 
