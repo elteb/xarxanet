@@ -330,29 +330,37 @@
   padding: 0 15px;
   margin-bottom: 0; }
 /* line 442, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content a {
+  color: #be1622;
+  text-decoration: underline; }
+/* line 446, ../sass/tothomweb_jobs.scss */
+.node-type-job-offer .node-job-offer .content a:hover, .node-type-job-offer .node-job-offer .content a:active {
+  color: #2f3031;
+  text-decoration: underline; }
+/* line 453, ../sass/tothomweb_jobs.scss */
 .node-type-job-offer .node-job-offer .content .field {
   border-bottom: 1px solid #ededed;
   padding: 1.5rem 0; }
-/* line 446, ../sass/tothomweb_jobs.scss */
+/* line 457, ../sass/tothomweb_jobs.scss */
 .node-type-job-offer .node-job-offer .content .field:last-child {
   border-bottom: 0; }
-/* line 450, ../sass/tothomweb_jobs.scss */
+/* line 461, ../sass/tothomweb_jobs.scss */
 .node-type-job-offer .node-job-offer .content .field .field-label {
   font-family: "Fira Sans SemiBold", Helvetica, Arial, sans-serif; }
-/* line 456, ../sass/tothomweb_jobs.scss */
+/* line 467, ../sass/tothomweb_jobs.scss */
 .node-type-job-offer .node-job-offer .content .field.field-label-above .field-label {
   margin-bottom: 1.5rem; }
-/* line 463, ../sass/tothomweb_jobs.scss */
+/* line 474, ../sass/tothomweb_jobs.scss */
 .node-type-job-offer .node-job-offer .content .field.field-label-inline .field-label {
   margin-right: 1rem; }
 @media (min-width: 992px) {
-  /* line 463, ../sass/tothomweb_jobs.scss */
+  /* line 474, ../sass/tothomweb_jobs.scss */
   .node-type-job-offer .node-job-offer .content .field.field-label-inline .field-label {
     min-width: 150px; } }
-/* line 474, ../sass/tothomweb_jobs.scss */
+/* line 485, ../sass/tothomweb_jobs.scss */
 .node-type-job-offer .node-job-offer .content .field.field-type-file img {
   display: none; }
-/* line 478, ../sass/tothomweb_jobs.scss */
+/* line 489, ../sass/tothomweb_jobs.scss */
 .node-type-job-offer .node-job-offer .content .field.field-type-file a {
   display: table;
   background-color: #be1622;
@@ -361,13 +369,13 @@
   border-radius: 2px;
   padding: 1rem 2rem;
   margin-top: 1rem; }
-/* line 488, ../sass/tothomweb_jobs.scss */
+/* line 499, ../sass/tothomweb_jobs.scss */
 .node-type-job-offer .node-job-offer .content .field.field-type-file .file-size {
   display: block;
   color: #666;
   margin-top: 1rem;
   font-size: 0.875em; }
 
-/* line 503, ../sass/tothomweb_jobs.scss */
+/* line 514, ../sass/tothomweb_jobs.scss */
 .field-name-field-job-offer-approval {
   margin-bottom: 2rem; }

@@ -439,6 +439,17 @@ $regular:       'Fira Sans', Helvetica, Arial, sans-serif;
 
     .content {
 
+      a {
+        color: $red;
+        text-decoration: underline;
+
+        &:hover,
+        &:active {
+          color: $black;
+          text-decoration: underline;
+        }
+      }
+
       .field {
         border-bottom: 1px solid $lightgray;
         padding: 1.5rem 0;
